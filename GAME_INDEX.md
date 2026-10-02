@@ -15,12 +15,12 @@ Defend a radial gate, capture balls with a magnet and counterattack with Pulse. 
 ## Royal Scratch Match
 
 - ID: `royal-scratch-match` ([manifest](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-scratch-match/manifest.json), [game guide](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-scratch-match/README.md))
-- Status: awaiting-import; multiplayer not-integrated
+- Status: imported; multiplayer not-integrated
 - Players: 2–10
 - Version: 0.5.0
-- Source: awaiting source attachment
+- Source: [source/index.html](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-scratch-match/source/index.html)
 
-A DJ rhythm game with approaching notes and A/B/X/Y timing inputs. The v0.5 ten-player HTML attachment is pending import; this catalog entry is not playable.
+Imported v0.5 standalone call-and-response rhythm game for 2–10 contestant slots. One local touch/keyboard player is supported by default, remaining slots can be bot-controlled, and additional human slots can receive inputs through the existing JavaScript API. Room-code phone multiplayer is not yet integrated.
 
 ## Royal Sumo
 
