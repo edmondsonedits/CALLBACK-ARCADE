@@ -7,6 +7,9 @@ const browser = await chromium.launch({
     "--use-gl=angle",
     "--use-angle=swiftshader",
     "--enable-unsafe-swiftshader",
+    "--disable-background-timer-throttling",
+    "--disable-renderer-backgrounding",
+    "--disable-backgrounding-occluded-windows",
   ],
 });
 const failures = [];
@@ -20,6 +23,7 @@ try {
     "royal-roller-ruckus",
     "royal-sumo",
   ]) {
+    if(process.env.ARCADE_TEST_GAME && process.env.ARCADE_TEST_GAME!==id)continue;
     const host = await browser.newPage({
       viewport: { width: 1366, height: 768 },
     });
@@ -51,6 +55,9 @@ try {
       document.querySelector("#phase").textContent.includes("you are playing"),
     );
     const runningGame = host.frames().find((f) => f.url().includes("/games/"));
+    if(process.env.ARCADE_TEST_GRAPHICS==='performance'&&id==='royal-roller-ruckus'){
+      await runningGame.locator('#graphics').evaluate(select=>{select.value='performance';select.dispatchEvent(new Event('change',{bubbles:true}));});
+    }
     await runningGame.waitForFunction(
       (id) => {
         if (id === "royal-roller-ruckus")
@@ -175,4 +182,4 @@ try {
   await browser.close();
 }
 assert.deepEqual(failures, []);
-console.log("SIX REAL ROOM FLOWS PASSED");
+console.log(`${results.length} REAL ROOM FLOWS PASSED`);
