@@ -12,6 +12,16 @@ Generated from validated game manifests. Run `npm run catalog:generate` after ed
 
 Defend a radial gate, capture balls with a magnet and counterattack with Pulse. The v0.9 ten-player source and phone multiplayer integration are pending import.
 
+## Royal Roller Ruckus
+
+- ID: `royal-roller-ruckus` ([manifest](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-roller-ruckus/manifest.json), [game guide](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-roller-ruckus/README.md))
+- Status: imported; multiplayer in-progress
+- Players: 2–10
+- Version: 1.4.0
+- Source: [source/index.html](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-roller-ruckus/source/index.html)
+
+A 2–10 contestant rolling-cage physics race on the Vertical Crownway, with momentum handling, collisions, recoverable falls, elevation changes, Crownline boosts, rough terrain and bot-filled seats. Standalone source is imported; authenticated phone-room multiplayer transport is not yet implemented.
+
 ## Royal Scratch Match
 
 - ID: `royal-scratch-match` ([manifest](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-scratch-match/manifest.json), [game guide](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-scratch-match/README.md))
