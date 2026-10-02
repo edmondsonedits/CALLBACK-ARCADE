@@ -1,0 +1,39 @@
+{
+  "id": "royal-twisted",
+  "title": "Royal Twisted — Spiral Keep",
+  "aliases": [
+    "Royal Twisted",
+    "Spiral Keep",
+    "Twisted System"
+  ],
+  "tags": [
+    "obstacle",
+    "survival",
+    "reaction",
+    "arcade",
+    "party",
+    "bots",
+    "mobile",
+    "three-js"
+  ],
+  "description": "A 2–10 contestant obstacle-survival run around Spiral Keep: jump low cyan rods, duck high coral rods, survive up to seven hits, and race AI or remote-controlled rivals. v0.5 exposes CALLBACK remote-input hooks; the older v0.4 upload is retained as an archive.",
+  "players": {
+    "min": 2,
+    "max": 10
+  },
+  "version": "0.5.0",
+  "source": {
+    "status": "imported",
+    "paths": [
+      "source/index.html",
+      "source/original/royal_twisted_spiral_keep_v0.5_original_camera_knockback.html"
+    ],
+    "provenance": "Imported from the user-supplied royal_twisted_spiral_keep_v0.5_original_camera_knockback.html. The uploaded v0.4 ten-player build is retained separately under source/archive/ for history. The active build imports Three.js 0.180.0 from jsDelivr at runtime.",
+    "url": null
+  },
+  "lifecycle": "experimental",
+  "multiplayer": {
+    "status": "in-progress",
+    "evidence": []
+  }
+}

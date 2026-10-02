@@ -1,0 +1,39 @@
+{
+  "id": "royal-roller-ruckus",
+  "title": "Royal Roller Ruckus — Crownway Circuit",
+  "aliases": [
+    "Royal Roller Ruckus",
+    "Roller Ruckus",
+    "Crownway Circuit"
+  ],
+  "tags": [
+    "racing",
+    "physics",
+    "momentum",
+    "arcade",
+    "party",
+    "bots",
+    "mobile",
+    "three-js"
+  ],
+  "description": "A 2–10 racer momentum-driven cage race around the vertical Crownway Circuit with collisions, checkpoints, recovery after falls, bot-filled seats, and CALLBACK remote-input hooks.",
+  "players": {
+    "min": 2,
+    "max": 10
+  },
+  "version": "1.4.0",
+  "source": {
+    "status": "imported",
+    "paths": [
+      "source/index.html",
+      "source/original/royal_roller_ruckus_v1.4_vertical_crownway.html"
+    ],
+    "provenance": "Imported from the user-supplied royal_roller_ruckus_v1.4_vertical_crownway.html. The active standalone build imports Three.js 0.180.0 from jsDelivr at runtime.",
+    "url": null
+  },
+  "lifecycle": "experimental",
+  "multiplayer": {
+    "status": "in-progress",
+    "evidence": []
+  }
+}
