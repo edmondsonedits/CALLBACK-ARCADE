@@ -15,19 +15,19 @@ Radial ball-deflection survival game for 2–10 contestants. One local player ca
 ## Royal Scratch Match
 
 - ID: `royal-scratch-match` ([manifest](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-scratch-match/manifest.json), [game guide](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-scratch-match/README.md))
-- Status: awaiting-import; multiplayer not-integrated
+- Status: imported; multiplayer not-integrated
 - Players: 2–10
 - Version: 0.5.0
-- Source: awaiting source attachment
+- Source: [source/index.html](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-scratch-match/source/index.html)
 
-A DJ rhythm game with approaching notes and A/B/X/Y timing inputs. The v0.5 ten-player HTML attachment is pending import; this catalog entry is not playable.
+Imported v0.5 standalone call-and-response rhythm game for 2–10 contestant slots. One local touch/keyboard player is supported by default, remaining slots can be bot-controlled, and additional human slots can receive inputs through the existing JavaScript API. Room-code phone multiplayer is not yet integrated.
 
 ## Royal Sumo
 
 - ID: `royal-sumo` ([manifest](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-sumo/manifest.json), [game guide](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-sumo/README.md))
-- Status: awaiting-import; multiplayer not-integrated
+- Status: imported; multiplayer in-progress
 - Players: 2–10
-- Version: 0.19.0
-- Source: awaiting source attachment
+- Version: 0.21.0
+- Source: [source/index.html](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-sumo/source/index.html), [source/original/royal_sumo_crownfall_v0.21_player_scaled_arena.html](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-sumo/source/original/royal_sumo_crownfall_v0.21_player_scaled_arena.html), [source/vendor/three.module.js](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-sumo/source/vendor/three.module.js), [source/vendor/three.core.js](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-sumo/source/vendor/three.core.js)
 
-A shrinking-arena sumo game with Bash, Dash and crown-based rounds. The v0.19 ten-player HTML attachment is pending; gameplay and phone multiplayer are not present here.
+A 2–10 fighter shrinking-arena physics sumo game with Bash, Dash, stability, knockouts, dynamic camera work and bot-filled contestant slots. The standalone v0.21 source is imported; online phone-room transport is not yet implemented.
