@@ -1,0 +1,24 @@
+{
+  "name": "callback-arcade",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "engines": { "node": ">=22.13.0" },
+  "scripts": {
+    "test": "node --experimental-strip-types --test tests/*.test.mjs",
+    "typecheck": "tsc --noEmit",
+    "catalog:generate": "node --experimental-strip-types scripts/catalog.ts",
+    "catalog:check": "node --experimental-strip-types scripts/catalog.ts --check",
+    "intake": "node --experimental-strip-types scripts/intake.ts",
+    "build": "node scripts/run-wrangler.mjs deploy --dry-run -c wrangler.local.jsonc",
+    "dev": "node scripts/run-wrangler.mjs dev -c wrangler.local.jsonc",
+    "db:migrate": "node scripts/run-wrangler.mjs d1 migrations apply arcade-catalog --local -c wrangler.local.jsonc",
+    "db:seed": "npm run catalog:generate && node scripts/run-wrangler.mjs d1 execute arcade-catalog --local --file=db/seed.sql -c wrangler.local.jsonc",
+    "deploy:production": "node --experimental-strip-types scripts/deploy-preflight.ts --production && node scripts/run-wrangler.mjs deploy -c wrangler.jsonc"
+  },
+  "devDependencies": {
+    "@types/node": "22.18.6",
+    "typescript": "5.9.3",
+    "wrangler": "4.124.0"
+  }
+}

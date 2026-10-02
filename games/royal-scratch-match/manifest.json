@@ -1,0 +1,12 @@
+{
+  "id": "royal-scratch-match",
+  "title": "Royal Scratch Match",
+  "aliases": ["Scratch Match", "Create Scratch Match"],
+  "tags": ["rhythm", "music", "timing", "arcade"],
+  "description": "A DJ rhythm game with approaching notes and A/B/X/Y timing inputs. The v0.5 ten-player HTML attachment is pending import; this catalog entry is not playable.",
+  "players": { "min": 2, "max": 10 },
+  "version": "0.5.0",
+  "source": { "status": "awaiting-import", "paths": [], "provenance": "The chat-mentioned royal_scratch_match_v0.5_ten_player.html attachment is not available in this repository.", "url": null },
+  "lifecycle": "intake",
+  "multiplayer": { "status": "not-integrated", "evidence": [] }
+}

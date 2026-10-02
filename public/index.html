@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111827">
+  <meta name="description" content="Find and inspect CALLBACK Arcade games and their source status.">
+  <title>CALLBACK Arcade</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/catalog.js"></script>
+</head>
+<body>
+  <header class="hero">
+    <p class="eyebrow">CALLBACK ARCADE</p>
+    <h1>Find a game.<br><span>Make it yours.</span></h1>
+    <p>Search the game catalog, inspect its source and status, then bring a standalone HTML game into your repository.</p>
+    <label class="search-label" for="search">Search games</label>
+    <input id="search" type="search" placeholder="Title, alias, tag, or ID" autocomplete="off">
+    <p id="count" aria-live="polite" class="count">Loading catalog…</p>
+  </header>
+  <main>
+    <div id="games" class="game-grid" aria-live="polite"></div>
+    <p id="empty" class="empty" hidden>No games match that search.</p>
+    <p id="error" class="error" hidden>The catalog could not load. Refresh to try again.</p>
+  </main>
+  <footer><span>Source and integration status are tracked per game.</span><span><a href="https://callback-party-game.dans-host.chatgpt.site">Party games</a> · <a href="https://github.com/edmondsonedits/CALLBACK-ARCADE">Open repository</a></span></footer>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "id": "new-game",
+  "title": "New Game",
+  "aliases": [],
+  "tags": [],
+  "description": "Describe the imported game and its current implementation state.",
+  "players": { "min": 1, "max": 10 },
+  "version": "0.1.0",
+  "source": { "status": "awaiting-import", "paths": [], "provenance": "Add a precise source and license/provenance note before import.", "url": null },
+  "lifecycle": "intake",
+  "multiplayer": { "status": "not-integrated", "evidence": [] }
+}

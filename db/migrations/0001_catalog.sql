@@ -1,0 +1,16 @@
+CREATE TABLE IF NOT EXISTS games (
+  id TEXT PRIMARY KEY NOT NULL,
+  title TEXT NOT NULL,
+  version TEXT NOT NULL,
+  lifecycle TEXT NOT NULL,
+  source_status TEXT NOT NULL,
+  multiplayer_status TEXT NOT NULL,
+  manifest_json TEXT NOT NULL,
+  updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE IF NOT EXISTS catalog_meta (
+  id INTEGER PRIMARY KEY CHECK (id = 1),
+  revision TEXT NOT NULL,
+  game_count INTEGER NOT NULL,
+  updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);

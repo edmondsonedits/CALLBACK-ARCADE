@@ -1,0 +1,8 @@
+# Ignore local dependencies, Wrangler state, runtime logs, and credentials.
+node_modules/
+.wrangler/
+.local/
+.env
+.env.*
+!.env.example
+*.tmp-*

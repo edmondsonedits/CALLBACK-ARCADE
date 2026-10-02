@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "kind": "arcade-multiplayer-verification",
+  "result": "passed",
+  "scope": "automated-checks",
+  "checks": [
+    { "name": "replace with a check that actually ran", "result": "passed" }
+  ],
+  "sourceHashes": [
+    { "path": "source/game.html", "sha256": "<64 lowercase SHA-256 hex characters>" }
+  ]
+}
