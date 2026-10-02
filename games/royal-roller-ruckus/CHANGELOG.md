@@ -19,3 +19,5 @@
 - Preserved 2–10 racers, one-human-plus-bots play, racecraft AI, fixed 120 Hz simulation, momentum/collision physics, player-focused camera, procedural rider animation/audio, Crownline/rough terrain, elevation and recoverable airborne landings.
 - Added source provenance/rights notes, tests and integration documentation.
 - Classified source as `imported`, lifecycle as `experimental`, and multiplayer as `in-progress`; no online/verified claim is made.
+
+- Room startup can choose a whitelisted graphics preference before the first draw; runtime diagnostics expose phase, pause and frame progress for connection troubleshooting. Physics and timer limits are preserved.

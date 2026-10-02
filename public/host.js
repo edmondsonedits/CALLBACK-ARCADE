@@ -8,7 +8,15 @@ let transport,
   previousPhase,
   welcomeSeen = false,
   recoveryRequired = false,
+  gameReady = false,
+  loadGeneration = 0,
   connected = new Map();
+const graphicsPreference = new URLSearchParams(location.search).get("graphics");
+let graphics = ["performance", "balanced", "quality"].includes(
+  graphicsPreference,
+)
+  ? graphicsPreference
+  : null;
 function reconcile() {
   if (!adapter || !room) return;
   for (const seat of connected.keys())
@@ -26,10 +34,12 @@ function reconcile() {
   );
 }
 function loadGame() {
+  gameReady = false;
+  loadGeneration++;
   adapter = null;
   connected.clear();
   frame.hidden = false;
-  frame.src = `/games/${room.gameId}/source/index.html`;
+  frame.src = `/games/${room.gameId}/source/index.html${graphics ? `?graphics=${graphics}` : ""}`;
 }
 function update(next) {
   room = next;
@@ -49,6 +59,7 @@ function update(next) {
   for (const action of ["start", "pause", "resume", "restart"])
     $(action).disabled =
       !adapter ||
+      !gameReady ||
       !transport?.ready ||
       (action === "resume" && recoveryRequired) ||
       (action === "start"
@@ -71,12 +82,22 @@ function update(next) {
   previousPhase = room.phase;
   reconcile();
 }
-frame.addEventListener("load", () => {
+frame.addEventListener("load", async () => {
+  const generation = loadGeneration;
   try {
     adapter = createAdapter(room.gameId, frame.contentWindow);
     adapter.configure();
     if (room.phase === "running") adapter.start();
     reconcile();
+    // First rAF lets the game render; the following rAF confirms that draw
+    // returned. A loaded module alone is not a ready shared screen.
+    await new Promise((resolve) =>
+      frame.contentWindow.requestAnimationFrame(() =>
+        frame.contentWindow.requestAnimationFrame(resolve),
+      ),
+    );
+    if (generation !== loadGeneration) return;
+    gameReady = true;
     update(room);
     $("notice").hidden = true;
   } catch (e) {
@@ -99,10 +120,12 @@ try {
     if (!GAME_CONTROLS[gameId])
       throw Error("Choose a game from the arcade first.");
     info = await post("/api/rooms", { gameId });
+    if (graphics) info.graphics = graphics;
     code = info.code;
     sessionStorage.setItem(sessionKey("host", code), JSON.stringify(info));
     history.replaceState(null, "", `/host.html?room=${code}`);
   }
+  graphics = info.graphics || graphics;
   const link = new URL(`/join.html?code=${code}`, location.href).href;
   $("code").textContent = code;
   $("join").href = link;

@@ -15,6 +15,12 @@ import { pathToFileURL } from "node:url";
 import { validateManifest, type GameManifest } from "../src/catalog.ts";
 import { validateManifestFiles } from "./manifest-files.ts";
 const MARKER = ".arcade-generated";
+async function replaceDirectory(from:string,to:string):Promise<void>{
+  for(let attempt=0;;attempt++){
+    try{await rename(from,to);return;}
+    catch(error){if(attempt>=3||!['EPERM','EBUSY'].includes((error as NodeJS.ErrnoException).code||''))throw error;await new Promise(resolve=>setTimeout(resolve,200));}
+  }
+}
 async function copyTree(
   from: string,
   to: string,
@@ -124,15 +130,15 @@ export async function stageAssets(directory = process.cwd()): Promise<string> {
         throw Error("unsafe build cleanup");
       // A running Windows preview locks this directory. Rename fails before
       // touching its contents, preserving the last working package.
-      await rename(output, previous);
+      await replaceDirectory(output, previous);
       movedPrevious = true;
     } catch (e) {
       if ((e as NodeJS.ErrnoException).code !== "ENOENT") throw e;
     }
     try {
-      await rename(staging, output);
+      await replaceDirectory(staging, output);
     } catch (error) {
-      if (movedPrevious) await rename(previous, output);
+      if (movedPrevious) await replaceDirectory(previous, output);
       throw error;
     }
     if (movedPrevious) {

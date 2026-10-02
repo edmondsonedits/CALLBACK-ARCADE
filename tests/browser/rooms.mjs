@@ -23,7 +23,8 @@ try {
     "royal-roller-ruckus",
     "royal-sumo",
   ]) {
-    if(process.env.ARCADE_TEST_GAME && process.env.ARCADE_TEST_GAME!==id)continue;
+    if (process.env.ARCADE_TEST_GAME && process.env.ARCADE_TEST_GAME !== id)
+      continue;
     const host = await browser.newPage({
       viewport: { width: 1366, height: 768 },
     });
@@ -33,7 +34,9 @@ try {
     });
     for (const p of [host, phone])
       p.on("pageerror", (e) => failures.push({ id, error: e.message }));
-    await host.goto(`${base}/host.html?game=${id}`);
+    await host.goto(
+      `${base}/host.html?game=${id}${process.env.ARCADE_TEST_GRAPHICS === "performance" ? "&graphics=performance" : ""}`,
+    );
     await host.waitForFunction(
       () =>
         document.querySelector("#code").textContent.length === 6 &&
@@ -55,32 +58,46 @@ try {
       document.querySelector("#phase").textContent.includes("you are playing"),
     );
     const runningGame = host.frames().find((f) => f.url().includes("/games/"));
-    if(process.env.ARCADE_TEST_GRAPHICS==='performance'&&id==='royal-roller-ruckus'){
-      await runningGame.locator('#graphics').evaluate(select=>{select.value='performance';select.dispatchEvent(new Event('change',{bubbles:true}));});
+    try {
+      await runningGame.waitForFunction(
+        (id) => {
+          if (id === "royal-roller-ruckus")
+            return document
+              .querySelector("#countdown")
+              ?.classList.contains("hidden");
+          const api =
+            id === "royal-ballistix"
+              ? RoyalBallistix
+              : id === "royal-twisted"
+                ? RoyalTwisted
+                : id === "royal-scratch-match"
+                  ? ScratchMatchAPI
+                  : id === "space-bash"
+                    ? SpaceBash
+                    : RoyalSumo;
+          return id === "royal-scratch-match"
+            ? api.getState().phase === "response"
+            : api.getState().phase === "fight";
+        },
+        id,
+        { timeout: 60000 },
+      );
+    } catch (error) {
+      console.log(
+        JSON.stringify({
+          id,
+          hostPhase: await host.locator("#phase").textContent(),
+          connection: await host.locator("#connection").textContent(),
+          error: await host.locator("#error").textContent(),
+          phonePhase: await phone.locator("#phase").textContent(),
+          runtime: await runningGame.evaluate(
+            () => window.CallbackInput?.getRuntimeState?.() || {},
+          ),
+          pageErrors: failures,
+        }),
+      );
+      throw error;
     }
-    await runningGame.waitForFunction(
-      (id) => {
-        if (id === "royal-roller-ruckus")
-          return document
-            .querySelector("#countdown")
-            ?.classList.contains("hidden");
-        const api =
-          id === "royal-ballistix"
-            ? RoyalBallistix
-            : id === "royal-twisted"
-              ? RoyalTwisted
-              : id === "royal-scratch-match"
-                ? ScratchMatchAPI
-                : id === "space-bash"
-                  ? SpaceBash
-                  : RoyalSumo;
-        return id === "royal-scratch-match"
-          ? api.getState().phase === "response"
-          : api.getState().phase === "fight";
-      },
-      id,
-      { timeout: 60000 },
-    );
     const action = phone.locator("#actions button").first();
     if (await action.count()) {
       const r = await action.boundingBox();
