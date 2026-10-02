@@ -31,3 +31,13 @@ A DJ rhythm game with approaching notes and A/B/X/Y timing inputs. The v0.5 ten-
 - Source: awaiting source attachment
 
 A shrinking-arena sumo game with Bash, Dash and crown-based rounds. The v0.19 ten-player HTML attachment is pending; gameplay and phone multiplayer are not present here.
+
+## Royal Twisted
+
+- ID: `royal-twisted` ([manifest](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-twisted/manifest.json), [game guide](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-twisted/README.md))
+- Status: imported; multiplayer not-integrated
+- Players: 2–10
+- Version: 0.5.0
+- Source: [source/index.html](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-twisted/source/index.html)
+
+A 2–10 contestant reaction-survival game on a medieval spiral tower: jump low rods, duck high rods, survive seven strikes, and recover from hits that knock contestants back down the course. The standalone v0.5 source is imported with bots and local controls; phone-room multiplayer is not yet integrated.

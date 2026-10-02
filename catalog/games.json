@@ -95,7 +95,41 @@
         "status": "not-integrated",
         "evidence": []
       }
+    },
+    {
+      "id": "royal-twisted",
+      "title": "Royal Twisted",
+      "aliases": [
+        "Spiral Keep",
+        "Twisted System-style"
+      ],
+      "tags": [
+        "reaction",
+        "survival",
+        "obstacle-dodge",
+        "physics",
+        "arcade"
+      ],
+      "description": "A 2–10 contestant reaction-survival game on a medieval spiral tower: jump low rods, duck high rods, survive seven strikes, and recover from hits that knock contestants back down the course. The standalone v0.5 source is imported with bots and local controls; phone-room multiplayer is not yet integrated.",
+      "players": {
+        "min": 2,
+        "max": 10
+      },
+      "version": "0.5.0",
+      "source": {
+        "status": "imported",
+        "paths": [
+          "source/index.html"
+        ],
+        "provenance": "Original Royal Twisted v0.5 HTML developed in the user's ChatGPT CALLBACK project conversation and imported from the complete chat artifact. Gameplay implementation, visuals, UI, procedural audio and characters are original to this project. Three.js r180 is vendored under assets/vendor under its MIT license. The packaged entry changes only the Three.js import from a pinned jsDelivr URL to the vendored local module; gameplay logic is otherwise preserved.",
+        "url": null
+      },
+      "lifecycle": "experimental",
+      "multiplayer": {
+        "status": "not-integrated",
+        "evidence": []
+      }
     }
   ],
-  "revision": "31338cea43fb42bcf230948eafb5d437f08e644025427b2c6feb47444933fb89"
+  "revision": "e1247cfabf363a956c694e03f893e2a976a8d0eb2cba10e02649dcbe03900d33"
 }
