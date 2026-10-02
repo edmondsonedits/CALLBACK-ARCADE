@@ -35,6 +35,43 @@
       }
     },
     {
+      "id": "royal-roller-ruckus",
+      "title": "Royal Roller Ruckus",
+      "aliases": [
+        "Roller Ruckus",
+        "Royal Roller Ruckus: Vertical Crownway"
+      ],
+      "tags": [
+        "racing",
+        "physics",
+        "party",
+        "collision",
+        "bots",
+        "3d"
+      ],
+      "description": "A 2–10 contestant rolling-cage physics race on the Vertical Crownway, with momentum handling, collisions, recoverable falls, elevation changes, Crownline boosts, rough terrain and bot-filled seats. Standalone source is imported; authenticated phone-room multiplayer transport is not yet implemented.",
+      "players": {
+        "min": 2,
+        "max": 10
+      },
+      "version": "1.4.0",
+      "source": {
+        "status": "imported",
+        "paths": [
+          "source/index.html"
+        ],
+        "provenance": "Imported from the complete Royal Roller Ruckus v1.4.0 — Vertical Crownway HTML produced in the user's CALLBACK game-development chat. The exact chat build is preserved as source/original-v1.4.0.html. Visuals and prototype audio are procedural/inline; Three.js 0.180.0 is vendored separately under its MIT license.",
+        "url": null
+      },
+      "lifecycle": "experimental",
+      "multiplayer": {
+        "status": "in-progress",
+        "evidence": [
+          "integration/README.md"
+        ]
+      }
+    },
+    {
       "id": "royal-scratch-match",
       "title": "Royal Scratch Match",
       "aliases": [
@@ -97,5 +134,5 @@
       }
     }
   ],
-  "revision": "31338cea43fb42bcf230948eafb5d437f08e644025427b2c6feb47444933fb89"
+  "revision": "d08856eeec4df4e91659b3e9a56ab525bc841b191cbfa70f8293dffe4afc203a"
 }
