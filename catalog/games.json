@@ -4,8 +4,9 @@
   "games": [
     {
       "id": "royal-ballistix",
-      "title": "Royal Ballistix",
+      "title": "Royal Ballistix — Beach Siege",
       "aliases": [
+        "Royal Ballistix",
         "Ballistix",
         "Beach Siege",
         "Royal Ballistix Beach Siege"
@@ -14,21 +15,27 @@
         "physics",
         "ball-deflection",
         "survival",
-        "arcade"
+        "arcade",
+        "party",
+        "bots",
+        "mobile",
+        "canvas"
       ],
-      "description": "Defend a radial gate, capture balls with a magnet and counterattack with Pulse. The v0.9 ten-player source and phone multiplayer integration are pending import.",
+      "description": "Radial ball-deflection survival game for 2–10 contestants. One local player can defend a gate with movement, Magnet, Pulse and Run while AI bots fill remaining seats; arena size is adjustable and phone/network transport is not yet integrated.",
       "players": {
         "min": 2,
         "max": 10
       },
-      "version": "0.9.0",
+      "version": "0.12.0",
       "source": {
-        "status": "awaiting-import",
-        "paths": [],
-        "provenance": "Known source at CALLBACK commit 50e349b39f2ec458f3e90e7c400464cc2b064ddd; not copied into this repository.",
-        "url": "https://github.com/edmondsonedits/CALLBACK/blob/50e349b39f2ec458f3e90e7c400464cc2b064ddd/game-modes/royal-ballistix/index.html"
+        "status": "imported",
+        "paths": [
+          "source/index.html"
+        ],
+        "provenance": "Imported unchanged from edmondsonedits/CALLBACK commit ed09d25b690b36b397516e4d77437e3dd21247c8 (game-modes/royal-ballistix/index.html). Upstream repository license: Apache-2.0.",
+        "url": "https://github.com/edmondsonedits/CALLBACK/blob/ed09d25b690b36b397516e4d77437e3dd21247c8/game-modes/royal-ballistix/index.html"
       },
-      "lifecycle": "intake",
+      "lifecycle": "experimental",
       "multiplayer": {
         "status": "not-integrated",
         "evidence": []
@@ -97,5 +104,5 @@
       }
     }
   ],
-  "revision": "31338cea43fb42bcf230948eafb5d437f08e644025427b2c6feb47444933fb89"
+  "revision": "a5c44441b920b51b1a724cb5c312357c7a253d10c6bc61a343c2c6d0d829ee5c"
 }
