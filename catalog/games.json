@@ -70,32 +70,55 @@
       "title": "Royal Sumo",
       "aliases": [
         "Sumo",
-        "Royal Sumo Crownfall"
+        "Royal Sumo Crownfall",
+        "Crownfall Arena"
       ],
       "tags": [
         "arena",
         "physics",
         "sumo",
-        "arcade"
+        "arcade",
+        "party",
+        "bots",
+        "three-js"
       ],
-      "description": "A shrinking-arena sumo game with Bash, Dash and crown-based rounds. The v0.19 ten-player HTML attachment is pending; gameplay and phone multiplayer are not present here.",
+      "description": "A 2–10 fighter shrinking-arena physics sumo game with Bash, Dash, stability, knockouts, dynamic camera work and bot-filled contestant slots. The standalone v0.21 source is imported; online phone-room transport is not yet implemented.",
       "players": {
         "min": 2,
         "max": 10
       },
-      "version": "0.19.0",
+      "version": "0.21.0",
+      "controls": {
+        "local": [
+          "virtual joystick",
+          "hold/release Bash",
+          "tap Dash",
+          "pause/settings"
+        ],
+        "remoteHooks": [
+          "moveX/moveY",
+          "bashPressed/bashCharge",
+          "dashPressed",
+          "sequence"
+        ]
+      },
       "source": {
-        "status": "awaiting-import",
-        "paths": [],
-        "provenance": "The chat-mentioned royal_sumo_crownfall_v0.19_10players.html attachment is not available in this repository.",
+        "status": "imported",
+        "paths": [
+          "source/index.html",
+          "source/original/royal_sumo_crownfall_v0.21_player_scaled_arena.html",
+          "source/vendor/three.module.js",
+          "source/vendor/three.core.js"
+        ],
+        "provenance": "Royal Sumo/Crownfall Arena v0.21.0 was developed in the user's ChatGPT CALLBACK project. The exact generated standalone HTML is retained under source/original/. source/index.html differs only by replacing the pinned Three.js 0.180.0 CDN import with the vendored Three.js r180 MIT-licensed build in source/vendor/.",
         "url": null
       },
-      "lifecycle": "intake",
+      "lifecycle": "experimental",
       "multiplayer": {
-        "status": "not-integrated",
+        "status": "in-progress",
         "evidence": []
       }
     }
   ],
-  "revision": "31338cea43fb42bcf230948eafb5d437f08e644025427b2c6feb47444933fb89"
+  "revision": "e9015b033ab3d033d01c496805495190eb50fe74f786a138071a793697323cbc"
 }
