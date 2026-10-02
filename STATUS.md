@@ -1,9 +1,11 @@
 # Current status
 
-The repository contains a validated metadata catalog, source-intake template, three awaiting-import game records, deterministic JSON/Markdown/D1 seed generation, a responsive static catalog, read-only Worker API, D1 metadata migration, local Wrangler setup, deployment ID guard, documentation, and CI checks.
+The combined import review candidate includes standalone source for Royal Ballistix v0.12, Royal Roller Ruckus v1.4.0, Royal Scratch Match v0.5, Royal Twisted v0.5 and Space Bash v1.13.1. Royal Sumo is still awaiting source import.
 
-Royal Ballistix, Royal Sumo, and Royal Scratch Match source HTML files are not included. No game is playable from this foundation. No phone-player transport or authoritative game runtime has been implemented. No production D1 database or Worker has been provisioned or deployed.
+The foundation includes validated manifests, searchable catalog, deterministic JSON/Markdown/D1 seed generation, intake tooling, read-only Worker API, D1 migration, guarded deployment configuration and CI.
 
-Next: import user-supplied source with provenance and rights evidence; verify each game's behavior and trusted simulation boundary; implement and test actual host/controller integration per game; create production D1; deploy only after review and environment setup.
+Verified 2026-10-02: 21 automated tests, typecheck, catalog freshness and catalog dry-run build pass. All five complete local game packages boot at desktop and phone viewport sizes with ten contestant slots and no missing resources or JavaScript errors. Missing Three.js dependencies, Windows source-byte conversion and Twisted's debug-gated snapshot were corrected. See docs/IMPORT_REVIEW.md for evidence and limitations.
 
-Verified 2026-10-02: 12 automated tests, TypeScript checks, generated catalog freshness, Cloudflare dry-run build, repeated local D1 migrations/seeding, and browser search/layout checks at 1366x768 and 390x844 passed. Local health reports connected/current. Scoped Sol review found no remaining material issue. These checks cover the catalog foundation, not demo gameplay or phone multiplayer.
+No authenticated room transport or phone controller pages exist yet. The current Worker includes catalog assets only; game packages need a build/serving step. No production Cloudflare database, Durable Object or Worker has been provisioned or deployed. No imported game is verified for online multiplayer.
+
+Next milestone: serve Ballistix through the actual Worker and implement a real room with two authenticated phone controllers replacing bots, then expand to ten seats and the other games. Follow docs/CLOUDFLARE_MULTIPLAYER_PLAN.md. Keep the seven party games on ChatGPT Sites.
