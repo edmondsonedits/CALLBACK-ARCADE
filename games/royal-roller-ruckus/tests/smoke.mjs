@@ -13,27 +13,32 @@ const vendorPath = path.join(game, 'source', 'vendor', 'three.module.js');
 const html = await readFile(sourcePath, 'utf8');
 const original = await readFile(originalPath, 'utf8');
 
-assert.match(html, /const VERSION="1\\.4\\.0-vertical-crownway"/);
-assert.match(html, /const MAX_PLAYERS=10/);
-assert.match(html, /FIXED_DT=1\\/120/);
-assert.match(html, /TRACK_SAMPLES=640/);
-assert.match(html, /TRACK_WIDTH=4\\.6/);
-assert.match(html, /window\\.CallbackInput=\\{/);
+for (const expected of [
+  'const VERSION="1.4.0-vertical-crownway"',
+  'const MAX_PLAYERS=10',
+  'FIXED_DT=1/120',
+  'TRACK_SAMPLES=640',
+  'TRACK_WIDTH=4.6',
+  'window.CallbackInput={',
+  'import * as THREE from "./vendor/three.module.js";',
+]) assert.ok(html.includes(expected), `missing source invariant: ${expected}`);
+
 for (const hook of ['push(playerId,packet={})', 'disconnect(playerId)', 'setPlayerCount(count)', 'getPlayerCount()', 'getControllers()', 'getLobby()']) {
   assert.ok(html.includes(hook), `missing CallbackInput hook: ${hook}`);
 }
-assert.match(html, /import \\* as THREE from "\\.\\/vendor\\/three\\.module\\.js";/);
-assert.doesNotMatch(html, /cdn\\.jsdelivr\\.net\\/npm\\/three/);
-assert.match(original, /https:\\/\\/cdn\\.jsdelivr\\.net\\/npm\\/three@0\\.180\\.0\\/\\+esm/);
+assert.ok(!html.includes('cdn.jsdelivr.net/npm/three'), 'packaged entry must not depend on jsDelivr');
+assert.ok(original.includes('https://cdn.jsdelivr.net/npm/three@0.180.0/+esm'), 'original chat source should preserve its CDN import');
 await stat(vendorPath);
 
 const normalized = html.replace('import * as THREE from "./vendor/three.module.js";', 'import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.180.0/+esm";');
 assert.equal(normalized, original, 'packaged entry should differ from the chat snapshot only by the Three.js import path');
 
-const moduleMatch = html.match(/<script type="module">([\\s\\S]*?)<\\/script>/);
-assert.ok(moduleMatch, 'module script not found');
+const start = html.indexOf('<script type="module">');
+const end = html.indexOf('</script>', start);
+assert.ok(start >= 0 && end > start, 'module script not found');
+let moduleBody = html.slice(start + '<script type="module">'.length, end);
+moduleBody = moduleBody.replace('import * as THREE from "./vendor/three.module.js";', '');
 const temp = path.join(os.tmpdir(), `royal-roller-ruckus-${process.pid}.mjs`);
-const moduleBody = moduleMatch[1].replace(/^\\s*import \\* as THREE[^\\n]*\\n/m, '');
 await writeFile(temp, moduleBody);
 const check = spawnSync(process.execPath, ['--check', temp], { encoding: 'utf8' });
 await rm(temp, { force: true });
