@@ -95,7 +95,42 @@
         "status": "not-integrated",
         "evidence": []
       }
+    },
+    {
+      "id": "space-bash",
+      "title": "Space Bash — Orbital Breakfloor",
+      "aliases": [
+        "Space Bash",
+        "Orbital Breakfloor"
+      ],
+      "tags": [
+        "arena",
+        "physics",
+        "survival",
+        "destructible-floor",
+        "bots",
+        "arcade"
+      ],
+      "description": "A self-contained 2–10 contestant physics survival arena with throwable crates, TNT/Nitro, destructible floor tiles, mobile multi-touch controls and bot-filled solo play. Source is imported; phone room-code multiplayer is not integrated.",
+      "players": {
+        "min": 2,
+        "max": 10
+      },
+      "version": "1.13.1",
+      "source": {
+        "status": "imported",
+        "paths": [
+          "source/index.html"
+        ],
+        "provenance": "User-directed original standalone HTML implementation developed in this ChatGPT project. The imported v1.13.1 build is self-contained Canvas 2D/JavaScript with procedural visuals and audio; no third-party game code, artwork, music, or binary assets are included.",
+        "url": null
+      },
+      "lifecycle": "experimental",
+      "multiplayer": {
+        "status": "not-integrated",
+        "evidence": []
+      }
     }
   ],
-  "revision": "31338cea43fb42bcf230948eafb5d437f08e644025427b2c6feb47444933fb89"
+  "revision": "27b4f83a06fa84d4916f482dcbf1bbd64ecbcfb01a37dff13deddc9f2c07d8bb"
 }

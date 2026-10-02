@@ -31,3 +31,13 @@ A DJ rhythm game with approaching notes and A/B/X/Y timing inputs. The v0.5 ten-
 - Source: awaiting source attachment
 
 A shrinking-arena sumo game with Bash, Dash and crown-based rounds. The v0.19 ten-player HTML attachment is pending; gameplay and phone multiplayer are not present here.
+
+## Space Bash — Orbital Breakfloor
+
+- ID: `space-bash` ([manifest](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/space-bash/manifest.json), [game guide](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/space-bash/README.md))
+- Status: imported; multiplayer not-integrated
+- Players: 2–10
+- Version: 1.13.1
+- Source: [source/index.html](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/space-bash/source/index.html)
+
+A self-contained 2–10 contestant physics survival arena with throwable crates, TNT/Nitro, destructible floor tiles, mobile multi-touch controls and bot-filled solo play. Source is imported; phone room-code multiplayer is not integrated.
