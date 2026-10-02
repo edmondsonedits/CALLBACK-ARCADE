@@ -2,6 +2,7 @@ import rawCatalog from '../catalog/games.json' with { type: 'json' };
 import { handleRequest } from './routes.ts';
 import type { Env } from './routes.ts';
 import { validateCatalog, type GameCatalog } from './catalog.ts';
+export { ArcadeRoom } from './room.ts';
 const catalog: GameCatalog = (() => {
   const errors = validateCatalog(rawCatalog);
   if (errors.length) throw new Error(`bundled catalog is invalid: ${errors.join('; ')}`);

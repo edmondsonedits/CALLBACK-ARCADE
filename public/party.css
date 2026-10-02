@@ -1,0 +1,259 @@
+:root {
+  color-scheme: dark;
+  font:
+    16px/1.45 system-ui,
+    sans-serif;
+  background: #0d1220;
+  color: #f4f6fb;
+  --accent: #c8f169;
+}
+* {
+  box-sizing: border-box;
+}
+[hidden] {
+  display: none !important;
+}
+body {
+  margin: 0;
+}
+a {
+  color: #85c7ff;
+}
+header {
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+p {
+  color: #c1cbdc;
+}
+button,
+input {
+  font: inherit;
+  border-radius: 12px;
+  min-height: 48px;
+  padding: 12px 16px;
+}
+button {
+  background: var(--accent);
+  border: 0;
+  color: #101b1b;
+  font-weight: 750;
+  cursor: pointer;
+}
+button:disabled {
+  opacity: 0.42;
+  cursor: default;
+}
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 3px solid #85c7ff;
+  outline-offset: 3px;
+}
+input {
+  background: #151d2e;
+  color: white;
+  border: 1px solid #53627c;
+  width: 100%;
+}
+#error {
+  color: #ffb8b8;
+}
+#connection {
+  margin-left: auto;
+}
+.eyebrow {
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+}
+.host-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: 20px;
+  padding: 0 24px 20px;
+}
+.screen {
+  align-self: start;
+  aspect-ratio: 16/9;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #050910;
+  border: 1px solid #334158;
+}
+.screen iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+.screen #notice {
+  padding: 24px;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.room-code {
+  font-size: 2.1rem;
+  color: white;
+  letter-spacing: 0.14em;
+  margin: 0;
+  font-weight: 900;
+}
+#qr svg {
+  width: 125px;
+  height: 125px;
+  background: white;
+  margin: 12px 0;
+}
+aside > a {
+  display: block;
+  margin: 8px 0;
+}
+aside > button {
+  width: 100%;
+}
+.room-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.roster {
+  padding-left: 22px;
+  font-size: 0.8rem;
+  columns: 2;
+}
+.phone {
+  max-width: 540px;
+  margin: auto;
+  padding: env(safe-area-inset-top) 18px max(20px, env(safe-area-inset-bottom));
+}
+.phone header {
+  display: block;
+  padding: 20px 0;
+}
+.phone header h1 {
+  font-size: 2rem;
+}
+.phone #connection {
+  margin: 12px 0 0;
+}
+.phone form {
+  display: grid;
+  gap: 12px;
+}
+.phone form button {
+  margin-top: 12px;
+}
+#controls {
+  padding-bottom: 24px;
+}
+.stick {
+  position: relative;
+  touch-action: none;
+  user-select: none;
+  width: 180px;
+  height: 180px;
+  margin: 20px auto;
+  border: 2px solid #60718e;
+  border-radius: 50%;
+  background: radial-gradient(#293e59, #151d2e);
+}
+.stick.disabled {
+  opacity: 0.45;
+}
+#knob {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #85c7ff;
+  position: absolute;
+  left: calc(50% - 32px);
+  top: calc(50% - 32px);
+  pointer-events: none;
+}
+.stick-label {
+  position: absolute;
+  bottom: 9px;
+  width: 100%;
+  text-align: center;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: #c1cbdc;
+}
+.actions,
+.directions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 14px 0;
+}
+.actions button {
+  flex: 1;
+  min-width: 85px;
+  min-height: 72px;
+  touch-action: none;
+  user-select: none;
+}
+.directions button {
+  flex: 1;
+  touch-action: none;
+  font-size: 1.3rem;
+}
+.secondary {
+  background: #293b53;
+  color: #ecf3ff;
+  width: 100%;
+}
+#identity {
+  color: var(--accent);
+  font-weight: 700;
+}
+#hint {
+  font-size: 0.9rem;
+}
+@media (max-width: 850px) {
+  .host-layout {
+    grid-template-columns: 1fr;
+  }
+  .host header {
+    flex-wrap: wrap;
+  }
+  .host aside {
+    max-width: 600px;
+  }
+  .roster {
+    columns: 3;
+  }
+}
+@media (min-width: 1000px) and (min-height: 700px) {
+  .host {
+    height: 100vh;
+    overflow: hidden;
+  }
+  .host-layout {
+    height: calc(100vh - 90px);
+  }
+  .host aside {
+    font-size: 0.85rem;
+  }
+  .host aside p {
+    margin: 10px 0;
+  }
+  .screen {
+    max-height: calc(100vh - 110px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+  }
+}

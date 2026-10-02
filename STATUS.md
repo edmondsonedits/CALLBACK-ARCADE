@@ -1,9 +1,11 @@
 # Current status
 
-The repository contains a validated metadata catalog, source-intake template, three awaiting-import game records, deterministic JSON/Markdown/D1 seed generation, a responsive static catalog, read-only Worker API, D1 metadata migration, local Wrangler setup, deployment ID guard, documentation, and CI checks.
+All six standalone demos are imported and served by the Worker asset package: Royal Ballistix, Royal Roller Ruckus, Royal Scratch Match, Royal Twisted, Space Bash and Royal Sumo. The searchable catalog links to solo play and shared-screen phone rooms.
 
-Royal Ballistix, Royal Sumo, and Royal Scratch Match source HTML files are not included. No game is playable from this foundation. No phone-player transport or authoritative game runtime has been implemented. No production D1 database or Worker has been provisioned or deployed.
+The vault v2 improvements add authenticated Cloudflare Durable Object rooms, one host/local contestant plus nine reconnectable phone seats, bot substitution, game-specific phone controls, QR join, explicit lifecycle controls and safe held-input cancellation. Game-specific originals remain archived and gameplay tuning is preserved. See docs/VAULT_V2_APPLIED.md for source mapping.
 
-Next: import user-supplied source with provenance and rights evidence; verify each game's behavior and trusted simulation boundary; implement and test actual host/controller integration per game; create production D1; deploy only after review and environment setup.
+Verified locally 2026-10-02: typecheck, automated suite, catalog freshness, Worker dry-run build and actual Worker browser flows for all six games. Mobile browser tests join, start, pause, resume and refresh the same seat at 390px width. Two simultaneous Ballistix phones operate separate seats during the fight; disconnect releases one seat to a bot, refresh keeps identity, host reload requires a new round, and a tenth phone is denied. See docs/ROOM_VERIFICATION.md for exact final counts and commands.
 
-Verified 2026-10-02: 12 automated tests, TypeScript checks, generated catalog freshness, Cloudflare dry-run build, repeated local D1 migrations/seeding, and browser search/layout checks at 1366x768 and 390x844 passed. Local health reports connected/current. Scoped Sol review found no remaining material issue. These checks cover the catalog foundation, not demo gameplay or phone multiplayer.
+This is a locally verified party-room implementation, not a public deployment. No production Cloudflare database, Durable Object or Worker has been provisioned or deployed by this change. Game multiplayer metadata remains in-progress pending physical-phone internet testing. The designated host owns simulation and scoring; the server validates room lifecycle and phone input. No competitive anti-cheat or recoverable physics claim is made.
+
+Next: merge the reviewed candidate, authorize Cloudflare login, configure the production D1 ID, deploy through the guarded command, then test the real HTTPS URL with independent phones over Wi-Fi/mobile data. Keep the seven creative party games on ChatGPT Sites.

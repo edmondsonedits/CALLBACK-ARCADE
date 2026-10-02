@@ -1,18 +1,24 @@
 # Game SDK and trust boundary
 
-This repository currently hosts a catalog, not games or multiplayer simulation. Imported games may remain whole standalone HTML pages; preserving their existing simulation and input hooks is the default. Each game owns its source, assets, tests, and integration contract.
+Each game owns its source, assets, tests and integration notes under games/<id>. Complete standalone pages remain the default; original pages are archived before adding adapter hooks. Shared infrastructure owns room identity, lifecycle and controller transport.
 
-## Future online input contract
+## Implemented party-room contract
 
-A production adapter must use JSON over an authenticated transport. The server issues opaque room and seat credentials; clients never choose a trusted player ID or claim phase, deadline, score, winner, or simulation result. Host and phone seats are bounded by the game's declared capacity (at most ten here). Every input includes a protocol version, server-issued seat token, monotonically increasing per-seat sequence, action type, and bounded payload. Validate room membership, seat ownership, input schema/size/rate, current phase, sequence, and allowed action on the authoritative host before applying it. Duplicate and out-of-order inputs are rejected. On disconnect, neutralize stale input and support credential-bound reconnect. Bot substitution must use the same validated action path. Record a deterministic replayable event stream for diagnosis.
+- POST /api/rooms with gameId returns code, gameId and hostToken for an imported game.
+- POST /api/rooms/<code>/join with name and optional saved token returns seatToken, seat, sequence and room. A room has local host seat 0 plus phone seats 1–9. Unclaimed and disconnected phone seats use bots; credentials reserve their seat until the one-hour room expires.
+- GET /api/rooms/<code>/socket upgrades a WebSocket. The first frame authenticates role and token. No URL carries credentials. Browser session storage supports refresh within the same tab; a closed/lost browser session cannot recover by choosing the same name.
+- Later frames use v:1. Controller input includes increasing sequence and a bounded payload with moveX/moveY (-1…1), primaryAction/secondaryAction/tertiaryAction/run booleans and optional lane (0…3). Explicit cancel frames safely release held actions without firing charged attacks.
+- Host start/pause/resume/restart control waiting/running/paused state. Host snapshots are presentation data; clients never independently simulate/reconcile a match.
+- Five-second heartbeat, fifteen-second connection timeout and two-second held-input timeout are validated server-side. Per-seat input rate is bounded at 30/sec. Authenticated current connections alone receive broadcasts. Hibernation rehydrates attachments and neutralizes inputs on wake.
+- A lost host pauses. Reloading/reconnecting a host discards its old simulation, disables Resume and requires New round. Phone seats and accepted sequences survive restart.
 
-This document describes a future contract only. There are no room, join, input, or score endpoints in this foundation. Do not run independent phone simulations and reconcile them afterward; the chosen game host remains authoritative and publishes validated snapshots.
+See src/room-state.ts for DOM-free state/validation, src/room.ts for Durable Object/HTTP/WS lifecycle, public/transport.js for browser delivery, public/game-adapters.js for six game mappings, and each game's integration/room-adapter.md. Names and room codes are display data; never trust client-chosen roles/seats, scores, timestamps or winners.
 
-## Metadata versus runtime
+## Authority and storage
 
-`players.min` and `players.max` describe total contestant slots, including bots where the imported game supports them. They are not a minimum human requirement. The three initial demo records are intended to preserve one human with bot-filled remaining slots, then replace those bots as authenticated phones join. Verify each imported game's bot behavior and record its human/bot limits before implementing its lobby adapter.
+This casual party version preserves the designated host browser's existing simulation. Cloudflare validates identity, membership, phase, input shape, size, rate and sequence. Host physics and scoring are not server-authoritative or cheating-resistant. Trusted leaderboards/public matchmaking require a renderer-independent server simulation and replay/recovery work.
 
-Repository manifests and source files are canonical. Generated JSON, Markdown, and D1 seed rows are derived metadata. D1 has no game-source blob and no runtime editing/admin endpoint. Worker API routes are read-only and return checked-in catalog data when D1 is unavailable or does not match its content revision.
+Manifests and source files are canonical. Generated JSON, Markdown and D1 seed rows are derived metadata. D1 does not store game blobs or high-frequency input. The catalog API remains read-only; real room mutation routes are separate. Metadata players.min/max describes total contestants including bots, not a required human count.
 
 ## Verified multiplayer evidence
 

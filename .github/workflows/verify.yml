@@ -16,3 +16,11 @@ jobs:
       - run: npm run typecheck
       - run: npm run catalog:check
       - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - name: Start local room service
+        run: |
+          node scripts/run-wrangler.mjs dev -c wrangler.local.jsonc --ip 127.0.0.1 --port 4194 > .local/browser-worker.log 2>&1 &
+          curl --retry 20 --retry-all-errors --retry-delay 1 --fail http://127.0.0.1:4194/api/health
+      - run: npm run test:browser
+        env:
+          ARCADE_TEST_GRAPHICS: performance

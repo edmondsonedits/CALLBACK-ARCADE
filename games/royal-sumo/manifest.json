@@ -1,12 +1,56 @@
 {
   "id": "royal-sumo",
   "title": "Royal Sumo",
-  "aliases": ["Sumo", "Royal Sumo Crownfall"],
-  "tags": ["arena", "physics", "sumo", "arcade"],
-  "description": "A shrinking-arena sumo game with Bash, Dash and crown-based rounds. The v0.19 ten-player HTML attachment is pending; gameplay and phone multiplayer are not present here.",
-  "players": { "min": 2, "max": 10 },
-  "version": "0.19.0",
-  "source": { "status": "awaiting-import", "paths": [], "provenance": "The chat-mentioned royal_sumo_crownfall_v0.19_10players.html attachment is not available in this repository.", "url": null },
-  "lifecycle": "intake",
-  "multiplayer": { "status": "not-integrated", "evidence": [] }
+  "aliases": [
+    "Sumo",
+    "Royal Sumo Crownfall",
+    "Crownfall Arena"
+  ],
+  "tags": [
+    "arena",
+    "physics",
+    "sumo",
+    "arcade",
+    "party",
+    "bots",
+    "three-js"
+  ],
+  "description": "A 2–10 fighter shrinking-arena physics sumo game with Bash, Dash, stability, knockouts, dynamic camera work and bot-filled contestant slots.",
+  "players": {
+    "min": 2,
+    "max": 10
+  },
+  "version": "0.21.0",
+  "controls": {
+    "local": [
+      "virtual joystick",
+      "hold/release Bash",
+      "tap Dash",
+      "pause/settings"
+    ],
+    "remoteHooks": [
+      "moveX/moveY",
+      "bashPressed/bashCharge",
+      "dashPressed",
+      "sequence"
+    ]
+  },
+  "source": {
+    "status": "imported",
+    "paths": [
+      "source/index.html",
+      "source/original/royal_sumo_crownfall_v0.21_player_scaled_arena.html",
+      "source/vendor/three.module.js",
+      "source/vendor/three.core.js"
+    ],
+    "provenance": "Royal Sumo/Crownfall Arena v0.21.0 was developed in the user's ChatGPT CALLBACK project. The exact original HTML is retained under source/original/. The packaged entry replaces the pinned Three.js CDN import with the vendored r180 MIT build and updates the existing state snapshot when debug display is disabled. Gameplay tuning is preserved. Vault v2 room adapters add bounded remote input and pause/safe-cancel seams; the pre-room packaged page is preserved in source/original/standalone-before-room.html. No physics or camera retuning.",
+    "url": null
+  },
+  "lifecycle": "experimental",
+  "multiplayer": {
+    "status": "in-progress",
+    "evidence": [
+      "integration/room-adapter.md"
+    ]
+  }
 }
