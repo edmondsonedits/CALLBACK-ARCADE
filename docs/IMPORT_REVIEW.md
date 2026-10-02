@@ -1,19 +1,19 @@
 # Imported game review — 2026-10-02
 
-Reviewed five open imports together in `codex/review-game-imports`. At review time main still contains the foundation, and PRs #1–#5 contain the individual imports. This candidate consolidates their source packages and regenerates one catalog, avoiding conflicting generated catalogs. It is not a production release.
+Reviewed six open imports together in `codex/review-game-imports`. At review time main still contains the foundation, and PRs #1–#6 contain the individual imports. Sumo's import appeared during the review and was included before handoff. This candidate consolidates their source packages and regenerates one catalog, avoiding conflicting generated catalogs. It is not a production release.
 
 ## Repairs
 
 - Roller Ruckus and Twisted both imported a missing `three.core.js`. Added matching official Three.js r180 core files beside their modules, retained MIT notices and added dependency regression checks.
 - Scratch Match's exact original source hash failed on Windows due to Git LF/CRLF conversion. Added source-HTML byte-preservation attributes and restored unchanged bytes; its original SHA-256 passes.
-- Twisted's state hook returned `{}` unless debug mode was on. Snapshot updates now run with the panel disabled; a functional regression checks current state and subsequent time updates.
+- Twisted and Sumo's state hooks returned `{}` unless debug mode was on. Snapshot updates now run with the panel disabled; functional regressions check current state and subsequent time updates. Sumo's exact original source is retained separately.
 - Canonical `npm test` now runs the existing Space Bash, Scratch Match and Twisted smoke checks, alongside Ballistix and Roller Ruckus.
 
-Original game physics, cameras and tuning are retained. Twisted's diagnostic snapshot update is the only intentional runnable source behavior change.
+Original game physics, cameras and tuning are retained. Twisted and Sumo's diagnostic snapshot updates are the only intentional runnable source behavior changes.
 
 ## Evidence and limits
 
-21 automated tests, typecheck, catalog freshness and Cloudflare catalog dry-run build pass. All five runnable entries loaded from complete local packages in Chromium at 1366×768 and 390×844. Each rendered a canvas, accepted ten-contestant setup, reported no page JavaScript error or missing game resource, and produced no document overflow. Phone-size screenshots were inspected. A focused Sol review found no substantive regression in the repairs.
+24 automated tests, typecheck, catalog freshness and Cloudflare catalog dry-run build pass. All six runnable entries loaded from complete local packages in Chromium at 1366×768 and 390×844. Each rendered a canvas, accepted ten-contestant setup, reported no page JavaScript error or missing game resource, and produced no document overflow. Phone-size screenshots were inspected. Focused Sol review covers the repairs.
 
 3D rendering used software WebGL. This does not measure physical-phone performance, complete-match scoring, audio/network latency, cross-browser compatibility or production behavior. No Cloudflare production resource was created and no multiplayer verification status was promoted.
 
@@ -28,6 +28,6 @@ Additional active-play checks passed: Roller Ruckus reached its race phase and T
 | Scratch Match v0.5 | Human-slot setup, per-seat lane presses, round state. | Validate seat/lane instead of clamping; synchronize clocks and calibrate latency before judging remote taps. |
 | Twisted v0.5 | Remote claim/release, jump/duck, repaired state. | Ordered/time-limited inputs, held-duck cleanup, full per-contestant snapshots. |
 | Space Bash v1.13.1 | Player count and coarse state. | Add per-seat inputs and bot replacement. Current controls target seat zero; other fighters are AI. |
-| Royal Sumo | Awaiting import. | Complete source required before review. |
+| Royal Sumo v0.21 | Fighter count, human-slot toggle, movement/Bash/Dash, repaired full fighter state. | Authenticated slots, ordered inputs, disconnect cleanup, reconnect and transport. Existing sequence field is stored without replay rejection. |
 
 Today's Worker packages only the catalog in `public/`, not the game folders. Deployment alone will not expose games or phone controllers. See [CLOUDFLARE_MULTIPLAYER_PLAN.md](CLOUDFLARE_MULTIPLAYER_PLAN.md).

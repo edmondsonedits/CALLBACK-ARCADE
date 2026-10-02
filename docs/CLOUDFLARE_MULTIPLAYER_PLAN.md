@@ -12,8 +12,7 @@ The first party-room adapter can preserve one designated host browser's existing
 
 ## 1. Consolidate reviewed imports
 
-- Merge the reviewed combined import candidate after its CI passes. It contains the five source packages and regenerates one catalog/seed, avoiding conflicting generated files from the individual import PRs.
-- Keep Royal Sumo awaiting import; no complete source is present.
+- Merge the reviewed combined import candidate after its CI passes. It contains all six source packages and regenerates one catalog/seed, avoiding conflicting generated files from the individual import PRs.
 - Preserve each standalone page as the known-working baseline. Record future adapter modifications separately in its changelog.
 
 ## 2. Serve the actual game packages
@@ -40,6 +39,7 @@ The first party-room adapter can preserve one designated host browser's existing
 | Royal Twisted | Claim/release remote slots; clear held duck; enforce input ordering/timeouts; expose complete per-contestant state rather than its slot-zero debug details. |
 | Royal Scratch Match | Map server-assigned seats to `humanPlayers`; reject invalid seat/lane instead of relying on clamping; calibrate audio/round clocks and bounded latency handling before judging remote rhythmic taps. |
 | Space Bash | Add per-seat movement/Grab/Kick/Jump input and bot takeover/release. Existing API has setup/coarse-state hooks only and local controls target seat zero. |
+| Royal Sumo | Authenticate human-slot toggles and remote movement/Bash/Dash; reject duplicated or out-of-order sequences (currently only stored); neutralize held movement and queued actions when a seat disconnects. |
 
 ## 5. Acceptance checks before deployment
 

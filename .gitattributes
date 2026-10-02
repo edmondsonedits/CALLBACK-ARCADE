@@ -1,2 +1,2 @@
 # Preserve exact standalone source bytes across Windows/Linux checkouts.
-games/**/source/*.html -text
+games/**/*.html -text

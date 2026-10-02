@@ -119,29 +119,52 @@
       "title": "Royal Sumo",
       "aliases": [
         "Sumo",
-        "Royal Sumo Crownfall"
+        "Royal Sumo Crownfall",
+        "Crownfall Arena"
       ],
       "tags": [
         "arena",
         "physics",
         "sumo",
-        "arcade"
+        "arcade",
+        "party",
+        "bots",
+        "three-js"
       ],
-      "description": "A shrinking-arena sumo game with Bash, Dash and crown-based rounds. The v0.19 ten-player HTML attachment is pending; gameplay and phone multiplayer are not present here.",
+      "description": "A 2–10 fighter shrinking-arena physics sumo game with Bash, Dash, stability, knockouts, dynamic camera work and bot-filled contestant slots. The standalone v0.21 source is imported; online phone-room transport is not yet implemented.",
       "players": {
         "min": 2,
         "max": 10
       },
-      "version": "0.19.0",
+      "version": "0.21.0",
+      "controls": {
+        "local": [
+          "virtual joystick",
+          "hold/release Bash",
+          "tap Dash",
+          "pause/settings"
+        ],
+        "remoteHooks": [
+          "moveX/moveY",
+          "bashPressed/bashCharge",
+          "dashPressed",
+          "sequence"
+        ]
+      },
       "source": {
-        "status": "awaiting-import",
-        "paths": [],
-        "provenance": "The chat-mentioned royal_sumo_crownfall_v0.19_10players.html attachment is not available in this repository.",
+        "status": "imported",
+        "paths": [
+          "source/index.html",
+          "source/original/royal_sumo_crownfall_v0.21_player_scaled_arena.html",
+          "source/vendor/three.module.js",
+          "source/vendor/three.core.js"
+        ],
+        "provenance": "Royal Sumo/Crownfall Arena v0.21.0 was developed in the user's ChatGPT CALLBACK project. The exact original HTML is retained under source/original/. The packaged entry replaces the pinned Three.js CDN import with the vendored r180 MIT build and updates the existing state snapshot when debug display is disabled. Gameplay tuning is preserved.",
         "url": null
       },
-      "lifecycle": "intake",
+      "lifecycle": "experimental",
       "multiplayer": {
-        "status": "not-integrated",
+        "status": "in-progress",
         "evidence": []
       }
     },
@@ -215,5 +238,5 @@
       }
     }
   ],
-  "revision": "87d65eee170e0267e91ee17bc37824044cfc8014ab09d8b5d27515d95ed83294"
+  "revision": "34dc9fa89c8cb216beeb83acf8f8af9a7341f570d66541015ffa682c0c9b3100"
 }
