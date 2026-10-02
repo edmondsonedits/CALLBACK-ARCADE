@@ -42,6 +42,45 @@
       }
     },
     {
+      "id": "royal-roller-ruckus",
+      "title": "Royal Roller Ruckus — Crownway Circuit",
+      "aliases": [
+        "Royal Roller Ruckus",
+        "Roller Ruckus",
+        "Crownway Circuit"
+      ],
+      "tags": [
+        "racing",
+        "physics",
+        "momentum",
+        "arcade",
+        "party",
+        "bots",
+        "mobile",
+        "three-js"
+      ],
+      "description": "A 2–10 racer momentum-driven cage race around the vertical Crownway Circuit with collisions, checkpoints, recovery after falls, bot-filled seats, and CALLBACK remote-input hooks.",
+      "players": {
+        "min": 2,
+        "max": 10
+      },
+      "version": "1.4.0",
+      "source": {
+        "status": "imported",
+        "paths": [
+          "source/index.html",
+          "source/original/royal_roller_ruckus_v1.4_vertical_crownway.html"
+        ],
+        "provenance": "Imported from the user-supplied royal_roller_ruckus_v1.4_vertical_crownway.html. The active standalone build imports Three.js 0.180.0 from jsDelivr at runtime.",
+        "url": null
+      },
+      "lifecycle": "experimental",
+      "multiplayer": {
+        "status": "in-progress",
+        "evidence": []
+      }
+    },
+    {
       "id": "royal-scratch-match",
       "title": "Royal Scratch Match",
       "aliases": [
@@ -130,7 +169,85 @@
         "status": "in-progress",
         "evidence": []
       }
+    },
+    {
+      "id": "royal-twisted",
+      "title": "Royal Twisted — Spiral Keep",
+      "aliases": [
+        "Royal Twisted",
+        "Spiral Keep",
+        "Twisted System"
+      ],
+      "tags": [
+        "obstacle",
+        "survival",
+        "reaction",
+        "arcade",
+        "party",
+        "bots",
+        "mobile",
+        "three-js"
+      ],
+      "description": "A 2–10 contestant obstacle-survival run around Spiral Keep: jump low cyan rods, duck high coral rods, survive up to seven hits, and race AI or remote-controlled rivals. v0.5 exposes CALLBACK remote-input hooks; the older v0.4 upload is retained as an archive.",
+      "players": {
+        "min": 2,
+        "max": 10
+      },
+      "version": "0.5.0",
+      "source": {
+        "status": "imported",
+        "paths": [
+          "source/index.html",
+          "source/original/royal_twisted_spiral_keep_v0.5_original_camera_knockback.html"
+        ],
+        "provenance": "Imported from the user-supplied royal_twisted_spiral_keep_v0.5_original_camera_knockback.html. The uploaded v0.4 ten-player build is retained separately under source/archive/ for history. The active build imports Three.js 0.180.0 from jsDelivr at runtime.",
+        "url": null
+      },
+      "lifecycle": "experimental",
+      "multiplayer": {
+        "status": "in-progress",
+        "evidence": []
+      }
+    },
+    {
+      "id": "space-bash",
+      "title": "Space Bash — Orbital Breakout",
+      "aliases": [
+        "Space Bash",
+        "Orbital Breakout"
+      ],
+      "tags": [
+        "arena",
+        "brawler",
+        "physics",
+        "destruction",
+        "arcade",
+        "party",
+        "bots",
+        "mobile",
+        "canvas"
+      ],
+      "description": "A self-contained 2–10 contestant arena brawler on a destructible orbital deck: move, grab and throw crates, kick rivals, jump gaps, and outlast CPU opponents. No external runtime assets or network connection are required.",
+      "players": {
+        "min": 2,
+        "max": 10
+      },
+      "version": "1.13.1",
+      "source": {
+        "status": "imported",
+        "paths": [
+          "source/index.html",
+          "source/original/space_bash_orbital_breakout_v1.13.1_standalone.html"
+        ],
+        "provenance": "Imported from the user-supplied space_bash_orbital_breakout_v1.13.1_standalone.html. The build is intentionally self-contained and does not require external scripts, modules, WebGL, CDN assets, or a network connection.",
+        "url": null
+      },
+      "lifecycle": "experimental",
+      "multiplayer": {
+        "status": "not-integrated",
+        "evidence": []
+      }
     }
   ],
-  "revision": "fc2a940751b51dec22fc3daf3a0f479ecc69c8f8d5ddaf6af41e0d24466c473a"
+  "revision": "13865125568d5ed4a3fdfd657e641ed63f5c4fdb661d2856a81582e446be701b"
 }

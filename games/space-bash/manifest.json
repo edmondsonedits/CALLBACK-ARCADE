@@ -1,0 +1,39 @@
+{
+  "id": "space-bash",
+  "title": "Space Bash — Orbital Breakout",
+  "aliases": [
+    "Space Bash",
+    "Orbital Breakout"
+  ],
+  "tags": [
+    "arena",
+    "brawler",
+    "physics",
+    "destruction",
+    "arcade",
+    "party",
+    "bots",
+    "mobile",
+    "canvas"
+  ],
+  "description": "A self-contained 2–10 contestant arena brawler on a destructible orbital deck: move, grab and throw crates, kick rivals, jump gaps, and outlast CPU opponents. No external runtime assets or network connection are required.",
+  "players": {
+    "min": 2,
+    "max": 10
+  },
+  "version": "1.13.1",
+  "source": {
+    "status": "imported",
+    "paths": [
+      "source/index.html",
+      "source/original/space_bash_orbital_breakout_v1.13.1_standalone.html"
+    ],
+    "provenance": "Imported from the user-supplied space_bash_orbital_breakout_v1.13.1_standalone.html. The build is intentionally self-contained and does not require external scripts, modules, WebGL, CDN assets, or a network connection.",
+    "url": null
+  },
+  "lifecycle": "experimental",
+  "multiplayer": {
+    "status": "not-integrated",
+    "evidence": []
+  }
+}
