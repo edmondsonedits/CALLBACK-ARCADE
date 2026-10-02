@@ -15,7 +15,7 @@
     "bots",
     "three-js"
   ],
-  "description": "A 2–10 fighter shrinking-arena physics sumo game with Bash, Dash, stability, knockouts, dynamic camera work and bot-filled contestant slots. The standalone v0.21 source is imported; online phone-room transport is not yet implemented.",
+  "description": "A 2–10 fighter shrinking-arena physics sumo game with Bash, Dash, stability, knockouts, dynamic camera work and bot-filled contestant slots.",
   "players": {
     "min": 2,
     "max": 10
@@ -43,12 +43,14 @@
       "source/vendor/three.module.js",
       "source/vendor/three.core.js"
     ],
-    "provenance": "Royal Sumo/Crownfall Arena v0.21.0 was developed in the user's ChatGPT CALLBACK project. The exact original HTML is retained under source/original/. The packaged entry replaces the pinned Three.js CDN import with the vendored r180 MIT build and updates the existing state snapshot when debug display is disabled. Gameplay tuning is preserved.",
+    "provenance": "Royal Sumo/Crownfall Arena v0.21.0 was developed in the user's ChatGPT CALLBACK project. The exact original HTML is retained under source/original/. The packaged entry replaces the pinned Three.js CDN import with the vendored r180 MIT build and updates the existing state snapshot when debug display is disabled. Gameplay tuning is preserved. Vault v2 room adapters add bounded remote input and pause/safe-cancel seams; the pre-room packaged page is preserved in source/original/standalone-before-room.html. No physics or camera retuning.",
     "url": null
   },
   "lifecycle": "experimental",
   "multiplayer": {
     "status": "in-progress",
-    "evidence": []
+    "evidence": [
+      "integration/room-adapter.md"
+    ]
   }
 }

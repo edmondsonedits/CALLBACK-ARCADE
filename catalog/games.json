@@ -21,7 +21,7 @@
         "mobile",
         "canvas"
       ],
-      "description": "Radial ball-deflection survival game for 2–10 contestants. One local player can defend a gate with movement, Magnet, Pulse and Run while AI bots fill remaining seats; arena size is adjustable and phone/network transport is not yet integrated.",
+      "description": "Radial ball-deflection survival for 2–10 contestants. Defend your gate with movement, Magnet, Pulse and Run; adjustable arena size and bots fill solo seats.",
       "players": {
         "min": 2,
         "max": 10
@@ -32,13 +32,15 @@
         "paths": [
           "source/index.html"
         ],
-        "provenance": "Imported unchanged from edmondsonedits/CALLBACK commit ed09d25b690b36b397516e4d77437e3dd21247c8 (game-modes/royal-ballistix/index.html). Upstream repository license: Apache-2.0.",
+        "provenance": "Imported unchanged from edmondsonedits/CALLBACK commit ed09d25b690b36b397516e4d77437e3dd21247c8 (game-modes/royal-ballistix/index.html). Upstream repository license: Apache-2.0. Vault v2 room adapters add bounded remote input and pause/safe-cancel seams; the pre-room packaged page is preserved in source/original/standalone-before-room.html. No physics or camera retuning.",
         "url": "https://github.com/edmondsonedits/CALLBACK/blob/ed09d25b690b36b397516e4d77437e3dd21247c8/game-modes/royal-ballistix/index.html"
       },
       "lifecycle": "experimental",
       "multiplayer": {
-        "status": "not-integrated",
-        "evidence": []
+        "status": "in-progress",
+        "evidence": [
+          "integration/room-adapter.md"
+        ]
       }
     },
     {
@@ -56,7 +58,7 @@
         "bots",
         "3d"
       ],
-      "description": "A 2–10 contestant rolling-cage physics race on the Vertical Crownway, with momentum handling, collisions, recoverable falls, elevation changes, Crownline boosts, rough terrain and bot-filled seats. Standalone source is imported; authenticated phone-room multiplayer transport is not yet implemented.",
+      "description": "A 2–10 contestant rolling-cage physics race on the Vertical Crownway, with momentum handling, collisions, recoverable falls, elevation changes, Crownline boosts, rough terrain and bot-filled seats. Standalone source is imported;",
       "players": {
         "min": 2,
         "max": 10
@@ -67,14 +69,14 @@
         "paths": [
           "source/index.html"
         ],
-        "provenance": "Imported from the complete Royal Roller Ruckus v1.4.0 — Vertical Crownway HTML produced in the user's CALLBACK game-development chat. The exact chat build is preserved as source/original-v1.4.0.html. Visuals and prototype audio are procedural/inline; Three.js 0.180.0 is vendored separately under its MIT license.",
+        "provenance": "Imported from the complete Royal Roller Ruckus v1.4.0 — Vertical Crownway HTML produced in the user's CALLBACK game-development chat. The exact chat build is preserved as source/original-v1.4.0.html. Visuals and prototype audio are procedural/inline; Three.js 0.180.0 is vendored separately under its MIT license. Vault v2 room adapters add bounded remote input and pause/safe-cancel seams; the pre-room packaged page is preserved in source/original/standalone-before-room.html. No physics or camera retuning.",
         "url": null
       },
       "lifecycle": "experimental",
       "multiplayer": {
         "status": "in-progress",
         "evidence": [
-          "integration/README.md"
+          "integration/room-adapter.md"
         ]
       }
     },
@@ -94,7 +96,7 @@
         "bots",
         "mobile"
       ],
-      "description": "Imported v0.5 standalone call-and-response rhythm game for 2–10 contestant slots. One local touch/keyboard player is supported by default, remaining slots can be bot-controlled, and additional human slots can receive inputs through the existing JavaScript API. Room-code phone multiplayer is not yet integrated.",
+      "description": "A 2–10 contestant call-and-response rhythm game. Watch the DJ and tap A/B/X/Y in time; solo bots and phone seats share the original scoring and timing.",
       "players": {
         "min": 2,
         "max": 10
@@ -105,13 +107,15 @@
         "paths": [
           "source/index.html"
         ],
-        "provenance": "Standalone royal_scratch_match_v0.5_ten_player.html created in the user's ChatGPT CALLBACK project and supplied by the user in this chat for import. Imported without gameplay changes as source/index.html. The runtime has no external asset dependencies; the user explicitly requested this project/repository use.",
+        "provenance": "Standalone royal_scratch_match_v0.5_ten_player.html created in the user's ChatGPT CALLBACK project and supplied by the user in this chat for import. Imported without gameplay changes as source/index.html. The runtime has no external asset dependencies; the user explicitly requested this project/repository use. Vault v2 room adapters add bounded remote input and pause/safe-cancel seams; the pre-room packaged page is preserved in source/original/standalone-before-room.html. No physics or camera retuning.",
         "url": null
       },
       "lifecycle": "experimental",
       "multiplayer": {
-        "status": "not-integrated",
-        "evidence": []
+        "status": "in-progress",
+        "evidence": [
+          "integration/room-adapter.md"
+        ]
       }
     },
     {
@@ -131,7 +135,7 @@
         "bots",
         "three-js"
       ],
-      "description": "A 2–10 fighter shrinking-arena physics sumo game with Bash, Dash, stability, knockouts, dynamic camera work and bot-filled contestant slots. The standalone v0.21 source is imported; online phone-room transport is not yet implemented.",
+      "description": "A 2–10 fighter shrinking-arena physics sumo game with Bash, Dash, stability, knockouts, dynamic camera work and bot-filled contestant slots.",
       "players": {
         "min": 2,
         "max": 10
@@ -159,13 +163,15 @@
           "source/vendor/three.module.js",
           "source/vendor/three.core.js"
         ],
-        "provenance": "Royal Sumo/Crownfall Arena v0.21.0 was developed in the user's ChatGPT CALLBACK project. The exact original HTML is retained under source/original/. The packaged entry replaces the pinned Three.js CDN import with the vendored r180 MIT build and updates the existing state snapshot when debug display is disabled. Gameplay tuning is preserved.",
+        "provenance": "Royal Sumo/Crownfall Arena v0.21.0 was developed in the user's ChatGPT CALLBACK project. The exact original HTML is retained under source/original/. The packaged entry replaces the pinned Three.js CDN import with the vendored r180 MIT build and updates the existing state snapshot when debug display is disabled. Gameplay tuning is preserved. Vault v2 room adapters add bounded remote input and pause/safe-cancel seams; the pre-room packaged page is preserved in source/original/standalone-before-room.html. No physics or camera retuning.",
         "url": null
       },
       "lifecycle": "experimental",
       "multiplayer": {
         "status": "in-progress",
-        "evidence": []
+        "evidence": [
+          "integration/room-adapter.md"
+        ]
       }
     },
     {
@@ -182,7 +188,7 @@
         "physics",
         "arcade"
       ],
-      "description": "A 2–10 contestant reaction-survival game on a medieval spiral tower: jump low rods, duck high rods, survive seven strikes, and recover from hits that knock contestants back down the course. The standalone v0.5 source is imported with bots and local controls; phone-room multiplayer is not yet integrated.",
+      "description": "Reaction survival on a medieval spiral tower for 2–10 contestants. Jump low rods, duck high rods and recover from knockback before seven strikes.",
       "players": {
         "min": 2,
         "max": 10
@@ -193,13 +199,15 @@
         "paths": [
           "source/index.html"
         ],
-        "provenance": "Original Royal Twisted v0.5 HTML developed in the user's ChatGPT CALLBACK project conversation and imported from the complete chat artifact. Gameplay implementation, visuals, UI, procedural audio and characters are original to this project. Three.js r180 is vendored under assets/vendor under its MIT license. The packaged entry changes only the Three.js import from a pinned jsDelivr URL to the vendored local module; gameplay logic is otherwise preserved.",
+        "provenance": "Original Royal Twisted v0.5 HTML developed in the user's ChatGPT CALLBACK project conversation and imported from the complete chat artifact. Gameplay implementation, visuals, UI, procedural audio and characters are original to this project. Three.js r180 is vendored under assets/vendor under its MIT license. The packaged entry changes only the Three.js import from a pinned jsDelivr URL to the vendored local module; gameplay logic is otherwise preserved. Vault v2 room adapters add bounded remote input and pause/safe-cancel seams; the pre-room packaged page is preserved in source/original/standalone-before-room.html. No physics or camera retuning.",
         "url": null
       },
       "lifecycle": "experimental",
       "multiplayer": {
-        "status": "not-integrated",
-        "evidence": []
+        "status": "in-progress",
+        "evidence": [
+          "integration/room-adapter.md"
+        ]
       }
     },
     {
@@ -217,7 +225,7 @@
         "bots",
         "arcade"
       ],
-      "description": "A self-contained 2–10 contestant physics survival arena with throwable crates, TNT/Nitro, destructible floor tiles, mobile multi-touch controls and bot-filled solo play. Source is imported; phone room-code multiplayer is not integrated.",
+      "description": "A 2–10 contestant physics survival arena with throwable crates, TNT/Nitro, destructible floor tiles, multi-touch controls and bot-filled solo play.",
       "players": {
         "min": 2,
         "max": 10
@@ -228,15 +236,17 @@
         "paths": [
           "source/index.html"
         ],
-        "provenance": "User-directed original standalone HTML implementation developed in this ChatGPT project. The imported v1.13.1 build is self-contained Canvas 2D/JavaScript with procedural visuals and audio; no third-party game code, artwork, music, or binary assets are included.",
+        "provenance": "User-directed original standalone HTML implementation developed in this ChatGPT project. The imported v1.13.1 build is self-contained Canvas 2D/JavaScript with procedural visuals and audio; no third-party game code, artwork, music, or binary assets are included. Vault v2 room adapters add bounded remote input and pause/safe-cancel seams; the pre-room packaged page is preserved in source/original/standalone-before-room.html. No physics or camera retuning.",
         "url": null
       },
       "lifecycle": "experimental",
       "multiplayer": {
-        "status": "not-integrated",
-        "evidence": []
+        "status": "in-progress",
+        "evidence": [
+          "integration/room-adapter.md"
+        ]
       }
     }
   ],
-  "revision": "34dc9fa89c8cb216beeb83acf8f8af9a7341f570d66541015ffa682c0c9b3100"
+  "revision": "604943d29a34bfd1d980ddb1d0a86cb9806bdcf393d06c96af0e0de660126989"
 }

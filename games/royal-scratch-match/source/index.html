@@ -213,6 +213,7 @@
 
   let W=1280,H=720,DPR=1,last=performance.now(),acc=0;
   let phase='menu';
+  let roomPausedAt=null;
   let difficulty='normal';
   let playerCount=4;
   let humanSlots=new Set([0]);
@@ -241,7 +242,7 @@
   let phaseClock=0;
   let humanPhraseMisses=0;
   let roundStartedAt=0;
-  let totalInputs=0;
+  let totalInputs=0;let controllerInputs=0;
   let totalResolved=0;
 
   function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
@@ -371,7 +372,7 @@
 
   function startRound(){
     initAudio();audioCtx?.resume?.();
-    initPlayers();notes=[];particles=[];sparks=[];finishQueued=false;eliminationCounter=0;phraseIndex=-1;totalInputs=0;totalResolved=0;
+    initPlayers();notes=[];particles=[];sparks=[];finishQueued=false;eliminationCounter=0;phraseIndex=-1;totalInputs=0;controllerInputs=0;totalResolved=0;
     phase='countdown';countdownAt=performance.now();countdownStage=3;songTime=0;lastBeatIndex=-1;screenShake=0;flash.a=0;roundStartedAt=gameClock();
     menu.classList.add('hidden');results.style.display='none';controls.classList.remove('hidden');setControlMode('listen');
     renderPhraseProgress();setStatus('GET READY');
@@ -429,11 +430,12 @@
   }
 
   function tryPlayerHit(playerIndex,lane){
+    if(roomPausedAt!==null)return;
     if(phase!=='response')return;
     const p=players[playerIndex];
     if(!p||!p.alive||!p.human)return;
     lane=clamp(lane|0,0,3);
-    if(p.local){totalInputs++;pressVisual(lane);}
+    controllerInputs++;if(p.local){totalInputs++;pressVisual(lane);}
     const d=diffSettings();
     let nearest=null,nearestErr=Infinity;
     for(const n of notes){
@@ -786,6 +788,7 @@
 
   function frame(now){
     let dt=Math.min(.05,(now-last)/1000);last=now;acc+=dt;
+    if(roomPausedAt!==null){acc=0;draw();requestAnimationFrame(frame);return;}
     let substeps=0;while(acc>=FIXED_DT&&substeps<TUNING.simulation.maxSubsteps){updateGame(FIXED_DT);acc-=FIXED_DT;substeps++}
     if(substeps===TUNING.simulation.maxSubsteps)acc=0;
     draw();requestAnimationFrame(frame);
@@ -819,6 +822,8 @@
 
   // Reusable adapter hook for future CALLBACK phone controllers/server input.
   window.ScratchMatchAPI={
+    setHumanSlot(id,enabled,name){if(!Number.isInteger(id)||id<1||id>=playerCount)return false;if(enabled)humanSlots.add(id);else humanSlots.delete(id);if(players[id])players[id].human=!!enabled;if(name&&players[id])players[id].name=String(name).slice(0,14);return true;},
+    setPaused(value){if(value&&roomPausedAt===null)roomPausedAt=gameClock();else if(!value&&roomPausedAt!==null){const elapsed=gameClock()-roomPausedAt;phaseClock+=elapsed;countdownAt+=elapsed*1000;roomPausedAt=null;}},
     press(playerIndex,lane){tryPlayerHit(clamp(playerIndex|0,0,playerCount-1),clamp(lane|0,0,3));},
     configure(opts={}){
       if(Number.isFinite(opts.playerCount))playerCount=clamp(opts.playerCount|0,2,10);
@@ -836,8 +841,8 @@
   window.GameDebug={
     getState(){return {
       game:'Royal Scratch Match',version:'0.5-ten-player',phase,difficulty,playerCount,humanPlayers:[...humanSlots],phrase:phraseIndex+1,bpm:Math.round(phraseBpm),phaseTime:+songTime.toFixed(3),
-      timingWindow:diffSettings().window,perfectWindow:diffSettings().perfect,totalInputs,totalResolved,
-      players:players.map(p=>({id:p.id,name:p.name,lives:p.lives,score:Math.round(p.score),combo:p.combo,alive:p.alive,misses:p.misses})),
+      timingWindow:diffSettings().window,perfectWindow:diffSettings().perfect,totalInputs,controllerInputs,totalResolved,
+      players:players.map(p=>({id:p.id,name:p.name,human:p.human,lives:p.lives,score:Math.round(p.score),combo:p.combo,alive:p.alive,misses:p.misses})),
       pattern:notes.map(n=>({time:+n.time.toFixed(3),lanes:[...n.lanes],responses:n.responses.map(r=>({resolved:r.resolved,hits:[...r.hits]}))}))
     };},
     tuning:TUNING

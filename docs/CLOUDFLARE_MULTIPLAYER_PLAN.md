@@ -1,6 +1,6 @@
-# Cloudflare and phone multiplayer: next implementation
+# Cloudflare and phone multiplayer: implementation roadmap
 
-This is an implementation handoff, not a deployed service. See [IMPORT_REVIEW.md](IMPORT_REVIEW.md) for current evidence. The seven party games remain on ChatGPT Sites.
+The asset, room, six adapter and phone UI milestones below are implemented and locally tested. This roadmap retains the original acceptance criteria; see STATUS.md and ROOM_VERIFICATION.md for current evidence. Production provisioning and internet acceptance remain pending. See [IMPORT_REVIEW.md](IMPORT_REVIEW.md) for current evidence. The seven party games remain on ChatGPT Sites.
 
 ## Intended first release
 
@@ -18,7 +18,7 @@ The first party-room adapter can preserve one designated host browser's existing
 ## 2. Serve the actual game packages
 
 - Add an asset-packaging script that stages the catalog plus each imported game's entry, local modules and assets into an ignored build directory. Preserve relative paths, including both Three.js files and their notices. Validate manifest paths and prevent traversal/symlink escapes.
-- Point both Wrangler asset bindings at that build output. Add real catalog Play/Host links only when those routes exist. Currently `public/` contains only catalog UI; a successful deploy of today's configuration does not serve the imported demos.
+- Point both Wrangler asset bindings at that build output. Add real catalog Play/Host links only when those routes exist. Implemented: the staged asset package serves the imported demos and controller screens.
 - Test all entry URLs and dependent modules through the actual Worker, including unknown-game 404, desktop/phone layout, and no external dependency requirement.
 
 ## 3. Implement one real room and Ballistix adapter

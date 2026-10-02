@@ -1,20 +1,37 @@
 {
   "id": "royal-roller-ruckus",
   "title": "Royal Roller Ruckus",
-  "aliases": ["Roller Ruckus", "Royal Roller Ruckus: Vertical Crownway"],
-  "tags": ["racing", "physics", "party", "collision", "bots", "3d"],
-  "description": "A 2–10 contestant rolling-cage physics race on the Vertical Crownway, with momentum handling, collisions, recoverable falls, elevation changes, Crownline boosts, rough terrain and bot-filled seats. Standalone source is imported; authenticated phone-room multiplayer transport is not yet implemented.",
-  "players": { "min": 2, "max": 10 },
+  "aliases": [
+    "Roller Ruckus",
+    "Royal Roller Ruckus: Vertical Crownway"
+  ],
+  "tags": [
+    "racing",
+    "physics",
+    "party",
+    "collision",
+    "bots",
+    "3d"
+  ],
+  "description": "A 2–10 contestant rolling-cage physics race on the Vertical Crownway, with momentum handling, collisions, recoverable falls, elevation changes, Crownline boosts, rough terrain and bot-filled seats. Standalone source is imported;",
+  "players": {
+    "min": 2,
+    "max": 10
+  },
   "version": "1.4.0",
   "source": {
     "status": "imported",
-    "paths": ["source/index.html"],
-    "provenance": "Imported from the complete Royal Roller Ruckus v1.4.0 — Vertical Crownway HTML produced in the user's CALLBACK game-development chat. The exact chat build is preserved as source/original-v1.4.0.html. Visuals and prototype audio are procedural/inline; Three.js 0.180.0 is vendored separately under its MIT license.",
+    "paths": [
+      "source/index.html"
+    ],
+    "provenance": "Imported from the complete Royal Roller Ruckus v1.4.0 — Vertical Crownway HTML produced in the user's CALLBACK game-development chat. The exact chat build is preserved as source/original-v1.4.0.html. Visuals and prototype audio are procedural/inline; Three.js 0.180.0 is vendored separately under its MIT license. Vault v2 room adapters add bounded remote input and pause/safe-cancel seams; the pre-room packaged page is preserved in source/original/standalone-before-room.html. No physics or camera retuning.",
     "url": null
   },
   "lifecycle": "experimental",
   "multiplayer": {
     "status": "in-progress",
-    "evidence": ["integration/README.md"]
+    "evidence": [
+      "integration/room-adapter.md"
+    ]
   }
 }

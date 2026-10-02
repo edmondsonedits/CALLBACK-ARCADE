@@ -1586,6 +1586,7 @@ function applyScenario(name){
   updateHUD();
 }
 window.RoyalSumo={
+  setPaused:value=>{paused=!!value;},
   version:VERSION,
   tuning:{movement:{...MOVEMENT},bash:{...BASH},contact:{...CONTACT},knockdown:{...KNOCKDOWN},ai:{...AI_TUNING},shrink:{...SHRINK},impactFeedback:{...IMPACT_FEEDBACK},dummy:{...DUMMY},camera:{...CAMERA},hud:{...HUD_TUNING},crowdArena:{...CROWD_ARENA}},
   getState:()=>JSON.parse(JSON.stringify(window.__ROYAL_SUMO_STATE__||{})),

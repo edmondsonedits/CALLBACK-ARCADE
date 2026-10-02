@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-02 — vault v2 room adapter
+
+- Shared authenticated room and game-specific phone controller replace bot seats without retuning physics/cameras/scoring.
+- Added pause/cancel and remote-seat hooks as required; retained the pre-room packaged page under source/original/.
+- Real local Worker join/start/pause/resume/same-seat refresh browser checks passed. Multiplayer remains in-progress until production physical-phone testing.
+
 ## Import review correction — 2026-10-02
 
 - Update the existing public state snapshot with debug display disabled; render the debug panel only when enabled. Original source remains preserved under `source/original/` and physics/tuning are unchanged.

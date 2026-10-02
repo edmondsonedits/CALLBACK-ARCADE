@@ -1,8 +1,9 @@
 import type { GameCatalog, GameManifest } from './catalog.ts';
+import { handleRoomApi, type RoomNamespace } from './room.ts';
 export interface D1Statement { first<T>(): Promise<T | null>; all<T>(): Promise<{ results: T[] }>; }
 export interface D1Database { prepare(query: string): D1Statement; }
 export interface AssetBinding { fetch(request: Request): Promise<Response>; }
-export interface Env { DB?: D1Database; CATALOG?: GameCatalog; ASSETS?: AssetBinding; }
+export interface Env { DB?: D1Database; CATALOG?: GameCatalog; ASSETS?: AssetBinding; ROOMS?: RoomNamespace; }
 const json = (body: unknown, status = 200, cache = true) => new Response(JSON.stringify(body), { status, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': cache ? 'public, max-age=60' : 'no-store' } });
 type DbState = { database: 'connected' | 'unavailable' | 'not-configured'; catalog: 'current' | 'stale' | 'unknown' };
 function fingerprint(games: GameManifest[] = []): string {
@@ -23,6 +24,8 @@ async function databaseStatus(env: Env): Promise<DbState> {
 }
 export async function handleRequest(request: Request, env: Env): Promise<Response> {
   const url = new URL(request.url);
+  const roomResponse = await handleRoomApi(request, env);
+  if (roomResponse) return roomResponse;
   if (url.pathname === '/api/health' && request.method === 'GET') return json({ status: 'ok', ...await databaseStatus(env), catalogSource: 'checked-in-repository' }, 200, false);
   if (url.pathname === '/api/games' && request.method === 'GET') {
     const state = await databaseStatus(env);

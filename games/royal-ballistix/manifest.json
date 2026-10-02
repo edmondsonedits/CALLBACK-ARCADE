@@ -17,7 +17,7 @@
     "mobile",
     "canvas"
   ],
-  "description": "Radial ball-deflection survival game for 2–10 contestants. One local player can defend a gate with movement, Magnet, Pulse and Run while AI bots fill remaining seats; arena size is adjustable and phone/network transport is not yet integrated.",
+  "description": "Radial ball-deflection survival for 2–10 contestants. Defend your gate with movement, Magnet, Pulse and Run; adjustable arena size and bots fill solo seats.",
   "players": {
     "min": 2,
     "max": 10
@@ -28,12 +28,14 @@
     "paths": [
       "source/index.html"
     ],
-    "provenance": "Imported unchanged from edmondsonedits/CALLBACK commit ed09d25b690b36b397516e4d77437e3dd21247c8 (game-modes/royal-ballistix/index.html). Upstream repository license: Apache-2.0.",
+    "provenance": "Imported unchanged from edmondsonedits/CALLBACK commit ed09d25b690b36b397516e4d77437e3dd21247c8 (game-modes/royal-ballistix/index.html). Upstream repository license: Apache-2.0. Vault v2 room adapters add bounded remote input and pause/safe-cancel seams; the pre-room packaged page is preserved in source/original/standalone-before-room.html. No physics or camera retuning.",
     "url": "https://github.com/edmondsonedits/CALLBACK/blob/ed09d25b690b36b397516e4d77437e3dd21247c8/game-modes/royal-ballistix/index.html"
   },
   "lifecycle": "experimental",
   "multiplayer": {
-    "status": "not-integrated",
-    "evidence": []
+    "status": "in-progress",
+    "evidence": [
+      "integration/room-adapter.md"
+    ]
   }
 }

@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-02 — vault v2 room adapter
+
+- Shared authenticated room and game-specific phone controller replace bot seats without retuning physics/cameras/scoring.
+- Added pause/cancel and remote-seat hooks as required; retained the pre-room packaged page under source/original/.
+- Real local Worker join/start/pause/resume/same-seat refresh browser checks passed. Multiplayer remains in-progress until production physical-phone testing.
+
 ## 0.12.0 — source import
 
 - Imported the complete standalone Royal Ballistix — Beach Siege v0.12 source unchanged from `edmondsonedits/CALLBACK` commit `ed09d25b690b36b397516e4d77437e3dd21247c8`.

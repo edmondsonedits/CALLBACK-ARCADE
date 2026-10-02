@@ -13,8 +13,9 @@ assert.equal(manifest.version, '0.5.0');
 assert.equal(manifest.source.status, 'imported');
 assert.deepEqual(manifest.source.paths, ['source/index.html']);
 assert.deepEqual(manifest.players, { min: 2, max: 10 });
-assert.equal(manifest.multiplayer.status, 'not-integrated');
-assert.deepEqual(manifest.multiplayer.evidence, []);
+assert.equal(manifest.multiplayer.status, 'in-progress');
+assert.ok(manifest.multiplayer.evidence.includes('integration/room-adapter.md'));
+assert.deepEqual(manifest.multiplayer.evidence, ['integration/room-adapter.md']);
 
 assert.match(html, /const VERSION="0\.5\.0-original-camera-knockback"/);
 assert.match(html, /import \* as THREE from "\.\.\/assets\/vendor\/three\.module\.js"/);

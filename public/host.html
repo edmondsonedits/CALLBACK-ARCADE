@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#0d1220" />
+    <title>Host a game · CALLBACK Arcade</title>
+    <link rel="stylesheet" href="/party.css" />
+    <script defer src="/vendor/qrcode.js"></script>
+    <script type="module" src="/host.js"></script>
+  </head>
+  <body class="host">
+    <header>
+      <a href="/">← Arcade</a>
+      <h1 id="title">Preparing your room…</h1>
+      <p id="connection" role="status">Connecting…</p>
+    </header>
+    <main class="host-layout">
+      <section class="screen">
+        <iframe
+          id="game"
+          title="Shared game screen"
+          allow="fullscreen"
+          hidden
+        ></iframe>
+        <p id="notice" role="status">Creating a room…</p>
+      </section>
+      <aside>
+        <p class="eyebrow">JOIN ON YOUR PHONE</p>
+        <p id="code" class="room-code">······</p>
+        <div id="qr"></div>
+        <a id="join" href="/join.html">Open phone controller</a
+        ><button id="copy" type="button">Copy join link</button>
+        <p id="phase" role="status">Waiting for players</p>
+        <div class="room-actions">
+          <button id="start" disabled>Start game</button
+          ><button id="pause" disabled>Pause</button
+          ><button id="resume" disabled>Resume</button
+          ><button id="restart" disabled>New round</button>
+        </div>
+        <p>One shared screen + up to nine phones. Empty seats play as bots.</p>
+        <ol id="roster" class="roster"></ol>
+        <p id="error" role="alert"></p>
+      </aside>
+    </main>
+  </body>
+</html>

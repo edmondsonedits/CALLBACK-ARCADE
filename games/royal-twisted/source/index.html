@@ -481,6 +481,7 @@ function validateChoreography(){
   return {ok:transitions.every(x=>x.minGap>0),jumpFlight:+(2*TUNING.jump.velocity/TUNING.jump.gravity).toFixed(3),transitions,stats:{...choreographyStats}};
 }
 window.RoyalTwisted={
+  setPaused:value=>togglePause(!!value),
   version:VERSION,
   getState:()=>JSON.parse(JSON.stringify(window.__ROYAL_TWISTED_STATE__||{})),
   restart:restartMatch,

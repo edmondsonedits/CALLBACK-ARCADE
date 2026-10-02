@@ -30,7 +30,8 @@ assert.ok(!html.includes('cdn.jsdelivr.net/npm/three'), 'packaged entry must not
 assert.ok(original.includes('https://cdn.jsdelivr.net/npm/three@0.180.0/+esm'), 'original chat source should preserve its CDN import');
 await stat(vendorPath);
 
-const normalized = html.replace('import * as THREE from "./vendor/three.module.js";', 'import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.180.0/+esm";');
+const baseline = await readFile(path.join(game, 'source', 'original', 'standalone-before-room.html'), 'utf8');
+const normalized = baseline.replace('import * as THREE from "./vendor/three.module.js";', 'import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.180.0/+esm";');
 assert.equal(normalized, original, 'packaged entry should differ from the chat snapshot only by the Three.js import path');
 
 const start = html.indexOf('<script type="module">');

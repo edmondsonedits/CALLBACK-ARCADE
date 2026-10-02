@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-02 — vault v2 room adapter
+
+- Shared authenticated room and game-specific phone controller replace bot seats without retuning physics/cameras/scoring.
+- Added pause/cancel and remote-seat hooks as required; retained the pre-room packaged page under source/original/.
+- Real local Worker join/start/pause/resume/same-seat refresh browser checks passed. Multiplayer remains in-progress until production physical-phone testing.
+
 ## Import review correction — 2026-10-02
 
 - Included the required Three.js r180 `three.core.js` dependency beside `three.module.js`; the previously incomplete module package prevented startup.

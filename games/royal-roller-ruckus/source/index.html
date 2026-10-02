@@ -402,12 +402,13 @@ function cameraBasis(){
   INPUT_RIGHT.set(-INPUT_FWD.z,0,INPUT_FWD.x);return{f:INPUT_FWD,right:INPUT_RIGHT};
 }
 window.CallbackInput={
+  setPaused(value){paused=!!value;if(paused)resetJoy();},
   version:2,
   maxPlayers:MAX_PLAYERS,
   push(playerId,packet={}){
     if(playerId<0||playerId>=MAX_PLAYERS)return false;
     const n=networkInputs[playerId],seq=Number.isFinite(packet.sequence)?packet.sequence:n.sequence+1;
-    if(seq<=n.sequence&&n.sequence-seq<TUNING.input.sequenceWindow)return false;
+    if(seq<=n.sequence)return false;
     n.moveX=clamp(Number(packet.moveX)||0,-1,1);n.moveY=clamp(Number(packet.moveY)||0,-1,1);
     n.primaryAction=!!packet.primaryAction;n.secondaryAction=!!packet.secondaryAction;
     if(typeof packet.name==="string"&&packet.name.trim())n.name=packet.name.trim().slice(0,14);
@@ -422,6 +423,7 @@ window.CallbackInput={
     if(racer&&n.name)racer.name=n.name;
     return true;
   },
+  neutralize(playerId){if(!Number.isInteger(playerId)||playerId<1||playerId>=MAX_PLAYERS)return false;Object.assign(networkInputs[playerId],{moveX:0,moveY:0,primaryAction:false,secondaryAction:false,timestamp:performance.now()/1000});return true;},
   disconnect(playerId){
     if(playerId<0||playerId>=MAX_PLAYERS)return;
     networkInputs[playerId].connected=false;

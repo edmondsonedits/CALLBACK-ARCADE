@@ -13,7 +13,7 @@
     "bots",
     "arcade"
   ],
-  "description": "A self-contained 2–10 contestant physics survival arena with throwable crates, TNT/Nitro, destructible floor tiles, mobile multi-touch controls and bot-filled solo play. Source is imported; phone room-code multiplayer is not integrated.",
+  "description": "A 2–10 contestant physics survival arena with throwable crates, TNT/Nitro, destructible floor tiles, multi-touch controls and bot-filled solo play.",
   "players": {
     "min": 2,
     "max": 10
@@ -24,12 +24,14 @@
     "paths": [
       "source/index.html"
     ],
-    "provenance": "User-directed original standalone HTML implementation developed in this ChatGPT project. The imported v1.13.1 build is self-contained Canvas 2D/JavaScript with procedural visuals and audio; no third-party game code, artwork, music, or binary assets are included.",
+    "provenance": "User-directed original standalone HTML implementation developed in this ChatGPT project. The imported v1.13.1 build is self-contained Canvas 2D/JavaScript with procedural visuals and audio; no third-party game code, artwork, music, or binary assets are included. Vault v2 room adapters add bounded remote input and pause/safe-cancel seams; the pre-room packaged page is preserved in source/original/standalone-before-room.html. No physics or camera retuning.",
     "url": null
   },
   "lifecycle": "experimental",
   "multiplayer": {
-    "status": "not-integrated",
-    "evidence": []
+    "status": "in-progress",
+    "evidence": [
+      "integration/room-adapter.md"
+    ]
   }
 }

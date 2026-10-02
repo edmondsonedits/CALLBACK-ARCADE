@@ -12,7 +12,7 @@
     "physics",
     "arcade"
   ],
-  "description": "A 2–10 contestant reaction-survival game on a medieval spiral tower: jump low rods, duck high rods, survive seven strikes, and recover from hits that knock contestants back down the course. The standalone v0.5 source is imported with bots and local controls; phone-room multiplayer is not yet integrated.",
+  "description": "Reaction survival on a medieval spiral tower for 2–10 contestants. Jump low rods, duck high rods and recover from knockback before seven strikes.",
   "players": {
     "min": 2,
     "max": 10
@@ -23,12 +23,14 @@
     "paths": [
       "source/index.html"
     ],
-    "provenance": "Original Royal Twisted v0.5 HTML developed in the user's ChatGPT CALLBACK project conversation and imported from the complete chat artifact. Gameplay implementation, visuals, UI, procedural audio and characters are original to this project. Three.js r180 is vendored under assets/vendor under its MIT license. The packaged entry changes only the Three.js import from a pinned jsDelivr URL to the vendored local module; gameplay logic is otherwise preserved.",
+    "provenance": "Original Royal Twisted v0.5 HTML developed in the user's ChatGPT CALLBACK project conversation and imported from the complete chat artifact. Gameplay implementation, visuals, UI, procedural audio and characters are original to this project. Three.js r180 is vendored under assets/vendor under its MIT license. The packaged entry changes only the Three.js import from a pinned jsDelivr URL to the vendored local module; gameplay logic is otherwise preserved. Vault v2 room adapters add bounded remote input and pause/safe-cancel seams; the pre-room packaged page is preserved in source/original/standalone-before-room.html. No physics or camera retuning.",
     "url": null
   },
   "lifecycle": "experimental",
   "multiplayer": {
-    "status": "not-integrated",
-    "evidence": []
+    "status": "in-progress",
+    "evidence": [
+      "integration/room-adapter.md"
+    ]
   }
 }

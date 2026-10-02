@@ -14,7 +14,7 @@
     "bots",
     "mobile"
   ],
-  "description": "Imported v0.5 standalone call-and-response rhythm game for 2–10 contestant slots. One local touch/keyboard player is supported by default, remaining slots can be bot-controlled, and additional human slots can receive inputs through the existing JavaScript API. Room-code phone multiplayer is not yet integrated.",
+  "description": "A 2–10 contestant call-and-response rhythm game. Watch the DJ and tap A/B/X/Y in time; solo bots and phone seats share the original scoring and timing.",
   "players": {
     "min": 2,
     "max": 10
@@ -25,12 +25,14 @@
     "paths": [
       "source/index.html"
     ],
-    "provenance": "Standalone royal_scratch_match_v0.5_ten_player.html created in the user's ChatGPT CALLBACK project and supplied by the user in this chat for import. Imported without gameplay changes as source/index.html. The runtime has no external asset dependencies; the user explicitly requested this project/repository use.",
+    "provenance": "Standalone royal_scratch_match_v0.5_ten_player.html created in the user's ChatGPT CALLBACK project and supplied by the user in this chat for import. Imported without gameplay changes as source/index.html. The runtime has no external asset dependencies; the user explicitly requested this project/repository use. Vault v2 room adapters add bounded remote input and pause/safe-cancel seams; the pre-room packaged page is preserved in source/original/standalone-before-room.html. No physics or camera retuning.",
     "url": null
   },
   "lifecycle": "experimental",
   "multiplayer": {
-    "status": "not-integrated",
-    "evidence": []
+    "status": "in-progress",
+    "evidence": [
+      "integration/room-adapter.md"
+    ]
   }
 }
