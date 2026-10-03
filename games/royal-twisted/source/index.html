@@ -98,7 +98,8 @@ const viewport=$("#viewport"),loading=$("#loading"),hitFlash=$("#hitFlash"),mess
 const roundLabel=$("#roundLabel"),timerEl=$("#timer"),youScoreEl=$("#youScore"),winsScoreEl=$("#winsScore"),livesText=$("#livesText"),lifePips=$("#lifePips"),speedValue=$("#speedValue");
 const jumpBtn=$("#jumpBtn"),duckBtn=$("#duckBtn"),soundBtn=$("#soundBtn"),settingsBtn=$("#settingsBtn"),settingsModal=$("#settingsModal"),closeSettings=$("#closeSettings"),restartBtn=$("#restartBtn");
 /* CALLBACK shared camera controls */
-const callbackCameraState={rotate:0,zoom:1,tilt:0};
+const TWISTED_CAMERA_DEFAULT=Object.freeze({rotate:-45,zoom:.75,tilt:-5});
+const callbackCameraState={...TWISTED_CAMERA_DEFAULT};
 function callbackCameraClamp(v,a,b){return Math.max(a,Math.min(b,v))}
 function callbackCameraAdapter(){}
 const callbackCameraUp=new THREE.Vector3(0,1,0);
@@ -155,7 +156,7 @@ function callbackCameraSave(){
   if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(code).then(()=>{if(status)status.textContent="Saved + copied "+code}).catch(()=>{});
   return code;
 }
-function callbackCameraReset(){callbackCameraSet({rotate:0,zoom:1,tilt:0});const status=document.querySelector("[data-camera-status]");if(status)status.textContent="Camera reset to game default."}
+function callbackCameraReset(){callbackCameraSet(TWISTED_CAMERA_DEFAULT);const status=document.querySelector("[data-camera-status]");if(status)status.textContent="Camera reset to game default."}
 function callbackCameraInstall(){
   if(document.getElementById("callbackCameraPanel"))return;
   const style=document.createElement("style");
@@ -408,7 +409,7 @@ function hitFighter(f,h){
   f.trackT=Math.max(TUNING.hit.minTrackT,f.trackT-TUNING.hit.setbackT);
   f.vy=3.25;f.jumpY=Math.max(f.jumpY,.03);
   const hb=helixBasis(f.trackT),hp=helixPoint(f.trackT);f.base.copy(hp).addScaledVector(hb.right,f.lane);
-  cameraShake=f.player?.62:Math.max(cameraShake,.20);
+  if(f.player)cameraShake=Math.max(cameraShake,.62);
   const pos=f.base.clone().add(f.offset).add(new THREE.Vector3(0,1.0,0));spawnParticles(pos,h.type==="low"?0x56c5dc:0xe56f69,14,1.25);impactRing(pos,h.type==="low"?0x56c5dc:0xe56f69);sfxHit();
   if(f.player){triggerFlash();haptic(70);say(`${h.type==="low"?"Low rod":"High rod"} caught you — knocked back for extra reaction room. ${f.lives} strike${f.lives===1?"":"s"} left.`)}
   if(f.lives<=0)eliminate(f);
@@ -515,14 +516,11 @@ function updateVisuals(dt,time){
   for(const fx of rings){if(fx.life<=0)continue;fx.life-=dt;if(fx.life<=0){fx.mesh.visible=false;continue}const t=1-fx.life/fx.max;fx.mesh.scale.setScalar(.35+t*1.7);fx.mesh.material.opacity=(1-t)*.62}
 }
 function updateCamera(dt,time){
-  // Original-inspired three-quarter climb camera: show the spiral, the pack, and rods approaching from up-course.
-  // The camera frames the active pack instead of staring straight down the hazard lane.
+  // Keep the view anchored to Player 1. Other contestants can be knocked back without pulling the camera.
   cameraShake=damp(cameraShake,0,7.8,dt);
-  const active=fighters.filter(f=>f.alive);
-  let minT=PLAYER_T,maxT=PLAYER_T;
-  if(active.length){minT=Math.min(...active.map(f=>f.trackT));maxT=Math.max(...active.map(f=>f.trackT))}
-  const focusT=clamp((minT+maxT)*.5,TUNING.hit.minTrackT,PLAYER_T);
-  const spread=Math.max(0,maxT-minT);
+  const focus=fighters[0];
+  const focusT=clamp(focus?.trackT??PLAYER_T,TUNING.hit.minTrackT,PLAYER_T);
+  const playerSetback=Math.max(0,PLAYER_T-focusT);
   const p=helixPoint(focusT),b=helixBasis(focusT);
   const crowd=clamp((playerCount-4)/6,0,1);
   const desired=p.clone()
@@ -539,8 +537,8 @@ function updateCamera(dt,time){
   camera.lookAt(target);
   const w=innerWidth,h=innerHeight,portrait=clamp((h/w-1.15)/.75,0,1);
   const base=lerp(TUNING.camera.baseFov,TUNING.camera.portraitFov,portrait)+3.5*crowd;
-  const spreadBoost=clamp(spread/.10,0,1)*TUNING.camera.spreadFov;
-  const desiredFov=base+spreadBoost;
+  const setbackBoost=clamp(playerSetback/.10,0,1)*TUNING.camera.spreadFov;
+  const desiredFov=base+setbackBoost;
   if(Math.abs(camera.fov-desiredFov)>.02){camera.fov=damp(camera.fov,desiredFov,5.5,dt);camera.updateProjectionMatrix()}
 }
 function updatePhase(dt){
