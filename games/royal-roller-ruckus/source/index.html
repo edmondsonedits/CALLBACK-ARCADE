@@ -40,7 +40,7 @@ button,select{font:inherit;color:inherit}button{cursor:pointer}
 @media(min-width:760px){.controls{left:50%;right:auto;transform:translateX(-50%);width:min(720px,calc(100% - 28px))}}
 </style>
 </head>
-<body>
+<body data-pause-flow="manual-resume">
 <div id="app">
   <div id="viewport"></div><div class="vignette"></div><div class="grain"></div><div id="speedLines" class="speed-lines"></div><div id="flash" class="flash"></div>
   <div class="top-hud">
@@ -66,7 +66,7 @@ button,select{font:inherit;color:inherit}button{cursor:pointer}
     <div class="setting"><label><strong>Debug State</strong><small>Track projection, FPS and race state</small></label><button id="debugToggle" class="toggle" type="button"><span></span></button></div>
     <div class="modal-buttons"><button id="restartBtn" type="button">Restart Race</button><button id="closeSettings" class="primary" type="button">Back to Track</button></div>
   </div></div>
-  <div id="pauseOverlay" class="pause-overlay"><div class="card"><h2>Paused</h2><p>The cages have stopped rolling.</p><button id="resumeBtn" type="button">Resume Race</button></div></div>
+  <div id="pauseOverlay" class="pause-overlay"><div class="card"><h2>Paused</h2><p>The cages have stopped rolling.</p><button id="resumeBtn" type="button" data-resume-game>Resume Race</button></div></div>
   <div id="finishOverlay" class="finish-overlay"><div class="card"><h2>Race Complete</h2><div id="finishPlace" class="finish-place">1st</div><p id="finishCopy">Crown claimed.</p><button id="raceAgainBtn" type="button">Race Again</button></div></div>
   <div id="loading" class="loading"><div class="loading-card"><div class="loader-crest">◉</div><h1>ROYAL ROLLER RUCKUS</h1><p>Forging the Crownway Circuit…</p></div></div>
 </div>
@@ -831,7 +831,9 @@ players ${racers.length}/${MAX_PLAYERS} pack ${p.contactCount} cd ${p.packReleas
 ai ${racers.slice(1).map(r=>r.name+":"+r.aiState).join(" ")}`;}
 function resize(){if(!renderer||!camera)return;renderer.setSize(innerWidth,innerHeight,false);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();}addEventListener("resize",resize);
 function togglePause(force){if(finished)return;paused=force!==undefined?force:!paused;pauseOverlay.classList.toggle("open",paused);if(paused)resetJoy();}
-settingsBtn.addEventListener("click",()=>{settingsModal.classList.add("open");paused=true;resetJoy();});closeSettings.addEventListener("click",()=>{settingsModal.classList.remove("open");paused=false;});restartBtn.addEventListener("click",()=>{settingsModal.classList.remove("open");resetRace();});raceAgainBtn.addEventListener("click",resetRace);resumeBtn.addEventListener("click",()=>togglePause(false));soundBtn.addEventListener("click",()=>{soundOn=!soundOn;soundBtn.textContent=soundOn?"🔊":"🔇";initAudio();if(audioMaster&&audioCtx)audioMaster.gain.setTargetAtTime(soundOn?TUNING.audio.master:0,audioCtx.currentTime,.04);});graphicsEl.addEventListener("change",applyGraphicsMode);hapticsToggle.addEventListener("click",()=>{hapticsOn=!hapticsOn;hapticsToggle.classList.toggle("on",hapticsOn)});debugToggle.addEventListener("click",()=>{debugOn=!debugOn;debugToggle.classList.toggle("on",debugOn);debugPanel.classList.toggle("show",debugOn)});racerCountEl.addEventListener("change",()=>{activeRacerCount=clamp(Number(racerCountEl.value)||DEFAULT_RACERS,2,MAX_PLAYERS);if(phase==="countdown"){createRacers();updateHUD();}});lapSetting.addEventListener("change",()=>{targetLaps=Number(lapSetting.value)||3;updateHUD()});respawnBtn.addEventListener("click",()=>{const p=racers[0];if(p?.falling)respawn(p)});
+function openSettingsPaused(){paused=true;pauseOverlay.classList.remove("open");settingsModal.classList.add("open");resetJoy()}
+function closeSettingsToPause(){settingsModal.classList.remove("open");paused=true;pauseOverlay.classList.add("open");resetJoy()}
+settingsBtn.addEventListener("click",openSettingsPaused);closeSettings.addEventListener("click",closeSettingsToPause);restartBtn.addEventListener("click",()=>{resetRace();closeSettingsToPause();});raceAgainBtn.addEventListener("click",resetRace);resumeBtn.addEventListener("click",()=>togglePause(false));soundBtn.addEventListener("click",()=>{soundOn=!soundOn;soundBtn.textContent=soundOn?"🔊":"🔇";initAudio();if(audioMaster&&audioCtx)audioMaster.gain.setTargetAtTime(soundOn?TUNING.audio.master:0,audioCtx.currentTime,.04);});graphicsEl.addEventListener("change",applyGraphicsMode);hapticsToggle.addEventListener("click",()=>{hapticsOn=!hapticsOn;hapticsToggle.classList.toggle("on",hapticsOn)});debugToggle.addEventListener("click",()=>{debugOn=!debugOn;debugToggle.classList.toggle("on",debugOn);debugPanel.classList.toggle("show",debugOn)});racerCountEl.addEventListener("change",()=>{activeRacerCount=clamp(Number(racerCountEl.value)||DEFAULT_RACERS,2,MAX_PLAYERS);if(phase==="countdown"){createRacers();updateHUD();}});lapSetting.addEventListener("change",()=>{targetLaps=Number(lapSetting.value)||3;updateHUD()});respawnBtn.addEventListener("click",()=>{const p=racers[0];if(p?.falling)respawn(p)});
 
 function animate(now){requestAnimationFrame(animate);const realDt=Math.min(.05,(now-lastTime)/1000);lastTime=now;fpsAccum+=realDt;fpsFrames++;if(fpsAccum>.45){fps=fpsFrames/fpsAccum;fpsAccum=0;fpsFrames=0;}if(!paused){updatePhase(realDt);accumulator=Math.min(accumulator+realDt,.12);let steps=0;while(accumulator>=FIXED_DT&&steps++<MAX_SUBSTEPS){fixedUpdate(FIXED_DT);accumulator-=FIXED_DT;}}updateVisuals(realDt,now/1000);updateCamera(realDt);updateDynamicAudio(realDt);updateHUD();updateDebug();renderer.render(scene,camera);}
 

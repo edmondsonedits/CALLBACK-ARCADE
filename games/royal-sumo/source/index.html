@@ -116,7 +116,7 @@ button{color:inherit}
 }
 </style>
 </head>
-<body>
+<body data-pause-flow="manual-resume">
 <div id="app">
   <div id="viewport"></div>
   <div class="vignette"></div>
@@ -214,7 +214,7 @@ button{color:inherit}
     <div class="pause-card">
       <h2>Paused</h2>
       <p>The crown can wait. Your thumbstick remains locked to the game.</p>
-      <button id="resumeBtn" type="button">Resume Fight</button>
+      <button id="resumeBtn" type="button" data-resume-game>Resume Fight</button>
     </div>
   </div>
 
@@ -1613,9 +1613,16 @@ pauseBtn.addEventListener("click",()=>togglePause());
 resumeBtn.addEventListener("click",()=>togglePause(false));
 
 soundBtn.addEventListener("click",()=>{soundOn=!soundOn;soundBtn.textContent=soundOn?"🔊":"🔇";if(soundOn){initAudio();tone(330,.05,"triangle",.025,1.2);}});
-settingsBtn.addEventListener("click",()=>{settingsModal.classList.add("open");togglePause(true);});
-closeSettings.addEventListener("click",()=>{settingsModal.classList.remove("open");togglePause(false);});
-restartBtn.addEventListener("click",()=>{restartMatch();settingsModal.classList.remove("open");togglePause(false);});
+function openSettingsPaused(){
+  paused=true;pauseOverlay.classList.remove("open");settingsModal.classList.add("open");resetJoy();
+  input.charging=false;input.charge=0;chargeFill.style.width="0%";
+}
+function closeSettingsToPause(){
+  settingsModal.classList.remove("open");paused=true;pauseOverlay.classList.add("open");resetJoy();
+}
+settingsBtn.addEventListener("click",openSettingsPaused);
+closeSettings.addEventListener("click",closeSettingsToPause);
+restartBtn.addEventListener("click",()=>{restartMatch();closeSettingsToPause();});
 graphicsEl.addEventListener("change",()=>{graphicsMode=graphicsEl.value;applyGraphicsMode();say(`Graphics set to ${graphicsMode}.`);});
 difficultyEl.addEventListener("change",()=>say(`Difficulty: ${difficultyEl.options[difficultyEl.selectedIndex].text}.`));
 playerCountEl.addEventListener("change",()=>{
