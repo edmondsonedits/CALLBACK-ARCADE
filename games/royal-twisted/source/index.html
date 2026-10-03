@@ -39,7 +39,7 @@ button,select{font:inherit;color:inherit}
 @media(hover:hover) and (pointer:fine){.action:hover{filter:brightness(1.08)}}
 </style>
 </head>
-<body>
+<body data-pause-flow="manual-resume">
 <div id="app">
   <div id="viewport"></div>
   <div class="vignette"></div><div class="grain"></div><div id="hitFlash" class="flash"></div>
@@ -85,7 +85,7 @@ button,select{font:inherit;color:inherit}
     </div>
   </div>
 
-  <div id="pauseOverlay" class="pause-overlay"><div class="pause-card"><h2>PAUSED</h2><p>The Spiral Keep has politely stopped trying to hit everyone.</p><button id="resumeBtn" type="button">Resume</button></div></div>
+  <div id="pauseOverlay" class="pause-overlay"><div class="pause-card"><h2>PAUSED</h2><p>The Spiral Keep has politely stopped trying to hit everyone.</p><button id="resumeBtn" type="button" data-resume-game>Resume</button></div></div>
 
   <div id="loading" class="loading"><div class="loading-card"><div class="loader-crest">♛</div><h1>ROYAL TWISTED</h1><p>Winding the Spiral Keep…</p></div></div>
 </div>
@@ -568,7 +568,7 @@ window.addEventListener("keydown",e=>{if(["Space","ArrowUp","KeyW"].includes(e.c
 window.addEventListener("keyup",e=>{if(["ShiftLeft","ShiftRight","ArrowDown","KeyS"].includes(e.code)){e.preventDefault();releaseDuck(e)}},{passive:false});
 
 playerCountEl.value=String(playerCount);
-playerCountEl.addEventListener("change",()=>{const next=Math.max(2,Math.min(10,Number(playerCountEl.value)||4));if(next===playerCount)return;playerCount=next;createFighters();restartMatch();say(`${playerCount} contestants entered the Spiral Keep.`)});
+playerCountEl.addEventListener("change",()=>{const next=Math.max(2,Math.min(10,Number(playerCountEl.value)||4));if(next===playerCount)return;playerCount=next;createFighters();restartMatch();paused=true;pauseOverlay.classList.remove("open");say(`${playerCount} contestants entered the Spiral Keep.`)});
 
 soundBtn.addEventListener("click",()=>{soundOn=!soundOn;soundBtn.textContent=soundOn?"🔊":"🔇";if(soundOn){initAudio();tone(330,.05,"triangle",.025,1.2)}});settingsBtn.addEventListener("click",()=>{settingsModal.classList.add("open");togglePause(true)});closeSettings.addEventListener("click",()=>{settingsModal.classList.remove("open");togglePause(false)});restartBtn.addEventListener("click",()=>{restartMatch();settingsModal.classList.remove("open");paused=false;pauseOverlay.classList.remove("open")});graphicsEl.addEventListener("change",()=>{graphicsMode=graphicsEl.value;applyGraphicsMode();say(`Graphics set to ${graphicsMode}.`)});difficultyEl.addEventListener("change",()=>say(`Rivals set to ${difficultyEl.options[difficultyEl.selectedIndex].text}.`));hapticsToggle.addEventListener("click",()=>{hapticsOn=!hapticsOn;hapticsToggle.classList.toggle("on",hapticsOn)});debugToggle.addEventListener("click",()=>{debugOn=!debugOn;debugToggle.classList.toggle("on",debugOn);debugPanel.classList.toggle("show",debugOn)});resumeBtn.addEventListener("click",()=>togglePause(false));
 

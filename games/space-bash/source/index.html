@@ -34,7 +34,7 @@ button,select{font:inherit;color:inherit}
 @media(max-height:700px){.controls{height:150px}.deck{bottom:calc(var(--safeB) + 163px)}#joyBase{width:min(33vw,128px)}}
 </style>
 </head>
-<body>
+<body data-pause-flow="manual-resume">
 <div id="app">
 <canvas id="gameCanvas"></canvas>
 <div class="top">
@@ -65,6 +65,7 @@ button,select{font:inherit;color:inherit}
     <div class="modalBtns"><button id="restart">Restart match</button><button id="close" class="primary">Back to arena</button></div>
   </div>
 </div>
+<div id="pauseOverlay" class="modalBack"><div class="modal"><h2>Paused</h2><p>The orbital deck is frozen while you adjust settings.</p><div class="modalBtns"><button id="resumeGame" class="primary" type="button" data-resume-game style="grid-column:1/-1">Resume Game</button></div></div></div>
 <div id="bootError"><div><h2>Space Bash could not start</h2><pre id="errorText"></pre></div></div>
 </div>
 <script>
@@ -75,7 +76,7 @@ const VERSION="1.13.1-standalone";
 const $=s=>document.querySelector(s),canvas=$("#gameCanvas"),ctx=canvas.getContext("2d",{alpha:false});
 if(!ctx)throw new Error("Canvas 2D is unavailable in this browser.");
 const roundEl=$("#round"),timerEl=$("#timer"),aliveEl=$("#alive"),hpText=$("#hpText"),hpFill=$("#hpFill"),tileText=$("#tileText"),tileFill=$("#tileFill"),msg=$("#msg"),countdown=$("#countdown");
-const modal=$("#modal"),settings=$("#settings"),close=$("#close"),restart=$("#restart"),playersEl=$("#players"),difficultyEl=$("#difficulty"),grabBtn=$("#grab"),kickBtn=$("#kick"),jumpBtn=$("#jump"),grabText=$("#grabText"),soundBtn=$("#sound");
+const modal=$("#modal"),settings=$("#settings"),close=$("#close"),restart=$("#restart"),playersEl=$("#players"),difficultyEl=$("#difficulty"),grabBtn=$("#grab"),kickBtn=$("#kick"),jumpBtn=$("#jump"),grabText=$("#grabText"),soundBtn=$("#sound"),pauseOverlay=$("#pauseOverlay"),resumeGame=$("#resumeGame");
 /* CALLBACK shared camera controls */
 const callbackCameraState={rotate:0,zoom:1,tilt:0};
 function callbackCameraClamp(v,a,b){return Math.max(a,Math.min(b,v))}
@@ -260,8 +261,11 @@ $("#joyWrap").addEventListener("pointerup",joyUp);$("#joyWrap").addEventListener
 const keys={};addEventListener("keydown",e=>{keys[e.code]=true;if(e.code==="KeyE")grabThrow(fighters[0]);if(e.code==="KeyF")kick(fighters[0]);if(e.code==="Space")jump(fighters[0])});addEventListener("keyup",e=>keys[e.code]=false);
 setInterval(()=>{if(paused||phase!=="fight")return;let x=(keys.KeyD||keys.ArrowRight?1:0)-(keys.KeyA||keys.ArrowLeft?1:0),z=(keys.KeyS||keys.ArrowDown?1:0)-(keys.KeyW||keys.ArrowUp?1:0);if(x||z){const n=norm(x,z);joy.x=n[0];joy.z=n[1]}else if(!joy.active){joy.x=joy.z=0}},16);
 
-settings.onclick=()=>{paused=true;modal.classList.add("open")};close.onclick=()=>{modal.classList.remove("open");paused=false;last=performance.now();acc=0};restart.onclick=()=>{restartMatch();modal.classList.remove("open");paused=false;last=performance.now()};playersEl.onchange=()=>{playerCount=clamp(+playersEl.value,2,10);restartMatch()};difficultyEl.onchange=()=>difficulty=+difficultyEl.value;soundBtn.onclick=()=>{sound=!sound;soundBtn.textContent=sound?"🔊":"🔇"};
-document.addEventListener("visibilitychange",()=>{if(document.hidden){paused=true;joy.x=joy.z=0}else{paused=false;last=performance.now();acc=0}});
+function openSettingsPaused(){paused=true;pauseOverlay.classList.remove("open");modal.classList.add("open");joy.x=joy.z=0}
+function closeSettingsToPause(){modal.classList.remove("open");paused=true;pauseOverlay.classList.add("open");joy.x=joy.z=0}
+function resumeFromPause(){pauseOverlay.classList.remove("open");paused=false;last=performance.now();acc=0}
+settings.onclick=openSettingsPaused;close.onclick=closeSettingsToPause;restart.onclick=()=>{restartMatch();closeSettingsToPause()};resumeGame.onclick=resumeFromPause;playersEl.onchange=()=>{playerCount=clamp(+playersEl.value,2,10);restartMatch();paused=true};difficultyEl.onchange=()=>difficulty=+difficultyEl.value;soundBtn.onclick=()=>{sound=!sound;soundBtn.textContent=sound?"🔊":"🔇"};
+document.addEventListener("visibilitychange",()=>{if(document.hidden){paused=true;joy.x=joy.z=0;if(!modal.classList.contains("open"))pauseOverlay.classList.add("open")}else{last=performance.now();acc=0}});
 window.SpaceBash={version:VERSION,setPlayers(n){playerCount=clamp(Math.round(+n||4),2,10);playersEl.value=playerCount;restartMatch()},getState(){return{version:VERSION,playerCount,round,timeLeft,phase,alive:fighters.filter(f=>f.alive&&!f.falling).length,wins:wins.slice(0,playerCount),tiles:tiles.filter(t=>t.alive).length}}};
 
 resetRound();updateHUD();requestAnimationFrame(loop);
