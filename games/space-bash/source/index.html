@@ -132,8 +132,12 @@ function callbackCameraInstall(){
   const launcher=document.createElement("button");launcher.type="button";launcher.className="callback-camera-launch";launcher.textContent="📷 Camera";launcher.setAttribute("aria-label","Open camera controls");
   const host=document.querySelector("#modal .modal");
   if(host){
-    const row=document.createElement("div");row.className="callback-camera-setting";row.innerHTML="<div><strong>Camera</strong><small>Rotate, zoom, tilt and save camera codes</small></div>";row.appendChild(launcher);
-    const buttons=host.querySelector(".modal-buttons,.modalBtns");host.insertBefore(row,buttons||null);
+    if(host.classList.contains("topbar")){
+      launcher.classList.add("pill");launcher.textContent="📷";launcher.title="Camera";host.appendChild(launcher);
+    }else{
+      const row=document.createElement("div");row.className="callback-camera-setting";row.innerHTML="<div><strong>Camera</strong><small>Rotate, zoom, tilt and save camera codes</small></div>";row.appendChild(launcher);
+      const buttons=host.querySelector(".modal-buttons,.modalBtns");host.insertBefore(row,buttons||null);
+    }
   }else{launcher.style.position="fixed";launcher.style.top="64px";launcher.style.right="8px";launcher.style.zIndex="9000";document.body.appendChild(launcher)}
   launcher.addEventListener("click",()=>{panel.classList.add("open");callbackCameraSync();const box=panel.querySelector("[data-camera-code]");if(box&&!box.value)box.value=callbackCameraCode()});
   panel.querySelector('[data-camera-action="close"]').addEventListener("click",()=>panel.classList.remove("open"));
