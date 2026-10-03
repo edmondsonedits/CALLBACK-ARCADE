@@ -75,6 +75,98 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.180.0/+esm";
 
 const $=s=>document.querySelector(s);
 const viewport=$("#viewport"),loading=$("#loading"),flash=$("#flash"),speedLines=$("#speedLines"),messageEl=$("#message"),countdownEl=$("#countdown"),raceBanner=$("#raceBanner"),lapLabel=$("#lapLabel"),lapSub=$("#lapSub"),placeText=$("#placeText"),timerEl=$("#timer"),speedText=$("#speedText"),momentumFill=$("#momentumFill"),standingsEl=$("#standings"),respawnBtn=$("#respawnBtn"),soundBtn=$("#soundBtn"),settingsBtn=$("#settingsBtn"),settingsModal=$("#settingsModal"),closeSettings=$("#closeSettings"),restartBtn=$("#restartBtn"),difficultyEl=$("#difficulty"),racerCountEl=$("#racerCount"),lapSetting=$("#lapSetting"),graphicsEl=$("#graphics"),hapticsToggle=$("#hapticsToggle"),debugToggle=$("#debugToggle"),debugPanel=$("#debugPanel"),pauseOverlay=$("#pauseOverlay"),resumeBtn=$("#resumeBtn"),finishOverlay=$("#finishOverlay"),finishPlace=$("#finishPlace"),finishCopy=$("#finishCopy"),raceAgainBtn=$("#raceAgainBtn"),joyWrap=$("#joyWrap"),joyBase=$("#joyBase"),joyKnob=$("#joyKnob");
+/* CALLBACK shared camera controls */
+const callbackCameraState={rotate:0,zoom:1,tilt:0};
+function callbackCameraClamp(v,a,b){return Math.max(a,Math.min(b,v))}
+function callbackCameraAdapter(){}
+const callbackCameraUp=new THREE.Vector3(0,1,0);
+const callbackCameraRight=new THREE.Vector3();
+const callbackCameraOffset=new THREE.Vector3();
+function callbackCameraAdjustDesired(desired,target){
+  callbackCameraOffset.copy(desired).sub(target).multiplyScalar(1/callbackCameraState.zoom);
+  callbackCameraOffset.applyAxisAngle(callbackCameraUp,callbackCameraState.rotate*Math.PI/180);
+  callbackCameraRight.crossVectors(callbackCameraUp,callbackCameraOffset);
+  if(callbackCameraRight.lengthSq()>.00001){
+    callbackCameraRight.normalize();
+    callbackCameraOffset.applyAxisAngle(callbackCameraRight,callbackCameraState.tilt*Math.PI/180);
+  }
+  desired.copy(target).add(callbackCameraOffset);
+  return desired;
+}
+function callbackCameraCode(){
+  const r=Math.round(callbackCameraState.rotate+180).toString(36).toUpperCase();
+  const z=Math.round(callbackCameraState.zoom*100).toString(36).toUpperCase();
+  const t=Math.round(callbackCameraState.tilt+35).toString(36).toUpperCase();
+  return "CAM-"+r+"-"+z+"-"+t;
+}
+function callbackCameraSync(){
+  const r=document.querySelector('[data-camera-control="rotate"]'),z=document.querySelector('[data-camera-control="zoom"]'),t=document.querySelector('[data-camera-control="tilt"]');
+  if(r)r.value=String(Math.round(callbackCameraState.rotate));
+  if(z)z.value=String(Math.round(callbackCameraState.zoom*100));
+  if(t)t.value=String(Math.round(callbackCameraState.tilt));
+  const rv=document.querySelector('[data-camera-value="rotate"]'),zv=document.querySelector('[data-camera-value="zoom"]'),tv=document.querySelector('[data-camera-value="tilt"]');
+  if(rv)rv.textContent=Math.round(callbackCameraState.rotate)+"°";
+  if(zv)zv.textContent=Math.round(callbackCameraState.zoom*100)+"%";
+  if(tv)tv.textContent=Math.round(callbackCameraState.tilt)+"°";
+}
+function callbackCameraApply(){callbackCameraAdapter(callbackCameraState);callbackCameraSync()}
+function callbackCameraSet(next){
+  if(next&&Number.isFinite(Number(next.rotate)))callbackCameraState.rotate=callbackCameraClamp(Number(next.rotate),-180,180);
+  if(next&&Number.isFinite(Number(next.zoom)))callbackCameraState.zoom=callbackCameraClamp(Number(next.zoom),.6,1.8);
+  if(next&&Number.isFinite(Number(next.tilt)))callbackCameraState.tilt=callbackCameraClamp(Number(next.tilt),-35,35);
+  callbackCameraApply();return {...callbackCameraState};
+}
+function callbackCameraLoad(code,persist=true){
+  const m=/^CAM-([0-9A-Z]+)-([0-9A-Z]+)-([0-9A-Z]+)$/i.exec(String(code||"").trim());
+  if(!m)return false;
+  const rotate=parseInt(m[1],36)-180,zoom=parseInt(m[2],36)/100,tilt=parseInt(m[3],36)-35;
+  if(!Number.isFinite(rotate)||!Number.isFinite(zoom)||!Number.isFinite(tilt)||rotate<-180||rotate>180||zoom<.6||zoom>1.8||tilt<-35||tilt>35)return false;
+  callbackCameraSet({rotate,zoom,tilt});
+  if(persist)try{localStorage.setItem("callback-camera:royal-roller-ruckus",callbackCameraCode())}catch{}
+  return true;
+}
+function callbackCameraSave(){
+  const code=callbackCameraCode();
+  try{localStorage.setItem("callback-camera:royal-roller-ruckus",code)}catch{}
+  const box=document.querySelector("[data-camera-code]");if(box)box.value=code;
+  const status=document.querySelector("[data-camera-status]");if(status)status.textContent="Saved "+code;
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(code).then(()=>{if(status)status.textContent="Saved + copied "+code}).catch(()=>{});
+  return code;
+}
+function callbackCameraReset(){callbackCameraSet({rotate:0,zoom:1,tilt:0});const status=document.querySelector("[data-camera-status]");if(status)status.textContent="Camera reset to game default."}
+function callbackCameraInstall(){
+  if(document.getElementById("callbackCameraPanel"))return;
+  const style=document.createElement("style");
+  style.textContent=".callback-camera-back{position:fixed;inset:0;display:none;place-items:center;padding:18px;background:#02060bb8;z-index:10000;pointer-events:auto}.callback-camera-back.open{display:grid}.callback-camera-card{width:min(94vw,470px);max-height:88vh;overflow:auto;padding:20px;border-radius:22px;border:1px solid #ffffff2b;background:#0b1725f7;color:#fff;box-shadow:0 24px 80px #000a;font-family:Inter,system-ui,sans-serif}.callback-camera-card h2{margin:0 0 6px}.callback-camera-card p{margin:0 0 14px;color:#b9cbd1;font-size:12px;line-height:1.4}.callback-camera-row{display:grid;grid-template-columns:94px 1fr 52px;gap:10px;align-items:center;padding:9px 0;border-top:1px solid #ffffff17}.callback-camera-row input[type=range]{width:100%;accent-color:#f2c85f}.callback-camera-row b{text-align:right;font-size:12px}.callback-camera-code{display:grid;grid-template-columns:1fr auto;gap:8px;margin-top:12px}.callback-camera-code input{min-width:0;height:42px;border-radius:10px;border:1px solid #ffffff28;background:#06111d;color:#fff;padding:0 10px;font:800 13px ui-monospace,monospace;text-transform:uppercase}.callback-camera-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}.callback-camera-actions button,.callback-camera-launch{min-height:42px;border-radius:11px;border:1px solid #ffffff2a;background:#173247;color:#fff;padding:0 12px;font:800 12px system-ui}.callback-camera-actions .primary{border-color:#f2c85f66;background:#5b451c}.callback-camera-status{min-height:18px;margin-top:8px;color:#f2d786;font-size:11px}.callback-camera-setting{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:10px 0;border-top:1px solid #ffffff18}.callback-camera-setting small{display:block;color:#aebfca;font-size:9px;margin-top:2px}@media(max-width:420px){.callback-camera-row{grid-template-columns:72px 1fr 46px}.callback-camera-card{padding:16px}}";
+  document.head.appendChild(style);
+  const panel=document.createElement("div");panel.id="callbackCameraPanel";panel.className="callback-camera-back";
+  panel.innerHTML='<div class="callback-camera-card" role="dialog" aria-modal="true" aria-label="Camera controls"><h2>Camera Controls</h2><p>Adjust the view without changing game physics. Your current setup can be saved as a reusable camera code.</p><div class="callback-camera-row"><label>Rotate</label><input data-camera-control="rotate" type="range" min="-180" max="180" step="1" value="0"><b data-camera-value="rotate">0°</b></div><div class="callback-camera-row"><label>Zoom</label><input data-camera-control="zoom" type="range" min="60" max="180" step="1" value="100"><b data-camera-value="zoom">100%</b></div><div class="callback-camera-row"><label>Tilt</label><input data-camera-control="tilt" type="range" min="-35" max="35" step="1" value="0"><b data-camera-value="tilt">0°</b></div><div class="callback-camera-code"><input data-camera-code aria-label="Camera save code" placeholder="CAM-..." autocomplete="off" spellcheck="false"><button data-camera-action="load" type="button">Load Code</button></div><div class="callback-camera-actions"><button data-camera-action="reset" type="button">Reset Camera</button><button data-camera-action="save" class="primary" type="button">Save Code</button></div><div class="callback-camera-actions"><button data-camera-action="close" type="button" style="grid-column:1/-1">Close</button></div><div class="callback-camera-status" data-camera-status aria-live="polite"></div></div>';
+  document.body.appendChild(panel);
+  const launcher=document.createElement("button");launcher.type="button";launcher.className="callback-camera-launch";launcher.textContent="📷 Camera";launcher.setAttribute("aria-label","Open camera controls");
+  const host=document.querySelector("#settingsModal .modal");
+  if(host){
+    const row=document.createElement("div");row.className="callback-camera-setting";row.innerHTML="<div><strong>Camera</strong><small>Rotate, zoom, tilt and save camera codes</small></div>";row.appendChild(launcher);
+    const buttons=host.querySelector(".modal-buttons,.modalBtns");host.insertBefore(row,buttons||null);
+  }else{launcher.style.position="fixed";launcher.style.top="64px";launcher.style.right="8px";launcher.style.zIndex="9000";document.body.appendChild(launcher)}
+  launcher.addEventListener("click",()=>{panel.classList.add("open");callbackCameraSync();const box=panel.querySelector("[data-camera-code]");if(box&&!box.value)box.value=callbackCameraCode()});
+  panel.querySelector('[data-camera-action="close"]').addEventListener("click",()=>panel.classList.remove("open"));
+  panel.addEventListener("pointerdown",e=>{if(e.target===panel)panel.classList.remove("open")});
+  panel.querySelectorAll("[data-camera-control]").forEach(el=>el.addEventListener("input",()=>{
+    if(el.dataset.cameraControl==="rotate")callbackCameraSet({rotate:Number(el.value)});
+    else if(el.dataset.cameraControl==="zoom")callbackCameraSet({zoom:Number(el.value)/100});
+    else callbackCameraSet({tilt:Number(el.value)});
+  }));
+  panel.querySelector('[data-camera-action="reset"]').addEventListener("click",callbackCameraReset);
+  panel.querySelector('[data-camera-action="save"]').addEventListener("click",callbackCameraSave);
+  panel.querySelector('[data-camera-action="load"]').addEventListener("click",()=>{
+    const box=panel.querySelector("[data-camera-code]"),status=panel.querySelector("[data-camera-status]");
+    if(callbackCameraLoad(box.value,true)){box.value=callbackCameraCode();status.textContent="Loaded "+box.value}else status.textContent="That camera code is not valid.";
+  });
+  try{const saved=localStorage.getItem("callback-camera:royal-roller-ruckus");if(saved)callbackCameraLoad(saved,false);else callbackCameraApply()}catch{callbackCameraApply()}
+}
+window.CallbackCamera={get:()=>({...callbackCameraState}),set:callbackCameraSet,reset:callbackCameraReset,code:callbackCameraCode,save:callbackCameraSave,load:callbackCameraLoad};
+setTimeout(callbackCameraInstall,0);
+
 
 const VERSION="1.4.0-vertical-crownway";
 const MAX_PLAYERS=10,DEFAULT_RACERS=4;
@@ -708,21 +800,24 @@ function updateCamera(dt){
   if(p.falling){
     const moveSp=Math.hypot(p.vx,p.vz),fx=moveSp>.2?p.vx/moveSp:Math.sin(cameraYaw),fz=moveSp>.2?p.vz/moveSp:Math.cos(cameraYaw);
     CAM_DESIRED.set(p.x-fx*C.fallDistance+shakeX,p.y+C.fallHeight,p.z-fz*C.fallDistance+shakeZ);
+    CAM_LOOK.set(p.x,p.y+C.fallLookDrop,p.z);
+    callbackCameraAdjustDesired(CAM_DESIRED,CAM_LOOK);
     camera.position.lerp(CAM_DESIRED,1-Math.exp(-C.positionFollow*dt));
-    CAM_LOOK.set(p.x,p.y+C.fallLookDrop,p.z);camera.lookAt(CAM_LOOK);
+    camera.lookAt(CAM_LOOK);
     camera.fov=damp(camera.fov,C.baseFov+4,C.fovFollow,dt);camera.updateProjectionMatrix();return;
   }
 
   const backDist=lerp(5.7,6.7,speed01),backX=Math.sin(cameraYaw)*-backDist,backZ=Math.cos(cameraYaw)*-backDist;
   const edgeSide=-Math.sign(lateral)*cameraEdgeDanger*C.edgePull;
   CAM_DESIRED.set(p.x+backX+normal.x*edgeSide+shakeX,p.y+4.35+speed01*.42+cameraEdgeDanger*C.edgeLift,p.z+backZ+normal.z*edgeSide+shakeZ);
-  camera.position.lerp(CAM_DESIRED,1-Math.exp(-C.positionFollow*dt));
 
   const lookAhead=lerp(1.7,C.lookAheadWorld,speed01),hillLook=(future.y-trackNow.y)*.38;
   CAM_LOOK.set(p.x+Math.sin(cameraYaw)*lookAhead,p.y+.30+hillLook,p.z+Math.cos(cameraYaw)*lookAhead);
   if(rival&&cameraRivalBlend>.01){
     const w=cameraRivalBlend*C.rivalWeight;CAM_LOOK.x=lerp(CAM_LOOK.x,CAM_RIVAL.x,w);CAM_LOOK.y=lerp(CAM_LOOK.y,CAM_RIVAL.y+.2,w*.45);CAM_LOOK.z=lerp(CAM_LOOK.z,CAM_RIVAL.z,w);
   }
+  callbackCameraAdjustDesired(CAM_DESIRED,CAM_LOOK);
+  camera.position.lerp(CAM_DESIRED,1-Math.exp(-C.positionFollow*dt));
   camera.lookAt(CAM_LOOK);
   const targetFov=C.baseFov+speed01*C.speedFov+cameraRivalBlend*.8+cameraEdgeDanger*1.1;
   camera.fov=damp(camera.fov,targetFov,C.fovFollow,dt);camera.updateProjectionMatrix();
