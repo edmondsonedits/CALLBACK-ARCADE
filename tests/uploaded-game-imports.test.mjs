@@ -12,12 +12,18 @@ test('new uploaded arcade games have runnable entry files and preserved original
   const space=await read('games/space-bash/source/index.html');
   const spaceOriginal=await read('games/space-bash/source/original/space_bash_orbital_breakout_v1.13.1_standalone.html');
 
-  assert.equal(twisted,twistedOriginal);
-  assert.equal(roller,rollerOriginal);
-  assert.equal(space,spaceOriginal);
+  assert.equal(Buffer.byteLength(twistedOriginal,'utf8'),57905);
+  assert.equal(Buffer.byteLength(rollerOriginal,'utf8'),81298);
+  assert.equal(Buffer.byteLength(spaceOriginal,'utf8'),34534);
+  assert.doesNotMatch(twistedOriginal,/window\.CallbackCamera/);
+  assert.doesNotMatch(rollerOriginal,/window\.CallbackCamera/);
+  assert.doesNotMatch(spaceOriginal,/window\.CallbackCamera/);
   assert.match(twisted,/0\.5\.0-original-camera-knockback/);
   assert.match(roller,/1\.4\.0-vertical-crownway/);
   assert.match(space,/1\.13\.1-standalone/);
+  assert.match(twisted,/window\.CallbackCamera/);
+  assert.match(roller,/window\.CallbackCamera/);
+  assert.match(space,/window\.CallbackCamera/);
 });
 
 test('older uploaded builds are archived rather than promoted over newer versions', async()=>{
