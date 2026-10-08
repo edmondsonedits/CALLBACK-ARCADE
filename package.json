@@ -3,7 +3,9 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "engines": { "node": ">=22.13.0" },
+  "engines": {
+    "node": ">=22.13.0"
+  },
   "scripts": {
     "test": "node --experimental-strip-types --test tests/*.test.mjs",
     "typecheck": "tsc --noEmit",
@@ -14,7 +16,8 @@
     "dev": "node scripts/run-wrangler.mjs dev -c wrangler.local.jsonc",
     "db:migrate": "node scripts/run-wrangler.mjs d1 migrations apply arcade-catalog --local -c wrangler.local.jsonc",
     "db:seed": "npm run catalog:generate && node scripts/run-wrangler.mjs d1 execute arcade-catalog --local --file=db/seed.sql -c wrangler.local.jsonc",
-    "deploy:production": "node --experimental-strip-types scripts/deploy-preflight.ts --production && node scripts/run-wrangler.mjs deploy -c wrangler.jsonc"
+    "deploy:production": "node --experimental-strip-types scripts/deploy-preflight.ts --production && node scripts/run-wrangler.mjs deploy -c wrangler.jsonc",
+    "pages:build": "node scripts/build-pages.mjs"
   },
   "devDependencies": {
     "@types/node": "22.18.6",
