@@ -35,3 +35,12 @@ test('GitHub Pages workflow builds and deploys the static arcade',async()=>{
   assert.match(workflow,/actions\/upload-pages-artifact@v4/);
   assert.match(workflow,/actions\/deploy-pages@v4/);
 });
+
+test('generated game index points to GitHub Pages instead of GitHack',async()=>{
+  const generator=await readFile('scripts/catalog.ts','utf8');
+  const index=await readFile('GAME_INDEX.md','utf8');
+  assert.match(generator,/https:\/\/edmondsonedits\.github\.io\/CALLBACK-ARCADE\/games\/\$\{game\.id\}\//);
+  assert.doesNotMatch(generator,/raw\.githack\.com/);
+  assert.match(index,/https:\/\/edmondsonedits\.github\.io\/CALLBACK-ARCADE\/games\/royal-ballistix\//);
+  assert.doesNotMatch(index,/raw\.githack\.com/);
+});
