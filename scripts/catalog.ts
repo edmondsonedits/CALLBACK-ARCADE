@@ -18,10 +18,10 @@ const catalog = { ...buildCatalog(entries), revision: revisionOf(entries) };
 const errors = validateCatalog(catalog);
 if (errors.length) throw new Error(errors.join('\n'));
 const json = `${JSON.stringify(catalog, null, 2)}\n`;
-const md = `# Game index\n\nGenerated from validated game manifests. Run \`npm run catalog:generate\` after editing a manifest. Source links open the current repository copy when present and the known provenance link otherwise. Imported games also include a RawGitHack launch link for direct browser play.\n\n${catalog.games.map(game => {
+const md = `# Game index\n\nGenerated from validated game manifests. Run \`npm run catalog:generate\` after editing a manifest. Source links open the current repository copy when present and the known provenance link otherwise. Imported games also include a GitHub Pages launch link for direct browser play.\n\n${catalog.games.map(game => {
   const repo = 'https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main';
   const source = game.source.paths.length ? game.source.paths.map(p => `[${p}](${repo}/games/${game.id}/${p})`).join(', ') : game.source.url ? `[known source](${game.source.url})` : 'awaiting source attachment';
-  const play = game.source.paths.includes('source/index.html') ? `\n- Play: [launch game](https://raw.githack.com/edmondsonedits/CALLBACK-ARCADE/main/games/${game.id}/source/index.html)` : '';
+  const play = game.source.paths.includes('source/index.html') ? `\n- Play: [launch game](https://edmondsonedits.github.io/CALLBACK-ARCADE/games/${game.id}/)` : '';
   return `## ${game.title}\n\n- ID: \`${game.id}\` ([manifest](${repo}/games/${game.id}/manifest.json), [game guide](${repo}/games/${game.id}/README.md))\n- Status: ${game.source.status}; multiplayer ${game.multiplayer.status}\n- Players: ${game.players.min}–${game.players.max}\n- Version: ${game.version}\n- Source: ${source}${play}\n\n${game.description}\n`;
 }).join('\n')}`;
 const quote = (s: string) => `'${s.replace(/'/g, "''")}'`;
