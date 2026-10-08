@@ -15,6 +15,8 @@ function render() {
     const desc = document.createElement('p'); desc.className = 'description'; desc.textContent = game.description;
     const facts = document.createElement('p'); facts.className = 'facts'; facts.textContent = `${game.players.min}–${game.players.max} contestant slots · v${game.version} · Multiplayer ${game.multiplayer.status}`;
     const links = document.createElement('p'); links.className = 'links';
+    const hasLocalBuild = location.hostname.endsWith('.github.io') || location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+    if (hasLocalBuild && game.source.paths.includes('source/index.html')) { const play = document.createElement('a'); play.href = `games/${encodeURIComponent(game.id)}/`; play.textContent = 'Play'; links.append(play); }
     const manifest = document.createElement('a'); manifest.href = `https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/${encodeURIComponent(game.id)}/manifest.json`; manifest.textContent = 'Manifest';
     links.append(manifest);
     const readme = document.createElement('a'); readme.href = `https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/${encodeURIComponent(game.id)}/README.md`; readme.textContent = 'Game guide'; links.append(readme);
@@ -26,5 +28,10 @@ function render() {
   empty.hidden = visible.length > 0;
 }
 input.addEventListener('input', render);
-try { const response = await fetch('/api/games'); if (!response.ok) throw new Error('catalog request failed'); games = (await response.json()).games; render(); }
+try {
+  let response = await fetch('/api/games');
+  if (!response.ok) response = await fetch('catalog/games.json');
+  if (!response.ok) throw new Error('catalog request failed');
+  const payload = await response.json(); games = payload.games ?? payload; render();
+}
 catch { count.textContent = ''; error.hidden = false; }
