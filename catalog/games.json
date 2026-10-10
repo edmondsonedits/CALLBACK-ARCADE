@@ -3,6 +3,43 @@
   "generatedFrom": "games/*/manifest.json",
   "games": [
     {
+      "id": "blind-crown",
+      "title": "Blind Crown — Refined Edition",
+      "aliases": [
+        "Blind Crown",
+        "Classic Blind Volley"
+      ],
+      "tags": [
+        "strategy",
+        "simultaneous-turns",
+        "archery",
+        "arcade",
+        "party",
+        "bots",
+        "mobile",
+        "canvas"
+      ],
+      "description": "Private-plan archery for 2–10 contestant slots. Choose a position and aim, lock your plan, then watch the simultaneous reveal and volley. This unchanged v1.4 standalone supports one local player with bots, three arenas and four views. First/third-person views default to Canvas 2.5D; hosted phone-room multiplayer is not integrated.",
+      "players": {
+        "min": 2,
+        "max": 10
+      },
+      "version": "1.4.0",
+      "source": {
+        "status": "imported",
+        "paths": [
+          "source/index.html"
+        ],
+        "provenance": "Imported byte-for-byte from the user-supplied BLIND_CROWN_Refined_v1.4_Play_Solo.html, developed in the user's ChatGPT Blind Crown project. SHA-256: 496131ad8031a58b8b2ec78cc1aace73f57ab1ca0646271b383bf48bb108c462. Embedded Canvas artwork, synthesized audio, system fonts and project-generated knight GLB; optional pinned Three.js CDN imports are experimental. See assets/README.md for provenance and limitations.",
+        "url": null
+      },
+      "lifecycle": "experimental",
+      "multiplayer": {
+        "status": "not-integrated",
+        "evidence": []
+      }
+    },
+    {
       "id": "royal-ballistix",
       "title": "Royal Ballistix — Beach Siege",
       "aliases": [
@@ -249,5 +286,5 @@
       }
     }
   ],
-  "revision": "13865125568d5ed4a3fdfd657e641ed63f5c4fdb661d2856a81582e446be701b"
+  "revision": "3a8f66f6a382a1edc9a5fb8a8dcfba2dc0b201dc21ff5e7f629be10c829ea603"
 }

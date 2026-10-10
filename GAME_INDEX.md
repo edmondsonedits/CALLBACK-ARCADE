@@ -2,6 +2,17 @@
 
 Generated from validated game manifests. Run `npm run catalog:generate` after editing a manifest. Source links open the current repository copy when present and the known provenance link otherwise. Imported games also include a GitHub Pages launch link for direct browser play.
 
+## Blind Crown — Refined Edition
+
+- ID: `blind-crown` ([manifest](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/blind-crown/manifest.json), [game guide](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/blind-crown/README.md))
+- Status: imported; multiplayer not-integrated
+- Players: 2–10
+- Version: 1.4.0
+- Source: [source/index.html](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/blind-crown/source/index.html)
+- Play: [launch game](https://edmondsonedits.github.io/CALLBACK-ARCADE/games/blind-crown/)
+
+Private-plan archery for 2–10 contestant slots. Choose a position and aim, lock your plan, then watch the simultaneous reveal and volley. This unchanged v1.4 standalone supports one local player with bots, three arenas and four views. First/third-person views default to Canvas 2.5D; hosted phone-room multiplayer is not integrated.
+
 ## Royal Ballistix — Beach Siege
 
 - ID: `royal-ballistix` ([manifest](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-ballistix/manifest.json), [game guide](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-ballistix/README.md))
