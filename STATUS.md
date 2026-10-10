@@ -1,7 +1,8 @@
 # Current status
 
-The repository now contains six imported arcade game packages with runnable `source/index.html` entries:
+The repository now contains seven imported arcade game packages with runnable `source/index.html` entries:
 
+- **Blind Crown — Refined Edition v1.4.0** — imported unchanged; one local human with bots in 2–10 contestant slots. Canvas 2D/2.5D views are the default; polygonal 3D remains experimental. Hosted phone multiplayer is not integrated.
 - **Royal Ballistix — Beach Siege v0.12.0** — imported; multiplayer not integrated.
 - **Royal Roller Ruckus — Crownway Circuit v1.4.0** — imported; CALLBACK input hooks exist; multiplayer in progress.
 - **Royal Scratch Match v0.5.0** — imported; multiplayer not integrated.
