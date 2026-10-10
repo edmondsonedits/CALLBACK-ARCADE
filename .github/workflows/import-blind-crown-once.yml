@@ -2,7 +2,7 @@ name: Verify Blind Crown import
 on:
   push:
     branches: [chatgpt/blind-crown-v1-4-import]
-    paths: [games/blind-crown/import/standalone.html.gz.b64]
+    paths: ['games/blind-crown/import/part-*.b64']
 permissions:
   contents: write
 jobs:
@@ -22,12 +22,16 @@ jobs:
           import base64, gzip, hashlib
           from pathlib import Path
           root = Path('games/blind-crown')
-          content = gzip.decompress(base64.b64decode((root/'import/standalone.html.gz.b64').read_text(), validate=False))
+          parts = sorted((root/'import').glob('part-*.b64'))
+          assert len(parts) == 33, 'Incomplete source transfer'
+          content = gzip.decompress(base64.b64decode(''.join(p.read_text() for p in parts), validate=True))
           expected = '496131ad8031a58b8b2ec78cc1aace73f57ab1ca0646271b383bf48bb108c462'
           assert hashlib.sha256(content).hexdigest() == expected, 'Source hash mismatch'
           (root/'source').mkdir(exist_ok=True)
           (root/'source/index.html').write_bytes(content)
+          print('Restored exact v1.4:', len(content), 'bytes; SHA-256:', expected)
           PY
+      - run: node --test games/blind-crown/tests/standalone.test.mjs
       - run: npm ci
       - run: npm run catalog:generate
       - run: npm run catalog:check
