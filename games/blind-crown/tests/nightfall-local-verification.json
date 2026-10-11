@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "kind": "blind-crown-standalone-local-verification",
+  "version": "1.5.0",
+  "result": "passed",
+  "finishedAt": "2026-10-11T01:35:50.590701+00:00",
+  "scope": "Local package checks; not public deployment or hosted multiplayer attestation",
+  "sourceHashes": [
+    {
+      "path": "source/index.html",
+      "sha256": "06a0238b9827cd6f4395ec33cd0b2c8c7ce758bc15135a946ed7c737e53ef0e4"
+    }
+  ],
+  "checks": [
+    {
+      "name": "build",
+      "result": "passed",
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "build_offline.py"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "engine-suites",
+      "result": "passed",
+      "command": [
+        "node",
+        "tests/run-unit.js"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "vendor-procurement-synthetic",
+      "result": "passed",
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "tests/test_vendor_three.py"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "vendor-embedding-synthetic",
+      "result": "passed",
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "tests/test_offline_vendor_map.py"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "all runtime JavaScript syntax",
+      "result": "passed"
+    },
+    {
+      "name": "repeat-build",
+      "result": "passed",
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "build_offline.py"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "reproducible standalone and no font distribution",
+      "result": "passed"
+    },
+    {
+      "name": "actual HTTP health and asset byte equality",
+      "result": "passed"
+    },
+    {
+      "name": "network-v14",
+      "result": "passed",
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "tests/test_network_v14.py"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "ten-seat",
+      "result": "passed",
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "tests/test_multiplayer.py"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "room-client-v14",
+      "result": "passed",
+      "command": [
+        "node",
+        "tests/test_room_client_v14.js"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "browser-ui",
+      "result": "passed",
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "tests/test_ui_v14.py"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "browser-interaction",
+      "result": "passed",
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "tests/test_interaction_v14.py"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "browser-storage",
+      "result": "passed",
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "tests/test_storage_v14.py"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "blocked-3d-fallback",
+      "result": "passed",
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "tests/test_fallback_v14.py"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "presentation-visuals",
+      "result": "passed",
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "tests/presentation/test_visuals.py"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "presentation-hud",
+      "result": "passed",
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "tests/presentation/test_hud.py"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "presentation-final",
+      "result": "passed",
+      "command": [
+        "/opt/pyvenv/bin/python",
+        "tests/presentation/test_final.py"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "limitations": [
+    "Three.js engine modules not downloaded; actual WebGL/glTF appearance untested.",
+    "No physical mobile device or Safari test.",
+    "Managed Chromium blocked local HTTP navigation with ERR_BLOCKED_BY_ADMINISTRATOR; browser tests render the standalone via set_content. Actual socket tests run separately using Python/Node.",
+    "No Task 2\u20134 feature merge; existing v1.4 rules and maps retained.",
+    "Local verification does not establish public deployment or CALLBACK multiplayer integration."
+  ]
+}

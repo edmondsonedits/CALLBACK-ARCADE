@@ -1,17 +1,38 @@
 {
   "id": "blind-crown",
-  "title": "Blind Crown — Refined Edition",
-  "aliases": ["Blind Crown", "Classic Blind Volley"],
-  "tags": ["strategy", "simultaneous-turns", "archery", "arcade", "party", "bots", "mobile", "canvas"],
-  "description": "Private-plan archery for 2–10 contestant slots. Choose a position and aim, lock your plan, then watch the simultaneous reveal and volley. This unchanged v1.4 standalone supports one local player with bots, three arenas and four views. First/third-person views default to Canvas 2.5D; hosted phone-room multiplayer is not integrated.",
-  "players": {"min": 2, "max": 10},
-  "version": "1.4.0",
+  "title": "Blind Crown — Nightfall",
+  "aliases": [
+    "Blind Crown",
+    "Classic Blind Volley"
+  ],
+  "tags": [
+    "strategy",
+    "simultaneous-turns",
+    "archery",
+    "arcade",
+    "party",
+    "bots",
+    "mobile",
+    "canvas"
+  ],
+  "description": "Private-plan medieval archery for 2–10 contestant slots. Nightfall adds textured diorama arenas, armored knights, torchlight, matching portraits, responsive controls and timed volley effects while preserving Classic rules. One local human with bots; first/third-person default to Canvas 2.5D. Hosted phone multiplayer is not integrated.",
+  "players": {
+    "min": 2,
+    "max": 10
+  },
+  "version": "1.5.0",
   "source": {
     "status": "imported",
-    "paths": ["source/index.html"],
-    "provenance": "Imported byte-for-byte from the user-supplied BLIND_CROWN_Refined_v1.4_Play_Solo.html, developed in the user's ChatGPT Blind Crown project. SHA-256: 496131ad8031a58b8b2ec78cc1aace73f57ab1ca0646271b383bf48bb108c462. Embedded Canvas artwork, synthesized audio, system fonts and project-generated knight GLB; optional pinned Three.js CDN imports are experimental. See assets/README.md for provenance and limitations.",
+    "paths": [
+      "source/index.html",
+      "source/original/blind-crown-v1.4.html"
+    ],
+    "provenance": "Nightfall v1.5 presentation upgrade from the exact supplied Refined v1.4 game, preserved under source/original/. New original Canvas/SVG art and synthesized audio; no external art/font/music packs added. Current standalone SHA-256: 06a0238b9827cd6f4395ec33cd0b2c8c7ce758bc15135a946ed7c737e53ef0e4. Experimental pinned Three.js remains opt-in and unverified. See assets/README.md.",
     "url": null
   },
   "lifecycle": "experimental",
-  "multiplayer": {"status": "not-integrated", "evidence": []}
+  "multiplayer": {
+    "status": "not-integrated",
+    "evidence": []
+  }
 }

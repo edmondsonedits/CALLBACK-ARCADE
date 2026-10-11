@@ -6,7 +6,7 @@ import vm from 'node:vm';
 
 const html = await readFile(new URL('../source/index.html', import.meta.url));
 const scripts = [...html.toString('utf8').matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)];
-const expected = '496131ad8031a58b8b2ec78cc1aace73f57ab1ca0646271b383bf48bb108c462';
+const expected = '06a0238b9827cd6f4395ec33cd0b2c8c7ce758bc15135a946ed7c737e53ef0e4';
 function engine() {
   const entry = scripts.find(([, , code]) => code.includes('deterministic, authoritative match rules'));
   assert.ok(entry, 'Complete engine must be embedded in standalone');
@@ -23,8 +23,8 @@ function match() {
   return { game, a, b };
 }
 
-test('Imported HTML matches supplied v1.4 bytes exactly', () => {
-  assert.equal(html.length, 159955);
+test('Nightfall HTML matches the verified v1.5 bytes exactly', () => {
+  assert.equal(html.length, 171542);
   assert.equal(createHash('sha256').update(html).digest('hex'), expected);
 });
 test('Embedded classic scripts compile without rewriting source', () => {
@@ -64,4 +64,12 @@ test('Default Classic match supports ten contestants including bots', () => {
   game.addPlayer('Player'); game.addBots(9); game.begin();
   assert.equal(game.players.length, 10);
   assert.equal(game.state().settings.ruleset, 'classic');
+});
+
+test('Original v1.4 remains recoverable and deterministic engine is unchanged', async () => {
+  const original = await readFile(new URL('../source/original/blind-crown-v1.4.html', import.meta.url));
+  assert.equal(createHash('sha256').update(original).digest('hex'), '496131ad8031a58b8b2ec78cc1aace73f57ab1ca0646271b383bf48bb108c462');
+  const originalScripts = [...original.toString('utf8').matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)];
+  const select = list => list.find(([, , code]) => code.includes('deterministic, authoritative match rules'))[2];
+  assert.equal(select(scripts), select(originalScripts));
 });

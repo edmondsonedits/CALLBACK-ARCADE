@@ -1,40 +1,23 @@
-# Blind Crown — Refined Edition v1.4.0
+# Blind Crown — Nightfall v1.5.0
 
-This entry preserves the complete supplied standalone HTML without changing its gameplay, simulation, controls or bot behaviour.
+Play: https://edmondsonedits.github.io/CALLBACK-ARCADE/games/blind-crown/
 
-## Play
+Secret-position archery: place, aim, lock, then reveal and fire simultaneously. Classic Blind Volley remains the default. The static build runs one human against bots in 2–10 contestant slots. Room-code phone multiplayer is **not hosted by this GitHub Pages build**.
 
-The arcade Pages build publishes `source/index.html` at `/CALLBACK-ARCADE/games/blind-crown/`. Open the arcade homepage and choose Blind Crown. The HTML can also be opened directly for offline solo/bot play.
+Nightfall adds original armored knights, textured diorama arenas, torchlight and atmospheric detail, matching portraits, a steel/brass HUD, visual arena selection, timed impact/recoil feedback, synthesized opt-in audio and ranked final standings. It preserves the original three maps and four cameras. First/third-person remain Canvas 2.5D; optional polygonal Three.js remains experimental and unverified.
 
-Players privately select positions and aim during planning. Plans freeze at the deadline, reveal together, and arrows resolve simultaneously. Classic Blind Volley is the default. Precision rules are optional. Contestant capacity is 2–10, including bots; this Pages entry supports one local human with bot-filled seats, not ten networked phones.
+## Controls
 
-## Controls and options
+Place then tap a legal spot; Aim then point; Lock shot commits before the timer expires. WASD/arrows move, Q/E turns, ±1° adjusts, Space locks. First/third-person use drag-to-aim and a private placement map. Touch stick and aiming are independent. Keep your planning screen private. Local settings/pause stop the local clock; online clocks would continue.
 
-Use the on-screen instructions and controls: touch movement stick with independent aiming, keyboard movement, precise aim adjustments and Lock. Camera options include overhead, isometric, third person and first person. First/third-person default to the tested Canvas 2.5D renderer. Settings include arena, bot count/difficulty, planning time, camera quality and reduced motion.
+## Edit and verify
 
-## Source organization
+The complete runnable build is `source/index.html`; the untouched v1.4 original is `source/original/blind-crown-v1.4.html`. Search embedded module markers for engine, CrownArt, CrownArena, CrownPerspective and app coordinator. The underlying deterministic engine and existing input/network modules are unchanged from v1.4. Modular development source and the private LAN server are in the separately delivered full v1.5 package, not this static import.
 
-`source/index.html` is the authoritative complete standalone import. It embeds the deterministic engine, perspective adapter, optional Three.js bridge, Canvas renderer, room client, input controller and application coordinator. `assets/README.md` records embedded asset provenance. `tests/standalone.test.mjs` checks exact source identity, script syntax, private state, simultaneous collisions and ten contestant slots.
+Run `node --test games/blind-crown/tests/standalone.test.mjs` from the repository root. Browser tests in `tests/presentation/` require Python Playwright and Chromium (`CHROME_BIN` can override the executable). See `tests/NIGHTFALL_REPORT.md` and source-bound local evidence. CI static-browser results are separate from local checks.
 
-Run from the repository root:
+After manifest changes run `npm run catalog:generate`, `npm run catalog:check`, `npm test`, `npm run typecheck` and `npm run pages:build`. Do not manually edit generated catalogs or claim multiplayer readiness from a static import.
 
-```sh
-node --test games/blind-crown/tests/standalone.test.mjs
-npm run catalog:generate
-npm run catalog:check
-npm test
-npm run typecheck
-npm run pages:build
-```
+## Limits
 
-After a deliberate game update, bump the manifest version and update the expected source hash in the import test. Regenerate catalog outputs rather than editing them by hand.
-
-## Known limitations and integration boundary
-
-- True polygonal WebGL rendering and physical-device mobile performance are not verified by this import.
-- The optional Three.js bridge still uses CDN modules; the default Canvas game is self-contained.
-- The separate v1.4 full source package contains a Node multiplayer server, but that server is not hosted or copied into this static entry. GitHub Pages and the CALLBACK catalog do not provide its room transport. No multiplayer-ready claim is made.
-- Later Task 2–4 weapon, map/editor and party packages were not merged into this v1.4 source.
-- Browser emulation and engine tests do not establish human playtest quality or production readiness.
-
-Keep hidden plans out of TV/spectator payloads in any future transport integration and follow `docs/GAME_SDK.md`.
+No physical-phone or Safari QA, no full polygonal-3D runtime validation, and no new weapons/map-editor/party-runtime merge. Reduced motion suppresses animation/particles; sound is opt-in. New art is original Canvas/SVG with no downloaded texture/model/font/audio packs. See assets/README.md.

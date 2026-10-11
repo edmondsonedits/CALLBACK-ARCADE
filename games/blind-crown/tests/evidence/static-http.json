@@ -1,0 +1,28 @@
+{
+  "result": "passed",
+  "scope": "Connected CI HTTP-served Pages output; not physical devices or hosted multiplayer",
+  "sevenGameCatalog": true,
+  "records": [
+    {
+      "viewport": "1440x960",
+      "mobileEmulation": false,
+      "result": "passed",
+      "pageErrors": [],
+      "externalRequests": []
+    },
+    {
+      "viewport": "390x844",
+      "mobileEmulation": true,
+      "result": "passed",
+      "pageErrors": [],
+      "externalRequests": []
+    },
+    {
+      "viewport": "844x390",
+      "mobileEmulation": true,
+      "result": "passed",
+      "pageErrors": [],
+      "externalRequests": []
+    }
+  ]
+}
