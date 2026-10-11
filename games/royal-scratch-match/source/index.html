@@ -312,6 +312,8 @@ setTimeout(callbackCameraInstall,0);
   let beatPulse=0;
   let lastBeatIndex=-1;
   let finishQueued=false;
+  let roundGeneration=0;
+  let roundEndTimer=null;
   let flash={a:0,color:'#fff'};
   let audioCtx=null,master=null;
   let hitText={text:'',sub:'',a:0,color:'#fff'};
@@ -448,10 +450,15 @@ setTimeout(callbackCameraInstall,0);
   function queueRoundEnd(delay=TUNING.round.endDelay){
     if(finishQueued)return;finishQueued=true;phase='finishing';phaseClock=gameClock();setControlMode('listen');
     bigMsg.textContent=players[0].alive?'FINAL BEAT':'ELIMINATED';smallMsg.textContent='';
-    setTimeout(endRound,delay*1000);
+    const generation=roundGeneration;
+    roundEndTimer=setTimeout(()=>{
+      if(generation!==roundGeneration||phase!=='finishing')return;
+      roundEndTimer=null;endRound();
+    },delay*1000);
   }
 
   function startRound(){
+    roundGeneration++;clearTimeout(roundEndTimer);roundEndTimer=null;
     initAudio();audioCtx?.resume?.();
     initPlayers();notes=[];particles=[];sparks=[];finishQueued=false;eliminationCounter=0;phraseIndex=-1;totalInputs=0;totalResolved=0;
     phase='countdown';countdownAt=performance.now();countdownStage=3;songTime=0;lastBeatIndex=-1;screenShake=0;flash.a=0;roundStartedAt=gameClock();
