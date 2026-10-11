@@ -1,5 +1,10 @@
 # Changelog
 
+## Standalone reliability fixes
+
+- Restart cancels the pending round-end timer and invalidates callbacks from earlier rounds, so an old result callback cannot end a new match.
+- Added root runtime regression tests covering repeated restarts, forced stale callbacks and normal results.
+
 ## 0.5.0 — repository import
 
 - Imported the complete royal_scratch_match_v0.5_ten_player.html attachment as source/index.html with the supplied source hash preserved.
