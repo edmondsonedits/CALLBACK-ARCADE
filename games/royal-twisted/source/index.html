@@ -40,6 +40,15 @@ button,select{font:inherit;color:inherit}
 @media(max-width:560px){.reaction-cue{top:calc(var(--safeT) + 160px)}.brand-mode{max-width:125px}.controls{height:140px}.status{bottom:calc(var(--safeB) + 157px)}.action .big{font-size:25px}.action .name{font-size:16px}.keyhint{display:none}}
 @media(hover:hover) and (pointer:fine){.action:hover{filter:brightness(1.08)}}
 @media(max-height:500px){.controls{height:78px}.status{bottom:calc(var(--safeB) + 92px)}.life-card,.speed-card{padding:5px 8px}.speed-value{font-size:14px}.action .big{font-size:19px}.action .name{font-size:13px;margin-top:0}.action .sub{font-size:7px;margin-top:3px}.reaction-cue{top:calc(var(--safeT) + 84px)}}
+
+button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+.icon-btn{min-width:44px;min-height:44px}.toggle{height:44px;width:64px;padding:11px}.toggle.on span{transform:translateX(19px)}
+.modal-back{z-index:6;touch-action:pan-y}.modal{overscroll-behavior:contain}.modal input{width:126px;min-height:44px;border:1px solid #ffffff28;border-radius:10px;background:#0a1322;color:var(--text);padding:8px;font:inherit}.setting select{min-height:44px}
+.session-card{width:min(100%,540px)}.session-kicker{color:var(--gold);font-size:11px;letter-spacing:.16em;font-weight:900}.session-card h2{font-size:30px;line-height:1.04;margin:8px 0}.session-card .objective{font-size:13px;line-height:1.5;color:#f7f2e7}.rod-lesson{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:15px 0}.rod-lesson div{border:1px solid #ffffff23;background:#081423;border-radius:14px;padding:12px;font-size:12px;font-weight:800}.rod-lesson b{display:block;font-size:18px;color:var(--cyan);margin-bottom:4px}.rod-lesson div+div b{color:var(--coral)}
+.session-card .primary{min-height:50px}.session-note{color:var(--muted);font-size:11px;line-height:1.5}.session-card table{width:100%;border-collapse:collapse;font-size:11px;margin-top:12px}.session-card th{text-align:left;color:var(--muted);font-size:9px}.session-card td,.session-card th{padding:8px 4px;border-bottom:1px solid #ffffff18}.session-card tr.you{color:var(--gold);font-weight:900}.results-summary{padding:12px;background:#081423;border-radius:13px;font-size:13px;line-height:1.6}.pause-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}.pause-card .secondary{background:#15273c;border-color:#ffffff25}
+.reaction-cue{min-width:190px}.cue-track{height:3px;background:#ffffff25;border-radius:4px;margin-top:5px;overflow:hidden}.cue-fill{height:100%;width:0;background:var(--cyan)}.cue-next{display:block;font-size:9px;color:#cad8e6;margin-top:5px;letter-spacing:.08em}.feedback{position:absolute;left:50%;transform:translateX(-50%);bottom:calc(var(--safeB) + 208px);padding:6px 12px;border-radius:10px;background:#081423db;color:var(--gold);font-size:11px;font-weight:900;pointer-events:none;opacity:0}.feedback.on{opacity:1}.rm .action.cue,.rm .loader-crest{animation:none}.rm .action:active,.rm .action.pressed{transform:none}
+@media(max-width:560px){.top-hud{grid-template-columns:1fr auto}.round-card{display:none}.brand-mode{max-width:110px}.top-actions{gap:4px}.icon-btn{width:44px;min-width:44px}.session-card h2{font-size:25px}.modal-back{padding:12px}.modal{max-height:90dvh}}
+@media(max-height:500px){.modal-back{padding:9px}.modal{max-height:94dvh}.session-card h2{font-size:23px}.rod-lesson{margin:8px 0}.setting{padding:7px 0}.feedback{bottom:calc(var(--safeB) + 143px);font-size:9px}}
 </style>
 </head>
 <body data-pause-flow="manual-resume">
@@ -50,7 +59,7 @@ button,select{font:inherit;color:inherit}
   <div class="top-hud">
     <div class="brand"><div class="crest">♛</div><div class="brand-copy"><div class="brand-name">ROYAL TWISTED</div><div class="brand-mode">SPIRAL KEEP · CALLBACK ARCADE</div></div></div>
     <div class="round-card"><div class="eyebrow">Round</div><div id="roundLabel" class="round-value">1 / 3</div></div>
-    <div class="top-actions"><button id="soundBtn" class="icon-btn" type="button" aria-label="Toggle sound">🔊</button><button id="settingsBtn" class="icon-btn" type="button" aria-label="Settings">⚙</button></div>
+    <div class="top-actions"><button id="pauseBtn" class="icon-btn" type="button" aria-label="Pause game">Ⅱ</button><button id="helpBtn" class="icon-btn" type="button" aria-label="How to play">?</button><button id="soundBtn" class="icon-btn" type="button" aria-label="Toggle sound">🔊</button><button id="settingsBtn" class="icon-btn" type="button" aria-label="Settings">⚙</button></div>
   </div>
 
   <div class="score-row">
@@ -67,7 +76,8 @@ button,select{font:inherit;color:inherit}
     <div class="speed-card"><div class="speed-head"><span>SPEED</span></div><div id="speedValue" class="speed-value">1.00×</div><div class="speed-sub">SPIRAL RATE</div></div>
   </div>
 
-  <div id="reactionCue" class="reaction-cue" role="status" aria-live="polite">READ THE RODS · JUMP / DUCK</div>
+  <div class="reaction-cue"><div id="reactionCue" role="status" aria-live="polite">READ THE RODS · JUMP / DUCK</div><div class="cue-track" aria-hidden="true"><div id="cueFill" class="cue-fill"></div></div><span id="nextRod" class="cue-next">NEXT ROD · —</span></div>
+  <div id="clearFeedback" class="feedback" role="status"></div>
   <div class="keyhint">SPACE / ↑ = JUMP &nbsp; · &nbsp; SHIFT / ↓ = DUCK &nbsp; · &nbsp; <span class="danger-word">7TH HIT = OUT</span></div>
   <div class="controls">
     <button id="jumpBtn" class="action jump control-glass" type="button"><span class="big">↟</span><span class="name">JUMP</span><span class="sub">LOW CYAN RODS</span></button>
@@ -76,21 +86,36 @@ button,select{font:inherit;color:inherit}
 
   <div id="debugPanel" class="debug"></div>
 
-  <div id="settingsModal" class="modal-back">
-    <div class="modal">
+  <div id="settingsModal" class="modal-back" style="z-index:8">
+    <div class="modal" role="dialog" aria-modal="true" aria-label="Spiral Keep settings">
       <h2>Spiral Keep Settings</h2>
       <p>Choose 2–10 contestants. Player 1 uses this device; extra local gamepads or CALLBACK remote inputs can control additional contestants, and any unassigned slots are filled by AI. Seven strikes keep the round forgiving and hazard chains stay physically possible as the tower accelerates.</p>
-      <div class="setting"><label><strong>Contestants</strong><small>2–10 total players; unassigned slots use AI</small></label><select id="playerCount"><option value="2">2</option><option value="3">3</option><option value="4" selected>4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
-      <div class="setting"><label><strong>Rival difficulty</strong><small>Reaction timing and mistake rate</small></label><select id="difficulty"><option value="easy">Squire</option><option value="normal" selected>Knight</option><option value="hard">Royal Guard</option></select></div>
-      <div class="setting"><label><strong>Graphics</strong><small>Shadow quality and render scale</small></label><select id="graphics"><option value="performance">Performance</option><option value="balanced" selected>Balanced</option><option value="quality">Quality</option></select></div>
-      <div class="setting"><label><strong>Haptics</strong><small>Vibrate on jumps, ducks and impacts</small></label><button id="hapticsToggle" class="toggle on" type="button"><span></span></button></div>
-      <div class="setting"><label><strong>Debug HUD</strong><small>Live timing, speed and nearest hazard</small></label><button id="debugToggle" class="toggle" type="button"><span></span></button></div>
+      <div class="setting"><label for="playerCount"><strong>Contestants</strong><small>2–10 total players; applies on Restart Match</small></label><select id="playerCount"><option value="2">2</option><option value="3">3</option><option value="4" selected>4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+      <div class="setting"><label for="rhythm"><strong>Hazard rhythm</strong><small>Next match: mixed challenge or one-action practice</small></label><select id="rhythm"><option value="mixed">Mixed crown run</option><option value="jumps">Jump practice</option><option value="ducks">Duck practice</option></select></div>
+      <div class="setting"><label for="seedInput"><strong>Replay seed</strong><small>Repeat a run with the same rules and inputs</small></label><input id="seedInput" type="number" min="1" max="4294967295" step="1" /></div>
+      <div class="setting"><label for="difficulty"><strong>Rival difficulty</strong><small>Reaction timing and mistake rate; applies immediately</small></label><select id="difficulty"><option value="easy">Squire</option><option value="normal" selected>Knight</option><option value="hard">Royal Guard</option></select></div>
+      <div class="setting"><label for="graphics"><strong>Graphics</strong><small>Shadow quality and render scale</small></label><select id="graphics"><option value="performance">Performance</option><option value="balanced" selected>Balanced</option><option value="quality">Quality</option></select></div>
+      <div class="setting"><label><strong>Haptics</strong><small>Vibrate on jumps, ducks and impacts</small></label><button id="hapticsToggle" class="toggle on" type="button" aria-label="Haptics" aria-pressed="true"><span></span></button></div>
+      <div class="setting"><label for="volume"><strong>Sound volume</strong><small>Procedural effects and rod cues</small></label><select id="volume"><option value="0">Silent</option><option value="0.35">Quiet</option><option value="0.7" selected>Normal</option><option value="1">Full</option></select></div>
+      <div class="setting"><label for="motion"><strong>Motion effects</strong><small>Reduced removes shake, flash and particles</small></label><select id="motion"><option value="full">Full</option><option value="reduced">Reduced</option></select></div>
+      <div class="setting"><label><strong>Debug HUD</strong><small>Live timing, speed and nearest hazard</small></label><button id="debugToggle" class="toggle" type="button" aria-label="Debug HUD" aria-pressed="false"><span></span></button></div>
       <div class="modal-buttons"><button id="restartBtn" type="button">Restart Match</button><button id="closeSettings" class="primary" type="button">Return</button></div>
     </div>
   </div>
 
-  <div id="pauseOverlay" class="pause-overlay"><div class="pause-card"><h2>PAUSED</h2><p>The Spiral Keep has politely stopped trying to hit everyone.</p><button id="resumeBtn" type="button" data-resume-game>Resume</button></div></div>
+  <div id="pauseOverlay" class="pause-overlay"><div class="pause-card"><h2>PAUSED</h2><p>The Spiral Keep has politely stopped trying to hit everyone.</p><div class="pause-actions"><button id="resumeBtn" type="button" data-resume-game>Resume</button><button id="pauseMenuBtn" class="secondary" type="button">Setup</button></div></div></div>
 
+  <div id="setupModal" class="modal-back"><div class="modal session-card" role="dialog" aria-modal="true" aria-labelledby="setupTitle">
+    <div class="session-kicker">SPIRAL KEEP · v0.6.0</div><h2 id="setupTitle">Keep your crown.<br>Read the rhythm.</h2>
+    <p class="objective">You run automatically. Clear cyan rods with a jump, hold duck under coral rods. Seven hits knock you out. Two round wins take the crown; tied standings continue into overtime.</p>
+    <div class="rod-lesson"><div><b>↟ JUMP</b>Tap Space / ↑ or gamepad A.<br>Wait for JUMP NOW.</div><div><b>↡ DUCK</b>Hold Shift / ↓ or gamepad B.<br>Release to jump again.</div></div>
+    <div class="setting"><label for="setupPlayers"><strong>Contestants</strong><small>You, local gamepads and bots · 2–10</small></label><select id="setupPlayers"><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+    <div class="setting"><label for="setupRhythm"><strong>Run rhythm</strong><small>Practice one reaction or compete with both</small></label><select id="setupRhythm"><option value="mixed">Mixed crown run</option><option value="jumps">Jump practice</option><option value="ducks">Duck practice</option></select></div>
+    <div class="setting"><label for="setupDifficulty"><strong>Rival difficulty</strong><small>Fair imperfect reactions at every level</small></label><select id="setupDifficulty"><option value="easy">Squire</option><option value="normal">Knight</option><option value="hard">Royal Guard</option></select></div>
+    <p id="setupRecord" class="session-note"></p><div class="modal-buttons"><button id="setupSettingsBtn" type="button">Settings</button><button id="startBtn" class="primary" type="button">Start run</button></div>
+  </div></div>
+  <div id="helpModal" class="modal-back"><div class="modal session-card" role="dialog" aria-modal="true" aria-labelledby="helpTitle"><h2 id="helpTitle">Read. React. Recover.</h2><div class="rod-lesson"><div><b>↟ Cyan = JUMP</b>Tap once when NOW appears. Holding does not repeat.</div><div><b>↡ Coral = DUCK</b>Hold until the rod passes; release before a jump.</div></div><p class="objective">The meter fills as a rod reaches you. The smaller line previews the following rod. A hit sets you back; cues follow your new position while you recover. Five clean rods build a streak. At 16 seconds patterns begin, and after 38 seconds chains intensify.</p><p class="session-note">Space / ↑ / W: jump · Shift / ↓ / S: duck · Escape or gamepad Start: pause. Additional gamepads control matching seats. Remote hooks are available locally; hosted multiplayer is not connected.</p><div class="modal-buttons"><button id="closeHelp" class="primary" type="button" style="grid-column:1/-1">Return</button></div></div></div>
+  <div id="resultsModal" class="modal-back"><div class="modal session-card" role="dialog" aria-modal="true" aria-labelledby="resultsTitle"><div class="session-kicker">CROWN RUN COMPLETE</div><h2 id="resultsTitle">The crown is decided.</h2><div id="resultsSummary" class="results-summary"></div><table aria-label="Match standings"><thead><tr><th>Rank / contestant</th><th>Crowns</th><th>Clears</th><th>Streak</th></tr></thead><tbody id="standingsBody"></tbody></table><p id="replayDetails" class="session-note"></p><div class="modal-buttons"><button id="menuBtn" type="button">Setup</button><button id="rematchBtn" class="primary" type="button">Replay seed</button></div></div></div>
   <div id="loading" class="loading"><div class="loading-card"><div class="loader-crest">♛</div><h1>ROYAL TWISTED</h1><p>Winding the Spiral Keep…</p></div></div>
 </div>
 
@@ -210,7 +235,44 @@ setTimeout(callbackCameraInstall,0);
 
 const playerCountEl=$("#playerCount"),difficultyEl=$("#difficulty"),graphicsEl=$("#graphics"),hapticsToggle=$("#hapticsToggle"),debugToggle=$("#debugToggle"),debugPanel=$("#debugPanel"),pauseOverlay=$("#pauseOverlay"),resumeBtn=$("#resumeBtn");
 
-const VERSION="0.5.0-original-camera-knockback";
+const VERSION="0.6.0-sumo-benchmark";
+// Based on the preserved 0.5.0-original-camera-knockback import.
+const setupModal=$("#setupModal"),resultsModal=$("#resultsModal"),helpModal=$("#helpModal"),seedInput=$("#seedInput"),rhythmEl=$("#rhythm"),volumeEl=$("#volume"),motionEl=$("#motion");
+const setupPlayers=$("#setupPlayers"),setupRhythm=$("#setupRhythm"),setupDifficulty=$("#setupDifficulty");
+const PREF_KEY="royalTwisted.preferences.v1";
+function normalizePreferences(raw={}){
+  if(!raw||typeof raw!=="object")raw={};
+  const choice=(value,list,fallback)=>list.includes(value)?value:fallback;
+  const reduced=!!window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+  return {players:Number.isFinite(+raw.players)?Math.max(2,Math.min(10,Math.round(+raw.players))):4,difficulty:choice(raw.difficulty,["easy","normal","hard"],"normal"),graphics:choice(raw.graphics,["performance","balanced","quality"],"balanced"),rhythm:choice(raw.rhythm,["mixed","jumps","ducks"],"mixed"),sound:typeof raw.sound==="boolean"?raw.sound:true,volume:Number.isFinite(+raw.volume)?Math.max(0,Math.min(1,+raw.volume)):.7,haptics:typeof raw.haptics==="boolean"?raw.haptics:true,reducedMotion:typeof raw.reducedMotion==="boolean"?raw.reducedMotion:reduced,bestClears:Number.isFinite(+raw.bestClears)?Math.max(0,Math.floor(+raw.bestClears)):0,bestStreak:Number.isFinite(+raw.bestStreak)?Math.max(0,Math.floor(+raw.bestStreak)):0};
+}
+function loadPreferences(){try{return normalizePreferences(JSON.parse(localStorage.getItem(PREF_KEY)||"{}"))}catch{return normalizePreferences()}}
+let preferences=loadPreferences();
+function savePreferences(){preferences=normalizePreferences(preferences);try{localStorage.setItem(PREF_KEY,JSON.stringify(preferences))}catch{}}
+function effectsReduced(){return preferences.reducedMotion||!!window.matchMedia?.("(prefers-reduced-motion: reduce)").matches}
+function applyMotionPreference(){document.querySelector("#app").classList.toggle("rm",effectsReduced())}
+let matchSeed=1,gameplayRng=null,matchRhythm="mixed",padMenuHeld=false,audioUnlocked=false,feedbackUntil=0;
+const towerFlags=[];
+function setReplaySeed(value){matchSeed=Math.max(1,Math.min(4294967295,Math.floor(Number(value)||1)));let state=matchSeed;gameplayRng=()=>{state=(Math.imul(state,1664525)+1013904223)>>>0;return state/4294967296};seedInput.value=String(matchSeed);return matchSeed}
+function gameplayRandom(){return gameplayRng?gameplayRng():Math.random()}
+function gameRand(a,b){return a+gameplayRandom()*(b-a)}
+function newStats(){return {clears:0,hitsLow:0,hitsHigh:0,streak:0,bestStreak:0,survival:0}}
+function feedback(text){$("#clearFeedback").textContent=text;feedbackUntil=roundTime+1.1}
+function getStandings(){const ordered=fighters.slice().sort((a,b)=>b.roundWins-a.roundWins||b.stats.clears-a.stats.clears||a.id-b.id);return ordered.map((f,i)=>({fighter:f,rank:1+ordered.filter(x=>x.roundWins>f.roundWins).length}))}
+function renderResults(champ){
+  clearInputs();paused=false;pauseOverlay.classList.remove("open");resultsModal.classList.add("open");countdownEl.classList.add("hidden");
+  $("#resultsTitle").textContent=champ.player?"Your crown. Your keep.":`${champ.name} takes the crown.`;
+  const s=fighters[0].stats;$("#resultsSummary").textContent=`YOU · ${s.clears} rods cleared · best streak ${s.bestStreak} · survived ${fmtTime(s.survival)} · ${s.hitsLow} low / ${s.hitsHigh} high hits`;
+  const body=$("#standingsBody");body.innerHTML="";
+  for(const {fighter:f,rank} of getStandings()){const row=document.createElement("tr");if(f.player)row.className="you";for(const value of [`${rank}. ${f.name}`,f.roundWins,f.stats.clears,f.stats.bestStreak]){const cell=document.createElement("td");cell.textContent=String(value);row.appendChild(cell)}body.appendChild(row)}
+  $("#replayDetails").textContent=`Seed ${matchSeed} · ${matchRhythm} · ${playerCount} contestants. Replay repeats hazard patterns with the same rules and inputs.`;
+  preferences.bestClears=Math.max(preferences.bestClears,s.clears);preferences.bestStreak=Math.max(preferences.bestStreak,s.bestStreak);savePreferences();
+}
+function showSetup(){clearInputs();phase="setup";paused=false;accumulator=0;settingsModal.classList.remove("open");resultsModal.classList.remove("open");helpModal.classList.remove("open");pauseOverlay.classList.remove("open");countdownEl.classList.add("hidden");setupPlayers.value=String(preferences.players);setupRhythm.value=preferences.rhythm;setupDifficulty.value=preferences.difficulty;$("#setupRecord").textContent=`Personal best · ${preferences.bestClears} clears · ${preferences.bestStreak} clean streak. Replay seed ${seedInput.value}.`;setupModal.classList.add("open");$("#startBtn").focus?.()}
+function startRun(){preferences.players=+setupPlayers.value;preferences.rhythm=setupRhythm.value;preferences.difficulty=setupDifficulty.value;savePreferences();playerCountEl.value=String(preferences.players);rhythmEl.value=preferences.rhythm;difficultyEl.value=preferences.difficulty;restartMatch();paused=false;initAudio(true);jumpBtn.focus?.()}
+function openHelp(){if(phase==="setup"||phase==="matchover")return;togglePause(true);pauseOverlay.classList.remove("open");helpModal.classList.add("open");$("#closeHelp").focus?.()}
+function closeHelpToPause(){helpModal.classList.remove("open");pauseOverlay.classList.add("open");resumeBtn.focus?.()}
+function pollGamepadMenu(){let p;try{p=Array.from(navigator.getGamepads?.()||[]).find(Boolean)}catch{return}const held=!!p?.buttons[9]?.pressed;if(held&&!padMenuHeld){if(phase==="setup")startRun();else if(phase!=="matchover"&&!settingsModal.classList.contains("open")&&!helpModal.classList.contains("open"))togglePause(!paused)}padMenuHeld=held}
 const PLAYER_T=.115, HELIX_TURNS=2.18, HELIX_RADIUS=4.55, HELIX_RISE=7.9, HELIX_BASE=.55;
 const HELIX_START=-PLAYER_T*HELIX_TURNS*Math.PI*2;
 const TUNING=Object.freeze({
@@ -235,9 +297,9 @@ const AI={
 
 let scene,camera,renderer,clock,world,trackGroup,towerGroup,hazardGroup,fxGroup;
 let fighters=[],hazards=[],particles=[],rings=[];
-let playerCount=Math.max(2,Math.min(10,Number(new URLSearchParams(location.search).get("players"))||4));
+let playerCount=Math.max(2,Math.min(10,Math.round(Number(new URLSearchParams(location.search).get("players"))||preferences.players)));preferences.players=playerCount;
 let round=1,roundWins=0,phase="countdown",phaseTimer=3.3,roundTime=0,paused=false,accumulator=0,lastTime=performance.now();
-let nextSpawn=1.35,hazardId=0,globalScore=0,bestScore=0,graphicsMode="balanced",hapticsOn=true,debugOn=false,soundOn=true,audioCtx=null,noiseBuffer=null;
+let nextSpawn=1.35,hazardId=0,globalScore=0,bestScore=0,graphicsMode=preferences.graphics,hapticsOn=preferences.haptics,debugOn=false,soundOn=preferences.sound,audioCtx=null,noiseBuffer=null;
 let cameraShake=0,gamepadDuck=false,gamepadJump=false,fps=60,fpsAccum=0,fpsFrames=0;
 let patternQueue=[],activePattern="single",lastSpawnType=null,choreographyStats={spawned:0,clamped:0,minGap:99,lastGap:0};
 
@@ -302,6 +364,22 @@ function createWorld(){
     if(i%3===0){const edgeL=new THREE.Mesh(new THREE.BoxGeometry(.10,.12,.39),edgeMat),edgeR=edgeL.clone();const b=helixBasis(t);edgeL.position.copy(p).addScaledVector(b.right,-3.29);edgeR.position.copy(p).addScaledVector(b.right,3.29);edgeL.rotation.y=edgeR.rotation.y=yaw;edgeL.position.y+=.08;edgeR.position.y+=.08;trackGroup.add(edgeL,edgeR)}
   }
 
+  // Narrow illuminated windows, pennants and braziers give the keep scale without crossing the running deck.
+  const windowMat=new THREE.MeshBasicMaterial({color:0xffd28a});
+  for(let i=0;i<12;i++){
+    const a=i/12*Math.PI*2,rad=i%2?3.12:3.36,y=i%2?4.65:1.5;
+    const inset=new THREE.Mesh(new THREE.BoxGeometry(.28,.82,.06),bandMat);inset.position.set(Math.cos(a)*rad,y,Math.sin(a)*rad);inset.rotation.y=Math.PI/2-a;towerGroup.add(inset);
+    const slit=new THREE.Mesh(new THREE.BoxGeometry(.10,.55,.07),windowMat);slit.position.copy(inset.position);slit.rotation.copy(inset.rotation);towerGroup.add(slit);
+    if(i%2===0){
+      const pole=new THREE.Mesh(new THREE.CylinderGeometry(.035,.035,1.6,6),crownMat);pole.position.set(Math.cos(a)*3.75,3.6,Math.sin(a)*3.75);towerGroup.add(pole);
+      const flag=new THREE.Mesh(new THREE.PlaneGeometry(.52,.95,3,4),new THREE.MeshStandardMaterial({color:COLORS[i%COLORS.length],roughness:.8,side:THREE.DoubleSide}));flag.position.set(Math.cos(a)*3.7,3.62,Math.sin(a)*3.7);flag.rotation.y=Math.PI/2-a;towerGroup.add(flag);towerFlags.push({mesh:flag,angle:flag.rotation.y,phase:i*.7});
+      const badge=new THREE.Mesh(new THREE.TorusGeometry(.11,.028,5,12),crownMat);badge.position.copy(flag.position).addScaledVector(new THREE.Vector3(Math.cos(a),0,Math.sin(a)),.025);badge.rotation.y=flag.rotation.y;towerGroup.add(badge);
+    }
+  }
+  for(const t of [.08,.28,.48,.68,.88])for(const side of [-1,1]){
+    const p=helixPoint(t),b=helixBasis(t),pedestal=new THREE.Mesh(new THREE.CylinderGeometry(.11,.18,.68,7),bandMat);pedestal.position.copy(p).addScaledVector(b.right,side*3.43);pedestal.position.y+=.34;trackGroup.add(pedestal);
+    const flame=new THREE.Mesh(new THREE.ConeGeometry(.10,.32,5),new THREE.MeshBasicMaterial({color:0xffc267}));flame.position.copy(pedestal.position);flame.position.y+=.46;trackGroup.add(flame);
+  }
   const base=new THREE.Mesh(new THREE.CylinderGeometry(7.8,9.4,4.2,30),new THREE.MeshStandardMaterial({color:0x353638,roughness:.96}));base.position.y=-2.3;base.receiveShadow=true;world.add(base);
   for(let i=0;i<8;i++){const a=i*Math.PI/4+.28,r=10.0;const turret=new THREE.Group();const body=new THREE.Mesh(new THREE.CylinderGeometry(.72,.92,5.0,10),wallMat);body.position.y=-.35;turret.add(body);const roof=new THREE.Mesh(new THREE.ConeGeometry(1.05,1.5,10),new THREE.MeshStandardMaterial({color:i%2?0x522c2b:0x3d3557,roughness:.78}));roof.position.y=2.85;turret.add(roof);turret.position.set(Math.cos(a)*r,0,Math.sin(a)*r);world.add(turret)}
   const floor=new THREE.Mesh(new THREE.PlaneGeometry(80,80),new THREE.MeshStandardMaterial({color:0x11151d,roughness:1}));floor.rotation.x=-Math.PI/2;floor.position.y=-4.35;floor.receiveShadow=true;world.add(floor);
@@ -320,8 +398,14 @@ function buildDummy(id,player=false){
   const limbs={};function limb(name,x,y,z,len=.44){const pivot=new THREE.Group();pivot.position.set(x,y,z);bodyRoot.add(pivot);const mesh=new THREE.Mesh(new THREE.CapsuleGeometry(.075,len,5,7),mat);mesh.position.y=-len*.48;mesh.castShadow=true;pivot.add(mesh);limbs[name]=pivot;return pivot}
   limb("armL",-.39,1.12,0,.43);limb("armR",.39,1.12,0,.43);limb("legL",-.18,.53,0,.43);limb("legR",.18,.53,0,.43);limbs.armL.rotation.z=-.28;limbs.armR.rotation.z=.28;
   if(player){const crown=new THREE.Group();const band=new THREE.Mesh(new THREE.CylinderGeometry(.21,.24,.12,10),new THREE.MeshStandardMaterial({color:0xe7bd45,roughness:.3,metalness:.62}));band.position.y=1.77;crown.add(band);for(let i=0;i<5;i++){const sp=new THREE.Mesh(new THREE.ConeGeometry(.06,.23,5),band.material);const a=i/5*Math.PI*2;sp.position.set(Math.cos(a)*.15,1.95,Math.sin(a)*.15);crown.add(sp)}bodyRoot.add(crown)}
+  if(!player){
+    const helmet=new THREE.Mesh(new THREE.SphereGeometry(.34,10,7,0,Math.PI*2,0,Math.PI*.42),new THREE.MeshStandardMaterial({color:id%2?0xb8b6ad:0x7e8999,roughness:.42,metalness:.4}));helmet.position.y=1.43;bodyRoot.add(helmet);
+    const plume=new THREE.Mesh(new THREE.ConeGeometry(.09,.28,5),mat);plume.position.set(0,1.87,-.04);plume.rotation.x=-.35;bodyRoot.add(plume);
+  }
+  const collar=new THREE.Mesh(new THREE.TorusGeometry(.19,.035,6,12),dark);collar.rotation.x=Math.PI/2;collar.position.y=1.23;bodyRoot.add(collar);
+  const identityRing=new THREE.Mesh(new THREE.TorusGeometry(.48,.018,6,24),new THREE.MeshBasicMaterial({color:COLORS[id%COLORS.length],transparent:true,opacity:player?.7:.35,depthWrite:false}));identityRing.rotation.x=Math.PI/2;identityRing.position.y=.025;root.add(identityRing);
   const shadow=new THREE.Mesh(new THREE.CircleGeometry(.46,24),new THREE.MeshBasicMaterial({color:0x000000,transparent:true,opacity:.22,depthWrite:false}));shadow.rotation.x=-Math.PI/2;shadow.position.y=.02;root.add(shadow);const label=textSprite(player?"YOU":(NAMES[id]||`P${id+1}`),player?"#ffe294":"#ffffff");label.position.y=2.05;root.add(label);
-  return {root,bodyRoot,mat,head,limbs,shadow,label,dark};
+  return {root,bodyRoot,mat,head,limbs,shadow,label,dark,identityRing};
 }
 function makeLaneOffsets(count){
   const spacing=.61,raw=[];
@@ -343,20 +427,26 @@ function setFighterName(f,name){
 }
 
 function createFighters(){
-  fighters.forEach(f=>scene.remove(f.visual.root));fighters=[];const laneOffsets=makeLaneOffsets(playerCount);const p=helixPoint(PLAYER_T),b=helixBasis(PLAYER_T);
+  fighters.forEach(f=>{scene.remove(f.visual.root);f.visual.root.traverse?.(node=>{node.geometry?.dispose?.();const materials=Array.isArray(node.material)?node.material:[node.material];for(const mat of materials)if(mat){mat.map?.dispose?.();mat.dispose?.()}})});fighters=[];const laneOffsets=makeLaneOffsets(playerCount);const p=helixPoint(PLAYER_T),b=helixBasis(PLAYER_T);
   for(let i=0;i<playerCount;i++){
     const vis=buildDummy(i,i===0);
     if(playerCount>=8&&i>0){vis.label.scale.set(1.05,.27,1);vis.label.position.y=1.92}
     scene.add(vis.root);
-    fighters.push({id:i,player:i===0,name:NAMES[i]||`P${i+1}`,controller:i===0?"local":"ai",visual:vis,lane:laneOffsets[i],trackT:PLAYER_T,base:p.clone().addScaledVector(b.right,laneOffsets[i]),lives:MAX_LIVES,score:0,roundWins:0,alive:true,jumpY:0,vy:0,duck:false,duckTimer:0,hitTimer:0,recoverDelay:0,flash:0,ragdoll:0,wobble:Math.random()*6.28,aiHazard:-1,eliminated:false,fall:new THREE.Vector3(),offset:new THREE.Vector3(),tilt:0,input:{duckHeld:false,jumpBuffer:0},gamepadPrevJump:false,gamepadPrevDuck:false})
+    fighters.push({id:i,player:i===0,name:NAMES[i]||`P${i+1}`,controller:i===0?"local":"ai",stats:newStats(),visual:vis,lane:laneOffsets[i],trackT:PLAYER_T,base:p.clone().addScaledVector(b.right,laneOffsets[i]),lives:MAX_LIVES,score:0,roundWins:0,alive:true,jumpY:0,vy:0,duck:false,duckTimer:0,hitTimer:0,recoverDelay:0,flash:0,ragdoll:0,wobble:Math.random()*6.28,aiHazard:-1,eliminated:false,fall:new THREE.Vector3(),offset:new THREE.Vector3(),tilt:0,input:{duckHeld:false,jumpBuffer:0},gamepadPrevJump:false,gamepadPrevDuck:false})
   }
 }
 function resetRound(){
   hazards.forEach(h=>hazardGroup.remove(h.group));hazards=[];roundTime=0;nextSpawn=1.35;phase="countdown";phaseTimer=3.3;hazardId=0;patternQueue=[];activePattern="single";lastSpawnType=null;choreographyStats={spawned:0,clamped:0,minGap:99,lastGap:0};duckBtn.classList.remove("pressed");jumpBtn.classList.remove("cue");duckBtn.classList.remove("cue");const p=helixPoint(PLAYER_T),b=helixBasis(PLAYER_T),lanes=makeLaneOffsets(playerCount);
-  fighters.forEach((f,i)=>{f.trackT=PLAYER_T;f.base.copy(p).addScaledVector(b.right,lanes[i]);f.lane=lanes[i];f.lives=MAX_LIVES;f.score=0;f.alive=true;f.jumpY=0;f.vy=0;f.duck=false;f.duckTimer=0;f.resumeDuckTimer=0;f.hitTimer=0;f.recoverDelay=0;f.flash=0;f.ragdoll=0;f.aiHazard=-1;f.aiPlan=null;f.eliminated=false;f.offset.set(0,0,0);f.fall.set(0,0,0);f.tilt=0;f.input.duckSources?.clear();f.input.duckHeld=false;f.input.jumpBuffer=0;f.gamepadPrevJump=false;f.gamepadPrevDuck=false;f.visual.root.visible=true});
+  fighters.forEach((f,i)=>{f.trackT=PLAYER_T;f.base.copy(p).addScaledVector(b.right,lanes[i]);f.lane=lanes[i];f.lives=MAX_LIVES;f.score=0;f.stats.streak=0;f.alive=true;f.jumpY=0;f.vy=0;f.landPulse=0;f.duck=false;f.duckTimer=0;f.resumeDuckTimer=0;f.hitTimer=0;f.recoverDelay=0;f.flash=0;f.ragdoll=0;f.aiHazard=-1;f.aiPlan=null;f.eliminated=false;f.offset.set(0,0,0);f.fall.set(0,0,0);f.tilt=0;f.input.duckSources?.clear();f.input.duckHeld=false;f.input.jumpBuffer=0;f.gamepadPrevJump=false;f.gamepadPrevDuck=false;f.visual.root.visible=true});
   countdownEl.classList.remove("hidden");countdownEl.textContent="3";say(`${playerCount} contestants. Jump cyan. Duck coral. Seven mistakes and the tower keeps you.`);updateHUD();
 }
-function restartMatch(){round=1;roundWins=0;globalScore=0;fighters.forEach(f=>f.roundWins=0);resetRound();}
+function restartMatch(){
+  const next=normalizePreferences({...preferences,players:playerCountEl.value,rhythm:rhythmEl.value});
+  preferences.players=next.players;preferences.rhythm=next.rhythm;matchRhythm=next.rhythm;
+  if(next.players!==playerCount){playerCount=next.players;createFighters()}
+  setReplaySeed(seedInput.value);savePreferences();round=1;roundWins=0;globalScore=0;feedbackUntil=0;
+  fighters.forEach(f=>{f.roundWins=0;f.stats=newStats()});setupModal.classList.remove("open");resultsModal.classList.remove("open");helpModal.classList.remove("open");clearInputs();resetRound();fighters.forEach(f=>{f.gamepadPrevJump=true;f.gamepadPrevDuck=true});
+}
 
 function createHazard(type,t=.965){
   const group=new THREE.Group();const color=type==="low"?0x56c5dc:0xe56f69;const glow=type==="low"?0x1e7180:0x7b2a29;const rodMat=new THREE.MeshStandardMaterial({color,roughness:.32,metalness:.42,emissive:glow,emissiveIntensity:.46});
@@ -375,17 +465,18 @@ function positionHazard(h){
 }
 function transitionFloor(from,to){return TUNING.hazards.transition[`${from}>${to}`]??.90}
 function pickPattern(){
-  const r=Math.random();
+  const r=gameplayRandom();
+  if(matchRhythm!=="mixed"){activePattern=matchRhythm==="jumps"?"jump-practice":"duck-practice";return [{type:matchRhythm==="jumps"?"low":"high",gap:null}]}
   if(roundTime<TUNING.pacing.earlyEnd){
-    activePattern="single";return [{type:Math.random()<.5?"low":"high",gap:null}];
+    activePattern="single";return [{type:gameplayRandom()<.5?"low":"high",gap:null}];
   }
   if(roundTime<TUNING.pacing.midEnd){
-    if(r<.42){activePattern="single";return [{type:Math.random()<.5?"low":"high",gap:null}]}
+    if(r<.42){activePattern="single";return [{type:gameplayRandom()<.5?"low":"high",gap:null}]}
     if(r<.62){activePattern="duck-pair";return [{type:"high",gap:.56},{type:"high",gap:null}]}
     if(r<.80){activePattern="rise-switch";return [{type:"high",gap:.64},{type:"low",gap:null}]}
     activePattern="fall-switch";return [{type:"low",gap:.96},{type:"high",gap:null}];
   }
-  if(r<.18){activePattern="single";return [{type:Math.random()<.5?"low":"high",gap:null}]}
+  if(r<.18){activePattern="single";return [{type:gameplayRandom()<.5?"low":"high",gap:null}]}
   if(r<.38){activePattern="duck-rush";return [{type:"high",gap:.50},{type:"high",gap:.50},{type:"high",gap:null}]}
   if(r<.58){activePattern="jump-pair";return [{type:"low",gap:.92},{type:"low",gap:null}]}
   if(r<.79){activePattern="down-up";return [{type:"high",gap:.60},{type:"low",gap:null}]}
@@ -393,7 +484,7 @@ function pickPattern(){
 }
 function betweenPatternCooldown(){
   const range=roundTime<TUNING.pacing.earlyEnd?TUNING.pacing.earlyCooldown:roundTime<TUNING.pacing.midEnd?TUNING.pacing.midCooldown:TUNING.pacing.lateCooldown;
-  return rand(range[0],range[1]);
+  return gameRand(range[0],range[1]);
 }
 // Predict travel under the existing acceleration and speed cap, including fastest recovery.
 // Using the farthest setback gives the smallest gap after acceleration compresses a pair.
@@ -421,15 +512,15 @@ function spawnPattern(){
   choreographyStats.lastGap=gap;choreographyStats.minGap=Math.min(choreographyStats.minGap,gap);lastSpawnType=step.type;nextSpawn=gap;
 }
 
-function initAudio(){
-  if(!soundOn)return;if(audioCtx){if(audioCtx.state==="suspended")audioCtx.resume().catch(()=>{});return}try{audioCtx=new (window.AudioContext||window.webkitAudioContext)();const b=audioCtx.createBuffer(1,audioCtx.sampleRate*.45,audioCtx.sampleRate);const d=b.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1;noiseBuffer=b}catch{}
+function initAudio(unlock=false){
+  if(unlock)audioUnlocked=true;if(!soundOn||(!audioUnlocked&&!audioCtx))return;if(audioCtx){if(audioCtx.state==="suspended")audioCtx.resume().catch(()=>{});return}try{audioCtx=new (window.AudioContext||window.webkitAudioContext)();const b=audioCtx.createBuffer(1,audioCtx.sampleRate*.45,audioCtx.sampleRate);const d=b.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1;noiseBuffer=b}catch{}
 }
-function tone(freq,dur=.07,type="sine",vol=.035,slide=1){if(!soundOn)return;initAudio();if(!audioCtx)return;const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=type;o.frequency.setValueAtTime(freq,audioCtx.currentTime);o.frequency.exponentialRampToValueAtTime(Math.max(20,freq*slide),audioCtx.currentTime+dur);g.gain.setValueAtTime(vol,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+dur);o.connect(g).connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+dur)}
-function noise(dur=.08,vol=.035,cut=900){if(!soundOn)return;initAudio();if(!audioCtx||!noiseBuffer)return;const s=audioCtx.createBufferSource(),f=audioCtx.createBiquadFilter(),g=audioCtx.createGain();s.buffer=noiseBuffer;f.type="lowpass";f.frequency.value=cut;g.gain.setValueAtTime(vol,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+dur);s.connect(f).connect(g).connect(audioCtx.destination);s.start();s.stop(audioCtx.currentTime+dur)}
+function tone(freq,dur=.07,type="sine",vol=.035,slide=1){if(!soundOn||preferences.volume<=0)return;initAudio();if(!audioCtx)return;const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=type;o.frequency.setValueAtTime(freq,audioCtx.currentTime);o.frequency.exponentialRampToValueAtTime(Math.max(20,freq*slide),audioCtx.currentTime+dur);g.gain.setValueAtTime(Math.max(.0001,vol*preferences.volume),audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+dur);o.connect(g).connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+dur);o.onended=()=>{o.disconnect();g.disconnect()}}
+function noise(dur=.08,vol=.035,cut=900){if(!soundOn||preferences.volume<=0)return;initAudio();if(!audioCtx||!noiseBuffer)return;const s=audioCtx.createBufferSource(),f=audioCtx.createBiquadFilter(),g=audioCtx.createGain();s.buffer=noiseBuffer;f.type="lowpass";f.frequency.value=cut;g.gain.setValueAtTime(Math.max(.0001,vol*preferences.volume),audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+dur);s.connect(f).connect(g).connect(audioCtx.destination);s.start();s.stop(audioCtx.currentTime+dur);s.onended=()=>{s.disconnect();f.disconnect();g.disconnect()}}
 function sfxJump(){tone(280,.11,"triangle",.028,1.8)}function sfxDuck(){tone(160,.08,"sine",.022,.72)}function sfxClear(type){tone(type==="low"?520:460,.045,"triangle",.015,1.08)}function sfxHit(){tone(93,.12,"square",.042,.58);noise(.11,.055,650)}function sfxOut(){tone(126,.26,"sawtooth",.038,.38);noise(.15,.03,420)}function sfxWin(){tone(392,.1,"triangle",.032,1.22);setTimeout(()=>tone(523,.12,"triangle",.032,1.2),90)}
-function triggerFlash(){if(graphicsMode==="performance"||window.matchMedia?.("(prefers-reduced-motion: reduce)").matches)return;hitFlash.style.opacity="1";setTimeout(()=>hitFlash.style.opacity="0",90)}
-function spawnParticles(pos,color,count=12,power=1){let made=0;for(const fx of particles){if(fx.life>0)continue;fx.life=fx.max=rand(.28,.55);fx.mesh.visible=true;fx.mesh.material.color.setHex(color);fx.mesh.material.opacity=.8;fx.mesh.position.copy(pos);fx.v.set(rand(-1.4,1.4)*power,rand(.8,2.5)*power,rand(-1.2,1.2)*power);made++;if(made>=count)break}}
-function impactRing(pos,color){const fx=rings.find(x=>x.life<=0);if(!fx)return;fx.life=fx.max=.38;fx.mesh.visible=true;fx.mesh.material.color.setHex(color);fx.mesh.material.opacity=.65;fx.mesh.position.copy(pos);fx.mesh.rotation.set(Math.PI/2,0,0);fx.mesh.scale.setScalar(.35)}
+function triggerFlash(){if(graphicsMode==="performance"||effectsReduced())return;hitFlash.style.opacity="1";setTimeout(()=>hitFlash.style.opacity="0",90)}
+function spawnParticles(pos,color,count=12,power=1){if(effectsReduced())return;let made=0;for(const fx of particles){if(fx.life>0)continue;fx.life=fx.max=rand(.28,.55);fx.mesh.visible=true;fx.mesh.material.color.setHex(color);fx.mesh.material.opacity=.8;fx.mesh.position.copy(pos);fx.v.set(rand(-1.4,1.4)*power,rand(.8,2.5)*power,rand(-1.2,1.2)*power);made++;if(made>=count)break}}
+function impactRing(pos,color){if(effectsReduced())return;const fx=rings.find(x=>x.life<=0);if(!fx)return;fx.life=fx.max=.38;fx.mesh.visible=true;fx.mesh.material.color.setHex(color);fx.mesh.material.opacity=.65;fx.mesh.position.copy(pos);fx.mesh.rotation.set(Math.PI/2,0,0);fx.mesh.scale.setScalar(.35)}
 
 // Grounded duck takes priority; a jump edge may wait up to 130ms for release/landing.
 function canAct(f){return !!f&&f.alive&&phase==="fight"&&!paused}
@@ -464,7 +555,7 @@ function resumeBotInputs(){
 function hitFighter(f,h,deferRoundEnd=false){
   if(!f.alive||h.checked.has(f.id))return;
   h.checked.add(f.id);
-  f.lives--;
+  f.lives--;f.stats.streak=0;if(h.type==="low")f.stats.hitsLow++;else f.stats.hitsHigh++;if(f.player)feedback(h.type==="low"?"LOW HIT · TAP JUMP WHEN NOW APPEARS":"HIGH HIT · HOLD DUCK THROUGH THE ROD");
   f.hitTimer=.58;f.recoverDelay=TUNING.hit.recoverDelay;f.flash=.22;f.ragdoll=1.15;
   f.trackT=Math.max(TUNING.hit.minTrackT,f.trackT-TUNING.hit.setbackT);
   f.vy=3.25;f.jumpY=Math.max(f.jumpY,.03);f.duck=false;f.input.jumpBuffer=0;
@@ -474,7 +565,7 @@ function hitFighter(f,h,deferRoundEnd=false){
   if(f.player){triggerFlash();haptic(70);say(`${h.type==="low"?"Low rod":"High rod"} caught you — knocked back — keep reading the next rod. ${f.lives} strike${f.lives===1?"":"s"} left.`)}
   if(f.lives<=0)eliminate(f,deferRoundEnd);
 }
-function clearHazard(f,h){if(h.checked.has(f.id)||!f.alive)return;h.checked.add(f.id);f.score++;if(f.player){globalScore++;bestScore=Math.max(bestScore,globalScore);sfxClear(h.type)}}
+function clearHazard(f,h){if(h.checked.has(f.id)||!f.alive)return;h.checked.add(f.id);f.score++;f.stats.clears++;f.stats.streak++;f.stats.bestStreak=Math.max(f.stats.bestStreak,f.stats.streak);if(f.player){globalScore++;bestScore=Math.max(bestScore,globalScore);sfxClear(h.type);feedback(f.stats.streak%5===0?`${f.stats.streak} CLEAN · KEEP THE RHYTHM`:`${h.type==="low"?"JUMP":"DUCK"} CLEAR · STREAK ${f.stats.streak}`);if(f.stats.streak%5===0){impactRing(f.base,0xf0c861);tone(660,.09,"triangle",.018,1.2)}}}
 function eliminate(f,deferRoundEnd=false){
   if(!f.alive)return;f.alive=false;f.eliminated=true;f.duck=false;const b=helixBasis(f.trackT);f.fall.copy(b.right).multiplyScalar(f.lane>0?2.7:-2.7);f.fall.z+=rand(-1.0,1.2);f.fall.y=3.4;f.tilt=rand(-2.2,2.2);sfxOut();if(f.player){say("You are out. The surviving dummies keep running.");haptic(120)}else say(`${f.name} has been donated to the moat.`);
   if(!deferRoundEnd)checkRoundEnd();
@@ -487,7 +578,7 @@ function finishOrNext(){
   const maxWins=Math.max(0,...fighters.map(f=>f.roundWins)),leaders=fighters.filter(f=>f.roundWins===maxWins);
   const clinched=lastRoundWinner&&lastRoundWinner.roundWins>=2;
   const regulationDone=round>=TUNING.rounds.bestOf;
-  if(clinched||(regulationDone&&leaders.length===1)){const champ=clinched?lastRoundWinner:leaders[0];phase="matchover";countdownEl.classList.remove("hidden");countdownEl.textContent="♛";say(champ?.player?"Match won — Spiral Keep bows to the crown.":`${champ?.name||"A contestant"} takes the crown.`);updateHUD();return}
+  if(clinched||(regulationDone&&leaders.length===1)){const champ=clinched?lastRoundWinner:leaders[0];phase="matchover";countdownEl.classList.remove("hidden");countdownEl.textContent="♛";say(champ?.player?"Match won — Spiral Keep bows to the crown.":`${champ?.name||"A contestant"} takes the crown.`);renderResults(champ);updateHUD();return}
   round++;if(regulationDone&&leaders.length>1)say("The crown is tied — sudden-death round!");resetRound();
 }
 
@@ -496,9 +587,9 @@ function aiUpdate(f,dt){
   if(f.duckTimer>0){f.duckTimer-=dt;if(f.duckTimer<=0)setDuck(f,false,"ai")}
   let h=null,best=99;for(const x of hazards){if(x.checked.has(f.id)||x.t<f.trackT-.03)continue;const d=x.t-f.trackT;if(d<best){best=d;h=x}}
   if(!h)return;
-  const cfg=AI[difficultyEl.value];
+  const cfg=AI[difficultyEl.value]||AI.normal;
   // Sample one imperfect plan per rod. Bots use the same buffer and posture rules as humans.
-  if(f.aiPlan?.id!==h.id)f.aiPlan={id:h.id,reaction:cfg.reaction+rand(-.035,.045),mistake:Math.random()<cfg.mistake,wrongAction:Math.random()<.55};
+  if(f.aiPlan?.id!==h.id)f.aiPlan={id:h.id,reaction:cfg.reaction+gameRand(-.035,.045),mistake:gameplayRandom()<cfg.mistake,wrongAction:gameplayRandom()<.55};
   const closingSpeed=currentSpeed()+(f.recoverDelay<=0&&f.trackT<PLAYER_T?TUNING.hit.recoverSpeed:0);
   const eta=(best-TUNING.hazards.collisionWindow)/closingSpeed;
   if(f.aiHazard===h.id||eta>=f.aiPlan.reaction)return;
@@ -518,7 +609,7 @@ function testHazard(h){
   checkRoundEnd();
 }
 function fixedUpdate(dt){
-  roundTime+=dt;
+  roundTime+=dt;for(const f of fighters)if(f.alive)f.stats.survival+=dt;
   nextSpawn-=dt;
   if(nextSpawn<=0)spawnPattern();
 
@@ -550,7 +641,7 @@ function fixedUpdate(dt){
         f.vy-=TUNING.jump.gravity*dt;
         f.jumpY+=f.vy*dt;
         if(f.jumpY<=0){
-          f.jumpY=0;f.vy=0;
+          f.jumpY=0;f.vy=0;f.landPulse=.16;if(f.player)impactRing(f.base,0xf0c861);
           if(f.input.duckHeld)updateDuckPosture(f);
           else if(f.input.jumpBuffer>0)doJump(f);
         }
@@ -569,7 +660,7 @@ function fixedUpdate(dt){
   pollGamepads();
 }
 function pollGamepads(){
-  const pads=Array.from(navigator.getGamepads?.()||[]);
+  let pads;try{pads=Array.from(navigator.getGamepads?.()||[])}catch{return}
   for(let i=0;i<fighters.length;i++){
     const f=fighters[i],p=pads[i];
     if(!p){setDuck(f,false,"gamepad");f.gamepadPrevJump=false;f.gamepadPrevDuck=false;if(i>0&&f.controller==="gamepad")changeController(f,"ai");continue}
@@ -581,9 +672,22 @@ function pollGamepads(){
   }
 }
 
+function movementPose(f,time){
+  const run=Math.sin(time*10.5*speedMult()+f.wobble),air=f.jumpY>0;
+  return {armL:f.hitTimer>0?-1.2:air?-1.05:f.duck?-.75:run*.28,armR:f.hitTimer>0?1:air?-1.05:f.duck?-.75:-run*.28,legL:air?.55:f.duck?.72:-run*.34,legR:air?-.35:f.duck?.72:run*.34,lean:f.duck?.28:air?-.08:.06,scale:f.duck?.66:1};
+}
 function updateVisuals(dt,time){
-  for(const f of fighters){const v=f.visual;if(!v.root.visible)continue;if(f.alive){const fb=helixBasis(f.trackT);v.root.position.copy(f.base).add(f.offset);v.root.position.y+=f.jumpY;v.root.rotation.y=Math.atan2(fb.tangent.x,fb.tangent.z);v.root.rotation.z=damp(v.root.rotation.z,(f.hitTimer>0?Math.sin(time*35+f.id)*.24:0),11,dt)}else{v.root.position.copy(f.base).add(f.offset)}
-    const duckScale=f.duck?.66:1;v.bodyRoot.scale.y=damp(v.bodyRoot.scale.y,duckScale,16,dt);v.bodyRoot.position.y=damp(v.bodyRoot.position.y,f.duck?-.11:0,15,dt);const run=Math.sin(time*10.5+f.wobble),loose=.45+f.ragdoll*1.5;v.limbs.armL.rotation.x=damp(v.limbs.armL.rotation.x,run*.50*loose+(f.hitTimer>0?-1.2:0),9,dt);v.limbs.armR.rotation.x=damp(v.limbs.armR.rotation.x,-run*.48*loose+(f.hitTimer>0?1.0:0),9,dt);v.limbs.legL.rotation.x=damp(v.limbs.legL.rotation.x,-run*.34*(f.duck?.25:1),10,dt);v.limbs.legR.rotation.x=damp(v.limbs.legR.rotation.x,run*.34*(f.duck?.25:1),10,dt);v.bodyRoot.rotation.z=damp(v.bodyRoot.rotation.z,Math.sin(time*7+f.wobble)*.035+(f.ragdoll?Math.sin(time*28+f.id)*.18*f.ragdoll:0),10,dt);v.head.rotation.z=damp(v.head.rotation.z,Math.sin(time*6+f.wobble)*.045*loose,9,dt);v.mat.emissive.setHex(f.flash>0?0xffffff:0x000000);v.mat.emissiveIntensity=f.flash>0?.75:0;v.shadow.material.opacity=f.jumpY>0?.12:.22}
+  const reduced=effectsReduced();for(const flag of towerFlags)flag.mesh.rotation.y=flag.angle+(reduced?0:Math.sin(time*1.7+flag.phase)*.045);
+  for(const f of fighters){
+    const v=f.visual;if(!v.root.visible)continue;
+    if(f.alive){const fb=helixBasis(f.trackT);v.root.position.copy(f.base).add(f.offset);v.root.position.y+=f.jumpY;v.root.rotation.y=Math.atan2(fb.tangent.x,fb.tangent.z);v.root.rotation.z=damp(v.root.rotation.z,(!reduced&&f.hitTimer>0?Math.sin(time*35+f.id)*.24:0),11,dt)}else v.root.position.copy(f.base).add(f.offset);
+    const pose=movementPose(f,time),loose=.45+f.ragdoll*1.5;f.landPulse=Math.max(0,(f.landPulse||0)-dt);
+    const landing=reduced?0:Math.sin(f.landPulse/.16*Math.PI)*.10;
+    v.bodyRoot.scale.y=damp(v.bodyRoot.scale.y,pose.scale-landing,16,dt);v.bodyRoot.position.y=damp(v.bodyRoot.position.y,f.duck?-.11:0,15,dt);v.bodyRoot.rotation.x=damp(v.bodyRoot.rotation.x,pose.lean,12,dt);
+    v.limbs.armL.rotation.x=damp(v.limbs.armL.rotation.x,pose.armL,9,dt);v.limbs.armR.rotation.x=damp(v.limbs.armR.rotation.x,pose.armR,9,dt);v.limbs.legL.rotation.x=damp(v.limbs.legL.rotation.x,pose.legL,10,dt);v.limbs.legR.rotation.x=damp(v.limbs.legR.rotation.x,pose.legR,10,dt);
+    v.bodyRoot.rotation.z=damp(v.bodyRoot.rotation.z,reduced?0:Math.sin(time*7+f.wobble)*.035+(f.ragdoll?Math.sin(time*28+f.id)*.18*f.ragdoll:0),10,dt);v.head.rotation.z=damp(v.head.rotation.z,reduced?0:Math.sin(time*6+f.wobble)*.045*loose,9,dt);
+    v.mat.emissive.setHex(!reduced&&f.flash>0?0xffffff:0x000000);v.mat.emissiveIntensity=!reduced&&f.flash>0?.75:0;v.shadow.material.opacity=f.jumpY>0?.12:.22;v.shadow.position.y=.02-f.jumpY;v.identityRing.position.y=.025-f.jumpY;
+  }
   for(const fx of particles){if(fx.life<=0)continue;fx.life-=dt;if(fx.life<=0){fx.mesh.visible=false;continue}fx.v.y-=5.5*dt;fx.mesh.position.addScaledVector(fx.v,dt);fx.mesh.material.opacity=clamp(fx.life/fx.max,0,1)*.82}
   for(const fx of rings){if(fx.life<=0)continue;fx.life-=dt;if(fx.life<=0){fx.mesh.visible=false;continue}const t=1-fx.life/fx.max;fx.mesh.scale.setScalar(.35+t*1.7);fx.mesh.material.opacity=(1-t)*.62}
 }
@@ -599,7 +703,7 @@ function updateCamera(dt,time){
     .addScaledVector(b.tangent,-(TUNING.camera.back+1.35*crowd))
     .addScaledVector(b.right,TUNING.camera.side+.55*crowd);
   desired.y+=TUNING.camera.height+.38*crowd;
-  const effectScale=graphicsMode==="performance"||window.matchMedia?.("(prefers-reduced-motion: reduce)").matches?0:1;
+  const effectScale=graphicsMode==="performance"||effectsReduced()?0:1;
   const shakeSide=effectScale*(Math.sin(time*40)+Math.sin(time*57)*.45)*cameraShake*TUNING.camera.shakeX;
   const shakeUp=effectScale*Math.sin(time*48)*cameraShake*TUNING.camera.shakeY;
   desired.addScaledVector(b.right,shakeSide);desired.y+=shakeUp;
@@ -618,41 +722,54 @@ function updatePhase(dt){
   if(paused)return;if(phase==="roundover"){phaseTimer-=dt;if(phaseTimer<=0)finishOrNext();return}if(phase==="countdown"){phaseTimer-=dt;if(phaseTimer>2.3)countdownEl.textContent="3";else if(phaseTimer>1.3)countdownEl.textContent="2";else if(phaseTimer>.35)countdownEl.textContent="1";else countdownEl.textContent="GO";if(phaseTimer<=0){phase="fight";countdownEl.classList.add("hidden");say("GO — read the rod’s arrow and action label.");tone(440,.06,"triangle",.035,1.25)}}
 }
 function updateHUD(){
-  const p=fighters[0],alive=fighters.filter(f=>f.alive).length;roundLabel.textContent=round<=TUNING.rounds.bestOf?`${round} / ${TUNING.rounds.bestOf}`:`TIE ${round}`;timerEl.textContent=`${fmtTime(roundTime)} · ${alive}/${playerCount}`;youScoreEl.textContent=p?.score??0;winsScoreEl.textContent=p?.roundWins??roundWins;livesText.textContent=`${Math.max(0,p?.lives??0)} / ${MAX_LIVES}`;speedValue.textContent=speedMult().toFixed(2)+"×";jumpBtn.disabled=paused||phase!=="fight"||!p?.alive;duckBtn.disabled=jumpBtn.disabled;
+  const p=fighters[0],alive=fighters.filter(f=>f.alive).length;roundLabel.textContent=round<=TUNING.rounds.bestOf?`${round} / ${TUNING.rounds.bestOf}`:`TIE ${round}`;timerEl.textContent=`R${round} · ${fmtTime(roundTime)} · ${alive}/${playerCount}`;youScoreEl.textContent=p?.score??0;winsScoreEl.textContent=p?.roundWins??roundWins;livesText.textContent=`${Math.max(0,p?.lives??0)} / ${MAX_LIVES}`;speedValue.textContent=speedMult().toFixed(2)+"×";jumpBtn.disabled=paused||phase!=="fight"||!p?.alive;duckBtn.disabled=jumpBtn.disabled;
   let nearest=null;for(const h of hazards){if(h.t>=p.trackT&&!h.checked.has(0)&&(!nearest||h.t<nearest.t))nearest=h}
   const pClosing=currentSpeed()+(p.recoverDelay<=0&&p.trackT<PLAYER_T?TUNING.hit.recoverSpeed:0);
   const eta=nearest?(nearest.t-p.trackT-TUNING.hazards.collisionWindow)/pClosing:99,cue=!paused&&p.alive&&phase==="fight"&&eta>0&&eta<TUNING.hazards.cueEta;
   const action=nearest?.type==="low"?"JUMP":"DUCK";
-  reactionCue.textContent=paused?"PAUSED":phase==="matchover"?`${messageEl.textContent.replace("🐦 Pigeon: ","")} · SETTINGS TO REMATCH`:phase==="roundover"?messageEl.textContent.replace("🐦 Pigeon: ",""):!p.alive?"OUT · WATCH THE SURVIVORS":cue?(eta<=.46?`${action} NOW`:`NEXT · ${action}`):p.trackT<PLAYER_T?`RECOVERING · ${p.lives} / ${MAX_LIVES} STRIKES LEFT`:"READ THE RODS · JUMP / DUCK";
+  const cueText=paused?"PAUSED":phase==="matchover"?`${messageEl.textContent.replace("🐦 Pigeon: ","")} · REPLAY OR SETUP`:phase==="roundover"?messageEl.textContent.replace("🐦 Pigeon: ",""):!p.alive?"OUT · WATCH THE SURVIVORS":cue?(eta<=.46?`${action} NOW`:`NEXT · ${action}`):p.trackT<PLAYER_T?`RECOVERING · ${p.lives} / ${MAX_LIVES} STRIKES LEFT`:"READ THE RODS · JUMP / DUCK";if(reactionCue.textContent!==cueText)reactionCue.textContent=cueText;
+  const pending=hazards.filter(h=>!h.checked.has(0)&&h.t>=p.trackT).sort((a,b)=>a.t-b.t),following=pending[1];
+  $("#nextRod").textContent=phase==="fight"&&!paused&&p.alive?(following?`THEN · ${following.type==="low"?"↟ JUMP":"↡ DUCK"}`:`${roundTime<16?"READ":roundTime<38?"PATTERNS":"CHAINS"} · STREAK ${p.stats.streak}`):phase==="setup"?"CHOOSE YOUR RUN":"";
+  $("#cueFill").style.width=cue?`${Math.round(clamp(1-eta/TUNING.hazards.cueEta,0,1)*100)}%`:"0%";$("#cueFill").style.background=nearest?.type==="high"?"var(--coral)":"var(--cyan)";
+  $("#clearFeedback").classList.toggle("on",phase==="fight"&&!paused&&feedbackUntil>roundTime);
   jumpBtn.classList.toggle("cue",cue&&nearest?.type==="low");duckBtn.classList.toggle("cue",cue&&nearest?.type==="high");
   const life=Math.max(0,p?.lives??0);[...lifePips.children].forEach((el,i)=>{el.classList.toggle("on",i<life);el.classList.toggle("danger",i<life&&life<=2)})
 }
 function updateDebug(){
-  if(!debugOn)return;const p=fighters[0];let nearest=null;for(const h of hazards){if(h.t>=p.trackT&&(!nearest||h.t<nearest.t))nearest=h}const pClosing=currentSpeed()+(p.recoverDelay<=0&&p.trackT<PLAYER_T?TUNING.hit.recoverSpeed:0);const state={version:VERSION,phase,round,time:+roundTime.toFixed(2),speed:+speedMult().toFixed(2),fps:+fps.toFixed(1),player:p?{lives:p.lives,score:p.score,jump:+p.jumpY.toFixed(2),duck:p.duck,alive:p.alive,trackT:+p.trackT.toFixed(3),setback:+(PLAYER_T-p.trackT).toFixed(3),recoverDelay:+p.recoverDelay.toFixed(2),jumpBuffer:+(p.input?.jumpBuffer||0).toFixed(3),duckHeld:!!p.input?.duckHeld,controller:p.controller}:null,nearest:nearest?{type:nearest.type,eta:+((nearest.t-p.trackT)/pClosing).toFixed(2)}:null,alive:fighters.filter(f=>f.alive).length,players:playerCount,controllers:fighters.map(f=>f.controller),choreography:{pattern:activePattern,queue:patternQueue.map(x=>x.type),spawned:choreographyStats.spawned,clamped:choreographyStats.clamped,minGap:choreographyStats.minGap===99?null:+choreographyStats.minGap.toFixed(2),lastGap:+choreographyStats.lastGap.toFixed(2)}};window.__ROYAL_TWISTED_STATE__=state;debugPanel.textContent=`${VERSION}\n${phase} · round ${round} · FPS ${state.fps}\nspeed ${state.speed}x · alive ${state.alive}\nplayer lives ${state.player?.lives} score ${state.player?.score}\ntrack ${state.player?.trackT} · setback ${state.player?.setback}\njump ${state.player?.jump} duck ${state.player?.duck} · buf ${state.player?.jumpBuffer}\nnext ${state.nearest?state.nearest.type+" in "+state.nearest.eta+"s":"none"}\npattern ${state.choreography.pattern} · gap ${state.choreography.lastGap}s`
+  if(!debugOn)return;const p=fighters[0];let nearest=null;for(const h of hazards){if(h.t>=p.trackT&&(!nearest||h.t<nearest.t))nearest=h}const pClosing=currentSpeed()+(p.recoverDelay<=0&&p.trackT<PLAYER_T?TUNING.hit.recoverSpeed:0);const state={version:VERSION,phase,round,time:+roundTime.toFixed(2),seed:matchSeed,rhythm:matchRhythm,stats:fighters.map(f=>({...f.stats})),speed:+speedMult().toFixed(2),fps:+fps.toFixed(1),player:p?{lives:p.lives,score:p.score,jump:+p.jumpY.toFixed(2),duck:p.duck,alive:p.alive,trackT:+p.trackT.toFixed(3),setback:+(PLAYER_T-p.trackT).toFixed(3),recoverDelay:+p.recoverDelay.toFixed(2),jumpBuffer:+(p.input?.jumpBuffer||0).toFixed(3),duckHeld:!!p.input?.duckHeld,controller:p.controller}:null,nearest:nearest?{type:nearest.type,eta:+((nearest.t-p.trackT)/pClosing).toFixed(2)}:null,alive:fighters.filter(f=>f.alive).length,players:playerCount,controllers:fighters.map(f=>f.controller),choreography:{pattern:activePattern,queue:patternQueue.map(x=>x.type),spawned:choreographyStats.spawned,clamped:choreographyStats.clamped,minGap:choreographyStats.minGap===99?null:+choreographyStats.minGap.toFixed(2),lastGap:+choreographyStats.lastGap.toFixed(2)}};window.__ROYAL_TWISTED_STATE__=state;debugPanel.textContent=`${VERSION}\n${phase} · round ${round} · FPS ${state.fps}\nspeed ${state.speed}x · alive ${state.alive}\nplayer lives ${state.player?.lives} score ${state.player?.score}\ntrack ${state.player?.trackT} · setback ${state.player?.setback}\njump ${state.player?.jump} duck ${state.player?.duck} · buf ${state.player?.jumpBuffer}\nnext ${state.nearest?state.nearest.type+" in "+state.nearest.eta+"s":"none"}\npattern ${state.choreography.pattern} · gap ${state.choreography.lastGap}s`
 }
 function resize(){if(!renderer||!camera)return;const w=innerWidth,h=innerHeight;renderer.setSize(w,h,false);camera.aspect=w/h;const portrait=clamp((h/w-1.15)/.75,0,1);const crowd=clamp((playerCount-4)/6,0,1);camera.fov=lerp(TUNING.camera.baseFov,TUNING.camera.portraitFov,portrait)+3.5*crowd;camera.updateProjectionMatrix()}
-function togglePause(force=true){if(phase==="matchover")return;if(force===false&&settingsModal.classList.contains("open"))return;paused=force!==false;pauseOverlay.classList.toggle("open",paused&&!settingsModal.classList.contains("open"));clearInputs();if(!paused)resumeBotInputs()}
+function togglePause(force=true){if(phase==="matchover")return;if(phase==="setup"||(force===false&&(settingsModal.classList.contains("open")||helpModal.classList.contains("open"))))return;paused=force!==false;pauseOverlay.classList.toggle("open",paused&&!settingsModal.classList.contains("open"));clearInputs();if(!paused)resumeBotInputs()}
 
-function pressJump(e){e?.preventDefault?.();initAudio();if(phase==="fight"&&!paused)requestJump(fighters[0])}
-function pressDuck(e){e?.preventDefault?.();initAudio();if(phase==="fight"&&!paused){e?.currentTarget?.setPointerCapture?.(e.pointerId);setDuck(fighters[0],true,`pointer:${e?.pointerId??0}`)}}
+function pressJump(e){e?.preventDefault?.();initAudio(true);if(phase==="fight"&&!paused)requestJump(fighters[0])}
+function pressDuck(e){e?.preventDefault?.();initAudio(true);if(phase==="fight"&&!paused){e?.currentTarget?.setPointerCapture?.(e.pointerId);setDuck(fighters[0],true,`pointer:${e?.pointerId??0}`)}}
 function releaseDuck(e){e?.preventDefault?.();setDuck(fighters[0],false,`pointer:${e?.pointerId??0}`)}
 jumpBtn.addEventListener("pointerdown",pressJump,{passive:false});duckBtn.addEventListener("pointerdown",pressDuck,{passive:false});
 for(const event of ["pointerup","pointercancel","lostpointercapture"])duckBtn.addEventListener(event,releaseDuck,{passive:false});
 window.addEventListener("keydown",e=>{
+  if(e.code!=="Escape"&&(/^(INPUT|SELECT|TEXTAREA)$/.test(e.target?.tagName||"")||(e.target?.tagName==="BUTTON"&&["Space","Enter"].includes(e.code))))return;
   if(e.code!=="Escape"&&(paused||phase!=="fight"))return;
   if(["Space","ArrowUp","KeyW"].includes(e.code)){e.preventDefault();if(!e.repeat)pressJump(e)}
-  if(["ShiftLeft","ShiftRight","ArrowDown","KeyS"].includes(e.code)){e.preventDefault();if(!e.repeat){initAudio();setDuck(fighters[0],true,`key:${e.code}`)}}
-  if(e.code==="Escape"&&!e.repeat){if(settingsModal.classList.contains("open"))closeSettingsToPause();else togglePause(!paused)}
+  if(["ShiftLeft","ShiftRight","ArrowDown","KeyS"].includes(e.code)){e.preventDefault();if(!e.repeat){initAudio(true);setDuck(fighters[0],true,`key:${e.code}`)}}
+  if(e.code==="Escape"&&!e.repeat){if(helpModal.classList.contains("open"))closeHelpToPause();else if(settingsModal.classList.contains("open"))closeSettingsToPause();else togglePause(!paused)}
 },{passive:false});
 window.addEventListener("keyup",e=>{if(["ShiftLeft","ShiftRight","ArrowDown","KeyS"].includes(e.code)){e.preventDefault();setDuck(fighters[0],false,`key:${e.code}`)}},{passive:false});
 window.addEventListener("blur",()=>{clearInputs();togglePause(true)});
 
-playerCountEl.value=String(playerCount);
-playerCountEl.addEventListener("change",()=>{const next=Math.max(2,Math.min(10,Number(playerCountEl.value)||4));if(next===playerCount)return;playerCount=next;createFighters();restartMatch();paused=true;pauseOverlay.classList.remove("open");say(`${playerCount} contestants entered the Spiral Keep.`)});
-
-soundBtn.addEventListener("click",()=>{soundOn=!soundOn;soundBtn.textContent=soundOn?"🔊":"🔇";if(soundOn){initAudio();tone(330,.05,"triangle",.025,1.2)}});function openSettingsPaused(){paused=true;pauseOverlay.classList.remove("open");settingsModal.classList.add("open");clearInputs()}
-function closeSettingsToPause(){settingsModal.classList.remove("open");paused=true;pauseOverlay.classList.add("open");clearInputs()}
-settingsBtn.addEventListener("click",openSettingsPaused);closeSettings.addEventListener("click",closeSettingsToPause);restartBtn.addEventListener("click",()=>{restartMatch();closeSettingsToPause()});graphicsEl.addEventListener("change",()=>{graphicsMode=graphicsEl.value;applyGraphicsMode();say(`Graphics set to ${graphicsMode}.`)});difficultyEl.addEventListener("change",()=>say(`Rivals set to ${difficultyEl.options[difficultyEl.selectedIndex].text}.`));hapticsToggle.addEventListener("click",()=>{hapticsOn=!hapticsOn;hapticsToggle.classList.toggle("on",hapticsOn)});debugToggle.addEventListener("click",()=>{debugOn=!debugOn;debugToggle.classList.toggle("on",debugOn);debugPanel.classList.toggle("show",debugOn)});resumeBtn.addEventListener("click",()=>togglePause(false));
+playerCountEl.value=String(playerCount);difficultyEl.value=preferences.difficulty;graphicsEl.value=preferences.graphics;rhythmEl.value=preferences.rhythm;volumeEl.value=String(preferences.volume);motionEl.value=effectsReduced()?"reduced":"full";seedInput.value=String(Math.max(1,Date.now()>>>0));soundBtn.textContent=soundOn?"🔊":"🔇";hapticsToggle.classList.toggle("on",hapticsOn);hapticsToggle.setAttribute?.("aria-pressed",String(hapticsOn));applyMotionPreference();
+playerCountEl.addEventListener("change",()=>{preferences.players=normalizePreferences({players:playerCountEl.value}).players;savePreferences();say(`${preferences.players} contestants on the next Restart Match.`)});
+rhythmEl.addEventListener("change",()=>{preferences.rhythm=normalizePreferences({rhythm:rhythmEl.value}).rhythm;savePreferences();say("Rhythm saved for the next Restart Match.")});
+soundBtn.addEventListener("click",()=>{soundOn=!soundOn;preferences.sound=soundOn;savePreferences();soundBtn.textContent=soundOn?"🔊":"🔇";if(soundOn){initAudio(true);tone(330,.05,"triangle",.025,1.2)}});
+function openSettingsPaused(){paused=true;pauseOverlay.classList.remove("open");settingsModal.classList.add("open");clearInputs();closeSettings.focus?.()}
+function closeSettingsToPause(){settingsModal.classList.remove("open");clearInputs();if(phase==="setup"){paused=false;setupPlayers.value=String(preferences.players);setupRhythm.value=preferences.rhythm;setupDifficulty.value=preferences.difficulty;$("#startBtn").focus?.();return}if(phase==="matchover"){paused=false;return}paused=true;pauseOverlay.classList.add("open");resumeBtn.focus?.()}
+settingsBtn.addEventListener("click",openSettingsPaused);closeSettings.addEventListener("click",closeSettingsToPause);restartBtn.addEventListener("click",()=>{restartMatch();closeSettingsToPause()});
+graphicsEl.addEventListener("change",()=>{graphicsMode=normalizePreferences({graphics:graphicsEl.value}).graphics;preferences.graphics=graphicsMode;savePreferences();applyGraphicsMode();say(`Graphics set to ${graphicsMode}.`)});
+difficultyEl.addEventListener("change",()=>{preferences.difficulty=normalizePreferences({difficulty:difficultyEl.value}).difficulty;difficultyEl.value=preferences.difficulty;savePreferences();say(`Rival reactions set to ${preferences.difficulty}.`)});
+volumeEl.addEventListener("change",()=>{preferences.volume=+volumeEl.value;savePreferences();initAudio(true)});
+motionEl.addEventListener("change",()=>{preferences.reducedMotion=motionEl.value==="reduced";savePreferences();applyMotionPreference()});
+hapticsToggle.addEventListener("click",()=>{hapticsOn=!hapticsOn;preferences.haptics=hapticsOn;savePreferences();hapticsToggle.classList.toggle("on",hapticsOn);hapticsToggle.setAttribute?.("aria-pressed",String(hapticsOn))});debugToggle.addEventListener("click",()=>{debugOn=!debugOn;debugToggle.classList.toggle("on",debugOn);debugPanel.classList.toggle("show",debugOn);debugToggle.setAttribute?.("aria-pressed",String(debugOn))});resumeBtn.addEventListener("click",()=>togglePause(false));
+$("#pauseBtn").addEventListener("click",()=>togglePause(!paused));$("#helpBtn").addEventListener("click",openHelp);$("#closeHelp").addEventListener("click",closeHelpToPause);$("#startBtn").addEventListener("click",startRun);$("#setupSettingsBtn").addEventListener("click",openSettingsPaused);$("#rematchBtn").addEventListener("click",()=>{restartMatch();paused=false;initAudio(true)});$("#menuBtn").addEventListener("click",showSetup);$("#pauseMenuBtn").addEventListener("click",showSetup);
+for(const button of [jumpBtn,duckBtn]){button.addEventListener("contextmenu",e=>e.preventDefault());button.addEventListener("click",e=>{if(e.detail===0&&canAct(fighters[0])){initAudio(true);if(button===jumpBtn)requestJump(fighters[0]);else {setDuck(fighters[0],true,"accessible-click");setTimeout(()=>setDuck(fighters[0],false,"accessible-click"),450)}}})}
 
 for(let i=0;i<MAX_LIVES;i++){const p=document.createElement("span");p.className="pip on";lifePips.appendChild(p)}
 function validateChoreography(){
@@ -664,7 +781,8 @@ window.RoyalTwisted={
   getState:()=>JSON.parse(JSON.stringify(window.__ROYAL_TWISTED_STATE__||{})),
   restart:restartMatch,
   getPlayerCount:()=>playerCount,
-  setPlayerCount:n=>{playerCount=Math.max(2,Math.min(10,Number(n)||4));playerCountEl.value=String(playerCount);createFighters();restartMatch();return playerCount},
+  getSession:()=>({seed:matchSeed,rhythm:matchRhythm,phase,round,standings:getStandings().map(({fighter:f,rank})=>({rank,id:f.id,name:f.name,crowns:f.roundWins,stats:{...f.stats}}))}),
+  setPlayerCount:n=>{playerCount=Math.max(2,Math.min(10,Math.round(Number(n)||4)));playerCountEl.value=String(playerCount);createFighters();restartMatch();return playerCount},
   registerRemotePlayer:(id,name)=>{const f=fighters[Number(id)];if(!f)return false;changeController(f,"remote");if(name)setFighterName(f,name);return true},
   releaseRemotePlayer:id=>{const f=fighters[Number(id)];if(!f||f.player)return false;changeController(f,"ai");return true},
   input:(id,cmd,value=true)=>{const f=fighters[Number(id)];if(!f||!f.alive)return false;if(!f.player)changeController(f,"remote");if(cmd==="jump"&&value)return requestJump(f);if(cmd==="duck")return setDuck(f,!!value,"remote");return false},
@@ -674,10 +792,10 @@ window.RoyalTwisted={
 window.GameDebug={getState:window.RoyalTwisted.getState,getTuning:()=>TUNING,validateChoreography,setRoundTime:s=>{roundTime=Math.max(0,+s||0)},setPlayerCount:n=>window.RoyalTwisted.setPlayerCount(n),forceHazard:(type="low",eta=1)=>{const f=fighters[0],origin=f?.trackT??PLAYER_T;const t=origin+currentSpeed()*Math.max(.05,+eta||1);return createHazard(type==="high"?"high":"low",t).id},forceHit:(id=0,type="low")=>{const f=fighters[Number(id)];if(!f||!f.alive)return false;const h={id:++hazardId,type:type==="high"?"high":"low",checked:new Set()};hitFighter(f,h);return {trackT:f.trackT,setback:PLAYER_T-f.trackT,lives:f.lives}}};
 
 function animate(now){
-  requestAnimationFrame(animate);const realDt=Math.min(.05,(now-lastTime)/1000);lastTime=now;fpsAccum+=realDt;fpsFrames++;if(fpsAccum>=.5){fps=fpsFrames/fpsAccum;fpsFrames=0;fpsAccum=0}updatePhase(realDt);if(!paused&&phase==="fight"){accumulator=Math.min(accumulator+realDt,.12);let steps=0;while(phase==="fight"&&accumulator>=FIXED_DT&&steps<MAX_SUBSTEPS){fixedUpdate(FIXED_DT);accumulator-=FIXED_DT;steps++}}else accumulator=0;updateVisuals(realDt,now/1000);updateCamera(realDt,now/1000);updateHUD();updateDebug();renderer.render(scene,camera)
+  requestAnimationFrame(animate);pollGamepadMenu();const realDt=Math.min(.05,(now-lastTime)/1000);lastTime=now;fpsAccum+=realDt;fpsFrames++;if(fpsAccum>=.5){fps=fpsFrames/fpsAccum;fpsFrames=0;fpsAccum=0}updatePhase(realDt);if(!paused&&phase==="fight"){accumulator=Math.min(accumulator+realDt,.12);let steps=0;while(phase==="fight"&&accumulator>=FIXED_DT&&steps<MAX_SUBSTEPS){fixedUpdate(FIXED_DT);accumulator-=FIXED_DT;steps++}}else accumulator=0;updateVisuals(realDt,now/1000);updateCamera(realDt,now/1000);updateHUD();updateDebug();renderer.render(scene,camera)
 }
 
-try{initRenderer();clearTimeout(window.twistedLoadWatch);resetRound();window.addEventListener("resize",resize);window.visualViewport?.addEventListener("resize",resize);document.addEventListener("visibilitychange",()=>{if(document.hidden&&!paused)togglePause(true)});setTimeout(()=>loading.style.display="none",420);requestAnimationFrame(animate)}catch(err){clearTimeout(window.twistedLoadWatch);window.twistedLoadError("Renderer Error",`WebGL graphics could not start: ${String(err.message||err)}. Try a WebGL-capable browser or device.`)}
+try{initRenderer();clearTimeout(window.twistedLoadWatch);resetRound();showSetup();window.addEventListener("resize",resize);window.visualViewport?.addEventListener("resize",resize);document.addEventListener("visibilitychange",()=>{if(document.hidden&&!paused)togglePause(true)});setTimeout(()=>loading.style.display="none",420);requestAnimationFrame(animate)}catch(err){clearTimeout(window.twistedLoadWatch);window.twistedLoadError("Renderer Error",`WebGL graphics could not start: ${String(err.message||err)}. Try a WebGL-capable browser or device.`)}
 </script>
 </body>
 </html>
