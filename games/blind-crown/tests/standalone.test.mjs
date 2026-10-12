@@ -6,7 +6,7 @@ import vm from 'node:vm';
 
 const html = await readFile(new URL('../source/index.html', import.meta.url));
 const scripts = [...html.toString('utf8').matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)];
-const expected = '7e76153833db7702620d807a4aca5919e741fd21369540ca79b27a411b704415';
+const expected = '546839ce6ffcab10f041fa1ba4ff45b6f05bbc76f1ce3f49793e97f0cf1e042b';
 function engine() {
   const entry = scripts.find(([, , code]) => code.includes('deterministic, authoritative match rules'));
   assert.ok(entry, 'Complete engine must be embedded in standalone');
@@ -24,7 +24,7 @@ function match() {
 }
 
 test('Nightfall v1.7 tactical worlds HTML matches the verified active-build bytes exactly', () => {
-  assert.equal(html.length, 268727);
+  assert.equal(html.length, 268886);
   assert.equal(createHash('sha256').update(html).digest('hex'), expected);
 });
 test('Embedded classic scripts compile without rewriting source', () => {

@@ -99,3 +99,11 @@ test('captured Replay and transactional Next ignore staged zero rivals through r
  n.get('botSlider').value='0';n.get('botSlider').oninput();n.get('replayStage').onclick();assert.equal(d.getState().phase,'planning');assert.equal(d.getSession().tour.stage,1);assert.deepEqual(plain(d.getState().settings),rules);h.advance(900);assert.equal(d.getState().phase,'final');n.get('nextStage').onclick();assert.equal(d.getState().phase,'planning');assert.equal(d.getState().settings.arena,'orchard');assert.equal(d.getState().settings.bots,1);assert.equal(d.getSession().tour.stage,2);assert.equal(d.getSession().tour.completed,1);
  n.get('settingsBtn').onclick();const before=JSON.stringify(d.getState()),tour=JSON.stringify(d.getSession().tour);n.get('startBtn').onclick();assert.equal(JSON.stringify(d.getState()),before);assert.equal(JSON.stringify(d.getSession().tour),tour);assert.equal(n.get('settingsDialog').open,true);
 });
+
+
+test('replay preserves earned Tour history while new round history resets; title/result openings start at their heading',()=>{
+ const h=appHarness(),n=h.nodes,d=h.c.BlindCrownDebug;n.get('arenaBackdrop').scrollTop=100;n.get('watchDemo').onclick();n.get('returnDemo').onclick();assert.equal(n.get('arenaBackdrop').scrollTop,0);
+ n.get('sessionSelect').value='tour';n.get('timeSelect').value='8';n.get('botSlider').value='1';n.get('overlayStart').onclick();h.advance(900);assert.equal(d.getState().phase,'final');assert.equal(n.get('arenaBackdrop').scrollTop,0);const earned=plain(d.getSession().tour);n.get('arenaBackdrop').scrollTop=180;
+ n.get('settingsBtn').onclick();n.get('botSlider').value='0';n.get('botSlider').oninput();n.get('settingsClose').onclick();n.get('replayStage').onclick();const replay=d.getSession();assert.equal(d.getState().phase,'planning');assert.equal(replay.historyRounds,0);assert.equal(replay.captured,null);assert.deepEqual(plain(replay.tour),earned);assert.equal(n.get('arenaBackdrop').scrollTop,0);
+ n.get('arenaBackdrop').scrollTop=180;h.advance(900);assert.equal(d.getState().phase,'final');assert.equal(n.get('arenaBackdrop').scrollTop,0);assert.equal(d.getSession().tour.completed,1);assert.deepEqual(plain(d.getSession().tour.records),earned.records);
+});

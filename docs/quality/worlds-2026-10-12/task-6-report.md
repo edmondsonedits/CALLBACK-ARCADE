@@ -1,6 +1,6 @@
 # Task 6 — Blind Crown Tactical Worlds
 
-Status: **DONE_WITH_CONCERNS**, implementation commit `2ac8cb1`, review-fix commit `ac02879`. Current source frozen at handoff; parent owns browser inspection, root legacy fixtures, catalog/build and publication gates. No push, subagents, original archive or Royal Sumo changes.
+Status: **DONE_WITH_CONCERNS**, implementation commit `2ac8cb1`, review-fix commit `ac02879`, final overlay commit `1d6f235`. Current source frozen at handoff; parent owns browser inspection, root legacy fixtures, catalog/build and publication gates. No push, subagents, original archive or Royal Sumo changes.
 
 ## Delivered slice
 
@@ -28,7 +28,7 @@ Worker tests use real pure modules and the real coordinator/input in a minimal D
 
 ## Exact source evidence
 
-Current standalone: **268727 bytes**, SHA-256 `7e76153833db7702620d807a4aca5919e741fd21369540ca79b27a411b704415`.
+Current standalone: **268886 bytes**, SHA-256 `546839ce6ffcab10f041fa1ba4ff45b6f05bbc76f1ce3f49793e97f0cf1e042b`.
 
 Original archive SHA-256 `496131ad8031a58b8b2ec78cc1aace73f57ab1ca0646271b383bf48bb108c462`.
 
@@ -43,7 +43,7 @@ Original archive SHA-256 `496131ad8031a58b8b2ec78cc1aace73f57ab1ca0646271b383bf4
 | Nightfall Canvas compositor. | `5a4a58bc903f82f08184f85e87704c88f1b5661fc26ba7561f7a0bb9f8924ce5` |
 | Tactical learning and neutral gamepad | `34e6a82157aaf2d0454ae7ba4d530f8172e966079cd41074a3a051101fd4cfe0` |
 | root.CrownInput = | `21132251dacdb9ae7693f244c7bdb25caa2b49deb7e4bf59161525e670ba062e` |
-| Application coordinator. | `97ac8a46f6b842ae131e8e3069234fe38ad81de58f08f7d43a57368bb2e5763c` |
+| Application coordinator. | `653d3c2f8f3cfcf2ce51abe997751f73640892ad55d1e798f7c85dea6bc8111b` |
 
 Kenney upstream archive SHA-256 `b631d4b07f7002549fdcf155f01141ad482f79f3440e4e301eed49ce5f1d8958`; source/archive URLs and exact pack license are recorded in `games/blind-crown/assets/worlds-provenance.json` / `assets/kenney/License.txt`.
 
@@ -69,7 +69,7 @@ No numerical 9/10 certification, hosted multiplayer claim, Safari/physical phone
 
 ## Independent-review fix round 1
 
-The review in `task-6-review.md` identified two concrete defects in the initial candidate. Commit `ac02879` corrects both; the initial candidate's 37-check run above is historical. The current candidate passes **39 checks**, and the source/module hashes in this report now attest that corrected candidate.
+The review in `task-6-review.md` identified two concrete defects in the initial candidate. Commit `ac02879` corrects both; the initial candidate's 37-check run above is historical. That review-fix candidate passed **39 checks** at SHA-256 `7e76153833db7702620d807a4aca5919e741fd21369540ca79b27a411b704415`. The source/module hashes above now attest the final overlay candidate described below.
 
 - **P1:** a completed Tour record seed exposed the deterministic base seed for future stages. `Tour.summary()` now strips seed fields from every public record, and `getSession().captured` stays null throughout a Tour until all four stages naturally finish. Internal stage seeds/captured replay remain unchanged. Practice final may reveal its completed seed. Checked all public paths: filtered match state and review snapshots contain no seed, bests store only scores, preference storage preserves only the user-entered field, and generated Tour seeds never populate that field. The targeted fresh-Tour UI test checks initial planning, first final, subsequent planning and nested records; the all-four-stage UI test verifies captured availability only at whole-Tour final and still proves identical captured replay.
 - **P2:** replay validation previously consulted staged rival settings, and Next advanced before Start. Start now resolves/normalizes the captured specification for continuation, constructs and begins a candidate match, then commits the match, captured rules and Tour index together. Next peeks the future stage without advancing first. A staged zero-rival slider cannot block captured Replay/Next; a deliberately invalid fresh Start leaves the running stage, Tour and open menu intact. The real UI regression covers replay final → private planning → next-stage private planning and staged invalid fresh Start without production accessors.
@@ -93,3 +93,25 @@ node --test games/blind-crown/tests/standalone.test.mjs games/blind-crown/tests/
 ```
 
 Final corrected worker gate: **39 checks, 39 pass, 0 fail**, zero skipped/cancelled/todo; 6 standalone, 17 preserved/extended Classic quality and 16 worlds/lifecycle checks. `git diff --check -- games/blind-crown tests/blind-crown-worlds.test.mjs` also passed. No broad root suite, browser upload, push, subagents or unrelated source changes. README/changelog/manifest/current attestation reflect the corrected source. Parent retains native browser, root integration and publication ownership. Implementation/source frozen at `ac02879`; this report update is a separate documentation commit.
+
+## Final native-browser wave: overlay correction and Replay semantics
+
+Parent Chromium screenshots from CI run `38263413371` / portrait job `114859431789`, inspected locally at `final-browser-first/blind-crown-portrait-title.png` and `final-browser-first/blind-crown-desktop-tour-stage-result.png`, showed two concrete layout defects: the live-demo status banner covered portrait title copy, and an oversized flex-centered title/results card placed its heading above the clipped viewport. Commit `1d6f235` uses top alignment and a non-shrinking scrollable welcome card, reserves 72px above the lobby card for the demo status banner, and resets overlay scroll on phase transitions/Return. Results keep the full scroll region. No material/rule/bot/Tour seed behavior changed. Current native screenshot acceptance still belongs to the parent's rebuilt three-profile CI; the worker did not claim unseen new pixels.
+
+The initial portrait Replay failure was a harness expectation mismatch: **replaying a completed stage retains its prior naturally earned Tour record/aggregate standings until the new attempt naturally completes**, when that same stage record is replaced. This is intentional completed-attempt history, not a claim that the new private round is complete. Match phase resets to planning, local round history clears, captured diagnostics remain null for the incomplete Tour, captured capacity ignores staged zero rivals, and prior earned records remain unchanged. The parent corrected that native harness assertion. A new meaningful real-UI regression makes these semantics explicit and checks heading scroll resets through Watch/Return, stage final, replay planning and replay final. No production Replay mutation was needed.
+
+Current scoped commands/results:
+
+```sh
+node --test --test-name-pattern='replay preserves earned Tour history' tests/blind-crown-worlds.test.mjs
+```
+
+**1 pass, 0 fail**, real UI replay/scroll lifecycle.
+
+```sh
+node --test --test-name-pattern='HTML matches|Embedded classic scripts compile|replay preserves earned Tour history' games/blind-crown/tests/standalone.test.mjs tests/blind-crown-worlds.test.mjs
+```
+
+**3 pass, 0 fail**, 0 skipped/cancelled/todo: exact current standalone bytes/hash, compilation of every embedded classic script, and real Replay/overlay lifecycle. The full current source has 40 focused checks available; the previous 39-check worker gate and parent 523-check root gate apply to their prior candidate, and were not redundantly rerun for the bounded layout change. `git diff --check -- games/blind-crown/source/index.html games/blind-crown/tests tests/blind-crown-worlds.test.mjs` passed.
+
+Source frozen at `1d6f235`; accompanying report commit follows separately. Source is **268886 bytes**, SHA-256 `546839ce6ffcab10f041fa1ba4ff45b6f05bbc76f1ce3f49793e97f0cf1e042b`. Current coordinator module SHA-256 `653d3c2f8f3cfcf2ce51abe997751f73640892ad55d1e798f7c85dea6bc8111b`; all other module/archive/asset hashes above remain unchanged. Standalone/current-test attestation is updated. Parent owns manifest provenance hash synchronization, catalog/build, root/native browser gates and publication; this wave honored the narrowed source/tests/report-only scope. No push, deployment, subagents, other game or archive changes.

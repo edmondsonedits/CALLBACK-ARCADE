@@ -40,7 +40,7 @@ jobs:
         env:
           # Sequential expansion: automatic pixel QA follows the current game.
           # Manual dispatch can select any game or run the complete arcade.
-          BROWSER_GAMES: ${{ inputs.games || 'blind-crown,space-bash' }}
+          BROWSER_GAMES: ${{ inputs.games || 'blind-crown' }}
           BROWSER_BUILT: '1'
           BROWSER_PROFILE: ${{ matrix.profile }}
       - uses: actions/upload-artifact@v4
