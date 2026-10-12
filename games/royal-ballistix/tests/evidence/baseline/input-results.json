@@ -1,0 +1,21 @@
+{
+  "pausedInput": {
+    "axis": 0,
+    "strength": 0,
+    "keyAxis": 1,
+    "drag": false,
+    "pointer": null,
+    "mag": false,
+    "run": false,
+    "pulse": false
+  },
+  "settingsPaused": true,
+  "resumeWithoutNewInputMovement": 0.3495742269648537,
+  "cameraCode": "CAM-5F-32-19",
+  "camera": {
+    "rotate": 15,
+    "zoom": 1.1,
+    "tilt": 10
+  },
+  "cameraDidNotChangeState": true
+}

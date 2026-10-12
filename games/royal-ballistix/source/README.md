@@ -1,3 +1,5 @@
-# Source intake
+# Standalone source
 
-Place the full standalone HTML file here when supplied. Preserve original JavaScript, styling, simulation logic, and named inputs. Add the relative path to the manifest only after copying it here; update provenance and license evidence. An external link does not count as an imported file.
+`index.html` is the complete imported game and remains directly playable without a build or runtime network dependency. Its import base is recoverable from repository commit `785a15000abe11970c7b92c5f3cab197061fcedf`; upstream origin and rights are recorded in `../assets/PROVENANCE.md` and `UPSTREAM-LICENSE.txt`.
+
+The quality revision preserves the radial-stick mobile design (distance controls speed; no Run button), Magnet/Pulse controls, keyboard/API inputs, camera controls and CAM codes. See `../CHANGELOG.md` and `../tests/evidence/quality-review.md` for changes and verification limits. No Sumo reference content was imported.

@@ -1,0 +1,305 @@
+✖ a scored ball removes exactly one life even if reported twice (7.263003ms)
+✖ round awards and result callbacks occur once (1.445822ms)
+✖ a queued old result cannot reopen over a restarted round (1.920494ms)
+✖ later balls cannot eliminate the round winner in the same physics step (2.453898ms)
+✔ stick pointercancel returns to neutral (2.493907ms)
+✖ stick lostpointercapture returns to neutral (3.760676ms)
+✖ second touch cannot steal an active movement pointer (2.043014ms)
+✖ pause clears pending local actions and releases held balls (2.620605ms)
+✖ restart clears pending local actions and releases held balls (4.522249ms)
+✖ blur clears pending local actions and releases held balls (1.723997ms)
+✖ hidden clears pending local actions and releases held balls (1.962569ms)
+✔ Magnet pointercancel detaches its captured ball (1.631443ms)
+✖ Magnet lostpointercapture detaches its captured ball (1.921204ms)
+✖ cancelled Pulse cannot queue a counter (2.109251ms)
+✖ settings return to pause; paused input cannot queue actions (1.78519ms)
+✔ stick and Magnet work simultaneously; releasing stick preserves Magnet (1.629605ms)
+✔ keyboard Shift and API run remain supported (2.014715ms)
+✔ Pulse contact age=0.055, side=0 yields perfect (2.489194ms)
+✔ Pulse contact age=0.055001, side=0 yields hit (3.165952ms)
+✔ Pulse contact age=0.02, side=0.47 yields hit (2.335677ms)
+✔ Pulse contact age=0.180001, side=0 yields miss (2.579381ms)
+✔ CAM codes round-trip without changing simulation (3.295927ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 9
+ℹ fail 13
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 156.048897
+
+✖ failing tests:
+
+test at games/royal-ballistix/tests/quality.test.mjs:6:1
+✖ a scored ball removes exactly one life even if reported twice (7.263003ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  10 !== 11
+  
+      at TestContext.<anonymous> (file:///workspace/royal-ballistix-quality/games/royal-ballistix/tests/quality.test.mjs:6:185)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 10,
+    expected: 11,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at games/royal-ballistix/tests/quality.test.mjs:7:1
+✖ round awards and result callbacks occur once (1.445822ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  2 !== 1
+  
+      at TestContext.<anonymous> (file:///workspace/royal-ballistix-quality/games/royal-ballistix/tests/quality.test.mjs:7:125)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at games/royal-ballistix/tests/quality.test.mjs:8:1
+✖ a queued old result cannot reopen over a restarted round (1.920494ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///workspace/royal-ballistix-quality/games/royal-ballistix/tests/quality.test.mjs:8:207)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at games/royal-ballistix/tests/quality.test.mjs:9:1
+✖ later balls cannot eliminate the round winner in the same physics step (2.453898ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  2 !== 1
+  
+      at TestContext.<anonymous> (file:///workspace/royal-ballistix-quality/games/royal-ballistix/tests/quality.test.mjs:9:316)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at games/royal-ballistix/tests/quality.test.mjs:10:59
+✖ stick lostpointercapture returns to neutral (3.760676ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 0.8928571428571428
+  - 0
+  
+      at TestContext.<anonymous> (file:///workspace/royal-ballistix-quality/games/royal-ballistix/tests/quality.test.mjs:10:187)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0.8928571428571428,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at games/royal-ballistix/tests/quality.test.mjs:11:1
+✖ second touch cannot steal an active movement pointer (2.043014ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///workspace/royal-ballistix-quality/games/royal-ballistix/tests/quality.test.mjs:11:230)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at games/royal-ballistix/tests/quality.test.mjs:12:57
+✖ pause clears pending local actions and releases held balls (2.620605ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (file:///workspace/royal-ballistix-quality/games/royal-ballistix/tests/quality.test.mjs:12:548)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at games/royal-ballistix/tests/quality.test.mjs:12:57
+✖ restart clears pending local actions and releases held balls (4.522249ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (file:///workspace/royal-ballistix-quality/games/royal-ballistix/tests/quality.test.mjs:12:548)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at games/royal-ballistix/tests/quality.test.mjs:12:57
+✖ blur clears pending local actions and releases held balls (1.723997ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (file:///workspace/royal-ballistix-quality/games/royal-ballistix/tests/quality.test.mjs:12:548)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at games/royal-ballistix/tests/quality.test.mjs:12:57
+✖ hidden clears pending local actions and releases held balls (1.962569ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (file:///workspace/royal-ballistix-quality/games/royal-ballistix/tests/quality.test.mjs:12:548)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at games/royal-ballistix/tests/quality.test.mjs:13:59
+✖ Magnet lostpointercapture detaches its captured ball (1.921204ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== null
+  
+      at TestContext.<anonymous> (file:///workspace/royal-ballistix-quality/games/royal-ballistix/tests/quality.test.mjs:13:305)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at games/royal-ballistix/tests/quality.test.mjs:14:1
+✖ cancelled Pulse cannot queue a counter (2.109251ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  2 !== 0
+  
+      at TestContext.<anonymous> (file:///workspace/royal-ballistix-quality/games/royal-ballistix/tests/quality.test.mjs:14:169)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at games/royal-ballistix/tests/quality.test.mjs:15:1
+✖ settings return to pause; paused input cannot queue actions (1.78519ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///workspace/royal-ballistix-quality/games/royal-ballistix/tests/quality.test.mjs:15:276)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
