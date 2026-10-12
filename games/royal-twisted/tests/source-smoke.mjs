@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -13,5 +14,7 @@ assert.match(source,/window\.RoyalTwisted=/);
 assert.match(source,/registerRemotePlayer/);
 assert.match(source,/2–10 total players/);
 assert.match(archive,/0\.4\.0-ten-player-arena/);
-assert.equal(source,original);
+// The active build includes reviewed changes; immutable uploads retain their exact bytes.
+assert.equal(createHash('sha256').update(original).digest('hex'),'68170440ea2584201fccd8cc8e6c251ae598b223af1cd9ab6aa99cac1d988ae2');
+assert.equal(createHash('sha256').update(archive).digest('hex'),'50d44a32a0be10fade5ddabe00493113ee1194b69f2411b1d7d21222538a4dbe');
 console.log('Royal Twisted source checks passed.');

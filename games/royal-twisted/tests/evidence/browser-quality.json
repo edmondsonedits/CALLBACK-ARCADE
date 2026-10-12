@@ -1,0 +1,228 @@
+{
+  "sourceSha256": "ee84432ac2553df9a6c160a854c7c3fdcc4cb227df7e4bd81954c8ccecc2040c",
+  "conditions": {
+    "browser": "154.0.8037.57",
+    "renderer": "Chromium SwiftShader software WebGL",
+    "httpsCertificateErrorsIgnored": true,
+    "physicalPhone": false,
+    "realGamepad": false
+  },
+  "checks": [
+    {
+      "name": "blocked CDN reports an explicit failure",
+      "result": "passed"
+    },
+    {
+      "name": "unavailable WebGL reports Renderer Error",
+      "result": "passed"
+    },
+    {
+      "name": "desktop: input, lifecycle, controls and camera projections",
+      "result": "passed",
+      "detail": {
+        "width": 1280,
+        "height": 720,
+        "count": 4,
+        "projections": [
+          {
+            "setback": false,
+            "coords": [
+              {
+                "x": 0.05303505813331624,
+                "y": -0.02813663223586095,
+                "z": 0.9888636671476723
+              },
+              {
+                "x": -0.00569578797851541,
+                "y": 0.21228795997616146,
+                "z": 0.991089444218802
+              }
+            ]
+          },
+          {
+            "setback": true,
+            "coords": [
+              {
+                "x": 0.0443448906772565,
+                "y": -0.02352624706074585,
+                "z": 0.9888636671476724
+              },
+              {
+                "x": -0.004762493039852616,
+                "y": 0.17750308397092046,
+                "z": 0.991089444218802
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "desktop: software render sample (CPU submission only)",
+      "result": "passed",
+      "detail": {
+        "meanMs": 139.03000000000466,
+        "maxMs": 1093.6000000000931,
+        "drawCalls": 421,
+        "triangles": 18236,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "portrait: input, lifecycle, controls and camera projections",
+      "result": "passed",
+      "detail": {
+        "width": 390,
+        "height": 844,
+        "count": 10,
+        "projections": [
+          {
+            "setback": false,
+            "coords": [
+              {
+                "x": 0.1321036235890529,
+                "y": -0.017882533051481356,
+                "z": 0.9902336575557783
+              },
+              {
+                "x": -0.01634655816186892,
+                "y": 0.14296367002696397,
+                "z": 0.9920277153959288
+              }
+            ]
+          },
+          {
+            "setback": true,
+            "coords": [
+              {
+                "x": 0.11351082790309892,
+                "y": -0.015365673374658257,
+                "z": 0.9902336575557784
+              },
+              {
+                "x": -0.014045877773133736,
+                "y": 0.1228423876948892,
+                "z": 0.9920277153959288
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "portrait: software render sample (CPU submission only)",
+      "result": "passed",
+      "detail": {
+        "meanMs": 43.30999999998603,
+        "maxMs": 316,
+        "drawCalls": 448,
+        "triangles": 27368,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "small: input, lifecycle, controls and camera projections",
+      "result": "passed",
+      "detail": {
+        "width": 320,
+        "height": 568,
+        "count": 2,
+        "projections": [
+          {
+            "setback": false,
+            "coords": [
+              {
+                "x": 0.13597951278626888,
+                "y": -0.022861604907279818,
+                "z": 0.9888636671476723
+              },
+              {
+                "x": -0.014603745173720682,
+                "y": 0.17248842814108487,
+                "z": 0.991089444218802
+              }
+            ]
+          },
+          {
+            "setback": true,
+            "coords": [
+              {
+                "x": 0.11593107179666018,
+                "y": -0.01949095349428513,
+                "z": 0.9888636671476724
+              },
+              {
+                "x": -0.012450609621581918,
+                "y": 0.1470572142610032,
+                "z": 0.991089444218802
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "small: software render sample (CPU submission only)",
+      "result": "passed",
+      "detail": {
+        "meanMs": 12.639999999990687,
+        "maxMs": 20.800000000046566,
+        "drawCalls": 360,
+        "triangles": 14424,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "landscape: input, lifecycle, controls and camera projections",
+      "result": "passed",
+      "detail": {
+        "width": 844,
+        "height": 390,
+        "count": 10,
+        "projections": [
+          {
+            "setback": false,
+            "coords": [
+              {
+                "x": 0.035682629999966665,
+                "y": -0.022621783509529196,
+                "z": 0.9902336575557783
+              },
+              {
+                "x": -0.004415383702701398,
+                "y": 0.18085207413106616,
+                "z": 0.9920277153959288
+              }
+            ]
+          },
+          {
+            "setback": true,
+            "coords": [
+              {
+                "x": 0.03009001165017802,
+                "y": -0.019076220820891762,
+                "z": 0.9902336575557784
+              },
+              {
+                "x": -0.003723350746691472,
+                "y": 0.15250672435209311,
+                "z": 0.9920277153959288
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "landscape: software render sample (CPU submission only)",
+      "result": "passed",
+      "detail": {
+        "meanMs": 69.11999999999534,
+        "maxMs": 408.9000000001397,
+        "drawCalls": 489,
+        "triangles": 27968,
+        "dpr": 1
+      }
+    }
+  ]
+}
