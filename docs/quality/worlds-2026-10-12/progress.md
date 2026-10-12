@@ -49,3 +49,10 @@ Task2 minor (deferred): decorative stage-name canvas caption intersects stage ap
 Task2 exact-source verify CI38234927703/job114763143170 succeeded:429 root tests,144 Sumo source tests and7 phone-room tests pass; typecheck/catalog/build pass. Runtime4866174e…. Browser38234927701 still pending.
 
 Task 2: complete (commits673d123..cde0215, source review clean; one deferred decorative-caption minor). Final browser38234927701/artifact11740323393:147 Scratch checks +129 Ballistix checks pass,0 errors, exact source4866174e…. Parent viewed final landscape hit/rehearsal, portrait demo and Watch screenshots: all three reported overlaps/clipping resolved and Watch Start visible. Final report/screenshots in games/royal-scratch-match/tests/worlds-browser-final/. No physical-device/audio-by-ear/FPS/numerical rating certification. Publication next, then Task3 Roller Ruckus.
+
+Task2 publication: main and review moved to0880b4ea8cbbac68f9295036a34340b23f1499da, tree482fab2bbb2113cc72bb389cb9b5ea05bb07798b equals locala8bd324. Fresh main lease was8474d8f; no concurrent change lost. Pages/live readback pending. Next upload diffbasea8bd324.
+Ruling: retain existing tested Three.js racing/survival physics instead of migrating to a new Rapier runtime — the user requests reuse of working systems and this expansion preserves original feel/API/ordered-gate behavior; a wrong choice would require later physics integration work, not lost user data.
+Task3 brief written for sequential Roller Ruckus implementation.
+
+Task2 publication verified: Pages38235691901, main verify38235691945 and browser38235691883 succeeded. Live Scratch HTML SHA2564866174e89a07e444091ab2a550b74cc25f6ef211277aea44f45ad5fe5cb7d18 matches accepted source (118554 bytes).
+Task3 implementer /root/worlds_roller dispatched at BASE1c262d7; only Roller source/tests/report owned. Parent owns browser QA and shared integration.
