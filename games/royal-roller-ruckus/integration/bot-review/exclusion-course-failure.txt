@@ -1,0 +1,16 @@
+{"count":2,"seconds":360,"respawns":0,"finite":true,"racers":[{"id":0,"lap":0,"checkpoint":0,"finished":false,"rank":0},{"id":1,"lap":0,"checkpoint":0,"finished":false,"rank":0}]}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: all racers must complete three legal laps
+    at file:///tmp/roller-bot-exclusion-check/games/royal-roller-ruckus/tests/real-course.mjs:18:70 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

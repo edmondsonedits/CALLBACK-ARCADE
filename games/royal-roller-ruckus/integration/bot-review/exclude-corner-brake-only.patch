@@ -1,0 +1,11 @@
+--- a/games/royal-roller-ruckus/source/index.html
++++ b/games/royal-roller-ruckus/source/index.html
+@@ -625,7 +625,7 @@
+   let tx=p.x+n.x*r.aiLane,tz=p.z+n.z*r.aiLane,dx=tx-r.x,dz=tz-r.z;let [nx,nz]=norm2(dx,dz);
+   // Physical local avoidance: bias away from overlapping trajectories, never teleport or frame-perfect dodge.
+   if(nearestSide&&sideDist<A.avoidRadius&&sideDist>.05){const awayX=(r.x-nearestSide.x)/sideDist,awayZ=(r.z-nearestSide.z)/sideDist,w=(A.avoidRadius-sideDist)/A.avoidRadius;nx+=awayX*w*.58;nz+=awayZ*w*.58;[nx,nz]=norm2(nx,nz);}
+-  const targetSpeed=(TUNING.movement.maxSpeed*(.97-cornerFactor*.5-edgeFactor*.18))*D.speed;
++  const targetSpeed=(TUNING.movement.maxSpeed*(.97-cornerFactor*.31-edgeFactor*.18))*D.speed;
+   if(r.aiReaction<=0){
+     const accel=sp<targetSpeed?A.steerAccel*D.accel:-A.brakeStrength;
+     r.vx+=nx*accel*dt;r.vz+=nz*accel*dt;

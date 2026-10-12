@@ -1,0 +1,2217 @@
+{
+  "baseCommit": "785a15000abe11970c7b92c5f3cab197061fcedf",
+  "candidateCommit": "e1141247bc44bc0d2188b6547624f94f5add8d60",
+  "seeds": [
+    123,
+    456,
+    789
+  ],
+  "horizonSeconds": 360,
+  "initialRandomStateMatched": true,
+  "groups": [
+    {
+      "variant": "baseline",
+      "count": 2,
+      "difficulty": "easy",
+      "runs": 3,
+      "completeRaces": 0,
+      "racers": 6,
+      "finishers": 0,
+      "unfinished": 6,
+      "lapsCompleted": 0,
+      "lapsTarget": 18,
+      "falls": 516,
+      "respawns": 422,
+      "landings": 92,
+      "gatePlaneNonAwards": 0,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 0,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 6,
+      "maxNoCheckpointSeconds": 360,
+      "lapSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "finishSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "restrictedFinishSeconds": {
+        "n": 6,
+        "min": 360,
+        "p10": 360,
+        "median": 360,
+        "p90": 360,
+        "max": 360,
+        "mean": 360
+      }
+    },
+    {
+      "variant": "baseline",
+      "count": 2,
+      "difficulty": "normal",
+      "runs": 3,
+      "completeRaces": 0,
+      "racers": 6,
+      "finishers": 0,
+      "unfinished": 6,
+      "lapsCompleted": 0,
+      "lapsTarget": 18,
+      "falls": 506,
+      "respawns": 441,
+      "landings": 62,
+      "gatePlaneNonAwards": 0,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 0,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 6,
+      "maxNoCheckpointSeconds": 360,
+      "lapSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "finishSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "restrictedFinishSeconds": {
+        "n": 6,
+        "min": 360,
+        "p10": 360,
+        "median": 360,
+        "p90": 360,
+        "max": 360,
+        "mean": 360
+      }
+    },
+    {
+      "variant": "baseline",
+      "count": 2,
+      "difficulty": "hard",
+      "runs": 3,
+      "completeRaces": 0,
+      "racers": 6,
+      "finishers": 0,
+      "unfinished": 6,
+      "lapsCompleted": 0,
+      "lapsTarget": 18,
+      "falls": 508,
+      "respawns": 451,
+      "landings": 55,
+      "gatePlaneNonAwards": 0,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 0,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 6,
+      "maxNoCheckpointSeconds": 360,
+      "lapSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "finishSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "restrictedFinishSeconds": {
+        "n": 6,
+        "min": 360,
+        "p10": 360,
+        "median": 360,
+        "p90": 360,
+        "max": 360,
+        "mean": 360
+      }
+    },
+    {
+      "variant": "baseline",
+      "count": 4,
+      "difficulty": "easy",
+      "runs": 3,
+      "completeRaces": 0,
+      "racers": 12,
+      "finishers": 0,
+      "unfinished": 12,
+      "lapsCompleted": 0,
+      "lapsTarget": 36,
+      "falls": 1020,
+      "respawns": 844,
+      "landings": 173,
+      "gatePlaneNonAwards": 0,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 0,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 12,
+      "maxNoCheckpointSeconds": 360,
+      "lapSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "finishSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "restrictedFinishSeconds": {
+        "n": 12,
+        "min": 360,
+        "p10": 360,
+        "median": 360,
+        "p90": 360,
+        "max": 360,
+        "mean": 360
+      }
+    },
+    {
+      "variant": "baseline",
+      "count": 4,
+      "difficulty": "normal",
+      "runs": 3,
+      "completeRaces": 0,
+      "racers": 12,
+      "finishers": 0,
+      "unfinished": 12,
+      "lapsCompleted": 0,
+      "lapsTarget": 36,
+      "falls": 990,
+      "respawns": 882,
+      "landings": 107,
+      "gatePlaneNonAwards": 0,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 0,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 12,
+      "maxNoCheckpointSeconds": 360,
+      "lapSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "finishSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "restrictedFinishSeconds": {
+        "n": 12,
+        "min": 360,
+        "p10": 360,
+        "median": 360,
+        "p90": 360,
+        "max": 360,
+        "mean": 360
+      }
+    },
+    {
+      "variant": "baseline",
+      "count": 4,
+      "difficulty": "hard",
+      "runs": 3,
+      "completeRaces": 0,
+      "racers": 12,
+      "finishers": 0,
+      "unfinished": 12,
+      "lapsCompleted": 0,
+      "lapsTarget": 36,
+      "falls": 1056,
+      "respawns": 907,
+      "landings": 141,
+      "gatePlaneNonAwards": 0,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 0,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 12,
+      "maxNoCheckpointSeconds": 360,
+      "lapSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "finishSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "restrictedFinishSeconds": {
+        "n": 12,
+        "min": 360,
+        "p10": 360,
+        "median": 360,
+        "p90": 360,
+        "max": 360,
+        "mean": 360
+      }
+    },
+    {
+      "variant": "baseline",
+      "count": 10,
+      "difficulty": "easy",
+      "runs": 3,
+      "completeRaces": 0,
+      "racers": 30,
+      "finishers": 0,
+      "unfinished": 30,
+      "lapsCompleted": 0,
+      "lapsTarget": 90,
+      "falls": 3211,
+      "respawns": 2204,
+      "landings": 997,
+      "gatePlaneNonAwards": 0,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 45,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 30,
+      "maxNoCheckpointSeconds": 360,
+      "lapSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "finishSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "restrictedFinishSeconds": {
+        "n": 30,
+        "min": 360,
+        "p10": 360,
+        "median": 360,
+        "p90": 360,
+        "max": 360,
+        "mean": 360
+      }
+    },
+    {
+      "variant": "baseline",
+      "count": 10,
+      "difficulty": "normal",
+      "runs": 3,
+      "completeRaces": 0,
+      "racers": 30,
+      "finishers": 0,
+      "unfinished": 30,
+      "lapsCompleted": 0,
+      "lapsTarget": 90,
+      "falls": 3001,
+      "respawns": 2361,
+      "landings": 631,
+      "gatePlaneNonAwards": 0,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 23,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 30,
+      "maxNoCheckpointSeconds": 360,
+      "lapSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "finishSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "restrictedFinishSeconds": {
+        "n": 30,
+        "min": 360,
+        "p10": 360,
+        "median": 360,
+        "p90": 360,
+        "max": 360,
+        "mean": 360
+      }
+    },
+    {
+      "variant": "baseline",
+      "count": 10,
+      "difficulty": "hard",
+      "runs": 3,
+      "completeRaces": 0,
+      "racers": 30,
+      "finishers": 0,
+      "unfinished": 30,
+      "lapsCompleted": 0,
+      "lapsTarget": 90,
+      "falls": 3064,
+      "respawns": 2417,
+      "landings": 640,
+      "gatePlaneNonAwards": 0,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 32,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 30,
+      "maxNoCheckpointSeconds": 360,
+      "lapSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "finishSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "restrictedFinishSeconds": {
+        "n": 30,
+        "min": 360,
+        "p10": 360,
+        "median": 360,
+        "p90": 360,
+        "max": 360,
+        "mean": 360
+      }
+    },
+    {
+      "variant": "candidate",
+      "count": 2,
+      "difficulty": "easy",
+      "runs": 3,
+      "completeRaces": 3,
+      "racers": 6,
+      "finishers": 6,
+      "unfinished": 0,
+      "lapsCompleted": 18,
+      "lapsTarget": 18,
+      "falls": 0,
+      "respawns": 0,
+      "landings": 0,
+      "gatePlaneNonAwards": 1,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 0,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 0,
+      "maxNoCheckpointSeconds": 8.674999999999997,
+      "lapSeconds": {
+        "n": 18,
+        "min": 50.333333333333336,
+        "p10": 50.643333333333345,
+        "median": 51.004166666666656,
+        "p90": 51.855,
+        "max": 52.3,
+        "mean": 51.11388888888889
+      },
+      "finishSeconds": {
+        "n": 6,
+        "min": 152.38333333333333,
+        "p10": 152.3875,
+        "median": 153.19166666666666,
+        "p90": 154.44583333333333,
+        "max": 154.53333333333333,
+        "mean": 153.34166666666667
+      },
+      "restrictedFinishSeconds": {
+        "n": 6,
+        "min": 152.38333333333333,
+        "p10": 152.3875,
+        "median": 153.19166666666666,
+        "p90": 154.44583333333333,
+        "max": 154.53333333333333,
+        "mean": 153.34166666666667
+      }
+    },
+    {
+      "variant": "candidate",
+      "count": 2,
+      "difficulty": "normal",
+      "runs": 3,
+      "completeRaces": 3,
+      "racers": 6,
+      "finishers": 6,
+      "unfinished": 0,
+      "lapsCompleted": 18,
+      "lapsTarget": 18,
+      "falls": 0,
+      "respawns": 0,
+      "landings": 0,
+      "gatePlaneNonAwards": 0,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 2,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 2,
+      "maxNoCheckpointSeconds": 52.96666666666666,
+      "lapSeconds": {
+        "n": 18,
+        "min": 46.19166666666668,
+        "p10": 46.40333333333333,
+        "median": 46.81249999999999,
+        "p90": 61.15000000000003,
+        "max": 93.475,
+        "mean": 51.934722222222234
+      },
+      "finishSeconds": {
+        "n": 6,
+        "min": 139.69166666666666,
+        "p10": 139.82083333333333,
+        "median": 140.9,
+        "p90": 186.69166666666666,
+        "max": 187.79166666666666,
+        "mean": 155.80416666666665
+      },
+      "restrictedFinishSeconds": {
+        "n": 6,
+        "min": 139.69166666666666,
+        "p10": 139.82083333333333,
+        "median": 140.9,
+        "p90": 186.69166666666666,
+        "max": 187.79166666666666,
+        "mean": 155.80416666666665
+      }
+    },
+    {
+      "variant": "candidate",
+      "count": 2,
+      "difficulty": "hard",
+      "runs": 3,
+      "completeRaces": 3,
+      "racers": 6,
+      "finishers": 6,
+      "unfinished": 0,
+      "lapsCompleted": 18,
+      "lapsTarget": 18,
+      "falls": 0,
+      "respawns": 0,
+      "landings": 0,
+      "gatePlaneNonAwards": 0,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 1,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 1,
+      "maxNoCheckpointSeconds": 49.43333333333333,
+      "lapSeconds": {
+        "n": 18,
+        "min": 43.575,
+        "p10": 43.72083333333333,
+        "median": 44.05,
+        "p90": 45.16166666666667,
+        "max": 87.55,
+        "mean": 46.647222222222226
+      },
+      "finishSeconds": {
+        "n": 6,
+        "min": 131.76666666666665,
+        "p10": 131.95833333333331,
+        "median": 133.3375,
+        "p90": 154.52916666666667,
+        "max": 175.56666666666666,
+        "mean": 139.94166666666666
+      },
+      "restrictedFinishSeconds": {
+        "n": 6,
+        "min": 131.76666666666665,
+        "p10": 131.95833333333331,
+        "median": 133.3375,
+        "p90": 154.52916666666667,
+        "max": 175.56666666666666,
+        "mean": 139.94166666666666
+      }
+    },
+    {
+      "variant": "candidate",
+      "count": 4,
+      "difficulty": "easy",
+      "runs": 3,
+      "completeRaces": 3,
+      "racers": 12,
+      "finishers": 12,
+      "unfinished": 0,
+      "lapsCompleted": 36,
+      "lapsTarget": 36,
+      "falls": 0,
+      "respawns": 0,
+      "landings": 0,
+      "gatePlaneNonAwards": 0,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 2,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 2,
+      "maxNoCheckpointSeconds": 58.141666666666666,
+      "lapSeconds": {
+        "n": 36,
+        "min": 50.266666666666666,
+        "p10": 50.437500000000014,
+        "median": 50.97083333333333,
+        "p90": 53.25,
+        "max": 101.71666666666667,
+        "mean": 54.1724537037037
+      },
+      "finishSeconds": {
+        "n": 12,
+        "min": 152.10833333333332,
+        "p10": 152.85,
+        "median": 154.92916666666667,
+        "p90": 198.3625,
+        "max": 203.26666666666665,
+        "mean": 162.51736111111111
+      },
+      "restrictedFinishSeconds": {
+        "n": 12,
+        "min": 152.10833333333332,
+        "p10": 152.85,
+        "median": 154.92916666666667,
+        "p90": 198.3625,
+        "max": 203.26666666666665,
+        "mean": 162.51736111111111
+      }
+    },
+    {
+      "variant": "candidate",
+      "count": 4,
+      "difficulty": "normal",
+      "runs": 3,
+      "completeRaces": 3,
+      "racers": 12,
+      "finishers": 12,
+      "unfinished": 0,
+      "lapsCompleted": 36,
+      "lapsTarget": 36,
+      "falls": 0,
+      "respawns": 0,
+      "landings": 0,
+      "gatePlaneNonAwards": 1,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 8,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 8,
+      "maxNoCheckpointSeconds": 55.43333333333333,
+      "lapSeconds": {
+        "n": 36,
+        "min": 45.633333333333326,
+        "p10": 46.45833333333333,
+        "median": 47.16250000000001,
+        "p90": 93.09583333333333,
+        "max": 96.1,
+        "mean": 57.38634259259259
+      },
+      "finishSeconds": {
+        "n": 12,
+        "min": 139.44166666666666,
+        "p10": 141.79749999999999,
+        "median": 186.18333333333334,
+        "p90": 188.3375,
+        "max": 189.73333333333332,
+        "mean": 172.15902777777777
+      },
+      "restrictedFinishSeconds": {
+        "n": 12,
+        "min": 139.44166666666666,
+        "p10": 141.79749999999999,
+        "median": 186.18333333333334,
+        "p90": 188.3375,
+        "max": 189.73333333333332,
+        "mean": 172.15902777777777
+      }
+    },
+    {
+      "variant": "candidate",
+      "count": 4,
+      "difficulty": "hard",
+      "runs": 3,
+      "completeRaces": 3,
+      "racers": 12,
+      "finishers": 12,
+      "unfinished": 0,
+      "lapsCompleted": 36,
+      "lapsTarget": 36,
+      "falls": 0,
+      "respawns": 0,
+      "landings": 0,
+      "gatePlaneNonAwards": 0,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 4,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 3,
+      "maxNoCheckpointSeconds": 94.5,
+      "lapSeconds": {
+        "n": 36,
+        "min": 43.516666666666666,
+        "p10": 43.67500000000001,
+        "median": 44.23749999999999,
+        "p90": 46.875,
+        "max": 132.81666666666666,
+        "mean": 49.39282407407406
+      },
+      "finishSeconds": {
+        "n": 12,
+        "min": 131.475,
+        "p10": 131.55083333333334,
+        "median": 134.60833333333335,
+        "p90": 178.27833333333334,
+        "max": 220.825,
+        "mean": 148.1784722222222
+      },
+      "restrictedFinishSeconds": {
+        "n": 12,
+        "min": 131.475,
+        "p10": 131.55083333333334,
+        "median": 134.60833333333335,
+        "p90": 178.27833333333334,
+        "max": 220.825,
+        "mean": 148.1784722222222
+      }
+    },
+    {
+      "variant": "candidate",
+      "count": 10,
+      "difficulty": "easy",
+      "runs": 3,
+      "completeRaces": 3,
+      "racers": 30,
+      "finishers": 30,
+      "unfinished": 0,
+      "lapsCompleted": 90,
+      "lapsTarget": 90,
+      "falls": 0,
+      "respawns": 0,
+      "landings": 0,
+      "gatePlaneNonAwards": 1,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 17,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 14,
+      "maxNoCheckpointSeconds": 109.84166666666667,
+      "lapSeconds": {
+        "n": 90,
+        "min": 50.13333333333333,
+        "p10": 50.80916666666666,
+        "median": 52.15833333333334,
+        "p90": 101.27583333333332,
+        "max": 154.26666666666665,
+        "mean": 61.53851851851854
+      },
+      "finishSeconds": {
+        "n": 30,
+        "min": 151.68333333333334,
+        "p10": 155.10999999999999,
+        "median": 160.48333333333335,
+        "p90": 213.55500000000006,
+        "max": 258.9583333333333,
+        "mean": 184.61555555555557
+      },
+      "restrictedFinishSeconds": {
+        "n": 30,
+        "min": 151.68333333333334,
+        "p10": 155.10999999999999,
+        "median": 160.48333333333335,
+        "p90": 213.55500000000006,
+        "max": 258.9583333333333,
+        "mean": 184.61555555555557
+      }
+    },
+    {
+      "variant": "candidate",
+      "count": 10,
+      "difficulty": "normal",
+      "runs": 3,
+      "completeRaces": 3,
+      "racers": 30,
+      "finishers": 30,
+      "unfinished": 0,
+      "lapsCompleted": 90,
+      "lapsTarget": 90,
+      "falls": 0,
+      "respawns": 0,
+      "landings": 0,
+      "gatePlaneNonAwards": 0,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 25,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 18,
+      "maxNoCheckpointSeconds": 99.1,
+      "lapSeconds": {
+        "n": 90,
+        "min": 45.49999999999999,
+        "p10": 46.515,
+        "median": 47.737500000000004,
+        "p90": 94.00833333333334,
+        "max": 139.11666666666665,
+        "mean": 60.36731481481482
+      },
+      "finishSeconds": {
+        "n": 30,
+        "min": 139.73333333333332,
+        "p10": 141.66416666666666,
+        "median": 188.9,
+        "p90": 234.23333333333332,
+        "max": 235.60833333333332,
+        "mean": 181.10194444444448
+      },
+      "restrictedFinishSeconds": {
+        "n": 30,
+        "min": 139.73333333333332,
+        "p10": 141.66416666666666,
+        "median": 188.9,
+        "p90": 234.23333333333332,
+        "max": 235.60833333333332,
+        "mean": 181.10194444444448
+      }
+    },
+    {
+      "variant": "candidate",
+      "count": 10,
+      "difficulty": "hard",
+      "runs": 3,
+      "completeRaces": 3,
+      "racers": 30,
+      "finishers": 30,
+      "unfinished": 0,
+      "lapsCompleted": 90,
+      "lapsTarget": 90,
+      "falls": 0,
+      "respawns": 0,
+      "landings": 0,
+      "gatePlaneNonAwards": 0,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 22,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 16,
+      "maxNoCheckpointSeconds": 138.71666666666664,
+      "lapSeconds": {
+        "n": 90,
+        "min": 42.94166666666666,
+        "p10": 43.77249999999998,
+        "median": 44.80416666666666,
+        "p90": 87.89083333333333,
+        "max": 178.325,
+        "mean": 55.446759259259245
+      },
+      "finishSeconds": {
+        "n": 30,
+        "min": 131.15,
+        "p10": 133.065,
+        "median": 174.80833333333334,
+        "p90": 219.93166666666667,
+        "max": 266.6666666666667,
+        "mean": 166.34027777777777
+      },
+      "restrictedFinishSeconds": {
+        "n": 30,
+        "min": 131.15,
+        "p10": 133.065,
+        "median": 174.80833333333334,
+        "p90": 219.93166666666667,
+        "max": 266.6666666666667,
+        "mean": 166.34027777777777
+      }
+    },
+    {
+      "variant": "defects-only",
+      "count": 2,
+      "difficulty": "easy",
+      "runs": 3,
+      "completeRaces": 0,
+      "racers": 6,
+      "finishers": 0,
+      "unfinished": 6,
+      "lapsCompleted": 0,
+      "lapsTarget": 18,
+      "falls": 0,
+      "respawns": 0,
+      "landings": 0,
+      "gatePlaneNonAwards": 0,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 54,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 6,
+      "maxNoCheckpointSeconds": 327.39166666666665,
+      "lapSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "finishSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "restrictedFinishSeconds": {
+        "n": 6,
+        "min": 360,
+        "p10": 360,
+        "median": 360,
+        "p90": 360,
+        "max": 360,
+        "mean": 360
+      }
+    },
+    {
+      "variant": "defects-only",
+      "count": 2,
+      "difficulty": "normal",
+      "runs": 3,
+      "completeRaces": 0,
+      "racers": 6,
+      "finishers": 0,
+      "unfinished": 6,
+      "lapsCompleted": 0,
+      "lapsTarget": 18,
+      "falls": 7,
+      "respawns": 0,
+      "landings": 7,
+      "gatePlaneNonAwards": 0,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 60,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 6,
+      "maxNoCheckpointSeconds": 330.15833333333336,
+      "lapSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "finishSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "restrictedFinishSeconds": {
+        "n": 6,
+        "min": 360,
+        "p10": 360,
+        "median": 360,
+        "p90": 360,
+        "max": 360,
+        "mean": 360
+      }
+    },
+    {
+      "variant": "defects-only",
+      "count": 2,
+      "difficulty": "hard",
+      "runs": 3,
+      "completeRaces": 0,
+      "racers": 6,
+      "finishers": 0,
+      "unfinished": 6,
+      "lapsCompleted": 0,
+      "lapsTarget": 18,
+      "falls": 554,
+      "respawns": 312,
+      "landings": 240,
+      "gatePlaneNonAwards": 0,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 27,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 6,
+      "maxNoCheckpointSeconds": 339.30833333333334,
+      "lapSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "finishSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "restrictedFinishSeconds": {
+        "n": 6,
+        "min": 360,
+        "p10": 360,
+        "median": 360,
+        "p90": 360,
+        "max": 360,
+        "mean": 360
+      }
+    },
+    {
+      "variant": "defects-only",
+      "count": 4,
+      "difficulty": "easy",
+      "runs": 3,
+      "completeRaces": 0,
+      "racers": 12,
+      "finishers": 0,
+      "unfinished": 12,
+      "lapsCompleted": 0,
+      "lapsTarget": 36,
+      "falls": 0,
+      "respawns": 0,
+      "landings": 0,
+      "gatePlaneNonAwards": 0,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 108,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 12,
+      "maxNoCheckpointSeconds": 327.1583333333333,
+      "lapSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "finishSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "restrictedFinishSeconds": {
+        "n": 12,
+        "min": 360,
+        "p10": 360,
+        "median": 360,
+        "p90": 360,
+        "max": 360,
+        "mean": 360
+      }
+    },
+    {
+      "variant": "defects-only",
+      "count": 4,
+      "difficulty": "normal",
+      "runs": 3,
+      "completeRaces": 0,
+      "racers": 12,
+      "finishers": 0,
+      "unfinished": 12,
+      "lapsCompleted": 0,
+      "lapsTarget": 36,
+      "falls": 8,
+      "respawns": 4,
+      "landings": 4,
+      "gatePlaneNonAwards": 0,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 120,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 12,
+      "maxNoCheckpointSeconds": 330.0916666666667,
+      "lapSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "finishSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "restrictedFinishSeconds": {
+        "n": 12,
+        "min": 360,
+        "p10": 360,
+        "median": 360,
+        "p90": 360,
+        "max": 360,
+        "mean": 360
+      }
+    },
+    {
+      "variant": "defects-only",
+      "count": 4,
+      "difficulty": "hard",
+      "runs": 3,
+      "completeRaces": 0,
+      "racers": 12,
+      "finishers": 0,
+      "unfinished": 12,
+      "lapsCompleted": 0,
+      "lapsTarget": 36,
+      "falls": 729,
+      "respawns": 266,
+      "landings": 463,
+      "gatePlaneNonAwards": 0,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 118,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 12,
+      "maxNoCheckpointSeconds": 330.725,
+      "lapSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "finishSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "restrictedFinishSeconds": {
+        "n": 12,
+        "min": 360,
+        "p10": 360,
+        "median": 360,
+        "p90": 360,
+        "max": 360,
+        "mean": 360
+      }
+    },
+    {
+      "variant": "defects-only",
+      "count": 10,
+      "difficulty": "easy",
+      "runs": 3,
+      "completeRaces": 0,
+      "racers": 30,
+      "finishers": 0,
+      "unfinished": 30,
+      "lapsCompleted": 1,
+      "lapsTarget": 90,
+      "falls": 21,
+      "respawns": 4,
+      "landings": 17,
+      "gatePlaneNonAwards": 1,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 269,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 30,
+      "maxNoCheckpointSeconds": 327.3333333333333,
+      "lapSeconds": {
+        "n": 1,
+        "min": 78.65833333333333,
+        "p10": 78.65833333333333,
+        "median": 78.65833333333333,
+        "p90": 78.65833333333333,
+        "max": 78.65833333333333,
+        "mean": 78.65833333333333
+      },
+      "finishSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "restrictedFinishSeconds": {
+        "n": 30,
+        "min": 360,
+        "p10": 360,
+        "median": 360,
+        "p90": 360,
+        "max": 360,
+        "mean": 360
+      }
+    },
+    {
+      "variant": "defects-only",
+      "count": 10,
+      "difficulty": "normal",
+      "runs": 3,
+      "completeRaces": 0,
+      "racers": 30,
+      "finishers": 0,
+      "unfinished": 30,
+      "lapsCompleted": 0,
+      "lapsTarget": 90,
+      "falls": 68,
+      "respawns": 23,
+      "landings": 45,
+      "gatePlaneNonAwards": 0,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 297,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 30,
+      "maxNoCheckpointSeconds": 330.1333333333333,
+      "lapSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "finishSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "restrictedFinishSeconds": {
+        "n": 30,
+        "min": 360,
+        "p10": 360,
+        "median": 360,
+        "p90": 360,
+        "max": 360,
+        "mean": 360
+      }
+    },
+    {
+      "variant": "defects-only",
+      "count": 10,
+      "difficulty": "hard",
+      "runs": 3,
+      "completeRaces": 0,
+      "racers": 30,
+      "finishers": 0,
+      "unfinished": 30,
+      "lapsCompleted": 0,
+      "lapsTarget": 90,
+      "falls": 1463,
+      "respawns": 384,
+      "landings": 1077,
+      "gatePlaneNonAwards": 0,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 333,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 30,
+      "maxNoCheckpointSeconds": 331.03333333333336,
+      "lapSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "finishSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "restrictedFinishSeconds": {
+        "n": 30,
+        "min": 360,
+        "p10": 360,
+        "median": 360,
+        "p90": 360,
+        "max": 360,
+        "mean": 360
+      }
+    },
+    {
+      "variant": "no-corner-brake",
+      "count": 2,
+      "difficulty": "easy",
+      "runs": 3,
+      "completeRaces": 3,
+      "racers": 6,
+      "finishers": 6,
+      "unfinished": 0,
+      "lapsCompleted": 18,
+      "lapsTarget": 18,
+      "falls": 0,
+      "respawns": 0,
+      "landings": 0,
+      "gatePlaneNonAwards": 0,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 0,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 0,
+      "maxNoCheckpointSeconds": 6.691666666666663,
+      "lapSeconds": {
+        "n": 18,
+        "min": 41.44166666666666,
+        "p10": 41.7525,
+        "median": 42.1,
+        "p90": 42.67583333333333,
+        "max": 42.74166666666666,
+        "mean": 42.175
+      },
+      "finishSeconds": {
+        "n": 6,
+        "min": 126.09166666666667,
+        "p10": 126.14583333333334,
+        "median": 126.47916666666666,
+        "p90": 126.94999999999999,
+        "max": 127.175,
+        "mean": 126.52499999999999
+      },
+      "restrictedFinishSeconds": {
+        "n": 6,
+        "min": 126.09166666666667,
+        "p10": 126.14583333333334,
+        "median": 126.47916666666666,
+        "p90": 126.94999999999999,
+        "max": 127.175,
+        "mean": 126.52499999999999
+      }
+    },
+    {
+      "variant": "no-corner-brake",
+      "count": 2,
+      "difficulty": "normal",
+      "runs": 3,
+      "completeRaces": 3,
+      "racers": 6,
+      "finishers": 6,
+      "unfinished": 0,
+      "lapsCompleted": 18,
+      "lapsTarget": 18,
+      "falls": 0,
+      "respawns": 0,
+      "landings": 0,
+      "gatePlaneNonAwards": 0,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 2,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 2,
+      "maxNoCheckpointSeconds": 43.400000000000006,
+      "lapSeconds": {
+        "n": 18,
+        "min": 37.658333333333346,
+        "p10": 38.10916666666666,
+        "median": 38.44166666666666,
+        "p90": 51.07750000000003,
+        "max": 76.31666666666668,
+        "mean": 42.65138888888889
+      },
+      "finishSeconds": {
+        "n": 6,
+        "min": 115.02499999999999,
+        "p10": 115.03333333333333,
+        "median": 116.10833333333333,
+        "p90": 152.72083333333333,
+        "max": 152.74166666666667,
+        "mean": 127.95416666666667
+      },
+      "restrictedFinishSeconds": {
+        "n": 6,
+        "min": 115.02499999999999,
+        "p10": 115.03333333333333,
+        "median": 116.10833333333333,
+        "p90": 152.72083333333333,
+        "max": 152.74166666666667,
+        "mean": 127.95416666666667
+      }
+    },
+    {
+      "variant": "no-corner-brake",
+      "count": 2,
+      "difficulty": "hard",
+      "runs": 3,
+      "completeRaces": 3,
+      "racers": 6,
+      "finishers": 6,
+      "unfinished": 0,
+      "lapsCompleted": 18,
+      "lapsTarget": 18,
+      "falls": 0,
+      "respawns": 0,
+      "landings": 0,
+      "gatePlaneNonAwards": 0,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 0,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 0,
+      "maxNoCheckpointSeconds": 6.541666666666671,
+      "lapSeconds": {
+        "n": 18,
+        "min": 35.699999999999996,
+        "p10": 36.11416666666667,
+        "median": 36.31666666666666,
+        "p90": 37.09166666666667,
+        "max": 37.8,
+        "mean": 36.5212962962963
+      },
+      "finishSeconds": {
+        "n": 6,
+        "min": 108.46666666666667,
+        "p10": 108.5125,
+        "median": 109.12916666666666,
+        "p90": 111.05,
+        "max": 111.56666666666666,
+        "mean": 109.56388888888891
+      },
+      "restrictedFinishSeconds": {
+        "n": 6,
+        "min": 108.46666666666667,
+        "p10": 108.5125,
+        "median": 109.12916666666666,
+        "p90": 111.05,
+        "max": 111.56666666666666,
+        "mean": 109.56388888888891
+      }
+    },
+    {
+      "variant": "no-corner-brake",
+      "count": 4,
+      "difficulty": "easy",
+      "runs": 3,
+      "completeRaces": 3,
+      "racers": 12,
+      "finishers": 12,
+      "unfinished": 0,
+      "lapsCompleted": 36,
+      "lapsTarget": 36,
+      "falls": 0,
+      "respawns": 0,
+      "landings": 0,
+      "gatePlaneNonAwards": 1,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 3,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 3,
+      "maxNoCheckpointSeconds": 48.49166666666667,
+      "lapSeconds": {
+        "n": 36,
+        "min": 41.55833333333333,
+        "p10": 41.78333333333333,
+        "median": 42.462500000000006,
+        "p90": 45.541666666666664,
+        "max": 85.34166666666667,
+        "mean": 46.09189814814815
+      },
+      "finishSeconds": {
+        "n": 12,
+        "min": 125.86666666666666,
+        "p10": 126.23,
+        "median": 129.30416666666667,
+        "p90": 169.2433333333333,
+        "max": 170.09166666666667,
+        "mean": 138.2756944444444
+      },
+      "restrictedFinishSeconds": {
+        "n": 12,
+        "min": 125.86666666666666,
+        "p10": 126.23,
+        "median": 129.30416666666667,
+        "p90": 169.2433333333333,
+        "max": 170.09166666666667,
+        "mean": 138.2756944444444
+      }
+    },
+    {
+      "variant": "no-corner-brake",
+      "count": 4,
+      "difficulty": "normal",
+      "runs": 3,
+      "completeRaces": 3,
+      "racers": 12,
+      "finishers": 12,
+      "unfinished": 0,
+      "lapsCompleted": 36,
+      "lapsTarget": 36,
+      "falls": 0,
+      "respawns": 0,
+      "landings": 0,
+      "gatePlaneNonAwards": 0,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 0,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 0,
+      "maxNoCheckpointSeconds": 7.508333333333333,
+      "lapSeconds": {
+        "n": 36,
+        "min": 37.99166666666666,
+        "p10": 38.18333333333333,
+        "median": 38.525000000000006,
+        "p90": 39.92916666666667,
+        "max": 40.85,
+        "mean": 38.90092592592592
+      },
+      "finishSeconds": {
+        "n": 12,
+        "min": 114.875,
+        "p10": 115.01416666666667,
+        "median": 116.55,
+        "p90": 118.23666666666666,
+        "max": 119.1,
+        "mean": 116.70277777777777
+      },
+      "restrictedFinishSeconds": {
+        "n": 12,
+        "min": 114.875,
+        "p10": 115.01416666666667,
+        "median": 116.55,
+        "p90": 118.23666666666666,
+        "max": 119.1,
+        "mean": 116.70277777777777
+      }
+    },
+    {
+      "variant": "no-corner-brake",
+      "count": 4,
+      "difficulty": "hard",
+      "runs": 3,
+      "completeRaces": 3,
+      "racers": 12,
+      "finishers": 12,
+      "unfinished": 0,
+      "lapsCompleted": 36,
+      "lapsTarget": 36,
+      "falls": 0,
+      "respawns": 0,
+      "landings": 0,
+      "gatePlaneNonAwards": 1,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 2,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 2,
+      "maxNoCheckpointSeconds": 40.81666666666668,
+      "lapSeconds": {
+        "n": 36,
+        "min": 35.99166666666666,
+        "p10": 36.1,
+        "median": 36.512499999999996,
+        "p90": 38.3,
+        "max": 71.9,
+        "mean": 38.73564814814816
+      },
+      "finishSeconds": {
+        "n": 12,
+        "min": 108.825,
+        "p10": 108.9975,
+        "median": 111.15833333333333,
+        "p90": 140.49833333333336,
+        "max": 144.54166666666666,
+        "mean": 116.20694444444445
+      },
+      "restrictedFinishSeconds": {
+        "n": 12,
+        "min": 108.825,
+        "p10": 108.9975,
+        "median": 111.15833333333333,
+        "p90": 140.49833333333336,
+        "max": 144.54166666666666,
+        "mean": 116.20694444444445
+      }
+    },
+    {
+      "variant": "no-corner-brake",
+      "count": 10,
+      "difficulty": "easy",
+      "runs": 3,
+      "completeRaces": 3,
+      "racers": 30,
+      "finishers": 30,
+      "unfinished": 0,
+      "lapsCompleted": 90,
+      "lapsTarget": 90,
+      "falls": 0,
+      "respawns": 0,
+      "landings": 0,
+      "gatePlaneNonAwards": 1,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 5,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 5,
+      "maxNoCheckpointSeconds": 48.325,
+      "lapSeconds": {
+        "n": 90,
+        "min": 41.075,
+        "p10": 41.822500000000005,
+        "median": 42.954166666666666,
+        "p90": 45.90083333333333,
+        "max": 86.26666666666667,
+        "mean": 45.54583333333334
+      },
+      "finishSeconds": {
+        "n": 30,
+        "min": 125.23333333333333,
+        "p10": 126.83416666666666,
+        "median": 130.29583333333332,
+        "p90": 170.265,
+        "max": 171.46666666666667,
+        "mean": 136.63749999999996
+      },
+      "restrictedFinishSeconds": {
+        "n": 30,
+        "min": 125.23333333333333,
+        "p10": 126.83416666666666,
+        "median": 130.29583333333332,
+        "p90": 170.265,
+        "max": 171.46666666666667,
+        "mean": 136.63749999999996
+      }
+    },
+    {
+      "variant": "no-corner-brake",
+      "count": 10,
+      "difficulty": "normal",
+      "runs": 3,
+      "completeRaces": 3,
+      "racers": 30,
+      "finishers": 30,
+      "unfinished": 0,
+      "lapsCompleted": 90,
+      "lapsTarget": 90,
+      "falls": 0,
+      "respawns": 0,
+      "landings": 0,
+      "gatePlaneNonAwards": 1,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 16,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 13,
+      "maxNoCheckpointSeconds": 80.26666666666665,
+      "lapSeconds": {
+        "n": 90,
+        "min": 37.29166666666666,
+        "p10": 38.3125,
+        "median": 39.15416666666667,
+        "p90": 76.18583333333333,
+        "max": 113.6,
+        "mean": 45.845092592592586
+      },
+      "finishSeconds": {
+        "n": 30,
+        "min": 114.14999999999999,
+        "p10": 116.19166666666666,
+        "median": 119.94166666666666,
+        "p90": 160.00250000000005,
+        "max": 192.95,
+        "mean": 137.5352777777778
+      },
+      "restrictedFinishSeconds": {
+        "n": 30,
+        "min": 114.14999999999999,
+        "p10": 116.19166666666666,
+        "median": 119.94166666666666,
+        "p90": 160.00250000000005,
+        "max": 192.95,
+        "mean": 137.5352777777778
+      }
+    },
+    {
+      "variant": "no-corner-brake",
+      "count": 10,
+      "difficulty": "hard",
+      "runs": 3,
+      "completeRaces": 3,
+      "racers": 30,
+      "finishers": 30,
+      "unfinished": 0,
+      "lapsCompleted": 90,
+      "lapsTarget": 90,
+      "falls": 0,
+      "respawns": 0,
+      "landings": 0,
+      "gatePlaneNonAwards": 1,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 16,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 10,
+      "maxNoCheckpointSeconds": 77.58333333333334,
+      "lapSeconds": {
+        "n": 90,
+        "min": 35.858333333333334,
+        "p10": 36.24916666666667,
+        "median": 37.21666666666667,
+        "p90": 72.40916666666668,
+        "max": 108.68333333333334,
+        "mean": 43.55546296296296
+      },
+      "finishSeconds": {
+        "n": 30,
+        "min": 109.13333333333333,
+        "p10": 110.11916666666666,
+        "median": 112.82083333333333,
+        "p90": 180.98833333333334,
+        "max": 182.85833333333332,
+        "mean": 130.6663888888889
+      },
+      "restrictedFinishSeconds": {
+        "n": 30,
+        "min": 109.13333333333333,
+        "p10": 110.11916666666666,
+        "median": 112.82083333333333,
+        "p90": 180.98833333333334,
+        "max": 182.85833333333332,
+        "mean": 130.6663888888889
+      }
+    }
+  ],
+  "overall": [
+    {
+      "variant": "baseline",
+      "runs": 27,
+      "completeRaces": 0,
+      "racers": 144,
+      "finishers": 0,
+      "unfinished": 144,
+      "lapsCompleted": 0,
+      "lapsTarget": 432,
+      "falls": 13872,
+      "respawns": 10929,
+      "landings": 2898,
+      "gatePlaneNonAwards": 0,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 100,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 144,
+      "maxNoCheckpointSeconds": 360,
+      "lapSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "finishSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "restrictedFinishSeconds": {
+        "n": 144,
+        "min": 360,
+        "p10": 360,
+        "median": 360,
+        "p90": 360,
+        "max": 360,
+        "mean": 360
+      }
+    },
+    {
+      "variant": "candidate",
+      "runs": 27,
+      "completeRaces": 27,
+      "racers": 144,
+      "finishers": 144,
+      "unfinished": 0,
+      "lapsCompleted": 432,
+      "lapsTarget": 432,
+      "falls": 0,
+      "respawns": 0,
+      "landings": 0,
+      "gatePlaneNonAwards": 3,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 81,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 64,
+      "maxNoCheckpointSeconds": 138.71666666666664,
+      "lapSeconds": {
+        "n": 432,
+        "min": 42.94166666666666,
+        "p10": 44.04999999999999,
+        "median": 48.3875,
+        "p90": 92.62416666666667,
+        "max": 178.325,
+        "mean": 56.59841820987649
+      },
+      "finishSeconds": {
+        "n": 144,
+        "min": 131.15,
+        "p10": 133.59416666666667,
+        "median": 157.025,
+        "p90": 219.32666666666668,
+        "max": 266.6666666666667,
+        "mean": 169.7952546296296
+      },
+      "restrictedFinishSeconds": {
+        "n": 144,
+        "min": 131.15,
+        "p10": 133.59416666666667,
+        "median": 157.025,
+        "p90": 219.32666666666668,
+        "max": 266.6666666666667,
+        "mean": 169.7952546296296
+      }
+    },
+    {
+      "variant": "defects-only",
+      "runs": 27,
+      "completeRaces": 0,
+      "racers": 144,
+      "finishers": 0,
+      "unfinished": 144,
+      "lapsCompleted": 1,
+      "lapsTarget": 432,
+      "falls": 2850,
+      "respawns": 993,
+      "landings": 1853,
+      "gatePlaneNonAwards": 1,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 1386,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 144,
+      "maxNoCheckpointSeconds": 339.30833333333334,
+      "lapSeconds": {
+        "n": 1,
+        "min": 78.65833333333333,
+        "p10": 78.65833333333333,
+        "median": 78.65833333333333,
+        "p90": 78.65833333333333,
+        "max": 78.65833333333333,
+        "mean": 78.65833333333333
+      },
+      "finishSeconds": {
+        "n": 0,
+        "min": null,
+        "p10": null,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "mean": null
+      },
+      "restrictedFinishSeconds": {
+        "n": 144,
+        "min": 360,
+        "p10": 360,
+        "median": 360,
+        "p90": 360,
+        "max": 360,
+        "mean": 360
+      }
+    },
+    {
+      "variant": "no-corner-brake",
+      "runs": 27,
+      "completeRaces": 27,
+      "racers": 144,
+      "finishers": 144,
+      "unfinished": 0,
+      "lapsCompleted": 432,
+      "lapsTarget": 432,
+      "falls": 0,
+      "respawns": 0,
+      "landings": 0,
+      "gatePlaneNonAwards": 5,
+      "nonForwardCredits": 0,
+      "missedFinishPasses": 44,
+      "lowSpeedStallEpisodes": 0,
+      "progressStalledRacers": 35,
+      "maxNoCheckpointSeconds": 80.26666666666665,
+      "lapSeconds": {
+        "n": 432,
+        "min": 35.699999999999996,
+        "p10": 36.46666666666667,
+        "median": 39.3625,
+        "p90": 46.620000000000005,
+        "max": 113.6,
+        "mean": 43.480690586419755
+      },
+      "finishSeconds": {
+        "n": 144,
+        "min": 108.46666666666667,
+        "p10": 110.80666666666667,
+        "median": 126.04166666666666,
+        "p90": 169.48166666666665,
+        "max": 192.95,
+        "mean": 130.4420717592593
+      },
+      "restrictedFinishSeconds": {
+        "n": 144,
+        "min": 108.46666666666667,
+        "p10": 110.80666666666667,
+        "median": 126.04166666666666,
+        "p90": 169.48166666666665,
+        "max": 192.95,
+        "mean": 130.4420717592593
+      }
+    }
+  ],
+  "ordering": [
+    {
+      "variant": "baseline",
+      "count": 2,
+      "fastestToSlowestCompletedLapMedian": null,
+      "fastestToSlowestFinishMedian": null,
+      "restrictedFinishMean": [
+        {
+          "difficulty": "easy",
+          "seconds": 360
+        },
+        {
+          "difficulty": "normal",
+          "seconds": 360
+        },
+        {
+          "difficulty": "hard",
+          "seconds": 360
+        }
+      ]
+    },
+    {
+      "variant": "baseline",
+      "count": 4,
+      "fastestToSlowestCompletedLapMedian": null,
+      "fastestToSlowestFinishMedian": null,
+      "restrictedFinishMean": [
+        {
+          "difficulty": "easy",
+          "seconds": 360
+        },
+        {
+          "difficulty": "normal",
+          "seconds": 360
+        },
+        {
+          "difficulty": "hard",
+          "seconds": 360
+        }
+      ]
+    },
+    {
+      "variant": "baseline",
+      "count": 10,
+      "fastestToSlowestCompletedLapMedian": null,
+      "fastestToSlowestFinishMedian": null,
+      "restrictedFinishMean": [
+        {
+          "difficulty": "easy",
+          "seconds": 360
+        },
+        {
+          "difficulty": "normal",
+          "seconds": 360
+        },
+        {
+          "difficulty": "hard",
+          "seconds": 360
+        }
+      ]
+    },
+    {
+      "variant": "candidate",
+      "count": 2,
+      "fastestToSlowestCompletedLapMedian": [
+        "hard",
+        "normal",
+        "easy"
+      ],
+      "fastestToSlowestFinishMedian": [
+        "hard",
+        "normal",
+        "easy"
+      ],
+      "restrictedFinishMean": [
+        {
+          "difficulty": "easy",
+          "seconds": 153.34166666666667
+        },
+        {
+          "difficulty": "normal",
+          "seconds": 155.80416666666665
+        },
+        {
+          "difficulty": "hard",
+          "seconds": 139.94166666666666
+        }
+      ]
+    },
+    {
+      "variant": "candidate",
+      "count": 4,
+      "fastestToSlowestCompletedLapMedian": [
+        "hard",
+        "normal",
+        "easy"
+      ],
+      "fastestToSlowestFinishMedian": [
+        "hard",
+        "easy",
+        "normal"
+      ],
+      "restrictedFinishMean": [
+        {
+          "difficulty": "easy",
+          "seconds": 162.51736111111111
+        },
+        {
+          "difficulty": "normal",
+          "seconds": 172.15902777777777
+        },
+        {
+          "difficulty": "hard",
+          "seconds": 148.1784722222222
+        }
+      ]
+    },
+    {
+      "variant": "candidate",
+      "count": 10,
+      "fastestToSlowestCompletedLapMedian": [
+        "hard",
+        "normal",
+        "easy"
+      ],
+      "fastestToSlowestFinishMedian": [
+        "easy",
+        "hard",
+        "normal"
+      ],
+      "restrictedFinishMean": [
+        {
+          "difficulty": "easy",
+          "seconds": 184.61555555555557
+        },
+        {
+          "difficulty": "normal",
+          "seconds": 181.10194444444448
+        },
+        {
+          "difficulty": "hard",
+          "seconds": 166.34027777777777
+        }
+      ]
+    },
+    {
+      "variant": "defects-only",
+      "count": 2,
+      "fastestToSlowestCompletedLapMedian": null,
+      "fastestToSlowestFinishMedian": null,
+      "restrictedFinishMean": [
+        {
+          "difficulty": "easy",
+          "seconds": 360
+        },
+        {
+          "difficulty": "normal",
+          "seconds": 360
+        },
+        {
+          "difficulty": "hard",
+          "seconds": 360
+        }
+      ]
+    },
+    {
+      "variant": "defects-only",
+      "count": 4,
+      "fastestToSlowestCompletedLapMedian": null,
+      "fastestToSlowestFinishMedian": null,
+      "restrictedFinishMean": [
+        {
+          "difficulty": "easy",
+          "seconds": 360
+        },
+        {
+          "difficulty": "normal",
+          "seconds": 360
+        },
+        {
+          "difficulty": "hard",
+          "seconds": 360
+        }
+      ]
+    },
+    {
+      "variant": "defects-only",
+      "count": 10,
+      "fastestToSlowestCompletedLapMedian": null,
+      "fastestToSlowestFinishMedian": null,
+      "restrictedFinishMean": [
+        {
+          "difficulty": "easy",
+          "seconds": 360
+        },
+        {
+          "difficulty": "normal",
+          "seconds": 360
+        },
+        {
+          "difficulty": "hard",
+          "seconds": 360
+        }
+      ]
+    },
+    {
+      "variant": "no-corner-brake",
+      "count": 2,
+      "fastestToSlowestCompletedLapMedian": [
+        "hard",
+        "normal",
+        "easy"
+      ],
+      "fastestToSlowestFinishMedian": [
+        "hard",
+        "normal",
+        "easy"
+      ],
+      "restrictedFinishMean": [
+        {
+          "difficulty": "easy",
+          "seconds": 126.52499999999999
+        },
+        {
+          "difficulty": "normal",
+          "seconds": 127.95416666666667
+        },
+        {
+          "difficulty": "hard",
+          "seconds": 109.56388888888891
+        }
+      ]
+    },
+    {
+      "variant": "no-corner-brake",
+      "count": 4,
+      "fastestToSlowestCompletedLapMedian": [
+        "hard",
+        "normal",
+        "easy"
+      ],
+      "fastestToSlowestFinishMedian": [
+        "hard",
+        "normal",
+        "easy"
+      ],
+      "restrictedFinishMean": [
+        {
+          "difficulty": "easy",
+          "seconds": 138.2756944444444
+        },
+        {
+          "difficulty": "normal",
+          "seconds": 116.70277777777777
+        },
+        {
+          "difficulty": "hard",
+          "seconds": 116.20694444444445
+        }
+      ]
+    },
+    {
+      "variant": "no-corner-brake",
+      "count": 10,
+      "fastestToSlowestCompletedLapMedian": [
+        "hard",
+        "normal",
+        "easy"
+      ],
+      "fastestToSlowestFinishMedian": [
+        "hard",
+        "normal",
+        "easy"
+      ],
+      "restrictedFinishMean": [
+        {
+          "difficulty": "easy",
+          "seconds": 136.63749999999996
+        },
+        {
+          "difficulty": "normal",
+          "seconds": 137.5352777777778
+        },
+        {
+          "difficulty": "hard",
+          "seconds": 130.6663888888889
+        }
+      ]
+    }
+  ]
+}

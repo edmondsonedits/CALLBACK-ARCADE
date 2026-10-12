@@ -1,0 +1,28 @@
+✔ checkpoint requires forward crossing, not proximity or reverse approach (13.121979ms)
+✔ checkpoints cannot be skipped, crossed airborne, or on another vertical deck (12.104188ms)
+✔ legal landing on the next gate does not grant credit; recrossing it does (13.091542ms)
+✔ respawn preserves validated progress and repeated recovery cannot duplicate a lap (4.10755ms)
+✔ rank stays behind validated progress when a racer skips ahead or starts behind line (3.847232ms)
+✔ collisions respect separate crossover heights (4.906944ms)
+✔ 2 exactly coincident racers separate without nonfinite values (2.931145ms)
+✔ 10 exactly coincident racers separate without nonfinite values (7.800753ms)
+✔ 2 seats complete ordered three-lap progression with unique finish/reset state (3.119013ms)
+✔ 4 seats complete ordered three-lap progression with unique finish/reset state (4.108049ms)
+✔ 10 seats complete ordered three-lap progression with unique finish/reset state (7.411535ms)
+✔ blur clears keys and touch and requires explicit resume (3.356406ms)
+✔ pause/settings clear held input, closing settings stays paused (2.580988ms)
+✔ touch cancellation neutralizes the stick (4.458559ms)
+✔ disconnect neutralizes network packet, smoothed steering and public input state (3.069011ms)
+✔ countersteering shortens stopping distance by 15% while preserving acceleration on three grades (16.133647ms)
+✔ checkpoint sweep rejects lateral shortcut and long jumps across a gate (7.187347ms)
+✔ keyboard repeat cannot toggle pause repeatedly or bypass open settings (2.422163ms)
+✔ remote hooks retain bounded seats, lobby and controller state (3.044313ms)
+✔ packets received while paused cannot leave held actions on resume (17.036684ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 258.773693
