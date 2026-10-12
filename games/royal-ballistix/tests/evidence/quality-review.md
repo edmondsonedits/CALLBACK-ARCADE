@@ -1,3 +1,5 @@
+> Historical owner evidence for implementation head 3763723858ae2cc3b427f1a6dada71189852a8ac. Version/source hash below describe that head; final coordinator metadata and checks are recorded in coordinator-review.md.
+
 # Royal Ballistix quality review
 
 Scope approved by the coordinating conversation: contact/input/lifecycle/landscape fixes and restrained existing procedural feedback. No balance, bot personality, victory-rule, transport or runtime dependency change. This is local, unmerged work.

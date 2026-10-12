@@ -1,6 +1,6 @@
 # Royal Ballistix — Beach Siege
 
-Imported standalone build: **v0.12.0**.
+Current standalone build: **v0.12.1** (based on the v0.12 import).
 
 Royal Ballistix is a radial ball-deflection survival game for **2–10 contestants**. One local human can play while AI fills the remaining seats. The imported source also exposes per-seat input hooks so bots can eventually be replaced by authenticated CALLBACK phone controllers, but no room-code transport is implemented in this package yet.
 

@@ -1,13 +1,13 @@
 # Changelog
 
-## Unreleased — quality review
+## 0.12.1 — quality revision
 
 - Preserve lateral paddle impact position, prevent repeated scoring and crown awards, stop post-round scoring, and invalidate stale result callbacks.
 - Clear cancelled/lost touch and stale local input on pause, restart, blur or hidden document; preserve independent simultaneous controls and keyboard/API inputs.
 - Correct inherited landscape control translation and place short-landscape controls beside the arena. Settings remain scrollable and return to pause.
 - Add short paddle contact/recoil and bot intent cues, cannon charge audio/arc, critical roster emphasis, Magnet heat/capacity text, and accurate Pulse cooldown fill. Physics speeds, cooldown durations, bot personalities and victory rules are unchanged.
 - Add real-script behavioral tests and reproducible Chromium layout/touch/feedback checks. Correct stale touch-control/source documentation.
-- Release/version metadata remains pending coordinator finalization. No multiplayer readiness change.
+- Coordinate manifest and debug version 0.12.1 with source-bound provenance and catalog metadata. Multiplayer remains not-integrated; physical-device/audio-by-ear verification remains pending.
 
 ## 0.12.0 — source import
 

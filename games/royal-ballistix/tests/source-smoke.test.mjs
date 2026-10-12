@@ -4,9 +4,9 @@ import { readFile } from 'node:fs/promises';
 
 const html = await readFile(new URL('../source/index.html', import.meta.url), 'utf8');
 
-test('Royal Ballistix v0.12 source is self-contained and parseable', () => {
+test('Royal Ballistix v0.12.1 source is self-contained and parseable', () => {
   assert.match(html, /Royal Ballistix — Beach Siege/);
-  assert.match(html, /version:"0\.12-adjustable-large-arena"/);
+  assert.match(html, /version:"0\.12\.1-quality"/);
   assert.equal((html.match(/<script[^>]+src=/gi) || []).length, 0);
   assert.equal((html.match(/<link[^>]+href=/gi) || []).length, 0);
   assert.equal((html.match(/\bfetch\s*\(/g) || []).length, 0);

@@ -13,7 +13,7 @@ node --test games/royal-ballistix/tests/source-smoke.test.mjs
 The smoke test checks that:
 
 - the imported HTML contains syntactically parseable inline JavaScript,
-- the build identifies itself as v0.12,
+- the build identifies itself as v0.12.1-quality,
 - it remains self-contained with no external scripts/styles/fetches,
 - contestant capacity is 2–10,
 - the 120 Hz fixed timestep remains present,
