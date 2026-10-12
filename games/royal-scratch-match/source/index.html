@@ -71,6 +71,9 @@
   .b2{background:linear-gradient(160deg,#56e0ff,#1774e3)}
   .b3{background:linear-gradient(160deg,#ff8f71,#f24545)}
   #centerMsg{position:fixed;left:50%;top:48%;transform:translate(-50%,-50%);z-index:5;text-align:center;pointer-events:none;text-shadow:0 5px 22px rgba(0,0,0,.9)}
+  #centerMsg.review{width:min(600px,calc(100vw - 28px));padding:8px 12px;border:1px solid #e9d29b40;border-radius:16px;background:#080b18ed;text-shadow:none;overflow:hidden}
+  #centerMsg.review #bigMsg{font-size:var(--review-title-size,34px);line-height:1.1;white-space:nowrap;letter-spacing:-.025em}
+  #centerMsg.review #smallMsg{font-size:var(--review-detail-size,12px);line-height:1.4;margin-top:6px;letter-spacing:.04em}
   #bigMsg{font-weight:1000;font-size:clamp(40px,11vw,112px);letter-spacing:-.05em;line-height:.85}
   #smallMsg{margin-top:8px;font-weight:900;font-size:clamp(12px,2.4vw,20px);letter-spacing:.16em;text-transform:uppercase}
   #menu,#results{position:fixed;z-index:10;inset:0;display:flex;align-items:center;justify-content:center;padding:18px;background:radial-gradient(circle at 50% 28%,rgba(76,61,158,.22),rgba(5,7,17,.78) 53%,rgba(5,7,17,.94));backdrop-filter:blur(5px)}
@@ -122,10 +125,10 @@
   .stage-picker{display:grid;gap:6px;font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:#c9bad6}.stage-skill{font-size:13px;line-height:1.45;color:#e9dcad;margin:12px 0;min-height:56px}
   select,input[type=text]{max-width:60%;min-height:44px;background:#101529;color:#fff4d1;border:1px solid #706381;border-radius:8px;padding:8px;font:700 13px system-ui}select{cursor:pointer}.stage-picker select{max-width:none;width:100%;font-size:16px}input[type=color]{width:54px;height:36px;border:0;background:transparent}input{touch-action:auto;user-select:text}
   .title-demo .hud,.title-demo .topbar{right:350px;width:auto}.title-demo .topbar{left:12px;transform:none}.title-demo #centerMsg{display:none}.title-demo #controls{display:none!important}
-  #returnWatchBtn{position:fixed;right:14px;bottom:14px;z-index:15}.watching .hud{right:0}.watching .topbar{right:12px}
+  #watchBar{position:fixed;right:max(14px,env(safe-area-inset-right));bottom:max(14px,env(safe-area-inset-bottom));z-index:15;display:flex;gap:8px;max-width:calc(100vw - 28px);padding:7px;border:1px solid #d2af6350;border-radius:17px;background:#080b18ed}#watchBar button{flex:1;min-width:0;min-height:44px}#watchStartBtn{width:auto;margin:0;padding:10px 16px;font-size:12px;letter-spacing:.04em}.watching .hud{right:0}.watching .topbar{right:12px}
   #pauseSheet .panel{display:flex;flex-direction:column;overflow:hidden;max-height:94dvh;width:min(680px,96vw)}.settings-scroll{overflow-y:auto;min-height:0;touch-action:pan-y;padding:0 5px 6px}.settings-footer{flex:none;padding-top:8px}.settings-footer .primary{margin:0}.settings-scroll details{margin:0}.settings-scroll summary{font-size:14px}.settings-scroll .option{padding:8px 0;min-height:50px}
   #tourSummary{font-size:13px;line-height:1.7;color:#ebd49b}.hc .player-card,.hc .pill,.hc #controls{background:#030510;border-color:#f9f4e4}.hc #grain{display:none}.hc .desc{color:#fff}.hc select{border-color:#fff}.hc .beat-btn{border:3px solid white}
-  @media(max-width:700px) and (min-height:601px){#menu{width:100%;height:244px;padding:7px;background:#080b18}#menu .panel{padding:12px 16px;border-radius:16px;max-height:100%;display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;align-items:center}#menu h1{font-size:25px;margin:0;grid-column:1}#menu .eyebrow,#menu .mini,#modeDescription{display:none}#menu .stage-picker{grid-column:2;grid-row:1;font-size:9px}#menu .stage-picker select{font-size:13px}#menu .stage-skill{grid-column:1/-1;min-height:0;font-size:12px;margin:2px 0}#menu .primary{grid-column:1/-1;font-size:13px;padding:11px;margin:0}#menu .actions{grid-column:1/-1;margin:0}.title-demo .hud{right:0}.title-demo .topbar{right:12px}.title-demo #returnWatchBtn{bottom:14px}}
+  @media(max-width:700px) and (min-height:601px){#menu{width:100%;height:244px;padding:7px;background:#080b18}#menu .panel{padding:12px 16px;border-radius:16px;max-height:100%;display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;align-items:center}#menu h1{font-size:25px;margin:0;grid-column:1}#menu .eyebrow,#menu .mini,#modeDescription{display:none}#menu .stage-picker{grid-column:2;grid-row:1;font-size:9px}#menu .stage-picker select{font-size:13px}#menu .stage-skill{grid-column:1/-1;min-height:0;font-size:12px;margin:2px 0}#menu .primary{grid-column:1/-1;font-size:13px;padding:11px;margin:0}#menu .actions{grid-column:1/-1;margin:0}.title-demo .hud{right:0}.title-demo .topbar{right:12px}}
   @media(max-height:600px){#menu{width:300px;padding:8px}#menu .panel{padding:14px}#menu h1{font-size:29px;margin:8px 0}#menu .eyebrow{font-size:8px}#menu .stage-skill{font-size:12px;min-height:0;margin:9px 0}#menu .mini,#modeDescription{display:none}#menu .primary{font-size:12px;padding:12px}#menu .actions{margin-top:8px}#menu .secondary{padding:7px;font-size:10px}.title-demo:not(.watching) .hud{right:300px}.title-demo:not(.watching) .topbar{right:312px}#pauseSheet{padding:6px}#pauseSheet h2{font-size:20px}#pauseSheet .panel>.desc{display:none}}
 </style>
 </head>
@@ -165,7 +168,7 @@
     <div class="mini">D F J K / arrows · A B X Y · Esc pauses</div>
   </div>
 </div>
-<button id="returnWatchBtn" class="secondary hidden">Return to title</button>
+<div id="watchBar" class="hidden" aria-label="Demo actions"><button id="returnWatchBtn" class="secondary">Return to title</button><button id="watchStartBtn" class="primary">Start performance</button></div>
 
 <div id="results">
   <div class="panel">
@@ -562,12 +565,12 @@ return impl;
   function startDemo(){
     if(phase!=='menu')return;
     stopAudio();clearHeldInput();watching=false;
-    document.documentElement.classList.add('title-demo');document.documentElement.classList.remove('watching');document.getElementById('returnWatchBtn').classList.add('hidden');menu.classList.remove('hidden');
+    document.documentElement.classList.add('title-demo');document.documentElement.classList.remove('watching');document.getElementById('watchBar').classList.add('hidden');menu.classList.remove('hidden');
     demo={...capturePerformance(),rng:makeAlea('scratch-title-'+preferences.stage),phase:'call',phaseClock:gameClock(),songTime:0,phraseIndex:0,notes:[],particles:[],sparks:[],screenShake:0,flash:{a:0,color:'#fff'},hitText:{a:0},totalInputs:0,totalResolved:0,playerCount:pendingSeats,menuTime:0,activeRules:{stage:preferences.stage,tempo:preferences.tempo,phraseGoal:9},matchMode:'demo',difficulty:pendingDifficulty,
       players:Array.from({length:pendingSeats},(_,i)=>({...players[i],id:i,name:PLAYER_PROFILES[i].name==='YOU'?'APPRENTICE':PLAYER_PROFILES[i].name,color:PLAYER_PROFILES[i].color,human:false,local:false,lives:8,score:0,combo:0,maxCombo:0,alive:true,perfect:0,good:0,misses:0,timingErrors:[],practice:true,stumble:0,bop:i,glow:0,botResolve:new Set()}))};
     resize();withDemo(()=>{startPhrase(0);renderHud()});
   }
-  function watchDemo(on){watching=on;document.documentElement.classList.toggle('watching',on);menu.classList.toggle('hidden',on);document.getElementById('returnWatchBtn').classList.toggle('hidden',!on);resize();}
+  function watchDemo(on){watching=on;document.documentElement.classList.toggle('watching',on);menu.classList.toggle('hidden',on);document.getElementById('watchBar').classList.toggle('hidden',!on);resize();document.getElementById(on?'watchStartBtn':'startBtn').focus?.();}
 
   function freezeClock(reason,on){
     if(on){if(!freezeReasons.size)hiddenAt=performance.now();freezeReasons.add(reason)}
@@ -591,10 +594,18 @@ return impl;
     paused=true;freezeClock('pause',true);stopAudio();
     document.getElementById('pauseSheet').classList.remove('hidden');document.getElementById('pauseTitle').textContent='Soundcheck · settings & help';document.getElementById('resumeBtn').textContent='Done';document.getElementById('resumeBtn').focus?.();clearHeldInput();
   }
-  function closeSettings(){setPaused(false);document.getElementById('pauseSheet').classList.add('hidden');document.getElementById(phase==='menu'?'startBtn':'pauseBtn').focus?.()}
+  function closeSettings(){setPaused(false);document.getElementById('pauseSheet').classList.add('hidden');document.getElementById(phase==='menu'?(watching?'watchStartBtn':'startBtn'):'pauseBtn').focus?.()}
   function openCameraPause(){cameraOpen=true;freezeClock('camera',true);clearHeldInput();stopAudio()}
   function closeCameraPause(){document.getElementById('callbackCameraPanel')?.classList.remove('open');cameraOpen=false;freezeClock('camera',false);clearHeldInput()}
-  function hidePracticeActions(){document.getElementById('practiceActions').classList.add('hidden')}
+  function hidePracticeActions(){document.getElementById('practiceActions').classList.add('hidden');const msg=document.getElementById('centerMsg');msg.classList.remove('review');msg.style.top='';msg.style.maxHeight='';}
+  function layoutPracticeReview(){
+    if(phase!=='practiceReview')return;
+    const msg=document.getElementById('centerMsg'),top=document.querySelector('.topbar')?.getBoundingClientRect().bottom||highwayBounds.top-40;
+    const bottom=document.getElementById('practiceActions').getBoundingClientRect().top;
+    const space=Math.max(32,bottom-top-16);
+    msg.style.top=`${(top+bottom)/2}px`;msg.style.maxHeight=`${space}px`;
+    msg.style.setProperty('--review-title-size',`${Math.min(34,Math.max(18,space*.28))}px`);msg.style.setProperty('--review-detail-size',`${Math.min(12,Math.max(9,space*.12))}px`);
+  }
   function newSession(){
     closeSettings();closeCameraPause();hidePracticeActions();
     applySessionRules();sessionSeed=(Math.random()*4294967296)>>>0;configuredSeed=sessionSeed;startRound();
@@ -613,9 +624,9 @@ return impl;
   }
   function advancePracticePhrase(){if(matchMode==='practice'&&phase==='practiceReview'){hidePracticeActions();startPhrase(phraseIndex+1)}}
   function reviewPractice(){
-    phase='practiceReview';stopAudio();clearHeldInput();setControlMode('listen');
+    phase='practiceReview';stopAudio();clearHeldInput();setControlMode('listen');hitText={text:'',sub:'',a:0,color:'#fff'};flash.a=0;screenShake=0;document.getElementById('centerMsg').classList.add('review');
     bigMsg.textContent=humanPhraseMisses===0?'CLEAN!':'TRY AGAIN';smallMsg.textContent=`${humanPhraseMisses} MISSES · REPEAT OR ADVANCE`;
-    setStatus(`REHEARSAL · PHRASE ${phraseIndex+1}`);document.getElementById('practiceActions').classList.remove('hidden');
+    setStatus(`REHEARSAL · PHRASE ${phraseIndex+1}`);document.getElementById('practiceActions').classList.remove('hidden');layoutPracticeReview();
   }
   function pollGamepad(){
     let pads;try{pads=navigator.getGamepads?.()||[]}catch{gamepadIdentity=null;gamepadPrevious=null;return;}
@@ -647,7 +658,7 @@ return impl;
     canvas.width=Math.round(W*DPR);canvas.height=Math.round(H*DPR);canvas.style.width=W+'px';canvas.style.height=H+'px';
     ctx.setTransform(DPR,0,0,DPR,0,0);
     if(players.length) renderHud();
-    refreshHighwayBounds();
+    refreshHighwayBounds();layoutPracticeReview();
   }
   addEventListener('resize',resize,{passive:true}); resize();
 
@@ -686,7 +697,7 @@ return impl;
   }
 
   function setStatus(text,mode='neutral'){
-    statusPill.textContent=runningDemo?`DEMO · ${stageInfo().name} · ${text}`:text;
+    statusPill.textContent=runningDemo?(W<700?`DEMO · ${phase==='call'?'LISTEN':phase==='response'?'ECHO':'GET READY'}`:`DEMO · ${stageInfo().name} · ${text}`):text;
     statusPill.classList.toggle('listen',mode==='listen');
     statusPill.classList.toggle('respond',mode==='respond');
   }
@@ -777,7 +788,7 @@ return impl;
   }
 
   function startRound(){
-    watching=false;document.getElementById('returnWatchBtn').classList.add('hidden');document.documentElement.classList.remove('title-demo');document.documentElement.classList.remove('watching');
+    watching=false;document.getElementById('watchBar').classList.add('hidden');document.documentElement.classList.remove('title-demo');document.documentElement.classList.remove('watching');
 
     roundGeneration++;clearTimeout(roundEndTimer);roundEndTimer=null;
     initAudio();audioCtx?.resume?.()?.catch?.(()=>{});
@@ -1303,7 +1314,14 @@ return impl;
   }
 
   function drawHitFeedback(){
-    if(hitText.a<=0)return;ctx.save();ctx.globalAlpha=clamp(hitText.a,0,1);ctx.textAlign='center';ctx.shadowBlur=22;ctx.shadowColor=hitText.color;ctx.fillStyle=hitText.color;ctx.font=`1000 ${Math.min(46,W*.075)}px system-ui`;ctx.fillText(hitText.text,W*.5,H*.36-hitText.a*5);ctx.shadowBlur=0;ctx.fillStyle='white';ctx.font='900 13px system-ui';ctx.fillText(hitText.sub,W*.5,H*.36+21);ctx.restore();
+    if(hitText.a<=0||phase==='practiceReview')return;
+    const compact=H<520;
+    // Bounds are refreshed from the actual HUD: reserve its 40px-to-highway gap
+    // for compact feedback instead of placing the rating behind the topbar.
+    const y=compact?highwayBounds.top-22:H*.36-hitText.a*5,subY=compact?y+14:H*.36+21;
+    ctx.save();ctx.globalAlpha=clamp(hitText.a,0,1);ctx.textAlign='center';ctx.textBaseline='alphabetic';
+    if(compact){ctx.fillStyle='#080b18ed';rr(W*.5-125,y-18,250,37,8);ctx.fill();}
+    ctx.shadowBlur=compact?0:22;ctx.shadowColor=hitText.color;ctx.fillStyle=hitText.color;ctx.font=`1000 ${compact?18:Math.min(46,W*.075)}px system-ui`;ctx.fillText(hitText.text,W*.5,y);ctx.shadowBlur=0;ctx.fillStyle='white';ctx.font=`900 ${compact?10:13}px system-ui`;ctx.fillText(hitText.sub,W*.5,subY);ctx.restore();
   }
 
   function pressVisual(lane){const b=document.querySelector(`.beat-btn[data-lane="${lane}"]`);if(!b)return;b.classList.add('hit');setTimeout(()=>b.classList.remove('hit'),80)}
@@ -1381,7 +1399,9 @@ return impl;
   });
 
   addEventListener('keyup',e=>heldKeys.delete(e.key));addEventListener('blur',()=>{clearHeldInput();setPaused(true)});
-  document.getElementById('startBtn').onclick=()=>{enableAudio();newSession()};
+  function startFromGesture(){enableAudio();newSession();document.getElementById('pauseBtn').focus?.()}
+  document.getElementById('startBtn').onclick=startFromGesture;
+  document.getElementById('watchStartBtn').onclick=startFromGesture;
   document.getElementById('againBtn').onclick=()=>{enableAudio();newSession()};
   document.getElementById('replayBtn').onclick=()=>{enableAudio();replaySession()};document.getElementById('resultMenuBtn').onclick=returnToMenu;
   document.getElementById('pauseBtn').onclick=openSettings;document.getElementById('setupSettingsBtn').onclick=openSettings;

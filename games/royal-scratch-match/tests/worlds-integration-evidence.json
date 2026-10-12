@@ -1,0 +1,17 @@
+{
+  "sourceSha256": "ec7457200e5d22f2881517fadefef5078a72294633b7b309af0ac4a949a375bb",
+  "date": "2026-10-12",
+  "parentChecks": {
+    "npm test": {
+      "passed": 425,
+      "failed": 0
+    },
+    "npm run typecheck": "passed",
+    "npm run catalog:check": "passed",
+    "npm run pages:build": "passed"
+  },
+  "browser": "pending first exact-source CI run",
+  "limits": [
+    "No physical phone/controller, audio-by-ear, measured FPS or numerical quality certification."
+  ]
+}

@@ -1,3 +1,11 @@
+# Screenshot-responsive layout fix
+
+Current evidence now records **22/22 worlds tests**, smoke/archive and scoped diff checks after three screenshot-derived fixes: compact landscape canvas feedback below measured HUD, bounded rehearsal review between HUD/actions with stale feedback cleared, and concise unclipped narrow demo status. Current source hash is in `worlds-evidence.json`; parent fresh browser/DOM verification remains pending. Prior entries below retain their historical run counts.
+
+# Watch accessibility review fix
+
+Current source hash and targeted evidence are in `worlds-evidence.json`: **19/19 worlds tests**, smoke/archive and scoped diff checks pass after adding directly accessible Watch Start and focus handoff. The previously passing 47 retained tests were unchanged and not rerun for this action-only fix. Parent browser review remains separately tracked.
+
 # Current v0.7 Four Courts evidence (2026-10-12)
 
 Current report: `../../../docs/quality/worlds-2026-10-12/task-2-report.md`; byte-bound evidence: `worlds-evidence.json`. All **65/65** focused tests pass (47 retained plus 18 worlds tests), standalone syntax/smoke and unchanged archive hash pass. These checks execute production script with controlled browser/audio/time boundaries. The parent owns actual Chromium review, shared build/catalog gates and publication; hardware feel/audio-by-ear remain unverified. Historical evidence follows and does not attest the current source hash.

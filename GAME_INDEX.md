@@ -44,7 +44,7 @@ A 2–10 racer momentum-driven cage race on the vertical Crownway with deliberat
 - Source: [source/index.html](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-scratch-match/source/index.html)
 - Play: [launch game](https://edmondsonedits.github.io/CALLBACK-ARCADE/games/royal-scratch-match/)
 
-Four Courts Tour: standalone call-and-response rhythm for 2–10 contestants, with a silent live bot title, swing/offbeat/mirror stages, exact-phrase rehearsal, aggregate Tour, performer customization and timing/access tools. One local player plus bots by default; phone multiplayer is not integrated.
+Four Courts Tour: standalone call-and-response rhythm for 2–10 contestants, with a silent live bot title with directly accessible Watch/Start, swing/offbeat/mirror stages, exact-phrase rehearsal, aggregate Tour, performer customization and timing/access tools. One local player plus bots by default; phone multiplayer is not integrated.
 
 ## Royal Sumo — Crownfall
 

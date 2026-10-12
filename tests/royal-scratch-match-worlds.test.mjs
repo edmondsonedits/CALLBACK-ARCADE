@@ -79,3 +79,27 @@ test('watch/return and settings freeze preserve live demo and never enable audio
 test('all stage scene renderers and bounded impact effects execute at ten seats',()=>{
  for(const stage of ['royal','tide','foundry','mirror']){const r=runtime();r.g.ScratchMatchAPI.start({stage,playerCount:10,seed:7});r.run('startPhrase(0);W=844;H=390;draw();for(let i=0;i<100;i++)burstLane(i%4,true);drawParticles()');assert.ok(r.run('particles.length')<=240);assert.ok(r.run('sparks.length')<=48);assert.ok(r.drawCalls.length>100);assert.ok(r.run('highwayGeom().targetY>highwayGeom().topY'));}
 });
+test('Watch exposes a gesture Start that creates a clean session and retires Watch controls',()=>{
+ const r=runtime();let focused='';for(const id of ['watchStartBtn','startBtn','pauseBtn'])r.g.document.getElementById(id).focus=()=>{focused=id};
+ r.run('watchDemo(true)');assert.equal(focused,'watchStartBtn');assert.equal(r.g.document.getElementById('watchBar').classes.has('hidden'),false);
+ for(let i=0;i<1500;i++)r.tick(10);assert.ok(r.run('demo.players.some(p=>p.score>0)'));
+ r.g.document.getElementById('watchStartBtn').onclick();const s=r.g.ScratchMatchAPI.getState();
+ assert.equal(s.phase,'countdown');assert.equal(s.demo.active,false);assert.equal(s.totalInputs,0);assert.equal(s.totalResolved,0);assert.equal(r.run('players.every(p=>p.score===0&&p.lives===8)'),true);assert.equal(r.run('watching'),false);
+ assert.equal(r.g.document.getElementById('watchBar').classes.has('hidden'),true);assert.equal(focused,'pauseBtn');assert.notEqual(r.run('audioCtx'),null);
+ r.g.ScratchMatchAPI.menu();r.run('watchDemo(true);watchDemo(false)');assert.equal(focused,'startBtn');assert.equal(r.g.document.getElementById('watchBar').classes.has('hidden'),true);
+});
+test('short-landscape impact feedback fits below actual topbar and above note highway',()=>{
+ const r=runtime();r.setup();r.run("W=844;H=390;highwayBounds={top:180,bottom:260};hitText={text:'PERFECT',sub:'5 ms · ON TIME',a:1,color:'#fff'};drawHitFeedback()");
+ const title=r.drawCalls.find(c=>c[0]==='fillText'&&c[1]==='PERFECT'),detail=r.drawCalls.find(c=>c[0]==='fillText'&&c[1]==='5 ms · ON TIME');assert.ok(title[3]>=154,'rating baseline must clear 140px topbar + readable glyph height');assert.ok(detail[3]<180,'detail must clear note spawn boundary');
+});
+test('rehearsal review clears stale impact and centers bounded instruction between HUD and actions',()=>{
+ const r=runtime();r.g.ScratchMatchAPI.start({mode:'practice'});r.g.document.querySelector=selector=>selector==='.topbar'?{getBoundingClientRect:()=>({bottom:140})}:null;
+ const strip=r.g.document.getElementById('practiceActions');strip.getBoundingClientRect=()=>({top:264});
+ r.run("startPhrase(0);W=844;H=390;hitText={text:'MISS',sub:'REHEARSE · TRY AGAIN',a:1};humanPhraseMisses=3;reviewPractice()");
+ const msg=r.g.document.getElementById('centerMsg');assert.equal(r.run('hitText.a'),0);assert.equal(msg.classes.has('review'),true);assert.equal(msg.style.top,'202px');assert.ok(parseFloat(msg.style.maxHeight)<=108);
+ r.run('repeatPracticePhrase()');assert.equal(msg.classes.has('review'),false);assert.equal(msg.style.top,'');
+});
+test('narrow demo status fits concise listen and echo labels without repeated court metadata',()=>{
+ const r=runtime();r.run("W=390;withDemo(()=>{phase='call';setStatus('DJ CALL · 96 BPM · 1/9','listen')})");assert.equal(r.g.document.getElementById('statusPill').textContent,'DEMO · LISTEN');
+ r.run("withDemo(()=>{phase='response';setStatus('YOUR ECHO · 96 BPM · 8 CROWNS','respond')})");assert.equal(r.g.document.getElementById('statusPill').textContent,'DEMO · ECHO');
+});

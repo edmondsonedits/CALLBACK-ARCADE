@@ -2,15 +2,8 @@
   "date": "2026-10-12",
   "version": "0.7.0",
   "runtime": "games/royal-scratch-match/source/index.html",
-  "runtimeSha256": "ec7457200e5d22f2881517fadefef5078a72294633b7b309af0ac4a949a375bb",
+  "runtimeSha256": "4866174e89a07e444091ab2a550b74cc25f6ef211277aea44f45ad5fe5cb7d18",
   "archiveSha256": "6c58614db13495393512e9f69496da686dc2962b3cabd49d71680493170cbb03",
-  "tests": {
-    "command": "node --test tests/royal-scratch-match-quality.test.mjs tests/royal-scratch-match-sumo-benchmark.test.mjs tests/royal-scratch-match-worlds.test.mjs",
-    "passed": 65,
-    "failed": 0,
-    "worldsTestSha256": "2e9549edd400552b0b72c4ef6c5c5626428919437b469da92563e2daba6f556f",
-    "boundary": "Complete production inline script; VM DOM/audio/time boundary stubs. Not browser/hardware evidence."
-  },
   "smoke": "passed, syntax/API/offline dependencies/unchanged archive",
   "diffCheck": "passed",
   "assets": "../source/assets/provenance.json",
@@ -21,5 +14,42 @@
     "hardware timing calibration",
     "measured FPS",
     "subjective 9/10 target"
-  ]
+  ],
+  "previousFullSuite": {
+    "command": "node --test tests/royal-scratch-match-quality.test.mjs tests/royal-scratch-match-sumo-benchmark.test.mjs tests/royal-scratch-match-worlds.test.mjs",
+    "passed": 65,
+    "failed": 0,
+    "worldsTestSha256": "2e9549edd400552b0b72c4ef6c5c5626428919437b469da92563e2daba6f556f",
+    "boundary": "Complete production inline script; VM DOM/audio/time boundary stubs. Not browser/hardware evidence.",
+    "runtimeSha256": "ec7457200e5d22f2881517fadefef5078a72294633b7b309af0ac4a949a375bb"
+  },
+  "tests": {
+    "command": "node --test tests/royal-scratch-match-worlds.test.mjs",
+    "passed": 22,
+    "failed": 0,
+    "worldsTestSha256": "5b847d5ea609a776affbd96421398b86be9e0c5566f04bfce8a9f409f2a2c9de",
+    "boundary": "Fresh targeted worlds verification after screenshot-driven layout fixes. Prior unchanged47 timing tests not rerun; previous full65 run preserved separately."
+  },
+  "reviewFix": "P2 Watch now exposes Start alongside Return, using shared gesture/fresh-session flow and focus handoff.",
+  "visualFixRound2": {
+    "findings": [
+      "Landscape rating behind topbar",
+      "Practice review title/subtitle overlap and stale hit feedback",
+      "Portrait demo status clipping"
+    ],
+    "fixes": [
+      "Compact canvas feedback in actual HUD-to-highway gap",
+      "DOM review typography and midpoint constrained by measured topbar/action bounds; stale feedback cleared",
+      "Concise narrow demo status"
+    ],
+    "regressionRedRun": "3 failed before edits",
+    "regressionGreenRun": "22 worlds passed after edits",
+    "screenshotsInspected": [
+      "royal-scratch-match-landscape-mirror-response.png",
+      "royal-scratch-match-landscape-rehearsal-review.png",
+      "royal-scratch-match-portrait-mirror-demo.png"
+    ],
+    "inspectedSourceSha256": "ec7457200e5d22f2881517fadefef5078a72294633b7b309af0ac4a949a375bb",
+    "currentSourceBrowserStatus": "Parent fresh screenshot/DOM bounds verification pending"
+  }
 }

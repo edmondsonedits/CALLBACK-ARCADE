@@ -2,6 +2,10 @@
 
 ## 0.7.0 — Four Courts Tour
 
+- Screenshot fixes: landscape hit rating now clears the actual HUD, rehearsal review fits between HUD and action strip and clears stale feedback, and narrow demo status uses concise phase labels. Added three red/green layout regressions.
+
+- Review fix: keep a compact Start next to Return while watching, with shared fresh-session flow and explicit keyboard focus handoff. Added a red/green Watch-to-Start regression.
+
 - Added a compact silent title with real call/response bots, independent state and MIT Alea stream, Watch/Return, and clean fresh Start. Returning from an audio-enabled session cannot sound the demo.
 - Added Tide Pavilion swing pairs, Clockwork Foundry half-beat/chord motifs and explicitly mapped Mirror Ballroom responses. Royal Hall retains classic note generation; all stages use unchanged scoring windows and shared note timestamps for display/audio/bots/judgment.
 - Added stage-specific rehearsal and a four-court, eight-phrase Tour with deliberate next-stage flow, aggregate standings and seeded replay.

@@ -137,7 +137,7 @@
         "bots",
         "mobile"
       ],
-      "description": "Four Courts Tour: standalone call-and-response rhythm for 2–10 contestants, with a silent live bot title, swing/offbeat/mirror stages, exact-phrase rehearsal, aggregate Tour, performer customization and timing/access tools. One local player plus bots by default; phone multiplayer is not integrated.",
+      "description": "Four Courts Tour: standalone call-and-response rhythm for 2–10 contestants, with a silent live bot title with directly accessible Watch/Start, swing/offbeat/mirror stages, exact-phrase rehearsal, aggregate Tour, performer customization and timing/access tools. One local player plus bots by default; phone multiplayer is not integrated.",
       "players": {
         "min": 2,
         "max": 10
@@ -299,5 +299,5 @@
       }
     }
   ],
-  "revision": "ce76d6a1f318a3145ec210f3280955b9ee98a808fad7f3c47ee65d66bd08a135"
+  "revision": "7453ba7a6ff06c22725d6ab56c09d693dffb7f56c8b64c882152b322a222d253"
 }

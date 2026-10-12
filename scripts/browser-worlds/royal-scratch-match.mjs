@@ -9,7 +9,12 @@ export const scratchMatch = {
   await capture('title');
   await page.locator('#watchBtn').click();await page.locator('#returnWatchBtn').waitFor({state:'visible'});
   check('Watch keeps demo active',(await state()).demo.active);await capture('watch');
+  const watchActions=await bounds('#returnWatchBtn,#watchStartBtn');check('Watch keeps Start and Return visible inside viewport',watchActions.length===2&&watchActions.every(x=>x.inside),watchActions);
   await page.locator('#returnWatchBtn').click();
+  await page.locator('#watchBtn').click();await page.locator('#watchStartBtn').click();
+  const watchStart=await state();check('Watch Start creates a clean real performance',!watchStart.demo.active&&watchStart.totalInputs===0&&watchStart.totalResolved===0);
+  check('Watch actions hide after Start',!await page.locator('#returnWatchBtn').isVisible()&&!await page.locator('#watchStartBtn').isVisible());
+  await page.locator('#pauseBtn').click();await page.locator('#pauseMenuBtn').click();
   await page.locator('#setupSettingsBtn').click();await page.locator('#pauseSheet').waitFor({state:'visible'});
   await (await reveal('#modeSetting')).selectOption('practice');
   for(let i=0;i<6;i++)await page.locator('#playerPlus').click();
@@ -26,6 +31,7 @@ export const scratchMatch = {
    check(`${stage}: demo advances`,before.demo.phaseTime!==after.demo.phaseTime||before.demo.phase!==after.demo.phase||before.demo.resolved!==after.demo.resolved,{before:before.demo,after:after.demo});
    check(`${stage}: demo leaves the real session untouched`,after.totalInputs===before.totalInputs&&after.totalResolved===before.totalResolved&&JSON.stringify(after.players)===JSON.stringify(before.players));
    check(`${stage}: page has no horizontal overflow`,await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+   const status=await bounds('#statusPill');check(`${stage}: demo status remains readable`,status.length===1&&status.every(x=>x.inside&&!x.clipped),status);
    await capture(`${stage}-demo`);
    await page.locator('#startBtn').click();await page.locator('#menu').waitFor({state:'hidden'});
    const start=await state();
@@ -45,6 +51,8 @@ export const scratchMatch = {
     await page.waitForFunction(()=>window.ScratchMatchAPI.getState().phase==='practiceReview',null,{timeout:25000});
     const original=(await state()).pattern.map(n=>[n.time,n.lanes,n.responseLanes]);
     const actions=await bounds('#practiceActions button');check('rehearsal actions fit the viewport',actions.length===3&&actions.every(x=>x.inside),actions);
+    const review=await page.evaluate(()=>{const message=document.querySelector('#centerMsg').getBoundingClientRect(),bar=document.querySelector('.topbar').getBoundingClientRect(),actions=document.querySelector('#practiceActions').getBoundingClientRect();return{top:message.top,bottom:message.bottom,hudBottom:bar.bottom,actionsTop:actions.top,left:message.left,right:message.right,width:innerWidth};});
+    check('rehearsal message clears HUD and actions',review.top>=review.hudBottom-1&&review.bottom<=review.actionsTop+1&&review.left>=-1&&review.right<=review.width+1,review);
     await capture('rehearsal-review');
     await page.locator('#repeatPhraseBtn').click();
     const retry=await state();check('Repeat phrase returns to the same chord pattern',retry.phase==='call'&&JSON.stringify(retry.pattern.map(n=>[n.time,n.lanes,n.responseLanes]))===JSON.stringify(original));

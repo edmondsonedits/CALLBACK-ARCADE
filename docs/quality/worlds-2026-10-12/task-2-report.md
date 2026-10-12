@@ -15,7 +15,7 @@ Date: 2026-10-12. Runtime **v0.7.0**. Implementer handoff; parent owns independe
 
 First red run: **10/10 new behavior tests failed** against the preceding implementation (missing stages, mirror rules, Tour, isolated demo, staged settings and native-field shortcut guard). Implemented those contracts, then added eight targeted edge regressions.
 
-Final focused command:
+Initial implementation full focused command:
 
 ```
 node --test tests/royal-scratch-match-quality.test.mjs tests/royal-scratch-match-sumo-benchmark.test.mjs tests/royal-scratch-match-worlds.test.mjs
@@ -25,7 +25,7 @@ node --test tests/royal-scratch-match-quality.test.mjs tests/royal-scratch-match
 
 `node games/royal-scratch-match/tests/smoke.mjs`: passed. Parses the full inline source, checks preserved input/API/offline markers and verifies the unchanged archive SHA-256. `git diff --check -- games/royal-scratch-match tests/royal-scratch-match-worlds.test.mjs`: passed.
 
-Current runtime SHA-256: **ec7457200e5d22f2881517fadefef5078a72294633b7b309af0ac4a949a375bb**. Archive: **6c58614db13495393512e9f69496da686dc2962b3cabd49d71680493170cbb03**. Machine-readable evidence: `games/royal-scratch-match/tests/worlds-evidence.json`. Tests do not attest uninspected pixels, audible mixing or physical input feel.
+Current runtime SHA-256: **4866174e89a07e444091ab2a550b74cc25f6ef211277aea44f45ad5fe5cb7d18**. Archive: **6c58614db13495393512e9f69496da686dc2962b3cabd49d71680493170cbb03**. Machine-readable evidence: `games/royal-scratch-match/tests/worlds-evidence.json`. Tests do not attest uninspected pixels, audible mixing or physical input feel.
 
 ## Acceptance rubric at implementer handoff
 
@@ -51,3 +51,19 @@ Preserved Canvas, monotonic timing, CAM/public API, 2–10 seats and keyboard/to
 ## Remaining limits
 
 Parent must inspect all four scenes and ten seats at desktop 1440×900, portrait 390×844 and landscape 844×390; fix concrete readability/layout failures before acceptance. Keyboard/touch emulation, actual local image/audio resource success and browser console/network health are parent-owned. Physical touch/controller timing, hardware latency, audio-by-ear, measured FPS and subjective target rating remain unverified. Optional audio file fetch can be unavailable under `file://`; synthesis continues. Existing host configure remains lobby/pre-round, not seamless active seat joining. Multiplayer remains not integrated/authenticated; no online transport is claimed.
+
+
+## Review fix round 1 — Watch action availability
+
+Independent review identified P2: collapsing the title hid the only visible Start. Added `#watchBar` with Return and `#watchStartBtn`, bounded to the viewport with safe-area offsets and 44px targets. Both title and Watch Start use the same `startFromGesture` function: unlock audio, create a fresh real session and focus Pause. Watch opens with focus on Start; Return focuses title Start; dismissing settings while watching restores focus to Watch Start. Starting or restarting the demo hides the whole action bar.
+
+The new production-runtime regression was first run red (missing Watch Start focus/action), then green. It advances real demo bots, clicks the new DOM handler, checks countdown/fresh zero stats and lives/audio unlock, verifies the action bar is hidden, and checks focus through Watch→Start and Watch→Return. Fresh command `node --test tests/royal-scratch-match-worlds.test.mjs`: **19/19 passed**. Smoke/archive and scoped diff checks passed. The unchanged 47 retained tests were not rerun for this isolated action fix; the earlier full65 evidence remains labeled in `worlds-evidence.json`. Parent owns the new real UI Watch→Start assertion and pending screenshots.
+
+
+## Screenshot fix round 2 — responsive feedback and review layout
+
+Inspected the actual first-run Chromium images at `/workspace/scratch/89700bddec30/scratch-browser-1/`: landscape Mirror response, landscape rehearsal review and portrait Mirror demo. Those screenshots attest source `ec7457200e5d22f2881517fadefef5078a72294633b7b309af0ac4a949a375bb`; parent reports the first browser run passed 252 combined checks (129 Ballistix, 123 Scratch), with zero runtime/console/request errors. Passing mechanical checks did not conceal the concrete pixel defects: landscape PERFECT was behind the topbar, the large review heading/instructions overlapped HUD/buttons, stale canvas miss feedback remained underneath, and portrait demo status was clipped.
+
+Fixed causes: compact canvas rating/detail are anchored to the cached actual topbar-to-highway gap (140px topbar bottom → 158px rating baseline / 172px detail, before 180px highway in the recorded landscape); rehearsal review uses a dedicated bounded text panel centered between measured topbar bottom and practice-action top, with responsive title/detail sizes and relayout on resize; entering review clears transient hit text/flash/shake. Leaving review clears its layout styles. Narrow title status now says DEMO · LISTEN / ECHO / GET READY, since the stage identity and mechanic are already displayed in the title. The prior Watch Start action/focus fix is preserved.
+
+Three new targeted tests failed before the edits and passed afterward: measured landscape canvas text positions, stale-feedback clearing/review midpoint bounds and exit cleanup, and compact narrow demo labels. Fresh `node --test tests/royal-scratch-match-worlds.test.mjs`: **22/22 passed**; smoke/archive and scoped diff checks passed. No unchanged timing suite repetition. Parent owns fresh exact-source screenshots and added DOM checks for status clipping and review placement; current-source visual acceptance remains pending, not inferred from the VM tests. No new startRound/endRound dependency was added; resize calls the guarded review layout helper.
