@@ -7,7 +7,7 @@
 - Frozen/volley/aftermath/final control labels and outcome-aware aftermath copy; unchanged rules and timing.
 - Standalone help distinguishes local pause from separately hosted room clocks.
 - Added privacy/collision/volley/tiebreak/lifecycle regressions, protected-module hash checks and a 72-case Canvas matrix with real control interactions and emulated touch.
-- Engine, perspective module, networking, optional Three.js bridge, original artwork/model and v1.4 archive remain unchanged. No assets added or uploaded. Pending independent review and coordinator reconciliation; not published.
+- Engine, perspective module, networking, optional Three.js bridge, original artwork/model and v1.4 archive remain unchanged. No assets added or uploaded. Independent code review found no issues; coordinator reconciliation remains pending. Not published.
 
 ## 1.5.0 — Nightfall
 

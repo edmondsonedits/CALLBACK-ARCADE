@@ -90,7 +90,8 @@ In standalone help/settings, qualify online timer copy as hypothetical for a sep
 - [x] Implement items 1–3 in their specified embedded presentation/app regions only; update local-help copy from item 4. No unrelated repairs.
 - [x] Run Node suites and all applicable Canvas presentation suites. Compare actual pixels at 390×844, 844×390 and 1440×960; test both rulesets and every retained camera/arena.
 - [x] Verify original and embedded engine/camera/network/3D invariants; then update active size/hash, new evidence and owned docs.
-- [ ] Supply local commit and independent-review evidence to coordinator for reconciliation. Do not publish.
+- [x] Obtain independent review of the product commit; no findings.
+- [ ] Supply portable local commits and evidence to coordinator for reconciliation. Do not publish.
 
 Commands: `node --test games/blind-crown/tests/standalone.test.mjs tests/blind-crown-quality.test.mjs`; `python3 games/blind-crown/tests/presentation/test_quality.py`; existing `test_visuals.py`, `test_hud.py`, `test_final.py` with screenshot redirected outside checkout. HTTP-served Pages and shared cross-game gates belong to the coordinator. Missing dependencies are blocked, never passed.
 
@@ -102,3 +103,5 @@ Commands: `node --test games/blind-crown/tests/standalone.test.mjs tests/blind-c
 - Regression RED→GREEN: added test caught the private status hiding disconnected-room instructions. Status now yields to the original connection-loss instruction; no networking byte changes.
 - Final verification before review: 21 focused Node tests, 75 repository tests, 72 browser matrix cases, existing visuals/HUD/seeded-final checks passed. Restart from actual reveal/volley/results clears shots/effects and restores private planning.
 - No rule/design deviations. Hash assertion intentionally failed after source changes, then was updated to the validated active bytes; untouched-original/engine assertions remain.
+
+- Independent review: `785a150..cce1135`, no Critical/Important/Minor findings. Reviewer independently reran 21 focused Node checks and the 72-case browser suite, verified protected byte hashes and allowlist. Author visual/performance evidence was reviewed for accurate scope, not independently repeated. No rulings or deferred minors.
