@@ -1,0 +1,1748 @@
+{
+  "commit": "4000fec06b912bc3d5c6cc6237bf7969437332d3",
+  "date": "2026-10-12T11:02:13.340Z",
+  "browser": "156.0.8078.4",
+  "checks": [
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "production Three renderer creates a live WebGL2 context",
+      "passed": true,
+      "detail": {
+        "width": 1440,
+        "height": 900,
+        "webgl2": true,
+        "lost": false,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "title is a real all-bot demo",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "responsive title preserves word spacing",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "sustained flow QA uses the real Performance preference",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "Watch Start and Return fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "watchStartBtn",
+          "x": 663.8515625,
+          "y": 825,
+          "width": 113.390625,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "watchReturnBtn",
+          "x": 785.2421875,
+          "y": 825,
+          "width": 83.09375,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "Watch Start creates clean real race",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "native name supports spaces and empty editing",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "settings actions fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "restartBtn",
+          "x": 524,
+          "y": 718,
+          "width": 192,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "closeSettings",
+          "x": 724,
+          "y": 718,
+          "width": 192,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "at least twelve meaningful native preferences exist",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "crownway: live demo advances real racers",
+      "passed": true,
+      "detail": {
+        "wallSeconds": 1.666,
+        "simulationSeconds": 0.3500000000000003,
+        "graphics": "performance"
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "crownway: demo leaves real race clock untouched",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "crownway: scene remains finite",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "crownway: no horizontal page overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "crownway: selected ten-seat practice starts cleanly",
+      "passed": true,
+      "detail": {
+        "laps": 1,
+        "seats": 10,
+        "difficulty": "normal",
+        "hazards": 1
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "crownway: simulation advances after native input",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "crownway: steering and any visible recovery action fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "joyWrap",
+          "x": 8,
+          "y": 752,
+          "width": 150,
+          "height": 140,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "crownway: coaching clears the speed display",
+      "passed": true,
+      "detail": {
+        "cue": {
+          "top": 140,
+          "bottom": 220,
+          "left": 1247,
+          "right": 1432
+        },
+        "speed": {
+          "top": 61,
+          "bottom": 103,
+          "left": 1354.75,
+          "right": 1432
+        },
+        "clear": true
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "visible recovery button fits after a real fall",
+      "passed": true,
+      "detail": [
+        {
+          "id": "respawnBtn",
+          "x": 1225,
+          "y": 855,
+          "width": 194,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "native recovery action returns a fallen racer",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "crownway: settings freezes race clock",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "crownway: map edit stages until next Start",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "crownway: title resumes a bot session",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "frostglass: live demo advances real racers",
+      "passed": true,
+      "detail": {
+        "wallSeconds": 1.721,
+        "simulationSeconds": 0.44999999999999996,
+        "graphics": "performance"
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "frostglass: demo leaves real race clock untouched",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "frostglass: scene remains finite",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "frostglass: no horizontal page overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "frostglass: selected ten-seat practice starts cleanly",
+      "passed": true,
+      "detail": {
+        "laps": 1,
+        "seats": 10,
+        "difficulty": "normal",
+        "hazards": 1
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "frostglass: simulation advances after native input",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "frostglass: steering and any visible recovery action fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "joyWrap",
+          "x": 8,
+          "y": 752,
+          "width": 150,
+          "height": 140,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "frostglass: coaching clears the speed display",
+      "passed": true,
+      "detail": {
+        "cue": {
+          "top": 140,
+          "bottom": 220,
+          "left": 1247,
+          "right": 1432
+        },
+        "speed": {
+          "top": 61,
+          "bottom": 103,
+          "left": 1354.75,
+          "right": 1432
+        },
+        "clear": true
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "frostglass: settings freezes race clock",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "frostglass: map edit stages until next Start",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "frostglass: title resumes a bot session",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "foundry: live demo advances real racers",
+      "passed": true,
+      "detail": {
+        "wallSeconds": 1.679,
+        "simulationSeconds": 0.3500000000000003,
+        "graphics": "performance"
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "foundry: demo leaves real race clock untouched",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "foundry: scene remains finite",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "foundry: no horizontal page overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "foundry: selected ten-seat practice starts cleanly",
+      "passed": true,
+      "detail": {
+        "laps": 1,
+        "seats": 10,
+        "difficulty": "normal",
+        "hazards": 1
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "foundry: simulation advances after native input",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "foundry: steering and any visible recovery action fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "joyWrap",
+          "x": 8,
+          "y": 752,
+          "width": 150,
+          "height": 140,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "foundry: coaching clears the speed display",
+      "passed": true,
+      "detail": {
+        "cue": {
+          "top": 140,
+          "bottom": 220,
+          "left": 1247,
+          "right": 1432
+        },
+        "speed": {
+          "top": 61,
+          "bottom": 103,
+          "left": 1354.75,
+          "right": 1432
+        },
+        "clear": true
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "foundry: settings freezes race clock",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "foundry: map edit stages until next Start",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "foundry: title resumes a bot session",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "skygarden: live demo advances real racers",
+      "passed": true,
+      "detail": {
+        "wallSeconds": 1.68,
+        "simulationSeconds": 0.44999999999999996,
+        "graphics": "performance"
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "skygarden: demo leaves real race clock untouched",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "skygarden: scene remains finite",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "skygarden: no horizontal page overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "skygarden: selected ten-seat practice starts cleanly",
+      "passed": true,
+      "detail": {
+        "laps": 1,
+        "seats": 10,
+        "difficulty": "normal",
+        "hazards": 1
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "skygarden: simulation advances after native input",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "skygarden: steering and any visible recovery action fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "joyWrap",
+          "x": 8,
+          "y": 752,
+          "width": 150,
+          "height": 140,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "skygarden: coaching clears the speed display",
+      "passed": true,
+      "detail": {
+        "cue": {
+          "top": 140,
+          "bottom": 220,
+          "left": 1247,
+          "right": 1432
+        },
+        "speed": {
+          "top": 61,
+          "bottom": 103,
+          "left": 1354.75,
+          "right": 1432
+        },
+        "clear": true
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "skygarden: settings freezes race clock",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "skygarden: map edit stages until next Start",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "skygarden: title resumes a bot session",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "Series begins on Crownway with empty scores",
+      "passed": true,
+      "detail": {
+        "index": 0,
+        "scores": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "races": [],
+        "seed": 2026,
+        "rules": {
+          "difficulty": "normal",
+          "laps": "3",
+          "hazards": 1,
+          "count": "10"
+        }
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "local licensed scenery loaded",
+      "passed": true,
+      "detail": {
+        "loaded": 4,
+        "failed": 0,
+        "templates": 4,
+        "instances": 20
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "production Three renderer creates a live WebGL2 context",
+      "passed": true,
+      "detail": {
+        "width": 390,
+        "height": 844,
+        "webgl2": true,
+        "lost": false,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "title is a real all-bot demo",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "responsive title preserves word spacing",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "sustained flow QA uses the real Performance preference",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "Watch Start and Return fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "watchStartBtn",
+          "x": 138.8515625,
+          "y": 765,
+          "width": 113.390625,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "watchReturnBtn",
+          "x": 260.2421875,
+          "y": 765,
+          "width": 83.09375,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "Watch Start creates clean real race",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "native name supports spaces and empty editing",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "settings actions fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "restartBtn",
+          "x": 31,
+          "y": 761.671875,
+          "width": 160,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "closeSettings",
+          "x": 199,
+          "y": 761.671875,
+          "width": 160,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "at least twelve meaningful native preferences exist",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "crownway: live demo advances real racers",
+      "passed": true,
+      "detail": {
+        "wallSeconds": 1.646,
+        "simulationSeconds": 0.8999999999999984,
+        "graphics": "performance"
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "crownway: demo leaves real race clock untouched",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "crownway: scene remains finite",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "crownway: no horizontal page overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "crownway: selected ten-seat practice starts cleanly",
+      "passed": true,
+      "detail": {
+        "laps": 1,
+        "seats": 10,
+        "difficulty": "normal",
+        "hazards": 1
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "crownway: simulation advances after native input",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "crownway: steering and any visible recovery action fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "joyWrap",
+          "x": 8,
+          "y": 660,
+          "width": 182,
+          "height": 176,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "crownway: coaching clears the speed display",
+      "passed": true,
+      "detail": {
+        "cue": {
+          "top": 140,
+          "bottom": 220,
+          "left": 237,
+          "right": 382
+        },
+        "speed": {
+          "top": 61,
+          "bottom": 103,
+          "left": 304.75,
+          "right": 382
+        },
+        "clear": true
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "visible recovery button fits after a real fall",
+      "passed": true,
+      "detail": [
+        {
+          "id": "respawnBtn",
+          "x": 213,
+          "y": 796.125,
+          "width": 156,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "native recovery action returns a fallen racer",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "crownway: settings freezes race clock",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "crownway: map edit stages until next Start",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "crownway: title resumes a bot session",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "frostglass: live demo advances real racers",
+      "passed": true,
+      "detail": {
+        "wallSeconds": 1.69,
+        "simulationSeconds": 0.8999999999999984,
+        "graphics": "performance"
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "frostglass: demo leaves real race clock untouched",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "frostglass: scene remains finite",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "frostglass: no horizontal page overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "frostglass: selected ten-seat practice starts cleanly",
+      "passed": true,
+      "detail": {
+        "laps": 1,
+        "seats": 10,
+        "difficulty": "normal",
+        "hazards": 1
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "frostglass: simulation advances after native input",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "frostglass: steering and any visible recovery action fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "joyWrap",
+          "x": 8,
+          "y": 660,
+          "width": 182,
+          "height": 176,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "frostglass: coaching clears the speed display",
+      "passed": true,
+      "detail": {
+        "cue": {
+          "top": 140,
+          "bottom": 220,
+          "left": 237,
+          "right": 382
+        },
+        "speed": {
+          "top": 61,
+          "bottom": 103,
+          "left": 304.75,
+          "right": 382
+        },
+        "clear": true
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "frostglass: settings freezes race clock",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "frostglass: map edit stages until next Start",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "frostglass: title resumes a bot session",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "foundry: live demo advances real racers",
+      "passed": true,
+      "detail": {
+        "wallSeconds": 1.665,
+        "simulationSeconds": 0.8499999999999985,
+        "graphics": "performance"
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "foundry: demo leaves real race clock untouched",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "foundry: scene remains finite",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "foundry: no horizontal page overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "foundry: selected ten-seat practice starts cleanly",
+      "passed": true,
+      "detail": {
+        "laps": 1,
+        "seats": 10,
+        "difficulty": "normal",
+        "hazards": 1
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "foundry: simulation advances after native input",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "foundry: steering and any visible recovery action fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "joyWrap",
+          "x": 8,
+          "y": 660,
+          "width": 182,
+          "height": 176,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "foundry: coaching clears the speed display",
+      "passed": true,
+      "detail": {
+        "cue": {
+          "top": 140,
+          "bottom": 220,
+          "left": 237,
+          "right": 382
+        },
+        "speed": {
+          "top": 61,
+          "bottom": 103,
+          "left": 304.75,
+          "right": 382
+        },
+        "clear": true
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "foundry: settings freezes race clock",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "foundry: map edit stages until next Start",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "foundry: title resumes a bot session",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "skygarden: live demo advances real racers",
+      "passed": true,
+      "detail": {
+        "wallSeconds": 1.609,
+        "simulationSeconds": 0.8499999999999985,
+        "graphics": "performance"
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "skygarden: demo leaves real race clock untouched",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "skygarden: scene remains finite",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "skygarden: no horizontal page overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "skygarden: selected ten-seat practice starts cleanly",
+      "passed": true,
+      "detail": {
+        "laps": 1,
+        "seats": 10,
+        "difficulty": "normal",
+        "hazards": 1
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "skygarden: simulation advances after native input",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "skygarden: steering and any visible recovery action fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "joyWrap",
+          "x": 8,
+          "y": 660,
+          "width": 182,
+          "height": 176,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "skygarden: coaching clears the speed display",
+      "passed": true,
+      "detail": {
+        "cue": {
+          "top": 140,
+          "bottom": 220,
+          "left": 237,
+          "right": 382
+        },
+        "speed": {
+          "top": 61,
+          "bottom": 103,
+          "left": 304.75,
+          "right": 382
+        },
+        "clear": true
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "skygarden: settings freezes race clock",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "skygarden: map edit stages until next Start",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "skygarden: title resumes a bot session",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "Series begins on Crownway with empty scores",
+      "passed": true,
+      "detail": {
+        "index": 0,
+        "scores": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "races": [],
+        "seed": 2026,
+        "rules": {
+          "difficulty": "normal",
+          "laps": "3",
+          "hazards": 1,
+          "count": "10"
+        }
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "local licensed scenery loaded",
+      "passed": true,
+      "detail": {
+        "loaded": 4,
+        "failed": 0,
+        "templates": 4,
+        "instances": 20
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "production Three renderer creates a live WebGL2 context",
+      "passed": true,
+      "detail": {
+        "width": 844,
+        "height": 390,
+        "webgl2": true,
+        "lost": false,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "title is a real all-bot demo",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "responsive title preserves word spacing",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "sustained flow QA uses the real Performance preference",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "Watch Start and Return fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "watchStartBtn",
+          "x": 365.8515625,
+          "y": 315,
+          "width": 113.390625,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "watchReturnBtn",
+          "x": 487.2421875,
+          "y": 315,
+          "width": 83.09375,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "Watch Start creates clean real race",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "native name supports spaces and empty editing",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "settings actions fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "restartBtn",
+          "x": 226,
+          "y": 321.296875,
+          "width": 192,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "closeSettings",
+          "x": 426,
+          "y": 321.296875,
+          "width": 192,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "at least twelve meaningful native preferences exist",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "crownway: live demo advances real racers",
+      "passed": true,
+      "detail": {
+        "wallSeconds": 1.635,
+        "simulationSeconds": 0.999999999999998,
+        "graphics": "performance"
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "crownway: demo leaves real race clock untouched",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "crownway: scene remains finite",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "crownway: no horizontal page overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "crownway: selected ten-seat practice starts cleanly",
+      "passed": true,
+      "detail": {
+        "laps": 1,
+        "seats": 10,
+        "difficulty": "normal",
+        "hazards": 1
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "crownway: simulation advances after native input",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "crownway: steering and any visible recovery action fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "joyWrap",
+          "x": 8,
+          "y": 282,
+          "width": 105,
+          "height": 100,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "crownway: coaching clears the speed display",
+      "passed": true,
+      "detail": {
+        "cue": {
+          "top": 116,
+          "bottom": 196,
+          "left": 651,
+          "right": 836
+        },
+        "speed": {
+          "top": 61,
+          "bottom": 103,
+          "left": 758.75,
+          "right": 836
+        },
+        "clear": true
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "visible recovery button fits after a real fall",
+      "passed": true,
+      "detail": [
+        {
+          "id": "respawnBtn",
+          "x": 651,
+          "y": 323,
+          "width": 175,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "native recovery action returns a fallen racer",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "crownway: settings freezes race clock",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "crownway: map edit stages until next Start",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "crownway: title resumes a bot session",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "frostglass: live demo advances real racers",
+      "passed": true,
+      "detail": {
+        "wallSeconds": 1.628,
+        "simulationSeconds": 1.0999999999999976,
+        "graphics": "performance"
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "frostglass: demo leaves real race clock untouched",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "frostglass: scene remains finite",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "frostglass: no horizontal page overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "frostglass: selected ten-seat practice starts cleanly",
+      "passed": true,
+      "detail": {
+        "laps": 1,
+        "seats": 10,
+        "difficulty": "normal",
+        "hazards": 1
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "frostglass: simulation advances after native input",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "frostglass: steering and any visible recovery action fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "joyWrap",
+          "x": 8,
+          "y": 282,
+          "width": 105,
+          "height": 100,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "frostglass: coaching clears the speed display",
+      "passed": true,
+      "detail": {
+        "cue": {
+          "top": 116,
+          "bottom": 196,
+          "left": 651,
+          "right": 836
+        },
+        "speed": {
+          "top": 61,
+          "bottom": 103,
+          "left": 758.75,
+          "right": 836
+        },
+        "clear": true
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "frostglass: settings freezes race clock",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "frostglass: map edit stages until next Start",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "frostglass: title resumes a bot session",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "foundry: live demo advances real racers",
+      "passed": true,
+      "detail": {
+        "wallSeconds": 1.646,
+        "simulationSeconds": 0.999999999999998,
+        "graphics": "performance"
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "foundry: demo leaves real race clock untouched",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "foundry: scene remains finite",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "foundry: no horizontal page overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "foundry: selected ten-seat practice starts cleanly",
+      "passed": true,
+      "detail": {
+        "laps": 1,
+        "seats": 10,
+        "difficulty": "normal",
+        "hazards": 1
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "foundry: simulation advances after native input",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "foundry: steering and any visible recovery action fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "joyWrap",
+          "x": 8,
+          "y": 282,
+          "width": 105,
+          "height": 100,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "foundry: coaching clears the speed display",
+      "passed": true,
+      "detail": {
+        "cue": {
+          "top": 116,
+          "bottom": 196,
+          "left": 651,
+          "right": 836
+        },
+        "speed": {
+          "top": 61,
+          "bottom": 103,
+          "left": 758.75,
+          "right": 836
+        },
+        "clear": true
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "foundry: settings freezes race clock",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "foundry: map edit stages until next Start",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "foundry: title resumes a bot session",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "skygarden: live demo advances real racers",
+      "passed": true,
+      "detail": {
+        "wallSeconds": 1.662,
+        "simulationSeconds": 1.1999999999999973,
+        "graphics": "performance"
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "skygarden: demo leaves real race clock untouched",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "skygarden: scene remains finite",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "skygarden: no horizontal page overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "skygarden: selected ten-seat practice starts cleanly",
+      "passed": true,
+      "detail": {
+        "laps": 1,
+        "seats": 10,
+        "difficulty": "normal",
+        "hazards": 1
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "skygarden: simulation advances after native input",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "skygarden: steering and any visible recovery action fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "joyWrap",
+          "x": 8,
+          "y": 282,
+          "width": 105,
+          "height": 100,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "skygarden: coaching clears the speed display",
+      "passed": true,
+      "detail": {
+        "cue": {
+          "top": 116,
+          "bottom": 196,
+          "left": 651,
+          "right": 836
+        },
+        "speed": {
+          "top": 61,
+          "bottom": 103,
+          "left": 758.75,
+          "right": 836
+        },
+        "clear": true
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "skygarden: settings freezes race clock",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "skygarden: map edit stages until next Start",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "skygarden: title resumes a bot session",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "Series begins on Crownway with empty scores",
+      "passed": true,
+      "detail": {
+        "index": 0,
+        "scores": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "races": [],
+        "seed": 2026,
+        "rules": {
+          "difficulty": "normal",
+          "laps": "3",
+          "hazards": 1,
+          "count": "10"
+        }
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "local licensed scenery loaded",
+      "passed": true,
+      "detail": {
+        "loaded": 4,
+        "failed": 0,
+        "templates": 4,
+        "instances": 20
+      }
+    }
+  ],
+  "errors": [],
+  "sources": [
+    {
+      "path": "games/royal-roller-ruckus/source/index.html",
+      "sha256": "2b6b59de0bcadbfcb0907d2eeb60a4389178e3fec5c0ce91c907d2e91d1f9217"
+    }
+  ],
+  "limits": [
+    "Headless Chromium and emulated touch dimensions; no physical phone, gamepad or audio-by-ear verification."
+  ]
+}

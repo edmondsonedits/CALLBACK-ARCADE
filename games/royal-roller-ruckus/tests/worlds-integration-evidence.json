@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-12",
+  "sourceSha256": "2b6b59de0bcadbfcb0907d2eeb60a4389178e3fec5c0ce91c907d2e91d1f9217",
+  "browser": {
+    "workflow": 38239939023,
+    "artifact": 11742588700,
+    "gameChecks": 171,
+    "errors": 0,
+    "profiles": [
+      "1440x900 desktop",
+      "390x844 emulated touch",
+      "844x390 emulated touch"
+    ],
+    "report": "worlds-browser-final/report.json",
+    "parentInspected": [
+      "desktop-frostglass-demo",
+      "desktop-foundry-demo",
+      "desktop-skygarden-demo",
+      "desktop-title-default-balanced",
+      "landscape-foundry-race",
+      "landscape-recovered",
+      "portrait-title-default-balanced",
+      "portrait-skygarden-race"
+    ],
+    "nativeRecovery": "Actual fall then native click/tap recovery passed in all three profiles"
+  },
+  "parentChecks": {
+    "verifyWorkflow": 38239939148,
+    "npm test": {
+      "passed": 449,
+      "failed": 0
+    },
+    "sumoSourceTests": 144,
+    "sumoPhoneRoomTests": 7,
+    "typecheck": "passed",
+    "catalogCheck": "passed",
+    "build": "passed"
+  },
+  "review": {
+    "initial": "task-3-review.md",
+    "fix1": "Arrow direction and pending texture ownership addressed",
+    "fix2": "Texture resource closure and responsive controls addressed"
+  },
+  "limits": [
+    "No physical phone/controller, audio-by-ear, measured hardware FPS or numerical rating certification.",
+    "Software-rendered ordinary Chromium; sustained flows use genuine Performance preference, default Balanced title also inspected.",
+    "Midcourse active hazard pixels not inspected: effects and warning/force alignment have source and simulation tests.",
+    "Portrait checkpoint denominator wraps but remains legible; static Crownway subtitle on other courses and wrapping deferred to final whole-branch review."
+  ]
+}
