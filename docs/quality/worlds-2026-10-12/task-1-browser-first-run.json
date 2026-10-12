@@ -1,0 +1,1176 @@
+{
+  "commit": "2c7c0b8b28ed46d8edb62ba3d1a56d73d2a1acd6",
+  "date": "2026-10-12T09:16:24.317Z",
+  "browser": "156.0.8078.4",
+  "checks": [
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "title runs a real demo",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "no horizontal document overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "Watch keeps the live demo running",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "beach: demo advances simulation",
+      "passed": true,
+      "detail": {
+        "before": 0.02,
+        "after": 2.21
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "beach: demo does not award wins",
+      "passed": true,
+      "detail": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "beach: starts the selected real court",
+      "passed": true,
+      "detail": {
+        "arena": "beach",
+        "demo": false
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "beach: active controls fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "track",
+          "x": 517.671875,
+          "y": 720,
+          "w": 112,
+          "h": 112,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "magnet",
+          "x": 782,
+          "y": 733,
+          "w": 112,
+          "h": 112,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "pulse",
+          "x": 903,
+          "y": 748,
+          "w": 82,
+          "h": 82,
+          "visible": true,
+          "inside": true
+        }
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "beach: explicit pause stops play",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "beach: settings returns to pause",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "beach: menu restores demo",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "gale: demo advances simulation",
+      "passed": true,
+      "detail": {
+        "before": 0.01,
+        "after": 2.22
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "gale: demo does not award wins",
+      "passed": true,
+      "detail": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "gale: starts the selected real court",
+      "passed": true,
+      "detail": {
+        "arena": "gale",
+        "demo": false
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "gale: active controls fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "track",
+          "x": 517.671875,
+          "y": 720,
+          "w": 112,
+          "h": 112,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "magnet",
+          "x": 782,
+          "y": 733,
+          "w": 112,
+          "h": 112,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "pulse",
+          "x": 903,
+          "y": 748,
+          "w": 82,
+          "h": 82,
+          "visible": true,
+          "inside": true
+        }
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "gale: explicit pause stops play",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "gale: settings returns to pause",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "gale: menu restores demo",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "moon: demo advances simulation",
+      "passed": true,
+      "detail": {
+        "before": 0.1,
+        "after": 2.31
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "moon: demo does not award wins",
+      "passed": true,
+      "detail": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "moon: starts the selected real court",
+      "passed": true,
+      "detail": {
+        "arena": "moon",
+        "demo": false
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "moon: active controls fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "track",
+          "x": 517.671875,
+          "y": 720,
+          "w": 112,
+          "h": 112,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "magnet",
+          "x": 782,
+          "y": 733,
+          "w": 112,
+          "h": 112,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "pulse",
+          "x": 903,
+          "y": 748,
+          "w": 82,
+          "h": 82,
+          "visible": true,
+          "inside": true
+        }
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "moon: explicit pause stops play",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "moon: settings returns to pause",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "moon: menu restores demo",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "clockwork: demo advances simulation",
+      "passed": true,
+      "detail": {
+        "before": 0.03,
+        "after": 2.22
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "clockwork: demo does not award wins",
+      "passed": true,
+      "detail": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "clockwork: starts the selected real court",
+      "passed": true,
+      "detail": {
+        "arena": "clockwork",
+        "demo": false
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "clockwork: active controls fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "track",
+          "x": 517.671875,
+          "y": 720,
+          "w": 112,
+          "h": 112,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "magnet",
+          "x": 782,
+          "y": 733,
+          "w": 112,
+          "h": 112,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "pulse",
+          "x": 903,
+          "y": 748,
+          "w": 82,
+          "h": 82,
+          "visible": true,
+          "inside": true
+        }
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "clockwork: explicit pause stops play",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "clockwork: settings returns to pause",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "clockwork: menu restores demo",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "Tour starts a fresh four-court session",
+      "passed": true,
+      "detail": {
+        "index": 0,
+        "maps": [
+          "clockwork",
+          "beach",
+          "gale",
+          "moon"
+        ],
+        "points": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completed": 0
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "native settings controls available",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "title runs a real demo",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "no horizontal document overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "Watch keeps the live demo running",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "beach: demo advances simulation",
+      "passed": true,
+      "detail": {
+        "before": 0,
+        "after": 2.21
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "beach: demo does not award wins",
+      "passed": true,
+      "detail": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "beach: starts the selected real court",
+      "passed": true,
+      "detail": {
+        "arena": "beach",
+        "demo": false
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "beach: active controls fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "track",
+          "x": 25.578125,
+          "y": 690.40625,
+          "w": 132.59375,
+          "h": 132.59375,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "magnet",
+          "x": 164.5,
+          "y": 699.5,
+          "w": 136.5,
+          "h": 136.5,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "pulse",
+          "x": 310,
+          "y": 732.75,
+          "w": 70,
+          "h": 70,
+          "visible": true,
+          "inside": true
+        }
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "beach: explicit pause stops play",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "beach: settings returns to pause",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "beach: menu restores demo",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "gale: demo advances simulation",
+      "passed": true,
+      "detail": {
+        "before": 0,
+        "after": 2.21
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "gale: demo does not award wins",
+      "passed": true,
+      "detail": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "gale: starts the selected real court",
+      "passed": true,
+      "detail": {
+        "arena": "gale",
+        "demo": false
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "gale: active controls fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "track",
+          "x": 25.578125,
+          "y": 690.40625,
+          "w": 132.59375,
+          "h": 132.59375,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "magnet",
+          "x": 164.5,
+          "y": 699.5,
+          "w": 136.5,
+          "h": 136.5,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "pulse",
+          "x": 310,
+          "y": 732.75,
+          "w": 70,
+          "h": 70,
+          "visible": true,
+          "inside": true
+        }
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "gale: explicit pause stops play",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "gale: settings returns to pause",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "gale: menu restores demo",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "moon: demo advances simulation",
+      "passed": true,
+      "detail": {
+        "before": 0,
+        "after": 2.21
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "moon: demo does not award wins",
+      "passed": true,
+      "detail": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "moon: starts the selected real court",
+      "passed": true,
+      "detail": {
+        "arena": "moon",
+        "demo": false
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "moon: active controls fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "track",
+          "x": 25.578125,
+          "y": 690.40625,
+          "w": 132.59375,
+          "h": 132.59375,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "magnet",
+          "x": 164.5,
+          "y": 699.5,
+          "w": 136.5,
+          "h": 136.5,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "pulse",
+          "x": 310,
+          "y": 732.75,
+          "w": 70,
+          "h": 70,
+          "visible": true,
+          "inside": true
+        }
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "moon: explicit pause stops play",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "moon: settings returns to pause",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "moon: menu restores demo",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "clockwork: demo advances simulation",
+      "passed": true,
+      "detail": {
+        "before": 0,
+        "after": 2.21
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "clockwork: demo does not award wins",
+      "passed": true,
+      "detail": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "clockwork: starts the selected real court",
+      "passed": true,
+      "detail": {
+        "arena": "clockwork",
+        "demo": false
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "clockwork: active controls fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "track",
+          "x": 25.578125,
+          "y": 690.40625,
+          "w": 132.59375,
+          "h": 132.59375,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "magnet",
+          "x": 164.5,
+          "y": 699.5,
+          "w": 136.5,
+          "h": 136.5,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "pulse",
+          "x": 310,
+          "y": 732.75,
+          "w": 70,
+          "h": 70,
+          "visible": true,
+          "inside": true
+        }
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "clockwork: explicit pause stops play",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "clockwork: settings returns to pause",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "clockwork: menu restores demo",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "Tour starts a fresh four-court session",
+      "passed": true,
+      "detail": {
+        "index": 0,
+        "maps": [
+          "clockwork",
+          "beach",
+          "gale",
+          "moon"
+        ],
+        "points": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completed": 0
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "native settings controls available",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "title runs a real demo",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "no horizontal document overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "Watch keeps the live demo running",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "beach: demo advances simulation",
+      "passed": true,
+      "detail": {
+        "before": 0,
+        "after": 2.19
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "beach: demo does not award wins",
+      "passed": true,
+      "detail": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "beach: starts the selected real court",
+      "passed": true,
+      "detail": {
+        "arena": "beach",
+        "demo": false
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "beach: active controls fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "track",
+          "x": 10,
+          "y": 245,
+          "w": 124,
+          "h": 124,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "magnet",
+          "x": 624,
+          "y": 258,
+          "w": 124,
+          "h": 124,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "pulse",
+          "x": 758,
+          "y": 282,
+          "w": 76,
+          "h": 76,
+          "visible": true,
+          "inside": true
+        }
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "beach: explicit pause stops play",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "beach: settings returns to pause",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "beach: menu restores demo",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "gale: demo advances simulation",
+      "passed": true,
+      "detail": {
+        "before": 0,
+        "after": 2.21
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "gale: demo does not award wins",
+      "passed": true,
+      "detail": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "gale: starts the selected real court",
+      "passed": true,
+      "detail": {
+        "arena": "gale",
+        "demo": false
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "gale: active controls fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "track",
+          "x": 10,
+          "y": 245,
+          "w": 124,
+          "h": 124,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "magnet",
+          "x": 624,
+          "y": 258,
+          "w": 124,
+          "h": 124,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "pulse",
+          "x": 758,
+          "y": 282,
+          "w": 76,
+          "h": 76,
+          "visible": true,
+          "inside": true
+        }
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "gale: explicit pause stops play",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "gale: settings returns to pause",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "gale: menu restores demo",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "moon: demo advances simulation",
+      "passed": true,
+      "detail": {
+        "before": 0,
+        "after": 2.21
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "moon: demo does not award wins",
+      "passed": true,
+      "detail": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "moon: starts the selected real court",
+      "passed": true,
+      "detail": {
+        "arena": "moon",
+        "demo": false
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "moon: active controls fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "track",
+          "x": 10,
+          "y": 245,
+          "w": 124,
+          "h": 124,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "magnet",
+          "x": 624,
+          "y": 258,
+          "w": 124,
+          "h": 124,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "pulse",
+          "x": 758,
+          "y": 282,
+          "w": 76,
+          "h": 76,
+          "visible": true,
+          "inside": true
+        }
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "moon: explicit pause stops play",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "moon: settings returns to pause",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "moon: menu restores demo",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "clockwork: demo advances simulation",
+      "passed": true,
+      "detail": {
+        "before": 0,
+        "after": 2.21
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "clockwork: demo does not award wins",
+      "passed": true,
+      "detail": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "clockwork: starts the selected real court",
+      "passed": true,
+      "detail": {
+        "arena": "clockwork",
+        "demo": false
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "clockwork: active controls fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "track",
+          "x": 10,
+          "y": 245,
+          "w": 124,
+          "h": 124,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "magnet",
+          "x": 624,
+          "y": 258,
+          "w": 124,
+          "h": 124,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "pulse",
+          "x": 758,
+          "y": 282,
+          "w": 76,
+          "h": 76,
+          "visible": true,
+          "inside": true
+        }
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "clockwork: explicit pause stops play",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "clockwork: settings returns to pause",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "clockwork: menu restores demo",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "Tour starts a fresh four-court session",
+      "passed": true,
+      "detail": {
+        "index": 0,
+        "maps": [
+          "clockwork",
+          "beach",
+          "gale",
+          "moon"
+        ],
+        "points": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completed": 0
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "native settings controls available",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "sources": [
+    {
+      "path": "games/royal-ballistix/source/index.html",
+      "sha256": "55f7a7d2a19374b238015f8b6338979202a2eb30ee2a8c7f3ec86329f7fc15ef"
+    }
+  ],
+  "limits": [
+    "Headless Chromium and emulated touch dimensions; no physical phone, gamepad or audio-by-ear verification."
+  ],
+  "artifactIssue": "All runtime/UI checks passed; upload-artifact default skipped the hidden output directory, so this first run retained no screenshots."
+}

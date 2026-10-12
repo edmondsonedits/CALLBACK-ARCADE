@@ -11,6 +11,6 @@
   "regression": {
     "passed": 402,
     "command": "npm test",
-    "note": "Final worlds implementation and metadata pass; subsequent UI-only hazard-label/disabled-state clarification rechecked by all 86 focused tests."
+    "note": "Final source and metadata: 402 passed, 0 failed."
   }
 }

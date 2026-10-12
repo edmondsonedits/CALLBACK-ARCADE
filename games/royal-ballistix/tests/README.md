@@ -111,4 +111,3 @@ Manual follow-up: verify title/help/settings scrolling and controls at 390×844,
 Run `node --test tests/royal-ballistix-import.test.mjs tests/royal-ballistix-mobile-ui.test.mjs tests/royal-ballistix-quality.test.mjs tests/royal-ballistix-sumo-benchmark.test.mjs tests/royal-ballistix-worlds.test.mjs` from repository root. The owned harness now exposes court force/geometry/prediction helpers, sample playback and minimal optional browser asset constructors in its private test copy. Production ships no test-only simulation hooks.
 
 Worlds tests cover warnings versus active/calm forces, field exclusion, reflected rotor geometry, bounded trajectories, held-ball immunity, map-aware bot forecasts, timed 2/10-seat exhibitions, Tour award/reset/tie logic, preferences/focus, demo lifecycle/random/score/storage isolation and audio/asset failure. Browser/mobile pixels, actual gamepad hardware and audio balance require parent/browser review.
-
