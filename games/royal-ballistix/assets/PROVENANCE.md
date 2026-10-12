@@ -2,7 +2,7 @@
 
 ## Current build — v0.14.0
 
-Standalone `source/index.html` SHA-256: `55f7a7d2a19374b238015f8b6338979202a2eb30ee2a8c7f3ec86329f7fc15ef`.
+Standalone `source/index.html` SHA-256: `2b33e11ec4662e5fa2452aba9207531faa8e6bba5bef717780e6f4a95a296015`.
 
 Game code derives from `edmondsonedits/CALLBACK@ed09d25b690b36b397516e4d77437e3dd21247c8` under Apache-2.0; complete upstream text remains in `source/UPSTREAM-LICENSE.txt`. New court architecture, material drawings and simulation are original changes. System fonts are used without redistribution.
 

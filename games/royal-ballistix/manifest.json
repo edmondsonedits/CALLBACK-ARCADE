@@ -28,7 +28,7 @@
     "paths": [
       "source/index.html"
     ],
-    "provenance": "Based on edmondsonedits/CALLBACK commit ed09d25b690b36b397516e4d77437e3dd21247c8 (game-modes/royal-ballistix/index.html), with CALLBACK Arcade improvements and the 0.14.0 Worlds revision. Upstream Apache-2.0 and Kenney CC0 asset licenses retained locally. Current standalone SHA-256: 55f7a7d2a19374b238015f8b6338979202a2eb30ee2a8c7f3ec86329f7fc15ef. See tests/evidence/worlds-checks.json and docs/quality/worlds-2026-10-12/task-1-report.md for evidence and limitations.",
+    "provenance": "Based on edmondsonedits/CALLBACK commit ed09d25b690b36b397516e4d77437e3dd21247c8 (game-modes/royal-ballistix/index.html), with CALLBACK Arcade improvements and the 0.14.0 Worlds revision. Upstream Apache-2.0 and Kenney CC0 asset licenses retained locally. Current standalone SHA-256: 2b33e11ec4662e5fa2452aba9207531faa8e6bba5bef717780e6f4a95a296015. See tests/evidence/worlds-checks.json and docs/quality/worlds-2026-10-12/task-1-report.md for evidence and limitations.",
     "url": "https://github.com/edmondsonedits/CALLBACK/blob/ed09d25b690b36b397516e4d77437e3dd21247c8/game-modes/royal-ballistix/index.html"
   },
   "lifecycle": "experimental",

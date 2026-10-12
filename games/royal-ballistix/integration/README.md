@@ -99,3 +99,5 @@ These are local control protections. They do not add network sequencing, remote 
 Stable UI IDs: `menuOv`, `setupSettings`, `settingsOv`, `close`, `startSiege`, `startPractice`, `startTour`, `watchDemo`, `returnMenu`, `watchStart`, `arena`, `pause`, `pauseMenu`, `next`, `nextCourt`; settings disclosures are `matchSettings`, `styleSettings`, `controlSettings`, `audioSettings`. The existing camera/CAM interface is unchanged.
 
 Parent-owned browser QA can inspect these public surfaces; private simulation access remains confined to the owned test harness. Network authority/authentication limitations above still apply.
+
+Review round 1: immediate `setPlayerCount(n)` during a Tour restarts its existing four-court route at index 0, clears completed count/points, sizes standings to the new roster and resets to that route’s first arena. This preserves the API’s documented immediate reset semantics.

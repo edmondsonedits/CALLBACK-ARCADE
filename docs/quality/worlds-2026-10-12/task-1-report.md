@@ -1,6 +1,6 @@
 # Task 1 — Ballistix worlds and mastery
 
-Implementation commit: `aa19bc7` (`feat(ballistix): add four physical courts, live exhibition and mastery tour`). Build `0.14.0-worlds`. Final standalone SHA-256: `55f7a7d2a19374b238015f8b6338979202a2eb30ee2a8c7f3ec86329f7fc15ef`. Parent-owned catalog refresh and subsequent browser review are separate work.
+Implementation commit: `aa19bc7` (`feat(ballistix): add four physical courts, live exhibition and mastery tour`). Build `0.14.0-worlds`. Final standalone SHA-256: `2b33e11ec4662e5fa2452aba9207531faa8e6bba5bef717780e6f4a95a296015`. Parent-owned catalog refresh and subsequent browser review are separate work.
 
 ## Delivered behavior
 
@@ -74,3 +74,27 @@ Self-review checked owned diff, source/manifest/provenance hash consistency, act
 ## CI artifact retention follow-up
 
 Parent reports that the actual browser checks passed, but `actions/upload-artifact@v4` excluded the hidden `.browser-worlds/` output directory under its default settings, so screenshots were not retained. The separately authorized workflow fix explicitly sets `include-hidden-files: true` for that dedicated directory and `if-no-files-found: error` to prevent silent missing-evidence success. The upload path remains restricted to `.browser-worlds/`. Configuration diff/whitespace checks pass; the parent owns the actual CI rerun and image review. No game source changed in this follow-up.
+
+## Review round 1 fixes
+
+The independent review’s findings 1–3 were reproduced against the production-script harness before editing. New narrow cases initially reported **3 tests, 0 passed, 3 failed**: stale Tour index/scores on roster changes, four synth tones released from demo-held volleys during Start, and an empty focused name field immediately rewritten to `YOU`.
+
+- The immediate contestant-count API now resets Tour index/completed count/points alongside ordinary wins/rounds, retains the chosen route, returns to its first arena, and sizes points to the new 2–10 roster. Growth from 4 to 10 and shrink to 2 both produce finite correct timeout standings.
+- Fresh Start detaches/discards every demo-held ball without calling release feedback before disabling demo suppression. It also clears shake. Ordinary gameplay release and restart semantics remain covered by the original lifecycle suite.
+- Preference synchronization leaves the focused name input’s native editing buffer alone. Spaces, deletion to empty and middle-of-text edits remain editable; the live/persisted value remains validated and blur normalizes the displayed value. An unrelated settings save cannot rewrite the focused buffer.
+
+Reproduction command, before and after:
+
+```sh
+node --test --test-name-pattern='review:' tests/royal-ballistix-worlds.test.mjs
+```
+
+After fixes: **3 tests, 3 passed, 0 failed**.
+
+Complete focused verification (includes the owned source smoke through the import wrapper, the quality suite and all Sumo benchmark tests):
+
+```sh
+node --test tests/royal-ballistix-import.test.mjs tests/royal-ballistix-mobile-ui.test.mjs tests/royal-ballistix-quality.test.mjs tests/royal-ballistix-sumo-benchmark.test.mjs tests/royal-ballistix-worlds.test.mjs
+```
+
+Exact final summary: **89 tests, 89 passed, 0 failed, 0 cancelled, 0 skipped, 0 todo**. Current output is stored in `games/royal-ballistix/tests/evidence/worlds-focused-tests.txt`; the worlds suite now contains 19 tests. Manifest/provenance/evidence hashes were refreshed to the source hash at the top of this report. The earlier 402-test repository run predates these review fixes; the parent owns the next browser and repository gate, including an actual typed-name browser check. No additional source changes were made beyond the three reviewed findings. Workflow finding 4 was separately fixed in commit `0a4ad8d`.

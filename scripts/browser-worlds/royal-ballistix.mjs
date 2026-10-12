@@ -16,11 +16,19 @@ export const ballistix={
   for(const arena of ['beach','gale','moon','clockwork']) {
    await page.locator('#setupSettings').click();
    await page.locator('#settingsOv.open').waitFor();
+   if(arena==='beach') {
+    await page.locator('#styleSettings summary').click();
+    await page.locator('#playerName').fill('');
+    await page.locator('#playerName').pressSequentially('Ada Lovelace');
+    check('native name field accepts ordinary multiword typing',await page.locator('#playerName').inputValue()==='Ada Lovelace');
+    await page.locator('#styleSettings summary').click();
+   }
    const field=page.locator('#arena');
    // Group disclosures may be closed. Open only the observed ancestor group.
    const group=field.locator('xpath=ancestor::details');
    if(await group.count()&&!await field.isVisible())await group.locator('summary').click();
    await field.selectOption(arena);
+   await page.locator('#playerCount').selectOption('10');
    await page.locator('#close').click();
    await page.locator('#menuOv.open').waitFor();
    await page.waitForFunction(id=>window.RoyalBallistix.getState().arena===id,arena);
@@ -31,6 +39,7 @@ export const ballistix={
    await page.locator('#startSiege').click();
    await page.locator('#menuOv').waitFor({state:'hidden'});
    const started=await state();
+   check(`${arena}: full roster and name survive Start`,started.playerCount===10&&started.players[0].name==='Ada Lovelace',{count:started.playerCount,name:started.players[0].name});
    check(`${arena}: starts the selected real court`,started.arena===arena&&started.demo===false,{arena:started.arena,demo:started.demo});
    await page.waitForTimeout(3600);
    await capture(`${arena}-play`);
