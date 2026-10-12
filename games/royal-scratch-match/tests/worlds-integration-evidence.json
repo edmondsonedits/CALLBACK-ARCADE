@@ -1,7 +1,31 @@
 {
-  "sourceSha256": "ec7457200e5d22f2881517fadefef5078a72294633b7b309af0ac4a949a375bb",
   "date": "2026-10-12",
-  "parentChecks": {
+  "browser": {
+    "workflow": 38234927701,
+    "artifact": 11740323393,
+    "gameChecks": 147,
+    "totalChecks": 276,
+    "errors": 0,
+    "profiles": [
+      "1440x900 desktop",
+      "390x844 emulated touch",
+      "844x390 emulated touch"
+    ],
+    "report": "worlds-browser-final/report.json",
+    "parentInspected": [
+      "landscape mirror response",
+      "landscape rehearsal review",
+      "portrait mirror title",
+      "landscape Watch",
+      "prior-source unchanged scenery/settings across desktop and portrait"
+    ]
+  },
+  "limits": [
+    "No physical phone/controller, audio-by-ear, measured FPS or numerical quality certification.",
+    "Decorative stage-name caption overlap at desktop Tide apron is deferred to final branch review; core stage identity remains available in menu/status."
+  ],
+  "initialSourceSha256": "ec7457200e5d22f2881517fadefef5078a72294633b7b309af0ac4a949a375bb",
+  "initialParentChecks": {
     "npm test": {
       "passed": 425,
       "failed": 0
@@ -10,8 +34,22 @@
     "npm run catalog:check": "passed",
     "npm run pages:build": "passed"
   },
-  "browser": "pending first exact-source CI run",
-  "limits": [
-    "No physical phone/controller, audio-by-ear, measured FPS or numerical quality certification."
-  ]
+  "sourceSha256": "4866174e89a07e444091ab2a550b74cc25f6ef211277aea44f45ad5fe5cb7d18",
+  "parentChecks": {
+    "verifyWorkflow": 38234927703,
+    "npm test": {
+      "passed": 429,
+      "failed": 0
+    },
+    "sumoSourceTests": 144,
+    "sumoPhoneRoomTests": 7,
+    "typecheck": "passed",
+    "catalogCheck": "passed",
+    "build": "passed"
+  },
+  "review": {
+    "initial": "../../../docs/quality/worlds-2026-10-12/task-2-review.md",
+    "fix1": "Watch Start addressed",
+    "fix2": "three responsive defects addressed and visually confirmed"
+  }
 }
