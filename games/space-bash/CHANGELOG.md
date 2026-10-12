@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.15.0 — Four Decks
+- Added genuine silent all-CPU title combat, bounded warmup, Watch/Return/Start and isolated demo state/RNG/records/input/audio/haptics.
+- Added Cryo traction/grip routes, warned Reactor blast strips with height-aware one-hit pulses, and announced Gravity Garden cycles alongside unchanged classic Orbital tuning.
+- Added map-aware CPU routing, any-map Flight school, adjustable crown/round rules and finite four-deck Series with all-seat tied placement points, stage/aggregate standings, statistics, scoped bests and captured replay.
+- Added grouped rules/style/control/audio/access settings, native text editing, live suits/patches and explicit staged rules.
+- Shared cargo integration with the throw guide, including future low-gravity boundaries and honest interception/terrain/fuse limits.
+- Used licensed local Kenney CC0 decals/impact sprites and MIT Alea; retained procedural loading fallback and bounded particles/voices/records. Archive untouched.
+- Focused tests and honest acceptance evidence: `tests/WORLDS.md` and task-5 report. Chromium/mobile pixel review remains coordinator-owned.
+
 ## 1.14.0 — Sumo benchmark upgrade
 - Added a flight briefing, explicit launch/setup/help routes, pause button/Escape/Start controls, and held match results with all-seat, tie-aware crown standings and rematch.
 - Added validated persistent crew/difficulty/deck, volume/mute, reduced-motion, contrast and touch-hand preferences. Match choices apply only on explicit launch/restart; changing settings preserves the current match.

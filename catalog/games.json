@@ -275,10 +275,11 @@
     },
     {
       "id": "space-bash",
-      "title": "Space Bash — Orbital Breakout",
+      "title": "Space Bash — Four Decks",
       "aliases": [
         "Space Bash",
-        "Orbital Breakout"
+        "Orbital Breakout",
+        "Four Decks"
       ],
       "tags": [
         "arena",
@@ -291,19 +292,19 @@
         "mobile",
         "canvas"
       ],
-      "description": "A self-contained 2–10 contestant orbital brawler with aimed cargo throws, kicks, jumps and a destructible deck. Includes flight-school practice, volatile-cargo rules, gamepad aiming and persistent audio/access settings.",
+      "description": "A 2–10 contestant Canvas orbital brawler with four skill decks, real CPU title demos, crown matches, finite four-deck Series, map practice, seeded replay and persistent style, rules and access controls.",
       "players": {
         "min": 2,
         "max": 10
       },
-      "version": "1.14.0",
+      "version": "1.15.0",
       "source": {
         "status": "imported",
         "paths": [
           "source/index.html",
           "source/original/space_bash_orbital_breakout_v1.13.1_standalone.html"
         ],
-        "provenance": "Imported from the user-supplied space_bash_orbital_breakout_v1.13.1_standalone.html, preserved unchanged under source/original. Active source upgraded to v1.14.0 against Royal Sumo v1.3.0 source, retaining Canvas 2D and no external runtime dependencies. Source hashes and scoped automated evidence are recorded in integration/provenance.json.",
+        "provenance": "User upload v1.13.1 preserved unchanged. Active v1.15.0 retains Canvas2D, 1/120 fixed step, public controller/camera API and classic mechanics; adds four decks and complete sessions. Local Kenney CC0 decals/impacts and MIT Alea are used with procedural fallback and per-file/source/archive hashes. Evidence: integration/provenance.json and docs/quality/worlds-2026-10-12/task-5-report.md.",
         "url": null
       },
       "lifecycle": "experimental",
@@ -313,5 +314,5 @@
       }
     }
   ],
-  "revision": "c26e92e02e1c0c11d4a4ca2c48888dd2ee97f6be8eb86eea90446914ac5e0744"
+  "revision": "40d69eacb12d5f90f192e8c9ac175b52fcde0bcf86e1f67cba8acdc1afb643b5"
 }

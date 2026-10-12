@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="theme-color" content="#050817">
-<title>Space Bash — Orbital Breakout</title>
+<title>Space Bash — Four Decks</title>
 <style>
 :root{--bg:#050817;--panel:rgba(8,14,32,.82);--line:rgba(174,220,255,.16);--text:#f7fbff;--muted:#8ea6c9;--cyan:#67e8f9;--gold:#ffd166;--danger:#ff5b61;--violet:#a879ff;--safeT:max(8px,env(safe-area-inset-top));--safeR:max(8px,env(safe-area-inset-right));--safeB:max(8px,env(safe-area-inset-bottom));--safeL:max(8px,env(safe-area-inset-left))}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -44,13 +44,15 @@ button:focus-visible,select:focus-visible,summary:focus-visible{outline:3px soli
 @media(max-width:600px){.top{grid-template-columns:1fr 68px auto}.pill{min-width:68px}.brand .crest{display:none}.brand b{font-size:11px}.brand small{font-size:7px}.icon{min-width:44px}.actionsTop{gap:4px}}
 @media(orientation:landscape) and (max-height:600px){.controls{left:var(--safeL);right:var(--safeR);width:auto;max-width:none;transform:none;height:108px;display:flex;justify-content:space-between;pointer-events:none}.controls #joyWrap{width:130px;grid-column:auto}.controls .actionGrid{width:190px;grid-column:auto}.deck{width:300px;max-width:40vw;bottom:16px}.controls.swap #joyWrap{order:2}.controls.swap .actionGrid{order:1}.controls.swap{flex-direction:row}.controls.swap #joyWrap,.controls.swap .actionGrid{grid-row:auto}}
 .volumeControl{display:flex;align-items:center;gap:8px}.volumeControl input{width:100px;accent-color:var(--cyan)}.volumeControl output{font-size:11px;min-width:30px}
+
+input{font:inherit;color:inherit}input:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}.setting input:not([type=range]){width:150px;min-height:44px;background:#0c1630;border:1px solid var(--line);border-radius:10px;padding:8px}.setting select{height:44px}.groupTitle{color:var(--gold);font-size:12px;letter-spacing:.1em;margin:16px 0 5px}#setup{background:linear-gradient(90deg,#02040c99,transparent);backdrop-filter:none;place-items:center start;padding:16px}.briefing{width:min(360px,100%);max-height:78dvh;background:linear-gradient(180deg,#101b38ee,#080d20ee)}.briefing h1{font-size:44px;margin:10px 0}.briefing .lead{font-size:13px}.briefing .briefCards{display:none}#hazardCue{position:absolute;left:50%;transform:translateX(-50%);top:calc(var(--safeT) + 122px);max-width:90%;background:#06101ddd;border:1px solid #8dedd966;border-radius:8px;padding:5px 8px;font-size:10px;text-align:center;pointer-events:none}#demoDock{display:none;position:absolute;bottom:16px;left:50%;transform:translateX(-50%);background:#071123ee;border:1px solid var(--line);padding:8px;border-radius:12px;z-index:21;gap:8px}#demoDock.open{display:flex}#demoDock button{min-height:44px;padding:8px 15px;border-radius:8px;border:1px solid var(--line);background:#163a55}#results .modal{max-height:88dvh}.standings{max-height:none}.modalBack .modal{touch-action:pan-y}.modalBack input,.modalBack select,.modalBack button{touch-action:manipulation}@media(max-width:600px){#setup{place-items:end center;padding:12px}.briefing{max-height:44dvh;width:100%}.briefing h1{font-size:30px;margin:7px 0}.briefing .lead{display:none}#setupSummary{margin:5px 0;font-size:11px}.briefing .textBtn{margin-top:2px}.briefing .modalBtns{margin-top:6px}#hazardCue{max-width:94%;font-size:9px}}@media(orientation:landscape) and (max-height:600px){#setup{place-items:center start}.briefing{width:285px;max-height:88dvh}.briefing h1{font-size:30px}.briefing .lead{display:none}#hazardCue{top:102px;max-width:65%;font-size:9px}}
 </style>
 </head>
 <body data-pause-flow="manual-resume">
 <div id="app">
 <canvas id="gameCanvas"></canvas>
 <div class="top">
-  <div class="brand"><div class="crest">✦</div><div><b>SPACE BASH</b><small>ORBITAL BREAKOUT · v1.14</small></div></div>
+  <div class="brand"><div class="crest">✦</div><div><b>SPACE BASH</b><small>FOUR DECKS · v1.15</small></div></div>
   <div class="pill"><small>ROUND</small><b id="round">1</b></div>
   <div class="actionsTop"><button id="pause" class="icon" aria-label="Pause game">Ⅱ</button><button id="sound" class="icon" aria-label="Toggle sound">🔊</button><button id="settings" class="icon" aria-label="Open settings">⚙</button></div>
 </div>
@@ -59,6 +61,7 @@ button:focus-visible,select:focus-visible,summary:focus-visible{outline:3px soli
   <div id="timer">1:30</div>
   <div class="card right"><div class="label">Players alive</div><div id="alive" class="big">4</div><div class="label">YOU <span id="yourWins">0</span> · TOP <span id="topWins">0</span></div></div>
 </div>
+<div id="hazardCue" aria-live="polite"></div>
 <div id="msg" class="message">Move with one thumb while jumping, kicking, or throwing with the other.</div>
 <div class="deck"><div class="deckhead"><span>DECK INTEGRITY</span><span id="tileText">64 / 64</span></div><div class="bar"><span id="tileFill"></span></div></div>
 <div class="controls">
@@ -72,11 +75,11 @@ button:focus-visible,select:focus-visible,summary:focus-visible{outline:3px soli
 <div id="countdown">3</div>
 <div id="modal" class="modalBack">
   <div class="modal" role="dialog" aria-modal="true" aria-label="Space Bash settings"><h2>Flight settings</h2><p>Crew, difficulty and deck rules apply when you choose Restart match. Audio and access changes apply immediately.</p>
-    <div class="setting"><label for="players"><strong>Players</strong><small>2–10 total contestants</small></label><select id="players"></select></div>
+    <h3 class="groupTitle">PLAY / RULES</h3><div class="setting"><label for="map"><strong>Deck</strong></label><select id="map"><option value="orbital">Orbital Breakout</option><option value="cryo">Cryo Deck</option><option value="reactor">Reactor Core</option><option value="garden">Gravity Garden</option></select></div><div class="setting"><label for="mode"><strong>Session</strong></label><select id="mode"><option value="classic">Crown match</option><option value="series">Four-deck Series</option></select></div><div class="setting"><label for="seed"><strong>Replay seed</strong></label><input id="seed" maxlength="32" autocomplete="off"></div><div class="setting"><label for="goal"><strong>Crown target</strong></label><select id="goal"><option value="1">One crown</option><option value="3">First to three</option><option value="5">First to five</option></select></div><div class="setting"><label for="roundLength"><strong>Round / stage length</strong></label><select id="roundLength"><option value="30">30 seconds</option><option value="60">60 seconds</option><option value="90">90 seconds</option></select></div><div class="setting"><label for="hazards"><strong>Map hazards</strong></label><select id="hazards"><option value="true">On</option><option value="false">Off</option></select></div><div class="setting"><label for="cargo"><strong>Cargo supply</strong></label><select id="cargo"><option value="mixed">Mixed cargo</option><option value="safe">Safe blue cargo</option></select></div><div class="setting"><label for="players"><strong>Players</strong><small>2–10 total contestants</small></label><select id="players"></select></div>
     <div class="setting"><label for="difficulty"><strong>CPU difficulty</strong><small>Reaction and aggression</small></label><select id="difficulty"><option value=".78">Cadet</option><option value="1" selected>Pilot</option><option value="1.18">Ace</option></select></div>
     <div class="setting"><label for="rule"><strong>Deck rules</strong><small>Choose your next session</small></label><select id="rule"><option value="standard">Orbital Breakout</option><option value="practice">Flight school</option><option value="volatile">Volatile cargo</option></select></div>
     <p id="ruleSummary"></p>
-    <details><summary>Audio, access &amp; controls</summary>
+    <h3 class="groupTitle">PLAYER STYLE · LIVE</h3><div class="setting"><label for="playerName"><strong>Call sign</strong></label><input id="playerName" maxlength="18" autocomplete="off"></div><div class="setting"><label for="playerColor"><strong>Suit color</strong></label><select id="playerColor"><option value="#67e8f9">Cyan</option><option value="#ff6f91">Rose</option><option value="#ffd166">Gold</option><option value="#a879ff">Violet</option><option value="#87f58b">Mint</option><option value="#ff9f5b">Orange</option><option value="#5bd7ff">Sky</option><option value="#f47cff">Pink</option><option value="#e8f06a">Lime</option><option value="#9aa8ff">Indigo</option></select></div><div class="setting"><label for="patch"><strong>Suit patch</strong></label><select id="patch"><option value="number">Seat number</option><option value="star">Star</option><option value="stripe">Stripes</option></select></div><h3 class="groupTitle">CONTROLS · LIVE</h3><div class="setting"><label for="aimGuide"><strong>Landing guide</strong></label><select id="aimGuide"><option value="true">On</option><option value="false">Off</option></select></div><div class="setting"><label for="coaching"><strong>Map coaching</strong></label><select id="coaching"><option value="true">On</option><option value="false">Off</option></select></div><div class="setting"><label for="haptics"><strong>Vibration</strong></label><select id="haptics"><option value="true">On</option><option value="false">Off</option></select></div><details><summary>Audio / Access · live</summary>
     <div class="setting"><label for="volume"><strong>Sound volume</strong></label><div class="volumeControl"><input id="volume" aria-label="Sound volume" type="range" min="0" max="1" step=".05"><output id="volumeValue"></output></div></div>
     <div class="setting"><label for="reducedMotion"><strong>Reduced motion</strong><small>No debris, wobble or screen flashes</small></label><select id="reducedMotion"><option value="false">Off</option><option value="true">On</option></select></div>
     <div class="setting"><label for="swapHands"><strong>Touch layout</strong></label><select id="swapHands"><option value="false">Move on left</option><option value="true">Move on right</option></select></div>
@@ -86,16 +89,17 @@ button:focus-visible,select:focus-visible,summary:focus-visible{outline:3px soli
   </div>
 </div>
 <div id="pauseOverlay" class="modalBack"><div class="modal"><h2>Paused</h2><p>The deck is frozen. Resume when you are ready.</p><div class="modalBtns"><button id="help">How to play</button><button id="menu">Match setup</button></div><div class="modalBtns"><button id="resumeGame" class="primary" type="button" data-resume-game style="grid-column:1/-1">Resume Game</button></div></div></div>
-<div id="setup" class="modalBack"><div class="modal briefing" role="dialog" aria-modal="true" aria-label="Match setup"><div class="eyebrow">CALLBACK · ORBITAL ARENA</div><h1>SPACE<br><span>BASH</span></h1><p class="lead">Grab cargo. Aim your throw.<br>Outlast the crew as the deck breaks apart.</p><div class="briefCards"><div><b>▣ GRAB → THROW</b><p>Blue cargo is safe. TNT starts a fuse. Green Nitro detonates on contact.</p></div><div><b>↥ STAY ON DECK</b><p>Jump gaps. Kick rivals toward holes. Keep clear of blast footprints.</p></div></div><p id="setupSummary"></p><div class="modalBtns"><button id="setupSettings">Customize match</button><button id="startMatch" class="primary">Launch match</button></div><button id="setupHelp" class="textBtn">Controls &amp; flight school</button></div></div>
-<div id="helpOverlay" class="modalBack"><div class="modal" role="dialog" aria-modal="true" aria-label="How to play"><h2>Flight manual</h2><p class="lead">Last fighter on the deck wins a crown. Three crowns win the standard match.</p><div class="briefCards"><div><b>Touch</b><p>Stick moves and faces your fighter. Tap Grab again to throw along the dotted arc. Landing marker is a guide; rivals can intercept.</p></div><div><b>Keyboard</b><p>WASD / arrows move · E grab/throw · F kick · Space jump · IJKL aim · Esc pause.</p></div><div><b>Gamepad</b><p>Left stick / D-pad move · right stick aims · X grab/throw · B kick · A jump · Start pauses. Release held buttons after menus.</p></div><div><b>Flight school</b><p>Safe cargo and passive moving targets. One crown completes the session. Switch back to Orbital Breakout for full deck destruction.</p></div></div><div class="modalBtns"><button id="closeHelp" class="primary" style="grid-column:1/-1">Back</button></div></div></div>
-<div id="results" class="modalBack"><div class="modal" role="dialog" aria-modal="true" aria-label="Match results"><div class="eyebrow">MISSION COMPLETE</div><h2 id="resultTitle"></h2><p id="resultDetail"></p><div id="resultStandings" class="standings"></div><div class="modalBtns"><button id="resultMenu">Match setup</button><button id="rematch" class="primary">Rematch</button></div></div></div>
+<div id="setup" class="modalBack"><div class="modal briefing" role="dialog" aria-modal="true" aria-label="Match setup"><div class="eyebrow">CALLBACK · ORBITAL ARENA</div><h1>SPACE<br><span>BASH</span></h1><p class="lead">Grab cargo. Aim your throw.<br>Outlast the crew as the deck breaks apart.</p><div class="briefCards"><div><b>▣ GRAB → THROW</b><p>Blue cargo is safe. TNT starts a fuse. Green Nitro detonates on contact.</p></div><div><b>↥ STAY ON DECK</b><p>Jump gaps. Kick rivals toward holes. Keep clear of blast footprints.</p></div></div><p id="setupSummary"></p><div class="modalBtns"><button id="setupSettings">Customize match</button><button id="startMatch" class="primary">Launch match</button></div><button id="watchDemo" class="textBtn">Watch CPU demo</button><button id="setupHelp" class="textBtn">Controls &amp; flight school</button></div></div>
+<div id="demoDock"><button id="returnTitle">Return to title</button><button id="demoStart">Start match</button></div>
+<div id="helpOverlay" class="modalBack"><div class="modal" role="dialog" aria-modal="true" aria-label="How to play"><h2>Flight manual</h2><p class="lead">Last fighter on the deck wins a crown. Three crowns win the standard match.</p><div class="briefCards"><div><b>Touch</b><p>Stick moves and faces your fighter. Tap Grab again to throw along the dotted arc. Landing marker integrates future gravity cycles. Rivals can intercept and later blasts may change the deck. FUSE FIRST means TNT explodes before landing.</p></div><div><b>Keyboard</b><p>WASD / arrows move · E grab/throw · F kick · Space jump · IJKL aim · Esc pause.</p></div><div><b>Gamepad</b><p>Left stick / D-pad move · right stick aims · X grab/throw · B kick · A jump · Start pauses. Release held buttons after menus.</p></div><div><b>Flight school</b><p>Safe cargo and passive moving targets. One crown completes the session. Switch back to Orbital Breakout for full deck destruction.</p></div></div><div class="modalBtns"><button id="closeHelp" class="primary" style="grid-column:1/-1">Back</button></div></div></div>
+<div id="results" class="modalBack"><div class="modal" role="dialog" aria-modal="true" aria-label="Match results"><div class="eyebrow">MISSION COMPLETE</div><h2 id="resultTitle"></h2><p id="resultDetail"></p><div id="resultStandings" class="standings"></div><p id="resultBest"></p><div class="modalBtns"><button id="replay">Replay seed / rules</button><button id="nextStage" class="primary" hidden>Next deck</button></div><div class="modalBtns"><button id="resultMenu">Match setup</button><button id="rematch" class="primary">Rematch</button></div></div></div>
 <div id="bootError"><div><h2>Space Bash could not start</h2><pre id="errorText"></pre></div></div>
 </div>
 <script>
 (function(){
 "use strict";
 try{
-const VERSION="1.14.0";
+const VERSION="1.15.0";
 // Self-contained: no external scripts, CDN, modules, WebGL, or network connection required.
 const $=s=>document.querySelector(s),canvas=$("#gameCanvas"),ctx=canvas.getContext("2d",{alpha:false});
 if(!ctx)throw new Error("Canvas 2D is unavailable in this browser.");
@@ -184,18 +188,123 @@ window.CallbackCamera={get:()=>({...callbackCameraState}),set:callbackCameraSet,
 setTimeout(callbackCameraInstall,0);
 
 for(let i=2;i<=10;i++){const o=document.createElement("option");o.value=i;o.textContent=i+(i===10?" players":" players");if(i===4)o.selected=true;playersEl.appendChild(o)}
+// A port of an algorithm by Johannes Baagøe <baagoe@baagoe.com>, 2010
+// http://baagoe.com/en/RandomMusings/javascript/
+// https://github.com/nquinlan/better-random-numbers-for-javascript-mirror
+// Original work is under MIT license -
+
+// Copyright (C) 2010 by Johannes Baagøe <baagoe@baagoe.org>
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+
+
+
+function Alea(seed) {
+  var me = this, mash = Mash();
+
+  me.next = function() {
+    var t = 2091639 * me.s0 + me.c * 2.3283064365386963e-10; // 2^-32
+    me.s0 = me.s1;
+    me.s1 = me.s2;
+    return me.s2 = t - (me.c = t | 0);
+  };
+
+  // Apply the seeding algorithm from Baagoe.
+  me.c = 1;
+  me.s0 = mash(' ');
+  me.s1 = mash(' ');
+  me.s2 = mash(' ');
+  me.s0 -= mash(seed);
+  if (me.s0 < 0) { me.s0 += 1; }
+  me.s1 -= mash(seed);
+  if (me.s1 < 0) { me.s1 += 1; }
+  me.s2 -= mash(seed);
+  if (me.s2 < 0) { me.s2 += 1; }
+  mash = null;
+}
+
+function copy(f, t) {
+  t.c = f.c;
+  t.s0 = f.s0;
+  t.s1 = f.s1;
+  t.s2 = f.s2;
+  return t;
+}
+
+function impl(seed, opts) {
+  var xg = new Alea(seed),
+      state = opts && opts.state,
+      prng = xg.next;
+  prng.int32 = function() { return (xg.next() * 0x100000000) | 0; }
+  prng.double = function() {
+    return prng() + (prng() * 0x200000 | 0) * 1.1102230246251565e-16; // 2^-53
+  };
+  prng.quick = prng;
+  if (state) {
+    if (typeof(state) == 'object') copy(state, xg);
+    prng.state = function() { return copy(xg, {}); }
+  }
+  return prng;
+}
+
+function Mash() {
+  var n = 0xefc8249d;
+
+  var mash = function(data) {
+    data = String(data);
+    for (var i = 0; i < data.length; i++) {
+      n += data.charCodeAt(i);
+      var h = 0.02519603282416938 * n;
+      n = h >>> 0;
+      h -= n;
+      h *= n;
+      n = h >>> 0;
+      h -= n;
+      n += h * 0x100000000; // 2^32
+    }
+    return (n >>> 0) * 2.3283064365386963e-10; // 2^-32
+  };
+
+  return mash;
+}
+
+
+
 const GRID=8,TILE=1,HALF=4,ROUND_TIME=90,FIXED=1/120,MAX_STEPS=8;
 const COLORS=["#67e8f9","#ff6f91","#ffd166","#a879ff","#87f58b","#ff9f5b","#5bd7ff","#f47cff","#e8f06a","#9aa8ff"];
 const NAMES=["YOU","NOVA","BOLT","PIXEL","COMET","ROOK","MICA","JET","LUMA","AXIS"];
-const clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),rand=(a,b)=>a+Math.random()*(b-a),len=(x,z)=>Math.hypot(x,z),norm=(x,z)=>{const d=Math.hypot(x,z)||1;return[x/d,z/d]};
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),rand=(a,b)=>a+gameRandom()*(b-a),len=(x,z)=>Math.hypot(x,z),norm=(x,z)=>{const d=Math.hypot(x,z)||1;return[x/d,z/d]};
 const RULES={standard:{id:"standard",name:"Orbital Breakout",winTarget:3,time:90,desc:"First to 3 crowns. Cargo grows more explosive as time runs out."},practice:{id:"practice",name:"Flight school",winTarget:1,time:90,desc:"One crown. Safe blue cargo, passive CPU targets, an intact deck."},volatile:{id:"volatile",name:"Volatile cargo",winTarget:3,time:90,desc:"First to 3 crowns. Extra TNT and Nitro from the first supply drop."}};
+const MAPS={orbital:{id:"orbital",name:"Orbital Breakout",skill:"Time cargo throws; jump the holes you create.",colors:["#1b3355","#203c61"]},cryo:{id:"cryo",name:"Cryo Deck",skill:"Countersteer on ice; brake on the bright grip cross.",colors:["#173b50","#315f76"]},reactor:{id:"reactor",name:"Reactor Core",skill:"Amber lanes warn for 2 seconds: move aside or jump the pulse.",colors:["#382836","#50323d"]},garden:{id:"garden",name:"Gravity Garden",skill:"Four seconds of low gravity: steer your landing and airborne cargo.",colors:["#183e36","#245043"]}};
+const MAP_ORDER=Object.keys(MAPS);
 function validatedSettings(raw={}){
  const number=(v,d,a,b)=>Number.isFinite(Number(v))?clamp(Number(v),a,b):d;
  let reduce=false;try{reduce=!!(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches)}catch{}
- return{players:Math.round(number(raw.players,4,2,10)),difficulty:[.78,1,1.18].includes(Number(raw.difficulty))?Number(raw.difficulty):1,rule:Object.hasOwn(RULES,raw.rule)?raw.rule:"standard",volume:number(raw.volume,.7,0,1),sound:raw.sound!==false,reducedMotion:typeof raw.reducedMotion==="boolean"?raw.reducedMotion:reduce,swapHands:raw.swapHands===true,contrast:raw.contrast===true};
+ const pick=(key,values,fallback)=>values.includes(raw[key])?raw[key]:fallback;
+ return{map:pick("map",MAP_ORDER,"orbital"),mode:pick("mode",["classic","series"],"classic"),seed:typeof raw.seed==="string"&&raw.seed.trim()?raw.seed.trim().slice(0,32):"ORBIT-26",goal:[1,3,5].includes(+raw.goal)?+raw.goal:3,roundLength:[30,60,90].includes(+raw.roundLength)?+raw.roundLength:90,hazards:raw.hazards!==false,cargo:pick("cargo",["mixed","safe"],"mixed"),playerName:typeof raw.playerName==="string"&&raw.playerName.trim()?raw.playerName.trim().slice(0,18):"YOU",playerColor:COLORS.includes(raw.playerColor)?raw.playerColor:COLORS[0],patch:pick("patch",["number","star","stripe"],"number"),haptics:raw.haptics!==false,aimGuide:raw.aimGuide!==false,coaching:raw.coaching!==false,players:Math.round(number(raw.players,4,2,10)),difficulty:[.78,1,1.18].includes(Number(raw.difficulty))?Number(raw.difficulty):1,rule:Object.hasOwn(RULES,raw.rule)?raw.rule:"standard",volume:number(raw.volume,.7,0,1),sound:raw.sound!==false,reducedMotion:typeof raw.reducedMotion==="boolean"?raw.reducedMotion:reduce,swapHands:raw.swapHands===true,contrast:raw.contrast===true};
 }
 function loadSettings(){try{const raw=JSON.parse(localStorage.getItem("space-bash:settings:v1")||"{}");return validatedSettings(raw&&typeof raw==="object"?raw:{})}catch{return validatedSettings()}}
-const preferences=loadSettings();let rules=RULES[preferences.rule],audioUnlocked=false,audioVoices=0;
+const preferences=loadSettings();let rules=RULES[preferences.rule],activeMap=MAPS.orbital,activeMode="classic",activeSeed=preferences.seed,worldTime=0,series={stage:0,total:4,scores:[],history:[],complete:false},sessionConfig=null,bestRecords={},stats=[],eliminationOrder=0,roundsWithoutCrown=0;
+let gameRng=impl(preferences.seed,{state:true}),demoRng=impl("demo",{state:true}),inDemo=false,demoState=null,demoElapsed=0,watching=false;
+function gameRandom(){return (inDemo?demoRng:gameRng)()}
+try{const saved=JSON.parse(localStorage.getItem("space-bash:records:v2")||"{}");if(saved&&typeof saved==="object"&&!Array.isArray(saved))bestRecords=Object.fromEntries(Object.entries(saved).filter(([,v])=>v&&Number.isFinite(v.best)&&Number.isFinite(v.completions)&&v.best>=0&&v.completions>=0).slice(-128))}catch{}
+let audioUnlocked=false,audioVoices=0;
 function saveSettings(){try{localStorage.setItem("space-bash:settings:v1",JSON.stringify(preferences))}catch{}}
 const TUNE={move:{accel:15.2,max:3.65,drag:4.15,airAccel:5.4,airDrag:.55},jump:5.15,kickForce:3.45,throwSpeed:7.35,crateKick:6.8,gravity:9.5};
 let w=0,h=0,dpr=1,board={cx:0,cy:0,size:0,tile:0},playerCount=preferences.players,difficulty=preferences.difficulty,tiles=[],fighters=[],crates=[],particles=[],phase="countdown",phaseT=3.2,round=1,timeLeft=ROUND_TIME,wins=Array(10).fill(0),spawnT=1,powerT=12,paused=false,sound=preferences.sound,last=performance.now(),acc=0,flash=0;
@@ -206,20 +315,20 @@ function cosmeticRand(a,b){cosmeticSeed=(Math.imul(cosmeticSeed,1664525)+1013904
 function resize(){w=innerWidth;h=innerHeight;dpr=Math.min(devicePixelRatio||1,1.5);canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);canvas.style.width=w+"px";canvas.style.height=h+"px";ctx.setTransform(dpr,0,0,dpr,0,0);const landscape=w>h&&h<600,reserved=landscape?50:h<700?165:195;const top=landscape?110:128,avail=Math.max(80,h-top-reserved);const size=Math.min(landscape?Math.max(100,(w-420)/.96):w*.94,Math.max(70,avail-32)/.46,w>=1000?900:700);board={size,tile:size/GRID,cx:w/2,cy:top+avail/2};}
 addEventListener("resize",resize);resize();
 
-function say(t){msg.textContent=t}
-function vibrate(ms){if(preferences.reducedMotion)return;try{navigator.vibrate&&navigator.vibrate(ms)}catch{}}
-function beep(freq=220,dur=.05,vol=.025){if(!sound||!audioUnlocked||preferences.volume<=0||audioVoices>=12)return;try{const A=window.AudioContext||window.webkitAudioContext;if(!A)return;if(!beep.ctx)beep.ctx=new A();const a=beep.ctx,o=a.createOscillator(),g=a.createGain();o.frequency.value=freq;g.gain.value=vol*preferences.volume;audioVoices++;o.onended=()=>{audioVoices=Math.max(0,audioVoices-1);try{o.disconnect();g.disconnect()}catch{}};o.connect(g).connect(a.destination);o.start();g.gain.exponentialRampToValueAtTime(.0001,a.currentTime+dur);o.stop(a.currentTime+dur)}catch{}}
+function say(t){if(!inDemo)msg.textContent=t}
+function vibrate(ms){if(inDemo||!preferences.haptics||preferences.reducedMotion)return;try{navigator.vibrate&&navigator.vibrate(ms)}catch{}}
+function beep(freq=220,dur=.05,vol=.025){if(inDemo||!sound||!audioUnlocked||preferences.volume<=0||audioVoices>=12)return;try{const A=window.AudioContext||window.webkitAudioContext;if(!A)return;if(!beep.ctx)beep.ctx=new A();const a=beep.ctx,o=a.createOscillator(),g=a.createGain();o.frequency.value=freq;g.gain.value=vol*preferences.volume;audioVoices++;o.onended=()=>{audioVoices=Math.max(0,audioVoices-1);try{o.disconnect();g.disconnect()}catch{}};o.connect(g).connect(a.destination);o.start();g.gain.exponentialRampToValueAtTime(.0001,a.currentTime+dur);o.stop(a.currentTime+dur)}catch{}}
 
 function resetTiles(){tiles=Array.from({length:64},(_,i)=>({alive:true,r:(i/8)|0,c:i%8,fall:0}))}
 function cell(x,z){const c=Math.floor(x+HALF),r=Math.floor(z+HALF);return r>=0&&c>=0&&r<8&&c<8?{r,c,i:r*8+c}:null}
 function tileAlive(x,z){const q=cell(x,z);return !!(q&&tiles[q.i].alive)}
 function destroyTile(x,z){const q=cell(x,z);if(!q||!tiles[q.i].alive)return;tiles[q.i].alive=false;tiles[q.i].fall=1;burst(x,z,"#ff9c68",18)}
-function safeSpawn(){const a=tiles.filter(t=>t.alive&&t.r>1&&t.r<6&&t.c>1&&t.c<6);const t=a[(Math.random()*a.length)|0]||tiles[27];return{x:t.c-3.5,z:t.r-3.5}}
+function safeSpawn(){const a=tiles.filter(t=>t.alive&&t.r>1&&t.r<6&&t.c>1&&t.c<6);const t=a[(gameRandom()*a.length)|0]||tiles[27];return{x:t.c-3.5,z:t.r-3.5}}
 
-function makeFighter(id,x,z){const [fx,fz]=norm(-x,-z);return{id,name:NAMES[id],color:COLORS[id],x,z,y:0,vx:0,vz:0,vy:0,faceX:fx,faceZ:fz,hp:100,alive:true,falling:false,grounded:true,carrying:null,kickCd:0,jumpCd:0,stagger:0,shield:0,boost:0,slow:0,weight:0,think:rand(.15,.5),control:id===0?"local":"cpu",anim:cosmeticRand(0,10),land:0}}
+function makeFighter(id,x,z){const [fx,fz]=norm(-x,-z);return{id,name:id===0?preferences.playerName:NAMES[id],color:id===0?preferences.playerColor:COLORS[id],x,z,y:0,vx:0,vz:0,vy:0,faceX:fx,faceZ:fz,hp:100,alive:true,falling:false,grounded:true,carrying:null,kickCd:0,jumpCd:0,stagger:0,shield:0,boost:0,slow:0,weight:0,think:rand(.15,.5),control:id===0&&!inDemo?"local":"cpu",anim:cosmeticRand(0,10),land:0}}
 function createFighters(){fighters=[];const radius=playerCount>=8?3.25:3.0;for(let i=0;i<playerCount;i++){const a=Math.PI/2+i/playerCount*Math.PI*2;fighters.push(makeFighter(i,Math.cos(a)*radius,Math.sin(a)*radius))}}
-function crateType(){if(rules.id==="practice")return "normal";if(rules.id==="volatile"){const r=Math.random();return r<.25?"normal":r<.75?"tnt":"nitro"}const t=timeLeft<12?[.22,.43,.35]:timeLeft<30?[.34,.41,.25]:timeLeft<60?[.5,.35,.15]:[.66,.27,.07],r=Math.random();return r<t[0]?"normal":r<t[0]+t[1]?"tnt":"nitro"}
-function spawnCrate(initial=false){const max=10+Math.max(0,playerCount-4);if(crates.filter(c=>c.alive).length>=max)return;const spots=tiles.filter(t=>t.alive&&t.r>0&&t.r<7&&t.c>0&&t.c<7).sort(()=>Math.random()-.5);for(const t of spots){const x=t.c-3.5,z=t.r-3.5;if(fighters.some(f=>f.alive&&Math.hypot(f.x-x,f.z-z)<.8))continue;const type=crateType();crates.push({id:++crateId,type,x,z,y:initial?0.22:3.4,vx:0,vz:0,vy:initial?0:-1,r:.32,alive:true,grounded:initial,held:null,armed:false,fuse:3,warn:false});return}}
+function crateType(){if(rules.id==="practice"||rules.cargo==="safe")return "normal";if(rules.id==="volatile"){const r=gameRandom();return r<.25?"normal":r<.75?"tnt":"nitro"}const t=timeLeft<12?[.22,.43,.35]:timeLeft<30?[.34,.41,.25]:timeLeft<60?[.5,.35,.15]:[.66,.27,.07],r=gameRandom();return r<t[0]?"normal":r<t[0]+t[1]?"tnt":"nitro"}
+function spawnCrate(initial=false){const max=10+Math.max(0,playerCount-4);if(crates.filter(c=>c.alive).length>=max)return;const spots=tiles.filter(t=>t.alive&&t.r>0&&t.r<7&&t.c>0&&t.c<7).sort(()=>gameRandom()-.5);for(const t of spots){const x=t.c-3.5,z=t.r-3.5;if(fighters.some(f=>f.alive&&Math.hypot(f.x-x,f.z-z)<.8))continue;const type=crateType();crates.push({id:++crateId,type,x,z,y:initial?0.22:3.4,vx:0,vz:0,vy:initial?0:-1,r:.32,alive:true,grounded:initial,held:null,armed:false,fuse:3,warn:false});return}}
 function burst(x,z,color,n=12){if(preferences.reducedMotion)return;for(let i=0;i<n&&particles.length<500;i++)particles.push({x,z,y:.1,vx:cosmeticRand(-2.4,2.4),vz:cosmeticRand(-2.4,2.4),vy:cosmeticRand(.7,3),life:cosmeticRand(.3,.65),max:.65,color})}
 // All crate exits clear both sides; no visual effect owns simulation state.
 function releaseCrate(c){
@@ -232,7 +341,7 @@ function launchCrate(c,f,speed,lift){
  const [nx,nz]=facing(f);releaseCrate(c);
  c.x=f.x+nx*.55;c.z=f.z+nz*.55;c.y=f.y+.8;
  c.vx=nx*speed;c.vz=nz*speed;c.vy=lift;c.grounded=false;
- c.launcher=f.id;c.ownerGrace=.12;c.impactUsed=false;
+ if(stats[f.id])stats[f.id].throws++;c.launcher=f.id;c.ownerGrace=.12;c.impactUsed=false;
 }
 function canAct(f){return phase==="fight"&&!paused&&f&&f.alive&&!f.falling&&f.stagger<=0}
 function explode(c){
@@ -246,8 +355,8 @@ function explode(c){
  for(const f of fighters){if(!f.alive||f.falling)continue;const dx=f.x-x,dz=f.z-z,d=Math.hypot(dx,dz);if(d<rad){const[nx,nz]=d>.001?norm(dx,dz):facing(f);damage(f,(type==="nitro"?34:24)*(1-d/rad*.45),nx,nz,(type==="nitro"?6.5:5.4)*(1-d/rad*.35),true)}}
  for(const o of crates)if(o!==c&&o.alive&&o.type!=="normal"&&Math.hypot(o.x-x,o.z-z)<rad*1.05)armCrate(o,rand(.08,.25));
 }
-function damage(f,amt,nx,nz,force,explosive=false){if(!f.alive||f.falling||f.stagger>0)return;if(f.shield){f.shield=0;amt=0;force*=.65}f.hp=clamp(f.hp-amt,0,100);f.vx+=nx*force;f.vz+=nz*force;f.vy=Math.max(f.vy,explosive?2.6:1.2);f.grounded=false;f.stagger=explosive?.26:.14;burst(f.x,f.z,"#ffffff",5);if(f.id===0)vibrate(force>5?36:18);if(f.hp<=0)eliminate(f)}
-function eliminate(f){if(f.falling||!f.alive)return;f.falling=true;f.vy=Math.max(f.vy,.8);if(f.carrying){drop(f)};say(f.id===0?"You are out — the round continues.":f.name+" is out!");beep(120,.18,.03)}
+function damage(f,amt,nx,nz,force,explosive=false){if(!f.alive||f.falling||f.stagger>0)return;if(f.shield){f.shield=0;amt=0;force*=.65}const lost=Math.min(f.hp,amt);if(stats[f.id])stats[f.id].damageTaken+=lost;f.hp=clamp(f.hp-amt,0,100);f.vx+=nx*force;f.vz+=nz*force;f.vy=Math.max(f.vy,explosive?2.6:1.2);f.grounded=false;f.stagger=explosive?.26:.14;burst(f.x,f.z,"#ffffff",5);if(f.id===0)vibrate(force>5?36:18);if(f.hp<=0)eliminate(f)}
+function eliminate(f){if(f.falling||!f.alive)return;f.elimination=++eliminationOrder;if(stats[f.id])stats[f.id].falls++;f.falling=true;f.vy=Math.max(f.vy,.8);if(f.carrying){drop(f)};say(f.id===0?"You are out — the round continues.":f.name+" is out!");beep(120,.18,.03)}
 function drop(f){
  const c=f.carrying;if(!c)return;f.carrying=null;releaseCrate(c);
  if(!c.alive)return;
@@ -296,12 +405,23 @@ function kick(f){
  }
  beep(210,.025,.01);
 }
-function jump(f){if(!canAct(f)||!f.grounded||f.jumpCd>0)return;f.vy=TUNE.jump;f.grounded=false;f.jumpCd=.68;f.land=0;beep(320,.045)}
-function drive(f,dx,dz,dt,m=1){const spd=(f.boost>0?1.35:1)*(f.slow>0?.55:1),acc=(f.grounded?TUNE.move.accel:TUNE.move.airAccel)*spd*m;f.vx+=dx*acc*dt;f.vz+=dz*acc*dt;if(!(f.aimHold>0)){f.faceX+=(dx-f.faceX)*Math.min(1,dt*13);f.faceZ+=(dz-f.faceZ)*Math.min(1,dt*13)}}
-function hazardAt(x,z){if(!tileAlive(x,z))return 99;let s=0;const q=cell(x,z);if(q){for(const [dr,dc] of [[1,0],[-1,0],[0,1],[0,-1]]){const r=q.r+dr,c=q.c+dc;if(r>=0&&c>=0&&r<8&&c<8&&!tiles[r*8+c].alive)s+=3}}for(const c of crates){if(c.alive&&c.armed&&Math.hypot(c.x-x,c.z-z)<1.9)s+=6}return s}
+function jump(f){if(!canAct(f)||!f.grounded||f.jumpCd>0)return;if(stats[f.id])stats[f.id].jumps++;f.vy=TUNE.jump;f.grounded=false;f.jumpCd=.68;f.land=0;beep(320,.045)}
+function surface(x,z){const ice=activeMap.id==="cryo"&&Math.abs(x)>.7&&Math.abs(z)>.7;return{ice,drag:ice?.72:TUNE.move.drag,accel:ice?.48:1}}
+function hazardState(at=worldTime){
+ const t=((at%10)+10)%10,event=Math.floor(at/10),axis=event%2?"z":"x",lane=[-1.5,1.5,0][event%3];
+ if(!rules.hazards)return{phase:"safe",axis,lane,event,gravity:1,cue:"Hazards off"};
+ if(activeMap.id==="reactor"){const phase=t>=3&&t<5?"warning":t>=5&&t<5.65?"active":"safe";return{phase,axis,lane,event,gravity:1,cue:phase==="warning"?"AMBER LANE · pulse in "+(5-t).toFixed(1)+"s · move aside / jump":phase==="active"?"BLAST LANE · jump above 0.8m":"Reactor cooling · lanes safe"}}
+ if(activeMap.id==="garden"){const phase=t>=2&&t<4?"warning":t>=4&&t<8?"active":"safe";return{phase,axis,lane,event,gravity:phase==="active"?.38:1,cue:phase==="warning"?"LOW GRAVITY in "+(4-t).toFixed(1)+"s":phase==="active"?"LOW GRAVITY · normal in "+(8-t).toFixed(1)+"s · steer landing":"Normal gravity · control your landing"}}
+ return{phase:"safe",axis,lane,event,gravity:1,cue:activeMap.skill};
+}
+function inBlastLane(x,z,h=hazardState()){return Math.abs((h.axis==="x"?x:z)-h.lane)<.58}
+function updateMapHazard(){const h=hazardState();if(activeMap.id!=="reactor"||h.phase!=="active")return;for(const f of fighters){if(!f.alive||f.falling||f.y>=.8||!inBlastLane(f.x,f.z,h)||f.blastEvent===h.event)continue;f.blastEvent=h.event;damage(f,22,h.axis==="x"?1:0,h.axis==="z"?1:0,2.4,true)}}
+function integrateCargo(c,dt,at=worldTime){c.vy-=8.5*hazardState(at).gravity*dt;c.x=clamp(c.x+c.vx*dt,-3.65,3.65);c.z=clamp(c.z+c.vz*dt,-3.65,3.65);c.y+=c.vy*dt;c.vx*=Math.exp(-.9*dt);c.vz*=Math.exp(-.9*dt)}
+function drive(f,dx,dz,dt,m=1){const spd=(f.boost>0?1.35:1)*(f.slow>0?.55:1),acc=(f.grounded?TUNE.move.accel:TUNE.move.airAccel)*spd*m*(f.grounded?surface(f.x,f.z).accel:1);f.vx+=dx*acc*dt;f.vz+=dz*acc*dt;if(!(f.aimHold>0)){f.faceX+=(dx-f.faceX)*Math.min(1,dt*13);f.faceZ+=(dz-f.faceZ)*Math.min(1,dt*13)}}
+function hazardAt(x,z){if(!tileAlive(x,z))return 99;let s=0;const h=hazardState();if(activeMap.id==="reactor"&&h.phase!=="safe"&&inBlastLane(x,z,h))s+=18;if(surface(x,z).ice)s+=.8;const q=cell(x,z);if(q){for(const [dr,dc] of [[1,0],[-1,0],[0,1],[0,-1]]){const r=q.r+dr,c=q.c+dc;if(r>=0&&c>=0&&r<8&&c<8&&!tiles[r*8+c].alive)s+=3}}for(const c of crates){if(c.alive&&c.armed&&Math.hypot(c.x-x,c.z-z)<1.9)s+=6}return s}
 function enemy(f){let b=null,bs=-99;for(const o of fighters){if(o===f||!o.alive||o.falling)continue;const d=Math.hypot(o.x-f.x,o.z-f.z),score=4-d+hazardAt(o.x,o.z)*.12;if(score>bs){bs=score;b=o}}return b}
 function botDrive(f,dx,dz,dt,m=1){
- const look=.48+Math.hypot(f.vx,f.vz)*.12;
+ const look=.48+Math.hypot(f.vx,f.vz)*(surface(f.x,f.z).ice?.25:.12);
  let best=null,score=Infinity;
  for(const a of [0,.65,-.65,1.3,-1.3,Math.PI]){
   const x=dx*Math.cos(a)-dz*Math.sin(a),z=dx*Math.sin(a)+dz*Math.cos(a);
@@ -313,7 +433,9 @@ function botDrive(f,dx,dz,dt,m=1){
  if(best)drive(f,best[0],best[1],dt,m);else{f.vx*=Math.exp(-12*dt);f.vz*=Math.exp(-12*dt)}
 }
 function ai(f,dt){
- const D=difficulty;f.think-=dt;const e=enemy(f);
+ const D=difficulty;f.think-=dt;const e=enemy(f),h=hazardState();
+ if(activeMap.id==="reactor"&&h.phase!=="safe"&&inBlastLane(f.x,f.z,h)){const delta=(h.axis==="x"?f.x:f.z)-h.lane,dir=delta>=0?1:-1;botDrive(f,h.axis==="x"?dir:0,h.axis==="z"?dir:0,dt,D);if(h.phase==="active"&&f.grounded&&f.think<=0){jump(f);f.think=.4/D}return}
+ if(surface(f.x,f.z).ice&&Math.max(Math.abs(f.x),Math.abs(f.z))>2.8){botDrive(f,-f.x/4,-f.z/4,dt,D);return}
  if(rules.id==="practice"){const a=(rules.time-timeLeft)*.45+f.id;botDrive(f,Math.cos(a),Math.sin(a),dt,.35);return}
  if(f.carrying){
   const c=f.carrying;
@@ -368,8 +490,7 @@ function updateCrates(dt){
   if(c.grounded&&!tileAlive(c.x,c.z)){c.grounded=false;c.vy=-1.2}
   if(!c.grounded){
    const old={x:c.x,z:c.z,y:c.y},speed=Math.hypot(c.vx,c.vz);
-   c.vy-=8.5*dt;c.x=clamp(c.x+c.vx*dt,-3.65,3.65);c.z=clamp(c.z+c.vz*dt,-3.65,3.65);c.y+=c.vy*dt;
-   c.vx*=Math.exp(-.9*dt);c.vz*=Math.exp(-.9*dt);
+   integrateCargo(c,dt);
    if(c.y<=.22&&old.y>=.22&&tileAlive(c.x,c.z)){
     c.y=.22;c.grounded=true;c.vy=0;c.land=.2;
     if(speed<2){c.vx=c.vz=0}beep(110,.025,.008);
@@ -393,22 +514,31 @@ function updateCrates(dt){
  crates=crates.filter(c=>c.alive);
 }
 function checkRound(){if(phase!=="fight")return;const a=fighters.filter(f=>f.alive&&!f.falling);if(a.length<=1)finishRound(a[0])}
-function finishRound(winner,timedOut=false){if(phase!=="fight")return;phase="over";phaseT=2.5;clearInput();if(winner){wins[winner.id]++;say(timedOut?"Time — "+winner.name+" wins on health!":winner.name+" wins the round!");if(wins[winner.id]>=rules.winTarget){phase="match";countdown.classList.remove("hide");countdown.textContent=winner.id===0?"★":"♛";say(winner.name+" wins "+rules.name+"!");showResults(winner,timedOut)}}else if(!timedOut)say("Nobody survived!");updateHUD()}
-function resetRound(){for(const c of crates)releaseCrate(c);for(const f of fighters)f.carrying=null;clearInput();flash=0;resetTiles();crates=[];particles=[];createFighters();for(let i=0;i<Math.min(12,Math.max(6,Math.round(playerCount*1.15)));i++)spawnCrate(true);timeLeft=rules.time;spawnT=.8;$("#results").classList.remove("open");phase="countdown";phaseT=3.2;countdown.classList.remove("hide");countdown.textContent="3";say(rules.name+" · "+(rules.winTarget===1?"One crown":"First to "+rules.winTarget)+" · Land on solid deck.");updateHUD()}
-function restartMatch(){round=1;wins.fill(0);resetRound()}
+function stageStandings(){const seats=fighters.map(f=>({id:f.id,name:f.name,score:f.alive&&!f.falling?1000+f.hp:(f.elimination||0)})).sort((a,b)=>b.score-a.score||a.id-b.id);let rank=1,last=null;return seats.map((f,i)=>{if(f.score!==last)rank=i+1;last=f.score;return{...f,rank,points:playerCount-rank+1}})}
+function finishRound(winner,timedOut=false){
+ if(phase!=="fight")return;phase="over";phaseT=2.5;clearInput();
+ if(inDemo){if(winner)wins[winner.id]++;if(winner&&wins[winner.id]>=rules.winTarget){round=0;wins.fill(0)}return}
+ if(activeMode==="series"){
+  const seats=stageStandings();for(const f of seats)series.scores[f.id]+=f.points;series.history.push({map:activeMap.id,round,time:rules.time-Math.max(0,timeLeft),reason:timedOut?"time: health ties share points":"elimination: survival order",standings:seats});series.complete=series.history.length===4;phase="match";if(winner)wins[winner.id]++;showResults(winner,timedOut);updateHUD();return;
+ }
+ if(winner){roundsWithoutCrown=0;wins[winner.id]++;say(timedOut?"Time — "+winner.name+" wins on health!":winner.name+" wins the round!");if(wins[winner.id]>=rules.winTarget){phase="match";say(winner.name+" wins "+rules.name+"!");showResults(winner,timedOut)}}else{roundsWithoutCrown++;say("Nobody survived · no crown awarded.");if(roundsWithoutCrown>=12){phase="match";showResults(null,timedOut)}}updateHUD()
+}
+function resetRound(){for(const c of crates)releaseCrate(c);for(const f of fighters)f.carrying=null;clearInput();flash=0;worldTime=0;eliminationOrder=0;resetTiles();crates=[];particles=[];createFighters();for(let i=0;i<Math.min(12,Math.max(6,Math.round(playerCount*1.15)));i++)spawnCrate(true);timeLeft=rules.time;spawnT=.8;if(!inDemo)$("#results").classList.remove("open");phase="countdown";phaseT=3.2;if(!inDemo){countdown.classList.remove("hide");countdown.textContent="3";}say(rules.name+" · "+(rules.winTarget===1?"One crown":"First to "+rules.winTarget)+" · Land on solid deck.");updateHUD()}
+function restartMatch(){round=1;roundsWithoutCrown=0;wins.fill(0);stats=Array.from({length:playerCount},()=>({throws:0,jumps:0,falls:0,damageTaken:0}));resetRound()}
 function step(dt){
  if(paused)return;
- if(phase==="countdown"){phaseT-=dt;countdown.textContent=phaseT>2.2?"3":phaseT>1.2?"2":phaseT>.25?"1":"GO";if(phaseT<=0){phase="fight";countdown.classList.add("hide");say("GO — break the floor and survive.");beep(440,.08)}return}
+ if(phase==="setup"){if(demoState&&!preferences.reducedMotion){demoElapsed+=dt;withDemo(()=>step(dt))}return}
+ if(phase==="countdown"){phaseT-=dt;if(!inDemo)countdown.textContent=phaseT>2.2?"3":phaseT>1.2?"2":phaseT>.25?"1":"GO";if(phaseT<=0){phase="fight";if(!inDemo)countdown.classList.add("hide");say("GO — break the floor and survive.");beep(440,.08)}return}
  if(phase==="over"){phaseT-=dt;if(phaseT<=0){round++;resetRound()}return}
  if(phase!=="fight")return;
  timeLeft-=dt;spawnT-=dt;const stage=timeLeft<12?.72:timeLeft<30?1.05:timeLeft<60?1.55:2.15;if(spawnT<=0){spawnT=rand(stage,stage*1.45)*lerpCrowd();spawnCrate()}
- const p=fighters[0];if(p&&p.alive&&!p.falling&&p.stagger<=0){const m=Math.hypot(joy.x,joy.z);if(m>.05){const n=norm(joy.x,joy.z);drive(p,n[0],n[1],dt,clamp(m,.25,1))}}
- for(const f of fighters){if(!f.alive)continue;f.anim+=dt;f.aimHold=Math.max(0,(f.aimHold||0)-dt);f.land=Math.max(0,(f.land||0)-dt);f.kickFx=Math.max(0,(f.kickFx||0)-dt);f.throwFx=Math.max(0,(f.throwFx||0)-dt);f.grabFx=Math.max(0,(f.grabFx||0)-dt);f.kickCd=Math.max(0,f.kickCd-dt);f.jumpCd=Math.max(0,f.jumpCd-dt);f.stagger=Math.max(0,f.stagger-dt);f.boost=Math.max(0,f.boost-dt);f.slow=Math.max(0,f.slow-dt);if(f.id>0&&!f.falling&&f.stagger<=0)ai(f,dt);if(f.falling){f.vy-=TUNE.gravity*dt;f.y+=f.vy*dt;f.x+=f.vx*dt;f.z+=f.vz*dt;if(f.y<-3.8)f.alive=false;continue}const max=TUNE.move.max*(f.boost>0?1.35:1)*(f.slow>0?.55:1),sp=Math.hypot(f.vx,f.vz);if(sp>max){f.vx=f.vx/sp*max;f.vz=f.vz/sp*max}f.x+=f.vx*dt;f.z+=f.vz*dt;const drag=f.grounded?TUNE.move.drag:TUNE.move.airDrag;f.vx*=Math.exp(-drag*dt);f.vz*=Math.exp(-drag*dt);f.x=clamp(f.x,-3.65,3.65);f.z=clamp(f.z,-3.65,3.65);f.vy-=TUNE.gravity*dt;f.y+=f.vy*dt;if(f.y<=0){if(!f.grounded&&f.vy< -1&&tileAlive(f.x,f.z)){f.land=.22;burst(f.x,f.z,"#bdefff",5);beep(100,.035,.01)}f.y=0;f.vy=0;f.grounded=true}else f.grounded=false;if(f.grounded&&!tileAlive(f.x,f.z)){eliminate(f)}}
- collide();updateCrates(dt);for(const f of fighters)if(f.alive&&!f.falling&&f.grounded&&!tileAlive(f.x,f.z))eliminate(f);for(const p of particles){p.life-=dt;p.vy-=5*dt;p.x+=p.vx*dt;p.z+=p.vz*dt;p.y+=p.vy*dt}
- particles=particles.filter(p=>p.life>0);flash=Math.max(0,flash-dt*2.8);if(timeLeft<=0){const a=fighters.filter(f=>f.alive&&!f.falling).sort((a,b)=>b.hp-a.hp);finishRound(a[0],true)}checkRound();updateHUD()
+ const p=fighters[0];if(!inDemo&&p&&p.alive&&!p.falling&&p.stagger<=0){const m=Math.hypot(joy.x,joy.z);if(m>.05){const n=norm(joy.x,joy.z);drive(p,n[0],n[1],dt,clamp(m,.25,1))}}
+ for(const f of fighters){if(!f.alive)continue;f.anim+=dt;f.aimHold=Math.max(0,(f.aimHold||0)-dt);f.land=Math.max(0,(f.land||0)-dt);f.kickFx=Math.max(0,(f.kickFx||0)-dt);f.throwFx=Math.max(0,(f.throwFx||0)-dt);f.grabFx=Math.max(0,(f.grabFx||0)-dt);f.kickCd=Math.max(0,f.kickCd-dt);f.jumpCd=Math.max(0,f.jumpCd-dt);f.stagger=Math.max(0,f.stagger-dt);f.boost=Math.max(0,f.boost-dt);f.slow=Math.max(0,f.slow-dt);if((f.id>0||inDemo)&&!f.falling&&f.stagger<=0)ai(f,dt);if(f.falling){f.vy-=TUNE.gravity*hazardState().gravity*dt;f.y+=f.vy*dt;f.x+=f.vx*dt;f.z+=f.vz*dt;if(f.y<-3.8)f.alive=false;continue}const max=TUNE.move.max*(f.boost>0?1.35:1)*(f.slow>0?.55:1),sp=Math.hypot(f.vx,f.vz);if(sp>max){f.vx=f.vx/sp*max;f.vz=f.vz/sp*max}f.x+=f.vx*dt;f.z+=f.vz*dt;const drag=f.grounded?surface(f.x,f.z).drag:TUNE.move.airDrag;f.vx*=Math.exp(-drag*dt);f.vz*=Math.exp(-drag*dt);f.x=clamp(f.x,-3.65,3.65);f.z=clamp(f.z,-3.65,3.65);f.vy-=TUNE.gravity*hazardState().gravity*dt;f.y+=f.vy*dt;if(f.y<=0){if(!f.grounded&&f.vy< -1&&tileAlive(f.x,f.z)){f.land=.22;burst(f.x,f.z,"#bdefff",5);beep(100,.035,.01)}f.y=0;f.vy=0;f.grounded=true}else f.grounded=false;if(f.grounded&&!tileAlive(f.x,f.z)){eliminate(f)}}
+ updateMapHazard();collide();updateCrates(dt);worldTime+=dt;for(const f of fighters)if(f.alive&&!f.falling&&f.grounded&&!tileAlive(f.x,f.z))eliminate(f);for(const p of particles){p.life-=dt;p.vy-=5*dt;p.x+=p.vx*dt;p.z+=p.vz*dt;p.y+=p.vy*dt}
+ particles=particles.filter(p=>p.life>0);flash=Math.max(0,flash-dt*2.8);if(timeLeft<=0){const a=fighters.filter(f=>f.alive&&!f.falling).sort((a,b)=>b.hp-a.hp);finishRound(a[0],true)}checkRound();if(!inDemo)updateHUD()
 }
 function lerpCrowd(){return 1-clamp((playerCount-4)/6,0,1)*.24}
-function updateHUD(){roundEl.textContent=round;timerEl.textContent=Math.floor(Math.max(0,timeLeft)/60)+":"+String(Math.floor(Math.max(0,timeLeft)%60)).padStart(2,"0");const p=fighters[0],hp=p?clamp(p.hp,0,100):0;hpText.textContent=Math.round(hp)+" HP";hpFill.style.width=hp+"%";aliveEl.textContent=fighters.filter(f=>f.alive&&!f.falling).length;$("#yourWins").textContent=wins[0];$("#topWins").textContent=Math.max(...wins.slice(0,playerCount));const n=tiles.filter(t=>t.alive).length;tileText.textContent=n+" / 64";tileFill.style.width=(n/64*100)+"%";grabText.textContent=p&&p.carrying?"THROW":"GRAB";
+function updateHUD(){if(inDemo)return;$("#hazardCue").textContent=phase==="setup"?"CPU DEMO · "+MAPS[preferences.map].skill:preferences.coaching?activeMap.name+" · "+hazardState().cue:activeMap.name;roundEl.textContent=round;timerEl.textContent=Math.floor(Math.max(0,timeLeft)/60)+":"+String(Math.floor(Math.max(0,timeLeft)%60)).padStart(2,"0");const p=fighters[0],hp=p?clamp(p.hp,0,100):0;hpText.textContent=Math.round(hp)+" HP";hpFill.style.width=hp+"%";aliveEl.textContent=fighters.filter(f=>f.alive&&!f.falling).length;$("#yourWins").textContent=wins[0];$("#topWins").textContent=Math.max(...wins.slice(0,playerCount));const n=tiles.filter(t=>t.alive).length;tileText.textContent=n+" / 64";tileFill.style.width=(n/64*100)+"%";grabText.textContent=p&&p.carrying?"THROW":"GRAB";
  const active=phase==="fight"&&!paused&&p&&p.alive&&!p.falling;
  grabBtn.classList.toggle("ready",!!(active&&(p.carrying||nearCrate(p))));
  kickBtn.classList.toggle("cooling",!!(p&&p.kickCd>0));jumpBtn.classList.toggle("cooling",!!(p&&(!p.grounded||p.jumpCd>0)));
@@ -440,14 +570,12 @@ function drawCrate(c){
 }
 // The guide integrates the existing throw path; it never owns or modifies a crate.
 function throwPreview(f){
- const [nx,nz]=facing(f);let x=f.x+nx*.55,z=f.z+nz*.55,y=f.y+.8,vx=nx*TUNE.throwSpeed,vz=nz*TUNE.throwSpeed,vy=2.4;const points=[{x,z,y}];let supported=false,flightTime=0;
- for(let i=0;i<240;i++){flightTime+=FIXED;const oldY=y;vy-=8.5*FIXED;x=clamp(x+vx*FIXED,-3.65,3.65);z=clamp(z+vz*FIXED,-3.65,3.65);y+=vy*FIXED;vx*=Math.exp(-.9*FIXED);vz*=Math.exp(-.9*FIXED);
-  if(i%8===0)points.push({x,z,y});if(y<=.22&&oldY>=.22){supported=tileAlive(x,z);break}
- }
- points.push({x,z,y:Math.max(.22,y)});return{x,z,points,supported,flightTime,fuseFirst:!!(f.carrying&&f.carrying.armed&&f.carrying.fuse<flightTime)};
+ const [nx,nz]=facing(f),c={x:f.x+nx*.55,z:f.z+nz*.55,y:f.y+.8,vx:nx*TUNE.throwSpeed,vz:nz*TUNE.throwSpeed,vy:2.4},points=[{x:c.x,z:c.z,y:c.y}];let supported=false,flightTime=0;
+ for(let i=0;i<720;i++){const oldY=c.y;integrateCargo(c,FIXED,worldTime+i*FIXED);flightTime+=FIXED;if(i%8===0)points.push({x:c.x,z:c.z,y:c.y});if(c.y<=.22&&oldY>=.22){supported=tileAlive(c.x,c.z);break}}
+ points.push({x:c.x,z:c.z,y:Math.max(.22,c.y)});return{x:c.x,z:c.z,points,supported,flightTime,fuseFirst:!!(f.carrying&&f.carrying.armed&&f.carrying.fuse<flightTime)};
 }
 function drawThrowGuide(f){
- const guide=throwPreview(f),c=f.carrying,color=guide.supported?c.type==="tnt"?"#ffd166":"#a6f5ff":"#ff8f80";
+ if(!preferences.aimGuide)return;const guide=throwPreview(f),c=f.carrying,color=guide.supported?c.type==="tnt"?"#ffd166":"#a6f5ff":"#ff8f80";
  ctx.save();ctx.strokeStyle=color;ctx.lineWidth=2;ctx.setLineDash([4,5]);ctx.beginPath();guide.points.forEach((p,i)=>{const q=worldToScreen(p.x,p.z,p.y);i?ctx.lineTo(q[0],q[1]):ctx.moveTo(q[0],q[1])});ctx.stroke();ctx.setLineDash([]);
  const q=worldToScreen(guide.x,guide.z);ctx.lineWidth=2;ctx.beginPath();ctx.ellipse(q[0],q[1],board.tile*.27,board.tile*.13,0,0,Math.PI*2);ctx.stroke();ctx.fillStyle=color;ctx.textAlign="center";ctx.font="800 10px system-ui";ctx.fillText(guide.fuseFirst?"FUSE FIRST":guide.supported?"LANDING":"GAP",q[0],q[1]+19);ctx.restore();
 }
@@ -488,12 +616,12 @@ function drawFighter(f){
  ctx.fillStyle=f.color;ctx.beginPath();ctx.arc(0,-s*1.02,s*.37,0,Math.PI*2);ctx.fill();ctx.strokeStyle="#d9f7ff";ctx.lineWidth=1.5;ctx.stroke();
  const [fx,fz]=facing(f),visorOffset=(fx-fz)*s*.045;
  ctx.fillStyle="#061527";ctx.beginPath();ctx.roundRect(-s*.29+visorOffset,-s*1.15,s*.58,s*.24,s*.09);ctx.fill();ctx.fillStyle="#99ecff";ctx.fillRect(-s*.21+visorOffset,-s*1.12,s*.23,s*.045);
- ctx.fillStyle="#fff";ctx.font=`900 ${Math.max(7,s*.22)}px system-ui`;ctx.textAlign="center";ctx.fillText(String(f.id+1),0,-s*.28);
+ ctx.fillStyle="#fff";ctx.font=`900 ${Math.max(7,s*.22)}px system-ui`;ctx.textAlign="center";ctx.fillText(f.id===0&&preferences.patch==="star"?"★":f.id===0&&preferences.patch==="stripe"?"≡":String(f.id+1),0,-s*.28);
  if(f.stagger>0){ctx.strokeStyle="#fff";ctx.lineWidth=2;ctx.beginPath();ctx.arc(0,-s*.5,s*.85,Math.PI*1.15,Math.PI*1.85);ctx.stroke()}
  if(f.id!==0){ctx.fillStyle="#fff";ctx.font=`900 ${Math.max(8,s*.22)}px system-ui`;ctx.fillText(f.name,0,-s*1.65)}else{ctx.fillStyle="#06111f";ctx.fillRect(-18,-s*1.7-12,36,16);ctx.fillStyle="#fff";ctx.font="900 12px system-ui";ctx.fillText("YOU",0,-s*1.7)}ctx.restore();
 }
 
-function render(){if(render.scheduled)return;render.scheduled=true;requestAnimationFrame(()=>{render.scheduled=false;ctx.clearRect(0,0,w,h); // draw once without recursive RAF
+function render(){if(render.scheduled)return;render.scheduled=true;requestAnimationFrame(()=>{render.scheduled=false;const saved=phase==="setup"&&demoState?captureWorld():null;if(saved){installWorld(demoState);inDemo=true}ctx.clearRect(0,0,w,h); // draw once without recursive RAF
  ctx.setTransform(dpr,0,0,dpr,0,0);ctx.fillStyle="#050817";ctx.fillRect(0,0,w,h);
  ctx.globalAlpha=.75;ctx.fillStyle="#a8cfff";for(let i=0;i<70;i++){const x=(i*97%997)/997*w,y=((i*173)%631)/631*(board.cy+board.size*.45),r=(i%5===0?1.2:.6);ctx.fillRect(x,y,r,r)}ctx.globalAlpha=1;
  ctx.fillStyle="#172d59";ctx.beginPath();ctx.arc(w*.14,board.cy*.52,Math.min(w,h)*.08,0,Math.PI*2);ctx.fill();ctx.strokeStyle="rgba(126,163,220,.28)";ctx.lineWidth=5;ctx.beginPath();ctx.ellipse(w*.14,board.cy*.52,Math.min(w,h)*.12,Math.min(w,h)*.025,-.28,0,Math.PI*2);ctx.stroke();
@@ -502,13 +630,13 @@ function render(){if(render.scheduled)return;render.scheduled=true;requestAnimat
  for(const t of tiles){if(!t.alive)continue;const p=worldToScreen(t.c-3.5,t.r-3.5),tw=board.tile*.91,th=board.tile*.44,depth=Math.max(8,board.tile*.2);
   for(const side of [-1,1]){ctx.fillStyle=side===1?"#10243a":"#081523";ctx.strokeStyle="#315471";ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(p[0],p[1]+th/2);ctx.lineTo(p[0]+side*tw/2,p[1]);ctx.lineTo(p[0]+side*tw/2,p[1]+depth);ctx.lineTo(p[0],p[1]+th/2+depth);ctx.closePath();ctx.fill();ctx.stroke()}
  }
- for(const t of tiles){const x=t.c-3.5,z=t.r-3.5,p=worldToScreen(x,z),tw=board.tile*.91,th=board.tile*.44;if(!t.alive){ctx.fillStyle="#020611";ctx.strokeStyle="#ff8f80";ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(p[0],p[1]-th*.4);ctx.lineTo(p[0]+tw*.43,p[1]);ctx.lineTo(p[0],p[1]+th*.4);ctx.lineTo(p[0]-tw*.43,p[1]);ctx.closePath();ctx.fill();ctx.stroke();continue}const near=[[1,0],[-1,0],[0,1],[0,-1]].some(([dr,dc])=>{const r=t.r+dr,c=t.c+dc;return r>=0&&c>=0&&r<8&&c<8&&!tiles[r*8+c].alive});ctx.fillStyle=near?"#42361f":((t.r+t.c)%2?"#1b3355":"#203c61");ctx.strokeStyle=near?"#ffd166":preferences.contrast?"#9de9ff":"rgba(103,232,249,.4)";ctx.lineWidth=1.4;ctx.beginPath();ctx.moveTo(p[0],p[1]-th/2);ctx.lineTo(p[0]+tw/2,p[1]);ctx.lineTo(p[0],p[1]+th/2);ctx.lineTo(p[0]-tw/2,p[1]);ctx.closePath();ctx.fill();ctx.stroke();
+ for(const t of tiles){const x=t.c-3.5,z=t.r-3.5,p=worldToScreen(x,z),tw=board.tile*.91,th=board.tile*.44;if(!t.alive){ctx.fillStyle="#020611";ctx.strokeStyle="#ff8f80";ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(p[0],p[1]-th*.4);ctx.lineTo(p[0]+tw*.43,p[1]);ctx.lineTo(p[0],p[1]+th*.4);ctx.lineTo(p[0]-tw*.43,p[1]);ctx.closePath();ctx.fill();ctx.stroke();continue}const near=[[1,0],[-1,0],[0,1],[0,-1]].some(([dr,dc])=>{const r=t.r+dr,c=t.c+dc;return r>=0&&c>=0&&r<8&&c<8&&!tiles[r*8+c].alive});ctx.fillStyle=near?"#42361f":surface(x,z).ice?"#74b8cc":activeMap.colors[(t.r+t.c)%2];ctx.strokeStyle=near?"#ffd166":preferences.contrast?"#9de9ff":"rgba(103,232,249,.4)";ctx.lineWidth=1.4;ctx.beginPath();ctx.moveTo(p[0],p[1]-th/2);ctx.lineTo(p[0]+tw/2,p[1]);ctx.lineTo(p[0],p[1]+th/2);ctx.lineTo(p[0]-tw/2,p[1]);ctx.closePath();ctx.fill();ctx.stroke();
   // Panel bolts and a service seam make the deck read as manufactured structure.
   ctx.fillStyle=near?"#ffd166":"#6f98ae";for(const side of [-1,1])ctx.fillRect(p[0]+side*tw*.31-1,p[1]-1,2,2);
   ctx.strokeStyle=near?"#ffd16688":"#6ba0bd33";ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(p[0]-tw*.22,p[1]);ctx.lineTo(p[0]+tw*.22,p[1]);ctx.stroke();
   if(near){ctx.strokeStyle="#ffd166";ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(p[0]-tw*.15,p[1]+th*.2);ctx.lineTo(p[0]-tw*.04,p[1]+th*.32);ctx.moveTo(p[0]+tw*.03,p[1]+th*.2);ctx.lineTo(p[0]+tw*.14,p[1]+th*.32);ctx.stroke()}
  }
- for(const c of crates)if(c.alive)drawSupplyWarning(c);
+ drawWorldCues();for(const c of crates)if(c.alive)drawSupplyWarning(c);
  for(const c of crates){if(!c.alive||!c.armed||c.fuse>1.4||c.y<-.5)continue;
   const p=worldToScreen(c.x,c.z),r=c.type==="nitro"?1.7:1.5;
   ctx.fillStyle=c.fuse<.7?"rgba(255,90,75,.22)":"rgba(255,200,90,.1)";ctx.strokeStyle=c.fuse<.7?"#ff8f80":"#ffd166";ctx.lineWidth=1.5;ctx.setLineDash([4,3]);
@@ -516,15 +644,33 @@ function render(){if(render.scheduled)return;render.scheduled=true;requestAnimat
  }
  if(phase==="fight")drawIntent(fighters[0]);
  const objects=[];for(const c of crates)if(c.alive)objects.push({z:c.x+c.z,type:"crate",o:c});for(const f of fighters)if(f.alive)objects.push({z:f.x+f.z,type:"fighter",o:f});objects.sort((a,b)=>a.z-b.z);for(const item of objects)item.type==="crate"?drawCrate(item.o):drawFighter(item.o);
- for(const p of particles){const q=worldToScreen(p.x,p.z,p.y);ctx.globalAlpha=clamp(p.life/p.max,0,1);ctx.fillStyle=p.color;ctx.beginPath();ctx.arc(q[0],q[1],2.2,0,Math.PI*2);ctx.fill()}ctx.globalAlpha=1;if(flash>0){ctx.fillStyle="rgba(255,120,100,"+flash+")";ctx.fillRect(0,0,w,h)}
+ for(const p of particles){const q=worldToScreen(p.x,p.z,p.y);ctx.globalAlpha=clamp(p.life/p.max,0,1);ctx.fillStyle=p.color;ctx.beginPath();ctx.arc(q[0],q[1],2.2,0,Math.PI*2);ctx.fill()}ctx.globalAlpha=1;if(flash>0){ctx.fillStyle="rgba(255,120,100,"+flash+")";ctx.fillRect(0,0,w,h)}if(saved){inDemo=false;installWorld(saved)}
  })}
+function captureWorld(){return{tiles,fighters,crates,particles,phase,phaseT,round,timeLeft,wins,spawnT,powerT,flash,worldTime,activeMap,activeMode,rules,stats,eliminationOrder,crateId,series,playerCount,difficulty,paused}}
+function installWorld(s){({tiles,fighters,crates,particles,phase,phaseT,round,timeLeft,wins,spawnT,powerT,flash,worldTime,activeMap,activeMode,rules,stats,eliminationOrder,crateId,series,playerCount,difficulty,paused}=s)}
+function withDemo(fn){const saved=captureWorld();installWorld(demoState);inDemo=true;try{fn();demoState=captureWorld()}finally{inDemo=false;installWorld(saved)}}
+function startDemo(){const saved=captureWorld();inDemo=true;paused=false;demoRng=impl("demo:"+preferences.map);playerCount=preferences.players;difficulty=preferences.difficulty;activeMap=MAPS[preferences.map];activeMode="classic";rules={...RULES.standard,hazards:preferences.hazards,cargo:"mixed"};wins=Array(10).fill(0);stats=[];series={stage:0,total:4,scores:[],history:[],complete:false};restartMatch();for(let i=0;i<480;i++)step(FIXED);demoState=captureWorld();inDemo=false;installWorld(saved);demoElapsed=0;clearInput()}
+const worldImages={};
+// Kenney CC0 Particle Pack: meaningful frost/plant panel decals and impact sprites; procedural fallback always remains.
+if(typeof Image!=="undefined")for(const [key,file] of Object.entries({ice:"star_04.png",leaf:"smoke_04.png",impact:"spark_01.png"})){const img=new Image();img.onload=()=>worldImages[key]=img;img.onerror=()=>{};img.src="../assets/worlds/"+file}
+function drawWorldCues(){
+ const h=hazardState();
+ if(activeMap.id==="reactor"&&h.phase!=="safe"){const edges=h.axis==="x"?[[h.lane-.58,-4],[h.lane+.58,-4],[h.lane+.58,4],[h.lane-.58,4]]:[[-4,h.lane-.58],[4,h.lane-.58],[4,h.lane+.58],[-4,h.lane+.58]];ctx.fillStyle=h.phase==="warning"?"#ffd16655":"#ff535377";ctx.strokeStyle=h.phase==="warning"?"#ffd166":"#ff5353";ctx.lineWidth=2;ctx.beginPath();edges.forEach((v,i)=>{const p=worldToScreen(v[0],v[1]);i?ctx.lineTo(...p):ctx.moveTo(...p)});ctx.closePath();ctx.fill();ctx.stroke()}
+ for(const t of tiles){if(!t.alive)continue;const x=t.c-3.5,z=t.r-3.5,p=worldToScreen(x,z),s=board.tile;
+  if(activeMap.id==="cryo"){if(surface(x,z).ice){ctx.strokeStyle="#d8fbff";ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(p[0]-s*.14,p[1]-s*.05);ctx.lineTo(p[0]+s*.14,p[1]+s*.05);ctx.moveTo(p[0],p[1]-s*.1);ctx.lineTo(p[0],p[1]+s*.1);ctx.stroke();if(worldImages.ice)ctx.drawImage(worldImages.ice,p[0]-s*.15,p[1]-s*.13,s*.3,s*.26)}else{ctx.fillStyle="#ffd166";ctx.fillRect(p[0]-s*.12,p[1]-1,s*.24,3)}}
+  if(activeMap.id==="reactor"&&inBlastLane(x,z,h)){ctx.strokeStyle=h.phase==="active"?"#ff6767":h.phase==="warning"?"#ffd166":"#926373";ctx.lineWidth=h.phase==="safe"?1:4;ctx.beginPath();ctx.moveTo(p[0]-s*.28,p[1]);ctx.lineTo(p[0]+s*.28,p[1]);ctx.stroke()}
+  if(activeMap.id==="garden"&&(t.r===0||t.r===7||t.c===0||t.c===7)){ctx.fillStyle="#8add9c";ctx.beginPath();ctx.ellipse(p[0],p[1]-s*.07,s*.13,s*.055,-.4,0,Math.PI*2);ctx.fill();if(worldImages.leaf)ctx.drawImage(worldImages.leaf,p[0]-s*.2,p[1]-s*.2,s*.4,s*.3)}
+ }
+ if(activeMap.id==="garden"){const p=worldToScreen(0,0);ctx.strokeStyle=h.phase==="active"?"#aaffde":"#78b693";ctx.lineWidth=3;ctx.setLineDash(h.phase==="warning"?[6,4]:[]);ctx.beginPath();ctx.ellipse(p[0],p[1],board.tile*1.8,board.tile*.8,0,0,Math.PI*2);ctx.stroke();ctx.setLineDash([])}
+ for(const p of particles.slice(0,80))if(worldImages.impact){const q=worldToScreen(p.x,p.z,p.y);ctx.globalAlpha=clamp(p.life/p.max,0,1);ctx.drawImage(worldImages.impact,q[0]-6,q[1]-6,12,12)}ctx.globalAlpha=1;
+}
 function loop(now){const dt=Math.min(.05,(now-last)/1000);last=now;acc=Math.min(acc+dt,.12);let n=0;while(acc>=FIXED&&n<MAX_STEPS){step(FIXED);acc-=FIXED;n++}render();requestAnimationFrame(loop)}
 
 const padState={buttons:[],id:null,blocked:true,moving:false};
 function gamepadSnapshot(){try{return Array.from(navigator.getGamepads?navigator.getGamepads():[]).find(p=>p&&p.connected!==false&&(!p.mapping||p.mapping==="standard"))||null}catch{return null}}
 function blockHeldPad(){const p=gamepadSnapshot();padState.buttons=p?p.buttons.map(b=>!!(b&&b.pressed)):[];padState.blocked=true;padState.moving=false}
 function pollGamepad(){
- const p=gamepadSnapshot();
+ if(phase==="setup"){blockHeldPad();return}const p=gamepadSnapshot();
  if(!p){if(padState.moving&&!joy.active){joy.x=joy.z=0}padState.id=null;padState.moving=false;padState.buttons=[];padState.blocked=true;return}
  const down=p.buttons.map(b=>!!(b&&b.pressed)),edge=i=>down[i]&&!padState.buttons[i];
  if(edge(9)&&phase!=="setup"&&!modal.classList.contains("open")&&!$("#helpOverlay").classList.contains("open")&&!$("#results").classList.contains("open")){resumeAudio();if(paused)resumeFromPause();else pauseGame()}
@@ -546,7 +692,7 @@ $("#joyWrap").addEventListener("pointerdown",e=>{e.preventDefault();if(paused||p
 $("#joyWrap").addEventListener("pointermove",e=>{if(joy.active&&e.pointerId===joy.id){e.preventDefault();moveJoy(e)}},{passive:false});
 function joyUp(e){if(e.pointerId!==joy.id)return;joy.active=false;joy.id=null;joy.x=joy.z=0;$("#joyKnob").style.transform="translate(-50%,-50%)"}
 $("#joyWrap").addEventListener("pointerup",joyUp);$("#joyWrap").addEventListener("pointercancel",joyUp);$("#joyWrap").addEventListener("lostpointercapture",joyUp);
-const keys={};addEventListener("keydown",e=>{if(!paused&&phase==="fight"&&["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].includes(e.code))e.preventDefault();if(e.code==="Escape"&&!e.repeat){if(phase==="setup"||$("#results").classList.contains("open"))return;if($("#helpOverlay").classList.contains("open")){closeHelp();return}if(modal.classList.contains("open")){closeSettingsToPause();return}if(paused)resumeFromPause();else pauseGame();return}if(paused||phase!=="fight"||e.repeat)return;keys[e.code]=true;if(e.code==="KeyE")grabThrow(fighters[0]);if(e.code==="KeyF")kick(fighters[0]);if(e.code==="Space")jump(fighters[0])});addEventListener("keyup",e=>keys[e.code]=false);
+const keys={};addEventListener("keydown",e=>{if(e.target&&["INPUT","SELECT","TEXTAREA","BUTTON","SUMMARY"].includes(e.target.tagName))return;if(!paused&&phase==="fight"&&["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].includes(e.code))e.preventDefault();if(e.code==="Escape"&&!e.repeat){if(phase==="setup"||$("#results").classList.contains("open"))return;if($("#helpOverlay").classList.contains("open")){closeHelp();return}if(modal.classList.contains("open")){closeSettingsToPause();return}if(paused)resumeFromPause();else pauseGame();return}if(paused||phase!=="fight"||e.repeat)return;keys[e.code]=true;if(e.code==="KeyE")grabThrow(fighters[0]);if(e.code==="KeyF")kick(fighters[0]);if(e.code==="Space")jump(fighters[0])});addEventListener("keyup",e=>keys[e.code]=false);
 setInterval(()=>{pollGamepad();if(paused||phase!=="fight")return;let x=(keys.KeyD||keys.ArrowRight?1:0)-(keys.KeyA||keys.ArrowLeft?1:0),z=(keys.KeyS||keys.ArrowDown?1:0)-(keys.KeyW||keys.ArrowUp?1:0);if(x||z){const n=norm(x,z);joy.x=n[0];joy.z=n[1]}else if(!joy.active&&!padState.moving){joy.x=joy.z=0}
  const ax=(keys.KeyL?1:0)-(keys.KeyJ?1:0),az=(keys.KeyK?1:0)-(keys.KeyI?1:0);if(ax||az){const f=fighters[0];[f.faceX,f.faceZ]=norm(ax,az);f.aimHold=.08}
 },16);
@@ -554,7 +700,7 @@ setInterval(()=>{pollGamepad();if(paused||phase!=="fight")return;let x=(keys.Key
 function resumeAudio(){audioUnlocked=true;if(sound&&beep.ctx&&beep.ctx.state==="suspended")beep.ctx.resume().catch(()=>{})}
 addEventListener("pointerdown",resumeAudio);addEventListener("keydown",resumeAudio);
 function clearInput(){
- blockHeldPad();
+ if(inDemo)return;blockHeldPad();
  for(const ids of actionPointers)ids.clear();
  for(const k of Object.keys(keys))delete keys[k];joy.x=joy.z=0;joy.active=false;joy.id=null;
  $("#joyKnob").style.transform="translate(-50%,-50%)";
@@ -564,38 +710,49 @@ addEventListener("blur",()=>{clearInput();paused=true;if(!modal.classList.contai
 function updateMenuVisibility(){document.body.classList.toggle("menu-open",phase==="setup"||paused||phase==="match")}
 function syncSettings(){
  playersEl.value=String(preferences.players);difficultyEl.value=String(preferences.difficulty);$("#rule").value=preferences.rule;
- for(const key of ["volume","reducedMotion","swapHands","contrast"])$("#"+key).value=String(preferences[key]);
- $("#volumeValue").textContent=Math.round(preferences.volume*100)+"%";$("#ruleSummary").textContent=RULES[preferences.rule].desc;
- $("#setupSummary").textContent=preferences.players+" crew · "+RULES[preferences.rule].name+" · "+({"0.78":"Cadet","1":"Pilot","1.18":"Ace"}[preferences.difficulty])+" CPUs";
+ for(const key of ["volume","reducedMotion","swapHands","contrast","map","mode","goal","roundLength","hazards","cargo","playerColor","patch","haptics","aimGuide","coaching"])$("#"+key).value=String(preferences[key]);
+ $("#volumeValue").textContent=Math.round(preferences.volume*100)+"%";$("#ruleSummary").textContent=(preferences.mode==="series"?"Four decks · one "+preferences.roundLength+"-second round per deck. Tied health shares points. ":"First to "+(preferences.rule==="practice"?1:preferences.goal)+" · "+preferences.roundLength+"-second rounds. ")+RULES[preferences.rule].desc+" "+MAPS[preferences.map].skill;
+ for(const key of ["seed","playerName"])if(document.activeElement!==$("#"+key))$("#"+key).value=preferences[key];
+ $("#setupSummary").textContent="CPU DEMO · "+MAPS[preferences.map].name+" · "+preferences.players+" crew · "+RULES[preferences.rule].name+" · "+({"0.78":"Cadet","1":"Pilot","1.18":"Ace"}[preferences.difficulty])+" CPUs";
  document.body.classList.toggle("rm",preferences.reducedMotion);document.body.classList.toggle("hc",preferences.contrast);$(".controls").classList.toggle("swap",preferences.swapHands);
  soundBtn.textContent=sound&&preferences.volume>0?"🔊":"🔇";soundBtn.setAttribute("aria-pressed",String(sound));
  if(preferences.reducedMotion){particles=[];flash=0}updateMenuVisibility();
 }
-function changeSetting(key,value){Object.assign(preferences,validatedSettings({...preferences,[key]:value}));saveSettings();syncSettings()}
-function applyMatchSetup(){playerCount=preferences.players;difficulty=preferences.difficulty;rules=RULES[preferences.rule];restartMatch()}
+function changeSetting(key,value){Object.assign(preferences,validatedSettings({...preferences,[key]:value}));saveSettings();if(fighters[0]){fighters[0].name=preferences.playerName;fighters[0].color=preferences.playerColor}if(demoState&&demoState.fighters[0]){demoState.fighters[0].name=preferences.playerName;demoState.fighters[0].color=preferences.playerColor}if(phase==="setup"&&["map","players","hazards"].includes(key))startDemo();syncSettings();updateHUD()}
+function beginSession(config){sessionConfig={...config};playerCount=config.players;difficulty=config.difficulty;activeMap=MAPS[config.mode==="series"?"orbital":config.map];activeMode=config.mode;activeSeed=config.seed;gameRng=impl(activeSeed,{state:true});rules={...RULES[config.rule],time:config.roundLength,winTarget:config.mode==="series"||config.rule==="practice"?1:config.goal,hazards:config.hazards,cargo:config.cargo};series={stage:0,total:4,scores:Array(playerCount).fill(0),history:[],complete:false};demoState=null;watching=false;$("#demoDock").classList.remove("open");restartMatch()}
+function applyMatchSetup(){beginSession(preferences)}
+function nextStage(){if(activeMode!=="series"||series.complete||phase!=="match")return;series.stage=series.history.length;activeMap=MAPS[MAP_ORDER[series.stage]];round=series.stage+1;resetRound();resumeFromPause();say(activeMap.name+" · "+activeMap.skill)}
+function replaySession(){if(!sessionConfig){restartMatch();resumeFromPause();return}resumeAudio();beginSession({...sessionConfig});$("#setup").classList.remove("open");resumeFromPause()}
 function openSettingsPaused(){clearInput();paused=true;pauseOverlay.classList.remove("open");$("#setup").classList.remove("open");modal.classList.add("open");syncSettings()}
 function closeSettingsToPause(){clearInput();modal.classList.remove("open");if(phase==="setup"){paused=false;$("#setup").classList.add("open")}else{paused=true;pauseOverlay.classList.add("open")}updateMenuVisibility()}
 function pauseGame(){clearInput();paused=true;pauseOverlay.classList.add("open");updateMenuVisibility()}
 function resumeFromPause(){clearInput();pauseOverlay.classList.remove("open");paused=false;last=performance.now();acc=0;updateMenuVisibility()}
-function showSetup(){clearInput();phase="setup";paused=false;for(const id of ["#modal","#pauseOverlay","#results","#helpOverlay"])$(id).classList.remove("open");countdown.classList.add("hide");$("#setup").classList.add("open");syncSettings()}
-function launchMatch(){resumeAudio();applyMatchSetup();$("#setup").classList.remove("open");modal.classList.remove("open");resumeFromPause();say(rules.desc)}
+function showSetup(){clearInput();startDemo();phase="setup";paused=false;for(const id of ["#modal","#pauseOverlay","#results","#helpOverlay"])$(id).classList.remove("open");countdown.classList.add("hide");$("#setup").classList.add("open");$("#demoDock").classList.remove("open");watching=false;syncSettings();updateHUD()}
+function launchMatch(){resumeAudio();applyMatchSetup();$("#setup").classList.remove("open");modal.classList.remove("open");resumeFromPause();say(activeMap.name+" · "+activeMap.skill)}
+function recordKey(){return[activeMap.id,activeMode,rules.id,rules.time,rules.winTarget,rules.hazards,rules.cargo,playerCount,difficulty].join(":")}
 function showResults(winner,timedOut){
- clearInput();$("#results").classList.add("open");countdown.classList.add("hide");$("#resultTitle").textContent=winner.name+" takes the crown";
- $("#resultDetail").textContent=rules.name+" · "+round+" rounds · "+(timedOut?"Final crown decided on health.":"Final fighter standing.");
- const seats=fighters.slice().sort((a,b)=>wins[b.id]-wins[a.id]||a.id-b.id);let rank=0,lastScore=-1;
- $("#resultStandings").textContent=seats.map((f,i)=>{if(wins[f.id]!==lastScore)rank=i+1;lastScore=wins[f.id];return rank+".  "+f.name+"   ·   "+wins[f.id]+" crown"+(wins[f.id]===1?"":"s")}).join("\n");updateMenuVisibility();
- beep(winner.id===0?660:330,.18,.04);
+ if(inDemo)return;clearInput();$("#results").classList.add("open");countdown.classList.add("hide");const isSeries=activeMode==="series",scores=isSeries?series.scores:wins;
+ $("#resultTitle").textContent=isSeries?(series.complete?"Four-deck Series complete":"Deck "+(series.stage+1)+" / 4 complete"):(winner?winner.name+" takes the crown":"No crown · session ended");
+ $("#resultDetail").textContent=activeMap.name+" · "+rules.time+"s · "+(isSeries?"One round per deck. Living health ties share placement points; later eliminations rank higher. ":"First to "+rules.winTarget+". Timeout: highest health, equal health favors first seat. ")+activeMap.skill;
+ const seats=fighters.slice().sort((a,b)=>scores[b.id]-scores[a.id]||a.id-b.id);let rank=0,lastScore=-1;
+ $("#resultStandings").textContent=seats.map((f,i)=>{if(scores[f.id]!==lastScore)rank=i+1;lastScore=scores[f.id];const st=stats[f.id]||{};return rank+".  "+f.name+"   ·   "+scores[f.id]+(isSeries?" points":" crown"+(scores[f.id]===1?"":"s"))+" · "+(st.throws||0)+" throws · "+(st.jumps||0)+" jumps · "+Math.round(st.damageTaken||0)+" damage taken"}).join("\n")+(isSeries?"\n\nThis deck: "+series.history.at(-1).standings.map(f=>f.name+" #"+f.rank+" +"+f.points).join(" · "):"");
+ const key=recordKey(),prev=bestRecords[key],valid=prev&&Number.isFinite(prev.best)&&Number.isFinite(prev.completions),entry={best:Math.max(valid?prev.best:0,scores[0]||0),completions:Math.min(9999,(valid?prev.completions:0)+1)};bestRecords[key]=entry;if(Object.keys(bestRecords).length>128)delete bestRecords[Object.keys(bestRecords)[0]];try{localStorage.setItem("space-bash:records:v2",JSON.stringify(bestRecords))}catch{}
+ $("#resultBest").textContent="This map / rule best: "+entry.best+(isSeries?" points":" crowns")+" · "+entry.completions+" completed deck sessions. "+(entry.completions>=3?"Mastery: three sessions completed.":"Mastery: complete three sessions on these rules.");
+ $("#nextStage").hidden=!isSeries||series.complete;$("#rematch").textContent=isSeries?"Series rematch":"Rematch";updateMenuVisibility();beep(winner&&winner.id===0?660:330,.18,.04);
 }
 let helpOrigin="pause";
 function showHelp(origin="pause"){helpOrigin=origin;clearInput();paused=true;pauseOverlay.classList.remove("open");$("#setup").classList.remove("open");$("#helpOverlay").classList.add("open");updateMenuVisibility()}
 function closeHelp(){$("#helpOverlay").classList.remove("open");if(helpOrigin==="setup")showSetup();else{pauseOverlay.classList.add("open");paused=true;updateMenuVisibility()}}
 settings.onclick=openSettingsPaused;close.onclick=closeSettingsToPause;restart.onclick=()=>{applyMatchSetup();closeSettingsToPause()};resumeGame.onclick=resumeFromPause;
 playersEl.onchange=()=>changeSetting("players",playersEl.value);difficultyEl.onchange=()=>changeSetting("difficulty",difficultyEl.value);$("#rule").onchange=()=>changeSetting("rule",$("#rule").value);
-for(const key of ["volume","reducedMotion","swapHands","contrast"])$("#"+key).onchange=()=>changeSetting(key,["reducedMotion","swapHands","contrast"].includes(key)?$("#"+key).value==="true":$("#"+key).value);
+for(const key of ["volume","reducedMotion","swapHands","contrast","map","mode","goal","roundLength","hazards","cargo","playerColor","patch","haptics","aimGuide","coaching"])$("#"+key).onchange=()=>changeSetting(key,["reducedMotion","swapHands","contrast","hazards","haptics","aimGuide","coaching"].includes(key)?$("#"+key).value==="true":$("#"+key).value);
 soundBtn.onclick=()=>{resumeAudio();sound=!sound;preferences.sound=sound;saveSettings();syncSettings()};$("#pause").onclick=()=>{if(phase!=="setup"&&phase!=="match")pauseGame()};
-$("#startMatch").onclick=launchMatch;$("#setupSettings").onclick=openSettingsPaused;$("#menu").onclick=showSetup;$("#resultMenu").onclick=showSetup;$("#rematch").onclick=()=>{resumeAudio();restartMatch();resumeFromPause()};$("#help").onclick=()=>showHelp();$("#setupHelp").onclick=()=>showHelp("setup");$("#closeHelp").onclick=closeHelp;
+$("#startMatch").onclick=launchMatch;$("#setupSettings").onclick=openSettingsPaused;$("#menu").onclick=showSetup;$("#resultMenu").onclick=showSetup;$("#rematch").onclick=replaySession;$("#help").onclick=()=>showHelp();$("#setupHelp").onclick=()=>showHelp("setup");$("#closeHelp").onclick=closeHelp;
+for(const key of ["seed","playerName"]){const e=$("#"+key);e.oninput=()=>{if(key==="playerName"){preferences.playerName=e.value;if(fighters[0])fighters[0].name=e.value;if(demoState&&demoState.fighters[0])demoState.fighters[0].name=e.value}};e.onblur=()=>{changeSetting(key,e.value);e.value=preferences[key]};e.onchange=()=>changeSetting(key,e.value)}
+$("#watchDemo").onclick=()=>{clearInput();watching=true;$("#setup").classList.remove("open");$("#demoDock").classList.add("open")};$("#returnTitle").onclick=()=>{watching=false;$("#demoDock").classList.remove("open");$("#setup").classList.add("open")};$("#demoStart").onclick=launchMatch;$("#replay").onclick=replaySession;$("#nextStage").onclick=nextStage;
 document.addEventListener("visibilitychange",()=>{if(document.hidden){clearInput();paused=true;joy.x=joy.z=0;if(!modal.classList.contains("open"))pauseOverlay.classList.add("open")}else{last=performance.now();acc=0}});
-window.SpaceBash={version:VERSION,setPlayers(n){playerCount=clamp(Math.round(+n||4),2,10);preferences.players=playerCount;saveSettings();playersEl.value=playerCount;$("#setup").classList.remove("open");restartMatch();updateMenuVisibility()},getState(){return{version:VERSION,rule:rules.id,playerCount,round,timeLeft,phase,alive:fighters.filter(f=>f.alive&&!f.falling).length,wins:wins.slice(0,playerCount),tiles:tiles.filter(t=>t.alive).length}}};
+function fighterView(f){return{id:f.id,name:f.name,color:f.color,x:f.x,z:f.z,y:f.y,vx:f.vx,vz:f.vz,vy:f.vy,hp:f.hp,alive:f.alive,falling:f.falling,grounded:f.grounded,control:f.control,carrying:f.carrying?f.carrying.id:null,actions:{kick:f.kickCd,jump:f.jumpCd,stagger:f.stagger}}}
+window.SpaceBash={version:VERSION,setPlayers(n){playerCount=clamp(Math.round(+n||4),2,10);preferences.players=playerCount;saveSettings();playersEl.value=playerCount;demoState=null;sessionConfig={...preferences,players:playerCount,map:activeMap.id,mode:activeMode,rule:rules.id,goal:rules.winTarget,roundLength:rules.time,hazards:rules.hazards!==false,cargo:rules.cargo||"mixed"};gameRng=impl(activeSeed,{state:true});$("#setup").classList.remove("open");restartMatch();updateMenuVisibility()},getState(){return{version:VERSION,rule:rules.id,playerCount,round,timeLeft,phase,alive:fighters.filter(f=>f.alive&&!f.falling).length,wins:wins.slice(0,playerCount),tiles:tiles.filter(t=>t.alive).length,demo:phase==="setup",demoElapsed,watching,demoFighters:demoState?demoState.fighters.map(fighterView):[],demoMap:demoState?demoState.activeMap.id:null,demoTimeLeft:demoState?demoState.timeLeft:null,demoHazard:demoState?(()=>{const saved=captureWorld();installWorld(demoState);const h=hazardState();installWorld(saved);return h})():null,map:activeMap.id,mode:activeMode,seed:activeSeed,rules:{...rules},series:JSON.parse(JSON.stringify(series)),paused,hazard:hazardState(),fighters:fighters.map(fighterView),cargo:crates.map(c=>({id:c.id,type:c.type,x:c.x,z:c.z,y:c.y,held:c.held?c.held.id:null,fuse:c.fuse,armed:c.armed,alive:c.alive})),stats:stats.map(s=>({...s}))}}};
 
 syncSettings();
 resetRound();updateHUD();requestAnimationFrame(loop);

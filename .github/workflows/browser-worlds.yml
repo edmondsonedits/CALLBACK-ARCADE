@@ -1,7 +1,7 @@
 name: arcade-browser-worlds
 on:
   push:
-    branches: [main, 'quality/arcade-worlds*']
+    branches: ['quality/arcade-worlds*']
     paths:
       - 'games/**/source/**'
       - 'scripts/browser-worlds/**'
@@ -39,7 +39,7 @@ jobs:
         env:
           # Sequential expansion: automatic pixel QA follows the current game.
           # Manual dispatch can select any game or run the complete arcade.
-          BROWSER_GAMES: ${{ inputs.games || 'royal-twisted' }}
+          BROWSER_GAMES: ${{ inputs.games || 'space-bash' }}
           BROWSER_PROFILE: ${{ matrix.profile }}
       - uses: actions/upload-artifact@v4
         if: always()

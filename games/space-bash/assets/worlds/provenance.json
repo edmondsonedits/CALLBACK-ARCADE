@@ -1,0 +1,45 @@
+{
+  "packs": [
+    {
+      "pack": "particles",
+      "url": "https://kenney.nl/media/pages/assets/particle-pack/f8fe0f8cb8-1677578741/kenney_particle-pack.zip",
+      "bytes": 15001764,
+      "sha256": "b631d4b07f7002549fdcf155f01141ad482f79f3440e4e301eed49ce5f1d8958"
+    }
+  ],
+  "alea": {
+    "repository": "https://github.com/davidbau/seedrandom",
+    "commit": "4460ad325a0a15273a211e509f03ae0beb99511a",
+    "url": "https://raw.githubusercontent.com/davidbau/seedrandom/4460ad325a0a15273a211e509f03ae0beb99511a/lib/alea.js",
+    "sha256": "9f821c9ede583e1c1f1d3263d6d016d13d562768de6c477d8262f7e8028a09cb",
+    "license": "MIT, copyright header retained"
+  },
+  "usage": {
+    "star_04.png": "Cryo ice panel crystals",
+    "smoke_04.png": "Gravity Garden planter atmosphere",
+    "spark_01.png": "Combat impact overlay",
+    "alea.js": "MIT Alea implementation embedded inline for deterministic session/demo RNG"
+  },
+  "files": [
+    {
+      "path": "KENNEY-LICENSE.txt",
+      "sha256": "f9e70b81d8cc07c4e07c9f2eff1d94fd371a06070b18cb67c651c41158ec2975"
+    },
+    {
+      "path": "alea.js",
+      "sha256": "9f821c9ede583e1c1f1d3263d6d016d13d562768de6c477d8262f7e8028a09cb"
+    },
+    {
+      "path": "smoke_04.png",
+      "sha256": "2db2f69874cdb1e5203f2f86803d5debde30402590cf50a810afaba882184616"
+    },
+    {
+      "path": "spark_01.png",
+      "sha256": "5902da3a324cad0a4b5a88ce1e3c9cc18fee50922c358ce93d8c9f1ad7708f0a"
+    },
+    {
+      "path": "star_04.png",
+      "sha256": "6485ac16c773663bd39346f3bedae04465ac14c661eb47cc5cfa935cdbf6c2ec"
+    }
+  ]
+}

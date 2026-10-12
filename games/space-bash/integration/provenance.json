@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
   "kind": "arcade-source-provenance",
-  "version": "1.14.0",
-  "reference": "Royal Sumo: Crownfall v1.3.0 source modules",
+  "version": "1.15.0",
+  "reference": "Task 5 binding four-deck brief; prior Sumo benchmark retained",
   "scope": "automated-full-script-vm-and-source-checks",
   "sourceHashes": [
     {
       "path": "source/index.html",
-      "sha256": "e7ded7bcc0cd9fb097c1e2a53de168d66760dbaa3273ab426ee4bb3868a038ee"
+      "sha256": "cee8904e5e172c752b6dd2888282c0fb837b79b9510e0414d16329d03437cfab"
     },
     {
       "path": "source/original/space_bash_orbital_breakout_v1.13.1_standalone.html",
@@ -16,29 +16,25 @@
   ],
   "checks": [
     {
-      "name": "58 focused benchmark/quality/stress/render-path checks",
+      "name": "75 focused checks: 17 worlds plus preserved 58 benchmark/quality/stress/render paths",
       "result": "passed",
-      "command": "node --test tests/space-bash-sumo-benchmark.test.mjs tests/space-bash-quality.test.mjs"
+      "command": "node --test tests/space-bash-worlds.test.mjs tests/space-bash-sumo-benchmark.test.mjs tests/space-bash-quality.test.mjs"
     },
     {
-      "name": "standalone source and immutable original",
+      "name": "Standalone source and immutable original",
       "result": "passed",
       "command": "node games/space-bash/tests/source-smoke.mjs"
     },
     {
-      "name": "inline JavaScript syntax",
+      "name": "scoped whitespace",
       "result": "passed",
-      "command": "Node vm.Script compilation of the inline script"
-    },
-    {
-      "name": "scoped diff whitespace",
-      "result": "passed",
-      "command": "git diff --check -- games/space-bash tests/space-bash-sumo-benchmark.test.mjs"
+      "command": "git diff --check -- games/space-bash tests/space-bash-worlds.test.mjs"
     }
   ],
   "limitations": [
-    "No local rendered browser or physical-device playtest performed by this task.",
-    "VM Canvas tests check call-path execution, not raster appearance, audio quality or GPU/device performance.",
-    "Multiplayer remains not-integrated; no authenticated per-seat transport added."
-  ]
+    "Rendered Chromium pixel/mobile UI review is parent-owned and pending at this source handoff.",
+    "VM Canvas checks do not prove raster appearance, subjective feel, audio quality or device performance.",
+    "Online multiplayer remains not integrated."
+  ],
+  "assets": "assets/worlds/provenance.json"
 }

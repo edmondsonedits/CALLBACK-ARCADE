@@ -11,6 +11,7 @@ import {ballistix} from './royal-ballistix.mjs';
 import {scratchMatch} from './royal-scratch-match.mjs';
 import {rollerRuckus} from './royal-roller-ruckus.mjs';
 import {twisted} from './royal-twisted.mjs';
+import {spaceBash} from './space-bash.mjs';
 const root = fileURLToPath(new URL('../../', import.meta.url));
 const out = resolve(root, '.browser-worlds');
 await mkdir(out, {recursive:true});
@@ -26,7 +27,7 @@ const server = createServer(async(req,res)=>{
 });
 await new Promise(r=>server.listen(0,'127.0.0.1',r));
 const base = `http://127.0.0.1:${server.address().port}`;
-const allGames = [ballistix,scratchMatch,rollerRuckus,twisted];
+const allGames = [ballistix,scratchMatch,rollerRuckus,twisted,spaceBash];
 const requested = process.env.BROWSER_GAMES?.split(',').map(s=>s.trim()).filter(Boolean);
 const games = requested && !requested.includes('all') ? allGames.filter(g=>requested.includes(g.id)) : allGames;
 if (!games.length || requested?.some(id=>id!=='all'&&!allGames.some(g=>g.id===id))) throw new Error('Unknown BROWSER_GAMES selection');

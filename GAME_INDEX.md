@@ -68,13 +68,13 @@ Royal Sumo: Crownfall v1.3.0: a 2–10 fighter physics brawler with six arenas, 
 
 Four 2–10 contestant survival towers: classic jump/duck cadence, Ember vent-to-burst patterns, Frost duck-to-recover grip, and warned Storm gust bracing. Includes silent live bots, finite skill practice and four-stage Tour, captured-rule seeded replay and scoped records.
 
-## Space Bash — Orbital Breakout
+## Space Bash — Four Decks
 
 - ID: `space-bash` ([manifest](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/space-bash/manifest.json), [game guide](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/space-bash/README.md))
 - Status: imported; multiplayer not-integrated
 - Players: 2–10
-- Version: 1.14.0
+- Version: 1.15.0
 - Source: [source/index.html](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/space-bash/source/index.html), [source/original/space_bash_orbital_breakout_v1.13.1_standalone.html](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/space-bash/source/original/space_bash_orbital_breakout_v1.13.1_standalone.html)
 - Play: [launch game](https://edmondsonedits.github.io/CALLBACK-ARCADE/games/space-bash/)
 
-A self-contained 2–10 contestant orbital brawler with aimed cargo throws, kicks, jumps and a destructible deck. Includes flight-school practice, volatile-cargo rules, gamepad aiming and persistent audio/access settings.
+A 2–10 contestant Canvas orbital brawler with four skill decks, real CPU title demos, crown matches, finite four-deck Series, map practice, seeded replay and persistent style, rules and access controls.
