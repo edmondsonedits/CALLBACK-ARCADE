@@ -1,0 +1,331 @@
+{
+ "simVersion": "1.2.1",
+ "node": "v22.22.0",
+ "v8": "12.4.254.21-node.33",
+ "rows": {
+  "keep-4-bots": {
+   "digest": "7effb8b5",
+   "events": 177,
+   "round": 2,
+   "phase": "fight",
+   "crowns": [
+    0,
+    0,
+    1,
+    0
+   ],
+   "matchWinner": -1
+  },
+  "keep-4-human0": {
+   "digest": "8ab99207",
+   "events": 182,
+   "round": 2,
+   "phase": "fight",
+   "crowns": [
+    0,
+    1,
+    0,
+    0
+   ],
+   "matchWinner": -1
+  },
+  "keep-8-mixed": {
+   "digest": "a8a9798d",
+   "events": 291,
+   "round": 1,
+   "phase": "fight",
+   "crowns": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "matchWinner": -1
+  },
+  "keep-2-legend": {
+   "digest": "ee602d91",
+   "events": 97,
+   "round": 2,
+   "phase": "fight",
+   "crowns": [
+    0,
+    1
+   ],
+   "matchWinner": -1
+  },
+  "floe-4-bots": {
+   "digest": "3cedd714",
+   "events": 187,
+   "round": 1,
+   "phase": "roundend",
+   "crowns": [
+    0,
+    0,
+    1,
+    0
+   ],
+   "matchWinner": -1
+  },
+  "floe-4-human0": {
+   "digest": "803365ea",
+   "events": 165,
+   "round": 3,
+   "phase": "fight",
+   "crowns": [
+    0,
+    0,
+    2,
+    0
+   ],
+   "matchWinner": -1
+  },
+  "floe-8-mixed": {
+   "digest": "4e83db25",
+   "events": 300,
+   "round": 1,
+   "phase": "roundend",
+   "crowns": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "matchWinner": -1
+  },
+  "floe-2-legend": {
+   "digest": "550c9999",
+   "events": 79,
+   "round": 3,
+   "phase": "fight",
+   "crowns": [
+    1,
+    1
+   ],
+   "matchWinner": -1
+  },
+  "plaza-4-bots": {
+   "digest": "52f38bdb",
+   "events": 209,
+   "round": 1,
+   "phase": "fight",
+   "crowns": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "matchWinner": -1
+  },
+  "plaza-4-human0": {
+   "digest": "4ca85ec5",
+   "events": 283,
+   "round": 2,
+   "phase": "intro",
+   "crowns": [
+    0,
+    0,
+    0,
+    1
+   ],
+   "matchWinner": -1
+  },
+  "plaza-8-mixed": {
+   "digest": "091e49e6",
+   "events": 394,
+   "round": 1,
+   "phase": "roundend",
+   "crowns": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ],
+   "matchWinner": -1
+  },
+  "plaza-2-legend": {
+   "digest": "075581fa",
+   "events": 91,
+   "round": 2,
+   "phase": "fight",
+   "crowns": [
+    0,
+    1
+   ],
+   "matchWinner": -1
+  },
+  "wharf-4-bots": {
+   "digest": "9e3c92c9",
+   "events": 147,
+   "round": 2,
+   "phase": "fight",
+   "crowns": [
+    0,
+    1,
+    0,
+    0
+   ],
+   "matchWinner": -1
+  },
+  "wharf-4-human0": {
+   "digest": "87190e55",
+   "events": 231,
+   "round": 2,
+   "phase": "fight",
+   "crowns": [
+    0,
+    1,
+    0,
+    0
+   ],
+   "matchWinner": -1
+  },
+  "wharf-8-mixed": {
+   "digest": "6b39037d",
+   "events": 293,
+   "round": 1,
+   "phase": "fight",
+   "crowns": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "matchWinner": -1
+  },
+  "wharf-2-legend": {
+   "digest": "8da747fe",
+   "events": 101,
+   "round": 3,
+   "phase": "fight",
+   "crowns": [
+    1,
+    1
+   ],
+   "matchWinner": -1
+  },
+  "teeter-4-bots": {
+   "digest": "cabefff8",
+   "events": 155,
+   "round": 1,
+   "phase": "roundend",
+   "crowns": [
+    0,
+    0,
+    1,
+    0
+   ],
+   "matchWinner": -1
+  },
+  "teeter-4-human0": {
+   "digest": "6c76be27",
+   "events": 172,
+   "round": 3,
+   "phase": "intro",
+   "crowns": [
+    0,
+    1,
+    0,
+    1
+   ],
+   "matchWinner": -1
+  },
+  "teeter-8-mixed": {
+   "digest": "3cc4806b",
+   "events": 188,
+   "round": 1,
+   "phase": "roundend",
+   "crowns": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "matchWinner": -1
+  },
+  "teeter-2-legend": {
+   "digest": "06f9fa0b",
+   "events": 106,
+   "round": 2,
+   "phase": "fight",
+   "crowns": [
+    1,
+    0
+   ],
+   "matchWinner": -1
+  },
+  "mesa-4-bots": {
+   "digest": "9eba15a9",
+   "events": 201,
+   "round": 1,
+   "phase": "roundend",
+   "crowns": [
+    0,
+    0,
+    1,
+    0
+   ],
+   "matchWinner": -1
+  },
+  "mesa-4-human0": {
+   "digest": "177bd2a3",
+   "events": 214,
+   "round": 2,
+   "phase": "fight",
+   "crowns": [
+    0,
+    1,
+    0,
+    0
+   ],
+   "matchWinner": -1
+  },
+  "mesa-8-mixed": {
+   "digest": "fe4317f7",
+   "events": 308,
+   "round": 2,
+   "phase": "countdown",
+   "crowns": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "matchWinner": -1
+  },
+  "mesa-2-legend": {
+   "digest": "f68af52d",
+   "events": 102,
+   "round": 2,
+   "phase": "roundend",
+   "crowns": [
+    0,
+    2
+   ],
+   "matchWinner": -1
+  }
+ }
+}

@@ -1,31 +1,9 @@
 # Assets and provenance
 
-## Bundled game assets
+The user supplied `royal_sumo_crownfall_v1.3.0.zip` and explicitly designated it as the true Royal Sumo. Its HTML, editable source, build tools and tests are preserved in this package.
 
-Royal Sumo v0.21 does **not** depend on external image, model, font, music or sound-effect asset files.
+The active v1.3.0 game generates its WebGL2 geometry, procedural visuals, CSS UI and Web Audio in code. It requires no external art, audio, font or runtime code downloads. No additional third-party assets were introduced by this import.
 
-The game-specific presentation is produced at runtime by its source code:
+The uploaded ZIP does not declare a separate redistribution license. Import authorization comes from the user's instruction; it is not a blanket third-party license assertion.
 
-- Three.js primitive/procedural geometry for the arena, castle environment and fighters.
-- Canvas-generated stone texture and text labels.
-- Procedural particles and impact rings.
-- Web Audio oscillator/noise effects.
-- CSS and system-font UI.
-
-These systems were developed as part of the Royal Sumo/Crownfall Arena work in this CALLBACK project and are retained in the imported source.
-
-## Third-party code dependency
-
-Three.js **r180 / 0.180.0** is vendored in `source/vendor/`:
-
-- `three.module.js`
-- `three.core.js`
-- `LICENSE-three.txt`
-
-Upstream: https://github.com/mrdoob/three.js/tree/r180
-
-License: MIT. The upstream copyright/license notice is preserved in the vendored build files and copied in `source/vendor/LICENSE-three.txt`.
-
-## Rights / intake note
-
-No third-party branded game art, characters, music, textures or copied proprietary source were added during this intake. Reference games informed design discussion only; the imported game's presentation uses its own procedural implementation.
+The older Three.js r180 files in `source/vendor/` and their MIT license are retained as historical material. They are not loaded by v1.3.0. The previous v0.21 source and v0.19 archive are not the current game.

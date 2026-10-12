@@ -5,7 +5,6 @@ import { readFile } from 'node:fs/promises';
 const games = [
   'royal-ballistix',
   'royal-scratch-match',
-  'royal-sumo',
   'royal-twisted',
   'royal-roller-ruckus',
   'space-bash',

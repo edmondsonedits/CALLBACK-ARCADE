@@ -1,88 +1,47 @@
-# Royal Sumo / Crownfall Arena
+# Royal Sumo — Crownfall
 
-Royal Sumo is a physics-party sumo game for **2–10 contestant slots**. The arena shrinks over time, fighters lose stability when hit, and the last fighter standing earns a crown. The first fighter to three crowns wins the match.
+The active game is **Royal Sumo: Crownfall v1.3.0**, explicitly designated by the user in `royal_sumo_crownfall_v1.3.0.zip`. `source/index.html` is the supplied standalone HTML, unchanged byte-for-byte. Older v0.21/v0.19 files are historical only.
 
-## Imported build
+Play: https://edmondsonedits.github.io/CALLBACK-ARCADE/games/royal-sumo/
 
-- Game version: **0.21.0**
-- Entry point: `source/index.html`
-- Exact chat-generated source: `source/original/royal_sumo_crownfall_v0.21_player_scaled_arena.html`
-- Rendering dependency: vendored **Three.js r180 / 0.180.0**, MIT licensed
-- Source status: imported
-- Multiplayer status: in progress, **not verified**
-- Contestant capacity: 2–10
-- Current standalone mode: one local human; remaining unclaimed slots are bots
+## Gameplay and controls
 
-The packaged entry preserves the v0.21 gameplay code. The only runtime-source change made during intake is replacing the pinned jsDelivr Three.js import with the vendored local copy.
+Knock rivals out of the arena with charged Bash and Dash. Play quick matches or Crown Cup across multiple arenas. There are **2–10 contestant slots**, filled by bots when unclaimed, with one or two local human players. The game supports touch, keyboards and gamepads.
 
-## Gameplay
+- Phone: drag on the left to move; hold BASH and release to strike; tap DASH.
+- Player 1: WASD, Space/J for Bash, Shift/K/L for Dash.
+- Player 2: arrows, Enter for Bash, Right Shift/period/Numpad0 for Dash.
+- Gamepad: stick, A/X for Bash, B/Y/RB/RT for Dash.
+- Escape/P pauses. Setup includes names, fighter looks and match options.
 
-Move around the circular arena, pressure opponents toward the rim, use Bash to commit to directional knockback, and use Dash for burst movement. Hits reduce stability. A fighter at zero stability enters the staged impact/limp/brace/rise knockout sequence and can still slide or be pushed out. The courtyard progressively contracts; larger matches receive a larger opening arena and later shrink timing.
+## Run and edit
 
-The game includes target-distributing bot AI, crowd separation for large matches, player-count-scaled arena pacing, impact tiers, procedural dummy animation, dynamic camera framing, synthesized audio/VFX, touch-safe mobile controls, and deterministic debug scenarios.
+Open `source/index.html` directly or serve it over HTTP. This is one offline file with no runtime downloads or external dependencies. It uses a custom WebGL2 renderer, not the previous Three.js runtime.
 
-## Local controls
+Editable modules, the original build tools, and the supplied tests are under `source/project/`. With Node 20 or newer:
 
-- **Move:** virtual thumbstick.
-- **Bash:** press and hold BASH to charge; release to lunge and strike.
-- **Dash:** tap DASH.
-- **Pause/settings:** top-right settings/pause control.
-- There is no keyboard gameplay control in the imported build.
+```sh
+cd games/royal-sumo/source/project
+node build.js --check
+node test/run.mjs
+node build.js
+```
 
-Pointer capture, `touch-action:none`, overscroll prevention and touch cancellation handling are retained.
+The build writes `dist/index.html`, a versioned HTML file and `build-info.json`. For a future intentional update, copy the newly built HTML to `../index.html`, update version/provenance/changelog and regenerate the repository catalog. Do not overwrite the preserved v1.3.0 original.
 
-## Run locally
+Useful editing locations in `source/project/src/`:
 
-Serve the repository over HTTP and open:
+- `core/tune.js`, `core/sim.js`, `core/ai.js`: movement, combat, simulation and bots.
+- `core/maps.js`, `gfx/gfx_maps*.js`: arena rules and presentation.
+- `core/slots.js`, `core/control.js`, `core/remote.js`: seating and input ownership.
+- `app/controls.js`, `app/ui.js`, `app/style.css`: inputs, menus and HUD.
+- `gfx/engine.js`, `gfx/gfx_core.js`, `gfx/gfx_fighter.js`: rendering and camera.
+- `core/versions.js`: separate build, simulation, protocol and save versions.
 
-`games/royal-sumo/source/index.html`
+Changing simulation behavior requires updating the simulation version and reviewing/updating golden results; see the supplied `source/project/RESUME.md` for source architecture context. Its previous-environment paths and prior verification claims are historical.
 
-The packaged entry has no runtime CDN dependency. Three.js is loaded from `source/vendor/`.
+## Integration and limitations
 
-## Tuning locations
+`window.RoyalSumo` exposes state, seeded scenarios, restarts, player ownership and remote input. See `integration/README.md`. These are in-process hooks: online rooms and phone networking are **not integrated or verified**. The import preserves the supplied game and its native UI; the old CALLBACK camera-code overlay is not grafted onto it.
 
-The main gameplay tuning blocks are inside the module script in `source/index.html`:
-
-- `MOVEMENT` — speed, response, grip and turning.
-- `BASH` — charge/lunge timing, force, hit window and recovery.
-- `CONTACT` — body collision response, friction and pushing.
-- `KNOCKDOWN` — impact, limp, brace and rise phases.
-- `AI_TUNING` / `AI_LEVELS` — targeting, edge behavior, attack discipline and crowd distribution.
-- `SHRINK` / `CROWD_ARENA` — arena contraction and player-count scaling.
-- `IMPACT_FEEDBACK` — hit-stop, shake, particles, audio and haptics.
-- `DUMMY` — procedural gait, limb lag and instability motion.
-- `CAMERA` — follow distance, look-ahead, group framing and FOV.
-- `HUD_TUNING` — stability/readiness thresholds.
-
-## Debug/state hooks
-
-The build exposes `window.RoyalSumo` and deterministic scenario hooks used during development. Use `window.RoyalSumo.getState()` for structured runtime state.
-
-Important scenarios include `tenplayers`, `crowdpressure`, `arena4` and `arena10` in addition to movement, Bash, collision, knockout, AI, impact, animation, camera and HUD cases.
-
-## Multiplayer direction
-
-The source already has 10 slots, bot filling, state access and imperative remote input hooks. It does **not** yet implement room codes, authenticated phone transport, server-issued seat credentials, protocol/schema enforcement, sequence rejection, reconnect, rate limiting, authoritative event recording or a production host/controller adapter.
-
-See `integration/README.md` for the exact hooks and the work still required by `docs/GAME_SDK.md`.
-
-## Assets and licensing
-
-See `assets/README.md`. Game-specific geometry, textures, labels, particles and audio are generated procedurally in source; no external art/audio asset pack is bundled. Three.js is vendored as code under its MIT license in `source/vendor/LICENSE-three.txt`.
-
-## Tests
-
-Run:
-
-`node games/royal-sumo/tests/source-smoke.mjs`
-
-Then run the repository checks required by the CALLBACK Arcade intake workflow.
-
-## Known issues / unverified areas
-
-- Online phone multiplayer is not implemented or verified.
-- Only slot 0 has the standalone on-screen controller; slots 1–9 currently require bots or calls through the remote-input API.
-- The current `sequence` value is stored but not enforced for duplicate/out-of-order rejection.
-- Bots do not yet flow through the future validated network action path required by the SDK.
-- Ten-player stress scenarios exist, but there is no recorded hardware benchmark or human playtest evidence in this repository.
-- Web Audio and vibration behavior varies by browser/device.
+See `assets/README.md` for provenance and `tests/README.md` for reproducible checks and verification scope. Physical-phone feel/haptics, audio by ear and physical gamepads require hardware checks.

@@ -1,34 +1,39 @@
-# Royal Sumo tests
+# Royal Sumo v1.3.0 verification
 
-## Automated source smoke check
+## Import verification (2026-10-12 UTC)
 
-Run from the repository root:
+- The active `source/index.html` exactly matches the HTML in the user-designated ZIP and its preserved copy under `source/original/`.
+- SHA-256: `86bcf200c457a9b3da5cb222bcd5e22a46cc95d229b98edf53354eb503589c7e`.
+- The supplied 25-module source rebuilds to that exact HTML without dependencies.
+- All **144 supplied deterministic unit tests passed**. These cover simulation golden results, ownership, local/remote input, seeds, Cup scoring, quality and other source behavior.
+- All **280 root repository tests passed**, including the import/build check and the supplied unit suite. Typecheck, catalog consistency, Pages build and Worker dry-run build passed.
+- The built Pages `/games/royal-sumo/index.html` is byte-identical to the supplied game.
 
-`node games/royal-sumo/tests/source-smoke.mjs`
+The root legacy camera-overlay and pause-marker tests apply to the previous builds of other games. Royal Sumo now keeps its own supplied camera/UI intact; its supplied behavioral tests are used instead of requiring old injected DOM markers.
 
-The check verifies the imported version, local vendored Three.js dependency, 10-player capacity, remote-input/state API presence, touch-scroll protections, original-source preservation and Three.js revision/license markers.
+## Reproduce
 
-This is a source/integration sanity check. It is **not** evidence that online multiplayer works and is not listed as verified multiplayer evidence.
+From the repository root:
 
-## Practical browser verification
+```sh
+node games/royal-sumo/tests/source-smoke.mjs
+node games/royal-sumo/source/project/test/run.mjs
+npm test
+npm run typecheck
+npm run catalog:check
+npm run pages:build
+npm run build
+```
 
-Serve the repository over HTTP and test `games/royal-sumo/source/index.html`.
+Browser scripts remain under `source/project/test/e2e/` unchanged. They need Python Playwright and Chromium. Set `RS_HTML` to the absolute path of `source/index.html` (otherwise build the project first). Example from `source/project/`:
 
-Verify:
+```sh
+RS_HTML=/absolute/path/to/games/royal-sumo/source/index.html python3 test/e2e/desk.py
+RS_HTML=/absolute/path/to/games/royal-sumo/source/index.html python3 test/e2e/touch.py
+```
 
-1. Default match starts with one local player and bots.
-2. Joystick movement, reversal and release/coasting feel unchanged.
-3. Hold/release Bash and tap Dash work with cooldown/readiness feedback.
-4. Body collisions, pushing, stability loss, knockout/recovery and falling work.
-5. Camera follow, edge framing and multi-fighter framing remain readable.
-6. Arena warning, shrinking, final-circle behavior and player-count scaling work.
-7. Fighter-count settings support every value from 2 through 10.
-8. A 10-fighter match produces distinct fighters, bots and a valid last-fighter-standing round result.
-9. Restart clears match crowns/state correctly.
-10. Mobile pointer cancellation and page-scroll locking remain intact.
-11. `?scenario=tenplayers`, `?scenario=crowdpressure`, `?scenario=arena4` and `?scenario=arena10` load without console errors.
-12. `window.RoyalSumo.getState()` returns structured state.
+## Browser/hardware scope
 
-## Repository checks
+The local Chromium attempt was blocked before game startup by the review environment (`socket() failed: Operation not permitted`). The supplied desktop/touch scripts therefore have **not passed in this environment**; the original package's historical claims are not new evidence.
 
-After manifest changes, regenerate/check the catalog and run the root test/type/build checks required by the repository. Catalog checks are not human gameplay verification.
+Physical-phone touch feel/haptics, sound by ear and physical gamepads remain unverified. None of these checks establish online phone multiplayer; the game still has only in-process remote hooks.

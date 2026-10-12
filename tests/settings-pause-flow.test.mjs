@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises';
 
 const read=id=>readFile(new URL(`../games/${id}/source/index.html`,import.meta.url),'utf8');
 
-for (const id of ['royal-ballistix','royal-sumo','royal-twisted','royal-roller-ruckus','space-bash']) {
+for (const id of ['royal-ballistix','royal-twisted','royal-roller-ruckus','space-bash']) {
   test(`${id} settings stay paused until an explicit resume`, async()=>{
     const source=await read(id);
     assert.match(source,/data-pause-flow="manual-resume"/);
@@ -12,8 +12,8 @@ for (const id of ['royal-ballistix','royal-sumo','royal-twisted','royal-roller-r
   });
 }
 
-test('Sumo and Twisted do not stack the pause overlay over settings', async()=>{
-  for (const id of ['royal-sumo','royal-twisted']) {
+test('Twisted does not stack the pause overlay over settings', async()=>{
+  for (const id of ['royal-twisted']) {
     const source=await read(id);
     assert.doesNotMatch(source,/settingsBtn\.addEventListener\("click",\(\)=>\{settingsModal\.classList\.add\("open"\);togglePause\(true\)/);
   }

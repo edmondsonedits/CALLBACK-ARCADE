@@ -12,7 +12,7 @@ test('Pages build publishes every imported game at a clean /games/<id>/ path',as
   const run=spawnSync(process.execPath,['scripts/build-pages.mjs'],{cwd:process.cwd(),env:{...process.env,PAGES_OUTPUT_DIR:out},encoding:'utf8'});
   assert.equal(run.status,0,run.stderr||run.stdout);
   for(const id of games) await access(join(out,'games',id,'index.html'));
-  await access(join(out,'games','royal-sumo','vendor','three.module.js'));
+  assert.deepEqual(await readFile(join(out,'games','royal-sumo','index.html')),await readFile('games/royal-sumo/source/original/royal_sumo_crownfall_v1.3.0.html'));
   await access(join(out,'catalog','games.json'));
   await access(join(out,'.nojekyll'));
 });

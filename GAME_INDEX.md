@@ -46,16 +46,16 @@ A 2–10 racer momentum-driven cage race around the vertical Crownway Circuit wi
 
 Imported v0.5 standalone call-and-response rhythm game for 2–10 contestant slots. One local touch/keyboard player is supported by default, remaining slots can be bot-controlled, and additional human slots can receive inputs through the existing JavaScript API. Room-code phone multiplayer is not yet integrated.
 
-## Royal Sumo
+## Royal Sumo — Crownfall
 
 - ID: `royal-sumo` ([manifest](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-sumo/manifest.json), [game guide](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-sumo/README.md))
 - Status: imported; multiplayer in-progress
 - Players: 2–10
-- Version: 0.21.0
-- Source: [source/index.html](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-sumo/source/index.html), [source/original/royal_sumo_crownfall_v0.21_player_scaled_arena.html](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-sumo/source/original/royal_sumo_crownfall_v0.21_player_scaled_arena.html), [source/vendor/three.module.js](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-sumo/source/vendor/three.module.js), [source/vendor/three.core.js](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-sumo/source/vendor/three.core.js)
+- Version: 1.3.0
+- Source: [source/index.html](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-sumo/source/index.html), [source/original/royal_sumo_crownfall_v1.3.0.html](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-sumo/source/original/royal_sumo_crownfall_v1.3.0.html), [source/project/src/app/main.js](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-sumo/source/project/src/app/main.js)
 - Play: [launch game](https://edmondsonedits.github.io/CALLBACK-ARCADE/games/royal-sumo/)
 
-A 2–10 fighter shrinking-arena physics sumo game with Bash, Dash, stability, knockouts, dynamic camera work and bot-filled contestant slots. The standalone v0.21 source is imported; online phone-room transport is not yet implemented.
+The user-designated Royal Sumo: Crownfall v1.3.0: a self-contained 3D sumo game for 2–10 contestant slots with charged Bash, Dash, bots, multiple arenas and Crown Cup. Supports touch, keyboard, gamepads and two local players. Remote seat/input hooks are included; online phone-room transport is not integrated.
 
 ## Royal Twisted — Spiral Keep
 

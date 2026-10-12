@@ -1,0 +1,17 @@
+{
+  "name": "royal-sumo-crownfall",
+  "version": "1.3.0",
+  "private": true,
+  "type": "module",
+  "description": "Royal Sumo: Crownfall - mobile-first 3D sumo party game. ES-module sources, compiled to ONE offline HTML file by build.js (no dependencies).",
+  "scripts": {
+    "build": "node build.js",
+    "check": "node build.js --check",
+    "test": "node test/run.mjs",
+    "golden:update": "node test/unit/golden.test.js --update",
+    "test:e2e": "python3 test/e2e/smoke.py && python3 test/e2e/regress.py"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

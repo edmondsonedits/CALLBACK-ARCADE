@@ -1,26 +1,58 @@
 {
   "id": "royal-sumo",
-  "title": "Royal Sumo",
-  "aliases": ["Sumo", "Royal Sumo Crownfall", "Crownfall Arena"],
-  "tags": ["arena", "physics", "sumo", "arcade", "party", "bots", "three-js"],
-  "description": "A 2–10 fighter shrinking-arena physics sumo game with Bash, Dash, stability, knockouts, dynamic camera work and bot-filled contestant slots. The standalone v0.21 source is imported; online phone-room transport is not yet implemented.",
-  "players": { "min": 2, "max": 10 },
-  "version": "0.21.0",
+  "title": "Royal Sumo — Crownfall",
+  "aliases": [
+    "Sumo",
+    "Royal Sumo Crownfall",
+    "Crownfall Arena"
+  ],
+  "tags": [
+    "arena",
+    "physics",
+    "sumo",
+    "arcade",
+    "party",
+    "bots",
+    "webgl",
+    "offline"
+  ],
+  "description": "The user-designated Royal Sumo: Crownfall v1.3.0: a self-contained 3D sumo game for 2–10 contestant slots with charged Bash, Dash, bots, multiple arenas and Crown Cup. Supports touch, keyboard, gamepads and two local players. Remote seat/input hooks are included; online phone-room transport is not integrated.",
+  "players": {
+    "min": 2,
+    "max": 10
+  },
+  "version": "1.3.0",
   "controls": {
-    "local": ["virtual joystick", "hold/release Bash", "tap Dash", "pause/settings"],
-    "remoteHooks": ["moveX/moveY", "bashPressed/bashCharge", "dashPressed", "sequence"]
+    "local": [
+      "touch drag to move",
+      "hold/release Bash",
+      "tap Dash",
+      "WASD / Space or J / Shift or K or L",
+      "second player: arrows / Enter / Right Shift or period or Numpad0",
+      "gamepad stick / A or X / B or Y or RB or RT",
+      "Escape or P to pause"
+    ],
+    "remoteHooks": [
+      "setHumanSlot / setOwner",
+      "moveX/moveY or mx/mz",
+      "bashDown or bashPressed/bashCharge",
+      "dashPressed",
+      "optional sequence"
+    ]
   },
   "source": {
     "status": "imported",
     "paths": [
       "source/index.html",
-      "source/original/royal_sumo_crownfall_v0.21_player_scaled_arena.html",
-      "source/vendor/three.module.js",
-      "source/vendor/three.core.js"
+      "source/original/royal_sumo_crownfall_v1.3.0.html",
+      "source/project/src/app/main.js"
     ],
-    "provenance": "Royal Sumo/Crownfall Arena v0.21.0 was developed in the user's ChatGPT CALLBACK project. The exact generated standalone HTML is retained under source/original/. source/index.html differs only by replacing the pinned Three.js 0.180.0 CDN import with the vendored Three.js r180 MIT-licensed build in source/vendor/.",
+    "provenance": "User supplied royal_sumo_crownfall_v1.3.0.zip and explicitly designated it as the true Royal Sumo. The active source/index.html and source/original/royal_sumo_crownfall_v1.3.0.html preserve the supplied HTML byte-for-byte. Editable modules, build tools and tests are preserved under source/project/. Older v0.21 and v0.19 material remains historical only. No runtime third-party dependencies are required by v1.3.0.",
     "url": null
   },
   "lifecycle": "experimental",
-  "multiplayer": { "status": "in-progress", "evidence": [] }
+  "multiplayer": {
+    "status": "in-progress",
+    "evidence": []
+  }
 }

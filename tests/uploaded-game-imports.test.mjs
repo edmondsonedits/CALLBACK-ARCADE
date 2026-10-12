@@ -30,5 +30,5 @@ test('older uploaded builds are archived rather than promoted over newer version
   assert.match(await read('games/royal-twisted/source/archive/royal_twisted_spiral_keep_v0.4_ten_players.html'),/0\.4\.0-ten-player-arena/);
   assert.match(await read('games/royal-sumo/source/archive/royal_sumo_crownfall_v0.19_10players.html'),/0\.19\.0-crownfall/);
   const currentSumo=JSON.parse(await read('games/royal-sumo/manifest.json'));
-  assert.equal(currentSumo.version,'0.21.0');
+  assert.equal(currentSumo.version,'1.3.0');
 });

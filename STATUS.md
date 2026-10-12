@@ -6,7 +6,7 @@ The repository now contains seven imported arcade game packages with runnable `s
 - **Royal Ballistix — Beach Siege v0.12.1** — contact/input/lifecycle and landscape quality revision; independent automated checks recorded. Supported browser verification is blocked by the review container sandbox; physical-phone and audio-by-ear checks remain pending; multiplayer not integrated.
 - **Royal Roller Ruckus — Crownway Circuit v1.4.0** — imported; CALLBACK input hooks exist; multiplayer in progress.
 - **Royal Scratch Match v0.5.0** — imported; multiplayer not integrated.
-- **Royal Sumo v0.21.0** — imported; remote input hooks exist; multiplayer in progress. The later-supplied v0.19 file is retained as an archive and does not replace v0.21.
+- **Royal Sumo — Crownfall v1.3.0** — the user-designated ZIP is now the active, byte-identical standalone game. Editable source and tests are included. Touch, keyboard, gamepads, two local players and bots are supported; online phone-room transport remains unimplemented. Older v0.21/v0.19 material is historical only.
 - **Royal Twisted — Spiral Keep v0.5.0** — imported; remote input hooks exist; multiplayer in progress. The supplied v0.4 build is retained as an archive.
 - **Space Bash — Orbital Breakout v1.13.1** — imported as a self-contained standalone build; multiplayer not integrated.
 
