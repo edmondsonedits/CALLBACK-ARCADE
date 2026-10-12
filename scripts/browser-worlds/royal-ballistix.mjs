@@ -2,6 +2,7 @@ export const ballistix={
  id:'royal-ballistix',entry:'games/royal-ballistix/source/index.html',
  async exercise({page,check,capture,profile}) {
   const state=()=>page.evaluate(()=>window.RoyalBallistix.getState());
+  const cueLayout=()=>page.evaluate(()=>{const cue=document.querySelector('#arenaCue'),roster=document.querySelector('#roster'),a=cue.getBoundingClientRect(),b=roster.getBoundingClientRect();return{overlap:a.left<b.right&&a.right>b.left&&a.top<b.bottom&&a.bottom>b.top,clipped:cue.scrollWidth>cue.clientWidth+1,inside:a.left>=0&&a.right<=innerWidth+1,top:a.top,rosterBottom:b.bottom,height:a.height}});
   await page.locator('#menuOv.open').waitFor();
   await page.waitForFunction(()=>window.RoyalBallistix?.getState().demo===true);
   check('title runs a real demo',(await state()).demo===true);
@@ -43,6 +44,8 @@ export const ballistix={
    check(`${arena}: starts the selected real court`,started.arena===arena&&started.demo===false,{arena:started.arena,demo:started.demo});
    await page.waitForTimeout(3600);
    await capture(`${arena}-play`);
+   const cue=await cueLayout();
+   check(`${arena}: hazard cue fits without covering standings`,!cue.overlap&&!cue.clipped&&cue.inside,cue);
    const controlBounds=await page.locator('#track,#magnet,#pulse').evaluateAll(els=>els.map(el=>{const r=el.getBoundingClientRect();return{id:el.id,x:r.x,y:r.y,w:r.width,h:r.height,visible:getComputedStyle(el).display!=='none'&&r.width>0,inside:r.x>=-1&&r.y>=-1&&r.right<=innerWidth+1&&r.bottom<=innerHeight+1}}));
    check(`${arena}: active controls fit viewport`,controlBounds.every(r=>!r.visible||r.inside),controlBounds);
    await page.locator('#pause').click();await page.locator('#pauseOv.open').waitFor();
@@ -61,6 +64,8 @@ export const ballistix={
   const tour=await state();
   check('Tour starts a fresh four-court session',tour.mode==='tour'&&tour.tour?.index===0&&tour.tour?.maps.length===4,tour.tour);
   await capture('tour-start');
+  const tourCue=await cueLayout();
+  check('Tour cue fits without covering standings',!tourCue.overlap&&!tourCue.clipped&&tourCue.inside,tourCue);
   check('native settings controls available',await page.locator('#settingsOv input,#settingsOv select').count()>=12);
  }
 };

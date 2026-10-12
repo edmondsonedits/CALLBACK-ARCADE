@@ -1,6 +1,6 @@
 # Task 1 — Ballistix worlds and mastery
 
-Implementation commit: `aa19bc7` (`feat(ballistix): add four physical courts, live exhibition and mastery tour`). Build `0.14.0-worlds`. Final standalone SHA-256: `2b33e11ec4662e5fa2452aba9207531faa8e6bba5bef717780e6f4a95a296015`. Parent-owned catalog refresh and subsequent browser review are separate work.
+Implementation commit: `aa19bc7` (`feat(ballistix): add four physical courts, live exhibition and mastery tour`). Build `0.14.0-worlds`. Final standalone SHA-256: `bfb1502a133a0200adc2c4df9478c5dcdca1592d2f72ca3664aca663a6b2161d`. Parent-owned catalog refresh and subsequent browser review are separate work.
 
 ## Delivered behavior
 
@@ -98,3 +98,23 @@ node --test tests/royal-ballistix-import.test.mjs tests/royal-ballistix-mobile-u
 ```
 
 Exact final summary: **89 tests, 89 passed, 0 failed, 0 cancelled, 0 skipped, 0 todo**. Current output is stored in `games/royal-ballistix/tests/evidence/worlds-focused-tests.txt`; the worlds suite now contains 19 tests. Manifest/provenance/evidence hashes were refreshed to the source hash at the top of this report. The earlier 402-test repository run predates these review fixes; the parent owns the next browser and repository gate, including an actual typed-name browser check. No additional source changes were made beyond the three reviewed findings. Workflow finding 4 was separately fixed in commit `0a4ad8d`.
+
+## Visual review round 2 — portrait cue layout
+
+Parent’s exact-source CI passed 114 behavioral checks, but inspection of `royal-ballistix-portrait-clockwork-play.png` and `royal-ballistix-portrait-tour-start.png` in the third browser capture revealed concrete rendered failures: the fixed 123px arena cue covered the third roster row at 390×844 with ten seats, and nowrap Tour intro text overflowed the right edge. This worker inspected those images plus desktop/landscape references before changing layout.
+
+The active cue now uses the actual roster bottom as a minimum boundary. In portrait, it sits below the court with clearance from its gates; in wider views, it occupies free space to the left of the court, below the roster. Its width is bounded to the viewport, text wraps, and countdown text uses concise court-specific skill wording while retaining court index/time. The title demo keeps its centered top cue. No simulation or other HUD behavior changed. Style writes only occur when the computed cue geometry changes.
+
+Two narrow layout regressions cover a three-row roster, court clearance, wide free-margin placement, bounded width, retained Tour labels and demo-anchor restoration. The owned harness now accepts initial viewport dimensions explicitly; this avoids pretending that changing a sandbox property updates a primitive already bound into the evaluated script. Both new tests initially failed before the implementation, then passed with the fix.
+
+```sh
+node --test --test-name-pattern='visual review:' tests/royal-ballistix-worlds.test.mjs
+```
+
+**2 tests, 2 passed, 0 failed.**
+
+```sh
+node --test tests/royal-ballistix-import.test.mjs tests/royal-ballistix-mobile-ui.test.mjs tests/royal-ballistix-quality.test.mjs tests/royal-ballistix-sumo-benchmark.test.mjs tests/royal-ballistix-worlds.test.mjs
+```
+
+**91 tests, 91 passed, 0 failed, 0 cancelled, 0 skipped, 0 todo.** Updated exact output is in `worlds-focused-tests.txt`; worlds coverage is now 21 tests. Source hashes were refreshed in manifest/provenance/evidence and at the top of this report. Parent is adding actual DOM bounding/scroll-width assertions and owns the fresh exact-source screenshot rerun/review. The layout fix is not claimed visually accepted until those new images are inspected.

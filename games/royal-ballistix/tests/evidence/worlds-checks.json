@@ -1,9 +1,9 @@
 {
   "build": "0.14.0-worlds",
   "date": "2026-10-12",
-  "sourceSha256": "2b33e11ec4662e5fa2452aba9207531faa8e6bba5bef717780e6f4a95a296015",
-  "focusedTests": 89,
-  "worldsTests": 19,
+  "sourceSha256": "bfb1502a133a0200adc2c4df9478c5dcdca1592d2f72ca3664aca663a6b2161d",
+  "focusedTests": 91,
+  "worldsTests": 21,
   "assets": "../../source/assets/provenance.json",
   "report": "../../../../docs/quality/worlds-2026-10-12/task-1-report.md",
   "browserVisualQA": "Parent responsibility; not asserted by Node tests",
@@ -11,7 +11,7 @@
   "regression": {
     "passed": 402,
     "command": "npm test",
-    "note": "402 passed before review round 1; current source verified by all 89 focused tests. Parent owns the next repository/browser rerun."
+    "note": "402 passed before review round 1; latest visual fix source verified by all 91 focused tests. Parent owns repository/browser rerun."
   },
   "reviewRound1": {
     "reproductionsBefore": {
@@ -31,5 +31,16 @@
       "Demo-held feedback on Start",
       "Native name editing buffer"
     ]
+  },
+  "visualReviewRound2": {
+    "layoutReproductions": {
+      "passed": 2,
+      "failed": 0
+    },
+    "focused": {
+      "passed": 91,
+      "failed": 0
+    },
+    "browserScreenshotReview": "Pending fresh exact-source CI screenshots; prior portrait screenshots reproduced roster overlap and cue overflow."
   }
 }
