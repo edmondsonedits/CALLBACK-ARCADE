@@ -16,3 +16,9 @@ jobs:
       - run: npm run typecheck
       - run: npm run catalog:check
       - run: npm run build
+      - name: Verify Royal Sumo source and phone rooms
+        run: |
+          npm ci --prefix games/royal-sumo/server
+          node games/royal-sumo/source/project/test/run.mjs
+          node games/royal-sumo/tests/source-smoke.mjs
+          npm run deploy:production --prefix games/royal-sumo/server -- --dry-run

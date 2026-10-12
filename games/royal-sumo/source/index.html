@@ -371,7 +371,7 @@ input[type=range]:focus-visible{outline:3px solid var(--cyan);outline-offset:2px
 .pk-s:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
 .pk-auto{grid-column:span 2;aspect-ratio:auto;border-radius:.8em;font-size:.62em;font-weight:900;letter-spacing:.1em;text-transform:uppercase;background:var(--p5);border:3px solid var(--ink)}
 .pk-auto.on{background:var(--gold);color:#3a1d00;box-shadow:none}
-</style></head><body>
+</style></head><body data-pause-flow="manual-resume">
 <canvas id="game" tabindex="-1"></canvas><div id="ui"></div><div id="flash"></div>
 <script>
 'use strict';
@@ -6039,5 +6039,166 @@ window.RoyalSumo=API;
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
 })();
 })();
+})();
+</script><script id="callback-camera-adapter">
+(()=>{
+/* CALLBACK shared camera controls */
+const callbackCameraState={rotate:0,zoom:1,tilt:0};
+function callbackCameraClamp(v,a,b){return Math.max(a,Math.min(b,v))}
+// Camera preferences are applied around the renderer call and restored afterwards.
+// The imported simulation, input routing and source modules remain unchanged.
+function callbackCameraAdapter(){}
+function installRendererAdapter(){
+  const renderer=window.RoyalSumo.debug.renderer();
+  const update=renderer.updateCamera;
+  renderer.updateCamera=function(dt,sim,focus){
+    const c=this.cam, yaw=c.yaw, zoom=c.zoomPref, pitch=c.pitchPref;
+    const basePitch=(this.aspect||1)<.85?.95:.86;
+    c.yaw=yaw+callbackCameraState.rotate*Math.PI/180;
+    c.zoomPref=zoom/callbackCameraState.zoom;
+    c.pitchPref=callbackCameraClamp(basePitch*pitch+callbackCameraState.tilt*Math.PI/180,.2,1.5)/basePitch;
+    try{return update.call(this,dt,sim,focus)}
+    finally{c.yaw=yaw;c.zoomPref=zoom;c.pitchPref=pitch}
+  };
+}
+function callbackCameraCode(){
+  const r=Math.round(callbackCameraState.rotate+180).toString(36).toUpperCase();
+  const z=Math.round(callbackCameraState.zoom*100).toString(36).toUpperCase();
+  const t=Math.round(callbackCameraState.tilt+35).toString(36).toUpperCase();
+  return "CAM-"+r+"-"+z+"-"+t;
+}
+function callbackCameraSync(){
+  const r=document.querySelector('[data-camera-control="rotate"]'),z=document.querySelector('[data-camera-control="zoom"]'),t=document.querySelector('[data-camera-control="tilt"]');
+  if(r)r.value=String(Math.round(callbackCameraState.rotate));
+  if(z)z.value=String(Math.round(callbackCameraState.zoom*100));
+  if(t)t.value=String(Math.round(callbackCameraState.tilt));
+  const rv=document.querySelector('[data-camera-value="rotate"]'),zv=document.querySelector('[data-camera-value="zoom"]'),tv=document.querySelector('[data-camera-value="tilt"]');
+  if(rv)rv.textContent=Math.round(callbackCameraState.rotate)+"°";
+  if(zv)zv.textContent=Math.round(callbackCameraState.zoom*100)+"%";
+  if(tv)tv.textContent=Math.round(callbackCameraState.tilt)+"°";
+}
+function callbackCameraApply(){callbackCameraAdapter(callbackCameraState);callbackCameraSync()}
+function callbackCameraSet(next){
+  if(next&&Number.isFinite(Number(next.rotate)))callbackCameraState.rotate=callbackCameraClamp(Number(next.rotate),-180,180);
+  if(next&&Number.isFinite(Number(next.zoom)))callbackCameraState.zoom=callbackCameraClamp(Number(next.zoom),.6,1.8);
+  if(next&&Number.isFinite(Number(next.tilt)))callbackCameraState.tilt=callbackCameraClamp(Number(next.tilt),-35,35);
+  callbackCameraApply();return {...callbackCameraState};
+}
+function callbackCameraLoad(code,persist=true){
+  const m=/^CAM-([0-9A-Z]+)-([0-9A-Z]+)-([0-9A-Z]+)$/i.exec(String(code||"").trim());
+  if(!m)return false;
+  const rotate=parseInt(m[1],36)-180,zoom=parseInt(m[2],36)/100,tilt=parseInt(m[3],36)-35;
+  if(!Number.isFinite(rotate)||!Number.isFinite(zoom)||!Number.isFinite(tilt)||rotate<-180||rotate>180||zoom<.6||zoom>1.8||tilt<-35||tilt>35)return false;
+  callbackCameraSet({rotate,zoom,tilt});
+  if(persist)try{localStorage.setItem("callback-camera:royal-sumo",callbackCameraCode())}catch{}
+  return true;
+}
+function callbackCameraSave(){
+  const code=callbackCameraCode();
+  try{localStorage.setItem("callback-camera:royal-sumo",code)}catch{}
+  const box=document.querySelector("[data-camera-code]");if(box)box.value=code;
+  const status=document.querySelector("[data-camera-status]");if(status)status.textContent="Saved "+code;
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(code).then(()=>{if(status)status.textContent="Saved + copied "+code}).catch(()=>{});
+  return code;
+}
+function callbackCameraReset(){callbackCameraSet({rotate:0,zoom:1,tilt:0});const status=document.querySelector("[data-camera-status]");if(status)status.textContent="Camera reset to game default."}
+function callbackCameraInstall(){
+  if(document.getElementById("callbackCameraPanel"))return;
+  const style=document.createElement("style");
+  style.textContent=".callback-camera-back{position:fixed;inset:0;display:none;place-items:center;padding:18px;background:#02060bb8;z-index:10000;pointer-events:auto}.callback-camera-back.open{display:grid}.callback-camera-card{width:min(94vw,470px);max-height:88vh;overflow:auto;padding:20px;border-radius:22px;border:1px solid #ffffff2b;background:#0b1725f7;color:#fff;box-shadow:0 24px 80px #000a;font-family:Inter,system-ui,sans-serif}.callback-camera-card h2{margin:0 0 6px}.callback-camera-card p{margin:0 0 14px;color:#b9cbd1;font-size:12px;line-height:1.4}.callback-camera-row{display:grid;grid-template-columns:94px 1fr 52px;gap:10px;align-items:center;padding:9px 0;border-top:1px solid #ffffff17}.callback-camera-row input[type=range]{width:100%;accent-color:#f2c85f}.callback-camera-row b{text-align:right;font-size:12px}.callback-camera-code{display:grid;grid-template-columns:1fr auto;gap:8px;margin-top:12px}.callback-camera-code input{min-width:0;height:42px;border-radius:10px;border:1px solid #ffffff28;background:#06111d;color:#fff;padding:0 10px;font:800 13px ui-monospace,monospace;text-transform:uppercase}.callback-camera-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}.callback-camera-actions button,.callback-camera-launch{min-height:42px;border-radius:11px;border:1px solid #ffffff2a;background:#173247;color:#fff;padding:0 12px;font:800 12px system-ui}.callback-camera-actions .primary{border-color:#f2c85f66;background:#5b451c}.callback-camera-status{min-height:18px;margin-top:8px;color:#f2d786;font-size:11px}.callback-camera-setting{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:10px 0;border-top:1px solid #ffffff18}.callback-camera-setting small{display:block;color:#aebfca;font-size:9px;margin-top:2px}@media(max-width:420px){.callback-camera-row{grid-template-columns:72px 1fr 46px}.callback-camera-card{padding:16px}}";
+  document.head.appendChild(style);
+  const panel=document.createElement("div");panel.id="callbackCameraPanel";panel.className="callback-camera-back";
+  panel.innerHTML='<div class="callback-camera-card" role="dialog" aria-modal="true" aria-label="Camera controls"><h2>Camera Controls</h2><p>Adjust the view without changing game physics. Your current setup can be saved as a reusable camera code.</p><div class="callback-camera-row"><label>Rotate</label><input data-camera-control="rotate" type="range" min="-180" max="180" step="1" value="0"><b data-camera-value="rotate">0°</b></div><div class="callback-camera-row"><label>Zoom</label><input data-camera-control="zoom" type="range" min="60" max="180" step="1" value="100"><b data-camera-value="zoom">100%</b></div><div class="callback-camera-row"><label>Tilt</label><input data-camera-control="tilt" type="range" min="-35" max="35" step="1" value="0"><b data-camera-value="tilt">0°</b></div><div class="callback-camera-code"><input data-camera-code aria-label="Camera save code" placeholder="CAM-..." autocomplete="off" spellcheck="false"><button data-camera-action="load" type="button">Load Code</button></div><div class="callback-camera-actions"><button data-camera-action="reset" type="button">Reset Camera</button><button data-camera-action="save" class="primary" type="button">Save Code</button></div><div class="callback-camera-actions"><button data-camera-action="close" type="button" style="grid-column:1/-1">Close</button></div><div class="callback-camera-status" data-camera-status aria-live="polite"></div></div>';
+  document.body.appendChild(panel);
+  const launcher=document.createElement("button");launcher.type="button";launcher.className="callback-camera-launch";launcher.textContent="📷 Camera";launcher.setAttribute("aria-label","Open camera controls");
+  const host=document.querySelector('[data-ovl="settings"] .st-card');
+  if(host){
+    if(host.classList.contains("topbar")){
+      launcher.classList.add("pill");launcher.textContent="📷";launcher.title="Camera";host.appendChild(launcher);
+    }else{
+      const row=document.createElement("div");row.className="callback-camera-setting";row.innerHTML="<div><strong>Camera</strong><small>Rotate, zoom, tilt and save camera codes</small></div>";row.appendChild(launcher);
+      const buttons=host.querySelector(".st-foot");host.insertBefore(row,buttons||null);
+    }
+  }else{launcher.style.position="fixed";launcher.style.top="64px";launcher.style.right="8px";launcher.style.zIndex="9000";document.body.appendChild(launcher)}
+  launcher.addEventListener("click",()=>{panel.classList.add("open");callbackCameraSync();const box=panel.querySelector("[data-camera-code]");if(box&&!box.value)box.value=callbackCameraCode()});
+  panel.querySelector('[data-camera-action="close"]').addEventListener("click",()=>panel.classList.remove("open"));
+  panel.addEventListener("pointerdown",e=>{if(e.target===panel)panel.classList.remove("open")});
+  panel.querySelectorAll("[data-camera-control]").forEach(el=>el.addEventListener("input",()=>{
+    if(el.dataset.cameraControl==="rotate")callbackCameraSet({rotate:Number(el.value)});
+    else if(el.dataset.cameraControl==="zoom")callbackCameraSet({zoom:Number(el.value)/100});
+    else callbackCameraSet({tilt:Number(el.value)});
+  }));
+  panel.querySelector('[data-camera-action="reset"]').addEventListener("click",callbackCameraReset);
+  panel.querySelector('[data-camera-action="save"]').addEventListener("click",callbackCameraSave);
+  panel.querySelector('[data-camera-action="load"]').addEventListener("click",()=>{
+    const box=panel.querySelector("[data-camera-code]"),status=panel.querySelector("[data-camera-status]");
+    if(callbackCameraLoad(box.value,true)){box.value=callbackCameraCode();status.textContent="Loaded "+box.value}else status.textContent="That camera code is not valid.";
+  });
+  try{const saved=localStorage.getItem("callback-camera:royal-sumo");if(saved)callbackCameraLoad(saved,false);else callbackCameraApply()}catch{callbackCameraApply()}
+}
+window.CallbackCamera={get:()=>({...callbackCameraState}),set:callbackCameraSet,reset:callbackCameraReset,code:callbackCameraCode,save:callbackCameraSave,load:callbackCameraLoad};
+function install(){
+  installRendererAdapter();callbackCameraInstall();
+  const resume=document.querySelector('[data-ovl="pause"] button');
+  if(resume)resume.setAttribute('data-resume-game','');
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install);else install();
+
+})();
+</script><script id="sumo-online-adapter">
+(()=>{
+'use strict';
+const api=window.RoyalSumo;let socket=null,base='',room=null,roster=[],lastSeq=new Map(),oldSeats=[],retry=null,timer=null,closing=false,ready=false,lastPlayable=null;
+const style=document.createElement('style');style.textContent=`.so-launch{position:fixed;right:12px;bottom:12px;z-index:40;border:2px solid #ffe294;border-radius:14px;background:#392058;color:#fff4d6;padding:10px 15px;font:bold 14px system-ui;cursor:pointer}.so-dialog{position:fixed;inset:0;z-index:11000;background:#150a26e8;color:#fff4d6;display:grid;place-items:center;padding:16px;font:16px system-ui}.so-dialog[hidden]{display:none}.so-card{width:min(460px,100%);max-height:90dvh;overflow:auto;background:#2b1844;border:2px solid #ffcf53;border-radius:24px;padding:24px;box-sizing:border-box}.so-card h2{margin:0 0 12px}.so-card button,.so-card a{display:inline-block;background:#ffcf53;color:#251330;border:0;border-radius:12px;padding:12px 16px;margin:5px 3px;font:700 15px system-ui;cursor:pointer}.so-card button:disabled{opacity:.45;cursor:wait}.so-code{font:bold 38px ui-monospace;letter-spacing:5px;margin:12px 0}.so-link{overflow-wrap:anywhere;font-size:13px}.so-roster{padding-left:20px;line-height:1.7}.so-message{line-height:1.45;min-height:24px}.so-row{display:flex;gap:8px;align-items:center;margin:16px 0}.so-small{font-size:13px;opacity:.8}`;document.head.append(style);
+const launch=document.createElement('button');launch.className='so-launch';launch.textContent='Phone players';launch.type='button';document.body.append(launch);
+const modal=document.createElement('div');modal.className='so-dialog';modal.hidden=true;modal.innerHTML='<section class="so-card" role="dialog" aria-modal="true" aria-label="Phone players"><h2>Phone players</h2><p class="so-message" role="status">Use your phones to join this screen.</p><label class="so-row"><input id="so-tv" type="checkbox"> TV only · everyone uses a phone</label><button id="so-create">Create room</button><div id="so-info" hidden><div class="so-code"></div><p class="so-link"></p><button id="so-copy">Copy join link</button><ul class="so-roster"></ul><p class="so-small">Each phone replaces a bot. Keep this screen open.</p><button id="so-start">Play / Resume</button><button id="so-end">End room</button></div><button id="so-close">Close</button></section>';document.body.append(modal);
+const $=s=>modal.querySelector(s),message=t=>$('.so-message').textContent=t;
+function pause(){if(api.debug.stats().mode==='game'&&!api.debug.stats().paused)document.querySelector('.hud-pause')?.click();clearRemoteInputs()}
+function clearRemoteInputs(){for(const p of roster)if(api.multiplayer.getSlots()[p.seat]?.owner==='remote')api.multiplayer.setOwner(p.seat,'remote')}
+function roomKey(){return 'royalSumo.onlineHost:'+base}
+function neutral(seat){api.multiplayer.submitInput(seat,{moveX:0,moveY:0,bashDown:false});api.multiplayer.setOwner(seat,'bot')}
+function restore(){for(const p of oldSeats)api.multiplayer.setOwner(p.id,p.owner,{device:p.device});oldSeats=[]}
+function showRoster(){const ul=$('.so-roster');ul.replaceChildren();for(const p of roster){const li=document.createElement('li');li.textContent=`${p.name} · P${p.seat+1} · ${!p.connected?'bot takeover':p.seat>=api.getState().n?'waiting for a larger match':'connected'}`;ul.append(li)}if(!roster.length){const li=document.createElement('li');li.textContent='Waiting for phones…';ul.append(li)}}
+function applyRoster(){if(!room)return;for(const slot of api.multiplayer.getSlots()){const p=roster.find(p=>p.seat===slot.id);if(p&&slot.name!==p.name)api.multiplayer.setPlayerName(slot.id,p.name);const owner=p?(ready&&p.connected?'remote':'bot'):room.localSeats.includes(slot.id)?'local':'bot';if(slot.owner!==owner)api.multiplayer.setOwner(slot.id,owner,{device:slot.id===0?'p1':'p2'})}}
+function send(v){if(socket?.readyState===WebSocket.OPEN)socket.send(JSON.stringify({v:1,...v}))}
+function connect(){
+ if(!room||closing)return;ready=false;message('Connecting…');
+ socket=new WebSocket(base.replace(/^http/,'ws')+'/api/rooms/'+room.code+'/socket');
+ socket.onopen=()=>send({type:'auth',role:'host',token:room.token});
+ socket.onmessage=e=>{let m;try{m=JSON.parse(e.data)}catch{return}if(m.v!==1)return;
+  if(m.type==='welcome'){ready=true;message('Room open. Share the join link with your players.');launch.textContent=room.code+' · Phones';lastSeq.clear();return}
+  if(m.type==='roster'){for(const p of m.players){if(!roster.some(x=>x.seat===p.seat&&x.connected)&&p.connected){lastSeq.delete(p.seat)}if(!p.connected){neutral(p.seat)}}for(const p of roster)if(!m.players.some(x=>x.seat===p.seat)){neutral(p.seat);}roster=m.players;showRoster();applyRoster();return}
+  if(m.type==='input'&&Number.isInteger(m.seat)&&m.seq>(lastSeq.get(m.seat)??-1)&&roster.some(p=>p.seat===m.seat&&p.connected)){
+   lastSeq.set(m.seat,m.seq);if(api.debug.stats().paused||api.debug.stats().mode!=='game')return;
+   if(api.multiplayer.getSlots()[m.seat]?.owner!=='remote')api.multiplayer.setOwner(m.seat,'remote');api.multiplayer.submitInput(m.seat,{moveX:m.x,moveY:m.y,bashDown:m.bash,dashPressed:m.dash,sequence:m.seq});return;
+  }
+  if(m.type==='closed'||m.type==='error'&&['ROOM_EXPIRED','BAD_HOST'].includes(m.code)){message('Room closed. Create a new room to play again.');end(false);return}
+ };
+ socket.onclose=e=>{ready=false;pause();for(const p of roster)neutral(p.seat);if(!closing&&room){if(e.code===4001){message('This room was opened on another host tab.');end(false)}else{message('Connection lost. Match paused; reconnecting…');retry=setTimeout(connect,1500)}}};
+ socket.onerror=()=>message('Connection interrupted. Reconnecting…');
+}
+function startLoop(){let beat=0;lastPlayable=null;clearInterval(timer);timer=setInterval(()=>{applyRoster();const s=api.getState(),d=api.debug.stats();const playable=d.mode==='game'&&!d.paused&&['fight','countdown'].includes(s.phase);if(!playable&&lastPlayable!==false)clearRemoteInputs();lastPlayable=playable;if(++beat%2)return;send({type:'status',active:d.mode==='game',paused:d.paused,phase:s.phase,fighters:s.n})},250)}
+async function resolveBase(){
+ let configured='';try{configured=(await(await fetch(new URL('online/config.json',location.href),{cache:'no-store'})).json()).relay||''}catch{}
+ const u=new URL(configured||location.origin);if(u.protocol!=='https:'&&!(u.protocol==='http:'&&['localhost','127.0.0.1'].includes(u.hostname)))throw Error('Online rooms are not available on this link yet.');
+ const health=await fetch(u.origin+'/api/health',{signal:AbortSignal.timeout(5000)});if(!health.ok||(await health.json()).protocol!==1)throw Error('Online rooms are not available on this link yet.');return u.origin;
+}
+function displayRoom(){const join=base+'/online/controller.html?room='+room.code;$('.so-code').textContent=room.code;$('.so-link').textContent=join;$('#so-info').hidden=false;$('#so-create').hidden=true;$('#so-tv').closest('label').hidden=true;$('#so-copy').onclick=async()=>{try{await navigator.clipboard.writeText(join);message('Join link copied.')}catch{message('Copy the link shown above.')}}}
+async function create(){
+ $('#so-create').disabled=true;message('Opening room…');
+ try{
+  base=await resolveBase();oldSeats=api.multiplayer.getSlots();const locals=$('#so-tv').checked?[]:oldSeats.filter(p=>p.owner==='local').map(p=>p.id);if(!$('#so-tv').checked&&!locals.length)locals.push(0);
+  const response=await fetch(base+'/api/rooms',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({v:1,localSeats:locals}),signal:AbortSignal.timeout(8000)});if(!response.ok)throw Error('Could not create a room. Please try again.');room={...await response.json(),localSeats:locals};
+  sessionStorage.setItem(roomKey(),JSON.stringify(room));closing=false;
+  api.multiplayer.setFighterCount(10);for(let i=0;i<10;i++)api.multiplayer.setOwner(i,locals.includes(i)?'local':'bot',{device:i===0?'p1':'p2'});
+  pause();displayRoom();connect();startLoop();
+ }catch(e){message(e.message||'Could not connect.');room=null}finally{$('#so-create').disabled=false}
+}
+function end(notify=true){closing=true;clearTimeout(retry);clearInterval(timer);if(notify)send({type:'close'});socket?.close();socket=null;ready=false;for(const p of roster)neutral(p.seat);roster=[];restore();room=null;try{sessionStorage.removeItem(roomKey())}catch{};$('#so-info').hidden=true;$('#so-create').hidden=false;$('#so-tv').closest('label').hidden=false;launch.textContent='Phone players'}
+launch.onclick=async()=>{modal.hidden=false;pause();$('#so-close').focus();if(!room){try{base=await resolveBase();const saved=JSON.parse(sessionStorage.getItem(roomKey())||'null');if(saved?.code&&saved?.token){room=saved;closing=false;oldSeats=api.multiplayer.getSlots();api.multiplayer.setFighterCount(10);for(let i=0;i<10;i++)api.multiplayer.setOwner(i,(room.localSeats||[0]).includes(i)?'local':'bot',{device:i===0?'p1':'p2'});pause();displayRoom();connect();startLoop()}}catch{}}};$('#so-close').onclick=()=>{modal.hidden=true;launch.focus()};$('#so-create').onclick=create;$('#so-end').onclick=()=>{end();message('Room ended. You can continue playing locally.')};$('#so-start').onclick=()=>{modal.hidden=true;clearRemoteInputs();api.resume()};
+modal.addEventListener('keydown',e=>{if(e.key==='Escape'){e.stopPropagation();modal.hidden=true;launch.focus()}if(e.key==='Tab'){const controls=[...modal.querySelectorAll('button,input')].filter(x=>!x.disabled&&x.getClientRects().length);const first=controls[0],last=controls.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}});
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&room){pause();send({type:'status',active:true,paused:true,phase:api.getState().phase,fighters:api.getState().n})}});
+window.addEventListener('pagehide',()=>{closing=true;socket?.close()});
+window.CallbackSumoOnline={getState:()=>({connected:ready,code:room?.code,players:roster.map(p=>({...p}))}),end};
 })();
 </script></body></html>

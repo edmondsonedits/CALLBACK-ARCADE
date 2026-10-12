@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-12T02:15:29.142Z",
+  "checks": [
+    "v1.3.0 boots with WebGL2",
+    "host creates and authenticates room",
+    "phone takes seat 1 from a bot",
+    "phone joystick moves its assigned fighter",
+    "multitouch pause clears held controls and preserves phone ownership",
+    "phone hold/release Bash reaches simulation",
+    "phone Dash reaches simulation",
+    "disconnect hands fighter back to AI",
+    "credential reconnect reclaims the same fighter",
+    "new matches preserve phone seats and unavailable fighters wait clearly",
+    "Leave removes a phone and restores its bot",
+    "host closes room for all phones",
+    "preserved camera settings and camera codes work",
+    "settings close remains paused until explicit Resume",
+    "all six arenas start with ten fighters",
+    "no browser runtime errors"
+  ],
+  "errors": [],
+  "limits": [
+    "Software WebGL; no physical phone or gamepad testing",
+    "Local WebSocket transport; public relay not deployed"
+  ],
+  "sourceHashes": [
+    {
+      "path": "source/index.html",
+      "sha256": "6b7a638bae0d5468fee3ffb5c9d9c3a86252487379e43621b758488ac9082186"
+    },
+    {
+      "path": "source/online/controller.js",
+      "sha256": "5e2c7fdbeb449ebea1d47a47a26305d56e98df85b57bbb763d8d31bc48cea49a"
+    },
+    {
+      "path": "source/online/host.js",
+      "sha256": "6c141525f96e4d5235f97e1a49c61ae8dfe840940ffa6c6562656a33c13cfd3f"
+    },
+    {
+      "path": "source/online/config.json",
+      "sha256": "87e76e293d7bb1ab532d41704b56b55944eeb55d61fcc05c974d2d501c8c0bed"
+    },
+    {
+      "path": "source/online/controller.html",
+      "sha256": "9e8dacc435fdb8279d759b8e65897779dc93249861c45ba44bf0c183cb01f35c"
+    },
+    {
+      "path": "server/worker.mjs",
+      "sha256": "53d3b9f68167077ce0c165d72cc1f69f5eb40b78261cddbc697b80b51bd49ff8"
+    },
+    {
+      "path": "server/room.mjs",
+      "sha256": "f437da47ac429cd68b90c637d8a373bddccaa27c6e4e0bbdb78787f9c3da01a3"
+    },
+    {
+      "path": "server/local.mjs",
+      "sha256": "2a680a95ec9986944bb32d35956f96aaa4c12f0fc17cefe05542ff52df6b634b"
+    },
+    {
+      "path": "server/socket.mjs",
+      "sha256": "0661d104bc7a0875eb42bb911c1b4dcdc35406ec5c672bd007d676f481907d55"
+    },
+    {
+      "path": "server/deploy.mjs",
+      "sha256": "2bcee0edcf958949520f7acd11d0a80162b4484e0e01ac2dfea37e02f9407aff"
+    }
+  ]
+}

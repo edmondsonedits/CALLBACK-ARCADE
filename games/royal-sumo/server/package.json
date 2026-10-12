@@ -1,0 +1,5 @@
+{
+ "name":"callback-royal-sumo-online","version":"1.0.0","private":true,"type":"module",
+ "scripts":{"start":"node local.mjs","test":"node --test ../tests/online-*.test.mjs","deploy:production":"node deploy.mjs"},
+ "dependencies":{"ws":"8.21.3"},"devDependencies":{"wrangler":"4.124.0"},"engines":{"node":">=22.13"}
+}

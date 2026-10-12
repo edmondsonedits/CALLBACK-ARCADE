@@ -1,13 +1,14 @@
 # Changelog
 
-## 1.3.0 — user-designated Crownfall import (2026-10-12 UTC)
+## 1.3.0 — imported 2026-10-12
 
-- Replaced the incorrect active v0.21 game with the exact HTML from the user-supplied `royal_sumo_crownfall_v1.3.0.zip`.
-- Preserved the complete editable project, build tools and supplied tests; retained historical versions.
-- Kept the uploaded gameplay, rendering, UI, controls and bots unchanged. No legacy camera overlay was injected.
-- Updated catalog metadata, controls, provenance, source guides and integration limitations.
-- Replaced obsolete v0.21 import assertions with exact SHA-256, byte-equality and reproducible-build checks; included the supplied unit suite in repository verification.
-- See `tests/README.md` for verification and hardware limitations. Online phone rooms remain unimplemented.
+- Imported the user-supplied v1.3.0 standalone HTML, full editable source and tests.
+- Preserved the exact upload and archived the previous v0.21 CALLBACK build with its dependencies.
+- Added six arenas, Quick Match/Crown Cup, one or two local players, persistent names/looks/seating, deterministic seeds and automatic quality scaling from the supplied release.
+- Retained the repository camera panel and saved camera codes through a separate rendering adapter. Native v1.3 pause/settings behavior remains intact.
+- Refreshed catalog, controls, provenance and integration notes. Added a dedicated authenticated room server, TV-only mode, phone movement/Bash/Dash, credential reconnect and automatic bot takeover. Public relay deployment is pending.
+- Fixed adapter discrepancies around repeated input, reconnect counters, pause/round ownership, held controls, room shutdown persistence and changes in match size.
+- Verification results: see `tests/IMPORT_VERIFICATION.md`.
 
 ## 0.21.0 — imported
 

@@ -13,10 +13,11 @@
     "arcade",
     "party",
     "bots",
-    "webgl",
-    "offline"
+    "webgl2",
+    "offline",
+    "local-multiplayer"
   ],
-  "description": "The user-designated Royal Sumo: Crownfall v1.3.0: a self-contained 3D sumo game for 2–10 contestant slots with charged Bash, Dash, bots, multiple arenas and Crown Cup. Supports touch, keyboard, gamepads and two local players. Remote seat/input hooks are included; online phone-room transport is not integrated.",
+  "description": "Royal Sumo: Crownfall v1.3.0: a 2–10 fighter physics brawler with six arenas, Quick Match/Crown Cup, one or two local players and bots. Self-contained WebGL2 build. Phone-room controls and server implemented; public relay deployment pending.",
   "players": {
     "min": 2,
     "max": 10
@@ -45,9 +46,13 @@
     "paths": [
       "source/index.html",
       "source/original/royal_sumo_crownfall_v1.3.0.html",
-      "source/project/src/app/main.js"
+      "source/project/src/app/main.js",
+      "source/callback-camera.js",
+      "source/online/host.js",
+      "source/online/controller.html",
+      "source/online/controller.js"
     ],
-    "provenance": "User supplied royal_sumo_crownfall_v1.3.0.zip and explicitly designated it as the true Royal Sumo. The active source/index.html and source/original/royal_sumo_crownfall_v1.3.0.html preserve the supplied HTML byte-for-byte. Editable modules, build tools and tests are preserved under source/project/. Older v0.21 and v0.19 material remains historical only. No runtime third-party dependencies are required by v1.3.0.",
+    "provenance": "Imported from the user-supplied royal_sumo_crownfall_v1.3.0.zip. Exact standalone HTML retained under source/original/ and complete editable source/tests under source/project/. The active entry adds the existing CALLBACK camera controls and new phone-room controls as separate adapters; imported simulation and modules are unchanged. The former v0.21 CALLBACK entry and its MIT-licensed Three.js dependency are archived together.",
     "url": null
   },
   "lifecycle": "experimental",

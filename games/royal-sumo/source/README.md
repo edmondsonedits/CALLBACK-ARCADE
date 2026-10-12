@@ -1,10 +1,9 @@
-# Active source
+# Royal Sumo source
 
-`index.html` is the user-designated **Royal Sumo: Crownfall v1.3.0**, copied byte-for-byte from `royal_sumo_crownfall_v1.3.0.zip`.
+Active: `index.html` (v1.3.0 plus the CALLBACK camera and phone-room adapters).
 
-- `original/royal_sumo_crownfall_v1.3.0.html`: immutable reference copy.
-- `original/README-v1.3.0.txt`: supplied package instructions.
-- `project/`: supplied editable modules, dependency-free build tools and tests.
-- Older files under `original/`, `archive/` and `vendor/` are historical; the active v1.3.0 HTML does not load them.
+Rebuild: `node build-callback.mjs`.
 
-Build SHA-256: `86bcf200c457a9b3da5cb222bcd5e22a46cc95d229b98edf53354eb503589c7e`.
+The supplied editable source is in `project/`; `original/royal_sumo_crownfall_v1.3.0.html` is the untouched uploaded HTML. `callback-camera.js` is the separate repository presentation adapter. No game physics or input code was changed during import.
+
+`online/host.js` is appended by the builder. `online/controller.html` and `controller.js` are served separately. `online/config.json` optionally selects an HTTPS relay; an empty relay uses the game origin. Online play requires the room server, while the standalone game remains self-contained.

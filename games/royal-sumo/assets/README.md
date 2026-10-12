@@ -1,9 +1,7 @@
 # Assets and provenance
 
-The user supplied `royal_sumo_crownfall_v1.3.0.zip` and explicitly designated it as the true Royal Sumo. Its HTML, editable source, build tools and tests are preserved in this package.
+The active v1.3.0 release was supplied by the user as `royal_sumo_crownfall_v1.3.0.zip`. Its complete source and original README are preserved under `source/project/`; its original standalone HTML is preserved under `source/original/`.
 
-The active v1.3.0 game generates its WebGL2 geometry, procedural visuals, CSS UI and Web Audio in code. It requires no external art, audio, font or runtime code downloads. No additional third-party assets were introduced by this import.
+The supplied runtime generates geometry, shaders, UI art and audio procedurally. It contains no external model/image/font/music pack and no third-party runtime dependency. No additional ownership or redistribution license was supplied for the game; this import follows the user's instruction to add it to their repository.
 
-The uploaded ZIP does not declare a separate redistribution license. Import authorization comes from the user's instruction; it is not a blanket third-party license assertion.
-
-The older Three.js r180 files in `source/vendor/` and their MIT license are retained as historical material. They are not loaded by v1.3.0. The previous v0.21 source and v0.19 archive are not the current game.
+The CALLBACK camera panel is carried forward from this repository's previous Royal Sumo entry. The old v0.21 build remains under `source/archive/` with its vendored Three.js r180 files and original MIT license in `source/archive/vendor/LICENSE-three.txt`. That dependency is used only by the archived build.

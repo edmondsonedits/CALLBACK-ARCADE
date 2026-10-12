@@ -52,10 +52,10 @@ Imported v0.5 standalone call-and-response rhythm game for 2–10 contestant slo
 - Status: imported; multiplayer in-progress
 - Players: 2–10
 - Version: 1.3.0
-- Source: [source/index.html](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-sumo/source/index.html), [source/original/royal_sumo_crownfall_v1.3.0.html](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-sumo/source/original/royal_sumo_crownfall_v1.3.0.html), [source/project/src/app/main.js](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-sumo/source/project/src/app/main.js)
+- Source: [source/index.html](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-sumo/source/index.html), [source/original/royal_sumo_crownfall_v1.3.0.html](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-sumo/source/original/royal_sumo_crownfall_v1.3.0.html), [source/project/src/app/main.js](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-sumo/source/project/src/app/main.js), [source/callback-camera.js](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-sumo/source/callback-camera.js), [source/online/host.js](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-sumo/source/online/host.js), [source/online/controller.html](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-sumo/source/online/controller.html), [source/online/controller.js](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-sumo/source/online/controller.js)
 - Play: [launch game](https://edmondsonedits.github.io/CALLBACK-ARCADE/games/royal-sumo/)
 
-The user-designated Royal Sumo: Crownfall v1.3.0: a self-contained 3D sumo game for 2–10 contestant slots with charged Bash, Dash, bots, multiple arenas and Crown Cup. Supports touch, keyboard, gamepads and two local players. Remote seat/input hooks are included; online phone-room transport is not integrated.
+Royal Sumo: Crownfall v1.3.0: a 2–10 fighter physics brawler with six arenas, Quick Match/Crown Cup, one or two local players and bots. Self-contained WebGL2 build. Phone-room controls and server implemented; public relay deployment pending.
 
 ## Royal Twisted — Spiral Keep
 

@@ -1,5 +1,6 @@
-# Archived source
+# Archived Royal Sumo builds
 
-`royal_sumo_crownfall_v0.19_10players.html` and the older v0.21 material under `../original/` are retained for history only. Previous active revisions are also recoverable from Git history.
+- `royal_sumo_crownfall_v0.19_10players.html`: older supplied standalone build.
+- `royal_sumo_crownfall_v0.21_callback.html`: exact former repository entry, including CALLBACK camera controls. Its relative `vendor/` directory is retained beside it, with the Three.js MIT license.
 
-The active launch build is `../index.html`: the user-designated Royal Sumo: Crownfall **v1.3.0**.
+The active game is `../index.html` at v1.3.0.

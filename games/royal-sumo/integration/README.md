@@ -1,27 +1,32 @@
 # Royal Sumo v1.3.0 integration boundary
 
-The active standalone browser page owns simulation, scoring, rendering and bots. `window.RoyalSumo` is an in-process API; it is not an online transport.
+The game page owns physics, AI, hazards, scoring and rendering. The supplied release provides local controls and remote-input hooks. The separate CALLBACK adapter adds authenticated phone rooms with a dedicated WebSocket relay; the catalog Worker remains read-only. Public relay deployment is pending.
 
-## Current API
+## Public API
 
-- `version`, `versions`, `protocol`: build 1.3.0, simulation 1.2.1, protocol 2, save 1.
-- `getState()`, `scenario(options)`, `restart(options)`, `resume()`, `setSeed(value)`.
-- `multiplayer.maxPlayers`: 10.
-- `multiplayer.getSlots()`, `setFighterCount(count)`.
-- `multiplayer.setHumanSlot(id, enabledOrOwner, options)`, `setOwner(id, owner, options)`.
-- `multiplayer.setPlayerName(id, name)`, `setLook(id, style)`, `setBotSkill(id, skill)`.
-- `multiplayer.submitInput(id, command)`, `setRemoteTimeout(milliseconds)`.
+`RoyalSumo.version` is `1.3.0`; `RoyalSumo.versions` reports build `1.3.0`, sim `1.2.1`, protocol `2`, save `1`.
 
-Seats have `bot`, `local` or `remote` ownership. Local devices are `p1`/`p2`; unclaimed seats use bots. Ownership changes clear stale remote input. Remote ownership is session-only; names and looks can persist.
+- `getState()` returns simulation state, build/protocol, slots and Cup progress.
+- `scenario({fighters:10, map:'keep', seed:21})` starts a match.
+- `restart()` replays the same match seed; `restart({seed})` overrides it.
+- `multiplayer.maxPlayers` is 10; active matches contain 2–10 contestants.
+- `multiplayer.getSlots()` returns the persistent seat table.
+- `multiplayer.setOwner(id, 'local'|'remote'|'bot', options)` changes the driver; `setHumanSlot(id, true|false|owner)` preserves the older boolean shorthand.
+- `multiplayer.setPlayerName(id,name)`, `setLook(id,style)`, `setBotSkill(id,skill)` customize seats.
+- `multiplayer.setFighterCount(count)` restarts with 2–10 fighters.
+- `multiplayer.submitInput(id,command)` only accepts inputs for remote-owned seats in a real match.
+- `multiplayer.setRemoteTimeout(ms)` changes the default 5000 ms inactivity timeout.
 
-## Remote command format
+## Input fields
 
-Movement is `moveX`/`moveY` (or `mx`/`mz`), clamped to -1..1. `bashDown`/`bash` holds or releases a charge; `bashPressed` requests a one-shot strike with `bashCharge`/`bashPower`. `dashPressed`/`dash` requests a one-shot dash. `sequence` is optional. Silence defaults to neutral input after 5 seconds. Only remote-owned seats in a real match accept external control.
+Movement: `moveX`/`moveY` (aliases `mx`/`mz`), normalized and clamped. Bash: `bashDown` (`bash`) for hold/release, or `bashPressed` plus `bashCharge` (`bashPower`) for one strike. Dash: `dashPressed` (`dash`). Optional `sequence` drops older counters; equal counters are still accepted. The timeout neutralizes stale movement and held Bash. Changing owners clears the remote input buffer.
 
-The provided implementation rejects older sequence values under its wrap-aware rule, but accepts equal sequence values. This is not strict duplicate rejection or authenticated seat ownership.
+## Network boundary
 
-## Still required for online CALLBACK play
+The standalone API above is trusted host code. Phones use the dedicated `server/` relay and cannot select a seat, modify rules or submit scores. The server authenticates host/seat credentials, derives the fighter ID, validates protocol/schema/size/rate/phase and rejects duplicate or old sequences. Controller reconnect starts at the server-issued `nextSeq`. Credentials are sent in the first WebSocket message, not URL query parameters; durable storage holds hashes.
 
-Follow `docs/GAME_SDK.md`: authenticated rooms and server-issued seat credentials; bounded, versioned input messages; strict sequence/duplicate checks, membership and phase validation, rate limits; credential-bound reconnect; validated bot substitution; replayable input records and authoritative snapshots. Phones should send inputs to this game host, not run competing authoritative simulations.
+The host browser owns the full v1.3.0 simulation, scoring and AI. Phones display controller/connection state and watch the shared host screen. The server publishes status and seat rosters; it does not reconcile phone simulations or accept claimed winners. Unclaimed/disconnected fighters use the supplied simulation AI. A two-second heartbeat timeout marks a phone disconnected. Disconnected seats remain reserved for two minutes; End room invalidates the room, including after durable reload.
 
-Multiplayer remains `in-progress`, without verified evidence. The supplied unit tests exercise local API behavior, not online phone sessions.
+The relay keeps a bounded in-memory diagnostic event ring of validated input/connection events. This is not a complete deterministic replay or durable match archive. Full replay export and live spectator snapshots are future work. Public deployment, WAN latency and physical-device verification remain outstanding; keep multiplayer **in-progress**.
+
+See [ONLINE_DESIGN.md](ONLINE_DESIGN.md), [../server/README.md](../server/README.md), and [../tests/IMPORT_VERIFICATION.md](../tests/IMPORT_VERIFICATION.md).

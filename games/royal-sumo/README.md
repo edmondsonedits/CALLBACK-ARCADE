@@ -1,47 +1,55 @@
-# Royal Sumo — Crownfall
+# Royal Sumo: Crownfall
 
-The active game is **Royal Sumo: Crownfall v1.3.0**, explicitly designated by the user in `royal_sumo_crownfall_v1.3.0.zip`. `source/index.html` is the supplied standalone HTML, unchanged byte-for-byte. Older v0.21/v0.19 files are historical only.
+Imported release **1.3.0**, simulation **1.2.1**, game protocol **2**, save schema **1**. CALLBACK phone-room protocol **1**.
 
-Play: https://edmondsonedits.github.io/CALLBACK-ARCADE/games/royal-sumo/
+[Play Royal Sumo](https://edmondsonedits.github.io/CALLBACK-ARCADE/games/royal-sumo/)
 
-## Gameplay and controls
+A physics arena brawler for 2–10 contestant slots with bot-filled seats, one or two local players, six arenas, Quick Match and Crown Cup. Move, charge and release Bash, use Dash, and knock rivals off the arena. Names, looks and local seating persist across rounds and reloads. Remote ownership is session-only.
 
-Knock rivals out of the arena with charged Bash and Dash. Play quick matches or Crown Cup across multiple arenas. There are **2–10 contestant slots**, filled by bots when unclaimed, with one or two local human players. The game supports touch, keyboards and gamepads.
+## Source and build
 
-- Phone: drag on the left to move; hold BASH and release to strike; tap DASH.
-- Player 1: WASD, Space/J for Bash, Shift/K/L for Dash.
-- Player 2: arrows, Enter for Bash, Right Shift/period/Numpad0 for Dash.
-- Gamepad: stick, A/X for Bash, B/Y/RB/RT for Dash.
-- Escape/P pauses. Setup includes names, fighter looks and match options.
+- `source/index.html`: active self-contained WebGL2 game, with the existing CALLBACK camera panel and phone-room adapter.
+- `source/original/royal_sumo_crownfall_v1.3.0.html`: exact standalone HTML supplied in the user's ZIP.
+- `source/project/`: complete supplied ES-module project, zero-dependency builder and tests.
+- `source/callback-camera.js`: repository-specific rotate/zoom/tilt and camera-code adapter; presentation only.
+- `source/online/`: host lobby, responsive phone controller and relay configuration.
+- `server/`: authenticated WebSocket rooms, shared Node/Cloudflare room core and deployment package.
+- `source/build-callback.mjs`: rebuilds the imported project and appends the camera and room adapters.
+- `source/archive/royal_sumo_crownfall_v0.21_callback.html`: previous active build, with its Three.js dependency at `source/archive/vendor/`.
 
-## Run and edit
+Run `node games/royal-sumo/source/build-callback.mjs` from the repository root after edits. The imported modules are unchanged. The active entry differs from the supplied HTML only by a pause-flow metadata attribute and the appended camera and room adapters. No runtime downloads or external assets are needed. A browser with WebGL2 is required.
 
-Open `source/index.html` directly or serve it over HTTP. This is one offline file with no runtime downloads or external dependencies. It uses a custom WebGL2 renderer, not the previous Three.js runtime.
+## Controls
 
-Editable modules, the original build tools, and the supplied tests are under `source/project/`. With Node 20 or newer:
+| Device | Move | Bash | Dash | Pause |
+| --- | --- | --- | --- | --- |
+| Touch | Drag left side | Hold/release BASH | DASH | Pause button |
+| Keyboard P1 | WASD | Space / J | Left Shift / K / L | Esc / P |
+| Keyboard P2 | Arrows | Enter | Right Shift / period / Numpad0 | Esc / P |
+| Gamepad | Left stick | A / X | B / Y / RB / RT | Start |
 
-```sh
-cd games/royal-sumo/source/project
-node build.js --check
-node test/run.mjs
-node build.js
-```
+Choose one or two local players in setup. Settings includes native Follow/Fixed camera and zoom options; the preserved Camera panel adds rotation, tilt and reusable `CAM-…` codes. Closing settings returns to the paused menu until Resume is selected.
 
-The build writes `dist/index.html`, a versioned HTML file and `build-info.json`. For a future intentional update, copy the newly built HTML to `../index.html`, update version/provenance/changelog and regenerate the repository catalog. Do not overwrite the preserved v1.3.0 original.
+## Tuning and APIs
 
-Useful editing locations in `source/project/src/`:
+- `source/project/src/core/tune.js`, `sim.js`, `ai.js`, `maps.js`: physics, AI, rules and arenas.
+- `src/core/settings.js`, `slots.js`, `session.js`: settings, player ownership and match/Cup progression.
+- `src/gfx/`: procedural geometry, rendering and effects.
+- `src/app/`: menus, controls, audio and runtime loop.
+- `src/core/versions.js`: separate build/simulation/protocol/save versions.
 
-- `core/tune.js`, `core/sim.js`, `core/ai.js`: movement, combat, simulation and bots.
-- `core/maps.js`, `gfx/gfx_maps*.js`: arena rules and presentation.
-- `core/slots.js`, `core/control.js`, `core/remote.js`: seating and input ownership.
-- `app/controls.js`, `app/ui.js`, `app/style.css`: inputs, menus and HUD.
-- `gfx/engine.js`, `gfx/gfx_core.js`, `gfx/gfx_fighter.js`: rendering and camera.
-- `core/versions.js`: separate build, simulation, protocol and save versions.
+`window.RoyalSumo` exposes `getState()`, `scenario(options)`, `restart(options)`, `setSeed(seed)` and `multiplayer.*`. `restart()` replays the same seed. See `integration/README.md` before using remote input. Older string-based debug scenario names from v0.21 are superseded by options objects.
 
-Changing simulation behavior requires updating the simulation version and reviewing/updating golden results; see the supplied `source/project/RESUME.md` for source architecture context. Its previous-environment paths and prior verification claims are historical.
+## Phone players
 
-## Integration and limitations
+The phone-room implementation is tested locally. **The public relay is not deployed yet; GitHub Pages currently supports local play only.** See [server/README.md](server/README.md) for the complete deployment command and configuration.
 
-`window.RoyalSumo` exposes state, seeded scenarios, restarts, player ownership and remote input. See `integration/README.md`. These are in-process hooks: online rooms and phone networking are **not integrated or verified**. The import preserves the supplied game and its native UI; the old CALLBACK camera-code overlay is not grafted onto it.
+On a server-backed game link, select **Phone players → Create room**, share the join link, then **Play / Resume**. Each phone replaces a bot and gets a movement pad, hold/release Bash and Dash. Up to nine phones can join one local host; **TV only** lets all ten players use phones. Everyone watches the host screen; phones are controllers, not separate game views. The host must remain open.
 
-See `assets/README.md` for provenance and `tests/README.md` for reproducible checks and verification scope. Physical-phone feel/haptics, audio by ear and physical gamepads require hardware checks.
+Disconnects return the fighter to AI; reconnect within two minutes reclaims the same seat. Rooms last up to six hours. If the host starts a smaller match, phones whose seats are outside that match wait with an explicit message until more fighters are added. New phones can only claim seats within the current match. Local seat reservations remain fixed until the room ends.
+
+## Verification and limits
+
+See `tests/IMPORT_VERIFICATION.md` and `tests/README.md`. Phone rooms, authentication, strict input validation, reconnect and bot takeover are implemented and tested. Public deployment and cross-device internet play are pending, so multiplayer status stays **in-progress**. Real-phone haptics, physical gamepads, audio quality by ear and hardware performance are not established by headless tests.
+
+See `assets/README.md` for provenance.
