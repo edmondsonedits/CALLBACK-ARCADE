@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import { createHash } from "node:crypto";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { runtime } from "../games/royal-twisted/tests/runtime-harness.mjs";
@@ -412,4 +414,21 @@ test("actual animation loop pauses accumulation and transitions once after resum
   const time = r.run("roundTime");
   r.run("animate(1080)");
   assert.equal(r.run("roundTime"), time);
+});
+
+
+test("Three.js is the integrity-verified local 0.180.0 dependency", () => {
+  const root = new URL("../games/royal-twisted/source/", import.meta.url);
+  const html = readFileSync(new URL("index.html", root), "utf8");
+  assert.match(html, /import\("\.\/vendor\/three\/three\.module\.js"\)/);
+  assert.doesNotMatch(html, /cdn\.jsdelivr/);
+  const provenance = JSON.parse(readFileSync(new URL("vendor/three/provenance.json", root), "utf8"));
+  assert.equal(provenance.version, "0.180.0");
+  assert.equal(provenance.tarball, "https://registry.npmjs.org/three/-/three-0.180.0.tgz");
+  assert.equal(provenance.integrity, "sha512-o+qycAMZrh+TsE01GqWUxUIKR1AL0S8pq7zDkYOQw8GqfX8b8VoCKYUoHbhiX5j+7hr8XsuHDVU6+gkQJQKg9w==");
+  for (const [name, hash] of Object.entries(provenance.sha256)) {
+    assert.equal(createHash("sha256").update(readFileSync(new URL(`vendor/three/${name}`, root))).digest("hex"), hash);
+  }
+  assert.match(readFileSync(new URL("vendor/three/LICENSE", root), "utf8"), /Permission is hereby granted/);
+  assert.match(readFileSync(new URL("vendor/three/three.module.js", root), "utf8"), /from '\.\/three\.core\.js'/);
 });

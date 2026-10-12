@@ -2,7 +2,7 @@
 
 Review branch: `quality/royal-twisted`. Base (local checkout and remote main verified before edits): `785a15000abe11970c7b92c5f3cab197061fcedf`. Local review only; no push, PR, merge or deploy. The commit containing this report is the review head; its exact ID is supplied in the handoff.
 
-Playable entry: `games/royal-twisted/source/index.html` (serve over HTTP with access to jsDelivr). Runtime source hash and browser conditions are recorded in [browser evidence](evidence/browser-quality.json).
+Playable entry: `games/royal-twisted/source/index.html` (serve the complete source folder over HTTP). Runtime source hash and browser conditions are recorded in [browser evidence](evidence/browser-quality.json).
 
 ## Before / after evidence
 
@@ -33,9 +33,9 @@ Bots retain all reaction/mistake/duck-hold constants and choose one jittered pla
 
 ## Scope and provenance
 
-Changed source, tests and notes are restricted to this game plus `tests/royal-twisted-quality.test.mjs`. No catalog, manifest, package/dependency lockfile, shared test, original or archive edits. Keep the existing version marker until the coordinator decides release metadata. Proposed metadata wording only: mention buffered multi-source input, arrival-spacing safeguards, readable action cues and explicit CDN/WebGL errors; retain network-dependent / experimental / multiplayer-in-progress status.
+Changed source, tests and notes are restricted to this game plus `tests/royal-twisted-quality.test.mjs`. No catalog, manifest, package/dependency lockfile, shared test, original or archive edits. Keep the existing version marker until the coordinator decides release metadata. Proposed metadata wording only: mention buffered multi-source input, arrival-spacing safeguards, readable action cues and explicit local-dependency/WebGL errors; retain experimental / multiplayer-in-progress status. Runtime CDN access is no longer required for the active source.
 
-New fins are procedural Three.js geometry; cues are HTML/CSS; sound uses the existing synthesized audio. No new external assets, reference code or licenses were imported. Existing notices and assets are retained.
+New fins are procedural Three.js geometry; cues are HTML/CSS; sound uses the existing synthesized audio. The follow-up vendors exact Three.js 0.180.0 from npm with its MIT license; provenance is in `source/vendor/three/provenance.json`. No Sumo code or assets were imported. Existing notices and assets are retained.
 
 ## Reference blocker
 
@@ -47,12 +47,15 @@ Royal Sumo v1.3 reference comparison is **blocked**. The consuming executor used
 - Camera projections and inspected pixels show approaching hazards at default/max setback; the selected camera is preserved. Foreground decorative towers can partially obscure P1's lower body at maximum setback. No alternate camera was substituted.
 - Software render samples measure CPU call/submission time, with large variance and no claim of a playable frame rate. Browser requestAnimationFrame is controlled by the harness for deterministic fixtures. Automated simulation completion is not a wall-clock human playthrough.
 - These are local controller hooks, not authenticated network multiplayer. Current public API names and mappings are retained.
-- Independent review and human feel/balance checks remain outstanding. Release metadata, integration packaging and any publishing remain coordinator decisions.
+- The initial candidate received independent source review; human feel/balance checks remain outstanding. Release metadata, integration packaging and any publishing remain coordinator decisions.
 
 ## Environment verification
 
-A separate launch with normal HTTPS certificate validation failed to load `https://cdn.jsdelivr.net/npm/three@0.180.0/+esm` with **`net::ERR_CERT_AUTHORITY_INVALID`**. `window.RoyalTwisted` was absent and the visible page said **Three.js unavailable** with network/reload guidance. This is a recorded dependency failure, not a playable pass. The successful graphical matrix explicitly ignored certificate errors only in its disposable test browser context. Production HTML does not disable certificate validation or substitute a dependency.
+The previous candidate `2a5f5150cd847780ada09452f5c7d32105976317` failed normal CDN loading with `net::ERR_CERT_AUTHORITY_INVALID`. Its historical graphical evidence used a certificate override and **does not establish supported browser acceptance**. That test bypass has been removed.
 
+The follow-up uses npm's exact 0.180.0 release, fetched with `strict-ssl=true` and no TLS override. Independently computed SHA-512 matches the registry integrity value. Only the upstream module/core files and MIT license are extracted, unchanged. The normal Pages builder copies this local dependency with the source. Original/archive uploads remain unchanged.
+
+Current browser checks are **blocked before navigation**: sandbox-enabled Chromium aborts because `/usr/lib/chromium/chrome-sandbox` is not configured as the required SUID helper. No system permission change or sandbox bypass was attempted. A preliminary probe before explicitly enabling Playwright's sandbox was stopped and excluded from acceptance. The maintained test requires sandboxing and default certificate validation; unsafe software-render fallback flags are removed. See the current blocked browser report.
 Early browser-fixture failures were also corrected: RAF-based readiness polling cannot run when the harness owns requestAnimationFrame, and synthetic pointerdown cannot establish a real pointer capture. Final fixtures use interval polling, wait for the loading overlay to disappear and establish pointer capture with a real browser mouse press before cancellation. Page errors are asserted after interaction as well as at startup.
 
 ## Focused code review
@@ -61,30 +64,21 @@ A separate read-only reviewer found that pause cleanup cancelled an already-sele
 
 Suspended audio contexts are resumed on subsequent interaction, and the compact status names the round/match winner even when the host message is hidden. Automated audio-context behavior is checked; audible quality remains unverified.
 
-## Final check results
+## Follow-up check results
 
 | Status | Command / check | Result |
 | --- | --- | --- |
-| Passed | `node games/royal-twisted/tests/source-smoke.mjs` | Version/API markers and both immutable upload hashes |
-| Passed | `npm test` | 130 tests, including 70 Twisted quality cases; zero failures |
-| Passed | `node --test tests/royal-twisted-camera.test.mjs tests/settings-pause-flow.test.mjs tests/standalone-game-lifecycle.test.mjs tests/royal-ballistix-mobile-ui.test.mjs` | 28 shared/camera/lifecycle/mobile regressions |
-| Passed with stated environment conditions | `PLAYWRIGHT_MODULE=/tmp/twisted-browser/node_modules/playwright/index.mjs TWISTED_IGNORE_HTTPS=1 node games/royal-twisted/tests/browser-quality.mjs` | 10 checks: two failure-state checks and four viewport interaction/framing checks plus four diagnostic render samples; no page errors in playable cases |
-| Passed | `git diff --check` | No whitespace errors |
-| Blocked | Normal Chromium CDN load | `net::ERR_CERT_AUTHORITY_INVALID`; explicit error UI, not a playable pass |
-| Blocked | Royal Sumo Library reference | Two supported transfer failures; no reference comparison |
-| Not run | Physical phone, hardware gamepad, real GPU, audio-by-ear, statistical/human balance study | Requires suitable devices/human review |
-| Not run / outside scope | Worker deployment/build, release metadata, network multiplayer | Standalone browser entry and repository tests checked; no publishing |
+| Passed | `node games/royal-twisted/tests/source-smoke.mjs` | API markers and immutable upload hashes |
+| Passed | `npm test` | 131 tests including 71 Twisted quality cases |
+| Passed | `node --test tests/royal-twisted-camera.test.mjs tests/settings-pause-flow.test.mjs tests/standalone-game-lifecycle.test.mjs tests/royal-ballistix-mobile-ui.test.mjs` | 28 shared regressions |
+| Passed | `npm run typecheck`, `npm run catalog:check`, `npm run build`, `PAGES_OUTPUT_DIR=/workspace/royal-twisted-pages-followup npm run pages:build` | Aggregate checks; Worker build is dry-run only |
+| Passed | Node ES-module import and Pages file hashes | Revision 180; exact dependency bytes copied to Pages output |
+| Blocked | `PLAYWRIGHT_MODULE=/tmp/twisted-browser/node_modules/playwright/index.mjs TWISTED_PAGES_DIR=/workspace/royal-twisted-pages-followup node games/royal-twisted/tests/browser-quality.mjs` | Container Chromium sandbox helper configuration; zero accepted current browser checks |
+| Blocked | Royal Sumo Library reference | Two supported transfer failures; no comparison |
+| Not run | Physical phone, hardware gamepad, real GPU, audio-by-ear, human balance study | Requires appropriate environment/devices/review |
+| Not run | Push, PR, merge, deployment | Not authorized |
 
-Full [repository test output](evidence/repository-tests.txt), [shared regression output](evidence/shared-regressions.txt) and [browser evidence](evidence/browser-quality.json) are retained. Reviewed screenshots: [portrait maximum setback](evidence/portrait-setback.png) and [landscape maximum setback](evidence/landscape-setback.png).
-
-Ten software-render submissions per viewport, balanced graphics, DPR 1, Chromium 154.0.8037.57 / SwiftShader in the cloud container. These samples include driver backpressure, are highly variable, and are **not FPS or hardware performance certification**:
-
-| Viewport | Mean CPU submission ms | Maximum ms | Draw calls |
-| --- | ---: | ---: | ---: |
-| desktop | 139.03 | 1093.6 | 421 |
-| portrait | 43.31 | 316 | 448 |
-| small | 12.64 | 20.8 | 360 |
-| landscape | 69.12 | 408.9 | 489 |
+Current [repository output](evidence/repository-tests.txt), [shared regressions](evidence/shared-regressions.txt) and [blocked browser evidence](evidence/browser-quality.json) are retained. The existing portrait/landscape screenshots are historical evidence from the earlier overridden browser and must not be used to assert current supported loading or human gameplay feel. Historical software-render timings are omitted from current acceptance. No current graphics/performance claim is made.
 
 ## Changed paths
 
@@ -98,3 +92,9 @@ Ten software-render submissions per viewport, balanced graphics, DPR 1, Chromium
 - `games/royal-twisted/tests/QUALITY_REVIEW.md`
 - `games/royal-twisted/tests/evidence/{browser-quality.json,repository-tests.txt,shared-regressions.txt,portrait-setback.png,landscape-setback.png}`
 - `tests/royal-twisted-quality.test.mjs`
+
+- `games/royal-twisted/source/vendor/three/{three.module.js,three.core.js,LICENSE,provenance.json}`
+
+## Follow-up independent review
+
+A separate read-only reviewer verified upstream tarball/module/core/license bytes, published integrity, revision 180, relative imports and Pages copies, plus retained browser sandbox/TLS checks. No new code/security/scope blocker was found. Normal browser acceptance remains blocked by the container configuration.

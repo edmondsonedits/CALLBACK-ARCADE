@@ -99,12 +99,12 @@ window.twistedLoadError=(title,detail)=>{
   const card=document.querySelector("#loading");card.style.display="grid";
   card.querySelector("h1").textContent=title;card.querySelector("p").textContent=detail;
 };
-window.twistedLoadWatch=setTimeout(()=>window.twistedLoadError("Still waiting for Three.js", "This game needs internet access to jsDelivr. Check the connection, then reload."),15000);
+window.twistedLoadWatch=setTimeout(()=>window.twistedLoadError("Still waiting for Three.js", "The bundled graphics files have not loaded. Check that the complete game folder is served, then reload."),15000);
 </script>
 <script type="module">
 let THREE;
-try{THREE=await import("https://cdn.jsdelivr.net/npm/three@0.180.0/+esm")}
-catch(err){clearTimeout(window.twistedLoadWatch);window.twistedLoadError("Three.js unavailable", "The graphics dependency could not load. Allow access to jsDelivr, then reload. This build requires internet access.");throw err}
+try{THREE=await import("./vendor/three/three.module.js")}
+catch(err){clearTimeout(window.twistedLoadWatch);window.twistedLoadError("Three.js unavailable", "The bundled graphics dependency could not load. Serve the complete game folder, including vendor/three, then reload.");throw err}
 
 const $=s=>document.querySelector(s);
 const viewport=$("#viewport"),loading=$("#loading"),hitFlash=$("#hitFlash"),messageEl=$("#message"),countdownEl=$("#countdown");

@@ -17,34 +17,67 @@ const instrumented = html.replace(
   "try{initRenderer();",
   "window.__quality={run:code=>eval(code)};try{initRenderer();",
 );
-const server = createServer((req, res) => {
-  res.setHeader("Content-Type", "text/html");
-  res.end(instrumented);
+const sourceRoot = new URL("../source/", import.meta.url);
+const pagesRoot = process.env.TWISTED_PAGES_DIR;
+const server = createServer(async (req, res) => {
+  try {
+    const pathname = new URL(req.url, "http://localhost").pathname;
+    if (pathname === "/") {
+      res.setHeader("Content-Type", "text/html");
+      res.end(instrumented);
+      return;
+    }
+    let root = sourceRoot;
+    let relative = pathname.slice(1);
+    if (pathname.startsWith("/standalone/")) relative = pathname.slice(12);
+    if (pathname.startsWith("/pages/games/royal-twisted/")) {
+      assert.ok(pagesRoot, "TWISTED_PAGES_DIR must identify the actual Pages build");
+      root = new URL(`file://${pagesRoot}/games/royal-twisted/`);
+      relative = pathname.slice("/pages/games/royal-twisted/".length) || "index.html";
+    }
+    const file = new URL(relative, root);
+    assert.ok(file.href.startsWith(root.href));
+    res.setHeader("Content-Type", relative.endsWith(".js") ? "text/javascript" : "text/html");
+    res.end(await readFile(file));
+  } catch {
+    res.statusCode = 404;
+    res.end("Not found");
+  }
 });
 await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
 const url = `http://127.0.0.1:${server.address().port}/`;
-const browser = await chromium.launch({
-  executablePath: process.env.CHROMIUM_PATH || "/usr/bin/chromium",
-  headless: true,
-  args: [
-    "--no-sandbox",
-    "--use-angle=swiftshader",
-    "--enable-unsafe-swiftshader",
-  ],
-});
+let browser;
+try {
+  browser = await chromium.launch({
+    executablePath: process.env.CHROMIUM_PATH || "/usr/bin/chromium",
+    headless: true,
+    chromiumSandbox: true,
+    // Retain browser security; do not enable Playwright's unsafe software fallback.
+    ignoreDefaultArgs: ["--enable-unsafe-swiftshader", "--unsafely-disable-devtools-self-xss-warnings"],
+  });
+} catch (error) {
+  await writeFile(`${out}/browser-quality.json`, JSON.stringify({
+    sourceSha256: createHash("sha256").update(html).digest("hex"),
+    status: "blocked",
+    reason: "Browser launch failed with sandbox and certificate validation retained",
+    detail: error.message,
+    checks: [],
+  }, null, 2));
+  server.close();
+  throw error;
+}
 const report = {
   sourceSha256: createHash("sha256").update(html).digest("hex"),
   conditions: {
     browser: await browser.version(),
-    renderer: "Chromium SwiftShader software WebGL",
-    httpsCertificateErrorsIgnored: process.env.TWISTED_IGNORE_HTTPS === "1",
+    renderer: "Chromium default WebGL; inspect renderer on the target machine",
+    tlsValidation: "default; no certificate overrides",
     physicalPhone: false,
     realGamepad: false,
   },
   checks: [],
 };
 const context = await browser.newContext({
-  ignoreHTTPSErrors: report.conditions.httpsCertificateErrorsIgnored,
   hasTouch: true,
 });
 const check = (name, detail) => {
@@ -67,23 +100,35 @@ async function pageFor(viewport) {
   return p;
 }
 try {
-  // This is a real failed request, not a successful empty/loading-page screenshot.
-  const p = await pageFor({ width: 390, height: 844 });
-  await p.route("**/cdn.jsdelivr.net/**", (r) => r.abort());
-  await p.goto(url);
-  await p.waitForFunction(
-    () =>
-      document.querySelector("#loading h1").textContent ===
-      "Three.js unavailable",
-    {},
-    { polling: 100 },
+  // External traffic is forbidden throughout this matrix; local bundles must suffice.
+  await context.route("**/*", (route) =>
+    new URL(route.request().url()).origin === new URL(url).origin
+      ? route.continue()
+      : route.abort(),
   );
-  assert.match(
-    await p.locator("#loading").innerText(),
-    /requires internet access/,
-  );
-  check("blocked CDN reports an explicit failure");
-  await p.close();
+  for (const path of ["standalone/index.html", "pages/games/royal-twisted/"]) {
+    const p = await context.newPage();
+    const errors = [];
+    p.on("pageerror", (error) => errors.push(error.message));
+    await p.goto(url + path);
+    await p.waitForFunction(() => window.RoyalTwisted && document.querySelector("canvas") && getComputedStyle(document.querySelector("#loading")).display === "none");
+    assert.deepEqual(errors, []);
+    assert.equal(await p.evaluate(() => typeof window.__quality), "undefined");
+    check(`ordinary uninstrumented ${path} loads with external traffic blocked`);
+    await p.close();
+  }
+  for (const dependency of ["three.module.js", "three.core.js"]) {
+    const p = await pageFor({ width: 390, height: 844 });
+    await p.route(`**/vendor/three/${dependency}`, (r) => r.abort());
+    await p.goto(url);
+    await p.waitForFunction(
+      () => document.querySelector("#loading h1").textContent === "Three.js unavailable",
+      {}, { polling: 100 },
+    );
+    assert.match(await p.locator("#loading").innerText(), /including vendor\/three/);
+    check(`missing bundled ${dependency} reports an explicit failure`);
+    await p.close();
+  }
   const noGPU = await pageFor({ width: 390, height: 844 });
   await noGPU.addInitScript(() => {
     const original = HTMLCanvasElement.prototype.getContext;

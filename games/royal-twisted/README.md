@@ -16,7 +16,7 @@ Contestants automatically advance around the tower while hazards approach. Jump 
 - Preserved upload: `source/original/royal_twisted_spiral_keep_v0.5_original_camera_knockback.html`
 - Older reference: `source/archive/royal_twisted_spiral_keep_v0.4_ten_players.html`
 
-The v0.5 build loads Three.js 0.180.0 from jsDelivr, so it needs network access for that dependency.
+The active review build bundles the unchanged Three.js 0.180.0 release under `source/vendor/three/`, with its MIT license and integrity provenance. Serve the complete `source/` folder over HTTP; no external CDN request is needed. Direct `file://` module loading is not supported. Original/archive builds retain their original dependencies.
 
 ## Multiplayer
 The source exposes local/gamepad/CALLBACK remote control hooks, but the repository does not yet provide authenticated room-code transport, authoritative seat credentials, reconnect, rate limiting, or verified production multiplayer.
@@ -35,4 +35,4 @@ The active HTML retains automatic running, seven-hit elimination, all existing c
 - Round advancement uses simulation time and stops while paused. If a single rod eliminates both finalists, the existing all-out draw applies; no eliminated contestant receives a crown. Rematch remains available through Settings → Restart Match → Close → Resume.
 - Performance graphics and reduced-motion preferences suppress impact flash/camera shake; collision timing is unchanged. Short landscape screens use more compact controls to keep approaching rods above the HUD.
 
-See [quality evidence](tests/QUALITY_REVIEW.md) for checks and limitations. This is still a network-dependent Three.js build. Failed downloads and unavailable WebGL now show explicit loading errors; no offline bundle or hosted multiplayer was added.
+See [quality evidence](tests/QUALITY_REVIEW.md) for checks and limitations. Missing bundled graphics files and unavailable WebGL show explicit errors. This is a locally served module bundle, not a service-worker offline cache; hosted multiplayer was not added.

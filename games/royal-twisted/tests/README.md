@@ -17,12 +17,13 @@ Optional browser matrix (Playwright/Chromium are test tools, not new game depend
 
 ```sh
 npm install --prefix /tmp/twisted-browser --cache /tmp/twisted-npm-cache playwright
-PLAYWRIGHT_MODULE=/tmp/twisted-browser/node_modules/playwright/index.mjs \
+PAGES_OUTPUT_DIR=/tmp/twisted-pages npm run pages:build
+TWISTED_PAGES_DIR=/tmp/twisted-pages PLAYWRIGHT_MODULE=/tmp/twisted-browser/node_modules/playwright/index.mjs \
   node games/royal-twisted/tests/browser-quality.mjs
 ```
 
-`CHROMIUM_PATH` overrides `/usr/bin/chromium`. `TWISTED_EVIDENCE_DIR` overrides `/tmp/royal-twisted-browser`; `TWISTED_PROFILE` selects desktop, portrait, small or landscape. Default HTTPS validation is retained. The recorded cloud matrix used the explicit test-only `TWISTED_IGNORE_HTTPS=1` setting; see the evidence report for conditions.
+`CHROMIUM_PATH` overrides `/usr/bin/chromium`. `TWISTED_EVIDENCE_DIR` overrides `/tmp/royal-twisted-browser`; `TWISTED_PROFILE` selects desktop, portrait, small or landscape. Browser sandboxing and default HTTPS validation are required. There is no certificate-bypass option. This container currently cannot launch sandboxed Chromium; the current matrix is recorded as blocked.
 
-The browser matrix serves the active HTML with test-only access to module-local state and controls animation scheduling. It uses actual Three.js/WebGL, keyboard/mouse input, emulated touch, cancellation, pause/Resume, full-setback fixtures, camera projections and checks that hazards are not hidden behind the controls/lives HUD. It deliberately aborts CDN requests and denies WebGL in separate cases, requiring visible error states. JSON results bind to the tested source hash; generated screenshots support visual inspection, not claims about game feel. Software-render CPU submission timings are diagnostic only.
+The matrix first opens uninstrumented standalone and actual Pages-build entries with external traffic blocked. Behavioral fixtures then serve the active HTML with test-only access to module-local state and controls animation scheduling. It uses actual Three.js/WebGL, keyboard/mouse input, emulated touch, cancellation, pause/Resume, full-setback fixtures, camera projections and checks that hazards are not hidden behind the controls/lives HUD. It deliberately aborts each local dependency request and denies WebGL in separate cases, requiring visible error states. JSON results bind to the tested source hash; generated screenshots support visual inspection, not claims about game feel. Render CPU submission timings are diagnostic only. Prior screenshots are historical and do not establish current normal-browser acceptance.
 
 These checks do not verify production multiplayer, physical phones/gamepads, audible mix quality or real GPU performance.
