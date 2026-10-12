@@ -1,0 +1,36 @@
+✔ Royal Ballistix uses the selected minimal competitive mobile concept (39.541524ms)
+✔ mobile movement uses radial stick distance for speed instead of a run button (12.75432ms)
+✔ Magnet and Pulse expose compact live status and targeting feedback (1.113432ms)
+✔ Royal Twisted defaults close to CAM-3R-23-U (7.930304ms)
+✔ Royal Twisted camera framing reacts to Player 1 setback, not the whole pack (0.66328ms)
+✔ non-player hits do not shake the camera (0.407007ms)
+✔ royal-ballistix settings stay paused until an explicit resume (105.027447ms)
+✔ royal-sumo settings stay paused until an explicit resume (67.0896ms)
+✔ royal-twisted settings stay paused until an explicit resume (25.994095ms)
+✔ royal-roller-ruckus settings stay paused until an explicit resume (55.814664ms)
+✔ space-bash settings stay paused until an explicit resume (10.097923ms)
+✔ Sumo and Twisted do not stack the pause overlay over settings (21.20002ms)
+✔ closing settings never directly resumes gameplay (31.772208ms)
+✔ Space Bash ends the match when seat 0 earns its third crown on timeout (20.759106ms)
+✔ Space Bash ends the match when seat 1 earns its third crown on timeout (6.556322ms)
+✔ Space Bash timeout ties preserve the existing first-seat health tiebreak (55.878843ms)
+✔ Space Bash non-clinching timeout starts another round (2.806025ms)
+✔ Space Bash timeout with no surviving fighter awards no crown (2.633ms)
+✔ Space Bash elimination wins still finish a first-to-three match (5.132924ms)
+✔ Space Bash keyboard actions are blocked in fight, paused=true (2.132586ms)
+✔ Space Bash keyboard actions are blocked in countdown, paused=false (8.034519ms)
+✔ Space Bash keyboard actions are blocked in over, paused=false (2.176295ms)
+✔ Space Bash keyboard actions are blocked in match, paused=false (6.193488ms)
+✔ Space Bash keyboard actions work after resuming an active fight (6.925191ms)
+✔ Scratch Match cancels a pending round-end timer when restarted (2.2032ms)
+✔ Scratch Match rejects a forced stale round-end callback after restart (0.869687ms)
+✔ Scratch Match old callbacks cannot end a newer round even while it is finishing (28.581526ms)
+✔ Scratch Match queues one timer and finishes normally without a restart (5.344523ms)
+ℹ tests 28
+ℹ suites 0
+ℹ pass 28
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1335.27737
