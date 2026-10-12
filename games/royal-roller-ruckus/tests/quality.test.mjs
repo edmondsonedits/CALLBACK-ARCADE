@@ -75,3 +75,18 @@ test('packets received while paused cannot leave held actions on resume',()=>{
  const h=harness();h.run('togglePause(true);window.CallbackInput.push(0,{moveX:1,primaryAction:true,secondaryAction:true,sequence:1});togglePause(false);');
  assert.equal(h.run('samplePlayerInput(0).primaryAction'),false);assert.equal(h.run('samplePlayerInput(0).secondaryAction'),false);
 });
+
+test('missed bot gate targets a physical return then recross without writing motion or progress',()=>{
+ const h=harness();h.run('const r=racers[1];pose(r,83);const before=[r.x,r.y,r.z,r.vx,r.vy,r.vz,r.nextCheckpoint,r.lap];const approach=botGateTarget(r,100);');
+ assert.equal(h.run('approach.idx'),76);assert.equal(h.run('approach.lane'),0);
+ assert.deepEqual(Array.from(h.run('[r.x,r.y,r.z,r.vx,r.vy,r.vz,r.nextCheckpoint,r.lap]')),Array.from(h.run('before')));
+ h.run('pose(r,77);const through=botGateTarget(r,100);');assert.equal(h.run('through.idx'),84);
+ // Reaching the approach alone earns nothing; the shipping gate crossing does.
+ assert.equal(h.run('r.nextCheckpoint'),1);h.run('cross(r,1);const normal=botGateTarget(r,100);');
+ assert.equal(h.run('r.nextCheckpoint'),2);assert.equal(h.run('normal.idx'),100);assert.equal(h.run('r.aiRecoveringGate'),false);
+});
+test('respawn and Race Again clear a bot gate-recovery target',()=>{
+ const h=harness();h.run('const r=racers[1];pose(r,83);botGateTarget(r,100);respawn(r);');
+ assert.equal(h.run('r.aiRecoveringGate'),false);assert.equal(h.run('r.aiRecoveryCheckpoint'),null);
+ h.run('pose(r,83);botGateTarget(r,100);resetRace();');assert.equal(h.run('racers[1].aiRecoveringGate'),false);
+});

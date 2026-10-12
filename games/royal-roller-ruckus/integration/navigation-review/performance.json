@@ -1,0 +1,35 @@
+{
+  "environment": {
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "viewport": [
+      1280,
+      720
+    ],
+    "dpr": 1,
+    "seed": 123,
+    "dependency": "npm Three.js 0.180.0, test-only local route",
+    "browser": "154.0.8037.57"
+  },
+  "scene": "ten-racer seeded stationary grid, fixed camera; render+GPU completion per frame",
+  "graphics": "balanced",
+  "durationMs": 60627.69999999972,
+  "frames": 37,
+  "meanMs": 1638.5864864864789,
+  "medianMs": 1312.9000000003725,
+  "p95Ms": 4060.2999999998137,
+  "diagnostics": [
+    {
+      "shadows": true,
+      "meanRenderMs": 8.733333333395422,
+      "calls": 302,
+      "triangles": 68302
+    },
+    {
+      "shadows": false,
+      "meanRenderMs": 10,
+      "calls": 302,
+      "triangles": 68302
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,134 @@
+✔ 2 easy seed 456: forward gates, no progress stalls, three legal laps (715.653302ms)
+✖ 2 normal seed 456: forward gates, no progress stalls, three legal laps (814.665867ms)
+✔ 2 hard seed 456: forward gates, no progress stalls, three legal laps (604.044596ms)
+✖ 4 easy seed 456: forward gates, no progress stalls, three legal laps (1433.763041ms)
+✔ 4 normal seed 456: forward gates, no progress stalls, three legal laps (756.313207ms)
+✔ 4 hard seed 456: forward gates, no progress stalls, three legal laps (733.910218ms)
+✖ 10 easy seed 456: forward gates, no progress stalls, three legal laps (3386.606456ms)
+✖ 10 normal seed 456: forward gates, no progress stalls, three legal laps (3615.207331ms)
+✖ 10 hard seed 456: forward gates, no progress stalls, three legal laps (3509.283614ms)
+✖ effective difficulty ordering holds for both mean and median finish time at each seat count (0.499094ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 4
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15710.354471
+
+✖ failing tests:
+
+test at games/royal-roller-ruckus/tests/navigation.test.mjs:12:8
+✖ 2 normal seed 456: forward gates, no progress stalls, three legal laps (814.665867ms)
+  AssertionError [ERR_ASSERTION]: no extra half circuit after a missed gate
+      at TestContext.<anonymous> (file:///workspace/royal-roller-quality/games/royal-roller-ruckus/tests/navigation.test.mjs:17:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+      at run (node:internal/test_runner/harness:398:12)
+      at test (node:internal/test_runner/harness:407:12)
+      at file:///workspace/royal-roller-quality/games/royal-roller-ruckus/tests/navigation.test.mjs:12:8 {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at games/royal-roller-ruckus/tests/navigation.test.mjs:12:8
+✖ 4 easy seed 456: forward gates, no progress stalls, three legal laps (1433.763041ms)
+  AssertionError [ERR_ASSERTION]: no extra half circuit after a missed gate
+      at TestContext.<anonymous> (file:///workspace/royal-roller-quality/games/royal-roller-ruckus/tests/navigation.test.mjs:17:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+      at run (node:internal/test_runner/harness:398:12)
+      at test (node:internal/test_runner/harness:407:12)
+      at file:///workspace/royal-roller-quality/games/royal-roller-ruckus/tests/navigation.test.mjs:12:8 {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at games/royal-roller-ruckus/tests/navigation.test.mjs:12:8
+✖ 10 easy seed 456: forward gates, no progress stalls, three legal laps (3386.606456ms)
+  AssertionError [ERR_ASSERTION]: no extra half circuit after a missed gate
+      at TestContext.<anonymous> (file:///workspace/royal-roller-quality/games/royal-roller-ruckus/tests/navigation.test.mjs:17:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+      at run (node:internal/test_runner/harness:398:12)
+      at test (node:internal/test_runner/harness:407:12)
+      at file:///workspace/royal-roller-quality/games/royal-roller-ruckus/tests/navigation.test.mjs:12:8 {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at games/royal-roller-ruckus/tests/navigation.test.mjs:12:8
+✖ 10 normal seed 456: forward gates, no progress stalls, three legal laps (3615.207331ms)
+  AssertionError [ERR_ASSERTION]: no extra half circuit after a missed gate
+      at TestContext.<anonymous> (file:///workspace/royal-roller-quality/games/royal-roller-ruckus/tests/navigation.test.mjs:17:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+      at run (node:internal/test_runner/harness:398:12)
+      at test (node:internal/test_runner/harness:407:12)
+      at file:///workspace/royal-roller-quality/games/royal-roller-ruckus/tests/navigation.test.mjs:12:8 {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at games/royal-roller-ruckus/tests/navigation.test.mjs:12:8
+✖ 10 hard seed 456: forward gates, no progress stalls, three legal laps (3509.283614ms)
+  AssertionError [ERR_ASSERTION]: no extra half circuit after a missed gate
+      at TestContext.<anonymous> (file:///workspace/royal-roller-quality/games/royal-roller-ruckus/tests/navigation.test.mjs:17:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+      at run (node:internal/test_runner/harness:398:12)
+      at test (node:internal/test_runner/harness:407:12)
+      at file:///workspace/royal-roller-quality/games/royal-roller-ruckus/tests/navigation.test.mjs:12:8 {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at games/royal-roller-ruckus/tests/navigation.test.mjs:23:7
+✖ effective difficulty ordering holds for both mean and median finish time at each seat count (0.499094ms)
+  AssertionError [ERR_ASSERTION]: difficulty ordering at 2 contestants
+      at TestContext.<anonymous> (file:///workspace/royal-roller-quality/games/royal-roller-ruckus/tests/navigation.test.mjs:27:74)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+      at run (node:internal/test_runner/harness:398:12)
+      at test (node:internal/test_runner/harness:407:12)
+      at file:///workspace/royal-roller-quality/games/royal-roller-ruckus/tests/navigation.test.mjs:23:7 {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

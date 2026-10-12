@@ -381,7 +381,7 @@ function findTrackLanding(x,z,prevBottom,newBottom){
   return best;
 }
 function lanePosition(idx,lane=0){const p=trackSamples[idx],n=trackNormals[idx];return new THREE.Vector3(p.x+n.x*lane,p.y+CAGE_R,p.z+n.z*lane);}
-function makeRacer(id,idx,lane,player=false){const visual=buildCage(id,player),pos=lanePosition(idx,lane);visual.group.position.copy(pos);const t=trackTangents[idx];return{id,player,name:(networkInputs[id]?.name||NAMES[id]),visual,x:pos.x,y:pos.y,z:pos.z,vx:t.x*.01,vy:0,vz:t.z*.01,r:CAGE_R,mass:1,trackIdx:idx,lastTrackIdx:idx,gateX:pos.x,gateY:pos.y,gateZ:pos.z,gateIdx:idx,offDist:0,lane,lap:0,nextCheckpoint:1,lastCheckpointIdx:idx,falling:false,fallTime:0,finished:false,finishRank:0,aiLane:lane,aiLaneTimer:rand(1.5,3.5),rollQuat:new THREE.Quaternion(),rollAxis:new THREE.Vector3(),speed:0,impact:0,stuck:0,inputX:0,inputZ:0,slip:0,aiState:"RACE",aiDecision:rand(.2,.8),aiReaction:0,aiTargetLane:lane,aiPersonality:{aggression:rand(.82,1.18),risk:rand(.86,1.14),mistake:rand(.82,1.18)},animLeanX:0,animLeanZ:0,animKick:0,prevVx:0,prevVz:0,rushCooldown:0,onRush:false,onRough:false,contactCount:0,contactX:0,contactZ:0,packReleaseCooldown:0,grounded:true,lastSurfaceY:pos.y-CAGE_R,landingCount:0};}
+function makeRacer(id,idx,lane,player=false){const visual=buildCage(id,player),pos=lanePosition(idx,lane);visual.group.position.copy(pos);const t=trackTangents[idx];return{id,player,name:(networkInputs[id]?.name||NAMES[id]),visual,x:pos.x,y:pos.y,z:pos.z,vx:t.x*.01,vy:0,vz:t.z*.01,r:CAGE_R,mass:1,trackIdx:idx,lastTrackIdx:idx,gateX:pos.x,gateY:pos.y,gateZ:pos.z,gateIdx:idx,offDist:0,lane,lap:0,nextCheckpoint:1,lastCheckpointIdx:idx,falling:false,fallTime:0,finished:false,finishRank:0,aiRecoveryCheckpoint:null,aiRecoveringGate:false,aiGateReturning:true,aiLane:lane,aiLaneTimer:rand(1.5,3.5),rollQuat:new THREE.Quaternion(),rollAxis:new THREE.Vector3(),speed:0,impact:0,stuck:0,inputX:0,inputZ:0,slip:0,aiState:"RACE",aiDecision:rand(.2,.8),aiReaction:0,aiTargetLane:lane,aiPersonality:{aggression:rand(.82,1.18),risk:rand(.86,1.14),mistake:rand(.82,1.18)},animLeanX:0,animLeanZ:0,animKick:0,prevVx:0,prevVz:0,rushCooldown:0,onRush:false,onRough:false,contactCount:0,contactX:0,contactZ:0,packReleaseCooldown:0,grounded:true,lastSurfaceY:pos.y-CAGE_R,landingCount:0};}
 function clearRacers(){for(const r of racers)scene.remove(r.visual.group);racers.length=0;}
 function connectedSeatCount(){
   let highest=1;
@@ -592,6 +592,23 @@ function updatePlayer(r,dt){
 }
 function progressDelta(a,b){let d=b.trackIdx-a.trackIdx;if(d>TRACK_SAMPLES*.5)d-=TRACK_SAMPLES;if(d<-TRACK_SAMPLES*.5)d+=TRACK_SAMPLES;return d;}
 function trackCurvature(idx,span=10){const a=trackTangents[(idx-span+TRACK_SAMPLES)%TRACK_SAMPLES],b=trackTangents[(idx+span)%TRACK_SAMPLES];return a.angleTo(b);}
+// Nearest-sample projection can jump between the two legs of the finish hairpin.
+// If a required gate is behind us, physically return to its approach and recross.
+// This only chooses a steering target: checkpointUpdate remains the sole authority.
+function botGateTarget(r,idx){
+  const gateIdx=checkpointIndex(r.nextCheckpoint),gate=trackSamples[gateIdx],t=trackTangents[gateIdx];
+  const routeDelta=((r.trackIdx-gateIdx+TRACK_SAMPLES*1.5)%TRACK_SAMPLES)-TRACK_SAMPLES*.5;
+  const plane=(r.x-gate.x)*t.x+(r.z-gate.z)*t.z;
+  if(r.aiRecoveryCheckpoint!==r.nextCheckpoint){r.aiRecoveryCheckpoint=r.nextCheckpoint;r.aiRecoveringGate=false;r.aiGateReturning=true;}
+  if(routeDelta>=2&&routeDelta<20&&plane>0){
+    if(!r.aiRecoveringGate||routeDelta>6)r.aiGateReturning=true;
+    r.aiRecoveringGate=true;
+  }
+  if(!r.aiRecoveringGate)return{idx,lane:r.aiLane};
+  if(r.aiGateReturning&&plane<-.6&&Math.abs(routeDelta)<8)r.aiGateReturning=false;
+  return{idx:(gateIdx+(r.aiGateReturning?-4:4)+TRACK_SAMPLES)%TRACK_SAMPLES,lane:0};
+}
+
 function updateAI(r,dt){
   if(r.falling||r.finished)return;
   const D=AI_LEVELS[difficultyEl.value],A=TUNING.ai,sp=len2(r.vx,r.vz);
@@ -621,8 +638,8 @@ function updateAI(r,dt){
   const cornerFactor=clamp(worst/.72,0,1),edgeFactor=clamp((r.offDist-TRACK_WIDTH*.28)/(TRACK_WIDTH*.28),0,1);
   // Aim through the next gate before looking beyond it; no progress is awarded here.
   const gateAhead=(checkpointIndex(r.nextCheckpoint)-r.trackIdx+TRACK_SAMPLES)%TRACK_SAMPLES;
-  const look=Math.min(Math.floor((11+sp*2.25)*D.look*(1-cornerFactor*.8)),gateAhead<40?Math.max(2,gateAhead+1):40),idx=(r.trackIdx+look)%TRACK_SAMPLES,p=trackSamples[idx],n=trackNormals[idx];
-  let tx=p.x+n.x*r.aiLane,tz=p.z+n.z*r.aiLane,dx=tx-r.x,dz=tz-r.z;let [nx,nz]=norm2(dx,dz);
+  const look=Math.min(Math.floor((11+sp*2.25)*D.look*(1-cornerFactor*.8)),gateAhead<40?Math.max(2,gateAhead+1):40),idx=(r.trackIdx+look)%TRACK_SAMPLES,guide=botGateTarget(r,idx),p=trackSamples[guide.idx],n=trackNormals[guide.idx];
+  let tx=p.x+n.x*guide.lane,tz=p.z+n.z*guide.lane,dx=tx-r.x,dz=tz-r.z;let [nx,nz]=norm2(dx,dz);
   // Physical local avoidance: bias away from overlapping trajectories, never teleport or frame-perfect dodge.
   if(nearestSide&&sideDist<A.avoidRadius&&sideDist>.05){const awayX=(r.x-nearestSide.x)/sideDist,awayZ=(r.z-nearestSide.z)/sideDist,w=(A.avoidRadius-sideDist)/A.avoidRadius;nx+=awayX*w*.58;nz+=awayZ*w*.58;[nx,nz]=norm2(nx,nz);}
   const targetSpeed=(TUNING.movement.maxSpeed*(.97-cornerFactor*.31-edgeFactor*.18))*D.speed;
@@ -696,6 +713,7 @@ function respawn(r){
   const lane=r.player?-.45:r.aiLane*.65,pos=lanePosition(idx,lane),tan=trackTangents[idx],h=Math.hypot(tan.x,tan.z)||1;
   r.x=pos.x;r.y=pos.y;r.z=pos.z;r.vx=tan.x/h*1.7;r.vy=0;r.vz=tan.z/h*1.7;r.trackIdx=idx;r.lastTrackIdx=idx;
   r.falling=false;r.grounded=true;r.fallTime=0;r.lastSurfaceY=trackSamples[idx].y;r.rushCooldown=.35;r.onRush=false;r.onRough=false;
+  r.aiRecoveryCheckpoint=null;r.aiRecoveringGate=false;r.aiGateReturning=true;
   r.offDist=Math.abs(lane);r.speed=1.7;r.inputX=r.inputZ=0;r.contactCount=0;r.packReleaseCooldown=0;seedCheckpointSweep(r);
   r.visual.group.visible=true;r.visual.ring.visible=true;r.visual.label.visible=true;
   if(r.player){cameraNeedsReset=true;say("Back at the last checkpoint — the track only respawns you after a real fall.");haptic(22);}

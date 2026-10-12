@@ -1,5 +1,8 @@
 # Roller quality review evidence
 
+Historical evidence for the first candidate `e1141247bc44bc0d2188b6547624f94f5add8d60`.
+Subsequent bot corrections and current validation: [navigation review](../navigation-review/README.md).
+
 Local review branch: `quality/royal-roller-ruckus`.
 Base: `785a15000abe11970c7b92c5f3cab197061fcedf`, fetched and verified against
 `origin/main` on 2026-10-12. No merge, push, deployment or multiplayer promotion.

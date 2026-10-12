@@ -1,0 +1,36 @@
+✔ 2 easy seed 123: forward gates, no progress stalls, three legal laps (874.462545ms)
+✔ 2 easy seed 456: forward gates, no progress stalls, three legal laps (1195.126893ms)
+✔ 2 easy seed 789: forward gates, no progress stalls, three legal laps (1249.279895ms)
+✔ 2 normal seed 123: forward gates, no progress stalls, three legal laps (1181.192351ms)
+✔ 2 normal seed 456: forward gates, no progress stalls, three legal laps (1027.268276ms)
+✔ 2 normal seed 789: forward gates, no progress stalls, three legal laps (733.083345ms)
+✔ 2 hard seed 123: forward gates, no progress stalls, three legal laps (692.157712ms)
+✔ 2 hard seed 456: forward gates, no progress stalls, three legal laps (672.476252ms)
+✔ 2 hard seed 789: forward gates, no progress stalls, three legal laps (688.533713ms)
+✔ 4 easy seed 123: forward gates, no progress stalls, three legal laps (1713.96647ms)
+✔ 4 easy seed 456: forward gates, no progress stalls, three legal laps (1089.709503ms)
+✔ 4 easy seed 789: forward gates, no progress stalls, three legal laps (851.63435ms)
+✔ 4 normal seed 123: forward gates, no progress stalls, three legal laps (1291.689142ms)
+✔ 4 normal seed 456: forward gates, no progress stalls, three legal laps (1449.385368ms)
+✔ 4 normal seed 789: forward gates, no progress stalls, three legal laps (935.403996ms)
+✔ 4 hard seed 123: forward gates, no progress stalls, three legal laps (1087.332754ms)
+✔ 4 hard seed 456: forward gates, no progress stalls, three legal laps (818.060014ms)
+✔ 4 hard seed 789: forward gates, no progress stalls, three legal laps (793.670925ms)
+✔ 10 easy seed 123: forward gates, no progress stalls, three legal laps (3408.74764ms)
+✔ 10 easy seed 456: forward gates, no progress stalls, three legal laps (3462.049079ms)
+✔ 10 easy seed 789: forward gates, no progress stalls, three legal laps (2900.0293ms)
+✔ 10 normal seed 123: forward gates, no progress stalls, three legal laps (2924.087079ms)
+✔ 10 normal seed 456: forward gates, no progress stalls, three legal laps (2833.319153ms)
+✔ 10 normal seed 789: forward gates, no progress stalls, three legal laps (2954.857557ms)
+✔ 10 hard seed 123: forward gates, no progress stalls, three legal laps (2696.870626ms)
+✔ 10 hard seed 456: forward gates, no progress stalls, three legal laps (2613.793535ms)
+✔ 10 hard seed 789: forward gates, no progress stalls, three legal laps (4073.816772ms)
+✔ effective difficulty ordering holds for both mean and median finish time at each seat count (0.899127ms)
+ℹ tests 28
+ℹ suites 0
+ℹ pass 28
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 46445.380962

@@ -25,3 +25,11 @@
 - Restore the pre-polish `.31` corner-speed penalty; the matched-seed ablation
   demonstrated that the additional `.50` slowdown was unnecessary for completion
   and enlarged lap-time tails. Navigation corrections are a separate commit.
+
+## Review follow-up — bot navigation
+
+- Recover a missed nearby gate by steering back to its approach and through it
+  using existing acceleration, grip and avoidance. Gate validation stays unchanged.
+- Clear recovery targets on checkpoint advance, Respawn and Race Again.
+- Pin complete races and effective difficulty ordering at 2, 4 and 10 seats
+  across matched and fresh seeds; retain raw overshoot and pre-fix failure evidence.
