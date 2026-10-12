@@ -50,7 +50,7 @@ Mobile controls disable page scrolling and use four large touch targets aligned 
 
 ## Bot behavior
 
-Any configured slot not listed in humanPlayers is controlled by the built-in bot resolver. Bots use phrase pressure, chord penalties, difficulty, and per-slot skill variation to decide each note. Bot resolution currently applies results directly inside the simulation; it does not yet use the future server-validated input path described in docs/GAME_SDK.md.
+Any configured slot not listed in humanPlayers is controlled by the built-in bot resolver. Bots use phrase pressure, chord penalties, difficulty, and per-slot skill variation to decide each note. Successful bot intents use the shared local lane judgment helper at bounded timestamps; misses expire after the timing window. This is still not the future server-validated input path described in docs/GAME_SDK.md.
 
 ## Tuning locations
 
@@ -83,8 +83,8 @@ Do not mark multiplayer verified until the host/controller contract is implement
 - Additional human slots require external calls to ScratchMatchAPI.press(playerIndex, lane).
 - There is no room code, authenticated seat token, network sequence checking, reconnect, server rate limiting, or snapshot transport.
 - Out-of-range API indices are clamped rather than rejected, so the hook is not a security boundary.
-- Bot decisions use Math.random() and are not deterministic/replayable.
-- Bot outcomes bypass the same validated action path future network players should use.
+- Ordinary play uses Math.random(); an optional numeric `seed` makes phrase/bot decisions reproducible independently of cosmetic effects. `seed: null` restores ordinary randomness.
+- Bot actions share local judgment; authenticated network validation remains unimplemented.
 - configure() reinitializes player state; seat replacement is therefore a lobby/pre-round operation in v0.5, not a safe mid-round join/leave mechanism.
 - Browser audio may require a user gesture because of autoplay policies.
 - Procedural Web Audio is prototype audio rather than authored final music/SFX.

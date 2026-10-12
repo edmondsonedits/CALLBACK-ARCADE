@@ -9,7 +9,8 @@ const sourcePath = path.resolve(here, '../source/index.html');
 const source = await readFile(sourcePath, 'utf8');
 const sha256 = createHash('sha256').update(source).digest('hex');
 
-assert.equal(sha256, '6c58614db13495393512e9f69496da686dc2962b3cabd49d71680493170cbb03', 'imported source bytes changed from the supplied v0.5 attachment');
+const original = await readFile(path.resolve(here, '../source/archive/royal_scratch_match_v0.5_ten_player.html'));
+assert.equal(createHash('sha256').update(original).digest('hex'), '6c58614db13495393512e9f69496da686dc2962b3cabd49d71680493170cbb03', 'imported source bytes changed from the supplied v0.5 attachment');
 assert.match(source, /let playerCount=4;/, 'default player count missing');
 assert.match(source, /clamp\(n\|0,2,10\)/, '2–10 player-count clamp missing');
 assert.match(source, /window\.ScratchMatchAPI\s*=\s*\{/, 'ScratchMatchAPI missing');
