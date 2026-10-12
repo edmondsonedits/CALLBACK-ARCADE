@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import vm from 'node:vm';
+import { createHash } from 'node:crypto';
 
 const html = await readFile(new URL('../source/index.html', import.meta.url), 'utf8');
 const scripts = [...html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/gi)].map(m => m[1]);
@@ -13,6 +14,21 @@ for (const marker of ['deterministic, authoritative match rules', 'Blind Crown p
 }
 const E = context.BlindCrown, P = context.CrownPerspective;
 const plain = value => JSON.parse(JSON.stringify(value));
+
+test('approved Nightfall engine, cameras, network, 3D bridge, model and artwork remain byte-identical', () => {
+  for (const [marker, hash] of [
+    ['deterministic, authoritative match rules', '4547a3baa09eb31c711eccbd4c9186ab6676c1754b68151c3daa49b1d07d94ed'],
+    ['Blind Crown perspective adapter', '20e027a3a3efd96f0f78c07102ac03c5dd36e765a2bbd1d02bde12f039996ce1'],
+    ['Room client, protocol 2', '85f6f3ef9f20b171db26746f0d22372724cd62bb9dc5cb1e1e76a8383fe30302'],
+    ['BLIND CROWN Task 1: optional Three.js', 'e9f4f455a5a158c5ec624f8735317fb9169f22675490ca704936bb357e7012cf'],
+    ['window.BLIND_CROWN_KNIGHT_GLB=', 'c00281a771e2a4de2f1c8bdce50645d67d13c58e0e3ac5ae0e089c28a2570158'],
+    ['Original Nightfall artwork.', '39cbacd465202af5a0cedbd0a0d952c44d30140c2a4019a4dffaa6e80f130a67'],
+  ]) {
+    const script = scripts.find(s => s.includes(marker));
+    assert.ok(script, marker);
+    assert.equal(createHash('sha256').update(script).digest('hex'), hash, marker);
+  }
+});
 function match(settings = {}, count = 2) {
   const game = new E.Match({ bots: 0, time: 8, ...settings }, { seed: 1729 });
   for (let i = 0; i < count; i++) game.addPlayer(`Seat ${i + 1}`);

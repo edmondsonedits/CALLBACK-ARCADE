@@ -1,5 +1,7 @@
 # Nightfall quality baseline — tests/documentation only
 
+Historical snapshot at tests/docs head `893e07e99262e6ca5861390fb221dc34709d4447`. The coordinator subsequently approved the product brief; current implementation checks and active source hashes are recorded separately in `quality-verification.json`.
+
 Recorded 2026-10-12 on approved base `785a15000abe11970c7b92c5f3cab197061fcedf` in isolated branch `quality/blind-crown`. The companion [bounded plan](QUALITY_PLAN.md) is awaiting exact product-edit approval. This stage changes no product source, original, active hash assertion, assets, metadata or shared contracts.
 
 Playable entry: `games/blind-crown/source/index.html`.

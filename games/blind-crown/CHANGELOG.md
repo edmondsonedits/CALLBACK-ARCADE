@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased — local Nightfall quality branch
+
+- Private legal/adjusted placement feedback, cleared on mode/phase changes and restart.
+- Display-scaled own-position and Classic endpoint outlines; stronger private-map marker. Precision remains without a traced guide.
+- Frozen/volley/aftermath/final control labels and outcome-aware aftermath copy; unchanged rules and timing.
+- Standalone help distinguishes local pause from separately hosted room clocks.
+- Added privacy/collision/volley/tiebreak/lifecycle regressions, protected-module hash checks and a 72-case Canvas matrix with real control interactions and emulated touch.
+- Engine, perspective module, networking, optional Three.js bridge, original artwork/model and v1.4 archive remain unchanged. No assets added or uploaded. Pending independent review and coordinator reconciliation; not published.
+
 ## 1.5.0 — Nightfall
 
 Original presentation upgrade over the exact v1.4 build. Preserved v1.4 in source/original/. Engine, input and network rules remain unchanged.

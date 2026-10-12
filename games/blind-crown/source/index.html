@@ -38,6 +38,7 @@ button:focus-visible,select:focus-visible,input:focus-visible,canvas:focus-visib
 #tacticalPanel{position:absolute;bottom:12px;left:12px;width:25%;max-width:215px;min-width:105px;background:#0b1c26e8;border:1px solid #74887c88;border-radius:3px;padding:6px;z-index:2;box-shadow:0 4px 16px #0004}#tacticalPanel>span{font-size:7px;color:#afcbbf;display:block;margin:0 0 4px;letter-spacing:1.3px}#tacticalMap{display:block;width:100%;height:auto;touch-action:none}
 #renderStatus{position:absolute;right:12px;top:12px;background:#071621bb;padding:5px 8px;font-size:8px;letter-spacing:.8px;border-radius:2px;color:var(--muted)}
 .gameBottom{padding:8px 17px 12px;background:linear-gradient(#13232d,#101d26);border-top:1px solid #45535077}.hintLine{display:flex;align-items:center;justify-content:space-between;gap:10px;color:var(--muted);font-size:11px;margin-bottom:5px}.hintLine .textBtn{font-size:10px;min-height:31px;padding:5px 9px}
+#planStatus{color:#e7d2aa;font-size:11px;line-height:1.45;max-width:100%}#planStatus[data-adjusted=true]{color:#ffcc9d}@media(max-height:500px) and (orientation:landscape){#planStatus{font-size:10px}}
 .controls{display:flex;gap:9px;align-items:stretch}.modePair,.finePair{display:flex;gap:4px}.modePair{flex:1}.modePair button{flex:1;white-space:nowrap;font-size:11px}.finePair button{padding:10px;font-variant-numeric:tabular-nums;font-size:11px}.controls .primary{min-width:155px;flex:1;font-size:12px}
 .footerHint{display:flex;gap:10px;justify-content:space-between;font-size:8px;letter-spacing:.4px;color:#778e98;margin-top:11px}.footerHint>span:first-child{color:#bba77d}.mobileRow{display:none}
 .panel{background:linear-gradient(125deg,#14242ddd,#0d1a22dd);border:1px solid #30424b80;border-radius:4px;margin-bottom:13px;padding:15px}
@@ -79,7 +80,7 @@ input,select{border:1px solid #344b56;border-radius:4px;background:#0a1821;color
   <div id="arenaBackdrop" class="arenaBackdrop"><div class="welcome"><span class="eyebrow" id="welcomeEyebrow">A GAME OF HIDDEN INTENTIONS</span><h1 id="welcomeTitle">One shot.<br><em>Outthink everyone.</em></h1><p id="welcomeCopy">Choose your spot in secret. Aim where your rivals might be. At zero, everyone fires together.</p><div id="welcomeMeta" class="welcomeMeta"></div><div class="steps" id="welcomeSteps"><span><b>01</b> HIDE</span><span><b>02</b> AIM</span><span><b>03</b> SURVIVE</span></div><div id="resultStandings" class="standings" hidden aria-label="Final standings"></div><button id="overlayStart" class="primary">Play against bots <span>→</span></button><button id="welcomeSetup" class="textBtn">Change arena, rivals or rules</button></div></div>
   <div id="pausedShade" class="pausedShade" hidden>PAUSED<small>Resume when you are ready.</small></div>
  </div>
- <div class="gameBottom"><div class="hintLine"><span id="instructionText">Your rivals stay invisible until the reveal.</span><button id="pauseBtn" class="textBtn" aria-pressed="false">Pause</button></div><div class="controls"><div class="modePair"><button id="placeBtn" class="selected" aria-pressed="true">① Place</button><button id="aimBtn" aria-pressed="false">② Aim</button></div><div class="finePair"><button id="fineLeft" aria-label="Aim one degree left">−1°</button><button id="fineRight" aria-label="Aim one degree right">+1°</button></div><button id="lockBtn" class="primary" disabled>Lock shot <span>✓</span></button></div>
+ <div class="gameBottom"><div class="hintLine"><span id="instructionText">Your rivals stay invisible until the reveal.</span><span id="planStatus" role="status" aria-live="polite" aria-atomic="true" hidden></span><button id="pauseBtn" class="textBtn" aria-pressed="false">Pause</button></div><div class="controls"><div class="modePair"><button id="placeBtn" class="selected" aria-pressed="true">① Place</button><button id="aimBtn" aria-pressed="false">② Aim</button></div><div class="finePair"><button id="fineLeft" aria-label="Aim one degree left">−1°</button><button id="fineRight" aria-label="Aim one degree right">+1°</button></div><button id="lockBtn" class="primary" disabled>Lock shot <span>✓</span></button></div>
   <div class="mobileRow"><div id="moveStick" role="group" aria-label="Touch movement stick"><div id="stickKnob"></div></div><div><strong>MOVE + AIM</strong><p>Use the stick to move. Drag the arena to aim in first/third-person; use Aim in overhead.</p></div></div>
   <div class="footerHint"><span id="notice">Classic Blind Volley</span><span>WASD move · Q/E aim · Space lock</span></div></div>
 </section>
@@ -89,10 +90,10 @@ input,select{border:1px solid #344b56;border-radius:4px;background:#0a1821;color
 </div>
 <dialog id="settingsDialog" aria-labelledby="settingsTitle"><div class="dialogHead"><div><span class="eyebrow">MAKE IT YOUR TOURNAMENT</span><h2 id="settingsTitle">Match & camera</h2></div><button id="settingsClose" aria-label="Close settings">✕</button></div><div class="dialogBody">
 <div class="settingsGrid"><section><h3>The match</h3><div class="modePair"><button id="soloTab" class="selected">Local + bots</button><button id="onlineTab">Private room</button></div><p class="small" id="matchSettingsNote">Match settings apply to the next tournament.</p><label class="field">AI challengers <output id="botsLabel">5 rivals</output><input type="range" id="botSlider" min="0" max="9" value="5"></label><div class="split"><label class="field">Planning time<select id="timeSelect"><option value="8">8 seconds</option><option value="14" selected>14 seconds</option><option value="20">20 seconds</option><option value="30">30 seconds</option></select></label><label class="field">Bot difficulty<select id="difficultySelect"><option value="easy">Relaxed</option><option value="normal" selected>Standard</option><option value="hard">Cunning</option></select></label></div><div id="arenaChoices" class="arenaChoices" role="group" aria-label="Arena previews"></div><label class="field">Arena<select id="arenaSelect"><option value="citadel">Royal Citadel</option><option value="orchard">Moonlit Orchard</option><option value="glacier">Frost Keep</option></select></label><div class="split"><label class="field">Rules<select id="rulesetSelect"><option value="classic">Classic Blind Volley</option><option value="precision">Precision · no guide</option></select></label><label class="field">Maximum rounds<select id="roundLimit"><option value="6">6 rounds</option><option value="14" selected>14 rounds</option><option value="24">24 rounds</option></select></label></div>
-<div id="onlineSettings" hidden><hr><h3>Private room</h3><p class="small" id="roomHelp">Run the included server, then open its address on every phone. Up to ten contestants and a public TV.</p><div class="split"><button id="createBtn">Create room</button><input id="roomCode" aria-label="Room code" placeholder="ROOM CODE" maxlength="5" autocomplete="off" autocapitalize="characters"></div><div class="split"><button id="joinBtn">Join room</button><button id="leaveBtn">Leave room</button></div><div id="roomTools" hidden><p>Room <strong id="roomBadge"></strong> · <span id="hostRole"></span></p><div class="split"><button id="copyBtn">Copy join link</button><button id="tvBtn">Open public TV ↗</button></div></div></div>
-</section><section><h3>Your archer</h3><label class="field">Name<input id="nameInput" maxlength="16" value="Royal Archer" autocomplete="off"></label><div id="colorOptions" class="colorOptions" role="group" aria-label="Banner colour"></div><h3>Your view</h3><p class="small">Camera choices are personal; they never change the collision world.</p><div class="split"><label class="field">Field of view<select id="fovSelect"><option value="65">65° · Narrow</option><option value="75" selected>75° · Standard</option><option value="90">90° · Wide</option></select></label><label class="field">Detail<select id="qualitySelect"><option value="low">Battery saver</option><option value="normal" selected>Balanced</option><option value="high">Detailed</option></select></label></div><label class="check"><input type="checkbox" id="reducedMotion">Reduced motion</label><details class="experimental"><summary>Experimental polygonal 3D</summary><p class="small">The retained Three.js bridge is not runtime-verified. It requires an internet connection unless its official dependencies are vendored. Canvas is the tested default.</p><label class="check"><input type="checkbox" id="enable3D">Try Three.js in first/third-person</label></details><p class="small">Local play pauses while this panel is open. Online clocks keep running.</p></section></div>
+<div id="onlineSettings" hidden><hr><h3>Private room</h3><p class="small" id="roomHelp">This standalone plays one human against bots. Private rooms require the separate Node server package, hosted by you; this page does not host rooms.</p><div class="split"><button id="createBtn">Create room</button><input id="roomCode" aria-label="Room code" placeholder="ROOM CODE" maxlength="5" autocomplete="off" autocapitalize="characters"></div><div class="split"><button id="joinBtn">Join room</button><button id="leaveBtn">Leave room</button></div><div id="roomTools" hidden><p>Room <strong id="roomBadge"></strong> · <span id="hostRole"></span></p><div class="split"><button id="copyBtn">Copy join link</button><button id="tvBtn">Open public TV ↗</button></div></div></div>
+</section><section><h3>Your archer</h3><label class="field">Name<input id="nameInput" maxlength="16" value="Royal Archer" autocomplete="off"></label><div id="colorOptions" class="colorOptions" role="group" aria-label="Banner colour"></div><h3>Your view</h3><p class="small">Camera choices are personal; they never change the collision world.</p><div class="split"><label class="field">Field of view<select id="fovSelect"><option value="65">65° · Narrow</option><option value="75" selected>75° · Standard</option><option value="90">90° · Wide</option></select></label><label class="field">Detail<select id="qualitySelect"><option value="low">Battery saver</option><option value="normal" selected>Balanced</option><option value="high">Detailed</option></select></label></div><label class="check"><input type="checkbox" id="reducedMotion">Reduced motion</label><details class="experimental"><summary>Experimental polygonal 3D</summary><p class="small">The retained Three.js bridge is not runtime-verified. It requires an internet connection unless its official dependencies are vendored. Canvas is the tested default.</p><label class="check"><input type="checkbox" id="enable3D">Try Three.js in first/third-person</label></details><p class="small">Local play pauses while this panel is open. With a separately hosted room server, its online clock would continue.</p></section></div>
 </div><div class="dialogFoot"><button id="startBtn" class="primary">Begin tournament <span>→</span></button></div></dialog>
-<dialog id="helpDialog" aria-labelledby="helpTitle"><div class="dialogHead"><h2 id="helpTitle">Hide. Predict. Survive.</h2><button id="helpClose" aria-label="Close instructions">✕</button></div><div class="dialogBody help"><h3>1 · Pick a secret position</h3><p>Tap in Place mode, use WASD/arrow keys, or use the touch stick. Cover blocks shots. Rivals cannot see your position during planning.</p><h3>2 · Predict and commit</h3><p>Select Aim and point your crossbow. Q/E turns continuously; −1°/+1° makes precise adjustments. In first/third-person, drag to turn and tap the small private map to relocate.</p><h3>3 · Reveal and volley</h3><p>Lock when ready; unlock to change your plan before time expires. At zero, everybody freezes and fires—even archers hit by another arrow. Nobody can react during the reveal.</p><h3>Win the tournament</h3><p>The arena tightens between rounds. Last survivor wins. At the round limit, points decide; a total wipe also uses points. Equal points retain the existing seat-order tiebreak.</p><h3>Privacy and room play</h3><p>Keep your own screen private while planning. Only use the public TV spectator link on a shared display. Room outcomes come from the server; reconnects recover the same seat for up to two minutes.</p><p class="small">The downloadable HTML supports solo + bots. Multiplayer needs the included Node server; it is not hosted by this download.</p></div></dialog>
+<dialog id="helpDialog" aria-labelledby="helpTitle"><div class="dialogHead"><h2 id="helpTitle">Hide. Predict. Survive.</h2><button id="helpClose" aria-label="Close instructions">✕</button></div><div class="dialogBody help"><h3>1 · Pick a secret position</h3><p>Tap in Place mode, use WASD/arrow keys, or use the touch stick. Cover blocks shots. Rivals cannot see your position during planning.</p><h3>2 · Predict and commit</h3><p>Select Aim and point your crossbow. Q/E turns continuously; −1°/+1° makes precise adjustments. In first/third-person, drag to turn and tap the small private map to relocate.</p><h3>3 · Reveal and volley</h3><p>Lock when ready; unlock to change your plan before time expires. At zero, everybody freezes and fires—even archers hit by another arrow. Nobody can react during the reveal.</p><h3>Win the tournament</h3><p>The arena tightens between rounds. Last survivor wins. At the round limit, points decide; a total wipe also uses points. Equal points retain the existing seat-order tiebreak.</p><h3>Privacy and room play</h3><p>Keep your own screen private while planning. Only use the public TV spectator link on a shared display. Room outcomes come from the server; reconnects recover the same seat for up to two minutes.</p><p class="small">This standalone supports one human plus bots. Multiplayer requires a separately hosted Node server from the full source package; no room server is included or hosted by this HTML.</p></div></dialog>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 <script>
 /* BLIND CROWN — deterministic, authoritative match rules. No browser dependencies. */
@@ -1271,16 +1272,17 @@ root.CrownArena={create(canvas){
  }
  function aim(p,s,t,options){
   const shot=E.traceShot(p,[],s.round||1,s.settings.arena),x=shot.x+shot.dx*shot.dist,y=shot.y+shot.dy*shot.dist;
-  const color=p.locked?'#9edac8':'#eac68b';
+  const color=p.locked?'#9edac8':'#eac68b',k=options.markerScale;
   ctx.save();ctx.strokeStyle='#09141b88';ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(shot.x,shot.y);ctx.lineTo(x,y);ctx.stroke();
-  ctx.strokeStyle=color+'ba';ctx.lineWidth=1.35;ctx.setLineDash([3,9]);ctx.lineDashOffset=options.reducedMotion?0:-t*8;ctx.stroke();ctx.setLineDash([]);
-  ctx.translate(x,y);ctx.rotate(Math.PI/4);ctx.strokeStyle=color;ctx.lineWidth=1.3;ctx.strokeRect(-5,-5,10,10);ctx.restore();
-  A.ellipse(ctx,x,y,1.5,1.5,color);
+  ctx.strokeStyle=color+'ba';ctx.lineWidth=1.35*k;ctx.setLineDash([3,9]);ctx.lineDashOffset=options.reducedMotion?0:-t*8;ctx.stroke();ctx.setLineDash([]);
+  ctx.translate(x,y);ctx.rotate(Math.PI/4);ctx.fillStyle='#09141be8';ctx.fillRect(-5*k,-5*k,10*k,10*k);ctx.strokeStyle='#07121b';ctx.lineWidth=4*k;ctx.strokeRect(-5*k,-5*k,10*k,10*k);ctx.strokeStyle=color;ctx.lineWidth=1.5*k;ctx.strokeRect(-5*k,-5*k,10*k,10*k);ctx.restore();
+  A.ellipse(ctx,x,y,1.5*k,1.5*k,color);
  }
  function actor(p,s,id,t,options){
   const isOwn=p.id===id,dead=!p.alive;
   if(isOwn&&!dead){
-   ctx.save();ctx.strokeStyle=p.locked?'#9edac8aa':palette(s).light+'b0';ctx.lineWidth=1.6;ctx.beginPath();ctx.ellipse(p.x,p.y+8,25,12,0,0,TAU);ctx.stroke();ctx.restore();
+   const k=s.phase==='planning'?options.markerScale:1;
+   ctx.save();ctx.beginPath();ctx.ellipse(p.x,p.y+8,25+3*(k-1),12+3*(k-1),0,0,TAU);ctx.strokeStyle='#06121be8';ctx.lineWidth=4*k;ctx.stroke();ctx.strokeStyle=p.locked?'#9edac8':palette(s).light;ctx.lineWidth=1.6*k;ctx.stroke();ctx.restore();
   }
   const progress=s.phase==='volley'?Math.max(0,1.7-options.clock):0;
   const recoil=!options.reducedMotion&&progress>0&&progress<.16?Math.sin(progress/.16*Math.PI)*3:0;
@@ -1322,6 +1324,9 @@ root.CrownArena={create(canvas){
  }
  function render(s,id,t,dt,options={}){
   const opts={view:'overhead',fov:75,quality:'normal',reducedMotion:false,clock:s.clock,...options};
+  // Screen-space legibility only; no change to world coordinates or input transforms.
+  const box=canvas.getBoundingClientRect(),scale=Math.min(box.width/canvas.width,box.height/canvas.height);
+  opts.markerScale=Math.max(1,Math.min(3.5,scale>0?1/scale:1));
   const time=opts.reducedMotion?0:t,delta=opts.paused?0:Math.min(.08,Math.max(0,dt));
   const key=`${s.sequence}:${s.round}`;
   if(key!==roundKey){particles=[];impacts.clear();roundKey=key;}
@@ -1515,7 +1520,7 @@ root.CrownArena={create(canvas){
 (function (root) {
     'use strict';
     const E = root.BlindCrown, P = root.CrownPerspective;
-    root.CrownInput = { attach({ canvas, tactical, stick, knob, get, commit, lock, mode, turn }) {
+    root.CrownInput = { attach({ canvas, tactical, stick, knob, get, commit, lock, mode, turn, placementFeedback }) {
             const keys = new Set();
             let drag = null, stickId = null, vector = { x: 0, y: 0 };
             const perspective = () => ['first', 'third'].includes(get().view);
@@ -1551,6 +1556,7 @@ root.CrownArena={create(canvas){
                 if (node !== canvas || g.mode === 'place') {
                     const xy = E.closestPosition(p.x, p.y, g.state.round, g.state.settings.arena);
                     commit({ ...g.player, ...xy });
+                    placementFeedback?.(E.canPlace(p, g.state.round, g.state.settings.arena));
                 }
                 else
                     commit({ ...g.player, a: Math.atan2(p.y - g.player.y, p.x - g.player.x) });
@@ -1697,6 +1703,7 @@ root.CrownArena={create(canvas){
     $('reducedMotion').checked = prefs.reducedMotion ?? matchMedia('(prefers-reduced-motion: reduce)').matches;
     let reducedMotion = $('reducedMotion').checked, backend = 'canvas', audio = false, audioContext = null;
     let game = null, state = null, myId = null, online = false, isHost = false, tv = new URLSearchParams(location.search).get('tv') === '1', roomCode = '', connected = false;
+    let placementMessage = '';
     let mode = 'place', paused = false, pending = null, prepAt = 0, lastStateAt = 0, lastFrame = performance.now(), accumulator = 0, animationTime = 0, lastUI = '', lastPhase = '', lastSecond = -1;
     document.body.classList.toggle('reduced-motion', reducedMotion);
     let stats = { frames: 0, totalRenderMs: 0, maxRenderMs: 0 };
@@ -1745,6 +1752,7 @@ root.CrownArena={create(canvas){
     const isPaused = () => !online && (paused || document.hidden || !!document.querySelector('dialog[open]'));
     const canEdit = () => state?.phase === 'planning' && own()?.alive && !own()?.locked && !tv && !isPaused() && (!online || connected) && !document.querySelector('dialog[open]');
     function resetLocal() {
+        placementMessage = '';
         game = new E.Match(settings());
         myId = game.addPlayer($('nameInput').value.trim() || 'Royal Archer', myColor).id;
         game.addBots(settings().bots);
@@ -1766,6 +1774,7 @@ root.CrownArena={create(canvas){
         lastStateAt = performance.now();
         const key = `${s.round}:${s.phase}`;
         if (key !== lastPhase) {
+            placementMessage = '';
             input?.reset();
             lastPhase = key;
             lastSecond = -1;
@@ -1826,6 +1835,7 @@ root.CrownArena={create(canvas){
             myId = game.addPlayer($('nameInput').value.trim() || 'Royal Archer', myColor).id;
             game.addBots(settings().bots);
             game.begin();
+            placementMessage = '';
             pending = null;
             paused = false;
             accumulator = 0;
@@ -1912,16 +1922,21 @@ root.CrownArena={create(canvas){
             state = game.state(myId);
         }
         input.reset();
+        placementMessage = '';
         sound('lock');
         lastUI = '';
         drawUI();
     }
     function setMode(value) {
+        placementMessage = '';
         mode = value;
         lastUI = '';
         drawUI();
     }
-    let input = CrownInput.attach({ canvas, tactical, stick: $('moveStick'), knob: $('stickKnob'), get: () => ({ state, player: own(), view, mode, editable: canEdit() }), commit, lock, mode: setMode, turn });
+    let input = CrownInput.attach({ canvas, tactical, stick: $('moveStick'), knob: $('stickKnob'), get: () => ({ state, player: own(), view, mode, editable: canEdit() }), commit, lock, mode: setMode, turn, placementFeedback(valid) {
+        const message = valid ? 'Position set. Aim, then lock your shot.' : 'Adjusted to a legal position — leave room around cover and the boundary.';
+        if (placementMessage !== message) { placementMessage = message; lastUI = ''; drawUI(); }
+    } });
     window.Crown3D?.setAimHandler(a => {
         if (canEdit())
             commit({ ...own(), a });
@@ -1937,7 +1952,7 @@ root.CrownArena={create(canvas){
         if (!state)
             return;
         const p = own(), s = state, active = s.phase === 'planning', alive = s.players.filter(p => p.alive).length;
-        const key = JSON.stringify([s.phase, s.round, s.players.map(p => [p.name, p.alive, p.locked, p.points, p.color]), s.log, s.winners, mode, paused, online, connected, isHost, view]);
+        const key = JSON.stringify([s.phase, s.round, s.players.map(p => [p.name, p.alive, p.locked, p.points, p.color]), s.log, s.winners, mode, paused, online, connected, isHost, view, placementMessage]);
         if (key === lastUI)
             return;
         lastUI = key;
@@ -1959,7 +1974,7 @@ root.CrownArena={create(canvas){
             $(id).disabled = !available || p.locked;
         $('lockBtn').disabled = !available;
         $('lockBtn').classList.toggle('locked', !!p?.locked);
-        $('lockBtn').innerHTML = p?.locked ? 'Unlock to edit <span>↶</span>' : 'Lock shot <span>✓</span>';
+        $('lockBtn').textContent = active ? (tv || !p?.alive ? 'Spectating' : p.locked ? 'Unlock to edit' : 'Lock shot') : ({ lobby: 'Begin a tournament', reveal: 'Plan frozen', volley: 'Volley in progress', results: 'Round complete', final: 'Tournament complete' }[s.phase] || 'Spectating');
         for (const [id, value] of [['placeBtn', 'place'], ['aimBtn', 'aim']]) {
             $(id).classList.toggle('selected', mode === value);
             $(id).setAttribute('aria-pressed', String(mode === value));
@@ -1970,6 +1985,12 @@ root.CrownArena={create(canvas){
         $('pausedShade').hidden = !paused;
         $('hostRole').textContent = isHost ? 'You are the host' : tv ? 'Public spectator' : 'Joined contestant';
         $('instructionText').textContent = online && !connected ? 'Connection lost. Your plan stays on the server.' : tv ? 'Spectator screen: hidden plans never appear here.' : !active ? 'Watch the simultaneous reveal and volley.' : !p?.alive ? 'Eliminated: rival plans remain hidden until reveal.' : p.locked ? 'Committed. You may unlock before the countdown ends.' : ['first', 'third'].includes(view) ? 'Drag to aim · Private mini-map to relocate' : mode === 'place' ? 'Tap a position, then switch to Aim.' : 'Point toward where you predict a rival will be.';
+        const privatePlan = active && p?.alive && !tv && (!online || connected);
+        $('planStatus').hidden = !privatePlan;
+        $('instructionText').hidden = !!privatePlan;
+        const planningText = p?.locked ? 'Locked · You may unlock before the countdown ends.' : placementMessage || (['first', 'third'].includes(view) ? 'Your archer · Drag to aim. Tap the private map to place.' : mode === 'place' ? 'Your archer · Place, aim, then lock.' : 'Your aim · Point where you predict a rival will be.');
+        if ($('planStatus').textContent !== (privatePlan ? planningText : '')) $('planStatus').textContent = privatePlan ? planningText : '';
+        $('planStatus').dataset.adjusted = String(privatePlan && !p.locked && placementMessage.startsWith('Adjusted'));
         $('notice').textContent = (s.settings.ruleset === 'precision' ? 'Precision · guide disabled' : 'Classic Blind Volley') + (s.round > 1 ? ' · Arena tightened' : '');
         const lobby = s.phase === 'lobby', final = s.phase === 'final';
         $('welcomeSteps').hidden = final;
@@ -2015,10 +2036,13 @@ root.CrownArena={create(canvas){
             return;
         tc.fillStyle = p.color;
         tc.beginPath();
-        tc.arc(p.x, p.y, 20, 0, Math.PI * 2);
+        const markerScale = Math.max(1, Math.min(4, 180 / Math.max(1, tactical.getBoundingClientRect().width)));
+        tc.arc(p.x, p.y, 20 * markerScale, 0, Math.PI * 2);
         tc.fill();
+        tc.strokeStyle = '#08141d'; tc.lineWidth = 12 * markerScale; tc.stroke();
+        tc.strokeStyle = '#fff0cb'; tc.lineWidth = 5 * markerScale; tc.stroke();
         tc.strokeStyle = '#ffe8bd';
-        tc.lineWidth = 9;
+        tc.lineWidth = 9 * markerScale;
         tc.beginPath();
         tc.moveTo(p.x, p.y);
         tc.lineTo(p.x + Math.cos(p.a) * 64, p.y + Math.sin(p.a) * 64);
@@ -2032,7 +2056,8 @@ root.CrownArena={create(canvas){
         $('centerAnnouncement').hidden = !(state.phase === 'reveal' || state.phase === 'results' && clock > 1.6);
         $('annSub').textContent = state.phase === 'reveal' ? 'ALL PLANS ARE FROZEN' : 'THE VOLLEY IS COMPLETE';
         $('annTitle').textContent = state.phase === 'reveal' ? 'REVEAL' : state.eliminated.length ? state.eliminated.length + ' FELLED' : 'NO ONE FELL';
-        $('annDetail').textContent = state.phase === 'reveal' ? 'NO MOVEMENT · NO REACTIONS' : 'SURVIVORS ADVANCE';
+        const survivors = state.players.filter(p => p.alive).length;
+        $('annDetail').textContent = state.phase === 'reveal' ? 'NO MOVEMENT · NO REACTIONS' : survivors === 1 ? 'Last survivor claims the crown' : survivors === 0 ? 'Total wipe — points decide' : state.round >= state.settings.roundLimit ? 'Round limit — points decide' : 'Survivors advance';
         const sec = Math.ceil(clock);
         if (state.phase === 'planning' && sec <= 3 && sec !== lastSecond) {
             sound('tick');

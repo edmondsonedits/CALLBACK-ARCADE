@@ -1,6 +1,6 @@
 # Blind Crown Nightfall bounded quality plan
 
-> **For agentic workers:** Use superpowers:executing-plans for approved implementation. Product steps below require the coordinator's exact-design approval; tests and documentation are already approved.
+> **For agentic workers:** Use superpowers:executing-plans for approved implementation. The coordinator approved this exact product brief and allowlist after tests/docs head `893e07e99262e6ca5861390fb221dc34709d4447`.
 
 **Goal:** Make private planning and phase feedback easier to read without changing secret-plan archery or tournament rules.
 
@@ -14,7 +14,7 @@
 
 - Approved base: `785a15000abe11970c7b92c5f3cab197061fcedf`, published Nightfall.
 - Isolated branch: `quality/blind-crown`; worktree: `/workspace/blind-crown-quality`.
-- Tests/documentation approved now. The coordinator explicitly requires approval of this exact product brief before product edits.
+- Tests/documentation and this exact product brief are approved. The coordinator requires independent review and portable transfer before completion; publication remains unauthorized.
 - Courtyard import and native-asset decision remain separate. No upload, replacement, competing import, push, PR, merge or deployment.
 
 ## Exact file allowlist proposed
@@ -85,11 +85,20 @@ In standalone help/settings, qualify online timer copy as hypothetical for a sep
 - [x] Audit the approved base; verify six import checks and unchanged source/original hashes.
 - [x] Add and run non-conflicting engine/privacy/collision/volley/tiebreak/seeded lifecycle tests.
 - [x] Run the new browser matrix and independent controls/pause/restart checks; record exact outcome in QUALITY_BASELINE.
-- [ ] Obtain coordinator approval of this exact file allowlist and product behavior.
-- [ ] Add failing browser assertions for illegal/legal placement feedback, phase labels, precision no-guide and feedback clearing. Confirm failures on unchanged Nightfall.
-- [ ] Implement items 1–3 in their specified embedded presentation/app regions only; update local-help copy from item 4. No unrelated repairs.
-- [ ] Run Node suites and all applicable Canvas presentation suites. Compare actual pixels at 390×844, 844×390 and 1440×960; test both rulesets and every retained camera/arena.
-- [ ] Verify original and embedded engine/camera/network/3D invariants; then update active size/hash, new evidence and owned docs.
+- [x] Obtain coordinator approval of this exact file allowlist and product behavior.
+- [x] Add failing browser assertions for illegal/legal placement feedback, phase labels, precision no-guide and feedback clearing. Confirm failures on unchanged Nightfall.
+- [x] Implement items 1–3 in their specified embedded presentation/app regions only; update local-help copy from item 4. No unrelated repairs.
+- [x] Run Node suites and all applicable Canvas presentation suites. Compare actual pixels at 390×844, 844×390 and 1440×960; test both rulesets and every retained camera/arena.
+- [x] Verify original and embedded engine/camera/network/3D invariants; then update active size/hash, new evidence and owned docs.
 - [ ] Supply local commit and independent-review evidence to coordinator for reconciliation. Do not publish.
 
 Commands: `node --test games/blind-crown/tests/standalone.test.mjs tests/blind-crown-quality.test.mjs`; `python3 games/blind-crown/tests/presentation/test_quality.py`; existing `test_visuals.py`, `test_hud.py`, `test_final.py` with screenshot redirected outside checkout. HTTP-served Pages and shared cross-game gates belong to the coordinator. Missing dependencies are blocked, never passed.
+
+## Execution ledger
+
+- Tests/docs stage: `785a150..893e07e`; 20 Node checks and 36 browser combinations passed on unchanged source.
+- Product RED: new browser checks failed on missing private status, misleading lobby label and undersized mobile endpoint before source edits.
+- Product GREEN: placement clearing, labels/aftermath, readable endpoint and Precision exclusion pass. Pixel comparison finds no changes when rival planning coordinates/aim/shots vary, for all four cameras and own/public viewers.
+- Regression RED→GREEN: added test caught the private status hiding disconnected-room instructions. Status now yields to the original connection-loss instruction; no networking byte changes.
+- Final verification before review: 21 focused Node tests, 75 repository tests, 72 browser matrix cases, existing visuals/HUD/seeded-final checks passed. Restart from actual reveal/volley/results clears shots/effects and restores private planning.
+- No rule/design deviations. Hash assertion intentionally failed after source changes, then was updated to the validated active bytes; untouched-original/engine assertions remain.
