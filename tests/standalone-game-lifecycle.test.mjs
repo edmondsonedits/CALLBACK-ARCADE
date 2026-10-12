@@ -21,11 +21,15 @@ function section(source, start, end) {
 function spaceGame({ wins = [2, 0], health = [100, 90], alive = [true, true] } = {}) {
   const listeners = {};
   const actions = [];
+  const results = [];
   const game = {
     Math, paused: false, phase: 'fight', phaseT: 0, timeLeft: .001,
     spawnT: 100, round: 3, playerCount: 2, wins: [...wins],
     joy: { x: 0, z: 0 }, particles: [], flash: 0,
     TUNE: { move: { max: 4, drag: 1, airDrag: 1 }, gravity: 8 },
+    rules: { winTarget: 3, name: 'Orbital Breakout' },
+    clearInput: noop,
+    showResults: (winner, timedOut) => results.push({ winner: winner.id, timedOut }),
     clamp: (n, a, b) => Math.max(a, Math.min(b, n)),
     say: noop, beep: noop, updateHUD: noop, collide: noop,
     updateCrates: noop, ai: noop, tileAlive: () => true, spawnCrate: noop,
@@ -46,12 +50,12 @@ function spaceGame({ wins = [2, 0], health = [100, 90], alive = [true, true] } =
     section(spaceSource, 'function checkRound(){', 'function resetRound(){') +
     section(spaceSource, 'function step(dt){', 'function lerpCrowd(){') +
     section(spaceSource, 'const keys={};addEventListener("keydown"', 'setInterval('), game);
-  return { game, actions, press: code => listeners.keydown({ code, preventDefault: noop }) };
+  return { game, actions, results, press: code => listeners.keydown({ code, preventDefault: noop }) };
 }
 
 for (const winner of [0, 1]) {
   test(`Space Bash ends the match when seat ${winner} earns its third crown on timeout`, () => {
-    const { game } = spaceGame({ wins: winner ? [0, 2] : [2, 0], health: winner ? [90, 100] : [100, 90] });
+    const { game, results } = spaceGame({ wins: winner ? [0, 2] : [2, 0], health: winner ? [90, 100] : [100, 90] });
     game.step(.01);
     assert.equal(game.wins[winner], 3);
     assert.equal(game.phase, 'match');
@@ -59,6 +63,7 @@ for (const winner of [0, 1]) {
     assert.equal(game.phase, 'match');
     assert.equal(game.round, 3);
     assert.equal(game.wins[winner], 3, 'Terminal match must not award another crown');
+    assert.deepEqual(results, [{ winner, timedOut: true }], 'Results appear exactly once');
   });
 }
 
@@ -120,7 +125,7 @@ function scratchGame() {
     Math, performance: { now: () => 1000 },
     TUNING: { round: { endDelay: .45, maxPhrases: 10 } },
     phase: 'response', phaseClock: 0, players: [{ alive: true }],
-    setControlMode: noop, gameClock: () => 1,
+    setControlMode: noop, gameClock: () => 1, gameplayBlocked: () => false,
     bigMsg: element(), smallMsg: element(),
     setTimeout(fn) { timers.push({ fn, cancelled: false }); return timers.length; },
     clearTimeout(id) { if (timers[id - 1]) timers[id - 1].cancelled = true; },

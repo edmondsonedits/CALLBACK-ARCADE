@@ -2,7 +2,8 @@
 // are stubbed. The closure accessor is injected in memory, never shipped in the game.
 import fs from 'node:fs';
 import vm from 'node:vm';
-export function runtime() {
+export function runtime({ stored = null, storageError = false } = {}) {
+    let saved = stored;
     const source = fs.readFileSync(new URL('../source/index.html', import.meta.url), 'utf8');
     let now = 100000;
     const listeners = {}, elements = {}, timers = [], sounds = [], drawCalls = [];
@@ -42,7 +43,7 @@ export function runtime() {
         }
     }
     const document = { hidden: false, documentElement: element(), head: element(), getElementById: id => elements[id] ??= element(id), querySelector: s => s.startsWith('.beat-btn') ? buttons[+s.match(/\d/)[0]] : null, querySelectorAll: s => s === '.beat-btn' ? buttons : [], createElement: () => element(), addEventListener: (n, f) => listeners[n] = f };
-    const g = { console, Math: Object.create(Math), Set, URLSearchParams, performance: { now: () => now }, innerWidth: 390, innerHeight: 844, document, navigator: {}, location: { search: '' }, localStorage: { getItem: () => null }, AudioContext, addEventListener: (n, f) => listeners[n] = f, requestAnimationFrame: noop, setTimeout: (fn, delay) => {
+    const g = { console, Math: Object.create(Math), Set, URLSearchParams, performance: { now: () => now }, innerWidth: 390, innerHeight: 844, document, navigator: {}, location: { search: '' }, localStorage: { getItem: key => { if(storageError)throw Error('storage denied');return key==='royal-scratch-match.v1'?saved:null; }, setItem: (key,value) => { if(storageError)throw Error('storage denied');if(key==='royal-scratch-match.v1')saved=value; } }, AudioContext, addEventListener: (n, f) => listeners[n] = f, requestAnimationFrame: noop, setTimeout: (fn, delay) => {
             timers.push({ fn, delay, cancelled: false });
             return timers.length;
         }, clearTimeout: id => {
@@ -53,7 +54,7 @@ export function runtime() {
     vm.createContext(g);
     const script = source.match(/<script>([\s\S]*?)<\/script>/)[1].replace(/\}\)\(\);\s*$/, 'window.inspect=(code)=>eval(code);})();');
     vm.runInContext(script, g);
-    return { g, buttons, listeners, timers, sounds, drawCalls, run: s => g.inspect(s), advance(ms) {
+    return { get saved(){return saved;}, g, buttons, listeners, timers, sounds, drawCalls, run: s => g.inspect(s), advance(ms) {
             now += ms;
         }, hidden(v) {
             document.hidden = v;

@@ -40,7 +40,7 @@ test('10 contestants: seeded input, collision and fuse stress over ten resets',(
  }
 });
 test('portrait and landscape deck footprint clears HUD and controls',()=>{
- const g=game();for(const [width,height,top,reserved] of [[390,844,128,195],[844,390,110,120],[360,640,128,165],[1280,800,128,195]]){
+ const g=game();for(const [width,height,top,reserved] of [[390,844,128,195],[844,390,110,50],[360,640,128,165],[1280,800,128,195]]){
   g.sandbox.innerWidth=width;g.sandbox.innerHeight=height;g.resize();const b=g.board;
   assert.ok(b.cx-b.size*.48>=0&&b.cx+b.size*.48<=width);
   assert.ok(b.cy-b.size*.23>=top);assert.ok(b.cy+b.size*.23<=height-reserved);

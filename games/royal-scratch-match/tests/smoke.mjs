@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import vm from 'node:vm';
 import { createHash } from 'node:crypto';
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
@@ -26,9 +27,10 @@ assert.doesNotMatch(source, /<(?:script|img|audio|video|source)[^>]+(?:src|href)
 
 const scriptMatch = source.match(/<script>\s*([\s\S]*?)\s*<\/script>\s*<\/body>/i);
 assert.ok(scriptMatch, 'inline game script could not be extracted');
+new vm.Script(scriptMatch[1], { filename: sourcePath });
 if (process.argv.includes('--write-script')) {
   const output = path.resolve(here, '.scratch-match-inline.js');
   await writeFile(output, scriptMatch[1]);
   console.log('wrote ' + output);
 }
-console.log('Royal Scratch Match v0.5 smoke check passed (' + sha256 + ')');
+console.log('Royal Scratch Match v0.6.0 smoke check passed (' + sha256 + ')');

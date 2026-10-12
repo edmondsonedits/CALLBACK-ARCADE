@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.6.0 — Tactical review
+
+- Completed-round local review with numbered archers/arrows, timeline scrubbing, all-map cover geometry and shot explanations; review pauses local play and never records secret/incomplete plans. Bounded 24-round history clears on restart/setup.
+- Timed own-shot hit/cover/boundary and incoming-hit feedback in every camera; highlighted own arrow trail and landing in overhead/isometric.
+- Full standings with hit/point totals and existing last-survivor/round-limit/wipe/seat-order explanation.
+- Matching setup portrait, clearer match summary, optional Contenders/Chronicle rail and revised viewport budget; explicit setup/end-match route.
+- Standard gamepad movement/aim/mode/lock/pause with dead zone, one action per press and neutral re-arm after menus; keyboard P/Escape pause.
+- Saved validated volume/high contrast; reduced-motion malformed storage handling tightened. Sound remains gesture-enabled; no new assets/dependencies.
+- Added pure and real-coordinator VM behavior tests for privacy, review lifecycle/scrubbing, all maps/rulesets, settings, full ranking and gamepad/reset/pause/unlock. Updated source-bound evidence. Browser/physical device/3D checks remain unverified for this revision.
+- Deterministic engine, perspective cameras, networking, optional 3D bridge, knight model, artwork and v1.4 original remain byte-identical.
+
 ## Unreleased — local Nightfall quality branch
 
 - Private legal/adjusted placement feedback, cleared on mode/phase changes and restart.

@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
 export const source = readFileSync(new URL('../source/index.html', import.meta.url), 'utf8');
-export function game(seed = 12345) {
+export function game(seed = 12345, options = {}) {
   const elements = new Map(), listeners = {}, intervals = [], frames = [], sounds = [];
   const noop = () => {};
   const context = new Proxy({}, {get: (o,k) => o[k] ?? noop, set: (o,k,v) => (o[k]=v,true)});
@@ -17,17 +17,17 @@ export function game(seed = 12345) {
   }
   const math=Object.create(Math);math.random=()=>((seed=(Math.imul(seed,1664525)+1013904223)>>>0)/4294967296);
   const sandbox={Math:math,console,performance:{now:()=>1000},innerWidth:390,innerHeight:844,devicePixelRatio:1,
-    navigator:{vibrate:noop},localStorage:{getItem:()=>null,setItem:noop,removeItem:noop},
+    navigator:{vibrate:noop,...options.navigator},localStorage:options.storage||{getItem:()=>null,setItem:noop,removeItem:noop},
     document:{querySelector:element,querySelectorAll:()=>[],getElementById:id=>element('#'+id),createElement:element,
       body:element('body'),head:element('head'),addEventListener:(k,fn)=>(listeners[k]??=[]).push(fn)},
     addEventListener:(k,fn)=>(listeners[k]??=[]).push(fn),
     setTimeout:noop,clearTimeout:noop,setInterval:fn=>intervals.push(fn),requestAnimationFrame:fn=>frames.push(fn)};
   sandbox.window=sandbox;
-  const exports=`window.testGame={get fighters(){return fighters},set fighters(v){fighters=v},get crates(){return crates},set crates(v){crates=v},get tiles(){return tiles},get particles(){return particles},get wins(){return wins},get phase(){return phase},set phase(v){phase=v},get phaseT(){return phaseT},set phaseT(v){phaseT=v},get timeLeft(){return timeLeft},set timeLeft(v){timeLeft=v},get paused(){return paused},set paused(v){paused=v},get flash(){return flash},set flash(v){flash=v},get round(){return round},joy,step,makeFighter,grabThrow,kick,jump,drop,eliminate,explode,damage,destroyTile,nearCrate,ai,drive,updateCrates,collide,finishRound,checkRound,resetRound,restartMatch,openSettingsPaused,closeSettingsToPause,resumeFromPause,drawCrate,drawFighter,render,resize,get board(){return board},setAudioContext(ctx){beep.ctx=ctx}};`;
+  const exports=`window.testGame={get fighters(){return fighters},set fighters(v){fighters=v},get crates(){return crates},set crates(v){crates=v},get tiles(){return tiles},get particles(){return particles},get wins(){return wins},get phase(){return phase},set phase(v){phase=v},get phaseT(){return phaseT},set phaseT(v){phaseT=v},get timeLeft(){return timeLeft},set timeLeft(v){timeLeft=v},get paused(){return paused},set paused(v){paused=v},get flash(){return flash},set flash(v){flash=v},get round(){return round},joy,step,makeFighter,grabThrow,kick,jump,drop,eliminate,explode,damage,destroyTile,nearCrate,ai,drive,updateCrates,collide,finishRound,checkRound,resetRound,restartMatch,openSettingsPaused,closeSettingsToPause,resumeFromPause,drawCrate,drawFighter,render,resize,get board(){return board},get preferences(){return typeof preferences==='undefined'?null:preferences},get rules(){return typeof rules==='undefined'?null:rules},get audioUnlocked(){return typeof audioUnlocked==='undefined'?false:audioUnlocked},pollGamepad:typeof pollGamepad==='undefined'?null:pollGamepad,throwPreview:typeof throwPreview==='undefined'?null:throwPreview,applyMatchSetup:typeof applyMatchSetup==='undefined'?null:applyMatchSetup,showSetup:typeof showSetup==='undefined'?null:showSetup,setAudioContext(ctx){beep.ctx=ctx}};`;
   const script=source.match(/<script>([\s\S]*?)<\/script>/)[1].replace('resetRound();updateHUD();requestAnimationFrame(loop);',exports+'resetRound();updateHUD();requestAnimationFrame(loop);');
   vm.runInNewContext(script,sandbox);
   if(!sandbox.testGame)throw new Error(element('#errorText').textContent);
-  const g=sandbox.testGame;g.phase='fight';
+  const g=sandbox.testGame;
   return Object.assign(g,{sandbox,elements,frames,element,fire:(type,data={})=>(listeners[type]||[]).forEach(fn=>fn({preventDefault:noop,...data})),
     pointer:(id,type,data={})=>(element(id).events[type]||[]).forEach(fn=>fn({pointerId:1,clientX:80,clientY:50,preventDefault:noop,currentTarget:element(id),...data})),
     poll:()=>intervals.forEach(fn=>fn()),advance:(seconds)=>{for(let i=0;i<Math.ceil(seconds*120);i++)g.step(1/120)}});

@@ -1,0 +1,66 @@
+{
+  "upstreamBase": "2a275812045d210d66210f710bae025b42635fc2",
+  "repositoryTests": {
+    "passed": 386,
+    "failed": 0
+  },
+  "sumoSourceTests": {
+    "passed": 144,
+    "failed": 0
+  },
+  "sumoRoomTests": {
+    "passed": 7,
+    "failed": 0
+  },
+  "gates": [
+    "typecheck",
+    "catalog:check",
+    "pages:build",
+    "build",
+    "Sumo source smoke and relay dry-run"
+  ],
+  "protectedFilesUnchanged": 116,
+  "independentReview": "approved after keyboard-focus, native-control and gamepad-neutral fixes",
+  "browserLimitations": [
+    "Local Chromium startup sandbox restriction",
+    "Cloud WebGL2 unavailable",
+    "Physical touch/controller/audio validation pending"
+  ],
+  "entries": [
+    {
+      "id": "blind-crown",
+      "version": "1.6.0",
+      "sha256": "9de02410af76047081cdfff3fe19a0e70641c75a31ae9ded5f7eef0831b0f681"
+    },
+    {
+      "id": "royal-ballistix",
+      "version": "0.13.0",
+      "sha256": "3af1cc8ea161a66931c73f28e8a1e6b6550fefc37735cdcd25c3510ca99468b5"
+    },
+    {
+      "id": "royal-roller-ruckus",
+      "version": "1.5.0",
+      "sha256": "3195b89abfe8237c2afd224e3d35eb930d7577d32542bebd7b93c754d6f4c303"
+    },
+    {
+      "id": "royal-scratch-match",
+      "version": "0.6.0",
+      "sha256": "580417dc35c6cd5514354e6b90ac00586f4ce6ce6224a3e21f21f7920b55c1db"
+    },
+    {
+      "id": "royal-sumo",
+      "version": "1.3.0",
+      "sha256": "6b7a638bae0d5468fee3ffb5c9d9c3a86252487379e43621b758488ac9082186"
+    },
+    {
+      "id": "royal-twisted",
+      "version": "0.6.0",
+      "sha256": "7cfbfd79c6310b397cf0b0aa3783a5625f11fb1fe3f3571b31f1bcc29d46d5f6"
+    },
+    {
+      "id": "space-bash",
+      "version": "1.14.0",
+      "sha256": "e7ded7bcc0cd9fb097c1e2a53de168d66760dbaa3273ab426ee4bb3868a038ee"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "id": "royal-twisted",
-  "title": "Royal Twisted — Spiral Keep",
+  "title": "Royal Twisted \u2014 Spiral Keep",
   "aliases": [
     "Royal Twisted",
     "Spiral Keep",
@@ -16,19 +16,19 @@
     "mobile",
     "three-js"
   ],
-  "description": "A 2–10 contestant obstacle-survival run around Spiral Keep: jump low cyan rods, duck high coral rods, survive up to seven hits, and race AI or remote-controlled rivals. v0.5 exposes CALLBACK remote-input hooks; the older v0.4 upload is retained as an archive.",
+  "description": "A 2\u201310 contestant survival run around Spiral Keep: jump cyan rods, hold duck under coral rods, recover from setbacks and compete for the crown. Includes seeded replay, jump/duck practice rhythms, full standings and persistent sound/access preferences.",
   "players": {
     "min": 2,
     "max": 10
   },
-  "version": "0.5.0",
+  "version": "0.6.0",
   "source": {
     "status": "imported",
     "paths": [
       "source/index.html",
       "source/original/royal_twisted_spiral_keep_v0.5_original_camera_knockback.html"
     ],
-    "provenance": "Imported from the user-supplied royal_twisted_spiral_keep_v0.5_original_camera_knockback.html. The uploaded v0.4 ten-player build is retained separately under source/archive/ for history. The active build imports Three.js 0.180.0 from jsDelivr at runtime.",
+    "provenance": "Imported from the user-supplied royal_twisted_spiral_keep_v0.5_original_camera_knockback.html, preserved unchanged beside the active v0.6.0 upgrade. The supplied v0.4 ten-player build remains in source/archive/. Active source bundles unmodified Three.js 0.180.0 locally with MIT license and integrity provenance; benchmark verification and source hashes are recorded in tests/evidence/sumo-benchmark.json.",
     "url": null
   },
   "lifecycle": "experimental",

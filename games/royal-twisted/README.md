@@ -1,6 +1,6 @@
 # Royal Twisted — Spiral Keep
 
-Royal Twisted is a 2–10 contestant reaction/survival game around the Spiral Keep. The active imported build is v0.5.0.
+Royal Twisted is a 2–10 contestant reaction/survival game around the Spiral Keep. The active build is v0.6.0, based on the preserved v0.5.0 import.
 
 ## Gameplay
 Contestants automatically advance around the tower while hazards approach. Jump low cyan rods, duck high coral rods, and survive the round; the seventh hit eliminates a contestant. Unassigned slots are AI-controlled.
@@ -36,3 +36,16 @@ The active HTML retains automatic running, seven-hit elimination, all existing c
 - Performance graphics and reduced-motion preferences suppress impact flash/camera shake; collision timing is unchanged. Short landscape screens use more compact controls to keep approaching rods above the HUD.
 
 See [quality evidence](tests/QUALITY_REVIEW.md) for checks and limitations. Missing bundled graphics files and unavailable WebGL show explicit errors. This is a locally served module bundle, not a service-worker offline cache; hosted multiplayer was not added.
+
+
+## Sumo benchmark upgrade — v0.6.0
+
+Start from an explicit setup screen. Select 2–10 contestants, rival difficulty and a mixed crown run or jump/duck practice rhythm. Open concise help during play, pause with the visible pause button, Escape or gamepad Start, and return to Setup from pause. The established first-to-two / three-round standings and tie overtime remain; seven hits eliminate.
+
+The next-rod meter fills toward the existing collision-edge cue; JUMP NOW still begins inside the established 460 ms response window. A smaller line previews the following rod. Clean clears build a streak, while hits identify the missed action. Results show every contestant's crowns, total clears and best streak, plus your survival time and low/high hit breakdown. **Replay seed** starts directly from results. The same seed, rules, ownership and action trace reproduce gameplay choices; cosmetic random draws do not alter hazard/bot RNG. This is seeded local simulation, not an event-recording or network-replay system.
+
+Persistent preferences include contestant count, rival difficulty, rhythm, graphics, haptics, mute, volume and reduced motion; personal best clears/streak are retained when storage is available. Contestant and rhythm edits during a run are staged until **Restart Match**. Rival skill changes apply immediately to subsequent sampled bot plans. Camera code persistence remains separate and unchanged.
+
+The tower now has illuminated slit windows, banners and braziers. Rival helmets and colored ground rings distinguish contestants. Grounded running, airborne, duck and landing poses respond to actual posture; shadows stay on the deck. Reduced motion removes decorative banner sway, impact flash, camera shake, body/head wobble, landing squash and particle/ring effects. Run/jump/duck motion remains functional feedback.
+
+Focused evidence: [sumo-benchmark.json](tests/evidence/sumo-benchmark.json). The new behavior suite and existing Twisted regression suites are run in Node, including a construction check using the bundled real Three.js API. The renderer, mobile pixels, real gamepad hardware, audio by ear and subjective feel remain pending browser/device validation. Historical screenshots and the earlier quality report are not evidence for v0.6.0. Original/archive bytes and all physics/camera constants remain unchanged.

@@ -1,6 +1,6 @@
 # CALLBACK integration boundary
 
-Royal Scratch Match v0.5 is a complete standalone browser game with useful local integration hooks, but it is not an authenticated online multiplayer implementation. The manifest intentionally remains multiplayer.status = not-integrated.
+Royal Scratch Match v0.6 is a complete standalone browser game with useful local integration hooks, but it is not an authenticated online multiplayer implementation. The manifest intentionally remains multiplayer.status = not-integrated.
 
 ## Contestant model
 
@@ -32,7 +32,7 @@ Slots not listed remain bots.
 
 Routes an A/B/X/Y lane press into the existing rhythm judgment system.
 
-- playerIndex is clamped to the configured slot range in v0.5.
+- playerIndex is clamped to the configured slot range in v0.6.
 - lane is clamped to 0..3 for A/B/X/Y.
 - Gameplay rejects input unless the game is in the response phase, the player exists, is alive, and that slot is marked human.
 - Slot 0 also receives local audio/VFX/button feedback; remote human slots receive gameplay scoring/life effects but do not have separate private-device presentation.
@@ -46,7 +46,8 @@ Supported options:
 - playerCount: integer, clamped to 2–10.
 - humanPlayers: array of slot indexes, or a number meaning the first N slots.
 - players: optional name/color profiles, first ten used.
-- difficulty: current difficulty string.
+- difficulty: validated `easy`, `normal`, or `hard`.
+- mode: `match` or `practice`; configure it before starting.
 - seed: optional finite number converted to uint32; resets the gameplay PRNG on each start/configure. Omit to keep the configured seed; pass null to restore ordinary stochastic play. Cosmetic randomness does not consume this stream.
 
 configure() reinitializes players. Use it in a lobby/pre-round phase, not for seamless mid-round joins.
@@ -63,11 +64,19 @@ Returns the same state snapshot as GameDebug.getState().
 
 Controls host-page sound.
 
+### Local session tools (v0.6)
+
+- `pause()` and `resume()` freeze/resume the monotonic rhythm clock and clear held inputs. Hidden pages and CAM controls share a reason-aware freeze; overlapping pauses never double-count time.
+- `menu()` abandons a session, invalidates its result callbacks and returns to setup.
+- `getSettings()` / `setSettings({volume, latencyMs, reducedMotion, vibration, mode})` expose validated persisted preferences. Setting preferences does not restart a phrase; mode changes apply on the next start. Latency is local slot 0 only and is bounded to ±200 ms.
+- `replay()` restarts the last UI/session seed. The UI's New match chooses a fresh uint32; Replay same set preserves it. Existing API `start({seed:null})` remains stochastic.
+- `start()` and `setSound(true)` explicitly enable host-page audio. Automatic `?scenario=` presentation does not enable it by itself.
+
 ## State/debug access
 
 window.GameDebug.getState() exposes:
 
-- game/version
+- game/version, pause/CAM state, mode, session seed and validated preferences
 - phase and difficulty
 - configured player count and human slot list
 - phrase index, BPM, phase time

@@ -73,3 +73,9 @@ After import/metadata changes run:
     npm run build
 
 No production deploy is part of intake.
+
+## v0.6 Crown & Cadence review
+
+Run `node --test tests/royal-scratch-match-quality.test.mjs tests/royal-scratch-match-sumo-benchmark.test.mjs` and `node games/royal-scratch-match/tests/smoke.mjs` from the repository root.
+
+Browser/device follow-up: verify 4 and 10 seats at 1365×900, 390×844 and 844×390; the compact DJ beside the highway; readable chord links and timing meter above controls; 44px pause/sound/fullscreen/CAM targets; settings scrolling, keyboard focus and advanced latency slider; no note drift during overlapping CAM/pause/background intervals. Confirm a held gamepad face button needs release after connection/resume and Start pauses only once per press. Listen for four 96 BPM count-in beats, gold call and cyan echo audio separation, mute/volume behavior and no sound on automatic scenarios until enabled. Check rehearsal phrase retry/advance/finish and fresh-set versus same-set replay. This manual follow-up has not been claimed as completed by the subtask.

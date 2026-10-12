@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "kind": "blind-crown-sumo-benchmark-verification",
+  "date": "2026-10-12",
+  "version": "1.6.0",
+  "result": "passed",
+  "scope": "Focused automated Node/VM behavior and syntax; no current browser/physical-device/multiplayer verification",
+  "sourceHashes": [
+    {
+      "path": "source/index.html",
+      "bytes": 188322,
+      "sha256": "9de02410af76047081cdfff3fe19a0e70641c75a31ae9ded5f7eef0831b0f681"
+    },
+    {
+      "path": "source/original/blind-crown-v1.4.html",
+      "bytes": 159955,
+      "sha256": "496131ad8031a58b8b2ec78cc1aace73f57ab1ca0646271b383bf48bb108c462"
+    }
+  ],
+  "checks": [
+    {
+      "command": "node --test games/blind-crown/tests/standalone.test.mjs tests/blind-crown-quality.test.mjs tests/blind-crown-sumo-benchmark.test.mjs",
+      "result": "passed",
+      "tests": 31
+    },
+    {
+      "name": "protected engine/perspective/network/3D bridge/model/art hashes",
+      "result": "passed"
+    },
+    {
+      "name": "real coordinator/input VM review, menu, lock, pad and pause lifecycle",
+      "result": "passed"
+    }
+  ],
+  "notRun": [
+    "current browser layout/pixels",
+    "physical devices",
+    "audio by ear",
+    "experimental WebGL/Three.js",
+    "hosted multiplayer",
+    "whole repository/catalog/build/deployment (parent owns gates)"
+  ]
+}

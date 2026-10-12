@@ -53,7 +53,7 @@ dialog{width:min(900px,94vw);max-height:92dvh;border:1px solid #8e7e585e;border-
 h3{font-family:Georgia,serif;font-size:19px;font-weight:500;margin:0 0 15px}section h3:not(:first-child){margin-top:25px}.field{display:block;color:#a5bbc0;font-size:10px;line-height:1.8;margin-bottom:16px}.field output{float:right;color:var(--gold)}
 input,select{border:1px solid #344b56;border-radius:4px;background:#0a1821;color:var(--ink);padding:10px 12px;min-height:44px;width:100%;margin-top:5px;font-size:12px}input[type=range]{accent-color:var(--gold);padding:0;border:0;background:transparent}input[type=checkbox]{accent-color:var(--gold);width:18px;min-height:18px;margin:0}
 .check{display:flex;align-items:center;gap:10px;font-size:11px;margin:15px 0}.split{display:flex;gap:12px}.split>*{flex:1;min-width:0}.small{font-size:10px;line-height:1.8;color:var(--muted)}
-.dialogFoot{padding:17px 25px;border-top:1px solid var(--line);display:flex;justify-content:flex-end}.dialogFoot>.primary{min-width:250px}.colorOptions{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:24px}.colorOption{width:25px;height:31px;min-height:31px;padding:0;border:2px solid transparent;border-radius:3px}.colorOption.chosen{border-color:#e9ddbc;box-shadow:0 0 0 3px #ead7b12a}
+.dialogFoot{padding:17px 25px;border-top:1px solid var(--line);display:flex;justify-content:flex-end}.dialogFoot>.primary{min-width:250px}.dialogFoot{gap:12px;align-items:center;flex-wrap:wrap}.dialogFoot .reviewActions{margin:0;margin-right:auto}.colorOptions{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:24px}.colorOption{width:25px;height:31px;min-height:31px;padding:0;border:2px solid transparent;border-radius:3px}.colorOption.chosen{border-color:#e9ddbc;box-shadow:0 0 0 3px #ead7b12a}
 .arenaChoices{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:14px 0 8px}.arenaChoice{min-width:0;padding:0;overflow:hidden;background:#0a1720}.arenaChoice canvas{width:100%;height:auto;display:block}.arenaChoice>span{display:block;font-size:8px;font-weight:500;padding:8px 2px;letter-spacing:.5px;line-height:1.5}.arenaChoice[aria-pressed=true]{border-color:#d4b374;box-shadow:0 0 0 1px #ddbd8255}.arenaChoice[aria-pressed=true]>span{color:var(--gold)}
 .experimental{padding:12px;border:1px dashed #39505a;border-radius:4px;margin-top:20px}.experimental summary{font-size:10px;cursor:pointer;color:#bda97f}hr{border:0;border-top:1px solid var(--line);margin:24px 0}.help{max-width:660px}.help h3:not(:first-child){margin-top:23px}.help p{font-size:12px;color:#b4c5c7;line-height:1.85}
 .toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,15px);opacity:0;pointer-events:none;z-index:50;background:#e3cfaa;color:#14242c;border:1px solid #f4d9a5;border-radius:4px;padding:13px 20px;max-width:92vw;text-align:center;font-size:12px;box-shadow:0 8px 35px #0008;transition:.15s}.toast.show{opacity:1;transform:translate(-50%,0)}
@@ -61,11 +61,22 @@ input,select{border:1px solid #344b56;border-radius:4px;background:#0a1821;color
 @media(min-width:851px) and (min-height:600px){.stageWrap{height:calc(100dvh - 310px);min-height:280px;max-height:780px;aspect-ratio:auto}}
 @media(max-width:1100px){.layout{grid-template-columns:minmax(0,1fr) 194px;padding:0 15px;gap:12px}.mast{padding:12px 15px}.panel{padding:12px}.gameTop{padding:12px 15px}.footerHint>span:last-child{display:none}}
 @media(max-width:850px){.layout{grid-template-columns:1fr;max-width:850px}.rightRail{display:grid;grid-template-columns:1fr 1fr;gap:12px}.rightRail .panel{margin:0}.goldenRule{display:none}.headerActions .connection{display:none}.brand strong{font-size:20px}.mast{height:65px}.pageFooter{padding:16px}.mobileRow{display:flex;align-items:center;gap:16px;margin:12px 0 0}.mobileRow>div:last-child{max-width:320px}.mobileRow strong{font-size:8px;letter-spacing:1.5px;color:var(--gold)}.mobileRow p{font-size:9px;color:var(--muted);line-height:1.6;margin:5px 0}.mobileRow #moveStick{width:78px;height:78px;flex-shrink:0;border:1px solid #8c7c5977;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle,#31413f,#12222c);touch-action:none;box-shadow:inset 0 0 0 7px #101c2566}#stickKnob{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#ead0a0,#8c7753);border:1px solid #d9c29a70;box-shadow:0 5px 12px #0007;pointer-events:none}.settingsGrid{gap:20px}}
-@media(max-width:550px){body{font-size:13px}.mast{padding:10px 12px;gap:7px;height:60px}.brand{gap:7px}.crest{width:29px;height:34px}.crest svg{width:22px;height:26px}.brand strong{font-size:16px;letter-spacing:1px}.brand .eyebrow{font-size:6px;letter-spacing:1.4px}.headerActions{gap:4px}.headerActions button{padding:7px 9px;font-size:10px;min-height:36px}#soundBtn{font-size:0;width:32px}#soundBtn::before{content:'♪';font-size:16px}#soundBtn[aria-pressed=true]{color:var(--gold)}.layout{padding:0 8px;gap:12px}.arenaCard{border-radius:4px}.gameTop{padding:10px;gap:8px;min-height:62px}.gameTop>div>strong{font-size:14px}.gameTop .eyebrow{font-size:7px;letter-spacing:1px}.gameTop .alive strong{font-size:21px}.timer{gap:7px}.timer>span{max-width:64px;font-size:7px;letter-spacing:.8px}.timer strong{font-size:30px!important;min-width:33px}.viewbar{padding:6px 9px;min-height:35px}.viewbar>span{font-size:6px;letter-spacing:.7px;max-width:153px;line-height:1.7}.viewbar select{font-size:9px;max-width:148px;padding:5px}.welcome{width:64%;padding:9px 0;margin-left:6%}.welcome .eyebrow{font-size:6px;letter-spacing:1.3px}.welcome h1{font-size:29px;letter-spacing:-.7px;margin:8px 0}.welcome p{font-size:9px;line-height:1.6;margin:5px 0;max-width:220px}.steps{gap:10px;margin:9px 0;font-size:6px;letter-spacing:1px}.steps b{font-size:12px;margin-bottom:2px}.steps span{padding-right:15px}.welcome .primary{font-size:10px;min-height:36px;padding:7px 11px}.welcome .textBtn{font-size:8px;min-height:26px;padding:4px;margin-top:0}.welcomeMeta{font-size:6px;letter-spacing:.7px;margin:6px 0}.gameBottom{padding:7px 10px 11px}.hintLine{font-size:9px;margin:0;gap:5px}.controls{gap:6px;flex-wrap:wrap}.controls .modePair{flex:1}.controls .primary{flex-basis:100%;min-height:44px}.modePair button{font-size:10px;padding:8px 12px}.finePair{gap:4px}.finePair button{padding:8px;font-size:10px}.rightRail{gap:9px}.panel{padding:11px 9px}.sectionHead h2{font-size:15px}.sectionHead>span{font-size:6px;letter-spacing:.6px}.playerTitle{font-size:9px}.playerSubtitle{font-size:6px}.contender{gap:6px;padding:7px 0}.avatarDot{width:24px;height:29px}.avatarDot svg{width:22px;height:26px}.playerStatus{font-size:10px}#eventLog p{font-size:9px}.pageFooter{padding:16px 12px;font-size:7px;gap:8px}.pageFooter span:nth-child(2){display:none}.settingsGrid{grid-template-columns:1fr;gap:20px}.dialogHead,.dialogBody,.dialogFoot{padding:17px}.dialogHead h2{font-size:25px}dialog{width:95vw;max-height:94dvh}.dialogHead .eyebrow{font-size:7px}.dialogFoot>.primary{width:100%}#tacticalPanel{bottom:7px;left:7px;padding:4px;width:29%;min-width:90px}#tacticalPanel>span{font-size:5px;letter-spacing:.6px}.announcement{inset:auto 15% 2%;padding:4px 6px}.announcement>span,.announcement small{font-size:5px;letter-spacing:1px}.announcement strong{font-size:20px;letter-spacing:3px}.standings{margin:8px 0}.standing{font-size:8px;padding:4px 0}.standing small{font-size:7px}.standing span:first-child{font-size:11px}#app[data-phase=final] .welcome h1{font-size:23px;margin:6px 0}#app[data-phase=final] .welcome p{font-size:8px}}
+@media(max-width:550px){body{font-size:13px}.mast{padding:10px 12px;gap:7px;height:60px}.brand{gap:7px}.crest{width:29px;height:34px}.crest svg{width:22px;height:26px}.brand strong{font-size:16px;letter-spacing:1px}.brand .eyebrow{font-size:6px;letter-spacing:1.4px}.headerActions{gap:4px}.headerActions button{padding:7px 9px;font-size:10px;min-height:36px}#soundBtn{font-size:0;width:32px}#soundBtn::before{content:'♪';font-size:16px}#soundBtn[aria-pressed=true]{color:var(--gold)}.layout{padding:0 8px;gap:12px}.arenaCard{border-radius:4px}.gameTop{padding:10px;gap:8px;min-height:62px}.gameTop>div>strong{font-size:14px}.gameTop .eyebrow{font-size:7px;letter-spacing:1px}.gameTop .alive strong{font-size:21px}.timer{gap:7px}.timer>span{max-width:64px;font-size:7px;letter-spacing:.8px}.timer strong{font-size:30px!important;min-width:33px}.viewbar{padding:6px 9px;min-height:35px}.viewbar>span{font-size:6px;letter-spacing:.7px;max-width:153px;line-height:1.7}.viewbar select{font-size:9px;max-width:148px;padding:5px}.welcome{width:64%;padding:9px 0;margin-left:6%}.welcome .eyebrow{font-size:6px;letter-spacing:1.3px}.welcome h1{font-size:29px;letter-spacing:-.7px;margin:8px 0}.welcome p{font-size:9px;line-height:1.6;margin:5px 0;max-width:220px}.steps{gap:10px;margin:9px 0;font-size:6px;letter-spacing:1px}.steps b{font-size:12px;margin-bottom:2px}.steps span{padding-right:15px}.welcome .primary{font-size:10px;min-height:44px;padding:7px 11px}.welcome .textBtn{font-size:8px;min-height:26px;padding:4px;margin-top:0}.welcomeMeta{font-size:6px;letter-spacing:.7px;margin:6px 0}.gameBottom{padding:7px 10px 11px}.hintLine{font-size:9px;margin:0;gap:5px}.controls{gap:6px;flex-wrap:wrap}.controls .modePair{flex:1}.controls .primary{flex-basis:100%;min-height:44px}.modePair button{font-size:10px;padding:8px 12px}.finePair{gap:4px}.finePair button{padding:8px;font-size:10px}.rightRail{gap:9px}.panel{padding:11px 9px}.sectionHead h2{font-size:15px}.sectionHead>span{font-size:6px;letter-spacing:.6px}.playerTitle{font-size:9px}.playerSubtitle{font-size:6px}.contender{gap:6px;padding:7px 0}.avatarDot{width:24px;height:29px}.avatarDot svg{width:22px;height:26px}.playerStatus{font-size:10px}#eventLog p{font-size:9px}.pageFooter{padding:16px 12px;font-size:7px;gap:8px}.pageFooter span:nth-child(2){display:none}.settingsGrid{grid-template-columns:1fr;gap:20px}.dialogHead,.dialogBody,.dialogFoot{padding:17px}.dialogHead h2{font-size:25px}dialog{width:95vw;max-height:94dvh}.dialogHead .eyebrow{font-size:7px}.dialogFoot>.primary{width:100%}#tacticalPanel{bottom:7px;left:7px;padding:4px;width:29%;min-width:90px}#tacticalPanel>span{font-size:5px;letter-spacing:.6px}.announcement{inset:auto 15% 2%;padding:4px 6px}.announcement>span,.announcement small{font-size:5px;letter-spacing:1px}.announcement strong{font-size:20px;letter-spacing:3px}.standings{margin:8px 0}.standing{font-size:8px;padding:4px 0}.standing small{font-size:7px}.standing span:first-child{font-size:11px}#app[data-phase=final] .welcome h1{font-size:23px;margin:6px 0}#app[data-phase=final] .welcome p{font-size:8px}#app[data-phase=final] .welcome{width:88%;max-width:none}#app[data-phase=final] .standings{max-height:72px}}
 @media(max-height:500px) and (orientation:landscape){.mast{height:43px;padding:6px 14px}.crest{width:25px;height:29px}.crest svg{height:22px;width:20px}.brand strong{font-size:16px}.brand .eyebrow{font-size:6px}.headerActions button{min-height:30px;font-size:10px;padding:5px 9px}.layout{display:block;padding:0 10px}.rightRail,.pageFooter{display:none}.arenaCard{display:grid;grid-template-columns:minmax(0,1fr) 192px;position:relative}.gameTop{grid-column:1;grid-row:1;padding:6px 12px;min-height:44px}.gameTop>div>strong{font-size:12px}.gameTop .eyebrow{font-size:6px}.gameTop .alive strong{font-size:18px}.timer strong{font-size:25px!important}.timer>span{font-size:7px;max-width:none}.phaseTrack{grid-column:1;grid-row:2}.viewbar{grid-column:2;grid-row:1/3;padding:7px;justify-content:center}.viewbar>span{display:none}.stageWrap{grid-column:1;grid-row:3;aspect-ratio:auto;height:calc(100dvh - 102px);min-height:160px}.gameBottom{grid-column:2;grid-row:3;padding:6px 9px;border-left:1px solid #33454b}.hintLine{font-size:8px;display:block}.hintLine .textBtn{min-height:27px;font-size:9px}.controls{gap:5px;flex-wrap:wrap}.controls button{font-size:9px;padding:7px;min-height:34px}.controls .modePair{flex-basis:100%}.controls .primary{min-width:0;flex:1}.finePair button{font-size:9px}.mobileRow{gap:8px;margin-top:10px}.mobileRow #moveStick{width:65px;height:65px}.mobileRow strong{font-size:7px}.mobileRow p{font-size:7px;line-height:1.4}.footerHint{display:none}.welcome{max-width:295px;width:53%;padding:7px 0;margin-left:5%}.welcome .eyebrow{font-size:6px}.welcome h1{font-size:32px;margin:7px 0}.welcome p{font-size:9px;margin:5px 0}.steps{margin:8px 0;font-size:7px;gap:12px}.steps b{font-size:12px}.steps span{padding-right:17px}.welcome .primary{min-height:35px;font-size:10px}.welcome .textBtn{min-height:24px;font-size:8px;padding:4px}.welcomeMeta{font-size:7px;margin:7px 0}.announcement strong{font-size:24px}.announcement>span,.announcement small{font-size:6px}#tacticalPanel{width:21%;min-width:85px}.standings{margin:8px 0}.standing{padding:5px 0}#app[data-phase=final] .welcome h1{font-size:26px}}
 .reduced-motion *, .reduced-motion *::before,.reduced-motion *::after{transition:none!important;animation:none!important}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
 
+
+/* 1.6 tactical review: secondary information stays outside the active playfield. */
+.layout{grid-template-columns:minmax(0,1fr)}#app[data-rail=open] .layout{grid-template-columns:minmax(0,1fr) 224px}#app:not([data-rail=open]) .rightRail{display:none}
+.viewActions{display:flex;gap:6px;align-items:center}.viewActions button{min-height:36px;padding:5px 9px;font-size:10px}
+#volleyFeedback{font-size:11px;color:#d7e9e0;line-height:1.5;margin:6px 0 0}.reviewActions{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.reviewActions button{min-height:44px;font-size:11px}
+#reviewCanvas{width:100%;height:auto;max-height:46dvh;object-fit:contain;background:#0b1921;border:1px solid #47616a}#reviewRows{max-height:190px;overflow:auto}#reviewRows p{font-size:12px;margin:6px 0;line-height:1.5}
+#identityPreview{display:flex;gap:12px;align-items:center;margin:0 0 16px;color:var(--gold)}#identityPreview svg{width:40px;height:48px}.standings{max-height:130px;overflow:auto}.colorOption{width:44px;height:44px;min-height:44px}
+.high-contrast{--muted:#c2d6dc;--line:#7b9ca5}.high-contrast .playerSubtitle,.high-contrast .footerHint{color:#c2d6dc}.high-contrast button{border-color:#819da3}
+@media(min-width:851px) and (min-height:600px){.stageWrap{height:calc(100dvh - 375px);min-height:240px}#app[data-phase=volley] .stageWrap{height:calc(100dvh - 400px)}#app[data-phase=results] .stageWrap,#app[data-phase=final] .stageWrap{height:calc(100dvh - 455px)}.mast{height:64px}.pageFooter{padding:8px 22px}.gameBottom{padding-bottom:8px}}
+@media(max-width:850px){#app[data-rail=open] .layout{grid-template-columns:1fr}.viewbar{flex-wrap:wrap}.viewActions button{min-height:44px}.reviewActions{margin:6px 0}#volleyFeedback{font-size:10px}}
+@media(max-height:500px) and (orientation:landscape){.viewbar{flex-wrap:wrap}.viewActions select{max-width:104px}.viewActions button{min-height:34px;padding:4px;font-size:9px}.reviewActions{gap:4px;margin:4px 0}.reviewActions button{min-height:34px;padding:5px;font-size:9px}#volleyFeedback{font-size:9px}#app[data-rail=open] .rightRail{display:none}.standings{max-height:75px}}
 </style></head>
 <body><div id="app">
 <header class="mast"><a class="brand" href="#" aria-label="Blind Crown home"><span class="crest"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M8 18 21 31 32 10 43 31 56 18 49 49H15Z" stroke="currentColor" stroke-width="2.5"/><path d="M17 54h30M15 43h34" stroke="currentColor" stroke-width="2"/><circle cx="8" cy="15" r="2" fill="currentColor"/><circle cx="32" cy="7" r="2" fill="currentColor"/><circle cx="56" cy="15" r="2" fill="currentColor"/></svg></span><span><span class="eyebrow">THE LAST VOLLEY</span><strong>BLIND <em>CROWN</em></strong></span></a><div class="headerActions"><span id="connection" class="connection">LOCAL · BOTS</span><button id="soundBtn" aria-label="Enable sound" aria-pressed="false">Sound off</button><button id="howBtn" aria-label="How to play">?</button><button id="settingsBtn" class="secondary">Configure</button></div></header>
@@ -73,7 +84,7 @@ input,select{border:1px solid #344b56;border-radius:4px;background:#0a1821;color
 <section class="arenaCard" aria-label="Game arena">
  <div class="gameTop"><div><span class="eyebrow" id="roundBadge">ROUND 01</span><strong id="arenaLabel">Royal Citadel</strong></div><div class="timer"><span id="phaseName">READY TO PLAY</span><strong id="countdown">—</strong></div><div class="alive"><span class="eyebrow">STILL STANDING</span><strong><span id="aliveCount">6</span><small id="totalCount"> / 6</small></strong></div></div>
  <div class="phaseTrack"><div id="phaseProgress"></div></div>
- <div class="viewbar"><span id="privacyBadge">SECRET PLANNING · PUBLIC REVEAL</span><label><span class="srOnly">Camera perspective</span><select id="quickView"><option value="overhead">Overhead</option><option value="isometric">Isometric</option><option value="third">Third-person · 2.5D</option><option value="first">First-person · 2.5D</option></select></label></div>
+ <div class="viewbar"><span id="privacyBadge">SECRET PLANNING · PUBLIC REVEAL</span><div class="viewActions"><button id="railBtn" aria-pressed="false">Contenders</button><select id="quickView" aria-label="Camera perspective"><option value="overhead">Overhead</option><option value="isometric">Isometric</option><option value="third">Third-person · 2.5D</option><option value="first">First-person · 2.5D</option></select></div></div>
  <div id="stageWrap" class="stageWrap"><canvas id="scene" width="1200" height="760" aria-label="Arena. Tap to place, switch to Aim to set your shot." tabindex="0"></canvas><canvas id="scene3d" hidden aria-hidden="true"></canvas>
   <div id="tacticalPanel" hidden><span>YOUR PRIVATE POSITION</span><canvas id="tacticalMap" width="1000" height="640" aria-label="Private placement map"></canvas></div>
   <div id="renderStatus" hidden></div><div id="centerAnnouncement" class="announcement" hidden><span id="annSub"></span><strong id="annTitle"></strong><small id="annDetail"></small></div>
@@ -82,18 +93,19 @@ input,select{border:1px solid #344b56;border-radius:4px;background:#0a1821;color
  </div>
  <div class="gameBottom"><div class="hintLine"><span id="instructionText">Your rivals stay invisible until the reveal.</span><span id="planStatus" role="status" aria-live="polite" aria-atomic="true" hidden></span><button id="pauseBtn" class="textBtn" aria-pressed="false">Pause</button></div><div class="controls"><div class="modePair"><button id="placeBtn" class="selected" aria-pressed="true">① Place</button><button id="aimBtn" aria-pressed="false">② Aim</button></div><div class="finePair"><button id="fineLeft" aria-label="Aim one degree left">−1°</button><button id="fineRight" aria-label="Aim one degree right">+1°</button></div><button id="lockBtn" class="primary" disabled>Lock shot <span>✓</span></button></div>
   <div class="mobileRow"><div id="moveStick" role="group" aria-label="Touch movement stick"><div id="stickKnob"></div></div><div><strong>MOVE + AIM</strong><p>Use the stick to move. Drag the arena to aim in first/third-person; use Aim in overhead.</p></div></div>
-  <div class="footerHint"><span id="notice">Classic Blind Volley</span><span>WASD move · Q/E aim · Space lock</span></div></div>
+  <p id="volleyFeedback" role="status" aria-live="polite" hidden></p><div class="reviewActions" id="debriefActions" hidden><button id="debriefBtn">Review this volley</button></div><div class="footerHint"><span id="notice">Classic Blind Volley</span><span>WASD move · Q/E aim · Space lock</span></div></div>
 </section>
-<aside class="rightRail"><section class="panel"><div class="sectionHead"><h2>Contenders</h2><span id="readyCount">0 READY</span></div><div id="rosterList"></div></section><section class="panel"><div class="sectionHead"><h2>Chronicle</h2><span>THIS MATCH</span></div><div id="eventLog"></div></section><section class="goldenRule"><span class="eyebrow">THE GOLDEN RULE</span><p>All shots fire together.<br><strong>Getting hit does not cancel your arrow.</strong></p><span class="buildLabel">NIGHTFALL · 1.5</span></section></aside>
+<aside class="rightRail"><section class="panel"><div class="sectionHead"><h2>Contenders</h2><span id="readyCount">0 READY</span></div><div id="rosterList"></div></section><section class="panel"><div class="sectionHead"><h2>Chronicle</h2><span>THIS MATCH</span></div><div id="eventLog"></div></section><section class="goldenRule"><span class="eyebrow">THE GOLDEN RULE</span><p>All shots fire together.<br><strong>Getting hit does not cancel your arrow.</strong></p><span class="buildLabel">NIGHTFALL · 1.6</span></section></aside>
 </main>
 <footer class="pageFooter"><span>BLIND CROWN</span><span>Private plans. Shared consequences.</span><span>2–10 seats · Bots supported</span></footer>
 </div>
 <dialog id="settingsDialog" aria-labelledby="settingsTitle"><div class="dialogHead"><div><span class="eyebrow">MAKE IT YOUR TOURNAMENT</span><h2 id="settingsTitle">Match & camera</h2></div><button id="settingsClose" aria-label="Close settings">✕</button></div><div class="dialogBody">
 <div class="settingsGrid"><section><h3>The match</h3><div class="modePair"><button id="soloTab" class="selected">Local + bots</button><button id="onlineTab">Private room</button></div><p class="small" id="matchSettingsNote">Match settings apply to the next tournament.</p><label class="field">AI challengers <output id="botsLabel">5 rivals</output><input type="range" id="botSlider" min="0" max="9" value="5"></label><div class="split"><label class="field">Planning time<select id="timeSelect"><option value="8">8 seconds</option><option value="14" selected>14 seconds</option><option value="20">20 seconds</option><option value="30">30 seconds</option></select></label><label class="field">Bot difficulty<select id="difficultySelect"><option value="easy">Relaxed</option><option value="normal" selected>Standard</option><option value="hard">Cunning</option></select></label></div><div id="arenaChoices" class="arenaChoices" role="group" aria-label="Arena previews"></div><label class="field">Arena<select id="arenaSelect"><option value="citadel">Royal Citadel</option><option value="orchard">Moonlit Orchard</option><option value="glacier">Frost Keep</option></select></label><div class="split"><label class="field">Rules<select id="rulesetSelect"><option value="classic">Classic Blind Volley</option><option value="precision">Precision · no guide</option></select></label><label class="field">Maximum rounds<select id="roundLimit"><option value="6">6 rounds</option><option value="14" selected>14 rounds</option><option value="24">24 rounds</option></select></label></div>
 <div id="onlineSettings" hidden><hr><h3>Private room</h3><p class="small" id="roomHelp">This standalone plays one human against bots. Private rooms require the separate Node server package, hosted by you; this page does not host rooms.</p><div class="split"><button id="createBtn">Create room</button><input id="roomCode" aria-label="Room code" placeholder="ROOM CODE" maxlength="5" autocomplete="off" autocapitalize="characters"></div><div class="split"><button id="joinBtn">Join room</button><button id="leaveBtn">Leave room</button></div><div id="roomTools" hidden><p>Room <strong id="roomBadge"></strong> · <span id="hostRole"></span></p><div class="split"><button id="copyBtn">Copy join link</button><button id="tvBtn">Open public TV ↗</button></div></div></div>
-</section><section><h3>Your archer</h3><label class="field">Name<input id="nameInput" maxlength="16" value="Royal Archer" autocomplete="off"></label><div id="colorOptions" class="colorOptions" role="group" aria-label="Banner colour"></div><h3>Your view</h3><p class="small">Camera choices are personal; they never change the collision world.</p><div class="split"><label class="field">Field of view<select id="fovSelect"><option value="65">65° · Narrow</option><option value="75" selected>75° · Standard</option><option value="90">90° · Wide</option></select></label><label class="field">Detail<select id="qualitySelect"><option value="low">Battery saver</option><option value="normal" selected>Balanced</option><option value="high">Detailed</option></select></label></div><label class="check"><input type="checkbox" id="reducedMotion">Reduced motion</label><details class="experimental"><summary>Experimental polygonal 3D</summary><p class="small">The retained Three.js bridge is not runtime-verified. It requires an internet connection unless its official dependencies are vendored. Canvas is the tested default.</p><label class="check"><input type="checkbox" id="enable3D">Try Three.js in first/third-person</label></details><p class="small">Local play pauses while this panel is open. With a separately hosted room server, its online clock would continue.</p></section></div>
-</div><div class="dialogFoot"><button id="startBtn" class="primary">Begin tournament <span>→</span></button></div></dialog>
-<dialog id="helpDialog" aria-labelledby="helpTitle"><div class="dialogHead"><h2 id="helpTitle">Hide. Predict. Survive.</h2><button id="helpClose" aria-label="Close instructions">✕</button></div><div class="dialogBody help"><h3>1 · Pick a secret position</h3><p>Tap in Place mode, use WASD/arrow keys, or use the touch stick. Cover blocks shots. Rivals cannot see your position during planning.</p><h3>2 · Predict and commit</h3><p>Select Aim and point your crossbow. Q/E turns continuously; −1°/+1° makes precise adjustments. In first/third-person, drag to turn and tap the small private map to relocate.</p><h3>3 · Reveal and volley</h3><p>Lock when ready; unlock to change your plan before time expires. At zero, everybody freezes and fires—even archers hit by another arrow. Nobody can react during the reveal.</p><h3>Win the tournament</h3><p>The arena tightens between rounds. Last survivor wins. At the round limit, points decide; a total wipe also uses points. Equal points retain the existing seat-order tiebreak.</p><h3>Privacy and room play</h3><p>Keep your own screen private while planning. Only use the public TV spectator link on a shared display. Room outcomes come from the server; reconnects recover the same seat for up to two minutes.</p><p class="small">This standalone supports one human plus bots. Multiplayer requires a separately hosted Node server from the full source package; no room server is included or hosted by this HTML.</p></div></dialog>
+</section><section><h3>Your archer</h3><div id="identityPreview" aria-live="polite"></div><label class="field">Name<input id="nameInput" maxlength="16" value="Royal Archer" autocomplete="off"></label><div id="colorOptions" class="colorOptions" role="group" aria-label="Banner colour"></div><h3>Your view</h3><p class="small">Camera choices are personal; they never change the collision world.</p><div class="split"><label class="field">Field of view<select id="fovSelect"><option value="65">65° · Narrow</option><option value="75" selected>75° · Standard</option><option value="90">90° · Wide</option></select></label><label class="field">Detail<select id="qualitySelect"><option value="low">Battery saver</option><option value="normal" selected>Balanced</option><option value="high">Detailed</option></select></label></div><label class="check"><input type="checkbox" id="reducedMotion">Reduced motion</label><label class="check"><input type="checkbox" id="highContrast">High contrast text and controls</label><label class="field">Sound volume <output id="volumeLabel">70%</output><input id="volumeSlider" type="range" min="0" max="100" step="5" value="70"></label><p class="small">Sound starts only after you enable it. Gamepad: left stick / D-pad move, right stick / shoulders aim, A lock, X Place, Y Aim, Start pause.</p><details class="experimental"><summary>Experimental polygonal 3D</summary><p class="small">The retained Three.js bridge is not runtime-verified. It requires an internet connection unless its official dependencies are vendored. Canvas is the tested default.</p><label class="check"><input type="checkbox" id="enable3D">Try Three.js in first/third-person</label></details><p class="small">Local play pauses while this panel is open. With a separately hosted room server, its online clock would continue.</p></section></div>
+</div><div class="dialogFoot"><div class="reviewActions"><button id="reviewBtn" hidden>Review volleys</button><button id="menuBtn" hidden>End match · back to setup</button></div><button id="startBtn" class="primary">Begin tournament <span>→</span></button></div></dialog>
+<dialog id="helpDialog" aria-labelledby="helpTitle"><div class="dialogHead"><h2 id="helpTitle">Hide. Predict. Survive.</h2><button id="helpClose" aria-label="Close instructions">✕</button></div><div class="dialogBody help"><h3>1 · Pick a secret position</h3><p>Tap in Place mode, use WASD/arrow keys, or use the touch stick. Cover blocks shots. Rivals cannot see your position during planning.</p><h3>2 · Predict and commit</h3><p>Select Aim and point your crossbow. Q/E turns continuously; −1°/+1° makes precise adjustments. In first/third-person, drag to turn and tap the small private map to relocate.</p><h3>3 · Reveal and volley</h3><p>Lock when ready; unlock to change your plan before time expires. At zero, everybody freezes and fires—even archers hit by another arrow. Nobody can react during the reveal.</p><h3>Win the tournament</h3><p>The arena tightens between rounds. Last survivor wins. At the round limit, points decide; a total wipe also uses points. Equal points retain the existing seat-order tiebreak.</p><h3>Learn from a volley</h3><p>After a round, Review volleys pauses your local match. Pick any completed round and scrub the arrows to see who hit whom, what cover stopped and which lanes stayed open. Previous rounds do not predict new hidden positions. Gamepad: left stick moves, right stick aims, A locks, X/Y change mode, Start pauses. Release the sticks and buttons after opening a menu.</p><h3>Privacy and room play</h3><p>Keep your own screen private while planning. Only use the public TV spectator link on a shared display. Room outcomes come from the server; reconnects recover the same seat for up to two minutes.</p><p class="small">This standalone supports one human plus bots. Multiplayer requires a separately hosted Node server from the full source package; no room server is included or hosted by this HTML.</p></div></dialog>
+<dialog id="reviewDialog" aria-labelledby="reviewTitle"><div class="dialogHead"><div><span class="eyebrow">LOCAL TACTICAL REVIEW · MATCH PAUSED</span><h2 id="reviewTitle">Learn from the volley</h2></div><button id="reviewClose" aria-label="Close volley review">✕</button></div><div class="dialogBody"><p class="small">Numbered archers and arrows share the same identity. Cover stops arrows; every archer fires even when hit. These are completed rounds, never current secret plans.</p><label class="field">Completed round<select id="reviewRound"></select></label><canvas id="reviewCanvas" width="1000" height="640" aria-label="Completed volley diagram"></canvas><label class="field">Volley timeline <output id="reviewTime">1.7 s</output><input id="reviewScrub" type="range" min="0" max="170" value="170" aria-label="Scrub completed volley"></label><p id="reviewOwn" role="status"></p><div id="reviewRows"></div></div></dialog>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 <script>
 /* BLIND CROWN — deterministic, authoritative match rules. No browser dependencies. */
@@ -1303,12 +1315,13 @@ root.CrownArena={create(canvas){
   for(const p of people){ctx.strokeStyle=p.color;ctx.beginPath();ctx.ellipse(p.x,p.y+5,23+age*38,12+age*19,0,0,TAU);ctx.stroke();}
   ctx.restore();
  }
- function arrows(s,options){
+ function arrows(s,options,id){
   if(!['volley','results','final'].includes(s.phase))return;
   const progress=s.phase==='volley'?Math.max(0,1.7-options.clock):2;
   for(const shot of s.shots){
    const d=Math.min(shot.dist,progress*1100),x=shot.x+shot.dx*d,y=shot.y+shot.dy*d,arrived=progress>=shot.finish;
    if(!progress)continue;
+   if(shot.id===id){ctx.save();ctx.strokeStyle='#07141bec';ctx.lineWidth=7;ctx.beginPath();ctx.moveTo(shot.x,shot.y);ctx.lineTo(x,y);ctx.stroke();ctx.strokeStyle='#ffe0a6';ctx.lineWidth=2.8;ctx.stroke();if(arrived){ctx.beginPath();ctx.arc(x,y,9,0,TAU);ctx.stroke();}ctx.restore();}
    ctx.save();ctx.translate(x,y);ctx.rotate(Math.atan2(shot.dy,shot.dx));
    if(!arrived){
     const tail=Math.min(52,d);ctx.strokeStyle=A.grad(ctx,-tail,0,0,0,[[0,'#e8c17c00'],[1,'#fff0cbb3']]);ctx.lineWidth=3.5;ctx.beginPath();ctx.moveTo(-tail,0);ctx.lineTo(0,0);ctx.stroke();
@@ -1349,7 +1362,7 @@ root.CrownArena={create(canvas){
   }else if(s.phase!=='lobby'){
    reveal(s,time,opts,people);
    for(const p of people.slice().sort((a,b)=>a.y-b.y))actor(p,s,id,time,opts);
-   arrows(s,opts);
+   arrows(s,opts,id);
   }
   for(let i=particles.length-1;i>=0;i--){const v=particles[i];ctx.save();ctx.globalAlpha=1-v.age/v.life;A.line(ctx,v.x,v.y,v.x-v.vx*.017,v.y-v.vy*.017,v.color,v.r);ctx.restore();}
   ctx.restore();
@@ -1362,6 +1375,52 @@ root.CrownArena={create(canvas){
  return {render,clear(){particles=[];impacts.clear();cacheKey='';roundKey='';impactBursts=0;visibleActorIds=[];},getStats:()=>({staticSceneBuilds:cacheBuilds,particles:particles.length,impactBursts,visibleActorIds:visibleActorIds.slice(),artVersion:A.version})};
 }};
 })(window);
+
+</script><script>
+/** Tactical learning and neutral gamepad. Pure presentation; never owns match rules. */
+(function(root){
+'use strict';
+function capture(s){
+ if(!s||!['results','final'].includes(s.phase)||!s.shots?.length)return null;
+ return JSON.parse(JSON.stringify({round:s.round,settings:s.settings,players:s.players,shots:s.shots,eliminated:s.eliminated,winners:s.winners}));
+}
+function shotLabel(s,shot){
+ const target=s.players.find(p=>p.id===shot.hit);
+ return target?'Hit '+target.name:shot.material==='stone'?'Stopped by cover':'Reached the arena boundary';
+}
+function outcome(s,id,time=2){
+ if(!s||!['volley','results','final'].includes(s.phase||'results'))return '';
+ const shot=s.shots.find(q=>q.id===id);
+ if(!shot)return 'You watched this volley.';
+ if(time<shot.finish)return 'Your arrow is in flight.';
+ const attackers=s.shots.filter(q=>q.hit===id&&time>=q.finish).map(q=>s.players.find(p=>p.id===q.id)?.name||'a rival');
+ return shotLabel(s,shot)+(attackers.length?' · Hit by '+attackers.join(', '):(time >= 1.7 ? ' · No incoming hit' : ' · No incoming hit yet'));
+}
+function standings(s){return [...s.players].sort((a,b)=>Number(s.winners.includes(b.id))-Number(s.winners.includes(a.id))||Number(b.alive)-Number(a.alive)||b.points-a.points||a.id-b.id);}
+function reason(s){const living=s.players.filter(p=>p.alive).length;return living===1?'Last survivor':living===0?'Total wipe · points decide · equal points use seat order':'Round limit · living points decide · equal points use seat order';}
+function accessPrefs(p={},motion=false){return {volume:typeof p.volume==='number'&&Number.isFinite(p.volume)?Math.max(0,Math.min(1,p.volume)):.7,highContrast:p.highContrast===true,reducedMotion:typeof p.reducedMotion==='boolean'?p.reducedMotion:motion};}
+class History{
+ constructor(){this.records=[];}
+ add(s){const r=capture(s);if(!r)return;const i=this.records.findIndex(q=>q.round===r.round);if(i<0)this.records.push(r);else this.records[i]=r;this.records=this.records.slice(-24);}
+ clear(){this.records=[];}
+}
+class Pad{
+ constructor(){this.reset();}
+ reset(){this.armed=false;this.previous=[];}
+ poll(p,editable,lockable=editable){
+  const zero={x:0,y:0,turn:0,lock:false,pause:false,place:false,aim:false};
+  if(!p?.connected){this.reset();return zero;}
+  const down=i=>!!p.buttons?.[i]?.pressed,axis=i=>{const v=Number(p.axes?.[i])||0;return Math.abs(v)<.2?0:Math.max(-1,Math.min(1,v));};
+  const held=Array.from({length:16},(_,i)=>down(i)),moving=[0,1,2].some(i=>axis(i)!==0);
+  if(!this.armed){if(!held.some(Boolean)&&!moving)this.armed=true;this.previous=held;return zero;}
+  const edge=i=>held[i]&&!this.previous[i];
+  const out={...zero,pause:edge(9),lock:lockable&&edge(0)};
+  if(editable)Object.assign(out,{x:axis(0)+(down(15)?1:0)-(down(14)?1:0),y:axis(1)+(down(13)?1:0)-(down(12)?1:0),turn:axis(2)+(down(5)?1:0)-(down(4)?1:0),place:edge(2),aim:edge(3)});
+  this.previous=held;return out;
+ }
+}
+root.CrownTactics=Object.freeze({capture,shotLabel,outcome,standings,reason,accessPrefs,History});root.CrownPad=Pad;
+})(typeof window==='undefined'?globalThis:window);
 
 </script><script>
 /** Room client, protocol 2. Credentials stay in session storage, never share links. */
@@ -1520,12 +1579,13 @@ root.CrownArena={create(canvas){
 (function (root) {
     'use strict';
     const E = root.BlindCrown, P = root.CrownPerspective;
-    root.CrownInput = { attach({ canvas, tactical, stick, knob, get, commit, lock, mode, turn, placementFeedback }) {
-            const keys = new Set();
+    root.CrownInput = { attach({ canvas, tactical, stick, knob, get, commit, lock, mode, turn, placementFeedback, pause }) {
+            const keys = new Set(), pad = new root.CrownPad();
             let drag = null, stickId = null, vector = { x: 0, y: 0 };
             const perspective = () => ['first', 'third'].includes(get().view);
             const reset = () => {
                 keys.clear();
+                pad.reset();
                 drag = null;
                 stickId = null;
                 vector = { x: 0, y: 0 };
@@ -1626,6 +1686,9 @@ root.CrownArena={create(canvas){
                 if (/INPUT|SELECT|TEXTAREA|BUTTON/.test(e.target.tagName) || document.querySelector('dialog[open]'))
                     return;
                 const k = e.key.toLowerCase();
+                if ((k === 'escape' || k === 'p') && !e.repeat) { e.preventDefault(); pause?.(); return; }
+                if (k === ' ' && !e.repeat) { e.preventDefault(); lock(); return; }
+                if (!allowed()) return;
                 if (['w', 'a', 's', 'd', 'q', 'e', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright', ' ', '1', '2'].includes(k))
                     e.preventDefault();
                 if (k === ' ' && !e.repeat)
@@ -1643,11 +1706,18 @@ root.CrownArena={create(canvas){
                     reset();
             });
             return { reset, tick(dt) {
+                    let controller = null;
+                    try { controller = [...(navigator.getGamepads?.() || [])].find(p => p?.connected && p.mapping === "standard"); } catch {}
+                    const gp = pad.poll(controller, allowed(), get().lockable);
+                    if (gp.pause) { pause?.(); return; }
+                    if (gp.lock) { lock(); return; }
+                    if (gp.place) mode("place");
+                    if (gp.aim) mode("aim");
                     if (!allowed())
                         return;
                     const g = get();
-                    let x = vector.x + (keys.has('d') || keys.has('arrowright') ? 1 : 0) - (keys.has('a') || keys.has('arrowleft') ? 1 : 0);
-                    let y = vector.y + (keys.has('s') || keys.has('arrowdown') ? 1 : 0) - (keys.has('w') || keys.has('arrowup') ? 1 : 0);
+                    let x = gp.x + vector.x + (keys.has('d') || keys.has('arrowright') ? 1 : 0) - (keys.has('a') || keys.has('arrowleft') ? 1 : 0);
+                    let y = gp.y + vector.y + (keys.has('s') || keys.has('arrowdown') ? 1 : 0) - (keys.has('w') || keys.has('arrowup') ? 1 : 0);
                     const len = Math.max(1, Math.hypot(x, y));
                     x /= len;
                     y /= len;
@@ -1660,7 +1730,7 @@ root.CrownArena={create(canvas){
                         const xy = E.movePosition(g.player, x * 160 * dt, y * 160 * dt, g.state.round, g.state.settings.arena);
                         commit({ ...g.player, ...xy });
                     }
-                    const q = (keys.has('e') ? 1 : 0) - (keys.has('q') ? 1 : 0);
+                    const q = gp.turn + (keys.has('e') ? 1 : 0) - (keys.has('q') ? 1 : 0);
                     if (q)
                         turn(q * dt * 1.3);
                 } };
@@ -1671,7 +1741,7 @@ root.CrownArena={create(canvas){
 /** Application coordinator. The engine owns rules; renderers see only filtered snapshots. */
 (function () {
     'use strict';
-    const E = window.BlindCrown, P = window.CrownPerspective, $ = id => document.getElementById(id);
+    const E = window.BlindCrown, P = window.CrownPerspective, T = window.CrownTactics, history = new window.CrownTactics.History(), $ = id => document.getElementById(id);
     const canvas = $('scene'), renderer = CrownArena.create(canvas), tactical = $('tacticalMap'), tc = tactical.getContext('2d');
     const settingIDs = ['botSlider', 'timeSelect', 'difficultySelect', 'arenaSelect', 'rulesetSelect', 'roundLimit', 'nameInput', 'fovSelect', 'qualitySelect'];
     const readPrefs = () => {
@@ -1700,7 +1770,12 @@ root.CrownArena={create(canvas){
     }
     let view = P.VIEWS.includes(prefs.view) ? prefs.view : 'overhead', fov = Number($('fovSelect').value), quality = $('qualitySelect').value;
     $('quickView').value = view;
-    $('reducedMotion').checked = prefs.reducedMotion ?? matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const access = T.accessPrefs(prefs, matchMedia('(prefers-reduced-motion: reduce)').matches);
+    $('reducedMotion').checked = access.reducedMotion;
+    $('highContrast').checked = access.highContrast;
+    $('volumeSlider').value = String(access.volume * 100);
+    $('volumeLabel').textContent = Math.round(access.volume * 100) + '%';
+    document.body.classList.toggle('high-contrast', access.highContrast);
     let reducedMotion = $('reducedMotion').checked, backend = 'canvas', audio = false, audioContext = null;
     let game = null, state = null, myId = null, online = false, isHost = false, tv = new URLSearchParams(location.search).get('tv') === '1', roomCode = '', connected = false;
     let placementMessage = '';
@@ -1708,7 +1783,7 @@ root.CrownArena={create(canvas){
     document.body.classList.toggle('reduced-motion', reducedMotion);
     let stats = { frames: 0, totalRenderMs: 0, maxRenderMs: 0 };
     function savePrefs() {
-        const data = { color: myColor, view, reducedMotion };
+        const data = { color: myColor, view, reducedMotion, highContrast: $('highContrast').checked, volume: +$('volumeSlider').value / 100 };
         for (const id of settingIDs)
             data[id] = $(id).value;
         try {
@@ -1725,14 +1800,14 @@ root.CrownArena={create(canvas){
     }
     // Small original synthesized cues; no audio downloads, autoplay or permanent oscillators.
     function sound(type) {
-        if (!audio) return;
+        if (!audio || +$('volumeSlider').value <= 0) return;
         try {
             audioContext ??= new (window.AudioContext || window.webkitAudioContext)();
             audioContext.resume(); const ctx=audioContext, now=ctx.currentTime;
             const tone=(frequency,wave,gain,duration,delay=0,end=frequency)=>{
                 const o=ctx.createOscillator(),g=ctx.createGain(),at=now+delay;
                 o.type=wave;o.frequency.setValueAtTime(frequency,at);o.frequency.exponentialRampToValueAtTime(Math.max(30,end),at+duration);
-                g.gain.setValueAtTime(.0001,at);g.gain.exponentialRampToValueAtTime(gain,at+.009);g.gain.exponentialRampToValueAtTime(.0001,at+duration);
+                g.gain.setValueAtTime(.0001,at);g.gain.exponentialRampToValueAtTime(Math.max(.0001,gain * +$('volumeSlider').value / 100),at+.009);g.gain.exponentialRampToValueAtTime(.0001,at+duration);
                 o.connect(g);g.connect(ctx.destination);o.start(at);o.stop(at+duration+.02);o.onended=()=>{o.disconnect();g.disconnect();};
             };
             if(type==='volley') { tone(185,'triangle',.065,.22,0,48);tone(1350,'triangle',.024,.085,0,210);tone(3100,'sine',.012,.09,.015,740); }
@@ -1752,6 +1827,9 @@ root.CrownArena={create(canvas){
     const isPaused = () => !online && (paused || document.hidden || !!document.querySelector('dialog[open]'));
     const canEdit = () => state?.phase === 'planning' && own()?.alive && !own()?.locked && !tv && !isPaused() && (!online || connected) && !document.querySelector('dialog[open]');
     function resetLocal() {
+        history.clear();
+        renderer.clear();
+        pending = null; paused = false; accumulator = 0; lastPhase = "";
         placementMessage = '';
         game = new E.Match(settings());
         myId = game.addPlayer($('nameInput').value.trim() || 'Royal Archer', myColor).id;
@@ -1774,6 +1852,7 @@ root.CrownArena={create(canvas){
         lastStateAt = performance.now();
         const key = `${s.round}:${s.phase}`;
         if (key !== lastPhase) {
+            if (!online) history.add(s);
             placementMessage = '';
             input?.reset();
             lastPhase = key;
@@ -1831,6 +1910,8 @@ root.CrownArena={create(canvas){
         else {
             if (!settings().bots)
                 return notify('Local play needs at least one AI challenger.');
+            history.clear();
+            lastPhase = "";
             game = new E.Match(settings());
             myId = game.addPlayer($('nameInput').value.trim() || 'Royal Archer', myColor).id;
             game.addBots(settings().bots);
@@ -1844,6 +1925,7 @@ root.CrownArena={create(canvas){
         }
         $('settingsDialog').close();
         $('helpDialog').close();
+        $('reviewDialog').close();
         canvas.focus({ preventScroll: true });
     }
     function connectRoom(t) {
@@ -1933,7 +2015,7 @@ root.CrownArena={create(canvas){
         lastUI = '';
         drawUI();
     }
-    let input = CrownInput.attach({ canvas, tactical, stick: $('moveStick'), knob: $('stickKnob'), get: () => ({ state, player: own(), view, mode, editable: canEdit() }), commit, lock, mode: setMode, turn, placementFeedback(valid) {
+    let input = CrownInput.attach({ canvas, tactical, stick: $('moveStick'), knob: $('stickKnob'), get: () => ({ state, player: own(), view, mode, editable: canEdit(), lockable: state?.phase === 'planning' && own()?.alive && !tv && !isPaused() && (!online || connected) && !document.querySelector('dialog[open]') }), commit, lock, mode: setMode, turn, pause: togglePause, placementFeedback(valid) {
         const message = valid ? 'Position set. Aim, then lock your shot.' : 'Adjusted to a legal position — leave room around cover and the boundary.';
         if (placementMessage !== message) { placementMessage = message; lastUI = ''; drawUI(); }
     } });
@@ -1964,9 +2046,9 @@ root.CrownArena={create(canvas){
         $('totalCount').textContent = ' / ' + s.players.length;
         $('readyCount').textContent = s.players.filter(p => p.alive && p.locked).length + ' READY';
         $('phaseName').textContent = { lobby: 'READY TO PLAY', planning: 'SECRET PLANNING', reveal: 'ALL REVEALED', volley: 'THE VOLLEY', results: 'AFTERMATH', final: 'CROWN CLAIMED' }[s.phase];
-        $('privacyBadge').textContent = active ? (tv ? 'PUBLIC TV · ARCHERS HIDDEN' : 'PRIVATE PLAN · ONLY YOU SEE YOUR ARCHER') : 'SHARED REVEAL · ALL SHOTS ARE SERVER-RESOLVED';
+        $('privacyBadge').textContent = active ? (tv ? 'PUBLIC TV · ARCHERS HIDDEN' : 'PRIVATE PLAN · ONLY YOU SEE YOUR ARCHER') : 'SHARED REVEAL · ALL SHOTS FIRE TOGETHER';
         if (!online && !active)
-            $('privacyBadge').textContent = 'REVEAL & VOLLEY · ONE SHARED RULE ENGINE';
+            $('privacyBadge').textContent = 'ALL ARCHERS FIRE · EVERY ARROW COUNTS';
         $('rosterList').innerHTML = s.players.map(q => `<div class="contender ${q.id === myId ? 'me' : ''} ${q.alive ? '' : 'dead'}"><span class="avatarDot" style="background:${safe(q.color)}22;color:${safe(q.color)}">${CrownArt.portraitSvg(q.color)}</span><div><div class="playerTitle">${safe(q.name)}${q.id === myId ? ' · YOU' : ''}</div><div class="playerSubtitle">${q.alive ? (active ? (q.locked ? 'COMMITTED' : q.id === myId ? 'PRIVATE POSITION' : 'HIDDEN') : q.kills + ' HITS · ' + q.points + ' PTS') : 'ELIMINATED'}</div></div><span class="playerStatus">${q.alive ? (q.locked ? '✓' : '•') : '×'}</span></div>`).join('');
         $('eventLog').innerHTML = (s.log.length ? s.log : ['The archers gather. Only one can claim the crown.']).slice(0, 4).map(t => '<p>' + safe(t) + '</p>').join('');
         const available = active && p?.alive && !tv && (!online || connected) && !paused;
@@ -1996,15 +2078,19 @@ root.CrownArena={create(canvas){
         $('welcomeSteps').hidden = final;
         $('resultStandings').hidden = !final;
         $('welcomeMeta').hidden = final;
-        $('welcomeMeta').textContent = `${E.MAPS[s.settings.arena].label} · ${s.players.length} contenders`;
-        if (final) $('resultStandings').innerHTML = [...s.players].sort((a,b)=>Number(s.winners.includes(b.id))-Number(s.winners.includes(a.id))||b.points-a.points).slice(0,3).map((q,i)=>`<div class="standing"><span>${i+1}</span><strong>${safe(q.name)}</strong><small>${q.points} PTS</small></div>`).join('');
+        $('welcomeMeta').textContent = `${E.MAPS[s.settings.arena].label} · ${s.players.length} contenders · ${s.settings.time}s to plan · ${s.settings.ruleset === 'precision' ? 'Precision · no guide' : 'Classic'}`;
+        $('reviewBtn').hidden = online || !history.records.length;
+        $('menuBtn').hidden = online || lobby;
+        $('debriefActions').hidden = online || !history.records.length || !['results', 'final'].includes(s.phase);
+        $('identityPreview').innerHTML = CrownArt.portraitSvg(myColor) + '<strong>' + safe($('nameInput').value.trim() || 'Royal Archer') + '</strong>';
+        if (final) $('resultStandings').innerHTML = T.standings(s).map((q,i)=>`<div class="standing"><span>${i+1}</span><strong>${safe(q.name)}</strong><small>${q.kills} HITS · ${q.points} PTS</small></div>`).join('');
         $('arenaBackdrop').hidden = tv || (!lobby && !final);
         if (lobby || final) {
             const winner = s.players.find(q => s.winners.includes(q.id));
             $('welcomeEyebrow').textContent = final ? 'THE TOURNAMENT IS DECIDED' : online ? 'PRIVATE ROOM · ' + roomCode : 'A GAME OF HIDDEN INTENTIONS';
             if (final) {
                 $('welcomeTitle').textContent = winner ? winner.name + ' claims the crown.' : 'The volley is complete.';
-                $('welcomeCopy').textContent = winner ? `${winner.kills} hit${winner.kills === 1 ? '' : 's'} · ${winner.points} points · ${s.round} round${s.round === 1 ? '' : 's'}. Play another tournament to settle the score.` : 'Begin a new tournament.';
+                $('welcomeCopy').textContent = winner ? `${T.reason(s)}. ${s.round} rounds · your hits and points appear below.` : 'Begin a new tournament.';
             }
             else {
                 $('welcomeTitle').innerHTML = 'Every shot.<br><em>A royal gamble.</em>';
@@ -2065,6 +2151,7 @@ root.CrownArena={create(canvas){
         }
     }
     function openSettings() {
+        lastUI = ''; drawUI();
         input.reset();
         $('settingsDialog').showModal();
     }
@@ -2078,14 +2165,16 @@ root.CrownArena={create(canvas){
     $('helpClose').onclick = () => $('helpDialog').close();
     $('startBtn').onclick = startGame;
     $('overlayStart').onclick = startGame;
-    $('pauseBtn').onclick = () => {
+    function togglePause() {
+        if (document.querySelector('dialog[open]') || ['lobby', 'final'].includes(state.phase)) return;
         if (online)
             return;
         paused = !paused;
         input.reset();
         lastUI = '';
         drawUI();
-    };
+    }
+    $('pauseBtn').onclick = togglePause;
     $('placeBtn').onclick = () => setMode('place');
     $('aimBtn').onclick = () => setMode('aim');
     $('lockBtn').onclick = lock;
@@ -2098,6 +2187,10 @@ root.CrownArena={create(canvas){
         $('soundBtn').setAttribute('aria-label', audio ? 'Mute sound' : 'Enable sound');
         sound('click');
     };
+    $('railBtn').onclick = () => { const on = $('app').dataset.rail !== 'open'; $('app').dataset.rail = on ? 'open' : 'closed'; $('railBtn').setAttribute('aria-pressed', String(on)); };
+    $('highContrast').onchange = () => { document.body.classList.toggle('high-contrast', $('highContrast').checked); savePrefs(); };
+    $('volumeSlider').oninput = () => { $('volumeLabel').textContent = $('volumeSlider').value + '%'; savePrefs(); };
+    $('menuBtn').onclick = () => { if (online) return; input.reset(); resetLocal(); openSettings(); };
     $('quickView').onchange = () => {
         view = $('quickView').value;
         input.reset();
@@ -2160,6 +2253,7 @@ root.CrownArena={create(canvas){
             network.action('identity', { name: $('nameInput').value, color: myColor });
         else if (state.phase === 'lobby')
             resetLocal();
+        lastUI = ''; drawUI();
     };
     E.COLOR.forEach((c, i) => {
         const b = document.createElement('button');
@@ -2180,6 +2274,7 @@ root.CrownArena={create(canvas){
                 network.action('identity', { name: $('nameInput').value, color: myColor });
             else if (state.phase === 'lobby')
                 resetLocal();
+            lastUI = ''; drawUI();
         };
         $('colorOptions').append(b);
     });
@@ -2219,6 +2314,32 @@ root.CrownArena={create(canvas){
         if (roomCode)
             window.open(roomLink(true), '_blank', 'noopener');
     };
+    function drawReview() {
+        const r = history.records.find(q => q.round === +$('reviewRound').value); if (!r) return;
+        const time = +$('reviewScrub').value / 100, c = $('reviewCanvas').getContext('2d');
+        c.fillStyle = '#0b1921'; c.fillRect(0,0,1000,640);
+        const bounds = E.shotBounds(r.round); c.strokeStyle = '#b8a174'; c.lineWidth = 3; c.strokeRect(bounds.minX,bounds.minY,bounds.maxX-bounds.minX,bounds.maxY-bounds.minY);
+        c.fillStyle = '#526a70'; for (const w of E.shotWalls(r.settings.arena)) c.fillRect(w.x,w.y,w.w,w.h);
+        for (const shot of r.shots) {
+            const d = Math.min(shot.dist,time*1100); c.strokeStyle = r.players.find(p => p.id === shot.id)?.color || '#fff'; c.lineWidth = shot.id === myId ? 5 : 2;
+            c.beginPath(); c.moveTo(shot.x,shot.y); c.lineTo(shot.x+shot.dx*d,shot.y+shot.dy*d); c.stroke();
+            c.font='bold 18px system-ui';c.textAlign='center';c.fillStyle='#07131a';const labelX=shot.x+shot.dx*d,labelY=shot.y+shot.dy*d;c.fillRect(labelX-12,labelY-28,24,22);c.fillStyle=c.strokeStyle;c.fillText(String(shot.id),labelX,labelY-11);
+            if (time >= shot.finish) { c.beginPath(); c.arc(shot.x+shot.dx*shot.dist,shot.y+shot.dy*shot.dist,8,0,Math.PI*2); c.stroke(); }
+        }
+        for (const p of r.players.filter(q=>Number.isFinite(q.x) && r.shots.some(shot=>shot.id===q.id))) { c.fillStyle = p.color; c.beginPath(); c.arc(p.x,p.y,19,0,Math.PI*2); c.fill(); c.fillStyle='#07131a'; c.font='bold 18px system-ui'; c.textAlign='center'; c.fillText(String(p.id),p.x,p.y+6); }
+        $('reviewTime').textContent = time.toFixed(2) + ' s';
+        $('reviewOwn').textContent = T.outcome(r,myId,time);
+        $('reviewRows').innerHTML = r.shots.map(q => '<p><strong>' + q.id + ' · ' + safe(r.players.find(p=>p.id===q.id)?.name || 'Archer') + '</strong> — ' + safe(time < q.finish ? 'Arrow in flight' : T.shotLabel(r,q)) + '</p>').join('');
+    }
+    $('reviewBtn').onclick = () => {
+        if (online || !history.records.length) return; input.reset();
+        $('reviewRound').innerHTML = history.records.map(r=>'<option value="'+r.round+'">Round '+r.round+' · '+safe(E.MAPS[r.settings.arena].label)+'</option>').join('');
+        $('reviewRound').value = String(history.records.at(-1).round); $('reviewScrub').value = '170';
+        $('reviewDialog').showModal(); drawReview();
+    };
+    $('debriefBtn').onclick = () => { $('reviewBtn').onclick(); };
+    $('reviewRound').onchange = drawReview; $('reviewScrub').oninput = drawReview; $('reviewClose').onclick = () => $('reviewDialog').close();
+    $('reviewDialog').addEventListener('close', () => { input.reset(); canvas.focus({preventScroll:true}); });
     $('settingsDialog').addEventListener('close', () => {
         input.reset();
         canvas.focus({ preventScroll: true });
@@ -2253,6 +2374,9 @@ root.CrownArena={create(canvas){
         if (online && connected && ['planning', 'reveal', 'volley', 'results'].includes(state.phase))
             clock = Math.max(0, clock - (now - lastStateAt) / 1000);
         updateClock(clock);
+        const feedback = T.outcome(state,myId,state.phase === 'volley' ? Math.max(0,1.7-clock) : 2);
+        $('volleyFeedback').hidden = !feedback;
+        if ($('volleyFeedback').textContent !== feedback) $('volleyFeedback').textContent = feedback;
         drawUI();
         const begin = performance.now();
         renderer.render(state, myId, animationTime, dt, { view, fov, quality, reducedMotion, backend, clock, paused: isPaused() });
@@ -2266,7 +2390,7 @@ root.CrownArena={create(canvas){
         requestAnimationFrame(loop);
     }
     // Diagnostics expose only the same filtered state already given to the renderer.
-    window.BlindCrownDebug = Object.freeze({ version: '1.5.0', getState: () => JSON.parse(JSON.stringify(state)), get view() {
+    window.BlindCrownDebug = Object.freeze({ version: '1.6.0', getState: () => JSON.parse(JSON.stringify(state)), get view() {
             return view;
         }, getStats: () => ({ ...renderer.getStats(), frames: stats.frames, meanRenderMs: stats.totalRenderMs / Math.max(1, stats.frames), maxRenderMs: stats.maxRenderMs, backend }) });
     requestAnimationFrame(loop);

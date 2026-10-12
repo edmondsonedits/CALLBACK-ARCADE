@@ -1,0 +1,26 @@
+✔ preferences validate enums, counts, volume and hostile storage (6.889069ms)
+✔ setup gates all gameplay then start enters the established countdown (7.44115ms)
+✔ contestant changes stage next match without erasing an active round (2.59314ms)
+✔ seeded hazard rhythms repeat independently of cosmetic random draws (7.286898ms)
+✔ clear streak and match statistics count one outcome per rod and survive round reset (2.044475ms)
+✔ survival statistics use fight simulation time only (6.028821ms)
+✔ hazard preview orders pending rods relative to setback and keeps safe NOW timing (1.983004ms)
+✔ gamepad Start pauses and resumes on edges while held actions stay neutral (2.146532ms)
+✔ help pauses, clears held posture, and returns to explicit Resume (1.801807ms)
+✔ standings use shared crown ranks and final results have direct replay and menu routes (3.620674ms)
+✔ gameplay keys do not hijack focused input fields (1.650324ms)
+✔ reduced motion suppresses added effects without changing safe collision outcomes (6.327273ms)
+✔ persisted preferences reload and setup settings cannot be covered or overwritten (1.894493ms)
+✔ audio stays locked before a gesture and zero volume schedules no voice (1.621414ms)
+✔ keyboard movement controls remain active when a native action button has focus (2.138869ms)
+✔ airborne, duck and running animation poses reflect real simulation posture (1.884207ms)
+✔ replay requires release of gamepad actions held through menus (1.530494ms)
+✔ procedural tower and character geometry build with the bundled real Three.js API (82.851023ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 321.953471

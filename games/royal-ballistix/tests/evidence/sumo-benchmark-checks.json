@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "kind": "arcade-game-quality-verification",
+  "scope": "focused-automated-checks",
+  "version": "0.13.0",
+  "sourceHashes": [
+    {
+      "path": "source/index.html",
+      "sha256": "3af1cc8ea161a66931c73f28e8a1e6b6550fefc37735cdcd25c3510ca99468b5"
+    }
+  ],
+  "checks": [
+    {
+      "command": "node --test tests/royal-ballistix-import.test.mjs tests/royal-ballistix-mobile-ui.test.mjs tests/royal-ballistix-quality.test.mjs tests/royal-ballistix-sumo-benchmark.test.mjs",
+      "result": "passed",
+      "tests": 70
+    },
+    {
+      "command": "python -m py_compile games/royal-ballistix/tests/browser-quality.py games/royal-ballistix/tests/capture-feedback.py",
+      "result": "passed"
+    }
+  ],
+  "browser": "Not run by game worker: known local Chromium socket restriction; parent plans official Pages verification after publication.",
+  "limitations": [
+    "No physical touch/gamepad/audio-by-ear validation",
+    "No authenticated phone or network transport",
+    "Shared repository gates and catalog generation owned by parent"
+  ]
+}

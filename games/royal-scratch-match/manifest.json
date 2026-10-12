@@ -14,18 +14,18 @@
     "bots",
     "mobile"
   ],
-  "description": "Imported v0.5 standalone call-and-response rhythm game for 2–10 contestant slots. One local touch/keyboard player is supported by default, remaining slots can be bot-controlled, and additional human slots can receive inputs through the existing JavaScript API. Room-code phone multiplayer is not yet integrated.",
+  "description": "Standalone Crown & Cadence call-and-response rhythm knockout for 2\u201310 contestant slots, with rehearsal, musical count-in, timing soundcheck, persistent access settings, touch/keyboard/gamepad chords and seeded set replay. One local player plus bots by default; phone multiplayer is not integrated.",
   "players": {
     "min": 2,
     "max": 10
   },
-  "version": "0.5.0",
+  "version": "0.6.0",
   "source": {
     "status": "imported",
     "paths": [
       "source/index.html"
     ],
-    "provenance": "Standalone royal_scratch_match_v0.5_ten_player.html created in the user's ChatGPT CALLBACK project and supplied by the user in this chat for import. Imported without gameplay changes as source/index.html. The runtime has no external asset dependencies; the user explicitly requested this project/repository use.",
+    "provenance": "Original standalone royal_scratch_match_v0.5_ten_player.html supplied by the user for project/repository use; its exact bytes remain in source/archive. Editable source/index.html upgraded in place to v0.6.0 Crown & Cadence. Original and current SHA-256 provenance plus focused automated-check evidence are recorded in tests/sumo-benchmark-evidence.json. No external runtime assets or dependencies were added.",
     "url": null
   },
   "lifecycle": "experimental",

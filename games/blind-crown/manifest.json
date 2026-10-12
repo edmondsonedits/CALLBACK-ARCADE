@@ -1,6 +1,6 @@
 {
   "id": "blind-crown",
-  "title": "Blind Crown — Nightfall",
+  "title": "Blind Crown \u2014 Nightfall",
   "aliases": [
     "Blind Crown",
     "Classic Blind Volley"
@@ -15,19 +15,19 @@
     "mobile",
     "canvas"
   ],
-  "description": "Private-plan medieval archery for 2–10 contestant slots. Nightfall adds textured diorama arenas, armored knights, torchlight, matching portraits, responsive controls and timed volley effects while preserving Classic rules. One local human with bots; first/third-person default to Canvas 2.5D. Hosted phone multiplayer is not integrated.",
+  "description": "Private-plan medieval archery for 2\u201310 contestant slots. Nightfall adds armored knights, three diorama arenas, four cameras, readable volleys and paused tactical round reviews. Classic and Precision rules preserved. One local human plus bots; hosted phone multiplayer is not integrated.",
   "players": {
     "min": 2,
     "max": 10
   },
-  "version": "1.5.0",
+  "version": "1.6.0",
   "source": {
     "status": "imported",
     "paths": [
       "source/index.html",
       "source/original/blind-crown-v1.4.html"
     ],
-    "provenance": "Nightfall v1.5 presentation upgrade from the exact supplied Refined v1.4 game, preserved under source/original/. New original Canvas/SVG art and synthesized audio; no external art/font/music packs added. Current standalone SHA-256: 06a0238b9827cd6f4395ec33cd0b2c8c7ce758bc15135a946ed7c737e53ef0e4. Experimental pinned Three.js remains opt-in and unverified. See assets/README.md.",
+    "provenance": "Nightfall v1.6 tactical learning upgrade over exact supplied Refined v1.4, preserved under source/original/. Original Canvas/SVG art and synthesized audio; no added external dependencies/assets. Classic/Precision engine, cameras, art and room client preserved byte-identically. Current standalone SHA-256: 9de02410af76047081cdfff3fe19a0e70641c75a31ae9ded5f7eef0831b0f681. Experimental pinned Three.js remains opt-in/unverified. See tests/sumo-benchmark-verification.json and assets/README.md.",
     "url": null
   },
   "lifecycle": "experimental",

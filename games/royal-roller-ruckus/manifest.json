@@ -1,6 +1,6 @@
 {
   "id": "royal-roller-ruckus",
-  "title": "Royal Roller Ruckus — Crownway Circuit",
+  "title": "Royal Roller Ruckus \u2014 Crownway Circuit",
   "aliases": [
     "Royal Roller Ruckus",
     "Roller Ruckus",
@@ -16,19 +16,22 @@
     "mobile",
     "three-js"
   ],
-  "description": "A 2–10 racer momentum-driven cage race around the vertical Crownway Circuit with collisions, checkpoints, recovery after falls, bot-filled seats, and CALLBACK remote-input hooks.",
+  "description": "A 2\u201310 racer momentum-driven cage race on the vertical Crownway with deliberate setup, one-lap practice, checkpoint and corner coaching, lap splits, personal bests, recovery and persistent accessibility preferences.",
   "players": {
     "min": 2,
     "max": 10
   },
-  "version": "1.4.0",
+  "version": "1.5.0",
   "source": {
     "status": "imported",
     "paths": [
       "source/index.html",
-      "source/original/royal_roller_ruckus_v1.4_vertical_crownway.html"
+      "source/original/royal_roller_ruckus_v1.4_vertical_crownway.html",
+      "source/vendor/three.module.js",
+      "source/vendor/three.core.js",
+      "source/vendor/LICENSE-three.txt"
     ],
-    "provenance": "Imported from the user-supplied royal_roller_ruckus_v1.4_vertical_crownway.html. The active standalone build imports Three.js 0.180.0 from jsDelivr at runtime.",
+    "provenance": "Imported from the user-supplied royal_roller_ruckus_v1.4_vertical_crownway.html; original preserved unchanged. Active v1.5.0 adds racing flow, coaching, practice, results and access preferences. Three.js r180 modules and MIT license are byte-identical copies of the existing Royal Sumo vendor distribution; no runtime CDN import.",
     "url": null
   },
   "lifecycle": "experimental",

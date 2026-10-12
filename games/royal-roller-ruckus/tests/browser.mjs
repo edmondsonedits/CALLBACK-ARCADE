@@ -1,4 +1,4 @@
-// Browser QA only: install Playwright and Three.js 0.180.0 outside the checkout.
+// Browser QA only: install Playwright outside the checkout; use the bundled Three.js r180.
 // PLAYWRIGHT_MODULE=/.../playwright/index.mjs THREE_BUILD_DIR=/.../three/build
 // BROWSER_BIN=/usr/bin/chromium node .../browser.mjs [checks|perf]
 // Optional ROLLER_ENTRY, EVIDENCE_DIR, RENDER_MODE=balanced|performance.
@@ -12,8 +12,8 @@ const original=await readFile(process.env.ROLLER_ENTRY||new URL('../source/index
 const evidence=process.env.EVIDENCE_DIR||'/tmp/roller-browser';await mkdir(evidence,{recursive:true});
 const mode=process.argv[2]||'checks';
 const hook='window.__rollerTest={run:code=>eval(code)};';
-const fixture=original.replace('https://cdn.jsdelivr.net/npm/three@0.180.0/+esm','/three.module.js').replace('initRenderer();createTrack();',hook+'initRenderer();createTrack();').replace('requestAnimationFrame(t=>{lastTime=t;animate(t)});','');
-const server=http.createServer(async(req,res)=>{try{if(req.url.startsWith('/three.')){res.setHeader('Content-Type','text/javascript');res.end(await readFile(path.join(process.env.THREE_BUILD_DIR,path.basename(req.url))));}else{res.setHeader('Content-Type','text/html');res.end(req.url.includes('dependency-failure')?original:fixture);}}catch(e){res.statusCode=500;res.end(String(e));}});
+const fixture=original.replace('https://cdn.jsdelivr.net/npm/three@0.180.0/+esm','/three.module.js').replace('./vendor/three.module.js','/three.module.js').replace('initRenderer();createTrack();',hook+'initRenderer();createTrack();').replace('requestAnimationFrame(t=>{lastTime=t;animate(t)});','');
+const server=http.createServer(async(req,res)=>{try{if(req.url.startsWith('/three.')||req.url.startsWith('/vendor/three.')){res.setHeader('Content-Type','text/javascript');res.end(await readFile(path.join(process.env.THREE_BUILD_DIR||new URL('../source/vendor/',import.meta.url).pathname,path.basename(req.url))));}else{res.setHeader('Content-Type','text/html');res.end(req.url.includes('dependency-failure')?original:fixture);}}catch(e){res.statusCode=500;res.end(String(e));}});
 await new Promise(r=>server.listen(0,'127.0.0.1',r));
 const browser=await chromium.launch({executablePath:process.env.BROWSER_BIN||'/usr/bin/chromium',args:['--no-sandbox','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
 try{
@@ -21,7 +21,7 @@ try{
  await page.addInitScript(()=>{let seed=123;Math.random=()=>((seed=(Math.imul(seed,1664525)+1013904223)>>>0)/4294967296);});
  const url=`http://127.0.0.1:${server.address().port}`;await page.goto(url);await page.waitForFunction(()=>window.__rollerTest);const run=code=>page.evaluate(code=>window.__rollerTest.run(code),code);
  await run(`soundOn=false;racerCountEl.value='10';resetRace();phase='race';paused=false;countdownEl.classList.add('hidden');loading.style.display='none';`);
- const environment=await run(`(()=>{const gl=renderer.getContext(),ext=gl.getExtension('WEBGL_debug_renderer_info');return{renderer:gl.getParameter(ext.UNMASKED_RENDERER_WEBGL),viewport:[innerWidth,innerHeight],dpr:devicePixelRatio,seed:123,dependency:'npm Three.js 0.180.0, test-only local route'}})()`);environment.browser=await browser.version();
+ const environment=await run(`(()=>{const gl=renderer.getContext(),ext=gl.getExtension('WEBGL_debug_renderer_info');return{renderer:gl.getParameter(ext.UNMASKED_RENDERER_WEBGL),viewport:[innerWidth,innerHeight],dpr:devicePixelRatio,seed:123,dependency:'bundled Three.js r180, test-only local route'}})()`);environment.browser=await browser.version();
  if(mode==='diagnostic'){
   const result=await run(`(async()=>{const results=[];for(const condition of ['idle','render-with-ui','render-no-ui']){
    if(condition==='render-no-ui')for(const child of document.querySelector('#app').children)if(child.id!=='viewport')child.style.visibility='hidden';
@@ -59,7 +59,7 @@ try{
    }
   }
   assert.deepEqual(errors,[]);
-  const failure=await browser.newPage();await failure.route('https://cdn.jsdelivr.net/**',r=>r.abort());await failure.goto(url+'/?dependency-failure');await failure.waitForSelector('#retryLoad');assert.match(await failure.locator('#loading').innerText(),/could not be downloaded/);await failure.close();
+  const failure=await browser.newPage();await failure.route('**/vendor/three.*',r=>r.abort());await failure.route('https://cdn.jsdelivr.net/**',r=>r.abort());await failure.goto(url+'/?dependency-failure');await failure.waitForSelector('#retryLoad');assert.match(await failure.locator('#loading').innerText(),/could not be (downloaded|loaded)/);await failure.close();
   console.log(JSON.stringify({environment,checks:'blur, touch cancel, settings/manual resume, disconnect, CAM codes, desktop/portrait framing, dependency failure',frames,errors}));
  }
 }finally{await browser.close();await new Promise(r=>server.close(r));}

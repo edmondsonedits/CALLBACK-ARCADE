@@ -27,3 +27,8 @@ TWISTED_PAGES_DIR=/tmp/twisted-pages PLAYWRIGHT_MODULE=/tmp/twisted-browser/node
 The matrix first opens uninstrumented standalone and actual Pages-build entries with external traffic blocked. Behavioral fixtures then serve the active HTML with test-only access to module-local state and controls animation scheduling. It uses actual Three.js/WebGL, keyboard/mouse input, emulated touch, cancellation, pause/Resume, full-setback fixtures, camera projections and checks that hazards are not hidden behind the controls/lives HUD. It deliberately aborts each local dependency request and denies WebGL in separate cases, requiring visible error states. JSON results bind to the tested source hash; generated screenshots support visual inspection, not claims about game feel. Render CPU submission timings are diagnostic only. Prior screenshots are historical and do not establish current normal-browser acceptance.
 
 These checks do not verify production multiplayer, physical phones/gamepads, audible mix quality or real GPU performance.
+
+
+## v0.6.0 Sumo benchmark
+
+Run `node --test tests/royal-twisted-sumo-benchmark.test.mjs tests/royal-twisted-quality.test.mjs tests/royal-twisted-camera.test.mjs` from the repository root. The new suite covers setup/start/settings/help/results/replay, safe persisted preferences, gamepad menu edges and held-input release, deterministic gameplay-only RNG, practice rhythms, stats, cues, functional poses, audio gesture gating and real bundled Three.js procedural scene construction. Scene construction does not compile shaders or validate browser pixels. Fresh source-hash evidence is in `evidence/sumo-benchmark.json`; older screenshot/browser reports remain historical.

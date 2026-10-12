@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "kind": "arcade-game-quality-verification",
+  "gameVersion": "1.5.0",
+  "result": "passed",
+  "scope": "focused automated behavior, CPU-side Three.js transforms/course/camera; not browser/device or multiplayer verification",
+  "checks": [
+    {
+      "name": "VM/new benchmark and existing quality regressions",
+      "command": "node --test tests/royal-roller-ruckus-sumo-benchmark.test.mjs tests/royal-roller-ruckus-quality.test.mjs",
+      "result": "passed",
+      "tests": 41
+    },
+    {
+      "name": "source smoke and original archive hash",
+      "command": "node games/royal-roller-ruckus/tests/source-smoke.mjs",
+      "result": "passed"
+    },
+    {
+      "name": "actual elevated course: 2/4/10 seats, legal three-lap races, pack recovery and landing",
+      "command": "THREE_MODULE=$PWD/games/royal-roller-ruckus/source/vendor/three.module.js node games/royal-roller-ruckus/tests/real-course.mjs",
+      "result": "passed",
+      "seconds": [
+        117.16666666666667,
+        118.28333333333333,
+        123.58333333333333
+      ]
+    },
+    {
+      "name": "chase camera full spline sweep and CAM codes",
+      "command": "THREE_MODULE=$PWD/games/royal-roller-ruckus/source/vendor/three.module.js node games/royal-roller-ruckus/tests/camera.mjs",
+      "result": "passed",
+      "worstPlayerBottomPx": 527.7164436438197,
+      "maximumTurnRadians": 0.04824824774917456
+    },
+    {
+      "name": "seeded navigation and effective bot difficulty order",
+      "command": "THREE_MODULE=$PWD/games/royal-roller-ruckus/source/vendor/three.module.js node --test games/royal-roller-ruckus/tests/navigation.test.mjs",
+      "result": "passed",
+      "tests": 28
+    },
+    {
+      "name": "extracted inline module, bundled modules and browser fixture syntax",
+      "command": "node --check /tmp/roller-ruckus-inline.mjs; node --check games/royal-roller-ruckus/source/vendor/three.module.js; node --check games/royal-roller-ruckus/source/vendor/three.core.js; node --check games/royal-roller-ruckus/tests/browser.mjs",
+      "result": "passed"
+    },
+    {
+      "name": "Three.js r180 and license equal reference distribution",
+      "result": "passed"
+    }
+  ],
+  "sourceHashes": [
+    {
+      "path": "source/index.html",
+      "sha256": "3195b89abfe8237c2afd224e3d35eb930d7577d32542bebd7b93c754d6f4c303"
+    },
+    {
+      "path": "source/original/royal_roller_ruckus_v1.4_vertical_crownway.html",
+      "sha256": "643eea4257d0ab94ba9aee6ca2706b83b43ae10e1d9a05de7d2fd83289c2b515"
+    },
+    {
+      "path": "source/vendor/three.module.js",
+      "sha256": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a"
+    },
+    {
+      "path": "source/vendor/three.core.js",
+      "sha256": "eb077d2417f61d3e6d9264c317cabc4ea35769ed6b0ab533067292a550784c20"
+    },
+    {
+      "path": "source/vendor/LICENSE-three.txt",
+      "sha256": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601"
+    }
+  ],
+  "limitations": [
+    "No new browser screenshots or device playtest; environment reports local Chromium socket startup restrictions and cloud browser WebGL2 unavailable.",
+    "CPU-side modeled pose/resource tests do not establish GPU performance or visual quality.",
+    "Production game retains Math.random simulation; no seeded replay guarantee.",
+    "Results retain the existing human-completion policy and explicitly mark unfinished bots.",
+    "Authenticated multiplayer transport remains not integrated."
+  ]
+}

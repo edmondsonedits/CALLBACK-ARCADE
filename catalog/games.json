@@ -19,19 +19,19 @@
         "mobile",
         "canvas"
       ],
-      "description": "Private-plan medieval archery for 2–10 contestant slots. Nightfall adds textured diorama arenas, armored knights, torchlight, matching portraits, responsive controls and timed volley effects while preserving Classic rules. One local human with bots; first/third-person default to Canvas 2.5D. Hosted phone multiplayer is not integrated.",
+      "description": "Private-plan medieval archery for 2–10 contestant slots. Nightfall adds armored knights, three diorama arenas, four cameras, readable volleys and paused tactical round reviews. Classic and Precision rules preserved. One local human plus bots; hosted phone multiplayer is not integrated.",
       "players": {
         "min": 2,
         "max": 10
       },
-      "version": "1.5.0",
+      "version": "1.6.0",
       "source": {
         "status": "imported",
         "paths": [
           "source/index.html",
           "source/original/blind-crown-v1.4.html"
         ],
-        "provenance": "Nightfall v1.5 presentation upgrade from the exact supplied Refined v1.4 game, preserved under source/original/. New original Canvas/SVG art and synthesized audio; no external art/font/music packs added. Current standalone SHA-256: 06a0238b9827cd6f4395ec33cd0b2c8c7ce758bc15135a946ed7c737e53ef0e4. Experimental pinned Three.js remains opt-in and unverified. See assets/README.md.",
+        "provenance": "Nightfall v1.6 tactical learning upgrade over exact supplied Refined v1.4, preserved under source/original/. Original Canvas/SVG art and synthesized audio; no added external dependencies/assets. Classic/Precision engine, cameras, art and room client preserved byte-identically. Current standalone SHA-256: 9de02410af76047081cdfff3fe19a0e70641c75a31ae9ded5f7eef0831b0f681. Experimental pinned Three.js remains opt-in/unverified. See tests/sumo-benchmark-verification.json and assets/README.md.",
         "url": null
       },
       "lifecycle": "experimental",
@@ -59,18 +59,18 @@
         "mobile",
         "canvas"
       ],
-      "description": "Radial ball-deflection survival for 2–10 contestants, one local human plus bots. Radial touch movement controls running alongside Magnet and Pulse; keyboard controls, adjustable arena and CAM save/load remain available. The quality revision improves contact, input cleanup, round results and landscape layout. Phone/network transport is not integrated.",
+      "description": "Radial ball-deflection survival for 2–10 contestants, one local human plus bots. Saved setup, 1/3/5-crown siege and timed defense practice; touch, keyboard and gamepad; coastal castle court, accurate volley/cannon guides and persistent audio/access preferences. Camera/CAM hooks remain available. Phone/network transport is not integrated.",
       "players": {
         "min": 2,
         "max": 10
       },
-      "version": "0.12.1",
+      "version": "0.13.0",
       "source": {
         "status": "imported",
         "paths": [
           "source/index.html"
         ],
-        "provenance": "Based on edmondsonedits/CALLBACK commit ed09d25b690b36b397516e4d77437e3dd21247c8 (game-modes/royal-ballistix/index.html), with subsequent CALLBACK Arcade camera/mobile/lifecycle improvements and the 0.12.1 quality revision. Upstream Apache-2.0 license and modification notice retained. Current standalone SHA-256: 47b128059172554af2aee0a51b7ad6b55982087bf5597d9a1f9076501cdfe80b. See tests/evidence/coordinator-review.md for verification scope and limitations.",
+        "provenance": "Based on edmondsonedits/CALLBACK commit ed09d25b690b36b397516e4d77437e3dd21247c8 (game-modes/royal-ballistix/index.html), with subsequent CALLBACK Arcade camera/mobile/lifecycle improvements and the 0.13.0 Sumo benchmark upgrade. Upstream Apache-2.0 license and modification notice retained. Current standalone SHA-256: 3af1cc8ea161a66931c73f28e8a1e6b6550fefc37735cdcd25c3510ca99468b5. See tests/evidence/sumo-benchmark-checks.json and docs/quality/sumo-benchmark/royal-ballistix-report.md for verification scope and limitations.",
         "url": "https://github.com/edmondsonedits/CALLBACK/blob/ed09d25b690b36b397516e4d77437e3dd21247c8/game-modes/royal-ballistix/index.html"
       },
       "lifecycle": "experimental",
@@ -97,19 +97,22 @@
         "mobile",
         "three-js"
       ],
-      "description": "A 2–10 racer momentum-driven cage race around the vertical Crownway Circuit with collisions, checkpoints, recovery after falls, bot-filled seats, and CALLBACK remote-input hooks.",
+      "description": "A 2–10 racer momentum-driven cage race on the vertical Crownway with deliberate setup, one-lap practice, checkpoint and corner coaching, lap splits, personal bests, recovery and persistent accessibility preferences.",
       "players": {
         "min": 2,
         "max": 10
       },
-      "version": "1.4.0",
+      "version": "1.5.0",
       "source": {
         "status": "imported",
         "paths": [
           "source/index.html",
-          "source/original/royal_roller_ruckus_v1.4_vertical_crownway.html"
+          "source/original/royal_roller_ruckus_v1.4_vertical_crownway.html",
+          "source/vendor/three.module.js",
+          "source/vendor/three.core.js",
+          "source/vendor/LICENSE-three.txt"
         ],
-        "provenance": "Imported from the user-supplied royal_roller_ruckus_v1.4_vertical_crownway.html. The active standalone build imports Three.js 0.180.0 from jsDelivr at runtime.",
+        "provenance": "Imported from the user-supplied royal_roller_ruckus_v1.4_vertical_crownway.html; original preserved unchanged. Active v1.5.0 adds racing flow, coaching, practice, results and access preferences. Three.js r180 modules and MIT license are byte-identical copies of the existing Royal Sumo vendor distribution; no runtime CDN import.",
         "url": null
       },
       "lifecycle": "experimental",
@@ -134,18 +137,18 @@
         "bots",
         "mobile"
       ],
-      "description": "Imported v0.5 standalone call-and-response rhythm game for 2–10 contestant slots. One local touch/keyboard player is supported by default, remaining slots can be bot-controlled, and additional human slots can receive inputs through the existing JavaScript API. Room-code phone multiplayer is not yet integrated.",
+      "description": "Standalone Crown & Cadence call-and-response rhythm knockout for 2–10 contestant slots, with rehearsal, musical count-in, timing soundcheck, persistent access settings, touch/keyboard/gamepad chords and seeded set replay. One local player plus bots by default; phone multiplayer is not integrated.",
       "players": {
         "min": 2,
         "max": 10
       },
-      "version": "0.5.0",
+      "version": "0.6.0",
       "source": {
         "status": "imported",
         "paths": [
           "source/index.html"
         ],
-        "provenance": "Standalone royal_scratch_match_v0.5_ten_player.html created in the user's ChatGPT CALLBACK project and supplied by the user in this chat for import. Imported without gameplay changes as source/index.html. The runtime has no external asset dependencies; the user explicitly requested this project/repository use.",
+        "provenance": "Original standalone royal_scratch_match_v0.5_ten_player.html supplied by the user for project/repository use; its exact bytes remain in source/archive. Editable source/index.html upgraded in place to v0.6.0 Crown & Cadence. Original and current SHA-256 provenance plus focused automated-check evidence are recorded in tests/sumo-benchmark-evidence.json. No external runtime assets or dependencies were added.",
         "url": null
       },
       "lifecycle": "experimental",
@@ -235,19 +238,19 @@
         "mobile",
         "three-js"
       ],
-      "description": "A 2–10 contestant obstacle-survival run around Spiral Keep: jump low cyan rods, duck high coral rods, survive up to seven hits, and race AI or remote-controlled rivals. v0.5 exposes CALLBACK remote-input hooks; the older v0.4 upload is retained as an archive.",
+      "description": "A 2–10 contestant survival run around Spiral Keep: jump cyan rods, hold duck under coral rods, recover from setbacks and compete for the crown. Includes seeded replay, jump/duck practice rhythms, full standings and persistent sound/access preferences.",
       "players": {
         "min": 2,
         "max": 10
       },
-      "version": "0.5.0",
+      "version": "0.6.0",
       "source": {
         "status": "imported",
         "paths": [
           "source/index.html",
           "source/original/royal_twisted_spiral_keep_v0.5_original_camera_knockback.html"
         ],
-        "provenance": "Imported from the user-supplied royal_twisted_spiral_keep_v0.5_original_camera_knockback.html. The uploaded v0.4 ten-player build is retained separately under source/archive/ for history. The active build imports Three.js 0.180.0 from jsDelivr at runtime.",
+        "provenance": "Imported from the user-supplied royal_twisted_spiral_keep_v0.5_original_camera_knockback.html, preserved unchanged beside the active v0.6.0 upgrade. The supplied v0.4 ten-player build remains in source/archive/. Active source bundles unmodified Three.js 0.180.0 locally with MIT license and integrity provenance; benchmark verification and source hashes are recorded in tests/evidence/sumo-benchmark.json.",
         "url": null
       },
       "lifecycle": "experimental",
@@ -274,19 +277,19 @@
         "mobile",
         "canvas"
       ],
-      "description": "A self-contained 2–10 contestant arena brawler on a destructible orbital deck: move, grab and throw crates, kick rivals, jump gaps, and outlast CPU opponents. No external runtime assets or network connection are required.",
+      "description": "A self-contained 2–10 contestant orbital brawler with aimed cargo throws, kicks, jumps and a destructible deck. Includes flight-school practice, volatile-cargo rules, gamepad aiming and persistent audio/access settings.",
       "players": {
         "min": 2,
         "max": 10
       },
-      "version": "1.13.1",
+      "version": "1.14.0",
       "source": {
         "status": "imported",
         "paths": [
           "source/index.html",
           "source/original/space_bash_orbital_breakout_v1.13.1_standalone.html"
         ],
-        "provenance": "Imported from the user-supplied space_bash_orbital_breakout_v1.13.1_standalone.html. The build is intentionally self-contained and does not require external scripts, modules, WebGL, CDN assets, or a network connection.",
+        "provenance": "Imported from the user-supplied space_bash_orbital_breakout_v1.13.1_standalone.html, preserved unchanged under source/original. Active source upgraded to v1.14.0 against Royal Sumo v1.3.0 source, retaining Canvas 2D and no external runtime dependencies. Source hashes and scoped automated evidence are recorded in integration/provenance.json.",
         "url": null
       },
       "lifecycle": "experimental",
@@ -296,5 +299,5 @@
       }
     }
   ],
-  "revision": "ca86ddc4cde5689a957175de31866cdd8fa8b97106fd5d1609cc33ff5114eddf"
+  "revision": "a61000562f20677f15c710159fbbb50c96f649a9cbc3c3ec6674927a7c8a918e"
 }

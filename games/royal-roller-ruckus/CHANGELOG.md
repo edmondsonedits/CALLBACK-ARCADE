@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.5.0 — Crownway Coach (Sumo benchmark upgrade)
+
+- Add deliberate setup, concise expandable race help, pause/results setup routes and staged race rules. Preserve the existing manual resume flow.
+- Add one-lap practice alongside three/five-lap races, validated lap splits, rules-scoped personal bests and every-racer results with unfinished rivals explicitly labeled.
+- Add compact wrong-way, missed-gate, bend, edge and airborne advice plus contextual momentum/braking feedback without changing movement/collision tuning.
+- Model forward deck chevrons, waving checkpoint pennants, helmet/plume/grin detail, corner bracing and finish celebration; dispose rematch geometries/materials/textures.
+- Persist validated sound/volume, reduced motion, handedness, coaching, haptics, graphics and race choices. Reduce motion defaults to the device preference; audio requires a gesture and short sound voices are capped/cleaned up.
+- Add neutral-to-rearm gamepad axes after menu transitions and repeat-safe Start/B gamepad actions, R/Escape keyboard actions, form focus guards and lost pointer capture neutralization.
+- Bundle the existing Three.js r180 distribution and MIT license locally; preserve the original upload and existing public input/camera APIs.
+- Add focused behavioral and real Three.js pose/resource checks, update browser dependency-failure fixtures and record current source hashes in `integration/sumo-benchmark/verification.json`. Browser/device limitations remain explicit.
+
 ## 1.4.0 — imported
 - Imported the user-supplied vertical Crownway build.
 - Preserved the original upload filename beside `source/index.html`.

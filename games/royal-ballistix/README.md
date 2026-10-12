@@ -1,6 +1,6 @@
 # Royal Ballistix — Beach Siege
 
-Current standalone build: **v0.12.1** (based on the v0.12 import).
+Current standalone build: **v0.13.0** (based on the v0.12 import).
 
 Royal Ballistix is a radial ball-deflection survival game for **2–10 contestants**. One local human can play while AI fills the remaining seats. The imported source also exposes per-seat input hooks so bots can eventually be replaced by authenticated CALLBACK phone controllers, but no room-code transport is implemented in this package yet.
 
@@ -13,7 +13,7 @@ Each contestant owns a gate sector around the circular arena. Protect your gate 
 - **Run:** increases movement speed along your gate sector.
 - Eliminated gate sectors become walls.
 - The last surviving gate wins the round.
-- First contestant to **3 round wins** takes the match.
+- First contestant to the selected **1, 3 or 5 round wins** takes the match (3 by default).
 - Starting lives scale with contestant count: 2–4 = 12, 5–6 = 9, 7–8 = 7, 9–10 = 6.
 - Ball/cannon pressure scales upward with larger groups.
 
@@ -25,7 +25,7 @@ Each contestant owns a gate sector around the circular arena. Protect your gate 
 - Hold **Magnet** and release to fire captured balls.
 - Tap **Pulse** for the timed counter.
 - There is no separate touch Run button. Stick and Magnet/Pulse support simultaneous touches.
-- Pause → **Settings** exposes contestant count (2–10), arena size, and AI difficulty.
+- Choose **Match Setup** before playing, or Pause → **Settings**. Rule changes apply at the next start or explicit **Apply & Restart**; they do not silently reset your active match.
 
 ### Keyboard
 
@@ -34,13 +34,25 @@ Each contestant owns a gate sector around the circular arena. Protect your gate 
 - Pulse: **X** or **E**
 - Run: **Shift**
 
+### Gamepad
+
+- Left stick: move along your gate (18% deadzone).
+- A: hold to catch, release to fire; X: Pulse; B: Run; Start: pause/resume.
+- Pause, menu transitions, blur and disconnect neutralize held input. Return the stick and buttons to neutral before controlling again.
+
 ## Setup
 
 No build step or remote dependency is required.
 
 1. Open `source/index.html` in a modern browser.
-2. Choose the desired contestant count in Settings.
-3. Play locally; non-human seats remain AI unless a caller uses the external input API documented under `integration/`.
+2. The paused setup screen shows your saved gates, bot skill and crowns target. **Match Setup** offers 2–10 contestants, arena size, bot difficulty and 1/3/5 crowns.
+3. **Start Siege** begins a fresh match. **Defense Drill** starts a 60-second practice with one active ball, rotating left/center/right lanes, no eliminations, and a results card counting catches, counters, Perfect counters, volleys and gate misses.
+4. **How to Play** is available from setup and pause. Pause, results and drill results include a main-menu route.
+5. Non-human seats remain AI unless a caller uses the external input API documented under `integration/`.
+
+Audio volume/mute, reduced motion, high contrast and setup choices persist locally with bounded validation and a safe fallback when browser storage is blocked. Audio begins only after a user action; tone voices are capped at 16 and disposed after playback. Reduced motion removes camera shake and decorative pulse/rotation, steadies shoreline motion and limits particles.
+
+The court adds procedural castle turrets, shoreline foam, palms, sand markings and numbered gate pennants. Defender colors and numbers match the roster. Cannon charge lines show the exact pending firing direction; the incoming landing marker helps you position a defense. With captured balls, the dashed guide follows the actual release vector and volley spread.
 
 The imported HTML contains all CSS, JavaScript, Canvas rendering and generated Web Audio tones. It does not fetch external scripts, styles, images, models or audio files.
 
@@ -68,12 +80,12 @@ The game is intentionally preserved as one standalone HTML source file. It uses:
 - HTML5 Canvas 2D rendering
 - Web Audio oscillator tones
 - 120 Hz fixed-step simulation with capped catch-up
-- local touch/keyboard input
+- local touch/keyboard/gamepad input
 - AI-controlled bot seats
 - `window.RoyalBallistix` integration hooks
 - `window.GameDebug.getState()` structured state access
 
-See `integration/README.md` for exact hooks and multiplayer gaps.
+See `integration/README.md` for exact hooks and multiplayer gaps. The Sumo comparison and focused verification are recorded in `docs/quality/sumo-benchmark/royal-ballistix-report.md` in the repository.
 
 ## Known issues / limitations
 
@@ -88,7 +100,7 @@ See `integration/README.md` for exact hooks and multiplayer gaps.
 
 1. Preserve a recoverable standalone `source/index.html`.
 2. Tune existing `TUNING` values before adding unnecessary systems.
-3. Record source changes in the changelog. Coordinate the internal debug version and manifest/package version together; this review branch leaves release metadata finalization to the coordinator.
+3. Record source changes in the changelog. Coordinate the internal debug version and manifest/package version together; v0.13.0 identifies itself as `0.13.0-sumo-benchmark`.
 4. Update `manifest.json` source metadata only when it remains accurate.
 5. Run the source smoke test and manual gameplay checks in `tests/README.md`.
 6. Run `npm run catalog:generate` and `npm run catalog:check` after manifest edits.

@@ -148,7 +148,7 @@ try {
   check("unavailable WebGL reports Renderer Error");
   await noGPU.close();
   for (const [name, width, height, count] of [
-    ["desktop", 1280, 720, 4],
+    ["desktop", 1365, 900, 4],
     ["portrait", 390, 844, 10],
     ["small", 320, 568, 2],
     ["landscape", 844, 390, 10],
@@ -177,6 +177,9 @@ try {
     await p.locator("#loading").waitFor({ state: "hidden" });
     assert.equal(await run(p, "!!renderer"), true);
     assert.deepEqual(errors, []);
+    assert.equal(await run(p, "phase"), "setup");
+    await p.locator("#startBtn").click();
+    assert.equal(await run(p, "phase"), "countdown");
     await run(
       p,
       "updatePhase(3.4);debugOn=true;soundOn=false;nextSpawn=999;updateHUD();updateDebug()",

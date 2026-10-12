@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "kind": "arcade-source-provenance",
+  "version": "1.14.0",
+  "reference": "Royal Sumo: Crownfall v1.3.0 source modules",
+  "scope": "automated-full-script-vm-and-source-checks",
+  "sourceHashes": [
+    {
+      "path": "source/index.html",
+      "sha256": "e7ded7bcc0cd9fb097c1e2a53de168d66760dbaa3273ab426ee4bb3868a038ee"
+    },
+    {
+      "path": "source/original/space_bash_orbital_breakout_v1.13.1_standalone.html",
+      "sha256": "e6fc6342764b743bc125c0519b2f61d9384411b69b563799e26a10ac834b46d8"
+    }
+  ],
+  "checks": [
+    {
+      "name": "58 focused benchmark/quality/stress/render-path checks",
+      "result": "passed",
+      "command": "node --test tests/space-bash-sumo-benchmark.test.mjs tests/space-bash-quality.test.mjs"
+    },
+    {
+      "name": "standalone source and immutable original",
+      "result": "passed",
+      "command": "node games/space-bash/tests/source-smoke.mjs"
+    },
+    {
+      "name": "inline JavaScript syntax",
+      "result": "passed",
+      "command": "Node vm.Script compilation of the inline script"
+    },
+    {
+      "name": "scoped diff whitespace",
+      "result": "passed",
+      "command": "git diff --check -- games/space-bash tests/space-bash-sumo-benchmark.test.mjs"
+    }
+  ],
+  "limitations": [
+    "No local rendered browser or physical-device playtest performed by this task.",
+    "VM Canvas tests check call-path execution, not raster appearance, audio quality or GPU/device performance.",
+    "Multiplayer remains not-integrated; no authenticated per-seat transport added."
+  ]
+}

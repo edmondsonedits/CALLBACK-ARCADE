@@ -1,3 +1,9 @@
+# Current v0.6.0 benchmark evidence (2026-10-12)
+
+The current source is audited in `../../../docs/quality/sumo-benchmark/royal-scratch-match-report.md` with byte-bound evidence in `sumo-benchmark-evidence.json`. Focused production-runtime tests pass **47/47**: 29 previous timing tests plus 18 benchmark regressions. Standalone smoke parses the inline script and verifies the unchanged v0.5 archive. This is controlled Node/VM evidence, not browser pixels, audio-by-ear, physical touch/gamepad latency or measured FPS. Version/manifest finalization is included in v0.6.0; multiplayer remains not-integrated.
+
+The evidence below describes the earlier quality branch and is retained as historical context. Its old source hashes/check counts do not attest the current runtime.
+
 # Scratch Match quality evidence
 
 Branch: `quality/royal-scratch-match`. Base: `785a15000abe11970c7b92c5f3cab197061fcedf` (fetched origin/main). Runtime entry: `games/royal-scratch-match/source/index.html`.

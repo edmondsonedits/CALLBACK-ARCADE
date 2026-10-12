@@ -18,9 +18,13 @@ test('new uploaded arcade games have runnable entry files and preserved original
   assert.doesNotMatch(twistedOriginal,/window\.CallbackCamera/);
   assert.doesNotMatch(rollerOriginal,/window\.CallbackCamera/);
   assert.doesNotMatch(spaceOriginal,/window\.CallbackCamera/);
-  assert.match(twisted,/0\.5\.0-original-camera-knockback/);
-  assert.match(roller,/1\.4\.0-vertical-crownway/);
-  assert.match(space,/1\.13\.1-standalone/);
+  assert.match(twistedOriginal,/0\.5\.0-original-camera-knockback/);
+  assert.match(rollerOriginal,/1\.4\.0-vertical-crownway/);
+  assert.match(spaceOriginal,/1\.13\.1-standalone/);
+  for (const [id, source] of [['royal-twisted', twisted], ['royal-roller-ruckus', roller], ['space-bash', space]]) {
+    const manifest = JSON.parse(await read(`games/${id}/manifest.json`));
+    assert.ok(source.includes(manifest.version), `${id} entry must identify the current manifest version`);
+  }
   assert.match(twisted,/window\.CallbackCamera/);
   assert.match(roller,/window\.CallbackCamera/);
   assert.match(space,/window\.CallbackCamera/);

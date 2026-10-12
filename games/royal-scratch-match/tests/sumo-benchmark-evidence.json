@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "kind": "arcade-quality-verification",
+  "game": "royal-scratch-match",
+  "version": "0.6.0",
+  "result": "passed",
+  "scope": "automated-checks",
+  "date": "2026-10-12",
+  "checks": [
+    {
+      "name": "focused production-runtime behavioral regression",
+      "command": "node --test tests/royal-scratch-match-quality.test.mjs tests/royal-scratch-match-sumo-benchmark.test.mjs",
+      "result": "passed",
+      "tests": 47
+    },
+    {
+      "name": "standalone script syntax, integration hook smoke and immutable supplied archive",
+      "command": "node games/royal-scratch-match/tests/smoke.mjs",
+      "result": "passed"
+    },
+    {
+      "name": "scoped whitespace validation",
+      "command": "git diff --check -- games/royal-scratch-match tests/royal-scratch-match-sumo-benchmark.test.mjs",
+      "result": "passed"
+    }
+  ],
+  "sourceHashes": [
+    {
+      "path": "source/index.html",
+      "sha256": "580417dc35c6cd5514354e6b90ac00586f4ce6ce6224a3e21f21f7920b55c1db"
+    }
+  ],
+  "originalArchive": {
+    "path": "source/archive/royal_scratch_match_v0.5_ten_player.html",
+    "sha256": "6c58614db13495393512e9f69496da686dc2962b3cabd49d71680493170cbb03",
+    "modified": false
+  },
+  "limitations": [
+    "Controlled Node/VM DOM, audio and clock boundaries; no browser or physical-device validation claimed.",
+    "Gamepad polling has synthetic behavioral coverage only.",
+    "Manual local input correction is not measured hardware or network latency calibration.",
+    "Multiplayer remains not-integrated; this is not arcade-multiplayer-verification evidence."
+  ]
+}

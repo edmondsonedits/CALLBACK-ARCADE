@@ -11,6 +11,9 @@ with sync_playwright() as pw:
  p=b.new_page(viewport={'width':390,'height':844},device_scale_factor=1,has_touch=True)
  p.on('pageerror',lambda e:report['errors'].append(str(e)))
  p.goto(args.url)
+ report['checks'].append({'name':'intentional setup starts paused','passed':p.locator('#menuOv').is_visible() and p.evaluate('RoyalBallistix.getState().paused')})
+ p.screenshot(path=str(out/'setup-390x844.png'))
+ p.locator('#startSiege').click()
  for w,h in [(390,844),(844,390)]:
   p.set_viewport_size({'width':w,'height':h})
   for seats in [2,4,10]:

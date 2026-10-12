@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.6.0 — Crown & Cadence / Sumo benchmark
+
+- Added a four-beat 96 BPM count-in, gold DJ-call/cyan echo identity, linked chord notes and a signed early/on-time/late timing meter. Chord feedback reports the worst constituent timing.
+- Added rehearsal with no elimination, exact-phrase retry, deliberate phrase advance and cumulative attempt results. Fresh sets choose a seed; same-set replay keeps phrase/bot randomness.
+- Added pause/resume, help/soundcheck and setup/results routes. Pause, hidden-page and CAM freezes compose without advancing notes; held input/audio resources are neutralized. Deferred result callbacks still retain epoch protection.
+- Persisted validated volume, mute, beat guide, difficulty, contestant count, mode, reduced motion, vibration and ±200 ms local input correction. Correction shifts judgment and expiration together without affecting bots or remote inputs. OS reduced-motion preference supplies the default.
+- Added standard gamepad face-button chords and Start actions with repeat, menu, blur, disconnect/reconnect and release guards. Kept existing touch/keyboard mappings and public input/configuration hooks.
+- Deepened the castle stage with curtain folds, gallery rails, torch niches, speaker towers, a faceted apron and proscenium. Performers gain distinct costume silhouettes, badges, labels and recovery faces; DJ mixer/vinyl react to call notes. Compact layouts place the DJ beside the highway.
+- Removed implementation/transport copy from player setup. Results add accuracy, recent successful-note median and timing distribution; settings/help use progressive disclosure and visible keyboard focus.
+- Added 18 real-runtime behavioral tests to the existing 29 timing tests, syntax/smoke checks, immutable archive verification and current source hashes. No authored media, CDN dependency, engine replacement or online transport was added.
+
+
 ## Quality branch — timing and feedback
 
 - Judgment samples a monotonic game clock on input; hidden-page intervals freeze countdown and phrases. Audio unlock/suspension cannot change the clock origin.

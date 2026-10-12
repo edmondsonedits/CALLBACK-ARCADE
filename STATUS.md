@@ -1,13 +1,15 @@
 # Current status
 
-The repository now contains seven imported arcade game packages with runnable `source/index.html` entries:
+All seven games have runnable `source/index.html` entries. The six non-Sumo games now include game-specific upgrades against the user-designated Crownfall v1.3.0 reference. See `docs/quality/sumo-benchmark/SUMO_REFERENCE.md` and the per-game reports for the comparison, changes and verification limits.
 
-- **Blind Crown — Nightfall v1.5.0** — original presentation upgrade; v1.4 archived. One local human with bots in 2–10 contestant slots. Textured diorama arenas, armored knights and responsive HUD; Canvas 2D/2.5D remains default. Polygonal 3D is experimental; hosted phone multiplayer is not integrated.
-- **Royal Ballistix — Beach Siege v0.12.1** — contact/input/lifecycle and landscape quality revision; independent automated checks recorded. Supported browser verification is blocked by the review container sandbox; physical-phone and audio-by-ear checks remain pending; multiplayer not integrated.
-- **Royal Roller Ruckus — Crownway Circuit v1.4.0** — imported; CALLBACK input hooks exist; multiplayer in progress.
-- **Royal Scratch Match v0.5.0** — imported; multiplayer not integrated.
-- **Royal Sumo v1.3.0** — supplied WebGL2 release imported with all six arenas, Crown Cup and local two-player controls. Phone rooms, authenticated seats, reconnect and bot takeover pass local browser/WebSocket checks. Public relay deployment is pending Cloudflare authentication; multiplayer remains in progress. v0.21 and earlier builds are archived.
-- **Royal Twisted — Spiral Keep v0.5.0** — imported; remote input hooks exist; multiplayer in progress. The supplied v0.4 build is retained as an archive.
-- **Space Bash — Orbital Breakout v1.13.1** — imported as a self-contained standalone build; multiplayer not integrated.
+- **Blind Crown — Nightfall v1.6.0** — private-plan archery with paused tactical volley review, timed shot feedback, complete standings, gamepad controls and saved access/audio settings. Original engine, cameras and Classic/Precision rules preserved.
+- **Royal Ballistix — Beach Siege v0.13.0** — intentional siege setup, timed Defense Drill, clearer catch/release/aim feedback, richer shore and castle identity, persistent settings and gamepad support.
+- **Royal Roller Ruckus — Crownway Circuit v1.5.0** — race setup, one-lap practice, checkpoint/direction coaching, lap timing and personal bests, full race results, richer course/character feedback and locally bundled Three.js.
+- **Royal Scratch Match v0.6.0** — musical count-in, latency/timing feedback, repeat-phrase practice and same-seed replay, expressive stage/DJ/performers, reliable paused menus and persistent settings.
+- **Royal Sumo v1.3.0** — supplied WebGL2 release with all six arenas, Crown Cup and local two-player controls. A concurrent upstream update added phone rooms, authenticated seats, reconnect and bot takeover with local browser/WebSocket evidence; that work is preserved unchanged. Public relay deployment is pending Cloudflare authentication; multiplayer remains in progress.
+- **Royal Twisted — Spiral Keep v0.6.0** — explicit setup/results/replay, seeded hazard rhythms and focused jump/duck practice, incoming-hazard guidance, survival statistics and richer tower/character feedback. Physics and camera feel preserved.
+- **Space Bash — Orbital Breakout v1.14.0** — flight briefing and match results, Practice/Volatile deck rules, throw/drop telegraphs, more expressive astronauts/deck, gamepad aiming and staged persistent settings.
 
-Imported games remain experimental until game-specific multiplayer integration and evidence satisfy `docs/GAME_SDK.md`. No production phone-player transport or authoritative network runtime is implied by source import alone.
+All original/archive files are preserved. One local human plus bots and existing integration hooks remain available as documented per game; imported input hooks do not imply working online rooms. The six upgraded games do not gain hosted phone multiplayer. Sumo’s separate relay implementation and deployment status are documented in its package.
+
+Automated behavior, syntax, catalog and build checks are recorded in the benchmark reports. Physical-phone, real-controller and audio-by-ear playtests remain pending. The available cloud browser cannot initialize WebGL2, so the 3D games' current rendering is not browser-certified in this environment.

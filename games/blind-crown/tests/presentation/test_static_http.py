@@ -18,7 +18,7 @@ with tempfile.TemporaryDirectory() as tmp:
    card=page.locator('.game-card').filter(has=page.get_by_role('heading',name='Blind Crown — Nightfall',exact=True))
    card.get_by_role('link',name='Play',exact=True).click();page.wait_for_selector('#overlayStart')
    assert page.title()=='Blind Crown — Nightfall'
-   assert page.evaluate('BlindCrownDebug.version')=='1.5.0'
+   assert page.evaluate('BlindCrownDebug.version')=='1.6.0'
    records=[]
    for mobile,w,h in [(False,1440,960),(True,390,844),(True,844,390)]:
     ctx=browser.new_context(viewport={'width':w,'height':h},is_mobile=mobile,has_touch=mobile)
@@ -42,5 +42,5 @@ with tempfile.TemporaryDirectory() as tmp:
    assert not errors,errors
    browser.close()
   (out/'static-http.json').write_text(json.dumps({'result':'passed','scope':'Connected CI HTTP-served Pages output; not physical devices or hosted multiplayer','sevenGameCatalog':True,'records':records},indent=2)+'\n')
-  print('PASS: seven-game catalog Play navigation and exact v1.5 HTTP bytes; three viewports/four views/private planning/lock; no runtime exceptions or external game requests.')
+  print('PASS: seven-game catalog Play navigation and exact v1.6 HTTP bytes; three viewports/four views/private planning/lock; no runtime exceptions or external game requests.')
  finally:server.terminate();server.wait(timeout=5)

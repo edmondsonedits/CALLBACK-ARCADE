@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "kind": "arcade-quality-benchmark-verification",
+  "version": "0.6.0",
+  "date": "2026-10-12",
+  "result": "passed",
+  "scope": "focused-node-checks",
+  "checks": [
+    {
+      "command": "node --test tests/royal-twisted-sumo-benchmark.test.mjs tests/royal-twisted-quality.test.mjs tests/royal-twisted-camera.test.mjs",
+      "result": "passed",
+      "tests": 93,
+      "failed": 0,
+      "output": "tests/evidence/sumo-benchmark-tests.txt"
+    },
+    {
+      "command": "node games/royal-twisted/tests/source-smoke.mjs",
+      "result": "passed"
+    },
+    {
+      "command": "node --check /tmp/twisted-current-module.mjs (extracted inline module)",
+      "result": "passed"
+    },
+    {
+      "command": "git diff --check -- games/royal-twisted tests/royal-twisted-sumo-benchmark.test.mjs",
+      "result": "passed"
+    },
+    {
+      "command": "node --check games/royal-twisted/tests/browser-quality.mjs",
+      "result": "passed",
+      "note": "Browser fixture follows new setup flow; actual browser execution not run."
+    }
+  ],
+  "sourceHashes": [
+    {
+      "path": "source/index.html",
+      "sha256": "7cfbfd79c6310b397cf0b0aa3783a5625f11fb1fe3f3571b31f1bcc29d46d5f6"
+    },
+    {
+      "path": "source/original/royal_twisted_spiral_keep_v0.5_original_camera_knockback.html",
+      "sha256": "68170440ea2584201fccd8cc8e6c251ae598b223af1cd9ab6aa99cac1d988ae2"
+    }
+  ],
+  "archiveHashes": [
+    {
+      "path": "source/archive/royal_twisted_spiral_keep_v0.4_ten_players.html",
+      "sha256": "50d44a32a0be10fade5ddabe00493113ee1194b69f2411b1d7d21222538a4dbe"
+    }
+  ],
+  "browser": {
+    "result": "not-run",
+    "reason": "Known local Chromium socket restriction and cloud WebGL2 unavailable; parent handles available browser review. Real Three.js geometry construction passed in Node, without shader compilation or pixel checks."
+  },
+  "multiplayer": "local-hooks-only; no authenticated transport verification",
+  "preserved": "TUNING and AI constants, selected camera, knockback and original/archive source unchanged"
+}
