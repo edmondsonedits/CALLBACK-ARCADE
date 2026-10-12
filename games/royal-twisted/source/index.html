@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=no" />
 <meta name="theme-color" content="#090d17" />
-<title>Royal Twisted — Spiral Keep</title>
+<title>Royal Twisted — Four Towers</title>
 <style>
 :root{
   --ink:#090d17;--panel:rgba(13,18,31,.84);--panel2:rgba(23,30,48,.90);
@@ -49,6 +49,14 @@ button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid 
 .reaction-cue{min-width:190px}.cue-track{height:3px;background:#ffffff25;border-radius:4px;margin-top:5px;overflow:hidden}.cue-fill{height:100%;width:0;background:var(--cyan)}.cue-next{display:block;font-size:9px;color:#cad8e6;margin-top:5px;letter-spacing:.08em}.feedback{position:absolute;left:50%;transform:translateX(-50%);bottom:calc(var(--safeB) + 208px);padding:6px 12px;border-radius:10px;background:#081423db;color:var(--gold);font-size:11px;font-weight:900;pointer-events:none;opacity:0}.feedback.on{opacity:1}.rm .action.cue,.rm .loader-crest{animation:none}.rm .action:active,.rm .action.pressed{transform:none}
 @media(max-width:560px){.top-hud{grid-template-columns:1fr auto}.round-card{display:none}.brand-mode{max-width:110px}.top-actions{gap:4px}.icon-btn{width:44px;min-width:44px}.session-card h2{font-size:25px}.modal-back{padding:12px}.modal{max-height:90dvh}}
 @media(max-height:500px){.modal-back{padding:9px}.modal{max-height:94dvh}.session-card h2{font-size:23px}.rod-lesson{margin:8px 0}.setting{padding:7px 0}.feedback{bottom:calc(var(--safeB) + 143px);font-size:9px}}
+
+#setupModal{background:linear-gradient(90deg,#02061055,transparent 60%);backdrop-filter:none;place-items:center start;pointer-events:none;padding:20px}
+#setupModal .modal{width:300px;max-height:calc(100dvh - 100px);pointer-events:auto;border-radius:18px;background:#101b2bef;padding:18px}
+#setupModal h2{font-size:28px}#setupModal .setting{padding:5px 0}#setupModal .setting select{min-width:135px}#setupModal .objective{font-size:12px}#setupModal .session-note{font-size:10px}
+#demoBar{display:none;position:absolute;bottom:20px;left:20px;z-index:7;gap:8px;align-items:center;padding:8px;background:#081423e8;border-radius:12px;font-size:11px}#demoBar button{min-height:44px;background:#27394e;border:1px solid #ffffff40;border-radius:8px;padding:8px 14px}#app.demo #demoBar{display:flex}#app.demo .controls,#app.demo .status,#app.demo .score-row,#app.demo .reaction-cue,#app.demo .host,#app.demo .feedback,#app.demo .keyhint{display:none}
+#towerStatus{position:absolute;left:50%;transform:translateX(-50%);top:calc(var(--safeT) + 195px);max-width:90%;background:#09101ce8;padding:6px 10px;border-radius:8px;font-size:11px;text-align:center;pointer-events:none}#app.demo #towerStatus{top:auto;bottom:80px}#app.performance *{backdrop-filter:none!important}#app.performance .grain{display:none}#app.contrast{--muted:#edf4ff;--line:#ffffff88}#app.contrast .reaction-cue{border:2px solid white}
+@media(max-width:560px){#setupModal{align-items:end;padding:12px 12px 76px}#setupModal .modal{width:100%;max-height:55dvh}#setupModal h2{font-size:24px}#setupModal .setting{padding:3px 0}#setupModal .modal p{margin:5px 0 8px}#towerStatus{top:calc(var(--safeT) + 224px)}}
+@media(max-height:500px){#setupModal{padding:60px 12px 64px}#setupModal .modal{width:280px;max-height:calc(100dvh - 124px)}#towerStatus{top:calc(var(--safeT) + 133px);font-size:10px}.reaction-cue{max-width:48%;}.status{width:52%;left:8px;transform:none}.controls{width:42%;left:auto;right:8px;transform:none}.feedback{bottom:105px}}
 </style>
 </head>
 <body data-pause-flow="manual-resume">
@@ -88,13 +96,13 @@ button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid 
 
   <div id="settingsModal" class="modal-back" style="z-index:8">
     <div class="modal" role="dialog" aria-modal="true" aria-label="Spiral Keep settings">
-      <h2>Spiral Keep Settings</h2>
+      <h2>Four Towers Settings</h2><h3>Play / Rules</h3>
       <p>Choose 2–10 contestants. Player 1 uses this device; extra local gamepads or CALLBACK remote inputs can control additional contestants, and any unassigned slots are filled by AI. Seven strikes keep the round forgiving and hazard chains stay physically possible as the tower accelerates.</p>
-      <div class="setting"><label for="playerCount"><strong>Contestants</strong><small>2–10 total players; applies on Restart Match</small></label><select id="playerCount"><option value="2">2</option><option value="3">3</option><option value="4" selected>4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+<div class="setting"><label for="settingsTower"><strong>Tower</strong><small>Next Start / Restart</small></label><select id="settingsTower"><option value="spiral">Spiral Keep</option><option value="ember">Ember Forge</option><option value="frost">Frost Spire</option><option value="storm">Stormwatch</option></select></div><div class="setting"><label for="settingsMode"><strong>Run mode</strong></label><select id="settingsMode"><option value="crown">Crown match</option><option value="practice">Skill practice</option><option value="tour">Four-tower Tour</option></select></div>      <div class="setting"><label for="playerCount"><strong>Contestants</strong><small>2–10 total players; applies on Restart Match</small></label><select id="playerCount"><option value="2">2</option><option value="3">3</option><option value="4" selected>4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
       <div class="setting"><label for="rhythm"><strong>Hazard rhythm</strong><small>Next match: mixed challenge or one-action practice</small></label><select id="rhythm"><option value="mixed">Mixed crown run</option><option value="jumps">Jump practice</option><option value="ducks">Duck practice</option></select></div>
       <div class="setting"><label for="seedInput"><strong>Replay seed</strong><small>Repeat a run with the same rules and inputs</small></label><input id="seedInput" type="number" min="1" max="4294967295" step="1" /></div>
-      <div class="setting"><label for="difficulty"><strong>Rival difficulty</strong><small>Reaction timing and mistake rate; applies immediately</small></label><select id="difficulty"><option value="easy">Squire</option><option value="normal" selected>Knight</option><option value="hard">Royal Guard</option></select></div>
-      <div class="setting"><label for="graphics"><strong>Graphics</strong><small>Shadow quality and render scale</small></label><select id="graphics"><option value="performance">Performance</option><option value="balanced" selected>Balanced</option><option value="quality">Quality</option></select></div>
+      <div class="setting"><label for="difficulty"><strong>Rival difficulty</strong><small>Reaction timing and mistakes; next Start / Restart</small></label><select id="difficulty"><option value="easy">Squire</option><option value="normal" selected>Knight</option><option value="hard">Royal Guard</option></select></div>
+<div class="setting"><label for="goalSelect"><strong>Run length</strong><small>Practice/Tour seconds; crown 1/3/5 rounds</small></label><select id="goalSelect"><option value="short">Short · 20s</option><option value="standard">Standard · 35s</option><option value="long">Long · 50s</option></select></div><div class="setting"><label for="hazardModifier"><strong>Pattern spacing</strong><small>Gentle adds 0.25s between rods</small></label><select id="hazardModifier"><option value="standard">Standard</option><option value="gentle">Gentle</option></select></div><h3>Player Style</h3><div class="setting"><label for="playerName"><strong>Name</strong></label><input id="playerName" maxlength="18" autocomplete="off" /></div><div class="setting"><label for="playerColor"><strong>Color</strong></label><input id="playerColor" type="color" /></div><div class="setting"><label for="helmetStyle"><strong>Headwear</strong><small></small></label><select id="helmetStyle"><option value="crown">Crown</option><option value="plume">Plume</option><option value="plain">Bare head</option></select></div><h3>Controls</h3><div class="setting"><label for="coaching"><strong>Rod coaching</strong><small></small></label><select id="coaching"><option value="full">Action + meter</option><option value="minimal">Action only</option></select></div><h3>Audio / Access</h3><div class="setting"><label for="contrast"><strong>Contrast</strong><small></small></label><select id="contrast"><option value="normal">Normal</option><option value="high">High</option></select></div>      <div class="setting"><label for="graphics"><strong>Graphics</strong><small>Shadow quality and render scale</small></label><select id="graphics"><option value="performance">Performance</option><option value="balanced" selected>Balanced</option><option value="quality">Quality</option></select></div>
       <div class="setting"><label><strong>Haptics</strong><small>Vibrate on jumps, ducks and impacts</small></label><button id="hapticsToggle" class="toggle on" type="button" aria-label="Haptics" aria-pressed="true"><span></span></button></div>
       <div class="setting"><label for="volume"><strong>Sound volume</strong><small>Procedural effects and rod cues</small></label><select id="volume"><option value="0">Silent</option><option value="0.35">Quiet</option><option value="0.7" selected>Normal</option><option value="1">Full</option></select></div>
       <div class="setting"><label for="motion"><strong>Motion effects</strong><small>Reduced removes shake, flash and particles</small></label><select id="motion"><option value="full">Full</option><option value="reduced">Reduced</option></select></div>
@@ -106,17 +114,15 @@ button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid 
   <div id="pauseOverlay" class="pause-overlay"><div class="pause-card"><h2>PAUSED</h2><p>The Spiral Keep has politely stopped trying to hit everyone.</p><div class="pause-actions"><button id="resumeBtn" type="button" data-resume-game>Resume</button><button id="pauseMenuBtn" class="secondary" type="button">Setup</button></div></div></div>
 
   <div id="setupModal" class="modal-back"><div class="modal session-card" role="dialog" aria-modal="true" aria-labelledby="setupTitle">
-    <div class="session-kicker">SPIRAL KEEP · v0.6.0</div><h2 id="setupTitle">Keep your crown.<br>Read the rhythm.</h2>
-    <p class="objective">You run automatically. Clear cyan rods with a jump, hold duck under coral rods. Seven hits knock you out. First to two round wins, or lead after three rounds. Tied standings continue into overtime.</p>
-    <div class="rod-lesson"><div><b>↟ JUMP</b>Tap Space / ↑ or gamepad A.<br>Wait for JUMP NOW.</div><div><b>↡ DUCK</b>Hold Shift / ↓ or gamepad B.<br>Release to jump again.</div></div>
-    <div class="setting"><label for="setupPlayers"><strong>Contestants</strong><small>You, local gamepads and bots · 2–10</small></label><select id="setupPlayers"><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
-    <div class="setting"><label for="setupRhythm"><strong>Run rhythm</strong><small>Practice one reaction or compete with both</small></label><select id="setupRhythm"><option value="mixed">Mixed crown run</option><option value="jumps">Jump practice</option><option value="ducks">Duck practice</option></select></div>
-    <div class="setting"><label for="setupDifficulty"><strong>Rival difficulty</strong><small>Fair imperfect reactions at every level</small></label><select id="setupDifficulty"><option value="easy">Squire</option><option value="normal">Knight</option><option value="hard">Royal Guard</option></select></div>
-    <p id="setupRecord" class="session-note"></p><div class="modal-buttons"><button id="setupSettingsBtn" type="button">Settings</button><button id="startBtn" class="primary" type="button">Start run</button></div>
+    <div class="session-kicker">FOUR TOWERS · LIVE BOT DEMO</div><h2 id="setupTitle">Read the tower.<br>Keep your crown.</h2><p class="objective" id="towerLesson"></p>
+    <div class="setting"><label for="towerSelect"><strong>Tower</strong></label><select id="towerSelect"><option value="spiral">Spiral Keep</option><option value="ember">Ember Forge</option><option value="frost">Frost Spire</option><option value="storm">Stormwatch</option></select></div>
+    <div class="setting"><label for="modeSelect"><strong>Run</strong></label><select id="modeSelect"><option value="crown">Crown match</option><option value="practice">Skill practice</option><option value="tour">Four-tower Tour</option></select></div>
+    <div hidden><select id="setupPlayers"><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select><select id="setupRhythm"><option value="mixed">mixed</option><option value="jumps">jumps</option><option value="ducks">ducks</option></select><select id="setupDifficulty"><option value="easy">easy</option><option value="normal">normal</option><option value="hard">hard</option></select></div>
+    <p id="setupRecord" class="session-note"></p><div class="modal-buttons"><button id="setupSettingsBtn" type="button">Customize</button><button id="startBtn" class="primary" type="button">Start run</button><button id="watchBtn" type="button">Watch bots</button><button id="titleHelpBtn" type="button">How to play</button></div>
   </div></div>
   <div id="helpModal" class="modal-back"><div class="modal session-card" role="dialog" aria-modal="true" aria-labelledby="helpTitle"><h2 id="helpTitle">Read. React. Recover.</h2><div class="rod-lesson"><div><b>↟ Cyan = JUMP</b>Tap once when NOW appears. Holding does not repeat.</div><div><b>↡ Coral = DUCK</b>Hold until the rod passes; release before a jump.</div></div><p class="objective">The meter fills as a rod reaches you. The smaller line previews the following rod. A hit sets you back; cues follow your new position while you recover. Five clean rods build a streak. At 16 seconds patterns begin, and after 38 seconds chains intensify.</p><p class="session-note">Space / ↑ / W: jump · Shift / ↓ / S: duck · Escape or gamepad Start: pause. Additional gamepads control matching seats. Remote hooks are available locally; hosted multiplayer is not connected.</p><div class="modal-buttons"><button id="closeHelp" class="primary" type="button" style="grid-column:1/-1">Return</button></div></div></div>
-  <div id="resultsModal" class="modal-back"><div class="modal session-card" role="dialog" aria-modal="true" aria-labelledby="resultsTitle"><div class="session-kicker">CROWN RUN COMPLETE</div><h2 id="resultsTitle">The crown is decided.</h2><div id="resultsSummary" class="results-summary"></div><table aria-label="Match standings"><thead><tr><th>Rank / contestant</th><th>Crowns</th><th>Clears</th><th>Streak</th></tr></thead><tbody id="standingsBody"></tbody></table><p id="replayDetails" class="session-note"></p><div class="modal-buttons"><button id="menuBtn" type="button">Setup</button><button id="rematchBtn" class="primary" type="button">Replay seed</button></div></div></div>
-  <div id="loading" class="loading"><div class="loading-card"><div class="loader-crest">♛</div><h1>ROYAL TWISTED</h1><p>Winding the Spiral Keep…</p></div></div>
+  <div id="resultsModal" class="modal-back"><div class="modal session-card" role="dialog" aria-modal="true" aria-labelledby="resultsTitle"><div class="session-kicker">CROWN RUN COMPLETE</div><h2 id="resultsTitle">The crown is decided.</h2><div id="resultsSummary" class="results-summary"></div><table aria-label="Match standings"><thead><tr><th>Rank / contestant</th><th>Crowns</th><th>Clears</th><th>Streak</th></tr></thead><tbody id="standingsBody"></tbody></table><p id="replayDetails" class="session-note"></p><div class="modal-buttons"><button id="nextTowerBtn" type="button">Next tower</button><button id="menuBtn" type="button">Setup</button><button id="rematchBtn" class="primary" type="button">Replay seed</button></div></div></div>
+  <div id="towerStatus" role="status"></div><div id="demoBar"><span>BOT DEMO · SILENT</span><button id="returnTitleBtn" type="button">Return</button><button id="demoStartBtn" type="button">Start</button></div><div id="loading" class="loading"><div class="loading-card"><div class="loader-crest">♛</div><h1>ROYAL TWISTED</h1><p>Winding the Spiral Keep…</p></div></div>
 </div>
 
 <script>
@@ -235,7 +241,7 @@ setTimeout(callbackCameraInstall,0);
 
 const playerCountEl=$("#playerCount"),difficultyEl=$("#difficulty"),graphicsEl=$("#graphics"),hapticsToggle=$("#hapticsToggle"),debugToggle=$("#debugToggle"),debugPanel=$("#debugPanel"),pauseOverlay=$("#pauseOverlay"),resumeBtn=$("#resumeBtn");
 
-const VERSION="0.6.0-sumo-benchmark";
+const VERSION="0.7.0-four-towers";
 // Based on the preserved 0.5.0-original-camera-knockback import.
 const setupModal=$("#setupModal"),resultsModal=$("#resultsModal"),helpModal=$("#helpModal"),seedInput=$("#seedInput"),rhythmEl=$("#rhythm"),volumeEl=$("#volume"),motionEl=$("#motion");
 const setupPlayers=$("#setupPlayers"),setupRhythm=$("#setupRhythm"),setupDifficulty=$("#setupDifficulty");
@@ -244,34 +250,139 @@ function normalizePreferences(raw={}){
   if(!raw||typeof raw!=="object")raw={};
   const choice=(value,list,fallback)=>list.includes(value)?value:fallback;
   const reduced=!!window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-  return {players:Number.isFinite(+raw.players)?Math.max(2,Math.min(10,Math.round(+raw.players))):4,difficulty:choice(raw.difficulty,["easy","normal","hard"],"normal"),graphics:choice(raw.graphics,["performance","balanced","quality"],"balanced"),rhythm:choice(raw.rhythm,["mixed","jumps","ducks"],"mixed"),sound:typeof raw.sound==="boolean"?raw.sound:true,volume:Number.isFinite(+raw.volume)?Math.max(0,Math.min(1,+raw.volume)):.7,haptics:typeof raw.haptics==="boolean"?raw.haptics:true,reducedMotion:typeof raw.reducedMotion==="boolean"?raw.reducedMotion:reduced,bestClears:Number.isFinite(+raw.bestClears)?Math.max(0,Math.floor(+raw.bestClears)):0,bestStreak:Number.isFinite(+raw.bestStreak)?Math.max(0,Math.floor(+raw.bestStreak)):0};
+  return {tower:choice(raw.tower,["spiral","ember","frost","storm"],"spiral"),mode:choice(raw.mode,["crown","practice","tour"],"crown"),goal:choice(raw.goal,["short","standard","long"],"standard"),modifier:choice(raw.modifier,["standard","gentle"],"standard"),name:String(raw.name||"YOU").trim().slice(0,18)||"YOU",color:/^#[0-9a-f]{6}$/i.test(raw.color)?raw.color:"#f0c861",helmet:choice(raw.helmet,["crown","plume","plain"],"crown"),coaching:choice(raw.coaching,["full","minimal"],"full"),contrast:choice(raw.contrast,["normal","high"],"normal"),bests:Object.fromEntries(Object.entries(raw.bests&&typeof raw.bests==="object"?raw.bests:{}).filter(([k,v])=>k.length<100&&Number.isFinite(v)&&v>=0).slice(0,100)),players:Number.isFinite(+raw.players)?Math.max(2,Math.min(10,Math.round(+raw.players))):4,difficulty:choice(raw.difficulty,["easy","normal","hard"],"normal"),graphics:choice(raw.graphics,["performance","balanced","quality"],"balanced"),rhythm:choice(raw.rhythm,["mixed","jumps","ducks"],"mixed"),sound:typeof raw.sound==="boolean"?raw.sound:true,volume:Number.isFinite(+raw.volume)?Math.max(0,Math.min(1,+raw.volume)):.7,haptics:typeof raw.haptics==="boolean"?raw.haptics:true,reducedMotion:typeof raw.reducedMotion==="boolean"?raw.reducedMotion:reduced,bestClears:Number.isFinite(+raw.bestClears)?Math.max(0,Math.floor(+raw.bestClears)):0,bestStreak:Number.isFinite(+raw.bestStreak)?Math.max(0,Math.floor(+raw.bestStreak)):0};
 }
 function loadPreferences(){try{return normalizePreferences(JSON.parse(localStorage.getItem(PREF_KEY)||"{}"))}catch{return normalizePreferences()}}
 let preferences=loadPreferences();
 function savePreferences(){preferences=normalizePreferences(preferences);try{localStorage.setItem(PREF_KEY,JSON.stringify(preferences))}catch{}}
 function effectsReduced(){return preferences.reducedMotion||!!window.matchMedia?.("(prefers-reduced-motion: reduce)").matches}
-function applyMotionPreference(){document.querySelector("#app").classList.toggle("rm",effectsReduced())}
+function applyMotionPreference(){document.querySelector("#app").classList.toggle("rm",effectsReduced());if(effectsReduced())for(const f of particles)f.mesh.visible=false}
 let matchSeed=1,gameplayRng=null,matchRhythm="mixed",padMenuHeld=false,audioUnlocked=false,feedbackUntil=0;
 const towerFlags=[];
+// Four Towers retain the fixed-step rod collision authority. Scenery never collides.
+const TOWERS=Object.freeze({
+ spiral:{name:"Spiral Keep",skill:"Jump cyan. Hold duck under coral. Read the classic cadence.",color:0x8a8170,fog:0x111a2b},
+ ember:{name:"Ember Forge",skill:"Duck the vent, then jump two heat bursts. Release between actions.",color:0x73372c,fog:0x29151b},
+ frost:{name:"Frost Spire",skill:"Duck to brake and refill grip. Release to recover faster; jump low rods.",color:0x8bd4de,fog:0x173648},
+ storm:{name:"Stormwatch",skill:"Brace with grounded duck when gusts warn. Hold double ducks, release to jump.",color:0x686ba6,fog:0x191b3f}
+});
+let demo=false,demoPhase="fight",demoElapsed=0,demoRng=90127,matchTower="spiral",matchMode="crown",matchRules=normalizePreferences(),capturedRun=null;
+let tour={index:0,stages:[],score:0,complete:false},gustCycle=-1,towerDecor=null,towerGeneration=0,towerAssetCache=new Map();
+function stageDuration(){return {short:20,standard:35,long:50}[matchRules.goal]||35}
+function scopeKey(){return [matchTower,matchMode,matchRules.goal,matchRhythm,matchRules.difficulty,matchRules.modifier,playerCount].join(":")}
+function recordBest(stats){if(demo)return;const key=scopeKey();preferences.bests[key]=Math.max(preferences.bests[key]||0,stats.clears);savePreferences()}
+function recoverySpeed(f){return TUNING.hit.recoverSpeed*(matchTower==="frost"?(f.duck?0:.25+.75*(f.frostGrip??1)):1)}
+function towerCue(){
+ if(matchTower==="storm"){
+  const cycle=Math.floor(roundTime/10),t=roundTime%10,pending=gustCycle<cycle&&t>=4.5;
+  return {kind:pending?"warning":"calm",label:pending?"GUST WARNING · DUCK TO BRACE":"DOUBLE DUCK → JUMP · GUST EVERY 10s",remaining:pending?Math.max(0,6-t):Math.max(0,4.5-t)};
+ }
+ if(matchTower==="frost")return {kind:"grip",label:`GRIP ${Math.round((fighters[0]?.frostGrip??1)*100)}% · DUCK BRAKES + RECHARGES`,remaining:0};
+ if(matchTower==="ember"){
+  const f=fighters[0],h=hazards.filter(h=>f&&!h.checked.has(0)&&h.t>=f.trackT).sort((a,b)=>a.t-b.t)[0];
+  const eta=h?(h.t-f.trackT-.014)/(currentSpeed()+recoverySpeed(f)):99;
+  return {kind:h?.type==="high"?"vent":"heat",label:eta<2?`${h.type==="high"?"VENT · HOLD DUCK":"HEAT BURST · JUMP"} ${eta<=.46?"NOW":"APPROACHING"}`:"VENT: DUCK → HEAT: JUMP → JUMP",remaining:eta===99?0:Math.max(0,eta)};
+ }
+ return {kind:"classic",label:"CLASSIC · JUMP CYAN / DUCK CORAL",remaining:0};
+}
+function updateTowerMechanic(dt){
+ if(matchTower==="frost")for(const f of fighters)if(f.alive){
+  f.frostGrip=clamp((f.frostGrip??1)+(f.duck?.85:-.11)*dt,0,1);
+  if(f.duck&&f.jumpY===0)f.stats.recovery+=dt;
+ }
+ if(matchTower!=="storm")return;
+ const cycle=Math.floor(roundTime/10);
+ if(roundTime%10<6||gustCycle>=cycle)return;
+ // Defer the gust whenever any living seat needs a conflicting rod reaction.
+ const conflict=fighters.some(f=>f.alive&&hazards.some(h=>!h.checked.has(f.id)&&h.t>=f.trackT-.014&&(h.t-f.trackT-.014)/(currentSpeed()+TUNING.hit.recoverSpeed)<1.1));
+ if(conflict)return;
+ gustCycle=cycle;
+ for(const f of fighters)if(f.alive){if(f.duck&&f.jumpY===0){f.stats.braces++;continue}f.trackT=Math.max(TUNING.hit.minTrackT,f.trackT-.012);f.recoverDelay=Math.max(f.recoverDelay,.3)}
+}
+function finishStage(){
+ if(phase!=="fight"||demo)return;
+ const f=fighters[0],s=f.stats,score=s.clears;
+ tour.stages.push({tower:matchTower,clears:s.clears,hits:s.hitsLow+s.hitsHigh,recovery:+s.recovery.toFixed(2),braces:s.braces,survival:+s.survival.toFixed(2),score});tour.score+=score;tour.complete=matchMode!=="tour"||tour.index===3;
+ phase="matchover";clearInputs();paused=false;recordBest(s);resultsModal.classList.add("open");countdownEl.classList.add("hidden");
+ $("#resultsTitle").textContent=matchMode==="tour"?(tour.complete?"Four towers complete":`Tower ${tour.index+1} / 4 complete`):"Practice complete";
+ $("#resultsSummary").textContent=`${TOWERS[matchTower].name} · ${score} correct rods · ${s.bestStreak} clean chain · ${s.hitsLow+s.hitsHigh} hits · ${s.recovery.toFixed(1)}s grip practice · ${s.braces} gusts braced. ${matchMode==="tour"?`Tour total: ${tour.score} clears across ${tour.stages.length} played towers.`:"Repeat to improve your rhythm."}`;
+ $("#standingsBody").innerHTML="";$("#replayDetails").textContent=`Seed ${matchSeed} · ${stageDuration()}s maximum per tower, ends on elimination. Score is actual clears; no crown ranking in this drill.`;
+ $("#nextTowerBtn").hidden=matchMode!=="tour"||tour.complete;$("#rematchBtn").textContent=matchMode==="tour"?"Replay Tour seed":"Replay seed";
+}
+function nextTower(){
+ if(matchMode!=="tour"||phase!=="matchover"||tour.complete)return false;
+ tour.index++;matchTower=Object.keys(TOWERS)[tour.index];applyTowerWorld();resultsModal.classList.remove("open");accumulator=0;lastTime=performance.now();fighters.forEach(f=>f.stats=newStats());clearInputs();resetRound();paused=false;return true;
+}
+function replayRun(){
+ const saved={...preferences};const rules=capturedRun?{...capturedRun}:null;
+ if(rules){preferences={...preferences,...rules};playerCountEl.value=String(rules.players);rhythmEl.value=rules.rhythm;seedInput.value=String(rules.seed)}
+ restartMatch();preferences=normalizePreferences(saved);savePreferences();
+}
+function beginDemo(){
+ demo=true;demoRng=90127;demoElapsed=0;demoPhase="fight";matchTower=preferences.tower;matchMode="crown";matchRules=normalizePreferences(preferences);matchRhythm=preferences.rhythm;
+ playerCount=preferences.players;round=1;createFighters();applyPlayerStyle();fighters.forEach(f=>{f.player=false;f.controller="ai"});resetRound();phase="setup";demoPhase="fight";phaseTimer=0;applyTowerWorld();
+ document.querySelector("#app").classList.add("demo");$("#towerSelect").value=preferences.tower;$("#modeSelect").value=preferences.mode;$("#towerLesson").textContent=TOWERS[preferences.tower].skill;
+ const nextBestKey=[preferences.mode==="tour"?"spiral":preferences.tower,preferences.mode,preferences.goal,preferences.rhythm,preferences.difficulty,preferences.modifier,preferences.players].join(":");
+ $("#setupRecord").textContent=`Best ${preferences.bests[nextBestKey]||0} clears for these rules · ${preferences.players} contestants · ${preferences.difficulty} rivals · ${preferences.mode==="crown"?"Seven hits to elimination":`${stageDuration()}s skill stages`} · silent live bots`;
+ if(!effectsReduced())for(let i=0;i<1440;i++)tickDemo(FIXED_DT);
+ countdownEl.classList.add("hidden");
+}
+function tickDemo(dt){
+ if(!demo||paused||effectsReduced())return;
+ const score=globalScore,best=bestScore;phase=demoPhase;demoElapsed+=dt;
+ if(phase==="fight"){let remaining=Math.min(dt,.06);while(remaining>0&&phase==="fight"){const step=Math.min(FIXED_DT,remaining);fixedUpdate(step);remaining-=step}}else updatePhase(dt);
+ demoPhase=phase;phase="setup";globalScore=score;bestScore=best;countdownEl.classList.add("hidden");
+}
+function disposeTree(root){if(!root)return;const geometries=new Set(),materials=new Set(),textures=new Set();root.traverse?.(n=>{if(n.geometry)geometries.add(n.geometry);for(const m of Array.isArray(n.material)?n.material:[n.material])if(m){materials.add(m);if(m.map)textures.add(m.map)}});for(const x of geometries)x.dispose?.();for(const x of materials)x.dispose?.();for(const x of textures)x.dispose?.()}
+function applyPlayerStyle(){const f=fighters[0];if(!f)return;f.name=preferences.name;f.visual.mat?.color?.set(preferences.color);f.visual.identityRing?.material?.color?.set(preferences.color);if(f.visual.headwear)f.visual.headwear.visible=preferences.helmet!=="plain";if(f.visual.helmet)f.visual.helmet.visible=preferences.helmet==="plume";if(f.visual.plume)f.visual.plume.visible=preferences.helmet==="plume";if(f.visual.crown)f.visual.crown.visible=preferences.helmet==="crown";setFighterName(f,preferences.name)}
+function loadTowerAsset(name){
+ if(!towerAssetCache.has(name))towerAssetCache.set(name,import("./vendor/three/GLTFLoader.js").then(({GLTFLoader})=>new GLTFLoader().loadAsync(`./assets/${name}.glb`)).then(g=>g.scene).catch(()=>null));
+ return towerAssetCache.get(name);
+}
+function applyTowerWorld(){
+ if(!towerGroup||!THREE.Group)return;
+ const generation=++towerGeneration,def=TOWERS[matchTower];
+ if(towerDecor){scene.remove(towerDecor);disposeTree(towerDecor)}towerDecor=new THREE.Group();scene.add(towerDecor);const target=towerDecor;
+ // Shared classic geometry/layout is unchanged; only the non-collision surround varies.
+ towerGroup.traverse(n=>{if(n.material?.map)n.material.color.setHex(def.color)});if(scene.fog)scene.fog.color.setHex(def.fog);
+ const mat=new THREE.MeshStandardMaterial({color:def.color,roughness:matchTower==="frost"?.2:.7,metalness:matchTower==="ember"?.5:.1,emissive:matchTower==="ember"?0x441000:0x000000});
+ for(let i=0;i<8;i++){
+  const a=i*Math.PI/4,r=11;
+  const geo=matchTower==="ember"?new THREE.CylinderGeometry(.5,.7,4+i%3,8):matchTower==="frost"?new THREE.ConeGeometry(1,4+i%3,5):matchTower==="storm"?new THREE.TorusGeometry(1,.12,6,16):new THREE.ConeGeometry(.8,2,8);
+  const m=new THREE.Mesh(geo,mat);m.position.set(Math.cos(a)*r,matchTower==="storm"?4:-.5,Math.sin(a)*r);target.add(m);
+ }
+ const name=matchTower==="frost"?"rocks-large":matchTower==="storm"?"flag-wide":"tower-top";
+ loadTowerAsset(name).then(model=>{
+  if(!model||generation!==towerGeneration)return;
+  for(let i=0;i<4;i++){
+   const copy=model.clone(true);copy.traverse(n=>{if(n.geometry)n.geometry=n.geometry.clone();if(n.material){n.material=n.material.clone();if(n.material.map)n.material.map=n.material.map.clone()}});
+   const a=i*Math.PI/2+.3;copy.position.set(Math.cos(a)*9,2,Math.sin(a)*9);copy.scale.setScalar(name==="rocks-large"?2:1.8);target.add(copy);
+  }
+ });
+ target.visible=graphicsMode!=="performance";
+}
+
 function setReplaySeed(value){matchSeed=Math.max(1,Math.min(4294967295,Math.floor(Number(value)||1)));let state=matchSeed;gameplayRng=()=>{state=(Math.imul(state,1664525)+1013904223)>>>0;return state/4294967296};seedInput.value=String(matchSeed);return matchSeed}
-function gameplayRandom(){return gameplayRng?gameplayRng():Math.random()}
+function gameplayRandom(){if(demo){demoRng=(Math.imul(demoRng,1664525)+1013904223)>>>0;return demoRng/4294967296}return gameplayRng?gameplayRng():Math.random()}
 function gameRand(a,b){return a+gameplayRandom()*(b-a)}
-function newStats(){return {clears:0,hitsLow:0,hitsHigh:0,streak:0,bestStreak:0,survival:0}}
+function newStats(){return {clears:0,hitsLow:0,hitsHigh:0,streak:0,bestStreak:0,survival:0,recovery:0,braces:0}}
 function feedback(text){$("#clearFeedback").textContent=text;feedbackUntil=roundTime+1.1}
 function getStandings(){const ordered=fighters.slice().sort((a,b)=>b.roundWins-a.roundWins||b.stats.clears-a.stats.clears||a.id-b.id);return ordered.map((f,i)=>({fighter:f,rank:1+ordered.filter(x=>x.roundWins>f.roundWins).length}))}
 function renderResults(champ){
+  if(demo)return;$("#nextTowerBtn").hidden=true;
   clearInputs();paused=false;pauseOverlay.classList.remove("open");resultsModal.classList.add("open");countdownEl.classList.add("hidden");
   $("#resultsTitle").textContent=champ.player?"Your crown. Your keep.":`${champ.name} takes the crown.`;
   const s=fighters[0].stats;$("#resultsSummary").textContent=`YOU · ${s.clears} rods cleared · best streak ${s.bestStreak} · survived ${fmtTime(s.survival)} · ${s.hitsLow} low / ${s.hitsHigh} high hits`;
   const body=$("#standingsBody");body.innerHTML="";
   for(const {fighter:f,rank} of getStandings()){const row=document.createElement("tr");if(f.player)row.className="you";for(const value of [`${rank}. ${f.name}`,f.roundWins,f.stats.clears,f.stats.bestStreak]){const cell=document.createElement("td");cell.textContent=String(value);row.appendChild(cell)}body.appendChild(row)}
   $("#replayDetails").textContent=`Seed ${matchSeed} · ${matchRhythm} · ${playerCount} contestants. Replay repeats hazard patterns with the same rules and inputs.`;
+  recordBest(s);
   preferences.bestClears=Math.max(preferences.bestClears,s.clears);preferences.bestStreak=Math.max(preferences.bestStreak,s.bestStreak);savePreferences();
 }
-function showSetup(){clearInputs();phase="setup";paused=false;accumulator=0;settingsModal.classList.remove("open");resultsModal.classList.remove("open");helpModal.classList.remove("open");pauseOverlay.classList.remove("open");countdownEl.classList.add("hidden");setupPlayers.value=String(preferences.players);setupRhythm.value=preferences.rhythm;setupDifficulty.value=preferences.difficulty;$("#setupRecord").textContent=`Personal best · ${preferences.bestClears} clears · ${preferences.bestStreak} clean streak. Replay seed ${seedInput.value}.`;setupModal.classList.add("open");$("#startBtn").focus?.()}
-function startRun(){preferences.players=+setupPlayers.value;preferences.rhythm=setupRhythm.value;preferences.difficulty=setupDifficulty.value;savePreferences();playerCountEl.value=String(preferences.players);rhythmEl.value=preferences.rhythm;difficultyEl.value=preferences.difficulty;restartMatch();paused=false;initAudio(true);jumpBtn.focus?.()}
-function openHelp(){if(phase==="setup"||phase==="matchover")return;togglePause(true);pauseOverlay.classList.remove("open");helpModal.classList.add("open");$("#closeHelp").focus?.()}
-function closeHelpToPause(){helpModal.classList.remove("open");pauseOverlay.classList.add("open");resumeBtn.focus?.()}
+function showSetup(){clearInputs();phase="setup";paused=false;accumulator=0;settingsModal.classList.remove("open");resultsModal.classList.remove("open");helpModal.classList.remove("open");pauseOverlay.classList.remove("open");countdownEl.classList.add("hidden");setupPlayers.value=String(preferences.players);setupRhythm.value=preferences.rhythm;setupDifficulty.value=preferences.difficulty;$("#setupRecord").textContent=`Personal best · ${preferences.bestClears} clears · ${preferences.bestStreak} clean streak. Replay seed ${seedInput.value}.`;setupModal.classList.add("open");beginDemo();$("#startBtn").focus?.()}
+function startRun(){demo=false;document.querySelector("#app").classList.remove("demo");preferences.players=+setupPlayers.value;preferences.rhythm=setupRhythm.value;preferences.difficulty=setupDifficulty.value;savePreferences();playerCountEl.value=String(preferences.players);rhythmEl.value=preferences.rhythm;difficultyEl.value=preferences.difficulty;restartMatch();paused=false;initAudio(true);jumpBtn.focus?.()}
+function openHelp(){if(phase==="matchover")return;if(phase==="setup"){paused=true;helpModal.classList.add("open");return}togglePause(true);pauseOverlay.classList.remove("open");helpModal.classList.add("open");$("#closeHelp").focus?.()}
+function closeHelpToPause(){helpModal.classList.remove("open");if(demo){paused=false;return}pauseOverlay.classList.add("open");resumeBtn.focus?.()}
 function pollGamepadMenu(){let p;try{p=Array.from(navigator.getGamepads?.()||[]).find(Boolean)}catch{return}const held=!!p?.buttons[9]?.pressed;if(held&&!padMenuHeld){if(phase==="setup")startRun();else if(phase!=="matchover"&&!settingsModal.classList.contains("open")&&!helpModal.classList.contains("open"))togglePause(!paused)}padMenuHeld=held}
 const PLAYER_T=.115, HELIX_TURNS=2.18, HELIX_RADIUS=4.55, HELIX_RISE=7.9, HELIX_BASE=.55;
 const HELIX_START=-PLAYER_T*HELIX_TURNS*Math.PI*2;
@@ -311,7 +422,7 @@ const fmtTime=s=>{s=Math.max(0,Math.floor(s));return Math.floor(s/60)+":"+String
 const currentSpeed=()=>clamp(TUNING.speed.start+roundTime*TUNING.speed.accel,TUNING.speed.start,TUNING.speed.max);
 const speedMult=()=>currentSpeed()/TUNING.speed.start;
 function say(t){messageEl.textContent="🐦 Pigeon: "+t;}
-function haptic(ms=24){if(hapticsOn&&navigator.vibrate)navigator.vibrate(ms);}
+function haptic(ms=24){if(!demo&&hapticsOn&&navigator.vibrate)navigator.vibrate(ms);}
 
 function helixPoint(t){
   const a=HELIX_START+t*HELIX_TURNS*Math.PI*2;
@@ -333,7 +444,7 @@ function initRenderer(){
   clock=new THREE.Clock();applyGraphicsMode();createWorld();createFighters();resize();
 }
 function applyGraphicsMode(){
-  if(!renderer)return;const dpr=Math.min(window.devicePixelRatio||1,graphicsMode==="quality"?1.75:graphicsMode==="balanced"?1.35:1.0);renderer.setPixelRatio(dpr);renderer.shadowMap.enabled=graphicsMode!=="performance";resize();
+  document.querySelector("#app").classList.toggle("performance",graphicsMode==="performance");if(towerDecor)towerDecor.visible=graphicsMode!=="performance";if(!renderer)return;const dpr=Math.min(window.devicePixelRatio||1,graphicsMode==="quality"?1.75:graphicsMode==="balanced"?1.35:1.0);renderer.setPixelRatio(dpr);renderer.shadowMap.enabled=graphicsMode!=="performance";resize();
 }
 function canvasStone(){
   const c=document.createElement("canvas");c.width=c.height=512;const g=c.getContext("2d");g.fillStyle="#847b6b";g.fillRect(0,0,512,512);
@@ -392,20 +503,21 @@ function textSprite(text,color="#ffffff"){
   const c=document.createElement("canvas");c.width=256;c.height=64;const g=c.getContext("2d");g.font="900 23px system-ui";g.textAlign="center";g.textBaseline="middle";g.fillStyle="rgba(0,0,0,.55)";g.fillText(text,130,34);g.fillStyle=color;g.fillText(text,128,32);const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;const s=new THREE.Sprite(new THREE.SpriteMaterial({map:t,transparent:true,depthTest:false}));s.scale.set(1.55,.39,1);return s;
 }
 function buildDummy(id,player=false){
-  const root=new THREE.Group(),bodyRoot=new THREE.Group();root.add(bodyRoot);const mat=new THREE.MeshStandardMaterial({color:COLORS[id%COLORS.length],roughness:.46,metalness:.03});const dark=new THREE.MeshStandardMaterial({color:0x252630,roughness:.55});
+  const root=new THREE.Group(),bodyRoot=new THREE.Group();root.add(bodyRoot);const mat=new THREE.MeshStandardMaterial({color:player?preferences.color:COLORS[id%COLORS.length],roughness:.46,metalness:.03});const dark=new THREE.MeshStandardMaterial({color:0x252630,roughness:.55});
   const body=new THREE.Mesh(new THREE.CapsuleGeometry(.36,.56,7,14),mat);body.position.y=.83;body.castShadow=true;bodyRoot.add(body);const belly=new THREE.Mesh(new THREE.SphereGeometry(.25,12,9),new THREE.MeshStandardMaterial({color:0xeee0c8,roughness:.8}));belly.position.set(0,.82,.31);belly.scale.set(1.06,1.12,.54);bodyRoot.add(belly);
   const head=new THREE.Mesh(new THREE.SphereGeometry(.33,14,10),mat);head.position.y=1.43;head.castShadow=true;bodyRoot.add(head);const eyeMat=new THREE.MeshStandardMaterial({color:0x101116,roughness:.25});for(const x of [-.105,.105]){const e=new THREE.Mesh(new THREE.SphereGeometry(.038,7,5),eyeMat);e.position.set(x,1.47,.31);bodyRoot.add(e)}
   const limbs={};function limb(name,x,y,z,len=.44){const pivot=new THREE.Group();pivot.position.set(x,y,z);bodyRoot.add(pivot);const mesh=new THREE.Mesh(new THREE.CapsuleGeometry(.075,len,5,7),mat);mesh.position.y=-len*.48;mesh.castShadow=true;pivot.add(mesh);limbs[name]=pivot;return pivot}
   limb("armL",-.39,1.12,0,.43);limb("armR",.39,1.12,0,.43);limb("legL",-.18,.53,0,.43);limb("legR",.18,.53,0,.43);limbs.armL.rotation.z=-.28;limbs.armR.rotation.z=.28;
-  if(player){const crown=new THREE.Group();const band=new THREE.Mesh(new THREE.CylinderGeometry(.21,.24,.12,10),new THREE.MeshStandardMaterial({color:0xe7bd45,roughness:.3,metalness:.62}));band.position.y=1.77;crown.add(band);for(let i=0;i<5;i++){const sp=new THREE.Mesh(new THREE.ConeGeometry(.06,.23,5),band.material);const a=i/5*Math.PI*2;sp.position.set(Math.cos(a)*.15,1.95,Math.sin(a)*.15);crown.add(sp)}bodyRoot.add(crown)}
-  if(!player){
-    const helmet=new THREE.Mesh(new THREE.SphereGeometry(.34,10,7,0,Math.PI*2,0,Math.PI*.42),new THREE.MeshStandardMaterial({color:id%2?0xb8b6ad:0x7e8999,roughness:.42,metalness:.4}));helmet.position.y=1.43;bodyRoot.add(helmet);
-    const plume=new THREE.Mesh(new THREE.ConeGeometry(.09,.28,5),mat);plume.position.set(0,1.87,-.04);plume.rotation.x=-.35;bodyRoot.add(plume);
+  let crown=null,plume=null,helmet=null;const headwear=new THREE.Group();bodyRoot.add(headwear);
+  if(player){crown=new THREE.Group();const band=new THREE.Mesh(new THREE.CylinderGeometry(.21,.24,.12,10),new THREE.MeshStandardMaterial({color:0xe7bd45,roughness:.3,metalness:.62}));band.position.y=1.77;crown.add(band);for(let i=0;i<5;i++){const sp=new THREE.Mesh(new THREE.ConeGeometry(.06,.23,5),band.material);const a=i/5*Math.PI*2;sp.position.set(Math.cos(a)*.15,1.95,Math.sin(a)*.15);crown.add(sp)}headwear.add(crown)}
+  {
+    helmet=new THREE.Mesh(new THREE.SphereGeometry(.34,10,7,0,Math.PI*2,0,Math.PI*.42),new THREE.MeshStandardMaterial({color:id%2?0xb8b6ad:0x7e8999,roughness:.42,metalness:.4}));helmet.position.y=1.43;headwear.add(helmet);
+    plume=new THREE.Mesh(new THREE.ConeGeometry(.09,.28,5),mat);plume.position.set(0,1.87,-.04);plume.rotation.x=-.35;headwear.add(plume);
   }
   const collar=new THREE.Mesh(new THREE.TorusGeometry(.19,.035,6,12),dark);collar.rotation.x=Math.PI/2;collar.position.y=1.23;bodyRoot.add(collar);
   const identityRing=new THREE.Mesh(new THREE.TorusGeometry(.48,.018,6,24),new THREE.MeshBasicMaterial({color:COLORS[id%COLORS.length],transparent:true,opacity:player?.7:.35,depthWrite:false}));identityRing.rotation.x=Math.PI/2;identityRing.position.y=.025;root.add(identityRing);
   const shadow=new THREE.Mesh(new THREE.CircleGeometry(.46,24),new THREE.MeshBasicMaterial({color:0x000000,transparent:true,opacity:.22,depthWrite:false}));shadow.rotation.x=-Math.PI/2;shadow.position.y=.02;root.add(shadow);const label=textSprite(player?"YOU":(NAMES[id]||`P${id+1}`),player?"#ffe294":"#ffffff");label.position.y=2.05;root.add(label);
-  return {root,bodyRoot,mat,head,limbs,shadow,label,dark,identityRing};
+  return {root,bodyRoot,mat,head,limbs,shadow,label,dark,identityRing,headwear,crown,plume,helmet};
 }
 function makeLaneOffsets(count){
   const spacing=.61,raw=[];
@@ -418,8 +530,8 @@ function setFighterName(f,name){
   if(!f)return false;
   const clean=String(name||f.name||`P${f.id+1}`).trim().slice(0,18)||`P${f.id+1}`;
   f.name=clean;
-  if(f.visual?.label){f.visual.root.remove(f.visual.label);f.visual.label.material.map?.dispose?.();f.visual.label.material.dispose?.()}
-  const label=textSprite(f.player?"YOU":clean,f.player?"#ffe294":"#ffffff");
+  if(f.visual?.label){f.visual.root.remove(f.visual.label);f.visual.label.material?.map?.dispose?.();f.visual.label.material?.dispose?.()}
+  const label=textSprite(clean,f.player?"#ffe294":"#ffffff");
   label.position.y=playerCount>=8&&!f.player?1.92:2.05;
   if(playerCount>=8&&!f.player)label.scale.set(1.05,.27,1);
   f.visual.root.add(label);f.visual.label=label;
@@ -436,16 +548,18 @@ function createFighters(){
   }
 }
 function resetRound(){
-  feedbackUntil=0;hazards.forEach(h=>hazardGroup.remove(h.group));hazards=[];roundTime=0;nextSpawn=1.35;phase="countdown";phaseTimer=3.3;hazardId=0;patternQueue=[];activePattern="single";lastSpawnType=null;choreographyStats={spawned:0,clamped:0,minGap:99,lastGap:0};duckBtn.classList.remove("pressed");jumpBtn.classList.remove("cue");duckBtn.classList.remove("cue");const p=helixPoint(PLAYER_T),b=helixBasis(PLAYER_T),lanes=makeLaneOffsets(playerCount);
-  fighters.forEach((f,i)=>{f.trackT=PLAYER_T;f.base.copy(p).addScaledVector(b.right,lanes[i]);f.lane=lanes[i];f.lives=MAX_LIVES;f.score=0;f.stats.streak=0;f.alive=true;f.jumpY=0;f.vy=0;f.landPulse=0;f.duck=false;f.duckTimer=0;f.resumeDuckTimer=0;f.hitTimer=0;f.recoverDelay=0;f.flash=0;f.ragdoll=0;f.aiHazard=-1;f.aiPlan=null;f.eliminated=false;f.offset.set(0,0,0);f.fall.set(0,0,0);f.tilt=0;f.input.duckSources?.clear();f.input.duckHeld=false;f.input.jumpBuffer=0;f.gamepadPrevJump=false;f.gamepadPrevDuck=false;f.visual.root.visible=true});
+  gustCycle=-1;
+  feedbackUntil=0;hazards.forEach(h=>{hazardGroup.remove(h.group);disposeTree(h.group)});hazards=[];roundTime=0;nextSpawn=1.35;phase="countdown";phaseTimer=3.3;hazardId=0;patternQueue=[];activePattern="single";lastSpawnType=null;choreographyStats={spawned:0,clamped:0,minGap:99,lastGap:0};duckBtn.classList.remove("pressed");jumpBtn.classList.remove("cue");duckBtn.classList.remove("cue");const p=helixPoint(PLAYER_T),b=helixBasis(PLAYER_T),lanes=makeLaneOffsets(playerCount);
+  fighters.forEach((f,i)=>{f.frostGrip=1;f.trackT=PLAYER_T;f.base.copy(p).addScaledVector(b.right,lanes[i]);f.lane=lanes[i];f.lives=MAX_LIVES;f.score=0;f.stats.streak=0;f.alive=true;f.jumpY=0;f.vy=0;f.landPulse=0;f.duck=false;f.duckTimer=0;f.resumeDuckTimer=0;f.hitTimer=0;f.recoverDelay=0;f.flash=0;f.ragdoll=0;f.aiHazard=-1;f.aiPlan=null;f.eliminated=false;f.offset.set(0,0,0);f.fall.set(0,0,0);f.tilt=0;f.input.duckSources?.clear();f.input.duckHeld=false;f.input.jumpBuffer=0;f.padNeutral=true;f.gamepadPrevJump=false;f.gamepadPrevDuck=false;f.visual.root.visible=true});
   countdownEl.classList.remove("hidden");countdownEl.textContent="3";say(`${playerCount} contestants. Jump cyan. Duck coral. Seven mistakes and the tower keeps you.`);updateHUD();
 }
 function restartMatch(){
+  demo=false;document.querySelector("#app").classList.remove("demo");matchRules=normalizePreferences(preferences);matchTower=matchRules.mode==="tour"?"spiral":matchRules.tower;matchMode=matchRules.mode;tour={index:0,stages:[],score:0,complete:false};applyTowerWorld();accumulator=0;lastTime=performance.now();
   const next=normalizePreferences({...preferences,players:playerCountEl.value,rhythm:rhythmEl.value});
   preferences.players=next.players;preferences.rhythm=next.rhythm;matchRhythm=next.rhythm;
   if(next.players!==playerCount){playerCount=next.players;createFighters()}
-  setReplaySeed(seedInput.value);savePreferences();round=1;roundWins=0;globalScore=0;feedbackUntil=0;
-  fighters.forEach(f=>{f.roundWins=0;f.stats=newStats()});setupModal.classList.remove("open");resultsModal.classList.remove("open");helpModal.classList.remove("open");clearInputs();resetRound();fighters.forEach(f=>{f.gamepadPrevJump=true;f.gamepadPrevDuck=true});
+  setReplaySeed(seedInput.value);capturedRun={...matchRules,players:next.players,rhythm:next.rhythm,seed:matchSeed};savePreferences();round=1;roundWins=0;globalScore=0;feedbackUntil=0;
+  fighters.forEach(f=>{f.roundWins=0;f.stats=newStats();if(f.id===0){f.controller="local";f.player=true;}else if(f.controller==="ai")f.controller="ai"});applyPlayerStyle();setupModal.classList.remove("open");resultsModal.classList.remove("open");helpModal.classList.remove("open");clearInputs();resetRound();fighters.forEach(f=>{f.gamepadPrevJump=true;f.gamepadPrevDuck=true});
 }
 
 function createHazard(type,t=.965){
@@ -458,15 +572,21 @@ function createHazard(type,t=.965){
     marker.position.set(side*2.7,type==="low"?.25:-.25,0);if(type==="high")marker.rotation.z=Math.PI;group.add(marker);
   }
   const icon=textSprite(type==="low"?"JUMP ↟":"DUCK ↡",type==="low"?"#8ce6f5":"#ff9b94");icon.position.y=type==="low"?1.08:.42;icon.scale.set(1.28,.32,1);group.add(icon);
+  if(matchTower==="ember"){
+    // Heat fins and vent rings use silhouettes as well as color; the original rod remains authoritative.
+    for(const side of [-1,1]){const mark=new THREE.Mesh(type==="low"?new THREE.ConeGeometry(.28,.8,5):new THREE.TorusGeometry(.34,.06,6,12),new THREE.MeshBasicMaterial({color:type==="low"?0xffab45:0xffddd0}));mark.position.set(side*3.3,type==="low"?.4:0,0);group.add(mark)}
+  }
   hazardGroup.add(group);const h={id:++hazardId,type,t,group,checked:new Set(),warned:false};hazards.push(h);positionHazard(h);return h;
 }
 function positionHazard(h){
   const p=helixPoint(h.t),b=helixBasis(h.t);h.group.position.copy(p);h.group.rotation.y=-b.angle;h.group.position.y+=h.type==="low"?.56:1.43;
 }
-function transitionFloor(from,to){return TUNING.hazards.transition[`${from}>${to}`]??.90}
+function transitionFloor(from,to){return (matchRules.modifier==="gentle"?.25:0)+(TUNING.hazards.transition[`${from}>${to}`]??.90)}
 function pickPattern(){
   const r=gameplayRandom();
   if(matchRhythm!=="mixed"){activePattern=matchRhythm==="jumps"?"jump-practice":"duck-practice";return [{type:matchRhythm==="jumps"?"low":"high",gap:null}]}
+  if(matchTower==="ember"){activePattern="vent / heat burst";return [{type:"high",gap:.95},{type:"low",gap:1.15},{type:"low",gap:null}]}
+  if(matchTower==="storm"){activePattern="gust / double duck";return [{type:"high",gap:.65},{type:"high",gap:1.1},{type:"low",gap:null}]}
   if(roundTime<TUNING.pacing.earlyEnd){
     activePattern="single";return [{type:gameplayRandom()<.5?"low":"high",gap:null}];
   }
@@ -513,10 +633,10 @@ function spawnPattern(){
 }
 
 function initAudio(unlock=false){
-  if(unlock)audioUnlocked=true;if(!soundOn||(!audioUnlocked&&!audioCtx))return;if(audioCtx){if(audioCtx.state==="suspended")audioCtx.resume().catch(()=>{});return}try{audioCtx=new (window.AudioContext||window.webkitAudioContext)();const b=audioCtx.createBuffer(1,audioCtx.sampleRate*.45,audioCtx.sampleRate);const d=b.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1;noiseBuffer=b}catch{}
+  if(demo)return;if(unlock)audioUnlocked=true;if(!soundOn||(!audioUnlocked&&!audioCtx))return;if(audioCtx){if(audioCtx.state==="suspended")audioCtx.resume().catch(()=>{});return}try{audioCtx=new (window.AudioContext||window.webkitAudioContext)();const b=audioCtx.createBuffer(1,audioCtx.sampleRate*.45,audioCtx.sampleRate);const d=b.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1;noiseBuffer=b}catch{}
 }
-function tone(freq,dur=.07,type="sine",vol=.035,slide=1){if(!soundOn||preferences.volume<=0)return;initAudio();if(!audioCtx)return;const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=type;o.frequency.setValueAtTime(freq,audioCtx.currentTime);o.frequency.exponentialRampToValueAtTime(Math.max(20,freq*slide),audioCtx.currentTime+dur);g.gain.setValueAtTime(Math.max(.0001,vol*preferences.volume),audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+dur);o.connect(g).connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+dur);o.onended=()=>{o.disconnect();g.disconnect()}}
-function noise(dur=.08,vol=.035,cut=900){if(!soundOn||preferences.volume<=0)return;initAudio();if(!audioCtx||!noiseBuffer)return;const s=audioCtx.createBufferSource(),f=audioCtx.createBiquadFilter(),g=audioCtx.createGain();s.buffer=noiseBuffer;f.type="lowpass";f.frequency.value=cut;g.gain.setValueAtTime(Math.max(.0001,vol*preferences.volume),audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+dur);s.connect(f).connect(g).connect(audioCtx.destination);s.start();s.stop(audioCtx.currentTime+dur);s.onended=()=>{s.disconnect();f.disconnect();g.disconnect()}}
+function tone(freq,dur=.07,type="sine",vol=.035,slide=1){if(demo||!soundOn||preferences.volume<=0)return;initAudio();if(!audioCtx)return;const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=type;o.frequency.setValueAtTime(freq,audioCtx.currentTime);o.frequency.exponentialRampToValueAtTime(Math.max(20,freq*slide),audioCtx.currentTime+dur);g.gain.setValueAtTime(Math.max(.0001,vol*preferences.volume),audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+dur);o.connect(g).connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+dur);o.onended=()=>{o.disconnect();g.disconnect()}}
+function noise(dur=.08,vol=.035,cut=900){if(demo||!soundOn||preferences.volume<=0)return;initAudio();if(!audioCtx||!noiseBuffer)return;const s=audioCtx.createBufferSource(),f=audioCtx.createBiquadFilter(),g=audioCtx.createGain();s.buffer=noiseBuffer;f.type="lowpass";f.frequency.value=cut;g.gain.setValueAtTime(Math.max(.0001,vol*preferences.volume),audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+dur);s.connect(f).connect(g).connect(audioCtx.destination);s.start();s.stop(audioCtx.currentTime+dur);s.onended=()=>{s.disconnect();f.disconnect();g.disconnect()}}
 function sfxJump(){tone(280,.11,"triangle",.028,1.8)}function sfxDuck(){tone(160,.08,"sine",.022,.72)}function sfxClear(type){tone(type==="low"?520:460,.045,"triangle",.015,1.08)}function sfxHit(){tone(93,.12,"square",.042,.58);noise(.11,.055,650)}function sfxOut(){tone(126,.26,"sawtooth",.038,.38);noise(.15,.03,420)}function sfxWin(){tone(392,.1,"triangle",.032,1.22);setTimeout(()=>tone(523,.12,"triangle",.032,1.2),90)}
 function triggerFlash(){if(graphicsMode==="performance"||effectsReduced())return;hitFlash.style.opacity="1";setTimeout(()=>hitFlash.style.opacity="0",90)}
 function spawnParticles(pos,color,count=12,power=1){if(effectsReduced())return;let made=0;for(const fx of particles){if(fx.life>0)continue;fx.life=fx.max=rand(.28,.55);fx.mesh.visible=true;fx.mesh.material.color.setHex(color);fx.mesh.material.opacity=.8;fx.mesh.position.copy(pos);fx.v.set(rand(-1.4,1.4)*power,rand(.8,2.5)*power,rand(-1.2,1.2)*power);made++;if(made>=count)break}}
@@ -539,7 +659,7 @@ function setDuck(f,on,source="direct"){
   const sources=f.input.duckSources??=new Set();on?sources.add(source):sources.delete(source);
   f.input.duckHeld=sources.size>0;updateDuckPosture(f);return true;
 }
-function clearFighterInput(f){f.input.duckSources?.clear();f.input.duckHeld=false;f.input.jumpBuffer=0;f.duck=false;f.duckTimer=0;f.gamepadPrevJump=true;f.gamepadPrevDuck=true}
+function clearFighterInput(f){f.padNeutral=true;f.input.duckSources?.clear();f.input.duckHeld=false;f.input.jumpBuffer=0;f.duck=false;f.duckTimer=0;f.gamepadPrevJump=true;f.gamepadPrevDuck=true}
 function changeController(f,controller){if(f.controller===controller)return;clearFighterInput(f);f.resumeDuckTimer=0;f.controller=controller;f.aiHazard=-1;f.aiPlan=null;f.gamepadPrevJump=false;f.gamepadPrevDuck=false}
 function clearInputs(){
   for(const f of fighters){
@@ -572,12 +692,15 @@ function eliminate(f,deferRoundEnd=false){
 }
 let lastRoundWinner=null;
 function checkRoundEnd(){
+  if(!demo&&matchMode!=="crown"){if(!fighters[0]?.alive)finishStage();return}
   if(phase!=="fight")return;const alive=fighters.filter(f=>f.alive);if(alive.length<=1){phase="roundover";phaseTimer=2.4;const winner=alive[0];lastRoundWinner=winner||null;if(winner){winner.roundWins++;if(winner.player){roundWins=winner.roundWins;sfxWin();say("Round won — the Spiral Keep failed to remove you.")}else say(`${winner.name} wins the round.`)}else say("Everyone fell. The tower wins, which feels unfair.");countdownEl.classList.remove("hidden");countdownEl.textContent=winner?"♛":"☠"}}
 function finishOrNext(){
   if(phase!=="roundover")return;
   const maxWins=Math.max(0,...fighters.map(f=>f.roundWins)),leaders=fighters.filter(f=>f.roundWins===maxWins);
-  const clinched=lastRoundWinner&&lastRoundWinner.roundWins>=2;
-  const regulationDone=round>=TUNING.rounds.bestOf;
+  if(demo){resetRound();return}
+  const limit=matchRules.goal==="short"?1:matchRules.goal==="long"?5:3;
+  const clinched=lastRoundWinner&&lastRoundWinner.roundWins>=Math.floor(limit/2)+1;
+  const regulationDone=round>=limit;
   if(clinched||(regulationDone&&leaders.length===1)){const champ=clinched?lastRoundWinner:leaders[0];phase="matchover";countdownEl.classList.remove("hidden");countdownEl.textContent="♛";say(champ?.player?"Match won — Spiral Keep bows to the crown.":`${champ?.name||"A contestant"} takes the crown.`);renderResults(champ);updateHUD();return}
   round++;if(regulationDone&&leaders.length>1)say("The crown is tied — sudden-death round!");resetRound();
 }
@@ -586,8 +709,10 @@ function aiUpdate(f,dt){
   if(f.controller!=="ai"||!f.alive)return;
   if(f.duckTimer>0){f.duckTimer-=dt;if(f.duckTimer<=0)setDuck(f,false,"ai")}
   let h=null,best=99;for(const x of hazards){if(x.checked.has(f.id)||x.t<f.trackT-.03)continue;const d=x.t-f.trackT;if(d<best){best=d;h=x}}
+  if(matchTower==="frost"){const safe=!h||(best-TUNING.hazards.collisionWindow)/currentSpeed()>1.3;setDuck(f,safe&&(f.frostGrip??1)<.8,"frost")}
+  if(matchTower==="storm")setDuck(f,towerCue().kind==="warning"&&(!h||(best-TUNING.hazards.collisionWindow)/currentSpeed()>1),"storm");
   if(!h)return;
-  const cfg=AI[difficultyEl.value]||AI.normal;
+  const cfg=AI[matchRules.difficulty]||AI.normal;
   // Sample one imperfect plan per rod. Bots use the same buffer and posture rules as humans.
   if(f.aiPlan?.id!==h.id)f.aiPlan={id:h.id,reaction:cfg.reaction+gameRand(-.035,.045),mistake:gameplayRandom()<cfg.mistake,wrongAction:gameplayRandom()<.55};
   const closingSpeed=currentSpeed()+(f.recoverDelay<=0&&f.trackT<PLAYER_T?TUNING.hit.recoverSpeed:0);
@@ -609,7 +734,7 @@ function testHazard(h){
   checkRoundEnd();
 }
 function fixedUpdate(dt){
-  roundTime+=dt;for(const f of fighters)if(f.alive)f.stats.survival+=dt;
+  roundTime+=dt;if(!demo&&matchMode!=="crown"&&roundTime>=stageDuration()){finishStage();return}updateTowerMechanic(dt);for(const f of fighters)if(f.alive)f.stats.survival+=dt;
   nextSpawn-=dt;
   if(nextSpawn<=0)spawnPattern();
 
@@ -627,7 +752,7 @@ function fixedUpdate(dt){
     if(phase!=="fight")return;
   }
   for(let i=hazards.length-1;i>=0;i--){
-    if(hazards[i].t<-.03){hazardGroup.remove(hazards[i].group);hazards.splice(i,1)}
+    if(hazards[i].t<-.03){hazardGroup.remove(hazards[i].group);disposeTree(hazards[i].group);hazards.splice(i,1)}
   }
 
   for(const f of fighters){
@@ -635,7 +760,7 @@ function fixedUpdate(dt){
     aiUpdate(f,dt);
     if(f.alive){
       if(f.recoverDelay>0)f.recoverDelay=Math.max(0,f.recoverDelay-dt);
-      else if(f.trackT<PLAYER_T)f.trackT=Math.min(PLAYER_T,f.trackT+TUNING.hit.recoverSpeed*dt);
+      else if(f.trackT<PLAYER_T)f.trackT=Math.min(PLAYER_T,f.trackT+recoverySpeed(f)*dt);
       const fp=helixPoint(f.trackT),fb=helixBasis(f.trackT);f.base.copy(fp).addScaledVector(fb.right,f.lane);
       if(f.jumpY>0||f.vy!==0){
         f.vy-=TUNING.jump.gravity*dt;
@@ -660,12 +785,14 @@ function fixedUpdate(dt){
   pollGamepads();
 }
 function pollGamepads(){
+  if(demo)return;
   let pads;try{pads=Array.from(navigator.getGamepads?.()||[])}catch{return}
   for(let i=0;i<fighters.length;i++){
     const f=fighters[i],p=pads[i];
-    if(!p){setDuck(f,false,"gamepad");f.gamepadPrevJump=false;f.gamepadPrevDuck=false;if(i>0&&f.controller==="gamepad")changeController(f,"ai");continue}
+    if(!p){setDuck(f,false,"gamepad");f.padNeutral=false;f.gamepadPrevJump=false;f.gamepadPrevDuck=false;if(i>0&&f.controller==="gamepad")changeController(f,"ai");continue}
     if(f.controller==="remote")continue;
-    if(i>0&&f.controller!=="remote")changeController(f,"gamepad");
+    if(f.padNeutral){if(p.buttons[0]?.pressed||p.buttons[12]?.pressed||p.buttons[1]?.pressed||p.buttons[13]?.pressed)continue;f.padNeutral=false}
+    if(i>0&&f.controller!=="remote"){changeController(f,"gamepad");f.padNeutral=false;}
     const j=!!(p.buttons[0]?.pressed||p.buttons[12]?.pressed),d=!!(p.buttons[1]?.pressed||p.buttons[13]?.pressed);
     if(j&&!f.gamepadPrevJump)requestJump(f);f.gamepadPrevJump=j;
     if(d!==f.gamepadPrevDuck){f.gamepadPrevDuck=d;setDuck(f,d,"gamepad")}
@@ -722,7 +849,8 @@ function updatePhase(dt){
   if(paused)return;if(phase==="roundover"){phaseTimer-=dt;if(phaseTimer<=0)finishOrNext();return}if(phase==="countdown"){phaseTimer-=dt;if(phaseTimer>2.3)countdownEl.textContent="3";else if(phaseTimer>1.3)countdownEl.textContent="2";else if(phaseTimer>.35)countdownEl.textContent="1";else countdownEl.textContent="GO";if(phaseTimer<=0){phase="fight";countdownEl.classList.add("hidden");say("GO — read the rod’s arrow and action label.");tone(440,.06,"triangle",.035,1.25)}}
 }
 function updateHUD(){
-  const p=fighters[0],alive=fighters.filter(f=>f.alive).length;roundLabel.textContent=round<=TUNING.rounds.bestOf?`${round} / ${TUNING.rounds.bestOf}`:`TIE ${round}`;timerEl.textContent=`R${round} · ${fmtTime(roundTime)} · ${alive}/${playerCount}`;youScoreEl.textContent=p?.score??0;winsScoreEl.textContent=p?.roundWins??roundWins;livesText.textContent=`${Math.max(0,p?.lives??0)} / ${MAX_LIVES}`;speedValue.textContent=speedMult().toFixed(2)+"×";jumpBtn.disabled=paused||phase!=="fight"||!p?.alive;duckBtn.disabled=jumpBtn.disabled;
+  const tc=towerCue();$("#towerStatus").textContent=`${TOWERS[matchTower].name} · ${tc.label}${!demo&&matchMode!=="crown"?` · ${Math.max(0,Math.ceil(stageDuration()-roundTime))}s`:""}`;
+  const p=fighters[0],alive=fighters.filter(f=>f.alive).length;roundLabel.textContent=round<=(matchRules.goal==="short"?1:matchRules.goal==="long"?5:3)?`${round} / ${matchRules.goal==="short"?1:matchRules.goal==="long"?5:3}`:`TIE ${round}`;timerEl.textContent=`R${round} · ${fmtTime(roundTime)} · ${alive}/${playerCount}`;youScoreEl.textContent=p?.score??0;winsScoreEl.textContent=p?.roundWins??roundWins;livesText.textContent=`${Math.max(0,p?.lives??0)} / ${MAX_LIVES}`;speedValue.textContent=speedMult().toFixed(2)+"×";jumpBtn.disabled=demo||paused||phase!=="fight"||!p?.alive;duckBtn.disabled=jumpBtn.disabled;
   let nearest=null;for(const h of hazards){if(h.t>=p.trackT&&!h.checked.has(0)&&(!nearest||h.t<nearest.t))nearest=h}
   const pClosing=currentSpeed()+(p.recoverDelay<=0&&p.trackT<PLAYER_T?TUNING.hit.recoverSpeed:0);
   const eta=nearest?(nearest.t-p.trackT-TUNING.hazards.collisionWindow)/pClosing:99,cue=!paused&&p.alive&&phase==="fight"&&eta>0&&eta<TUNING.hazards.cueEta;
@@ -736,17 +864,18 @@ function updateHUD(){
   const life=Math.max(0,p?.lives??0);[...lifePips.children].forEach((el,i)=>{el.classList.toggle("on",i<life);el.classList.toggle("danger",i<life&&life<=2)})
 }
 function updateDebug(){
-  if(!debugOn)return;const p=fighters[0];let nearest=null;for(const h of hazards){if(h.t>=p.trackT&&(!nearest||h.t<nearest.t))nearest=h}const pClosing=currentSpeed()+(p.recoverDelay<=0&&p.trackT<PLAYER_T?TUNING.hit.recoverSpeed:0);const state={version:VERSION,phase,round,time:+roundTime.toFixed(2),seed:matchSeed,rhythm:matchRhythm,stats:fighters.map(f=>({...f.stats})),speed:+speedMult().toFixed(2),fps:+fps.toFixed(1),player:p?{lives:p.lives,score:p.score,jump:+p.jumpY.toFixed(2),duck:p.duck,alive:p.alive,trackT:+p.trackT.toFixed(3),setback:+(PLAYER_T-p.trackT).toFixed(3),recoverDelay:+p.recoverDelay.toFixed(2),jumpBuffer:+(p.input?.jumpBuffer||0).toFixed(3),duckHeld:!!p.input?.duckHeld,controller:p.controller}:null,nearest:nearest?{type:nearest.type,eta:+((nearest.t-p.trackT)/pClosing).toFixed(2)}:null,alive:fighters.filter(f=>f.alive).length,players:playerCount,controllers:fighters.map(f=>f.controller),choreography:{pattern:activePattern,queue:patternQueue.map(x=>x.type),spawned:choreographyStats.spawned,clamped:choreographyStats.clamped,minGap:choreographyStats.minGap===99?null:+choreographyStats.minGap.toFixed(2),lastGap:+choreographyStats.lastGap.toFixed(2)}};window.__ROYAL_TWISTED_STATE__=state;debugPanel.textContent=`${VERSION}\n${phase} · round ${round} · FPS ${state.fps}\nspeed ${state.speed}x · alive ${state.alive}\nplayer lives ${state.player?.lives} score ${state.player?.score}\ntrack ${state.player?.trackT} · setback ${state.player?.setback}\njump ${state.player?.jump} duck ${state.player?.duck} · buf ${state.player?.jumpBuffer}\nnext ${state.nearest?state.nearest.type+" in "+state.nearest.eta+"s":"none"}\npattern ${state.choreography.pattern} · gap ${state.choreography.lastGap}s`
+  const p=fighters[0];let nearest=null;for(const h of hazards){if(h.t>=p.trackT&&(!nearest||h.t<nearest.t))nearest=h}const pClosing=currentSpeed()+(p.recoverDelay<=0&&p.trackT<PLAYER_T?TUNING.hit.recoverSpeed:0);const state={version:VERSION,phase,round,time:+roundTime.toFixed(2),seed:matchSeed,rhythm:matchRhythm,stats:fighters.map(f=>({...f.stats})),speed:+speedMult().toFixed(2),fps:+fps.toFixed(1),player:p?{lives:p.lives,score:p.score,jump:+p.jumpY.toFixed(2),duck:p.duck,alive:p.alive,trackT:+p.trackT.toFixed(3),setback:+(PLAYER_T-p.trackT).toFixed(3),recoverDelay:+p.recoverDelay.toFixed(2),jumpBuffer:+(p.input?.jumpBuffer||0).toFixed(3),duckHeld:!!p.input?.duckHeld,controller:p.controller}:null,nearest:nearest?{type:nearest.type,eta:+((nearest.t-p.trackT)/pClosing).toFixed(2)}:null,alive:fighters.filter(f=>f.alive).length,players:playerCount,controllers:fighters.map(f=>f.controller),choreography:{pattern:activePattern,queue:patternQueue.map(x=>x.type),spawned:choreographyStats.spawned,clamped:choreographyStats.clamped,minGap:choreographyStats.minGap===99?null:+choreographyStats.minGap.toFixed(2),lastGap:+choreographyStats.lastGap.toFixed(2)}};Object.assign(state,{paused,demo,demoPhase,demoElapsed,tower:matchTower,mode:matchMode,towerCue:towerCue(),fighters:fighters.map(f=>({id:f.id,controller:f.controller,trackT:f.trackT,jump:f.jumpY,duck:f.duck,clears:f.stats.clears,lives:f.lives})),tour:JSON.parse(JSON.stringify(tour))});if(state.player)state.player.frostGrip=p.frostGrip??1;window.__ROYAL_TWISTED_STATE__=state;if(!debugOn)return;debugPanel.textContent=`${VERSION}\n${phase} · round ${round} · FPS ${state.fps}\nspeed ${state.speed}x · alive ${state.alive}\nplayer lives ${state.player?.lives} score ${state.player?.score}\ntrack ${state.player?.trackT} · setback ${state.player?.setback}\njump ${state.player?.jump} duck ${state.player?.duck} · buf ${state.player?.jumpBuffer}\nnext ${state.nearest?state.nearest.type+" in "+state.nearest.eta+"s":"none"}\npattern ${state.choreography.pattern} · gap ${state.choreography.lastGap}s`
 }
 function resize(){if(!renderer||!camera)return;const w=innerWidth,h=innerHeight;renderer.setSize(w,h,false);camera.aspect=w/h;const portrait=clamp((h/w-1.15)/.75,0,1);const crowd=clamp((playerCount-4)/6,0,1);camera.fov=lerp(TUNING.camera.baseFov,TUNING.camera.portraitFov,portrait)+3.5*crowd;camera.updateProjectionMatrix()}
 function togglePause(force=true){if(phase==="matchover")return;if(phase==="setup"||(force===false&&(settingsModal.classList.contains("open")||helpModal.classList.contains("open"))))return;paused=force!==false;pauseOverlay.classList.toggle("open",paused&&!settingsModal.classList.contains("open"));clearInputs();if(!paused)resumeBotInputs()}
 
-function pressJump(e){e?.preventDefault?.();initAudio(true);if(phase==="fight"&&!paused)requestJump(fighters[0])}
-function pressDuck(e){e?.preventDefault?.();initAudio(true);if(phase==="fight"&&!paused){e?.currentTarget?.setPointerCapture?.(e.pointerId);setDuck(fighters[0],true,`pointer:${e?.pointerId??0}`)}}
+function pressJump(e){if(demo)return;e?.preventDefault?.();initAudio(true);if(phase==="fight"&&!paused)requestJump(fighters[0])}
+function pressDuck(e){if(demo)return;e?.preventDefault?.();initAudio(true);if(phase==="fight"&&!paused){e?.currentTarget?.setPointerCapture?.(e.pointerId);setDuck(fighters[0],true,`pointer:${e?.pointerId??0}`)}}
 function releaseDuck(e){e?.preventDefault?.();setDuck(fighters[0],false,`pointer:${e?.pointerId??0}`)}
 jumpBtn.addEventListener("pointerdown",pressJump,{passive:false});duckBtn.addEventListener("pointerdown",pressDuck,{passive:false});
 for(const event of ["pointerup","pointercancel","lostpointercapture"])duckBtn.addEventListener(event,releaseDuck,{passive:false});
 window.addEventListener("keydown",e=>{
+  if(demo&&e.code!=="Escape")return;
   if(e.code!=="Escape"&&(/^(INPUT|SELECT|TEXTAREA)$/.test(e.target?.tagName||"")||(e.target?.tagName==="BUTTON"&&["Space","Enter"].includes(e.code))))return;
   if(e.code!=="Escape"&&(paused||phase!=="fight"))return;
   if(["Space","ArrowUp","KeyW"].includes(e.code)){e.preventDefault();if(!e.repeat)pressJump(e)}
@@ -761,15 +890,28 @@ playerCountEl.addEventListener("change",()=>{preferences.players=normalizePrefer
 rhythmEl.addEventListener("change",()=>{preferences.rhythm=normalizePreferences({rhythm:rhythmEl.value}).rhythm;savePreferences();say("Rhythm saved for the next Restart Match.")});
 soundBtn.addEventListener("click",()=>{soundOn=!soundOn;preferences.sound=soundOn;savePreferences();soundBtn.textContent=soundOn?"🔊":"🔇";if(soundOn){initAudio(true);tone(330,.05,"triangle",.025,1.2)}});
 function openSettingsPaused(){paused=true;pauseOverlay.classList.remove("open");settingsModal.classList.add("open");clearInputs();closeSettings.focus?.()}
-function closeSettingsToPause(){settingsModal.classList.remove("open");clearInputs();if(phase==="setup"){paused=false;setupPlayers.value=String(preferences.players);setupRhythm.value=preferences.rhythm;setupDifficulty.value=preferences.difficulty;$("#startBtn").focus?.();return}if(phase==="matchover"){paused=false;return}paused=true;pauseOverlay.classList.add("open");resumeBtn.focus?.()}
+function closeSettingsToPause(){settingsModal.classList.remove("open");clearInputs();if(phase==="setup"){paused=false;if(demo)beginDemo();setupPlayers.value=String(preferences.players);setupRhythm.value=preferences.rhythm;setupDifficulty.value=preferences.difficulty;$("#startBtn").focus?.();return}if(phase==="matchover"){paused=false;return}paused=true;pauseOverlay.classList.add("open");resumeBtn.focus?.()}
 settingsBtn.addEventListener("click",openSettingsPaused);closeSettings.addEventListener("click",closeSettingsToPause);restartBtn.addEventListener("click",()=>{restartMatch();closeSettingsToPause()});
 graphicsEl.addEventListener("change",()=>{graphicsMode=normalizePreferences({graphics:graphicsEl.value}).graphics;preferences.graphics=graphicsMode;savePreferences();applyGraphicsMode();say(`Graphics set to ${graphicsMode}.`)});
 difficultyEl.addEventListener("change",()=>{preferences.difficulty=normalizePreferences({difficulty:difficultyEl.value}).difficulty;difficultyEl.value=preferences.difficulty;savePreferences();say(`Rival reactions set to ${preferences.difficulty}.`)});
 volumeEl.addEventListener("change",()=>{preferences.volume=+volumeEl.value;savePreferences();initAudio(true)});
 motionEl.addEventListener("change",()=>{preferences.reducedMotion=motionEl.value==="reduced";savePreferences();applyMotionPreference()});
 hapticsToggle.addEventListener("click",()=>{hapticsOn=!hapticsOn;preferences.haptics=hapticsOn;savePreferences();hapticsToggle.classList.toggle("on",hapticsOn);hapticsToggle.setAttribute?.("aria-pressed",String(hapticsOn))});debugToggle.addEventListener("click",()=>{debugOn=!debugOn;debugToggle.classList.toggle("on",debugOn);debugPanel.classList.toggle("show",debugOn);debugToggle.setAttribute?.("aria-pressed",String(debugOn))});resumeBtn.addEventListener("click",()=>togglePause(false));
-$("#pauseBtn").addEventListener("click",()=>togglePause(!paused));$("#helpBtn").addEventListener("click",openHelp);$("#closeHelp").addEventListener("click",closeHelpToPause);$("#startBtn").addEventListener("click",startRun);$("#setupSettingsBtn").addEventListener("click",openSettingsPaused);$("#rematchBtn").addEventListener("click",()=>{restartMatch();paused=false;initAudio(true)});$("#menuBtn").addEventListener("click",showSetup);$("#pauseMenuBtn").addEventListener("click",showSetup);
+$("#pauseBtn").addEventListener("click",()=>togglePause(!paused));$("#helpBtn").addEventListener("click",openHelp);$("#closeHelp").addEventListener("click",closeHelpToPause);$("#startBtn").addEventListener("click",startRun);$("#setupSettingsBtn").addEventListener("click",openSettingsPaused);$("#rematchBtn").addEventListener("click",()=>{replayRun();paused=false;initAudio(true)});$("#menuBtn").addEventListener("click",showSetup);$("#pauseMenuBtn").addEventListener("click",showSetup);
 for(const button of [jumpBtn,duckBtn]){button.addEventListener("contextmenu",e=>e.preventDefault());button.addEventListener("click",e=>{if(e.detail===0&&canAct(fighters[0])){initAudio(true);if(button===jumpBtn)requestJump(fighters[0]);else {setDuck(fighters[0],true,"accessible-click");setTimeout(()=>setDuck(fighters[0],false,"accessible-click"),450)}}})}
+
+
+for(const [id,key] of [["settingsTower","tower"],["settingsMode","mode"],["towerSelect","tower"],["modeSelect","mode"],["goalSelect","goal"],["hazardModifier","modifier"],["helmetStyle","helmet"],["coaching","coaching"],["contrast","contrast"]]){
+ const el=$("#"+id);el.value=preferences[key];el.addEventListener("change",()=>{preferences[key]=el.value;savePreferences();if(["tower","mode"].includes(key)){ $("#towerSelect").value=preferences.tower;$("#modeSelect").value=preferences.mode;$("#settingsTower").value=preferences.tower;$("#settingsMode").value=preferences.mode;if(demo&&!paused)beginDemo();}if(key==="helmet")applyPlayerStyle();if(key==="contrast")document.querySelector("#app").classList.toggle("contrast",preferences.contrast==="high");if(key==="coaching")$("#nextRod").style.display=preferences.coaching==="minimal"?"none":""});
+}
+$("#playerName").value=preferences.name;$("#playerColor").value=preferences.color;
+$("#playerName").addEventListener("blur",()=>{preferences.name=$("#playerName").value;savePreferences();$("#playerName").value=preferences.name;applyPlayerStyle()});
+$("#playerColor").addEventListener("input",()=>{preferences.color=$("#playerColor").value;savePreferences();applyPlayerStyle()});
+seedInput.addEventListener("blur",()=>{seedInput.value=String(Math.max(1,Math.min(4294967295,Math.floor(Number(seedInput.value)||1))))});
+$("#watchBtn").addEventListener("click",()=>{clearInputs();setupModal.classList.remove("open")});
+$("#returnTitleBtn").addEventListener("click",()=>{clearInputs();setupModal.classList.add("open")});
+$("#demoStartBtn").addEventListener("click",startRun);$("#titleHelpBtn").addEventListener("click",openHelp);$("#nextTowerBtn").addEventListener("click",nextTower);
+document.querySelector("#app").classList.toggle("contrast",preferences.contrast==="high");$("#nextRod").style.display=preferences.coaching==="minimal"?"none":"";
 
 for(let i=0;i<MAX_LIVES;i++){const p=document.createElement("span");p.className="pip on";lifePips.appendChild(p)}
 function validateChoreography(){
@@ -778,21 +920,21 @@ function validateChoreography(){
 }
 window.RoyalTwisted={
   version:VERSION,
-  getState:()=>JSON.parse(JSON.stringify(window.__ROYAL_TWISTED_STATE__||{})),
+  getState:()=>{updateDebug();return JSON.parse(JSON.stringify(window.__ROYAL_TWISTED_STATE__||{}))},
   restart:restartMatch,
   getPlayerCount:()=>playerCount,
-  getSession:()=>({seed:matchSeed,rhythm:matchRhythm,phase,round,standings:getStandings().map(({fighter:f,rank})=>({rank,id:f.id,name:f.name,crowns:f.roundWins,stats:{...f.stats}}))}),
+  getSession:()=>({demo,demoPhase,demoElapsed,tower:matchTower,mode:matchMode,rules:JSON.parse(JSON.stringify(matchRules)),tour:JSON.parse(JSON.stringify(tour)),stageDuration:stageDuration(),stageRemaining:Math.max(0,stageDuration()-roundTime),seed:matchSeed,rhythm:matchRhythm,phase,round,standings:getStandings().map(({fighter:f,rank})=>({rank,id:f.id,name:f.name,crowns:f.roundWins,stats:{...f.stats}}))}),
   setPlayerCount:n=>{playerCount=Math.max(2,Math.min(10,Math.round(Number(n)||4)));playerCountEl.value=String(playerCount);createFighters();restartMatch();return playerCount},
-  registerRemotePlayer:(id,name)=>{const f=fighters[Number(id)];if(!f)return false;changeController(f,"remote");if(name)setFighterName(f,name);return true},
+  registerRemotePlayer:(id,name)=>{if(demo)return false;const f=fighters[Number(id)];if(!f)return false;changeController(f,"remote");if(name)setFighterName(f,name);return true},
   releaseRemotePlayer:id=>{const f=fighters[Number(id)];if(!f||f.player)return false;changeController(f,"ai");return true},
-  input:(id,cmd,value=true)=>{const f=fighters[Number(id)];if(!f||!f.alive)return false;if(!f.player)changeController(f,"remote");if(cmd==="jump"&&value)return requestJump(f);if(cmd==="duck")return setDuck(f,!!value,"remote");return false},
-  jump:(id=0)=>requestJump(fighters[Number(id)]),
-  duck:(on,id=0)=>setDuck(fighters[Number(id)],!!on,"remote")
+  input:(id,cmd,value=true)=>{if(demo)return false;const f=fighters[Number(id)];if(!f||!f.alive)return false;if(!f.player)changeController(f,"remote");if(cmd==="jump"&&value)return requestJump(f);if(cmd==="duck")return setDuck(f,!!value,"remote");return false},
+  jump:(id=0)=>!demo&&requestJump(fighters[Number(id)]),
+  duck:(on,id=0)=>!demo&&setDuck(fighters[Number(id)],!!on,"remote")
 };
 window.GameDebug={getState:window.RoyalTwisted.getState,getTuning:()=>TUNING,validateChoreography,setRoundTime:s=>{roundTime=Math.max(0,+s||0)},setPlayerCount:n=>window.RoyalTwisted.setPlayerCount(n),forceHazard:(type="low",eta=1)=>{const f=fighters[0],origin=f?.trackT??PLAYER_T;const t=origin+currentSpeed()*Math.max(.05,+eta||1);return createHazard(type==="high"?"high":"low",t).id},forceHit:(id=0,type="low")=>{const f=fighters[Number(id)];if(!f||!f.alive)return false;const h={id:++hazardId,type:type==="high"?"high":"low",checked:new Set()};hitFighter(f,h);return {trackT:f.trackT,setback:PLAYER_T-f.trackT,lives:f.lives}}};
 
 function animate(now){
-  requestAnimationFrame(animate);pollGamepadMenu();const realDt=Math.min(.05,(now-lastTime)/1000);lastTime=now;fpsAccum+=realDt;fpsFrames++;if(fpsAccum>=.5){fps=fpsFrames/fpsAccum;fpsFrames=0;fpsAccum=0}updatePhase(realDt);if(!paused&&phase==="fight"){accumulator=Math.min(accumulator+realDt,.12);let steps=0;while(phase==="fight"&&accumulator>=FIXED_DT&&steps<MAX_SUBSTEPS){fixedUpdate(FIXED_DT);accumulator-=FIXED_DT;steps++}}else accumulator=0;updateVisuals(realDt,now/1000);updateCamera(realDt,now/1000);updateHUD();updateDebug();renderer.render(scene,camera)
+  requestAnimationFrame(animate);pollGamepadMenu();const wallDt=(now-lastTime)/1000,realDt=Math.min(.05,wallDt);lastTime=now;fpsAccum+=Math.max(0,wallDt);fpsFrames++;if(fpsAccum>=.5){fps=fpsFrames/fpsAccum;fpsFrames=0;fpsAccum=0}if(demo)tickDemo(realDt);else updatePhase(realDt);if(!demo&&!paused&&phase==="fight"){accumulator=Math.min(accumulator+realDt,.12);let steps=0;while(phase==="fight"&&accumulator>=FIXED_DT&&steps<MAX_SUBSTEPS){fixedUpdate(FIXED_DT);accumulator-=FIXED_DT;steps++}}else accumulator=0;updateVisuals(realDt,now/1000);updateCamera(realDt,now/1000);updateHUD();updateDebug();renderer.render(scene,camera)
 }
 
 try{initRenderer();clearTimeout(window.twistedLoadWatch);resetRound();showSetup();window.addEventListener("resize",resize);window.visualViewport?.addEventListener("resize",resize);document.addEventListener("visibilitychange",()=>{if(document.hidden&&!paused)togglePause(true)});setTimeout(()=>loading.style.display="none",420);requestAnimationFrame(animate)}catch(err){clearTimeout(window.twistedLoadWatch);window.twistedLoadError("Renderer Error",`WebGL graphics could not start: ${String(err.message||err)}. Try a WebGL-capable browser or device.`)}

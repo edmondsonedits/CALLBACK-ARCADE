@@ -80,3 +80,10 @@ Task3 candidate verify38239939148/job114779754162 success:449 root tests,144 Sum
 Task3: minor (deferred): portrait checkpoint denominator wraps onto its own line; compact brand subtitle remains Crownway on other courses. Both readable/non-blocking; final whole-branch reviewer must triage.
 
 Task 3: complete (commits1c262d7..6b6c9a7, independent review and both fix reviews clean). Final browser38239939023/artifact11742588700:171 checks pass,0 errors on exact2b6b59de… across all3 profiles. Parent inspected8 final frames: texture closure, title spacing, landscape speed/cue and recovery fixes resolved. All4 environments rendered; actual fall/native recovery passes in all3. Selected frames/full report retained in tests/worlds-browser-final. Midcourse active hazard pixels not inspected; warning/force logic has source/simulation coverage. No physical-device, audio-by-ear, hardware FPS or numerical rating claim. Task4 may begin.
+
+Task3 publication: review and main moved to815c9b79d315bfd8987a3d9769b0db5449571f4e, tree92abdcb9d8b56c3b72c5378847632c527e94b049 equals localf88f572. Main lease0880b4e checked and preserved. Pages/live readback pending. Next upload diffbasef88f572.
+Task4 implementer /root/worlds_twisted at BASEb931c94; owns only Twisted/tests/taskreport. Parent owns browser/integration. No nextgame implementation in parallel.
+
+Task3 publication verified: Pages38242036693 and main verify38242036705 succeeded. Live Roller HTML SHA2562b6b59de0bcadbfcb0907d2eeb60a4389178e3fec5c0ce91c907d2e91d1f9217 matches accepted source.
+
+Task4 implementation81b108a+2728cc3, sourceec9125ec7813812c4129202fdb4aaa90ffb65d5ca542670fdb2866a76a72fe75. Worker123 focused and479 full repository checks pass. Parent initial479 run only had pre-metadata manifest-version mismatch, now worker final metadata/full suite resolves it. Actual browser and independent review next. Roller main browser38242036722 also succeeded.

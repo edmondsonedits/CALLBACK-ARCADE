@@ -1,0 +1,130 @@
+{
+  "pack": {
+    "pack": "castle-kit",
+    "source": "https://kenney.nl/assets/castle-kit",
+    "url": "https://kenney.nl/media/pages/assets/castle-kit/a395102d20-1711543616/kenney_castle-kit.zip",
+    "bytes": 2232589,
+    "sha256": "921f3f73927bb23106cae34bc21d5ab4b033a9fc120475e96f714a406e3169df",
+    "license": "CC0-1.0"
+  },
+  "files": {
+    "tower-top.glb": {
+      "sha256": "222537f0daa9167788a468b4ee71918d1066b7c142e7e251c449c50be3438068",
+      "bytes": 27408,
+      "images": [
+        {
+          "uri": "Textures/colormap.png",
+          "name": "colormap"
+        }
+      ],
+      "materials": 1,
+      "meshes": 1,
+      "bounds": [
+        {
+          "min": [
+            -0.5,
+            0.0,
+            -0.5
+          ],
+          "max": [
+            0.5,
+            0.12999999523162842,
+            0.5
+          ]
+        },
+        {
+          "min": [
+            -1.0,
+            -1.0,
+            -1.0
+          ],
+          "max": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      ]
+    },
+    "rocks-large.glb": {
+      "sha256": "7ea1ee769eb063b192c3c3744cd32a11616320f7ca491fbe23289552f6655595",
+      "bytes": 16204,
+      "images": [
+        {
+          "uri": "Textures/colormap.png",
+          "name": "colormap"
+        }
+      ],
+      "materials": 1,
+      "meshes": 1,
+      "bounds": [
+        {
+          "min": [
+            -0.60040682554245,
+            0.0,
+            -0.674075186252594
+          ],
+          "max": [
+            0.60040682554245,
+            0.5,
+            0.6740752458572388
+          ]
+        },
+        {
+          "min": [
+            -0.842112123966217,
+            -1.0,
+            -0.9723872542381287
+          ],
+          "max": [
+            0.842112123966217,
+            1.0,
+            0.9723872542381287
+          ]
+        }
+      ]
+    },
+    "flag-wide.glb": {
+      "sha256": "74e94f48dffb40aca288676191265523c3e752aef40b868bfa3a51394083519b",
+      "bytes": 25460,
+      "images": [
+        {
+          "uri": "Textures/colormap.png",
+          "name": "colormap"
+        }
+      ],
+      "materials": 1,
+      "meshes": 1,
+      "bounds": [
+        {
+          "min": [
+            -0.05318775773048401,
+            0.0,
+            -0.2734377384185791
+          ],
+          "max": [
+            0.053187742829322815,
+            0.8656144738197327,
+            0.2734377682209015
+          ]
+        },
+        {
+          "min": [
+            -0.9999595880508423,
+            -1.0,
+            -0.9999595880508423
+          ],
+          "max": [
+            0.9999595880508423,
+            1.0,
+            0.9999595880508423
+          ]
+        }
+      ]
+    },
+    "Textures/colormap.png": {
+      "sha256": "66fd49be148f32e88f6c8cace67120250d1943a7856601158ad0ff24651db0b0",
+      "bytes": 7529
+    }
+  }
+}

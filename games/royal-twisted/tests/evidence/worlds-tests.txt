@@ -1,0 +1,172 @@
+✔ Royal Twisted defaults close to CAM-3R-23-U (1.43034ms)
+✔ Royal Twisted camera framing reacts to Player 1 setback, not the whole pack (0.336719ms)
+✔ non-player hits do not shake the camera (0.308398ms)
+✔ jump cannot reset upward velocity just after takeoff (15.986573ms)
+✔ duck is held until every keyboard or pointer source releases (4.09533ms)
+✔ jump while ducking buffers briefly; release launches once (36.952972ms)
+✔ held duck wins landing; expired buffers do not launch (14.819708ms)
+✔ landing buffer launches once within 130ms (17.058962ms)
+✔ focus loss pauses and clears all contestants held inputs and buffers (3.098121ms)
+✔ remote actions cannot mutate posture during pause or countdown (3.762303ms)
+✔ gamepad disconnect releases duck and remote seats are not overwritten (3.733717ms)
+✔ Escape toggles pause and resume; held-key repeats do not toggle (3.28927ms)
+✔ Escape closes settings to pause; a subsequent Escape explicitly resumes (3.400697ms)
+✔ 2 contestants: seven distinct hits, pause-aware rounds, results and rematch (21.188083ms)
+✔ 4 contestants: seven distinct hits, pause-aware rounds, results and rematch (17.125751ms)
+✔ 10 contestants: seven distinct hits, pause-aware rounds, results and rematch (26.074932ms)
+✔ setback is bounded and recovers without changing camera for bot hits (51.379471ms)
+✔ CAM-3R-23-U roundtrips and camera focus ignores a far-back bot (4.827528ms)
+✔ low legal response at time 0; one collision outcome (10.457948ms)
+✔ high legal response at time 0; one collision outcome (18.466414ms)
+✔ low legal response at time 26; one collision outcome (9.223492ms)
+✔ high legal response at time 26; one collision outcome (7.582109ms)
+✔ low legal response at time 66; one collision outcome (7.584155ms)
+✔ high legal response at time 66; one collision outcome (8.749985ms)
+✔ arrival spacing respects low>low floor at 0s including recovery (16.774401ms)
+✔ arrival spacing respects low>high floor at 0s including recovery (14.880263ms)
+✔ arrival spacing respects high>low floor at 0s including recovery (9.072503ms)
+✔ arrival spacing respects high>high floor at 0s including recovery (8.27027ms)
+✔ arrival spacing respects low>low floor at 26s including recovery (16.348121ms)
+✔ arrival spacing respects low>high floor at 26s including recovery (13.502876ms)
+✔ arrival spacing respects high>low floor at 26s including recovery (14.426152ms)
+✔ arrival spacing respects high>high floor at 26s including recovery (27.18941ms)
+✔ arrival spacing respects low>low floor at 66s including recovery (10.020242ms)
+✔ arrival spacing respects low>high floor at 66s including recovery (10.009328ms)
+✔ arrival spacing respects high>low floor at 66s including recovery (15.016848ms)
+✔ arrival spacing respects high>high floor at 66s including recovery (15.885464ms)
+✔ hard bot can legally jump low rod at 0s without a hidden height boost (15.758523ms)
+✔ hard bot can legally jump low rod at 26s without a hidden height boost (13.351613ms)
+✔ hard bot can legally jump low rod at 66s without a hidden height boost (16.608315ms)
+✔ collision boundaries honor safe height and only resolve once (5.285655ms)
+✔ legal human sequence low>low at 0s (17.700431ms)
+✔ legal human sequence low>high at 0s (129.727787ms)
+✔ legal human sequence high>low at 0s (15.120269ms)
+✔ legal human sequence high>high at 0s (16.819792ms)
+✔ legal human sequence low>low at 26s (13.554583ms)
+✔ legal human sequence low>high at 26s (13.256185ms)
+✔ legal human sequence high>low at 26s (12.212209ms)
+✔ legal human sequence high>high at 26s (145.21458ms)
+✔ legal human sequence low>low at 66s (20.54077ms)
+✔ legal human sequence low>high at 66s (13.948378ms)
+✔ legal human sequence high>low at 66s (10.914501ms)
+✔ legal human sequence high>high at 66s (12.106721ms)
+✔ reduced graphics keeps identical collision timing (385.496465ms)
+✔ cue separates next action from safe jump timing and shows recovery (3.92226ms)
+✔ unassisted 2-contestant easy match completes and rematches (144.645496ms)
+ℹ {"round":2,"seconds":46.49166666666667,"wins":[0,2]}
+✔ unassisted 2-contestant normal match completes and rematches (147.605464ms)
+ℹ {"round":2,"seconds":46.49166666666667,"wins":[0,2]}
+✔ unassisted 2-contestant hard match completes and rematches (141.198499ms)
+ℹ {"round":2,"seconds":46.49166666666667,"wins":[0,2]}
+✔ unassisted 4-contestant easy match completes and rematches (1038.989979ms)
+ℹ {"round":3,"seconds":229.75833333333333,"wins":[0,1,0,2]}
+✔ unassisted 4-contestant normal match completes and rematches (1019.065297ms)
+ℹ {"round":3,"seconds":229.75833333333333,"wins":[0,1,0,2]}
+✔ unassisted 4-contestant hard match completes and rematches (1004.198125ms)
+ℹ {"round":3,"seconds":229.75833333333333,"wins":[0,1,0,2]}
+✔ unassisted 10-contestant easy match completes and rematches (2312.250589ms)
+ℹ {"round":4,"seconds":392.2583333333333,"wins":[0,0,2,0,1,0,0,1,0,0]}
+✔ unassisted 10-contestant normal match completes and rematches (1873.216707ms)
+ℹ {"round":4,"seconds":392.2583333333333,"wins":[0,0,2,0,1,0,0,1,0,0]}
+✔ unassisted 10-contestant hard match completes and rematches (1794.376222ms)
+ℹ {"round":4,"seconds":392.2583333333333,"wins":[0,0,2,0,1,0,0,1,0,0]}
+✔ remote takeover clears the outgoing controller posture and queued jump (2.232484ms)
+✔ implicit remote takeover clears the outgoing controller posture (2.48929ms)
+✔ pointer capture loss releases touch without releasing a keyboard hold (2.268403ms)
+✔ paused gamepad and repeated keyboard jump cannot create buffered exploits (7.59858ms)
+✔ a shared seventh-hit rod cannot crown an already eliminated contestant (2.163595ms)
+✔ legal responses sweep the supported speed range and setback positions (744.69081ms)
+✔ paused keyboard arrows remain available to settings and camera controls (1.745126ms)
+✔ results cue names the winner when compact layout hides the host message (1.611261ms)
+✔ a suspended audio context can resume on the next interaction (1.821533ms)
+✔ pause preserves a bots sampled duck response without rerolling its plan (4.667509ms)
+✔ actual animation loop pauses accumulation and transitions once after resume (5.407575ms)
+✔ Three.js is the integrity-verified local 0.180.0 dependency (7.032967ms)
+THREE.Object3D.add: object not an instance of THREE.Object3D. {
+  material: {
+    map: { dispose: [Function: dispose] },
+    dispose: [Function: dispose]
+  },
+  position: { y: 2.05 },
+  scale: { set: [Function: set] }
+}
+THREE.Object3D.add: object not an instance of THREE.Object3D. {
+  material: {
+    map: { dispose: [Function: dispose] },
+    dispose: [Function: dispose]
+  },
+  position: { y: 2.05 },
+  scale: { set: [Function: set] }
+}
+THREE.Object3D.add: object not an instance of THREE.Object3D. {
+  material: {
+    map: { dispose: [Function: dispose] },
+    dispose: [Function: dispose]
+  },
+  position: { y: 2.05 },
+  scale: { set: [Function: set] }
+}
+THREE.Object3D.add: object not an instance of THREE.Object3D. {
+  material: {
+    map: { dispose: [Function: dispose] },
+    dispose: [Function: dispose]
+  },
+  position: { y: 2.05 },
+  scale: { set: [Function: set] }
+}
+✔ preferences validate enums, counts, volume and hostile storage (9.673915ms)
+✔ setup gates all gameplay then start enters the established countdown (72.598111ms)
+✔ contestant changes stage next match without erasing an active round (3.428994ms)
+✔ seeded hazard rhythms repeat independently of cosmetic random draws (9.323909ms)
+✔ clear streak and match statistics count one outcome per rod and survive round reset (3.681413ms)
+✔ survival statistics use fight simulation time only (7.49768ms)
+✔ hazard preview orders pending rods relative to setback and keeps safe NOW timing (2.339674ms)
+✔ gamepad Start pauses and resumes on edges while held actions stay neutral (2.209249ms)
+✔ help pauses, clears held posture, and returns to explicit Resume (2.601552ms)
+✔ standings use shared crown ranks and final results have direct replay and menu routes (45.111249ms)
+✔ gameplay keys do not hijack focused input fields (2.916856ms)
+✔ reduced motion suppresses added effects without changing safe collision outcomes (4.314311ms)
+✔ persisted preferences reload and setup settings cannot be covered or overwritten (2.579394ms)
+✔ audio stays locked before a gesture and zero volume schedules no voice (2.119369ms)
+✔ keyboard movement controls remain active when a native action button has focus (2.063519ms)
+✔ airborne, duck and running animation poses reflect real simulation posture (2.318575ms)
+✔ replay requires release of gamepad actions held through menus (2.151102ms)
+✔ procedural tower and character geometry build with the bundled real Three.js API (118.46555ms)
+✔ four tower preferences sanitize corrupt fields and keep scoped bests (13.031859ms)
+✔ title demo progresses with only bots without consuming seed or writing bests (230.474044ms)
+✔ fresh start clears demo statistics clocks and input (162.7962ms)
+✔ ember burst has a learnable vent then jump pattern with legal gaps (4.381376ms)
+✔ frost grounded duck recharges grip and deliberately brakes recovery (11.733721ms)
+✔ storm warns before bounded gust and grounded duck counters it (12.572836ms)
+✔ tour has four finite stages and honest scoring then completion (17.208297ms)
+✔ replay restores captured rules despite staged settings edits (6.42651ms)
+✔ public state always updates with debug disabled and returns copies (8.542509ms)
+✔ tower rule edits stage and native name input retains editing spaces until blur (8.841796ms)
+✔ demo public remote ownership cannot steal a bot (194.794661ms)
+✔ GLB runtime assets ship complete texture closure (5.132859ms)
+✔ spiral natural 2-seat bots make legal progress within fixed bounds (411.330889ms)
+✔ spiral natural 10-seat bots make legal progress within fixed bounds (827.552416ms)
+✔ ember natural 2-seat bots make legal progress within fixed bounds (276.149973ms)
+✔ ember natural 10-seat bots make legal progress within fixed bounds (863.406528ms)
+✔ frost natural 2-seat bots make legal progress within fixed bounds (323.576039ms)
+✔ frost natural 10-seat bots make legal progress within fixed bounds (953.260754ms)
+✔ storm natural 2-seat bots make legal progress within fixed bounds (316.522582ms)
+✔ storm natural 10-seat bots make legal progress within fixed bounds (939.328751ms)
+✔ ember safe rod transitions still respect conservative arrival floors (215.363142ms)
+✔ frost safe rod transitions still respect conservative arrival floors (189.799966ms)
+✔ storm safe rod transitions still respect conservative arrival floors (148.585887ms)
+✔ storm defers a gust near low rods without surprise damage or lost warning (2.042023ms)
+✔ demo silence survives an enabled audio context and does not write storage (44.150763ms)
+✔ tour pause is time-neutral and replay resets aggregate and deterministic patterns (5.24862ms)
+✔ readonly session rule snapshots cannot mutate runtime nested bests (2.570555ms)
+✔ native empty name remains empty until blur and denied saves remain playable (3.839713ms)
+✔ pending tower assets are cached once and stale generations cannot attach (75.324684ms)
+✔ all seats require release of pad actions carried through restart (4.090564ms)
+ℹ tests 123
+ℹ suites 0
+ℹ pass 123
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 11803.650962

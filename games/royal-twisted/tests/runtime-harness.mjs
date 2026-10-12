@@ -141,11 +141,12 @@ export function runtime(count = 4, seed = 19) {
   const run = (code) => vm.runInContext(code, game);
   // Stub only scene construction, rendering and audiovisual output. Gameplay stays real.
   run(`scene={add(){},remove(){}};hazardGroup={remove(){}};
- buildDummy=()=>({root:{visible:true,position:new THREE.Vector3(),rotation:{z:0},add(){},remove(){}},label:{scale:{set(){}},position:{}}});
+ textSprite=()=>({material:{map:{dispose(){}},dispose(){}},position:{},scale:{set(){}}});
+ buildDummy=()=>({root:{visible:true,position:new THREE.Vector3(),rotation:{z:0},add(){},remove(){}},label:{material:{map:{dispose(){}},dispose(){}},scale:{set(){}},position:{}}});
  createHazard=(type,t)=>{const h={id:++hazardId,type,t,checked:new Set(),warned:false};hazards.push(h);return h};
  positionHazard=()=>{};spawnParticles=()=>{};impactRing=()=>{};tone=()=>{};sfxHit=()=>{};sfxOut=()=>{};sfxWin=()=>{};sfxJump=()=>{};sfxDuck=()=>{};sfxClear=()=>{};triggerFlash=()=>{};
  camera={position:new THREE.Vector3(),fov:46,lookAt(v){this.target=v.clone()},updateProjectionMatrix(){}};
- createFighters();resetRound();phase='fight';nextSpawn=999;`);
+ createFighters();resetRound();fighters.forEach(f=>f.padNeutral=false);phase='fight';nextSpawn=999;`);
   return {
     run,
     game,

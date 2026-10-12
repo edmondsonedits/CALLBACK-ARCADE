@@ -57,16 +57,16 @@ Four Courts Tour: standalone call-and-response rhythm for 2–10 contestants, wi
 
 Royal Sumo: Crownfall v1.3.0: a 2–10 fighter physics brawler with six arenas, Quick Match/Crown Cup, one or two local players and bots. Self-contained WebGL2 build. Phone-room controls and server implemented; public relay deployment pending.
 
-## Royal Twisted — Spiral Keep
+## Royal Twisted — Four Towers
 
 - ID: `royal-twisted` ([manifest](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-twisted/manifest.json), [game guide](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-twisted/README.md))
 - Status: imported; multiplayer in-progress
 - Players: 2–10
-- Version: 0.6.0
+- Version: 0.7.0
 - Source: [source/index.html](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-twisted/source/index.html), [source/original/royal_twisted_spiral_keep_v0.5_original_camera_knockback.html](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-twisted/source/original/royal_twisted_spiral_keep_v0.5_original_camera_knockback.html)
 - Play: [launch game](https://edmondsonedits.github.io/CALLBACK-ARCADE/games/royal-twisted/)
 
-A 2–10 contestant survival run around Spiral Keep: jump cyan rods, hold duck under coral rods, recover from setbacks and compete for the crown. Includes seeded replay, jump/duck practice rhythms, full standings and persistent sound/access preferences.
+Four 2–10 contestant survival towers: classic jump/duck cadence, Ember vent-to-burst patterns, Frost duck-to-recover grip, and warned Storm gust bracing. Includes silent live bots, finite skill practice and four-stage Tour, captured-rule seeded replay and scoped records.
 
 ## Space Bash — Orbital Breakout
 

@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "kind": "arcade-worlds-verification",
+  "version": "0.7.0",
+  "date": "2026-10-12",
+  "result": "focused-node-passed-browser-pending",
+  "checks": [
+    {
+      "command": "node --test tests/royal-twisted-worlds.test.mjs tests/royal-twisted-sumo-benchmark.test.mjs tests/royal-twisted-quality.test.mjs tests/royal-twisted-camera.test.mjs",
+      "tests": 123,
+      "passed": 123,
+      "failed": 0,
+      "output": "tests/evidence/worlds-tests.txt"
+    },
+    {
+      "command": "npm test",
+      "tests": 479,
+      "passed": 479,
+      "failed": 0,
+      "output": "tests/evidence/worlds-full-suite.txt"
+    },
+    {
+      "command": "node games/royal-twisted/tests/source-smoke.mjs",
+      "result": "passed"
+    },
+    {
+      "command": "node --check extracted inline module",
+      "result": "passed"
+    },
+    {
+      "command": "git diff --check -- games/royal-twisted tests/royal-twisted-worlds.test.mjs",
+      "result": "passed"
+    }
+  ],
+  "sourceHashes": {
+    "source/index.html": "ec9125ec7813812c4129202fdb4aaa90ffb65d5ca542670fdb2866a76a72fe75",
+    "source/original/royal_twisted_spiral_keep_v0.5_original_camera_knockback.html": "68170440ea2584201fccd8cc8e6c251ae598b223af1cd9ab6aa99cac1d988ae2",
+    "source/archive/royal_twisted_spiral_keep_v0.4_ten_players.html": "50d44a32a0be10fade5ddabe00493113ee1194b69f2411b1d7d21222538a4dbe"
+  },
+  "redFirst": "Initial 12 world tests failed before implementation; snapshots/all-seat pad regressions subsequently observed red before fixes. Expanded coverage totals30 world tests.",
+  "browser": {
+    "result": "pending-parent",
+    "reason": "No local Chromium invocation; parent owns ordinary Chromium WebGL screenshots and scenarios. CPU Three scene checks do not validate shaders/pixels."
+  },
+  "assets": {
+    "provenance": "source/assets/provenance.json",
+    "loader": "source/vendor/three/addons-provenance.json",
+    "closure": "Three GLBs reference shipped Textures/colormap.png; CC0/MIT complete notices local."
+  },
+  "rubric": {
+    "coreFairness": "pass-node; hardware unverified",
+    "mapCounterplay": "pass-node; visual teaching pending browser",
+    "titleFlow": "pass-node; pixels pending browser",
+    "preferences": "pass-node; native browser editing pending",
+    "worldCoherence": "CPU construction and asset inspection pass; browser pending",
+    "audio": "silence/gesture tests pass; by-ear unverified",
+    "mobileUI": "responsive CSS and native DOM; browser pending",
+    "replayResults": "pass-node; honest actual clear scores",
+    "reliabilityPerformance": "bounded resources/generation tests pass; GPU performance unverified",
+    "provenance": "pass-hashes-local-licenses"
+  },
+  "limits": [
+    "No subjective 9/10 certification",
+    "No online transport introduced",
+    "Hardware sound/gamepad/touch and real GPU performance unverified"
+  ]
+}

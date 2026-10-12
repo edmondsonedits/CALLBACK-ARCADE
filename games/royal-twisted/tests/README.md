@@ -32,3 +32,10 @@ These checks do not verify production multiplayer, physical phones/gamepads, aud
 ## v0.6.0 Sumo benchmark
 
 Run `node --test tests/royal-twisted-sumo-benchmark.test.mjs tests/royal-twisted-quality.test.mjs tests/royal-twisted-camera.test.mjs` from the repository root. The new suite covers setup/start/settings/help/results/replay, safe persisted preferences, gamepad menu edges and held-input release, deterministic gameplay-only RNG, practice rhythms, stats, cues, functional poses, audio gesture gating and real bundled Three.js procedural scene construction. Scene construction does not compile shaders or validate browser pixels. Fresh source-hash evidence is in `evidence/sumo-benchmark.json`; older screenshot/browser reports remain historical.
+
+
+## v0.7.0 Four Towers
+
+`node --test tests/royal-twisted-worlds.test.mjs tests/royal-twisted-sumo-benchmark.test.mjs tests/royal-twisted-quality.test.mjs tests/royal-twisted-camera.test.mjs` runs 123 checks: 30 new world cases and all 93 prior focused cases. New cases exercise each map, 2/10-seat natural bots, Storm warning/deferral and bracing, Frost grip/recovery, Ember transition floors, finite Tour/replay scoring, genuine title progress/silence/isolation/fresh Start, staged/native/denied preferences, copied public state, all-seat pad release, real Three scenery bounds/stale async generations and GLB texture closure. The VM mocks rendering/audio surfaces only; the real Three CPU construction case does not validate shaders/pixels.
+
+Current source hashes and evidence are in `evidence/worlds.json` and `evidence/worlds-tests.txt`. Parent-owned Chromium scenarios supply independent rendered acceptance; no local Chromium claim is made here. The old browser-quality fixture remains a historical specialized instrumentation check, not the new-title screenshot authority.

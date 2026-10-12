@@ -35,7 +35,7 @@ jobs:
         env:
           # Sequential expansion: automatic pixel QA follows the current game.
           # Manual dispatch can select any game or run the complete arcade.
-          BROWSER_GAMES: ${{ inputs.games || 'royal-roller-ruckus' }}
+          BROWSER_GAMES: ${{ inputs.games || 'royal-twisted' }}
       - uses: actions/upload-artifact@v4
         if: always()
         with:

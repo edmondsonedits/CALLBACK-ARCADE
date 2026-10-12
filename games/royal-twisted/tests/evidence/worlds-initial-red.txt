@@ -1,0 +1,253 @@
+✖ four tower preferences sanitize corrupt fields and keep scoped bests (7.395968ms)
+✖ title demo progresses with only bots without consuming seed or writing bests (2.300381ms)
+✖ fresh start clears demo statistics clocks and input (1.921576ms)
+✖ ember burst has a learnable vent then jump pattern with legal gaps (4.218412ms)
+✖ frost grounded duck recharges grip and deliberately brakes recovery (6.616555ms)
+✖ storm warns before bounded gust and grounded duck counters it (1.86643ms)
+✖ tour has four finite stages and honest scoring then completion (2.544066ms)
+✖ replay restores captured rules despite staged settings edits (4.775137ms)
+✖ public state always updates with debug disabled and returns copies (13.825595ms)
+✖ tower rule edits stage and native name input retains editing spaces until blur (2.431093ms)
+✖ demo public remote ownership cannot steal a bot (3.053139ms)
+✖ GLB runtime assets ship complete texture closure (2.5985ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 0
+ℹ fail 12
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 184.471075
+
+✖ failing tests:
+
+test at tests/royal-twisted-worlds.test.mjs:5:1
+✖ four tower preferences sanitize corrupt fields and keep scoped bests (7.395968ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'frost'
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/89700bddec30/arcade-worlds/tests/royal-twisted-worlds.test.mjs:5:245)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'frost',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/royal-twisted-worlds.test.mjs:6:1
+✖ title demo progresses with only bots without consuming seed or writing bests (2.300381ms)
+  evalmachine.<anonymous>:1
+  setReplaySeed(77);showSetup();for(let i=0;i<2400;i++)tickDemo(FIXED_DT)
+                                                       ^
+  
+  ReferenceError: tickDemo is not defined
+      at evalmachine.<anonymous>:1:54
+      at Script.runInContext (node:vm:149:12)
+      at Object.runInContext (node:vm:301:6)
+      at Object.run (file:///workspace/scratch/89700bddec30/arcade-worlds/games/royal-twisted/tests/runtime-harness.mjs:141:28)
+      at TestContext.<anonymous> (file:///workspace/scratch/89700bddec30/arcade-worlds/tests/royal-twisted-worlds.test.mjs:6:110)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+
+test at tests/royal-twisted-worlds.test.mjs:7:1
+✖ fresh start clears demo statistics clocks and input (1.921576ms)
+  evalmachine.<anonymous>:1
+  showSetup();for(let i=0;i<1500;i++)tickDemo(FIXED_DT);startRun()
+                                     ^
+  
+  ReferenceError: tickDemo is not defined
+      at evalmachine.<anonymous>:1:36
+      at Script.runInContext (node:vm:149:12)
+      at Object.runInContext (node:vm:301:6)
+      at Object.run (file:///workspace/scratch/89700bddec30/arcade-worlds/games/royal-twisted/tests/runtime-harness.mjs:141:28)
+      at TestContext.<anonymous> (file:///workspace/scratch/89700bddec30/arcade-worlds/tests/royal-twisted-worlds.test.mjs:7:85)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+
+test at tests/royal-twisted-worlds.test.mjs:8:1
+✖ ember burst has a learnable vent then jump pattern with legal gaps (4.218412ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      'high',
+  -   'low',
+  -   'low'
+    ]
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/89700bddec30/arcade-worlds/tests/royal-twisted-worlds.test.mjs:8:177)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'high' ],
+    expected: [ 'high', 'low', 'low' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/royal-twisted-worlds.test.mjs:9:1
+✖ frost grounded duck recharges grip and deliberately brakes recovery (6.616555ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 0.06600000000000017
+  - 0.06
+        ^
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/89700bddec30/arcade-worlds/tests/royal-twisted-worlds.test.mjs:9:218)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0.06600000000000017,
+    expected: 0.06,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/royal-twisted-worlds.test.mjs:10:1
+✖ storm warns before bounded gust and grounded duck counters it (1.86643ms)
+  evalmachine.<anonymous>:1
+  towerCue().kind
+  ^
+  
+  ReferenceError: towerCue is not defined
+      at evalmachine.<anonymous>:1:1
+      at Script.runInContext (node:vm:149:12)
+      at Object.runInContext (node:vm:301:6)
+      at Object.run (file:///workspace/scratch/89700bddec30/arcade-worlds/games/royal-twisted/tests/runtime-harness.mjs:141:28)
+      at TestContext.<anonymous> (file:///workspace/scratch/89700bddec30/arcade-worlds/tests/royal-twisted-worlds.test.mjs:10:206)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+
+test at tests/royal-twisted-worlds.test.mjs:11:1
+✖ tour has four finite stages and honest scoring then completion (2.544066ms)
+  evalmachine.<anonymous>:1
+  roundTime=stageDuration()-.005;fixedUpdate(FIXED_DT)
+  ^
+  
+  ReferenceError: stageDuration is not defined
+      at evalmachine.<anonymous>:1:1
+      at Script.runInContext (node:vm:149:12)
+      at Object.runInContext (node:vm:301:6)
+      at Object.run (file:///workspace/scratch/89700bddec30/arcade-worlds/games/royal-twisted/tests/runtime-harness.mjs:141:28)
+      at TestContext.<anonymous> (file:///workspace/scratch/89700bddec30/arcade-worlds/tests/royal-twisted-worlds.test.mjs:11:204)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+
+test at tests/royal-twisted-worlds.test.mjs:12:1
+✖ replay restores captured rules despite staged settings edits (4.775137ms)
+  evalmachine.<anonymous>:1
+  preferences.tower='ember';preferences.mode='practice';seedInput.value='73';restartMatch();preferences.tower='storm';preferences.goal='long';replayRun()
+                                                                                                                                              ^
+  
+  ReferenceError: replayRun is not defined
+      at evalmachine.<anonymous>:1:141
+      at Script.runInContext (node:vm:149:12)
+      at Object.runInContext (node:vm:301:6)
+      at Object.run (file:///workspace/scratch/89700bddec30/arcade-worlds/games/royal-twisted/tests/runtime-harness.mjs:141:28)
+      at TestContext.<anonymous> (file:///workspace/scratch/89700bddec30/arcade-worlds/tests/royal-twisted-worlds.test.mjs:12:94)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+
+test at tests/royal-twisted-worlds.test.mjs:13:1
+✖ public state always updates with debug disabled and returns copies (13.825595ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(s.time>0)
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/89700bddec30/arcade-worlds/tests/royal-twisted-worlds.test.mjs:13:156)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/royal-twisted-worlds.test.mjs:14:1
+✖ tower rule edits stage and native name input retains editing spaces until blur (2.431093ms)
+  TypeError: Cannot read properties of undefined (reading '0')
+      at TestContext.<anonymous> (file:///workspace/scratch/89700bddec30/arcade-worlds/tests/royal-twisted-worlds.test.mjs:14:182)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/royal-twisted-worlds.test.mjs:15:1
+✖ demo public remote ownership cannot steal a bot (3.053139ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/89700bddec30/arcade-worlds/tests/royal-twisted-worlds.test.mjs:15:107)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/royal-twisted-worlds.test.mjs:16:1
+✖ GLB runtime assets ship complete texture closure (2.5985ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(fs.existsSync(dir+'/tower-top.glb'))
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/89700bddec30/arcade-worlds/tests/royal-twisted-worlds.test.mjs:16:190)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
