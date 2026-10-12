@@ -23,3 +23,6 @@ The current `window.SpaceBash` API exposes player-count/state helpers, but no pe
 
 ## Tuning
 Movement, jump, kick, throw, gravity and related values live in the inline `TUNE` object.
+
+## Quality review
+The active source includes carrying/fuse/impact safeguards, clearer action and hazard cues, input cleanup and conservative CPU safety improvements. See [quality evidence](tests/QUALITY.md) for automated checks and the remaining rendered-browser/reference verification blockers. The preserved original upload is unchanged.
