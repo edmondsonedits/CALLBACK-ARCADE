@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.14.0 — Four courts and mastery
+
+- Add silent live all-bot title exhibition, compact edge menu, Watch/Return, clean Start and separate exhibition random state.
+- Add warned gusts, bounded Moonwell force field, and rotating capsule deflectors with shared render/collision geometry and map-aware bot forecasts. Add distinct dock, observatory and clockworks materials/landmarks plus armored defenders.
+- Add four-court 75-second Tour with fair tied-life placement points, aggregate results, coaching and replay/next-court flow. Preserve classic Siege and every-court Defense Drill.
+- Group 16 validated settings into four disclosures, preserve staged rules and immediate style/access/controls.
+- Use six licensed local Kenney PNG/OGG assets with complete license/source/hash records and safe loading failure. Gate/cap audio, stop voices on menu, preserve silent demos after sounded matches.
+- Add worlds behavior tests and current-source evidence. Browser/hardware rendering and audio-by-ear remain parent review items.
+
 ## 0.13.0 — Sumo benchmark upgrade
 
 - Add paused setup with saved rule summary, siege/drill choices, contextual help, pause/menu routes, ordered crown/life standings and 1/3/5-crown matches. Setup rule edits wait for a new start or explicit Apply & Restart; public immediate count/arena APIs remain available.

@@ -18,11 +18,11 @@ Private-plan medieval archery for 2–10 contestant slots. Nightfall adds armore
 - ID: `royal-ballistix` ([manifest](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-ballistix/manifest.json), [game guide](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-ballistix/README.md))
 - Status: imported; multiplayer not-integrated
 - Players: 2–10
-- Version: 0.13.0
+- Version: 0.14.0
 - Source: [source/index.html](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-ballistix/source/index.html)
 - Play: [launch game](https://edmondsonedits.github.io/CALLBACK-ARCADE/games/royal-ballistix/)
 
-Radial ball-deflection survival for 2–10 contestants, one local human plus bots. Saved setup, 1/3/5-crown siege and timed defense practice; touch, keyboard and gamepad; coastal castle court, accurate volley/cannon guides and persistent audio/access preferences. Camera/CAM hooks remain available. Phone/network transport is not integrated.
+Radial ball-deflection survival for 2–10 contestants. Four physical courts: Beach Siege, wind-driven Gale Harbour, Moonwell vortex and Clockwork Keep deflectors. Silent all-bot title exhibition, 75-second four-court Tour, classic Siege and 60-second Defense Drill; saved grouped rules/style/controls/access preferences, licensed local effects, map-aware bots. Camera/CAM and public seat hooks retained. Phone/network transport is not integrated.
 
 ## Royal Roller Ruckus — Crownway Circuit
 

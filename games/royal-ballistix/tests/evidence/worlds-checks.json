@@ -1,0 +1,16 @@
+{
+  "build": "0.14.0-worlds",
+  "date": "2026-10-12",
+  "sourceSha256": "55f7a7d2a19374b238015f8b6338979202a2eb30ee2a8c7f3ec86329f7fc15ef",
+  "focusedTests": 86,
+  "worldsTests": 16,
+  "assets": "../../source/assets/provenance.json",
+  "report": "../../../../docs/quality/worlds-2026-10-12/task-1-report.md",
+  "browserVisualQA": "Parent responsibility; not asserted by Node tests",
+  "multiplayer": "not-integrated",
+  "regression": {
+    "passed": 402,
+    "command": "npm test",
+    "note": "Final worlds implementation and metadata pass; subsequent UI-only hazard-label/disabled-state clarification rechecked by all 86 focused tests."
+  }
+}

@@ -91,3 +91,12 @@ Do not change `multiplayer.status` to `verified` until the repository's GAME_SDK
 Local touch uses the radial stick (distance enables running), Magnet and Pulse; it has no separate Run button. Pointer ownership prevents a second touch stealing an active stick/Magnet control. Pointer cancellation/lost capture clears its action; pause, restart, blur and hidden-document transitions clear local pending inputs and release a locally held volley. Settings return to pause until Resume.
 
 These are local control protections. They do not add network sequencing, remote stale-input timeouts or authentication; callers of `setPlayerInput` remain responsible for sending neutral input or calling `releasePlayer` when their controller disconnects.
+
+## Worlds v0.14.0
+
+`getState()` also returns `demo`, `menu`, `arena`, `arenaTime`, `hazard`, `pace`, `demoRounds` and a copied `tour` summary (`index`, `maps`, `points`, `completed`) or null. `paused` remains true on the title even while the isolated exhibition advances; `demo` identifies that simulation. `setPlayerInput` returns false during the exhibition and `releasePlayer` cannot alter a demo bot. Starting a match clears stale external control state. Public count/size setters retain immediate semantics; normal UI rule edits remain staged.
+
+Stable UI IDs: `menuOv`, `setupSettings`, `settingsOv`, `close`, `startSiege`, `startPractice`, `startTour`, `watchDemo`, `returnMenu`, `watchStart`, `arena`, `pause`, `pauseMenu`, `next`, `nextCourt`; settings disclosures are `matchSettings`, `styleSettings`, `controlSettings`, `audioSettings`. The existing camera/CAM interface is unchanged.
+
+Parent-owned browser QA can inspect these public surfaces; private simulation access remains confined to the owned test harness. Network authority/authentication limitations above still apply.
+

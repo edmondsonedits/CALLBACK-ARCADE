@@ -1,0 +1,35 @@
+name: arcade-browser-worlds
+on:
+  push:
+    branches: [main, 'quality/arcade-worlds*']
+    paths:
+      - 'games/**/source/**'
+      - 'scripts/browser-worlds/**'
+      - '.github/workflows/browser-worlds.yml'
+      - 'package-lock.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: browser-worlds-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.13.0
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Exercise worlds on desktop and emulated touch viewports
+        run: node scripts/browser-worlds/run.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: arcade-browser-worlds
+          path: .browser-worlds/
+          retention-days: 14

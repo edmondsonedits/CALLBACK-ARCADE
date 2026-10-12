@@ -105,3 +105,10 @@ Browser checks cover 390×844 / 844×390, 2/4/10 seats, 80/135% arena scale, mul
 The additional root `tests/royal-ballistix-sumo-benchmark.test.mjs` executes the real standalone with controlled browser substitutes. It covers initial menu gating, staged rules and saved preferences, standard gamepad deadzone/actions/pause/disconnect/reconnect, timed drill damage/crowns/metrics, real shot/release vectors, landing projection, cosmetic RNG independence, configurable match end, stale menu/results and bounded audio resources/failure cleanup.
 
 Manual follow-up: verify title/help/settings scrolling and controls at 390×844, 844×390 and 1365×900, high contrast gate identity, reduced motion, held-key/pad resume protection, drill lane practice, audio-by-ear, and physical touch/gamepad devices. Old evidence folders are historical v0.12.1 captures and do not attest this version. The fresh source-bound check record is `evidence/sumo-benchmark-checks.json`. Local Chromium startup is known blocked by `socket() failed: Operation not permitted`; do not bypass the environment restrictions.
+
+## Worlds verification
+
+Run `node --test tests/royal-ballistix-import.test.mjs tests/royal-ballistix-mobile-ui.test.mjs tests/royal-ballistix-quality.test.mjs tests/royal-ballistix-sumo-benchmark.test.mjs tests/royal-ballistix-worlds.test.mjs` from repository root. The owned harness now exposes court force/geometry/prediction helpers, sample playback and minimal optional browser asset constructors in its private test copy. Production ships no test-only simulation hooks.
+
+Worlds tests cover warnings versus active/calm forces, field exclusion, reflected rotor geometry, bounded trajectories, held-ball immunity, map-aware bot forecasts, timed 2/10-seat exhibitions, Tour award/reset/tie logic, preferences/focus, demo lifecycle/random/score/storage isolation and audio/asset failure. Browser/mobile pixels, actual gamepad hardware and audio balance require parent/browser review.
+
