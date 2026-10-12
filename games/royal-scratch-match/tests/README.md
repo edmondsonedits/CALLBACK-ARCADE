@@ -1,5 +1,7 @@
 # Royal Scratch Match tests
 
+Run `node --test tests/royal-scratch-match-quality.test.mjs` for the runtime harness. See `QUALITY.md` for measured evidence and remaining browser/device gaps.
+
 These checks are split between source-level automation and browser/manual verification. They demonstrate the imported file and expected v0.5 hooks; they do not claim online multiplayer readiness.
 
 ## Automated source smoke check
@@ -8,7 +10,7 @@ From the repository root:
 
     node games/royal-scratch-match/tests/smoke.mjs
 
-The smoke check verifies the imported source hash and architectural markers: 2–10 slots, input/config/state APIs, local keyboard/touch wiring, bot resolution, forward note travel, and no external HTTP(S) runtime asset dependencies.
+The smoke check verifies the immutable original archive hash and checks the edited runtime and architectural markers: 2–10 slots, input/config/state APIs, local keyboard/touch wiring, bot resolution, forward note travel, and no external HTTP(S) runtime asset dependencies.
 
 It can also extract the inline JavaScript for Node syntax checking:
 

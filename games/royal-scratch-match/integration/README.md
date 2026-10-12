@@ -47,6 +47,7 @@ Supported options:
 - humanPlayers: array of slot indexes, or a number meaning the first N slots.
 - players: optional name/color profiles, first ten used.
 - difficulty: current difficulty string.
+- seed: optional finite number converted to uint32; resets the gameplay PRNG on each start/configure. Omit to keep the configured seed; pass null to restore ordinary stochastic play. Cosmetic randomness does not consume this stream.
 
 configure() reinitializes players. Use it in a lobby/pre-round phase, not for seamless mid-round joins.
 
@@ -81,9 +82,9 @@ This is appropriate for diagnostics and a future host adapter. It is not a serve
 
 ## Current bot control
 
-resolveBotsFor(note) evaluates each non-human slot at note time using difficulty, phrase pressure, chord penalties, and botSkillFor(index), then directly calls score/miss functions.
+resolveBotsFor(note) samples a timed intent for each non-human slot using the unchanged difficulty, pressure, chord and skill probabilities. Successful lane/chord actions use the same local judge as humans, bound to the intended note. Perfect intents use half the perfect window; good intents use the midpoint between perfect and good cutoffs. Missed intents expire just beyond the good window. This bounded model preserves the old rating distribution without pretending bots have network latency.
 
-Important future change: docs/GAME_SDK.md requires bot substitution to use the same validated action path as network players. v0.5 does not do this yet.
+The shared local judge is not authentication. The future transport still must enforce the server trust boundary in docs/GAME_SDK.md.
 
 ## Required CALLBACK multiplayer work
 
@@ -98,7 +99,7 @@ A production phone-controller adapter should keep the game host authoritative an
 7. Disconnect neutralization and credential-bound reconnect.
 8. Lobby seat replacement so phones can claim bot slots without resetting an in-progress match.
 9. Bot substitution through the same validated action pipeline rather than direct award/miss calls.
-10. Deterministic/replayable events: replace unseeded Math.random() where necessary and record accepted inputs/bot actions.
+10. Record accepted inputs/bot actions for replay. The optional local seed now reproduces phrase and bot randomness, but no network event log is implemented.
 11. Host snapshots/interpolation contract for controller/TV display; phones must not run independent authoritative simulations.
 12. Rhythm-specific latency calibration so transport delay does not silently redefine musical timing.
 

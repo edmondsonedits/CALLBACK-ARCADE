@@ -1,5 +1,15 @@
 # Changelog
 
+## Quality branch — timing and feedback
+
+- Judgment samples a monotonic game clock on input; hidden-page intervals freeze countdown and phrases. Audio unlock/suspension cannot change the clock origin.
+- Retained difficulty windows, lives, score/combo rules, controls, CAM codes and generation-guarded round-end cancellation.
+- Added opt-in `configure({seed})` replayability, independent of cosmetic randomness. Bots preserve success/perfect probabilities and use timed lane judgments; missed intents expire once.
+- Added 100 ms DJ audio lookahead, cancellation on mute/restart/background/audio suspension, and a 35 ms stale-event cutoff. Response tones use a higher sine timbre.
+- Notes approach linearly, hit feedback includes signed timing offset, and the response heading clears correctly. Highway geometry reserves space beneath HUD/topbar and above controls.
+- Archived the exact original v0.5 import and moved its immutable SHA-256 check to that archive.
+- Added executable runtime quality tests and an evidence report in `tests/QUALITY.md`. No asset imports or metadata/version finalization.
+
 ## Standalone reliability fixes
 
 - Restart cancels the pending round-end timer and invalidates callbacks from earlier rounds, so an old result callback cannot end a new match.
