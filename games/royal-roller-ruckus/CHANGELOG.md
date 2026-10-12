@@ -19,3 +19,9 @@
   honestly. Preserve manual resume and local CALLBACK hooks.
 - Add behavioral, actual-course and browser checks. Evidence and limitations:
   `integration/quality/README.md`. Release metadata remains coordinator-owned.
+
+## Review follow-up — optional bot balance
+
+- Restore the pre-polish `.31` corner-speed penalty; the matched-seed ablation
+  demonstrated that the additional `.50` slowdown was unnecessary for completion
+  and enlarged lap-time tails. Navigation corrections are a separate commit.
