@@ -1,6 +1,6 @@
 {
   "id": "royal-ballistix",
-  "title": "Royal Ballistix — Beach Siege",
+  "title": "Royal Ballistix \u2014 Beach Siege",
   "aliases": [
     "Royal Ballistix",
     "Ballistix",
@@ -17,18 +17,18 @@
     "mobile",
     "canvas"
   ],
-  "description": "Radial ball-deflection survival game for 2–10 contestants. One local player can defend a gate with movement, Magnet, Pulse and Run while AI bots fill remaining seats; arena size is adjustable and phone/network transport is not yet integrated.",
+  "description": "Radial ball-deflection survival for 2\u201310 contestants, one local human plus bots. Radial touch movement controls running alongside Magnet and Pulse; keyboard controls, adjustable arena and CAM save/load remain available. The quality revision improves contact, input cleanup, round results and landscape layout. Phone/network transport is not integrated.",
   "players": {
     "min": 2,
     "max": 10
   },
-  "version": "0.12.0",
+  "version": "0.12.1",
   "source": {
     "status": "imported",
     "paths": [
       "source/index.html"
     ],
-    "provenance": "Imported unchanged from edmondsonedits/CALLBACK commit ed09d25b690b36b397516e4d77437e3dd21247c8 (game-modes/royal-ballistix/index.html). Upstream repository license: Apache-2.0.",
+    "provenance": "Based on edmondsonedits/CALLBACK commit ed09d25b690b36b397516e4d77437e3dd21247c8 (game-modes/royal-ballistix/index.html), with subsequent CALLBACK Arcade camera/mobile/lifecycle improvements and the 0.12.1 quality revision. Upstream Apache-2.0 license and modification notice retained. Current standalone SHA-256: 47b128059172554af2aee0a51b7ad6b55982087bf5597d9a1f9076501cdfe80b. See tests/evidence/coordinator-review.md for verification scope and limitations.",
     "url": "https://github.com/edmondsonedits/CALLBACK/blob/ed09d25b690b36b397516e4d77437e3dd21247c8/game-modes/royal-ballistix/index.html"
   },
   "lifecycle": "experimental",

@@ -18,11 +18,11 @@ Private-plan medieval archery for 2–10 contestant slots. Nightfall adds textur
 - ID: `royal-ballistix` ([manifest](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-ballistix/manifest.json), [game guide](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-ballistix/README.md))
 - Status: imported; multiplayer not-integrated
 - Players: 2–10
-- Version: 0.12.0
+- Version: 0.12.1
 - Source: [source/index.html](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-ballistix/source/index.html)
 - Play: [launch game](https://edmondsonedits.github.io/CALLBACK-ARCADE/games/royal-ballistix/)
 
-Radial ball-deflection survival game for 2–10 contestants. One local player can defend a gate with movement, Magnet, Pulse and Run while AI bots fill remaining seats; arena size is adjustable and phone/network transport is not yet integrated.
+Radial ball-deflection survival for 2–10 contestants, one local human plus bots. Radial touch movement controls running alongside Magnet and Pulse; keyboard controls, adjustable arena and CAM save/load remain available. The quality revision improves contact, input cleanup, round results and landscape layout. Phone/network transport is not integrated.
 
 ## Royal Roller Ruckus — Crownway Circuit
 

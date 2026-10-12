@@ -85,3 +85,9 @@ Do not run independent phone simulations and reconcile them later.
 ## Readiness rule
 
 Do not change `multiplayer.status` to `verified` until the repository's GAME_SDK contract is implemented and a valid hash-bound JSON verification record exists under `integration/` or `tests/`.
+
+## Quality revision notes
+
+Local touch uses the radial stick (distance enables running), Magnet and Pulse; it has no separate Run button. Pointer ownership prevents a second touch stealing an active stick/Magnet control. Pointer cancellation/lost capture clears its action; pause, restart, blur and hidden-document transitions clear local pending inputs and release a locally held volley. Settings return to pause until Resume.
+
+These are local control protections. They do not add network sequencing, remote stale-input timeouts or authentication; callers of `setPlayerInput` remain responsible for sending neutral input or calling `releasePlayer` when their controller disconnects.

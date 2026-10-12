@@ -1,0 +1,570 @@
+{
+  "browser": "154.0.8037.57",
+  "errors": [],
+  "checks": [
+    {
+      "name": "layout 390x844 seats=2 scale=80",
+      "passed": true
+    },
+    {
+      "name": "layout 390x844 seats=2 scale=135",
+      "passed": true
+    },
+    {
+      "name": "layout 390x844 seats=4 scale=80",
+      "passed": true
+    },
+    {
+      "name": "layout 390x844 seats=4 scale=135",
+      "passed": true
+    },
+    {
+      "name": "layout 390x844 seats=10 scale=80",
+      "passed": true
+    },
+    {
+      "name": "layout 390x844 seats=10 scale=135",
+      "passed": true
+    },
+    {
+      "name": "layout 844x390 seats=2 scale=80",
+      "passed": true
+    },
+    {
+      "name": "layout 844x390 seats=2 scale=135",
+      "passed": true
+    },
+    {
+      "name": "layout 844x390 seats=4 scale=80",
+      "passed": true
+    },
+    {
+      "name": "layout 844x390 seats=4 scale=135",
+      "passed": true
+    },
+    {
+      "name": "layout 844x390 seats=10 scale=80",
+      "passed": true
+    },
+    {
+      "name": "layout 844x390 seats=10 scale=135",
+      "passed": true
+    },
+    {
+      "name": "simultaneous emulated stick and Magnet",
+      "passed": true
+    },
+    {
+      "name": "cancel releases Magnet",
+      "passed": true
+    },
+    {
+      "name": "settings return to pause",
+      "passed": true
+    },
+    {
+      "name": "CAM round-trip leaves simulation unchanged",
+      "passed": true
+    }
+  ],
+  "layout": [
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "seats": 2,
+      "scale": 80,
+      "rects": {
+        "#track": {
+          "x": 25.578125,
+          "y": 689.40625,
+          "w": 132.59375,
+          "h": 132.59375
+        },
+        "#magnet": {
+          "x": 164.5,
+          "y": 699.5,
+          "w": 136.5,
+          "h": 136.5
+        },
+        "#pulse": {
+          "x": 310,
+          "y": 732.75,
+          "w": 70,
+          "h": 70
+        },
+        ".top": {
+          "x": 7,
+          "y": 6,
+          "w": 376,
+          "h": 57
+        },
+        "#roster": {
+          "x": 10,
+          "y": 88,
+          "w": 370,
+          "h": 22
+        }
+      },
+      "controlsVisible": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "seats": 2,
+      "scale": 135,
+      "rects": {
+        "#track": {
+          "x": 25.578125,
+          "y": 689.40625,
+          "w": 132.59375,
+          "h": 132.59375
+        },
+        "#magnet": {
+          "x": 164.5,
+          "y": 699.5,
+          "w": 136.5,
+          "h": 136.5
+        },
+        "#pulse": {
+          "x": 310,
+          "y": 732.75,
+          "w": 70,
+          "h": 70
+        },
+        ".top": {
+          "x": 7,
+          "y": 6,
+          "w": 376,
+          "h": 57
+        },
+        "#roster": {
+          "x": 10,
+          "y": 88,
+          "w": 370,
+          "h": 22
+        }
+      },
+      "controlsVisible": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "seats": 4,
+      "scale": 80,
+      "rects": {
+        "#track": {
+          "x": 25.578125,
+          "y": 689.40625,
+          "w": 132.59375,
+          "h": 132.59375
+        },
+        "#magnet": {
+          "x": 164.5,
+          "y": 699.5,
+          "w": 136.5,
+          "h": 136.5
+        },
+        "#pulse": {
+          "x": 310,
+          "y": 732.75,
+          "w": 70,
+          "h": 70
+        },
+        ".top": {
+          "x": 7,
+          "y": 6,
+          "w": 376,
+          "h": 57
+        },
+        "#roster": {
+          "x": 10,
+          "y": 88,
+          "w": 370,
+          "h": 22
+        }
+      },
+      "controlsVisible": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "seats": 4,
+      "scale": 135,
+      "rects": {
+        "#track": {
+          "x": 25.578125,
+          "y": 689.40625,
+          "w": 132.59375,
+          "h": 132.59375
+        },
+        "#magnet": {
+          "x": 164.5,
+          "y": 699.5,
+          "w": 136.5,
+          "h": 136.5
+        },
+        "#pulse": {
+          "x": 310,
+          "y": 732.75,
+          "w": 70,
+          "h": 70
+        },
+        ".top": {
+          "x": 7,
+          "y": 6,
+          "w": 376,
+          "h": 57
+        },
+        "#roster": {
+          "x": 10,
+          "y": 88,
+          "w": 370,
+          "h": 22
+        }
+      },
+      "controlsVisible": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "seats": 10,
+      "scale": 80,
+      "rects": {
+        "#track": {
+          "x": 25.578125,
+          "y": 689.40625,
+          "w": 132.59375,
+          "h": 132.59375
+        },
+        "#magnet": {
+          "x": 164.5,
+          "y": 699.5,
+          "w": 136.5,
+          "h": 136.5
+        },
+        "#pulse": {
+          "x": 310,
+          "y": 732.75,
+          "w": 70,
+          "h": 70
+        },
+        ".top": {
+          "x": 7,
+          "y": 6,
+          "w": 376,
+          "h": 57
+        },
+        "#roster": {
+          "x": 10,
+          "y": 88,
+          "w": 370,
+          "h": 48
+        }
+      },
+      "controlsVisible": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "seats": 10,
+      "scale": 135,
+      "rects": {
+        "#track": {
+          "x": 25.578125,
+          "y": 689.40625,
+          "w": 132.59375,
+          "h": 132.59375
+        },
+        "#magnet": {
+          "x": 164.5,
+          "y": 699.5,
+          "w": 136.5,
+          "h": 136.5
+        },
+        "#pulse": {
+          "x": 310,
+          "y": 732.75,
+          "w": 70,
+          "h": 70
+        },
+        ".top": {
+          "x": 7,
+          "y": 6,
+          "w": 376,
+          "h": 57
+        },
+        "#roster": {
+          "x": 10,
+          "y": 88,
+          "w": 370,
+          "h": 48
+        }
+      },
+      "controlsVisible": true
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "seats": 2,
+      "scale": 80,
+      "rects": {
+        "#track": {
+          "x": 10,
+          "y": 244,
+          "w": 124,
+          "h": 124
+        },
+        "#magnet": {
+          "x": 624,
+          "y": 258,
+          "w": 124,
+          "h": 124
+        },
+        "#pulse": {
+          "x": 758,
+          "y": 282,
+          "w": 76,
+          "h": 76
+        },
+        ".top": {
+          "x": 7,
+          "y": 6,
+          "w": 830,
+          "h": 51
+        },
+        "#roster": {
+          "x": 10,
+          "y": 55,
+          "w": 824,
+          "h": 22
+        }
+      },
+      "controlsVisible": true
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "seats": 2,
+      "scale": 135,
+      "rects": {
+        "#track": {
+          "x": 10,
+          "y": 244,
+          "w": 124,
+          "h": 124
+        },
+        "#magnet": {
+          "x": 624,
+          "y": 258,
+          "w": 124,
+          "h": 124
+        },
+        "#pulse": {
+          "x": 758,
+          "y": 282,
+          "w": 76,
+          "h": 76
+        },
+        ".top": {
+          "x": 7,
+          "y": 6,
+          "w": 830,
+          "h": 51
+        },
+        "#roster": {
+          "x": 10,
+          "y": 55,
+          "w": 824,
+          "h": 22
+        }
+      },
+      "controlsVisible": true
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "seats": 4,
+      "scale": 80,
+      "rects": {
+        "#track": {
+          "x": 10,
+          "y": 244,
+          "w": 124,
+          "h": 124
+        },
+        "#magnet": {
+          "x": 624,
+          "y": 258,
+          "w": 124,
+          "h": 124
+        },
+        "#pulse": {
+          "x": 758,
+          "y": 282,
+          "w": 76,
+          "h": 76
+        },
+        ".top": {
+          "x": 7,
+          "y": 6,
+          "w": 830,
+          "h": 51
+        },
+        "#roster": {
+          "x": 10,
+          "y": 55,
+          "w": 824,
+          "h": 22
+        }
+      },
+      "controlsVisible": true
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "seats": 4,
+      "scale": 135,
+      "rects": {
+        "#track": {
+          "x": 10,
+          "y": 244,
+          "w": 124,
+          "h": 124
+        },
+        "#magnet": {
+          "x": 624,
+          "y": 258,
+          "w": 124,
+          "h": 124
+        },
+        "#pulse": {
+          "x": 758,
+          "y": 282,
+          "w": 76,
+          "h": 76
+        },
+        ".top": {
+          "x": 7,
+          "y": 6,
+          "w": 830,
+          "h": 51
+        },
+        "#roster": {
+          "x": 10,
+          "y": 55,
+          "w": 824,
+          "h": 22
+        }
+      },
+      "controlsVisible": true
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "seats": 10,
+      "scale": 80,
+      "rects": {
+        "#track": {
+          "x": 10,
+          "y": 244,
+          "w": 124,
+          "h": 124
+        },
+        "#magnet": {
+          "x": 624,
+          "y": 258,
+          "w": 124,
+          "h": 124
+        },
+        "#pulse": {
+          "x": 758,
+          "y": 282,
+          "w": 76,
+          "h": 76
+        },
+        ".top": {
+          "x": 7,
+          "y": 6,
+          "w": 830,
+          "h": 51
+        },
+        "#roster": {
+          "x": 10,
+          "y": 55,
+          "w": 824,
+          "h": 22
+        }
+      },
+      "controlsVisible": true
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "seats": 10,
+      "scale": 135,
+      "rects": {
+        "#track": {
+          "x": 10,
+          "y": 244,
+          "w": 124,
+          "h": 124
+        },
+        "#magnet": {
+          "x": 624,
+          "y": 258,
+          "w": 124,
+          "h": 124
+        },
+        "#pulse": {
+          "x": 758,
+          "y": 282,
+          "w": 76,
+          "h": 76
+        },
+        ".top": {
+          "x": 7,
+          "y": 6,
+          "w": 830,
+          "h": 51
+        },
+        "#roster": {
+          "x": 10,
+          "y": 55,
+          "w": 824,
+          "h": 22
+        }
+      },
+      "controlsVisible": true
+    }
+  ],
+  "frameIntervalsMs": {
+    "median": 16.69999999999891,
+    "p95": 16.700000000000728,
+    "samples": 119,
+    "condition": "headless Chromium, 390x844, DPR 1, 2 seats; not real GPU/phone"
+  }
+}

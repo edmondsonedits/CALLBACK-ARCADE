@@ -1,6 +1,6 @@
 # Royal Ballistix — Beach Siege
 
-Imported standalone build: **v0.12.0**.
+Current standalone build: **v0.12.1** (based on the v0.12 import).
 
 Royal Ballistix is a radial ball-deflection survival game for **2–10 contestants**. One local human can play while AI fills the remaining seats. The imported source also exposes per-seat input hooks so bots can eventually be replaced by authenticated CALLBACK phone controllers, but no room-code transport is implemented in this package yet.
 
@@ -21,10 +21,10 @@ Each contestant owns a gate sector around the circular arena. Protect your gate 
 
 ### Touch / phone browser
 
-- Drag the **Slide** control left/right to move.
+- Drag the **radial stick** left/right along your gate. Greater stick distance increases movement speed; the outer range enables Run.
 - Hold **Magnet** and release to fire captured balls.
 - Tap **Pulse** for the timed counter.
-- Hold **Run** for extra movement speed.
+- There is no separate touch Run button. Stick and Magnet/Pulse support simultaneous touches.
 - Pause → **Settings** exposes contestant count (2–10), arena size, and AI difficulty.
 
 ### Keyboard
@@ -82,13 +82,13 @@ See `integration/README.md` for exact hooks and multiplayer gaps.
 - `setPlayerInput` currently trusts the caller-supplied seat ID and does not enforce sequence/timestamp ordering.
 - Disconnect/reconnect, stale-input neutralization and network snapshots are not implemented.
 - Multiplayer status must therefore remain **not-integrated**.
-- The package has static/source smoke checks and a manual verification checklist, but no claim of production multiplayer verification or formal human playtest evidence.
+- Source smoke, behavioral and emulated-browser checks are recorded in `tests/evidence/quality-review.md`. These do not establish production multiplayer readiness, physical-phone quality or human game feel.
 
 ## Modifying the game
 
 1. Preserve a recoverable standalone `source/index.html`.
 2. Tune existing `TUNING` values before adding unnecessary systems.
-3. If source behavior changes, update the internal debug version and this package version/changelog.
+3. Record source changes in the changelog. Coordinate the internal debug version and manifest/package version together; this review branch leaves release metadata finalization to the coordinator.
 4. Update `manifest.json` source metadata only when it remains accurate.
 5. Run the source smoke test and manual gameplay checks in `tests/README.md`.
 6. Run `npm run catalog:generate` and `npm run catalog:check` after manifest edits.

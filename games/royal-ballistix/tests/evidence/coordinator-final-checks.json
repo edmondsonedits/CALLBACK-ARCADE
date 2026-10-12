@@ -1,0 +1,33 @@
+{
+  "sourceSha256": "47b128059172554af2aee0a51b7ad6b55982087bf5597d9a1f9076501cdfe80b",
+  "node": "24.19.0",
+  "npm": "11.9.0",
+  "checks": [
+    {
+      "command": "node --test games/royal-ballistix/tests/source-smoke.test.mjs tests/royal-ballistix-mobile-ui.test.mjs tests/royal-ballistix-quality.test.mjs",
+      "exit": 0
+    },
+    {
+      "command": "npm test",
+      "exit": 0
+    },
+    {
+      "command": "npm run typecheck",
+      "exit": 0
+    },
+    {
+      "command": "npm run catalog:check",
+      "exit": 0
+    },
+    {
+      "command": "npm run build",
+      "exit": 0
+    },
+    {
+      "command": "npm run pages:build",
+      "exit": 0
+    }
+  ],
+  "supportedBrowser": "blocked: SUID sandbox helper configuration; no bypass",
+  "exactHeadCI": "blocked: gh GraphQL Forbidden"
+}

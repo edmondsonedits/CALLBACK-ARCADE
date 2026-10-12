@@ -1,0 +1,1075 @@
+{
+  "errors": [],
+  "results": [
+    {
+      "kind": "real-time-play",
+      "seats": 2,
+      "state": {
+        "game": "Royal Ballistix \u2014 Beach Siege",
+        "version": "0.12-adjustable-large-arena",
+        "phase": "fight",
+        "round": 1,
+        "playerCount": 2,
+        "maxPlayers": 10,
+        "arenaScale": 1.15,
+        "arenaPixels": 386.1,
+        "wins": [
+          0,
+          0
+        ],
+        "fps": 60,
+        "physicsSubsteps": 2,
+        "maxBalls": 3,
+        "launch": null,
+        "balls": [
+          {
+            "x": 117.7,
+            "y": 475.3,
+            "vx": -85.3,
+            "vy": 108.9,
+            "speed": 138.3,
+            "held": null
+          }
+        ],
+        "players": [
+          {
+            "id": 0,
+            "name": "YOU",
+            "life": 12,
+            "maxLife": 12,
+            "alive": true,
+            "pos": 0,
+            "velocity": 0,
+            "external": false,
+            "magnet": false,
+            "held": 0,
+            "pulseCooldown": 0,
+            "pulseAge": 0,
+            "lastPulse": "none",
+            "aim": 0,
+            "aiState": "POSITION",
+            "attackTarget": -1,
+            "gateHit": 0
+          },
+          {
+            "id": 1,
+            "name": "RUFUS",
+            "life": 12,
+            "maxLife": 12,
+            "alive": true,
+            "pos": 0,
+            "velocity": 0,
+            "external": false,
+            "magnet": false,
+            "held": 0,
+            "pulseCooldown": 0,
+            "pulseAge": 0,
+            "lastPulse": "none",
+            "aim": 0,
+            "aiState": "POSITION",
+            "attackTarget": -1,
+            "gateHit": 0
+          }
+        ],
+        "tuning": {
+          "simulation": {
+            "fixedDt": 0.008333333333333333,
+            "maxFrame": 0.05,
+            "maxSteps": 6
+          },
+          "ball": {
+            "spawnMin": 0.34,
+            "spawnMax": 0.42,
+            "minSpeed": 0.3,
+            "maxSpeed": 1.05,
+            "wallRestitution": 0.985,
+            "paddleRestitution": 1.025,
+            "collisionRestitution": 0.94,
+            "maxTravelPerSubstep": 0.42,
+            "stuckSpeed": 0.09,
+            "stuckTime": 1.15
+          },
+          "paddle": {
+            "normalSpeed": 0.5,
+            "runSpeed": 0.78,
+            "aiNormal": 0.47,
+            "aiRun": 0.72
+          },
+          "magnet": {
+            "overheat": 5,
+            "maxHeld": 4,
+            "releaseSpeed": 0.88,
+            "fizzleSpeed": 0.18,
+            "aimMax": 0.72,
+            "aimResponse": 10,
+            "volleySpread": 0.1
+          },
+          "ai": {
+            "retargetMin": 0.35,
+            "retargetMax": 0.72,
+            "releaseJitter": 0.08,
+            "weakLifeBias": 0.85,
+            "openLaneBias": 0.55
+          },
+          "pulse": {
+            "speed": 0.94,
+            "perfectSpeed": 1.12,
+            "missCooldown": 2,
+            "hitCooldown": 0.42,
+            "perfectCooldown": 0.22,
+            "activeWindow": 0.18,
+            "perfectWindow": 0.055,
+            "perfectCenter": 0.46
+          },
+          "readability": {
+            "launchTelegraph": 0.72,
+            "trailMin": 0.52,
+            "trailLength": 0.11,
+            "threatTime": 0.72
+          },
+          "gate": {
+            "criticalLife": 3,
+            "hitFlash": 0.34,
+            "criticalPulseHz": 2.4,
+            "normalShake": 0.7,
+            "eliminationShake": 1.15,
+            "crackMax": 5
+          },
+          "arena": {
+            "gateCoverage": 0.68,
+            "paddleCoverage": 0.32,
+            "minBalls": 3,
+            "maxBalls": 6,
+            "launcherMin": 4,
+            "launcherMax": 7
+          },
+          "players": {
+            "min": 2,
+            "max": 10,
+            "defaultCount": 4
+          }
+        }
+      }
+    },
+    {
+      "kind": "real-time-play",
+      "seats": 10,
+      "state": {
+        "game": "Royal Ballistix \u2014 Beach Siege",
+        "version": "0.12-adjustable-large-arena",
+        "phase": "fight",
+        "round": 1,
+        "playerCount": 10,
+        "maxPlayers": 10,
+        "arenaScale": 1.15,
+        "arenaPixels": 386.1,
+        "wins": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fps": 60,
+        "physicsSubsteps": 2,
+        "maxBalls": 6,
+        "launch": null,
+        "balls": [
+          {
+            "x": 354,
+            "y": 346.2,
+            "vx": 144.6,
+            "vy": -2,
+            "speed": 144.6,
+            "held": null
+          }
+        ],
+        "players": [
+          {
+            "id": 0,
+            "name": "YOU",
+            "life": 6,
+            "maxLife": 6,
+            "alive": true,
+            "pos": 0,
+            "velocity": 0,
+            "external": false,
+            "magnet": false,
+            "held": 0,
+            "pulseCooldown": 0,
+            "pulseAge": 0,
+            "lastPulse": "none",
+            "aim": 0,
+            "aiState": "POSITION",
+            "attackTarget": -1,
+            "gateHit": 0
+          },
+          {
+            "id": 1,
+            "name": "RUFUS",
+            "life": 6,
+            "maxLife": 6,
+            "alive": true,
+            "pos": 0,
+            "velocity": 0,
+            "external": false,
+            "magnet": false,
+            "held": 0,
+            "pulseCooldown": 0,
+            "pulseAge": 0,
+            "lastPulse": "none",
+            "aim": 0,
+            "aiState": "POSITION",
+            "attackTarget": -1,
+            "gateHit": 0
+          },
+          {
+            "id": 2,
+            "name": "MABEL",
+            "life": 6,
+            "maxLife": 6,
+            "alive": true,
+            "pos": 0,
+            "velocity": 0,
+            "external": false,
+            "magnet": false,
+            "held": 0,
+            "pulseCooldown": 0,
+            "pulseAge": 0,
+            "lastPulse": "none",
+            "aim": 0,
+            "aiState": "POSITION",
+            "attackTarget": -1,
+            "gateHit": 0
+          },
+          {
+            "id": 3,
+            "name": "GREGOR",
+            "life": 6,
+            "maxLife": 6,
+            "alive": true,
+            "pos": 0,
+            "velocity": 0,
+            "external": false,
+            "magnet": false,
+            "held": 0,
+            "pulseCooldown": 0,
+            "pulseAge": 0,
+            "lastPulse": "none",
+            "aim": 0,
+            "aiState": "POSITION",
+            "attackTarget": -1,
+            "gateHit": 0
+          },
+          {
+            "id": 4,
+            "name": "PIP",
+            "life": 6,
+            "maxLife": 6,
+            "alive": true,
+            "pos": 0,
+            "velocity": 0,
+            "external": false,
+            "magnet": false,
+            "held": 0,
+            "pulseCooldown": 0,
+            "pulseAge": 0,
+            "lastPulse": "none",
+            "aim": 0,
+            "aiState": "POSITION",
+            "attackTarget": -1,
+            "gateHit": 0
+          },
+          {
+            "id": 5,
+            "name": "BEA",
+            "life": 6,
+            "maxLife": 6,
+            "alive": true,
+            "pos": 0,
+            "velocity": 0,
+            "external": false,
+            "magnet": false,
+            "held": 0,
+            "pulseCooldown": 0,
+            "pulseAge": 0,
+            "lastPulse": "none",
+            "aim": 0,
+            "aiState": "POSITION",
+            "attackTarget": -1,
+            "gateHit": 0
+          },
+          {
+            "id": 6,
+            "name": "OSWALD",
+            "life": 6,
+            "maxLife": 6,
+            "alive": true,
+            "pos": 0,
+            "velocity": 0,
+            "external": false,
+            "magnet": false,
+            "held": 0,
+            "pulseCooldown": 0,
+            "pulseAge": 0,
+            "lastPulse": "none",
+            "aim": 0,
+            "aiState": "POSITION",
+            "attackTarget": -1,
+            "gateHit": 0
+          },
+          {
+            "id": 7,
+            "name": "TILLY",
+            "life": 6,
+            "maxLife": 6,
+            "alive": true,
+            "pos": 0,
+            "velocity": 0,
+            "external": false,
+            "magnet": false,
+            "held": 0,
+            "pulseCooldown": 0,
+            "pulseAge": 0,
+            "lastPulse": "none",
+            "aim": 0,
+            "aiState": "POSITION",
+            "attackTarget": -1,
+            "gateHit": 0
+          },
+          {
+            "id": 8,
+            "name": "BARNABY",
+            "life": 6,
+            "maxLife": 6,
+            "alive": true,
+            "pos": 0,
+            "velocity": 0,
+            "external": false,
+            "magnet": false,
+            "held": 0,
+            "pulseCooldown": 0,
+            "pulseAge": 0,
+            "lastPulse": "none",
+            "aim": 0,
+            "aiState": "POSITION",
+            "attackTarget": -1,
+            "gateHit": 0
+          },
+          {
+            "id": 9,
+            "name": "WREN",
+            "life": 6,
+            "maxLife": 6,
+            "alive": true,
+            "pos": 0,
+            "velocity": 0,
+            "external": false,
+            "magnet": false,
+            "held": 0,
+            "pulseCooldown": 0,
+            "pulseAge": 0,
+            "lastPulse": "none",
+            "aim": 0,
+            "aiState": "POSITION",
+            "attackTarget": -1,
+            "gateHit": 0
+          }
+        ],
+        "tuning": {
+          "simulation": {
+            "fixedDt": 0.008333333333333333,
+            "maxFrame": 0.05,
+            "maxSteps": 6
+          },
+          "ball": {
+            "spawnMin": 0.34,
+            "spawnMax": 0.42,
+            "minSpeed": 0.3,
+            "maxSpeed": 1.05,
+            "wallRestitution": 0.985,
+            "paddleRestitution": 1.025,
+            "collisionRestitution": 0.94,
+            "maxTravelPerSubstep": 0.42,
+            "stuckSpeed": 0.09,
+            "stuckTime": 1.15
+          },
+          "paddle": {
+            "normalSpeed": 0.5,
+            "runSpeed": 0.78,
+            "aiNormal": 0.47,
+            "aiRun": 0.72
+          },
+          "magnet": {
+            "overheat": 5,
+            "maxHeld": 4,
+            "releaseSpeed": 0.88,
+            "fizzleSpeed": 0.18,
+            "aimMax": 0.72,
+            "aimResponse": 10,
+            "volleySpread": 0.1
+          },
+          "ai": {
+            "retargetMin": 0.35,
+            "retargetMax": 0.72,
+            "releaseJitter": 0.08,
+            "weakLifeBias": 0.85,
+            "openLaneBias": 0.55
+          },
+          "pulse": {
+            "speed": 0.94,
+            "perfectSpeed": 1.12,
+            "missCooldown": 2,
+            "hitCooldown": 0.42,
+            "perfectCooldown": 0.22,
+            "activeWindow": 0.18,
+            "perfectWindow": 0.055,
+            "perfectCenter": 0.46
+          },
+          "readability": {
+            "launchTelegraph": 0.72,
+            "trailMin": 0.52,
+            "trailLength": 0.11,
+            "threatTime": 0.72
+          },
+          "gate": {
+            "criticalLife": 3,
+            "hitFlash": 0.34,
+            "criticalPulseHz": 2.4,
+            "normalShake": 0.7,
+            "eliminationShake": 1.15,
+            "crackMax": 5
+          },
+          "arena": {
+            "gateCoverage": 0.68,
+            "paddleCoverage": 0.32,
+            "minBalls": 3,
+            "maxBalls": 6,
+            "launcherMin": 4,
+            "launcherMax": 7
+          },
+          "players": {
+            "min": 2,
+            "max": 10,
+            "defaultCount": 4
+          }
+        }
+      }
+    },
+    {
+      "kind": "layout",
+      "width": 390,
+      "height": 844,
+      "seats": 2,
+      "scale": 80,
+      "rects": {
+        ".top": {
+          "x": 7,
+          "y": 6,
+          "width": 376,
+          "height": 57
+        },
+        "#roster": {
+          "x": 10,
+          "y": 88,
+          "width": 370,
+          "height": 22
+        },
+        "#move": {
+          "x": 10,
+          "y": 689.40625,
+          "width": 163.75,
+          "height": 146.59375
+        },
+        "#magnet": {
+          "x": 164.5,
+          "y": 699.5,
+          "width": 136.5,
+          "height": 136.5
+        },
+        "#pulse": {
+          "x": 310,
+          "y": 732.75,
+          "width": 70,
+          "height": 70
+        }
+      }
+    },
+    {
+      "kind": "layout",
+      "width": 390,
+      "height": 844,
+      "seats": 2,
+      "scale": 135,
+      "rects": {
+        ".top": {
+          "x": 7,
+          "y": 6,
+          "width": 376,
+          "height": 57
+        },
+        "#roster": {
+          "x": 10,
+          "y": 88,
+          "width": 370,
+          "height": 22
+        },
+        "#move": {
+          "x": 10,
+          "y": 689.40625,
+          "width": 163.75,
+          "height": 146.59375
+        },
+        "#magnet": {
+          "x": 164.5,
+          "y": 699.5,
+          "width": 136.5,
+          "height": 136.5
+        },
+        "#pulse": {
+          "x": 310,
+          "y": 732.75,
+          "width": 70,
+          "height": 70
+        }
+      }
+    },
+    {
+      "kind": "layout",
+      "width": 390,
+      "height": 844,
+      "seats": 10,
+      "scale": 80,
+      "rects": {
+        ".top": {
+          "x": 7,
+          "y": 6,
+          "width": 376,
+          "height": 57
+        },
+        "#roster": {
+          "x": 10,
+          "y": 88,
+          "width": 370,
+          "height": 48
+        },
+        "#move": {
+          "x": 10,
+          "y": 689.40625,
+          "width": 163.75,
+          "height": 146.59375
+        },
+        "#magnet": {
+          "x": 164.5,
+          "y": 699.5,
+          "width": 136.5,
+          "height": 136.5
+        },
+        "#pulse": {
+          "x": 310,
+          "y": 732.75,
+          "width": 70,
+          "height": 70
+        }
+      }
+    },
+    {
+      "kind": "layout",
+      "width": 390,
+      "height": 844,
+      "seats": 10,
+      "scale": 135,
+      "rects": {
+        ".top": {
+          "x": 7,
+          "y": 6,
+          "width": 376,
+          "height": 57
+        },
+        "#roster": {
+          "x": 10,
+          "y": 88,
+          "width": 370,
+          "height": 48
+        },
+        "#move": {
+          "x": 10,
+          "y": 689.40625,
+          "width": 163.75,
+          "height": 146.59375
+        },
+        "#magnet": {
+          "x": 164.5,
+          "y": 699.5,
+          "width": 136.5,
+          "height": 136.5
+        },
+        "#pulse": {
+          "x": 310,
+          "y": 732.75,
+          "width": 70,
+          "height": 70
+        }
+      }
+    },
+    {
+      "kind": "layout",
+      "width": 844,
+      "height": 390,
+      "seats": 2,
+      "scale": 80,
+      "rects": {
+        ".top": {
+          "x": 7,
+          "y": 6,
+          "width": 830,
+          "height": 57
+        },
+        "#roster": {
+          "x": 10,
+          "y": 88,
+          "width": 824,
+          "height": 22
+        },
+        "#move": {
+          "x": -268,
+          "y": 228,
+          "width": 310.953125,
+          "height": 156
+        },
+        "#magnet": {
+          "x": 187,
+          "y": 240,
+          "width": 144,
+          "height": 144
+        },
+        "#pulse": {
+          "x": 340,
+          "y": 271,
+          "width": 82,
+          "height": 82
+        }
+      }
+    },
+    {
+      "kind": "layout",
+      "width": 844,
+      "height": 390,
+      "seats": 2,
+      "scale": 135,
+      "rects": {
+        ".top": {
+          "x": 7,
+          "y": 6,
+          "width": 830,
+          "height": 57
+        },
+        "#roster": {
+          "x": 10,
+          "y": 88,
+          "width": 824,
+          "height": 22
+        },
+        "#move": {
+          "x": -268,
+          "y": 228,
+          "width": 310.953125,
+          "height": 156
+        },
+        "#magnet": {
+          "x": 187,
+          "y": 240,
+          "width": 144,
+          "height": 144
+        },
+        "#pulse": {
+          "x": 340,
+          "y": 271,
+          "width": 82,
+          "height": 82
+        }
+      }
+    },
+    {
+      "kind": "layout",
+      "width": 844,
+      "height": 390,
+      "seats": 10,
+      "scale": 80,
+      "rects": {
+        ".top": {
+          "x": 7,
+          "y": 6,
+          "width": 830,
+          "height": 57
+        },
+        "#roster": {
+          "x": 10,
+          "y": 88,
+          "width": 824,
+          "height": 22
+        },
+        "#move": {
+          "x": -268,
+          "y": 228,
+          "width": 310.953125,
+          "height": 156
+        },
+        "#magnet": {
+          "x": 187,
+          "y": 240,
+          "width": 144,
+          "height": 144
+        },
+        "#pulse": {
+          "x": 340,
+          "y": 271,
+          "width": 82,
+          "height": 82
+        }
+      }
+    },
+    {
+      "kind": "layout",
+      "width": 844,
+      "height": 390,
+      "seats": 10,
+      "scale": 135,
+      "rects": {
+        ".top": {
+          "x": 7,
+          "y": 6,
+          "width": 830,
+          "height": 57
+        },
+        "#roster": {
+          "x": 10,
+          "y": 88,
+          "width": 824,
+          "height": 22
+        },
+        "#move": {
+          "x": -268,
+          "y": 228,
+          "width": 310.953125,
+          "height": 156
+        },
+        "#magnet": {
+          "x": 187,
+          "y": 240,
+          "width": 144,
+          "height": 144
+        },
+        "#pulse": {
+          "x": 340,
+          "y": 271,
+          "width": 82,
+          "height": 82
+        }
+      }
+    },
+    {
+      "kind": "accelerated-neutral-human",
+      "seats": 2,
+      "frames": 29353,
+      "simSeconds": 244.60833333333332,
+      "elapsedMs": 96.79999999998836,
+      "rounds": [
+        {
+          "seconds": 73.55,
+          "wins": [
+            0,
+            1
+          ],
+          "life": [
+            0,
+            7
+          ]
+        },
+        {
+          "seconds": 163.625,
+          "wins": [
+            0,
+            2
+          ],
+          "life": [
+            0,
+            4
+          ]
+        },
+        {
+          "seconds": 244.60833333333332,
+          "wins": [
+            0,
+            3
+          ],
+          "life": [
+            0,
+            6
+          ]
+        }
+      ],
+      "wins": [
+        0,
+        3
+      ]
+    },
+    {
+      "kind": "accelerated-neutral-human",
+      "seats": 4,
+      "frames": 204361,
+      "simSeconds": 1703.0083333333334,
+      "elapsedMs": 354.30000000001746,
+      "rounds": [
+        {
+          "seconds": 259.4,
+          "wins": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "life": [
+            0,
+            7,
+            0,
+            0
+          ]
+        },
+        {
+          "seconds": 564.5833333333334,
+          "wins": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "life": [
+            0,
+            0,
+            0,
+            4
+          ]
+        },
+        {
+          "seconds": 931.0916666666667,
+          "wins": [
+            0,
+            2,
+            0,
+            1
+          ],
+          "life": [
+            0,
+            4,
+            0,
+            0
+          ]
+        },
+        {
+          "seconds": 1373.5333333333333,
+          "wins": [
+            0,
+            2,
+            0,
+            2
+          ],
+          "life": [
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "seconds": 1703.0083333333334,
+          "wins": [
+            0,
+            3,
+            0,
+            2
+          ],
+          "life": [
+            0,
+            7,
+            0,
+            0
+          ]
+        }
+      ],
+      "wins": [
+        0,
+        3,
+        0,
+        2
+      ]
+    },
+    {
+      "kind": "accelerated-neutral-human",
+      "seats": 10,
+      "frames": 333511,
+      "simSeconds": 2779.258333333333,
+      "elapsedMs": 1627.5,
+      "rounds": [
+        {
+          "seconds": 565.3333333333334,
+          "wins": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          "life": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "seconds": 1203.7,
+          "wins": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          "life": [
+            0,
+            0,
+            0,
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "seconds": 1680.8333333333333,
+          "wins": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0
+          ],
+          "life": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "seconds": 2300.25,
+          "wins": [
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0
+          ],
+          "life": [
+            0,
+            0,
+            0,
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "seconds": 2779.258333333333,
+          "wins": [
+            0,
+            0,
+            0,
+            3,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0
+          ],
+          "life": [
+            0,
+            0,
+            0,
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "wins": [
+        0,
+        0,
+        0,
+        3,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "kind": "directed-probes",
+      "sideBefore": 18.9189,
+      "sideAfter": 1.3754804221643373e-15,
+      "duplicateEndCheckWins": 2
+    }
+  ]
+}
