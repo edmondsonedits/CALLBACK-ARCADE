@@ -1,0 +1,286 @@
+{
+  "schemaVersion": 1,
+  "kind": "blind-crown-local-quality-verification",
+  "date": "2026-10-12",
+  "result": "passed",
+  "scope": "Automated local Canvas checks and author pixel inspection; unmerged, not deployment/multiplayer/physical-device verification",
+  "baseCommit": "785a15000abe11970c7b92c5f3cab197061fcedf",
+  "testsDocumentationCommit": "893e07e99262e6ca5861390fb221dc34709d4447",
+  "branch": "quality/blind-crown",
+  "sourceHashes": [
+    {
+      "path": "source/index.html",
+      "bytes": 174663,
+      "sha256": "5848634aac0b61c88b40ef18ac5e5bb3493ca329ea0aa1215ca0ce8947ec4f04"
+    },
+    {
+      "path": "source/original/blind-crown-v1.4.html",
+      "sha256": "496131ad8031a58b8b2ec78cc1aace73f57ab1ca0646271b383bf48bb108c462"
+    }
+  ],
+  "checks": [
+    {
+      "command": "node --test games/blind-crown/tests/standalone.test.mjs tests/blind-crown-quality.test.mjs",
+      "result": "passed",
+      "tests": 21
+    },
+    {
+      "command": "npm test",
+      "result": "passed",
+      "tests": 75
+    },
+    {
+      "command": "python3 games/blind-crown/tests/presentation/test_quality.py",
+      "result": "passed",
+      "matrixCases": 72,
+      "rulesets": [
+        "classic",
+        "precision"
+      ],
+      "arenas": [
+        "citadel",
+        "orchard",
+        "glacier"
+      ],
+      "cameras": [
+        "overhead",
+        "isometric",
+        "first",
+        "third"
+      ],
+      "viewports": [
+        [
+          1440,
+          960
+        ],
+        [
+          390,
+          844
+        ],
+        [
+          844,
+          390
+        ]
+      ],
+      "extraChecks": [
+        "placement feedback/clearing",
+        "phase and aftermath labels",
+        "minimum mobile endpoint size",
+        "Precision no endpoint",
+        "rival-independent own/TV planning pixels in every camera",
+        "connection-loss instruction visibility",
+        "fine aim and drag",
+        "lock/unlock",
+        "pause/help/settings",
+        "simultaneous emulated touch/cancel",
+        "restart from planning/reveal/volley/results"
+      ]
+    },
+    {
+      "command": "python3 games/blind-crown/tests/presentation/test_visuals.py",
+      "result": "passed"
+    },
+    {
+      "command": "python3 games/blind-crown/tests/presentation/test_hud.py",
+      "result": "passed"
+    },
+    {
+      "command": "test_final.py via Python exec, only screenshot destination redirected outside checkout",
+      "result": "passed",
+      "scope": "real seeded UI reveal/volley/final/rematch, audio opt-in exception check"
+    },
+    {
+      "name": "protected-module byte hashes",
+      "result": "passed",
+      "modules": [
+        "engine",
+        "CrownPerspective",
+        "network",
+        "experimental Three.js",
+        "embedded GLB",
+        "CrownArt"
+      ]
+    },
+    {
+      "name": "pixel inspection",
+      "result": "passed",
+      "scope": "author inspected 72 planning captures via six contact sheets, full-size adjusted-feedback portrait/landscape samples and seeded desktop final; no physical-device/game-feel claim"
+    }
+  ],
+  "redBeforeGreen": [
+    "missing private status",
+    "misleading lobby lock label",
+    "undersized mobile endpoint",
+    "new status initially hid connection-loss instruction (regression caught and fixed)"
+  ],
+  "performance": {
+    "conditions": "Headless Chromium, Canvas, 10 contestants, Citadel, 500ms per view after 100ms settle. Diagnostic render cost only, no real-device FPS guarantee.",
+    "records": [
+      {
+        "viewport": [
+          1440,
+          960
+        ],
+        "view": "overhead",
+        "sampleMs": 500,
+        "frames": 30,
+        "meanRenderMs": 0.7933333333465271,
+        "cumulativeMaxRenderMs": 29.199999999953434
+      },
+      {
+        "viewport": [
+          1440,
+          960
+        ],
+        "view": "isometric",
+        "sampleMs": 500,
+        "frames": 30,
+        "meanRenderMs": 0.8766666666604579,
+        "cumulativeMaxRenderMs": 29.199999999953434
+      },
+      {
+        "viewport": [
+          1440,
+          960
+        ],
+        "view": "first",
+        "sampleMs": 500,
+        "frames": 31,
+        "meanRenderMs": 1.2645161290382665,
+        "cumulativeMaxRenderMs": 29.199999999953434
+      },
+      {
+        "viewport": [
+          1440,
+          960
+        ],
+        "view": "third",
+        "sampleMs": 500,
+        "frames": 30,
+        "meanRenderMs": 1.7599999999937912,
+        "cumulativeMaxRenderMs": 29.199999999953434
+      },
+      {
+        "viewport": [
+          390,
+          844
+        ],
+        "view": "overhead",
+        "sampleMs": 500,
+        "frames": 30,
+        "meanRenderMs": 0.8266666666604578,
+        "cumulativeMaxRenderMs": 36.40000000002328
+      },
+      {
+        "viewport": [
+          390,
+          844
+        ],
+        "view": "isometric",
+        "sampleMs": 500,
+        "frames": 31,
+        "meanRenderMs": 0.9516129032220512,
+        "cumulativeMaxRenderMs": 36.40000000002328
+      },
+      {
+        "viewport": [
+          390,
+          844
+        ],
+        "view": "first",
+        "sampleMs": 500,
+        "frames": 31,
+        "meanRenderMs": 1.4580645161200194,
+        "cumulativeMaxRenderMs": 36.40000000002328
+      },
+      {
+        "viewport": [
+          390,
+          844
+        ],
+        "view": "third",
+        "sampleMs": 500,
+        "frames": 30,
+        "meanRenderMs": 1.6299999999968955,
+        "cumulativeMaxRenderMs": 36.40000000002328
+      },
+      {
+        "viewport": [
+          844,
+          390
+        ],
+        "view": "overhead",
+        "sampleMs": 500,
+        "frames": 31,
+        "meanRenderMs": 0.8645161290300049,
+        "cumulativeMaxRenderMs": 26.300000000046566
+      },
+      {
+        "viewport": [
+          844,
+          390
+        ],
+        "view": "isometric",
+        "sampleMs": 500,
+        "frames": 31,
+        "meanRenderMs": 0.8225806451500243,
+        "cumulativeMaxRenderMs": 26.300000000046566
+      },
+      {
+        "viewport": [
+          844,
+          390
+        ],
+        "view": "first",
+        "sampleMs": 500,
+        "frames": 31,
+        "meanRenderMs": 1.2741935483983629,
+        "cumulativeMaxRenderMs": 26.300000000046566
+      },
+      {
+        "viewport": [
+          844,
+          390
+        ],
+        "view": "third",
+        "sampleMs": 500,
+        "frames": 30,
+        "meanRenderMs": 1.5266666666643374,
+        "cumulativeMaxRenderMs": 26.300000000046566
+      }
+    ]
+  },
+  "assets": {
+    "added": [],
+    "uploaded": [],
+    "rightsChanged": false,
+    "note": "Existing assets/README.md retained; no courtyard files accessed/imported."
+  },
+  "independentReview": {
+    "status": "passed",
+    "reviewedHead": "cce1135018a94d554fa5c06900a9273ada0cd7fa",
+    "findings": [],
+    "checks": [
+      "focused Node suite 21/21",
+      "browser quality matrix 72/72 and targeted checks",
+      "six protected module hashes",
+      "ten-file allowlist"
+    ],
+    "scope": "Fresh independent code-review agent; did not independently repeat author pixel inspection or physical-device/3D testing. Coordinator reconciliation pending."
+  },
+  "limitations": {
+    "blocked": [
+      "Royal Sumo v1.3 Library reference: supported transfer plus one consumer-local retry failed; no reference bytes/pixel comparison"
+    ],
+    "notRun": [
+      "physical phone",
+      "Safari",
+      "gamepad",
+      "audio-by-ear",
+      "experimental WebGL/Three.js",
+      "hosted multiplayer",
+      "HTTP-served Pages integration",
+      "typecheck/build/deployment"
+    ]
+  }
+}

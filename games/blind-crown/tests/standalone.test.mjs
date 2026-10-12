@@ -6,7 +6,7 @@ import vm from 'node:vm';
 
 const html = await readFile(new URL('../source/index.html', import.meta.url));
 const scripts = [...html.toString('utf8').matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)];
-const expected = '06a0238b9827cd6f4395ec33cd0b2c8c7ce758bc15135a946ed7c737e53ef0e4';
+const expected = '5848634aac0b61c88b40ef18ac5e5bb3493ca329ea0aa1215ca0ce8947ec4f04';
 function engine() {
   const entry = scripts.find(([, , code]) => code.includes('deterministic, authoritative match rules'));
   assert.ok(entry, 'Complete engine must be embedded in standalone');
@@ -23,8 +23,8 @@ function match() {
   return { game, a, b };
 }
 
-test('Nightfall HTML matches the verified v1.5 bytes exactly', () => {
-  assert.equal(html.length, 171542);
+test('Nightfall quality HTML matches the verified active-build bytes exactly', () => {
+  assert.equal(html.length, 174663);
   assert.equal(createHash('sha256').update(html).digest('hex'), expected);
 });
 test('Embedded classic scripts compile without rewriting source', () => {
