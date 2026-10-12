@@ -1,34 +1,30 @@
-# Royal Roller Ruckus — Crownway Circuit
+# Royal Roller Ruckus — Four-course Worlds
 
-Royal Roller Ruckus is a 2–10 racer physics game built around momentum, collisions and a narrow vertical circuit. The active standalone build is **v1.5.0 — Crownway Coach**.
+The standalone **v1.6.0** is a 2–10 racer momentum cage race using the preserved Three r180 engine and ordered forward checkpoint simulation. A silent all-bot race runs behind the compact title panel. Watch collapses the panel; Start and Return remain visible. Start always creates a fresh seeded race.
 
-Choose Squire / Knight / Champion bots, 2–10 racers, and one-lap practice, a three-lap race or five-lap endurance before starting. Cross the seven checkpoints and finish gate in order. Gold deck chevrons point forward; the lit gate is your next checkpoint. Momentum carries through bends and collisions. Gold crownlines reward clean apexes; dark stone scrubs speed.
+| Course | Skill and physical counterplay |
+| --- | --- |
+| Crownway | Original vertical crossover and geometry. Carry momentum; brake before corners. Gold edge strips boost and rough strips scrub speed. |
+| Frostglass | Broad glacier loop with blue low-grip ice. Brake on amber approach strips before steering onto ice. |
+| Foundry | Original technical route between furnaces. Vents warn amber for two seconds before two seconds of steam; the opposite lane stays safe. |
+| Skygarden | Raised garden sweepers and distinct sightlines. Two-second directional wind warnings precede bounded gusts. Choose a central sheltered line or risk gold edge boosts. |
 
-The optional corner coach explains direction, missed gates, exposed edges and recovery. Lap timing only advances at a legally crossed finish gate. Results show each recorded finish time, lap splits, recovery count and personal bests scoped to difficulty, racers and laps. Rivals still on track are explicitly marked; the game retains its existing completion policy of ending once participating humans finish.
+Choose a single race, one-lap practice on any course, or a four-course Series (one lap each). Series points go only to racers that actually finish; unfinished racers receive zero and no invented timestamp. Results show actual times, lap splits, recovery count, current-race places and aggregate Series standings. Same-seed replay restores the same session rules. Personal race/lap bests are scoped to course, difficulty, actual seats, lap count and hazard intensity; title bots never write records.
 
-## Controls
+## Controls and preferences
 
-- Touch: camera-relative analog roll / steer; optional right-side stick.
-- Keyboard: WASD / arrows; opposite input brakes before reversing.
-- P / Escape: pause. Held input is cleared on pause, settings, blur and hidden tabs.
-- R or the recovery button: return to the last earned checkpoint after a real fall.
-- Gamepad: left stick steers, Start toggles pause, B recovers after a fall. Actions trigger on press edges; after pause, menus or recovery, release the stick through neutral before steering resumes.
-- `window.CallbackInput`: existing `push()`, `disconnect()`, `setPlayerCount()`, state, lobby and controller hooks, up to ten seats.
-- `window.CallbackCamera`: existing rotate / zoom / tilt controls and reusable CAM codes, under Advanced settings.
+- WASD/arrows, touch stick or gamepad left stick steer relative to the camera; opposite input brakes.
+- P/Escape or gamepad Start pauses. R/gamepad B recovers after a real fall. Recovery never awards progress.
+- Held inputs clear on menu/blur/recovery transitions. Native fields retain keyboard editing; gamepad axes must return through neutral after transitions.
+- Rules: course, session, hazard intensity, replay seed, difficulty, 2–10 seats and race length. Changes stage until Start/restart. Replay restores the completed session's rules.
+- Player: a name supporting spaces, team color, silver/gold/dark cage trim and plume/crown/plain helmet. These apply immediately to the local racer; names normalize on blur.
+- Controls: handed stick and corner coaching. Audio/access: volume, mute, haptics, graphics, reduced motion and contrast. Reduced motion defaults to the device preference and gives the title a static overview camera while bots continue racing.
+- Performance graphics lowers pixel density, disables shadows/spectator point lights and removes backdrop blur/grain. This is a user choice, not a guaranteed FPS claim.
 
-Race-rule changes apply on explicit restart / Race Again. Volume, mute, graphics, haptics, reduced motion, handedness and coaching apply immediately and persist when storage is available. Reduced motion defaults to the browser preference and suppresses shake, flashes, speed zoom, particles and decorative animation. Audio remains locked until a user gesture.
+## APIs and source
 
-## Source
+Existing `window.CallbackInput` and `window.CallbackCamera`/CAM-code APIs remain. Demo input packets are rejected; grounded and airborne title racers always use bots. `window.CallbackRace.getState()` is a read-only session summary containing phase, selected/active course, demo clock/loop count, race clock, rules, seed, Series, asset status and actual racer progress/finish timestamps. No production test mutation accessor is shipped.
 
-- Active entry: `source/index.html`.
-- Preserved upload: `source/original/royal_roller_ruckus_v1.4_vertical_crownway.html` (unchanged).
-- Bundled renderer: `source/vendor/three.module.js`, `three.core.js` and `LICENSE-three.txt`, copied byte-for-byte from the repository's existing Three.js r180 distribution. Serve over HTTP(S); WebGL2 remains required. No runtime CDN fetch or new renderer version.
-- Current verification and source hashes: `integration/sumo-benchmark/verification.json`.
+Serve `source/index.html` over HTTP(S); WebGL2 is required. The original `source/original/royal_roller_ruckus_v1.4_vertical_crownway.html` is unchanged. Existing renderer modules are unchanged. Local Kenney CC0 scenery and the official matching MIT GLTFLoader have full provenance under `source/assets/` and `source/vendor/loader-provenance.json`; loading failure leaves racing available.
 
-## Verification
-
-Run `node --test tests/royal-roller-ruckus-quality.test.mjs tests/royal-roller-ruckus-sumo-benchmark.test.mjs` and `node games/royal-roller-ruckus/tests/source-smoke.mjs` from the repository root. See `tests/README.md` for actual-course, camera and browser checks. CPU-side Three.js checks do not establish device rendering, audio, touch or gamepad validation.
-
-## Multiplayer and tuning
-
-Remote hooks exist; authenticated CALLBACK room transport remains unfinished and multiplayer is not verified. Movement, collisions, camera, bots and round parameters remain in the inline `TUNING` object. The Crownway simulation, vertical crossover, ordered gate authority and camera controls were preserved.
+Current verification, source hashes and limitations: `integration/worlds/`. Earlier integration directories are historical evidence. Authenticated CALLBACK room transport is still unfinished; multiplayer remains in progress, not verified.

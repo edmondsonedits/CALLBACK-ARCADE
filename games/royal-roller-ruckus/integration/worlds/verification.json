@@ -1,0 +1,72 @@
+{
+  "version": "1.6.0-worlds",
+  "sourceSha256": "abfcf0096fa695af021259430a384f5526974f25b120fb7c152b804dd52b393d",
+  "originalSha256": "643eea4257d0ab94ba9aee6ca2706b83b43ae10e1d9a05de7d2fd83289c2b515",
+  "files": {
+    "source/assets/LICENSE-castle-kit.txt": "aac944f18106b3a3e29c6fdeec02523d4cab4c735abc01f5a8fa88a79ae173ef",
+    "source/assets/LICENSE-nature-kit.txt": "cb96b75e3560ac78d7a53ce6f083f4cdb5c53faea6141b62d63458dcfe1e4b9d",
+    "source/assets/LICENSE-particles.txt": "f9e70b81d8cc07c4e07c9f2eff1d94fd371a06070b18cb67c651c41158ec2975",
+    "source/assets/README.md": "e3cdb82a909959a8a433a1c7e9c225486cc34a767642d3bfeabfa030fa54d954",
+    "source/assets/castle-tower.glb": "5e98cdf2bf4d885edc3fa514719f80d63872e11c54ee629c11859223dad8489c",
+    "source/assets/court-banner.glb": "e6a4433f5770b9fc31bf67d72424a877d5c010486d5b7373ce7af900566827e4",
+    "source/assets/garden-oak.glb": "d7fd8773674928c50c11b66d12c636d49bdcc15a8b1c7fbb98e6f63a3439a3f3",
+    "source/assets/glacier-rock.glb": "e4fefd8d8d7deab42be61bd222bcd088330012f0025789146b81f25a46095ffd",
+    "source/assets/provenance.json": "34e11b644d90dfa32ac8c268f1bd2ecefdc011dff90e3fee31c8bcf1a1db98f8",
+    "source/assets/steam.png": "e8724c219e8d35859167fc0a7e207e13c72ccf0c29704909b9bb3d3dc71c6cf7",
+    "source/index.html": "abfcf0096fa695af021259430a384f5526974f25b120fb7c152b804dd52b393d",
+    "source/original/royal_roller_ruckus_v1.4_vertical_crownway.html": "643eea4257d0ab94ba9aee6ca2706b83b43ae10e1d9a05de7d2fd83289c2b515",
+    "source/vendor/BufferGeometryUtils.js": "248b3e8420bd3de805ca01845c1b0cc62aa2766f3c56bdcead265e306f8e715c",
+    "source/vendor/GLTFLoader.js": "2904f2823e23d5bc1d64512bf4c0d777ac44d728d47c34a9e3d48ce8ef6b761d",
+    "source/vendor/LICENSE-three.txt": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601",
+    "source/vendor/loader-provenance.json": "0981f6209236edb4e5a049ddbd50a74da2eab0ecb30c11872bf3209f50bdedb5",
+    "source/vendor/three.core.js": "eb077d2417f61d3e6d9264c317cabc4ea35769ed6b0ab533067292a550784c20",
+    "source/vendor/three.module.js": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a"
+  },
+  "tests": {
+    "focused": {
+      "passed": 57,
+      "failed": 0
+    },
+    "classicNavigation": {
+      "passed": 28,
+      "failed": 0
+    },
+    "worldsNavigation": {
+      "races": 24,
+      "maps": 4,
+      "seats": [
+        2,
+        10
+      ],
+      "seeds": [
+        123,
+        456,
+        789
+      ],
+      "laps": 3,
+      "hazards": 1.25,
+      "allFinished": true,
+      "invalidGateCredits": 0
+    },
+    "classicRealCourse": {
+      "seats": [
+        2,
+        4,
+        10
+      ],
+      "laps": 3,
+      "allFinished": true
+    },
+    "worldsCamera": {
+      "maps": 4,
+      "playerBottomLimitPx": 532,
+      "turnLimitRadians": 0.1
+    }
+  },
+  "limits": [
+    "No device FPS, audio mix, physical controller or touch feel claimed.",
+    "Independent reviewer and ordinary Chromium/WebGL screenshots are coordinator-owned and pending this implementation handoff.",
+    "Classic scene uses the preserved original circuit and core movement/collision/checkpoint authority; Frostglass/Skygarden introduce distinct spline profiles.",
+    "Authenticated room transport remains in progress."
+  ]
+}

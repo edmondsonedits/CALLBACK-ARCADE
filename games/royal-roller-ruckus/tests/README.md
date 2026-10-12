@@ -38,3 +38,11 @@ seeded ten-racer scene at a fixed camera, with render completion included. Set
 directories. Run baseline/candidate sequentially on the same browser/renderer.
 
 The Sumo benchmark suite also verifies settings validation/storage failure, setup gating, staged rules, legal lap timing/PB scoping, guidance states, result times, gamepad edges, touch capture loss, locked/bounded audio and finite modeled poses with rematch resource disposal. Current results: `integration/sumo-benchmark/verification.json`. Earlier integration folders remain historical snapshots; their source hashes do not describe v1.5.0.
+
+## Worlds v1.6.0
+
+- `node --test tests/royal-roller-ruckus-worlds.test.mjs tests/royal-roller-ruckus-quality.test.mjs tests/royal-roller-ruckus-sumo-benchmark.test.mjs`: 57 behavioral tests, including 16 worlds checks. The first four worlds tests were run red before implementation.
+- `node games/royal-roller-ruckus/tests/worlds-navigation.mjs`: real Three, 24 complete three-lap races (four maps × 2/10 seats × three seeds), maximum hazard intensity, no injected progress. Writes `integration/worlds/navigation.json`.
+- `node games/royal-roller-ruckus/tests/worlds-camera.mjs`: real Three full-route constant-speed framing sweeps for all four courses; writes `integration/worlds/camera.json`.
+- Existing `real-course.mjs`, `camera.mjs` and `navigation.test.mjs` remain valid with `THREE_MODULE=$PWD/games/royal-roller-ruckus/source/vendor/three.module.js`. Seeded bot simulation now sets the game's own seed field, without overriding its production RNG.
+- Browser/screenshot checks are coordinator-owned and must use ordinary page UI/public read-only state. VM/CPU checks do not establish WebGL pixels, audible mix, touch hardware, controller feel or FPS.

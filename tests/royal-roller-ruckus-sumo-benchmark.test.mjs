@@ -38,7 +38,7 @@ test('personal best records are rules-scoped and only improve on legal completed
 });
 test('result rows retain finish times and label unfinished rivals honestly',()=>{
  const h=harness();h.run('raceTime=30;finishRacer(racers[1]);raceTime=35;finishRacer(racers[0]);renderRaceResults();');
- assert.match(h.els.get('#resultsList').innerHTML,/0:30.0/);assert.match(h.els.get('#resultsList').innerHTML,/Still racing/);
+ assert.match(h.els.get('#resultsList').innerHTML,/0:30.0/);assert.match(h.els.get('#resultsList').innerHTML,/Unfinished/);
 });
 test('gamepad pause and recover buttons trigger once per press',()=>{
  const h=harness();h.run('let pressed=true;navigator.getGamepads=()=>[{connected:true,index:0,axes:[0,0],buttons:Array.from({length:10},(_,i)=>({pressed:i===9&&pressed}))}];pollGamepadActions();pollGamepadActions();');
@@ -49,7 +49,7 @@ test('audio stays locked until an enabling gesture and reduced motion suppresses
  h.run('reduceMotion=true;flash.style.opacity="0";hitFlash(1);');assert.equal(h.els.get('#flash').style.opacity,'0');
 });
 test('shipped startup opens setup and retains archive/version provenance',()=>{
- assert.match(source,/openRaceSetup\(\);setTimeout/);assert.match(source,/1\.5\.0-crownway-coach/);
+ assert.match(source,/openRaceSetup\(\);setTimeout/);assert.match(source,/1\.6\.0-worlds/);
 });
 
 test('null or invalid stored JSON falls back without breaking startup',()=>{

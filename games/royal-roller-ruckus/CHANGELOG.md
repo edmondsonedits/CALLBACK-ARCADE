@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.6.0 — Four-course Worlds
+
+- Add an isolated, silent all-bot title race, Watch/Start/Return flow and fresh seeded starts.
+- Add Frostglass ice/braking strips, Foundry warned steam/safe lanes and Skygarden directional gusts/edge boosts; Frostglass and Skygarden use distinct safe spline routes. Preserve the Crownway route, collision/height separation and forward-gate authority.
+- Add one-lap practice on each course and a four-course, one-lap-per-race Series with honest finisher points, standings, next race and same-seed replay. Scope records to course, difficulty, seats, laps and hazard intensity.
+- Add grouped course/session/hazard/seed, name/color/cage/helmet, contrast and prior access/control/audio preferences. Stage rules; apply player/access choices immediately.
+- Use bounded local Kenney CC0 GLB scenery and steam particles through the official MIT Three r180 GLTFLoader. Cache shared assets and dispose course resources, with procedural fallbacks.
+- Compact title and touch layouts, scrolling settings/results actions, less intrusive desktop controls and meaningful Performance mode (lower resolution, no spectator point lights/shadows/backdrop blur). FPS diagnostics use wall time without altering fixed-step simulation.
+- Add 16 worlds behavioral tests, 24 full-course bot runs, four camera sweeps and source/license evidence. Browser/hardware review is separately recorded.
+
 ## 1.5.0 — Crownway Coach (Sumo benchmark upgrade)
 
 - Add deliberate setup, concise expandable race help, pause/results setup routes and staged race rules. Preserve the existing manual resume flow.

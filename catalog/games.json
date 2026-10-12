@@ -97,12 +97,12 @@
         "mobile",
         "three-js"
       ],
-      "description": "A 2–10 racer momentum-driven cage race on the vertical Crownway with deliberate setup, one-lap practice, checkpoint and corner coaching, lap splits, personal bests, recovery and persistent accessibility preferences.",
+      "description": "A 2–10 racer momentum cage race across Crownway, Frostglass, Foundry and Skygarden, with live bot title races, warned hazards, course practice, a four-course Series, seeded replay, scoped records and extensive player/access preferences.",
       "players": {
         "min": 2,
         "max": 10
       },
-      "version": "1.5.0",
+      "version": "1.6.0",
       "source": {
         "status": "imported",
         "paths": [
@@ -110,9 +110,22 @@
           "source/original/royal_roller_ruckus_v1.4_vertical_crownway.html",
           "source/vendor/three.module.js",
           "source/vendor/three.core.js",
-          "source/vendor/LICENSE-three.txt"
+          "source/vendor/LICENSE-three.txt",
+          "source/vendor/GLTFLoader.js",
+          "source/vendor/BufferGeometryUtils.js",
+          "source/vendor/loader-provenance.json",
+          "source/assets/LICENSE-castle-kit.txt",
+          "source/assets/LICENSE-nature-kit.txt",
+          "source/assets/LICENSE-particles.txt",
+          "source/assets/README.md",
+          "source/assets/castle-tower.glb",
+          "source/assets/court-banner.glb",
+          "source/assets/garden-oak.glb",
+          "source/assets/glacier-rock.glb",
+          "source/assets/provenance.json",
+          "source/assets/steam.png"
         ],
-        "provenance": "Imported from the user-supplied royal_roller_ruckus_v1.4_vertical_crownway.html; original preserved unchanged. Active v1.5.0 adds racing flow, coaching, practice, results and access preferences. Three.js r180 modules and MIT license are byte-identical copies of the existing Royal Sumo vendor distribution; no runtime CDN import.",
+        "provenance": "Imported user-supplied original preserved unchanged. Active v1.6.0 adds four courses, isolated live bot title, practice/Series, seeded replay, customization and licensed local Kenney scenery. Existing Three r180 engine and classic physics retained. Official matching MIT GLTFLoader/utilities use local import paths only; no runtime CDN.",
         "url": null
       },
       "lifecycle": "experimental",
@@ -299,5 +312,5 @@
       }
     }
   ],
-  "revision": "7453ba7a6ff06c22725d6ab56c09d693dffb7f56c8b64c882152b322a222d253"
+  "revision": "29f0d6d91fb57105e9d0b7ab934518f2637e30e3424dd4a4a25d00900f0e8ca7"
 }

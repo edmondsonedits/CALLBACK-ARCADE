@@ -1,11 +1,11 @@
 import {harness,source} from './harness.mjs';
 
 // Measure shipping controllers/physics without writing race progress.
-export function simulateBots(three,{html=source,count=2,difficulty='normal',seed=123,horizon=240,trace=false}={}){
+export function simulateBots(three,{html=source,count=2,difficulty='normal',seed=123,course='crownway',hazards=1,horizon=240,trace=false}={}){
  const h=harness({three,html});
  return h.run(`(()=>{
   let randomState=${seed};Math.random=()=>((randomState=(Math.imul(randomState,1664525)+1013904223)>>>0)/4294967296);
-  buildCurve();buildCourseZones();difficultyEl.value=${JSON.stringify(difficulty)};racerCountEl.value='${count}';resetRace();phase='race';
+  if(typeof courseEl!=='undefined'){courseEl.value=${JSON.stringify(course)};hazardEl.value='${hazards}';seedEl.value='${seed}';}buildCurve();buildCourseZones();difficultyEl.value=${JSON.stringify(difficulty)};racerCountEl.value='${count}';resetRace();phase='race';
   updatePlayer=updateAI;for(let i=0;i<${count};i++)networkInputs[i].connected=true;
   let time=0,tick=0,relocations=0;const gateObservations=[];
   const finishIndex=typeof checkpointIndex==='function'?checkpointIndex(0):0;

@@ -1,0 +1,22 @@
+[
+  {
+    "course": "crownway",
+    "worstY": 527.7164436438197,
+    "worstTurn": 0.04824824774917456
+  },
+  {
+    "course": "frostglass",
+    "worstY": 492.1308364895108,
+    "worstTurn": 0.008644551976541301
+  },
+  {
+    "course": "foundry",
+    "worstY": 527.7164436438197,
+    "worstTurn": 0.04824824774917456
+  },
+  {
+    "course": "skygarden",
+    "worstY": 508.2269626078976,
+    "worstTurn": 0.012440814900678346
+  }
+]
