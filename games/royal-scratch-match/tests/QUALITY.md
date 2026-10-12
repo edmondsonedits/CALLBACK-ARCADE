@@ -1,3 +1,7 @@
+# Current v0.7 Four Courts evidence (2026-10-12)
+
+Current report: `../../../docs/quality/worlds-2026-10-12/task-2-report.md`; byte-bound evidence: `worlds-evidence.json`. All **65/65** focused tests pass (47 retained plus 18 worlds tests), standalone syntax/smoke and unchanged archive hash pass. These checks execute production script with controlled browser/audio/time boundaries. The parent owns actual Chromium review, shared build/catalog gates and publication; hardware feel/audio-by-ear remain unverified. Historical evidence follows and does not attest the current source hash.
+
 # Current v0.6.0 benchmark evidence (2026-10-12)
 
 The current source is audited in `../../../docs/quality/sumo-benchmark/royal-scratch-match-report.md` with byte-bound evidence in `sumo-benchmark-evidence.json`. Focused production-runtime tests pass **47/47**: 29 previous timing tests plus 18 benchmark regressions. Standalone smoke parses the inline script and verifies the unchanged v0.5 archive. This is controlled Node/VM evidence, not browser pixels, audio-by-ear, physical touch/gamepad latency or measured FPS. Version/manifest finalization is included in v0.6.0; multiplayer remains not-integrated.

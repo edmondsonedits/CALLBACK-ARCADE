@@ -1,7 +1,7 @@
 # Standalone source
 
-`index.html` is the editable, offline standalone runtime.
+`index.html` is the editable Canvas/Web Audio v0.7.0 Four Courts Tour runtime. Keep `assets/` alongside it for the optional CC0 impact/star resources; failure never blocks play. There is no runtime CDN. MIT Alea is scoped inline for the isolated title performance; the exact upstream source and provenance live in `assets/`.
 
-`archive/royal_scratch_match_v0.5_ten_player.html` preserves the exact original supplied v0.5 attachment, recovered from repository import commit `02b4b16`. Its SHA-256 is checked by `../tests/smoke.mjs`; do not edit the archive when changing the runtime.
+`archive/royal_scratch_match_v0.5_ten_player.html` preserves the exact original supplied attachment. Its SHA-256 is checked by `../tests/smoke.mjs`; do not edit the archive.
 
-See `../tests/QUALITY.md` for branch verification and remaining browser/device checks. The editable runtime is v0.6.0; the archive remains v0.5 with its original hash. Current source-bound evidence is in `../tests/sumo-benchmark-evidence.json`.
+Current source-bound evidence: `../tests/worlds-evidence.json`. See `../tests/QUALITY.md` and `../../../docs/quality/worlds-2026-10-12/task-2-report.md` for verification boundaries.

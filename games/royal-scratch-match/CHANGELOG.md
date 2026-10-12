@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.7.0 — Four Courts Tour
+
+- Added a compact silent title with real call/response bots, independent state and MIT Alea stream, Watch/Return, and clean fresh Start. Returning from an audio-enabled session cannot sound the demo.
+- Added Tide Pavilion swing pairs, Clockwork Foundry half-beat/chord motifs and explicitly mapped Mirror Ballroom responses. Royal Hall retains classic note generation; all stages use unchanged scoring windows and shared note timestamps for display/audio/bots/judgment.
+- Added stage-specific rehearsal and a four-court, eight-phrase Tour with deliberate next-stage flow, aggregate standings and seeded replay.
+- Added grouped persisted settings for stage, goal, tempo, name, color, costume, instrument and high contrast, preserving existing sound/input/access options. Rules stage until Start; native text input normalizes on blur.
+- Added open-sea pavilion architecture, interlocking foundry gear trains and presses, tall ballroom mirrors/chandeliers/checkerboard, bounded CC0 star impacts and a quiet locally decoded CC0 perfect-hit accent. All resources have local licenses, official archive provenance and hashes.
+- Added 18 worlds regressions alongside 47 retained tests; public state now identifies stages, demo progression, Tour records and legal response lanes. Browser/hardware validation is separately scoped.
+
 ## 0.6.0 — Crown & Cadence / Sumo benchmark
 
 - Added a four-beat 96 BPM count-in, gold DJ-call/cyan echo identity, linked chord notes and a signed early/on-time/late timing meter. Chord feedback reports the worst constituent timing.

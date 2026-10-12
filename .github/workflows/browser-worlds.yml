@@ -8,6 +8,11 @@ on:
       - '.github/workflows/browser-worlds.yml'
       - 'package-lock.json'
   workflow_dispatch:
+    inputs:
+      games:
+        description: Game IDs separated by commas, or all
+        default: all
+        type: string
 permissions:
   contents: read
 concurrency:
@@ -27,6 +32,8 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - name: Exercise worlds on desktop and emulated touch viewports
         run: node scripts/browser-worlds/run.mjs
+        env:
+          BROWSER_GAMES: ${{ inputs.games || 'all' }}
       - uses: actions/upload-artifact@v4
         if: always()
         with:

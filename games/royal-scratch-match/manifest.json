@@ -14,18 +14,18 @@
     "bots",
     "mobile"
   ],
-  "description": "Standalone Crown & Cadence call-and-response rhythm knockout for 2\u201310 contestant slots, with rehearsal, musical count-in, timing soundcheck, persistent access settings, touch/keyboard/gamepad chords and seeded set replay. One local player plus bots by default; phone multiplayer is not integrated.",
+  "description": "Four Courts Tour: standalone call-and-response rhythm for 2\u201310 contestants, with a silent live bot title, swing/offbeat/mirror stages, exact-phrase rehearsal, aggregate Tour, performer customization and timing/access tools. One local player plus bots by default; phone multiplayer is not integrated.",
   "players": {
     "min": 2,
     "max": 10
   },
-  "version": "0.6.0",
+  "version": "0.7.0",
   "source": {
     "status": "imported",
     "paths": [
       "source/index.html"
     ],
-    "provenance": "Original standalone royal_scratch_match_v0.5_ten_player.html supplied by the user for project/repository use; its exact bytes remain in source/archive. Editable source/index.html upgraded in place to v0.6.0 Crown & Cadence. Original and current SHA-256 provenance plus focused automated-check evidence are recorded in tests/sumo-benchmark-evidence.json. No external runtime assets or dependencies were added.",
+    "provenance": "Original v0.5 standalone supplied by user, unchanged in source/archive. Editable Canvas runtime v0.7.0 Four Courts Tour. Local CC0 Kenney particles/impact sound and MIT Alea provenance in source/assets/provenance.json; source-bound regression evidence in tests/worlds-evidence.json.",
     "url": null
   },
   "lifecycle": "experimental",

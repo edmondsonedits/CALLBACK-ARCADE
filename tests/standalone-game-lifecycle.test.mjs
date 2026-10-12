@@ -125,6 +125,7 @@ function scratchGame() {
     Math, performance: { now: () => 1000 },
     TUNING: { round: { endDelay: .45, maxPhrases: 10 } },
     phase: 'response', phaseClock: 0, players: [{ alive: true }],
+    watching: false, runningDemo: false, matchMode: 'match', resize: noop, escapeText: String,
     setControlMode: noop, gameClock: () => 1, gameplayBlocked: () => false,
     bigMsg: element(), smallMsg: element(),
     setTimeout(fn) { timers.push({ fn, cancelled: false }); return timers.length; },
@@ -138,7 +139,7 @@ function scratchGame() {
     totalInputs: 0, totalResolved: 0, countdownAt: 0, countdownStage: 0,
     songTime: 0, lastBeatIndex: 0, screenShake: 0, flash: { a: 0 }, roundStartedAt: 0,
     menu: element(), results: element(), controls: element(), renderPhraseProgress: noop,
-    setStatus: noop, ping: noop, document: { getElementById: id => elements[id] ??= element() },
+    setStatus: noop, ping: noop, document: { documentElement: element(), getElementById: id => elements[id] ??= element() },
     fanfare() { fanfares++; }, ordinal: n => n,
   };
   vm.createContext(game);

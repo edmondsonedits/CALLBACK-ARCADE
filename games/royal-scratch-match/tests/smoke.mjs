@@ -33,4 +33,4 @@ if (process.argv.includes('--write-script')) {
   await writeFile(output, scriptMatch[1]);
   console.log('wrote ' + output);
 }
-console.log('Royal Scratch Match v0.6.0 smoke check passed (' + sha256 + ')');
+console.log('Royal Scratch Match v0.7.0 smoke check passed (' + sha256 + ')');

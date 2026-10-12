@@ -1,3 +1,18 @@
+# Four Courts checks (v0.7)
+
+Run from repository root:
+
+```
+node --test tests/royal-scratch-match-quality.test.mjs tests/royal-scratch-match-sumo-benchmark.test.mjs tests/royal-scratch-match-worlds.test.mjs
+node games/royal-scratch-match/tests/smoke.mjs
+```
+
+65 production-script checks cover timing and local lifecycle; browser DOM/canvas/audio/time boundaries are simulated. `worlds-evidence.json` binds source and test hashes. Parent coordinates actual Chromium screenshots at 1440×900, 390×844 and 844×390, native keyboard/touch emulation, local resource loading and review. This task does not claim physical controller/touch feel, audible mixing or measured FPS.
+
+Inspect ten seats with every court, Watch/Return and Start. Mirror call cards must show ECHO targets before response; the response cards and legal response lanes must agree. Use native D/F/J/K for responseLanes 0/1/2/3. Check settings scrolling/footer, empty and spaced names, paused native input, tour next/results/replay, unchanged same-phrase practice and silent menu after sounded play.
+
+---
+
 # Royal Scratch Match tests
 
 Run `node --test tests/royal-scratch-match-quality.test.mjs` for the runtime harness. See `QUALITY.md` for measured evidence and remaining browser/device gaps.

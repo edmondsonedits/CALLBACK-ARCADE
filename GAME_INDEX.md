@@ -40,11 +40,11 @@ A 2–10 racer momentum-driven cage race on the vertical Crownway with deliberat
 - ID: `royal-scratch-match` ([manifest](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-scratch-match/manifest.json), [game guide](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-scratch-match/README.md))
 - Status: imported; multiplayer not-integrated
 - Players: 2–10
-- Version: 0.6.0
+- Version: 0.7.0
 - Source: [source/index.html](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/royal-scratch-match/source/index.html)
 - Play: [launch game](https://edmondsonedits.github.io/CALLBACK-ARCADE/games/royal-scratch-match/)
 
-Standalone Crown & Cadence call-and-response rhythm knockout for 2–10 contestant slots, with rehearsal, musical count-in, timing soundcheck, persistent access settings, touch/keyboard/gamepad chords and seeded set replay. One local player plus bots by default; phone multiplayer is not integrated.
+Four Courts Tour: standalone call-and-response rhythm for 2–10 contestants, with a silent live bot title, swing/offbeat/mirror stages, exact-phrase rehearsal, aggregate Tour, performer customization and timing/access tools. One local player plus bots by default; phone multiplayer is not integrated.
 
 ## Royal Sumo — Crownfall
 

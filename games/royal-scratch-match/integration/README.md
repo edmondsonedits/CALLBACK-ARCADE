@@ -1,6 +1,6 @@
 # CALLBACK integration boundary
 
-Royal Scratch Match v0.6 is a complete standalone browser game with useful local integration hooks, but it is not an authenticated online multiplayer implementation. The manifest intentionally remains multiplayer.status = not-integrated.
+Royal Scratch Match v0.7 is a complete standalone browser game with useful local integration hooks, but it is not an authenticated online multiplayer implementation. The manifest intentionally remains multiplayer.status = not-integrated.
 
 ## Contestant model
 
@@ -32,7 +32,7 @@ Slots not listed remain bots.
 
 Routes an A/B/X/Y lane press into the existing rhythm judgment system.
 
-- playerIndex is clamped to the configured slot range in v0.6.
+- playerIndex is clamped to the configured slot range in v0.7.
 - lane is clamped to 0..3 for A/B/X/Y.
 - Gameplay rejects input unless the game is in the response phase, the player exists, is alive, and that slot is marked human.
 - Slot 0 also receives local audio/VFX/button feedback; remote human slots receive gameplay scoring/life effects but do not have separate private-device presentation.
@@ -64,7 +64,7 @@ Returns the same state snapshot as GameDebug.getState().
 
 Controls host-page sound.
 
-### Local session tools (v0.6)
+### Local session tools (v0.7)
 
 - `pause()` and `resume()` freeze/resume the monotonic rhythm clock and clear held inputs. Hidden pages and CAM controls share a reason-aware freeze; overlapping pauses never double-count time.
 - `menu()` abandons a session, invalidates its result callbacks and returns to setup.
@@ -130,3 +130,19 @@ Do not expose playerIndex as a trusted value supplied by a phone.
 ## Readiness statement
 
 Source import is complete. Local multi-slot hooks exist. Online multiplayer remains unverified and not integrated. No arcade-multiplayer-verification JSON file is included because the authenticated room/seat/input contract has not been implemented for this game.
+
+
+## Four Courts additions (v0.7)
+
+`configure` / `start` accept `stage: royal|tide|foundry|mirror`, `mode: match|practice|tour`, `phraseGoal: 3|6|9`, and `tempo: relaxed|standard|brisk`. Existing seeds, human slot ownership and local judgment/CAM contracts remain. Configure remains a lobby/pre-round operation, reinitializing players; it rebuilds preview seats while at the title. `setSettings` stages rule changes for the next explicit Start; Replay retains the captured previous session rules.
+
+`getSettings` additionally exposes validated `stage`, `phraseGoal`, `tempo`, `name`, `color` (six-digit hex), `costume: jester|bard|mage|crown`, `voice: lute|bell|chip`, and `highContrast`. Existing volume/mute, seats, difficulty, beat guide, reduced motion, vibration and local correction UI remain. Name/color style changes update the local default profile immediately; explicit host `players` profiles retain ownership of their names/colors.
+
+`getState()` adds:
+
+- `stage`, `stageName`, `rules: {stage,phraseGoal,tempo}` for the active real session.
+- `demo: {active,phase,phaseTime,phrase,stage,resolved}`. The outer phase stays `menu`; its real players/stats/seed are untouched. Demo bots all use legal scheduled lane judgments. The renderer/simulation temporarily enters the independent demo state synchronously, then restores the real session in `finally`.
+- `tour: {index,records,totalScore}`. Records contain stage, local score/perfect/good/misses, and per-seat score arrays; final standings sum corresponding seats across all four courts.
+- Each pattern event retains `time` and `lanes` (DJ call), and adds `responseLanes` (expected legal echo). Mirror changes only lanes, with A↔Y and B↔X; timing is identical. All other courts have identical call/response lanes.
+
+The UI provides `#nextStageBtn` at intermediate Tour results. A full `replay()` restarts the same seeded session from the first court with fresh records, while a fresh Start chooses a new UI seed. Tour and rehearsal do not eliminate; Crown Match scoring/lives are retained.

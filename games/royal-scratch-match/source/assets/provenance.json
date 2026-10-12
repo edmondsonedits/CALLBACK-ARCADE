@@ -1,0 +1,41 @@
+{
+  "assets": [
+    {
+      "file": "star_04.png",
+      "originalPath": "PNG (Transparent)/star_04.png",
+      "license": "CC0-1.0",
+      "author": "Kenney",
+      "sourcePage": "https://kenney.nl/assets/particle-pack",
+      "sha256": "6485ac16c773663bd39346f3bedae04465ac14c661eb47cc5cfa935cdbf6c2ec",
+      "archive": {
+        "pack": "particles",
+        "url": "https://kenney.nl/media/pages/assets/particle-pack/f8fe0f8cb8-1677578741/kenney_particle-pack.zip",
+        "bytes": 15001764,
+        "sha256": "b631d4b07f7002549fdcf155f01141ad482f79f3440e4e301eed49ce5f1d8958"
+      }
+    },
+    {
+      "file": "impactMetal_light_000.ogg",
+      "originalPath": "Audio/impactMetal_light_000.ogg",
+      "license": "CC0-1.0",
+      "author": "Kenney",
+      "sourcePage": "https://kenney.nl/assets/impact-sounds",
+      "sha256": "33b5e6e37c6e9d54e07bf5a89b12c76e879f40c1ea83cdd82714df1d6f9fec6d",
+      "archive": {
+        "pack": "impacts",
+        "url": "https://kenney.nl/media/pages/assets/impact-sounds/87b4ddecda-1677589768/kenney_impact-sounds.zip",
+        "bytes": 800850,
+        "sha256": "029d734af1582474edf3a694d1b0cebc97c1c152f2f39fa34d4c2bafc5de77f8"
+      }
+    }
+  ],
+  "code": {
+    "file": "alea-upstream.js",
+    "repository": "https://github.com/davidbau/seedrandom",
+    "commit": "4460ad325a0a15273a211e509f03ae0beb99511a",
+    "url": "https://raw.githubusercontent.com/davidbau/seedrandom/4460ad325a0a15273a211e509f03ae0beb99511a/lib/alea.js",
+    "sha256": "9f821c9ede583e1c1f1d3263d6d016d13d562768de6c477d8262f7e8028a09cb",
+    "license": "MIT, copyright header retained",
+    "integration": "Algorithm and full MIT header inlined inside source/index.html; export wrapper replaced with closure return. Used solely for isolated deterministic title-performance phrase and bot scheduling."
+  }
+}

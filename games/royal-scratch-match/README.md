@@ -2,7 +2,7 @@
 
 Royal Scratch Match is a medieval call-and-response rhythm knockout. The Royal DJ performs an A/B/X/Y phrase, then contestants repeat the same pattern as notes approach the timing line. Misses remove lives; later phrases increase tempo, phrase length, syncopation, and chord pressure.
 
-This folder contains the complete standalone v0.6.0 Crown & Cadence build. The exact supplied v0.5 attachment remains in `source/archive/`.
+This folder contains the complete standalone v0.7.0 Four Courts Tour build. The exact supplied v0.5 attachment remains in `source/archive/`.
 
 ## Current status
 
@@ -15,7 +15,7 @@ This folder contains the complete standalone v0.6.0 Crown & Cadence build. The e
 
 ## Run
 
-Open source/index.html in a modern browser. The file is self-contained and has no external runtime dependencies.
+Open source/index.html in a modern browser. Keep the source folder together: the game has no remote runtime dependencies. Its optional local particle/impact resources fall back gracefully when unavailable. HTTP serving permits the optional audio fetch; opening the HTML directly retains synthesized audio.
 
 Useful query parameters:
 
@@ -25,7 +25,7 @@ Useful query parameters:
 
 ## Gameplay
 
-1. A four-beat musical count-in at 96 BPM prepares the court. The Royal DJ plays a short phrase first.
+1. A four-beat musical count-in at the selected tempo (96 BPM in Concert) prepares the court. The Royal DJ plays a short phrase first.
 2. Watch the four colored note lanes and remember the sequence.
 3. During YOUR TURN, press A/B/X/Y when approaching notes reach the glowing hit rings.
 4. Correct timing builds score and combo; misses remove lives.
@@ -35,6 +35,23 @@ Useful query parameters:
 **Rehearsal** keeps all contestants alive. At the end of each echo, repeat the exact phrase, advance to a harder phrase, or finish to review your attempts. Scores and misses accumulate across attempts; there is no rehearsal crown ranking.
 
 The standalone menu supports 2–10 contestant slots. The intended party configuration includes one local human with as many as nine bots.
+
+## Four Courts
+
+| Court | Musical rule | Skill |
+| --- | --- | --- |
+| Royal Hall | Original classic phrase construction | Steady timing and memory |
+| Tide Pavilion | Paired notes separated by 2/3 then 1/3 beat | Hear long–short swing |
+| Clockwork Foundry | Half-beat motifs with alternating single notes and two-rune chords | Subdivision and simultaneous control |
+| Mirror Ballroom | Call A/B/X/Y maps to echo Y/X/B/A at the same times | Deliberate lane reflection |
+
+Mirror call notes label their required ECHO rune; the response displays the actual expected lane. Every court retains the same difficulty windows. Relaxed/Concert/Brisk scale the entire musical clock plan (count-in, BPM, note spacing/travel and sound), never the judgment windows.
+
+The title shows a real silent bot performance with separate simulation, statistics and Alea randomness. Watch expands the performance; Return brings back the compact menu. Start always initializes a fresh real session. Menu demos neither save progress nor create audio automatically, including after a sounded match.
+
+Four Courts Tour visits Royal, Tide, Foundry and Mirror, two phrases each, without elimination. The results provide per-court points and misses, a next-court action and final aggregate standings. Replay restarts the same seeded Tour. Rehearsal can select any stage and repeat an exact phrase. Crown Match retains elimination rules with a 3/6/9 phrase goal.
+
+Customize & rehearse groups Rules, Player, Controls, and Audio & Access. Rules (stage, mode, difficulty, seats, goal, tempo) apply on explicit Start. Name, color, costume, instrument, contrast, motion, sound, beat guide, vibration and timing correction are immediate and persisted after validation. Native name editing accepts spaces/empty text; blur normalizes it to a trimmed 16-character name or YOU. Reset defaults is available. Same-set replay deliberately retains the previous session's rules despite staged edits.
 
 ## Local controls
 
@@ -96,9 +113,11 @@ Do not mark multiplayer verified until the host/controller contract is implement
 - Out-of-range API indices are clamped rather than rejected, so the hook is not a security boundary.
 - Ordinary play uses Math.random(); an optional numeric `seed` makes phrase/bot decisions reproducible independently of cosmetic effects. `seed: null` restores ordinary randomness.
 - Bot actions share local judgment; authenticated network validation remains unimplemented.
-- configure() reinitializes player state; seat replacement is therefore a lobby/pre-round operation in v0.6, not a safe mid-round join/leave mechanism.
+- configure() reinitializes player state; seat replacement is therefore a lobby/pre-round operation in v0.7, not a safe mid-round join/leave mechanism.
 - Browser audio may require a user gesture because of autoplay policies.
 - Procedural Web Audio remains synthesized rather than authored final music/SFX. A session enabling action unlocks audio; automatic presentation scenarios stay silent until sound/input is enabled.
 - Fullscreen behavior varies by browser/platform.
 
-Current benchmark audit: `../../docs/quality/sumo-benchmark/royal-scratch-match-report.md`. Source-bound automated evidence: `tests/sumo-benchmark-evidence.json`. Physical audio/touch/gamepad latency and final mobile pixels require browser/device review.
+Current worlds report: `../../docs/quality/worlds-2026-10-12/task-2-report.md`; current hashes in `tests/worlds-evidence.json`. Asset/code sources and complete license notices are in `source/assets/`.
+
+Historical benchmark audit: `../../docs/quality/sumo-benchmark/royal-scratch-match-report.md`. Source-bound automated evidence: `tests/sumo-benchmark-evidence.json`. Physical audio/touch/gamepad latency and final mobile pixels require browser/device review.

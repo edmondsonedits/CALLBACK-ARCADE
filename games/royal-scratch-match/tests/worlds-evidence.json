@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-12",
+  "version": "0.7.0",
+  "runtime": "games/royal-scratch-match/source/index.html",
+  "runtimeSha256": "ec7457200e5d22f2881517fadefef5078a72294633b7b309af0ac4a949a375bb",
+  "archiveSha256": "6c58614db13495393512e9f69496da686dc2962b3cabd49d71680493170cbb03",
+  "tests": {
+    "command": "node --test tests/royal-scratch-match-quality.test.mjs tests/royal-scratch-match-sumo-benchmark.test.mjs tests/royal-scratch-match-worlds.test.mjs",
+    "passed": 65,
+    "failed": 0,
+    "worldsTestSha256": "2e9549edd400552b0b72c4ef6c5c5626428919437b469da92563e2daba6f556f",
+    "boundary": "Complete production inline script; VM DOM/audio/time boundary stubs. Not browser/hardware evidence."
+  },
+  "smoke": "passed, syntax/API/offline dependencies/unchanged archive",
+  "diffCheck": "passed",
+  "assets": "../source/assets/provenance.json",
+  "browser": "Parent-owned independent Chromium desktop/portrait/landscape review pending at implementation handoff",
+  "unverified": [
+    "audio-by-ear",
+    "physical touch/gamepad response",
+    "hardware timing calibration",
+    "measured FPS",
+    "subjective 9/10 target"
+  ]
+}
