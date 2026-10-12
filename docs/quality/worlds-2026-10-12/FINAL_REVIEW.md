@@ -51,3 +51,5 @@ Final local Pages rebuild is byte-identical to all six reviewed standalone entry
 - CI38264792720: Blind Crown76 checks pass, zero runtime/request errors, all3viewports on exact546839ce… source. Parent inspected8 final frames: portraittitle/replay/Glacierplanning, landscapetitle/Clockworkplanning, desktopOrcharddemo/results/completedreview. Title/demo separation and results heading clipping resolved; native Start/Watch/Next/Replay and private-plan filtering passed.
 - Accepted browser checks total767:129+147+171+142+102+76. These combine source-bound game reports, not one repeated full-arcade run.
 - Final reviewer conditions for catalog/build/source-bound pixels closed. Minor limitations above remain explicit. Publication/live readback recorded in progress.md.
+
+Published to main39771b0881d45450475aff2ac6678fdef34c8b82. Main verification and Pages deployment succeeded; live HTML readback matches all six accepted source hashes and unchanged Royal Sumo. See live-readback.json.

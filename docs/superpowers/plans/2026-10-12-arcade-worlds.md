@@ -29,4 +29,4 @@ Each game task: read its brief/spec/current source and source-bound prior report
 - [x] Task 4: Royal Twisted — games/royal-twisted/** and tests/royal-twisted-worlds.test.mjs. Live survival demo; four hazard themes with existing-verb counterplay; tour/customization. Brief task-4-brief.md.
 - [x] Task 5: Space Bash — games/space-bash/** and tests/space-bash-worlds.test.mjs. Live crew demo; four functional decks; series/custom rules/style. Brief task-5-brief.md.
 - [x] Task 6: Blind Crown — games/blind-crown/** and tests/blind-crown-worlds.test.mjs. Live all-bot volley demo; four tactical maps, accurate completed review; tour/style/rule customization. Brief task-6-brief.md.
-- [ ] Task 7: Parent integration — refresh metadata/catalog/STATUS, independent whole-branch review, complete repository/build/source-preservation checks, publish and verify live hashes/available rendered scenes.
+- [x] Task 7: Parent integration — refresh metadata/catalog/STATUS, independent whole-branch review, complete repository/build/source-preservation checks, publish and verify live hashes/available rendered scenes.

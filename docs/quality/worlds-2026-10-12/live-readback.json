@@ -1,0 +1,44 @@
+[
+  {
+    "game": "royal-ballistix",
+    "url": "https://edmondsonedits.github.io/CALLBACK-ARCADE/games/royal-ballistix/",
+    "sha256": "bfb1502a133a0200adc2c4df9478c5dcdca1592d2f72ca3664aca663a6b2161d",
+    "matches": true
+  },
+  {
+    "game": "royal-scratch-match",
+    "url": "https://edmondsonedits.github.io/CALLBACK-ARCADE/games/royal-scratch-match/",
+    "sha256": "4866174e89a07e444091ab2a550b74cc25f6ef211277aea44f45ad5fe5cb7d18",
+    "matches": true
+  },
+  {
+    "game": "royal-roller-ruckus",
+    "url": "https://edmondsonedits.github.io/CALLBACK-ARCADE/games/royal-roller-ruckus/",
+    "sha256": "2b6b59de0bcadbfcb0907d2eeb60a4389178e3fec5c0ce91c907d2e91d1f9217",
+    "matches": true
+  },
+  {
+    "game": "royal-twisted",
+    "url": "https://edmondsonedits.github.io/CALLBACK-ARCADE/games/royal-twisted/",
+    "sha256": "53a29791785efd06899422f8c3b6ecbd09761b6cfc7367d944848c60283a5a81",
+    "matches": true
+  },
+  {
+    "game": "space-bash",
+    "url": "https://edmondsonedits.github.io/CALLBACK-ARCADE/games/space-bash/",
+    "sha256": "571fd02f0050c3a4947d53644f769a77f05866d9a864162361a3e0603e64f7d0",
+    "matches": true
+  },
+  {
+    "game": "blind-crown",
+    "url": "https://edmondsonedits.github.io/CALLBACK-ARCADE/games/blind-crown/",
+    "sha256": "546839ce6ffcab10f041fa1ba4ff45b6f05bbc76f1ce3f49793e97f0cf1e042b",
+    "matches": true
+  },
+  {
+    "game": "royal-sumo",
+    "url": "https://edmondsonedits.github.io/CALLBACK-ARCADE/games/royal-sumo/",
+    "sha256": "6b7a638bae0d5468fee3ffb5c9d9c3a86252487379e43621b758488ac9082186",
+    "matches": true
+  }
+]
