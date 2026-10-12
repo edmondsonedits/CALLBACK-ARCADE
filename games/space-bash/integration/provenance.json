@@ -7,7 +7,7 @@
   "sourceHashes": [
     {
       "path": "source/index.html",
-      "sha256": "cee8904e5e172c752b6dd2888282c0fb837b79b9510e0414d16329d03437cfab"
+      "sha256": "bf80245b24c932ae78b233a146ef71657d693f774b0a73e0de5609479667405f"
     },
     {
       "path": "source/original/space_bash_orbital_breakout_v1.13.1_standalone.html",
@@ -18,7 +18,8 @@
     {
       "name": "75 focused checks: 17 worlds plus preserved 58 benchmark/quality/stress/render paths",
       "result": "passed",
-      "command": "node --test tests/space-bash-worlds.test.mjs tests/space-bash-sumo-benchmark.test.mjs tests/space-bash-quality.test.mjs"
+      "command": "node --test tests/space-bash-worlds.test.mjs tests/space-bash-sumo-benchmark.test.mjs tests/space-bash-quality.test.mjs",
+      "verifiedSourceSha256": "cee8904e5e172c752b6dd2888282c0fb837b79b9510e0414d16329d03437cfab"
     },
     {
       "name": "Standalone source and immutable original",
@@ -29,6 +30,18 @@
       "name": "scoped whitespace",
       "result": "passed",
       "command": "git diff --check -- games/space-bash tests/space-bash-worlds.test.mjs"
+    },
+    {
+      "name": "Final presentation-only rule-summary correction: three affected settings/volatile/Series checks",
+      "result": "passed",
+      "command": "node --test --test-name-pattern='volatile deck|editing contestant|Series counts' tests/space-bash-worlds.test.mjs tests/space-bash-sumo-benchmark.test.mjs",
+      "verifiedSourceSha256": "4766c246ed4220652dce34d162d7d35d1d46c0106a4ea8b86541f740ea5e46be"
+    },
+    {
+      "name": "Review round1: active-rule public Series restart, seat growth/completed reset/replay and unchanged deck geometry",
+      "result": "passed: 8/8",
+      "command": "node --test --test-name-pattern='public setPlayers|Series counts|real Series timeout|editing contestant|match results list|short landscape|portrait and landscape' tests/space-bash-worlds.test.mjs tests/space-bash-sumo-benchmark.test.mjs tests/space-bash-quality.test.mjs",
+      "verifiedSourceSha256": "bf80245b24c932ae78b233a146ef71657d693f774b0a73e0de5609479667405f"
     }
   ],
   "limitations": [
