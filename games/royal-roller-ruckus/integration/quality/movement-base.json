@@ -1,0 +1,38 @@
+{
+  "method": "source-extracted updatePlayer, 120Hz, tangent-constrained fixed local grade; not a complete driving trial",
+  "out": [
+    {
+      "idx": 226,
+      "height": -0.900414400005092,
+      "slope": 0.0025416352845193824,
+      "accelTo7Seconds": 0.6083333333333336,
+      "opposingStop": {
+        "seconds": 0.6083333333333336,
+        "distance": 2.5221312784070253
+      },
+      "reverseToMinus7Seconds": 1.1499999999999984
+    },
+    {
+      "idx": 351,
+      "height": 3.379793509181725,
+      "slope": 0.04585835765831822,
+      "accelTo7Seconds": 0.6166666666666669,
+      "opposingStop": {
+        "seconds": 0.591666666666667,
+        "distance": 2.4404200954633084
+      },
+      "reverseToMinus7Seconds": 1.1249999999999984
+    },
+    {
+      "idx": 512,
+      "height": 4.492913347206298,
+      "slope": 0.12125242295300151,
+      "accelTo7Seconds": 0.6416666666666668,
+      "opposingStop": {
+        "seconds": 0.5750000000000004,
+        "distance": 2.3569492530810603
+      },
+      "reverseToMinus7Seconds": 1.083333333333332
+    }
+  ]
+}

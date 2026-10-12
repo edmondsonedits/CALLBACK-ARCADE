@@ -1,0 +1,144 @@
+{
+  "matched": {
+    "races": 27,
+    "racers": 144,
+    "finishers": 144,
+    "laps": 432,
+    "falls": 0,
+    "respawns": 0,
+    "nonForwardCredits": 0,
+    "lowSpeedStalls": 0,
+    "rawMissedFinishObservations": 6,
+    "maxCheckpointGapSeconds": 10.449999999999996,
+    "maxRouteWithoutCheckpointSamples": 95,
+    "meanFinishSeconds": 119.89317129629629,
+    "maxFinishSeconds": 134.14166666666665,
+    "finishTimes": [
+      {
+        "count": 2,
+        "difficulty": "easy",
+        "mean": 126.525,
+        "median": 126.47916666666666
+      },
+      {
+        "count": 2,
+        "difficulty": "normal",
+        "mean": 115.45,
+        "median": 115.17083333333332
+      },
+      {
+        "count": 2,
+        "difficulty": "hard",
+        "mean": 109.5638888888889,
+        "median": 109.12916666666666
+      },
+      {
+        "count": 4,
+        "difficulty": "easy",
+        "mean": 128.4388888888889,
+        "median": 128.8875
+      },
+      {
+        "count": 4,
+        "difficulty": "normal",
+        "mean": 116.70277777777778,
+        "median": 116.55
+      },
+      {
+        "count": 4,
+        "difficulty": "hard",
+        "mean": 110.70625,
+        "median": 110.725
+      },
+      {
+        "count": 10,
+        "difficulty": "easy",
+        "mean": 130.5702777777778,
+        "median": 131.17083333333335
+      },
+      {
+        "count": 10,
+        "difficulty": "normal",
+        "mean": 119.48833333333333,
+        "median": 119.85833333333332
+      },
+      {
+        "count": 10,
+        "difficulty": "hard",
+        "mean": 112.78166666666667,
+        "median": 112.975
+      }
+    ]
+  },
+  "holdout": {
+    "races": 27,
+    "racers": 144,
+    "finishers": 144,
+    "laps": 432,
+    "falls": 0,
+    "respawns": 0,
+    "nonForwardCredits": 0,
+    "lowSpeedStalls": 0,
+    "rawMissedFinishObservations": 9,
+    "maxCheckpointGapSeconds": 10.666666666666657,
+    "maxRouteWithoutCheckpointSamples": 96,
+    "meanFinishSeconds": 119.94085648148148,
+    "maxFinishSeconds": 134.70833333333334,
+    "finishTimes": [
+      {
+        "count": 2,
+        "difficulty": "easy",
+        "mean": 127.38888888888889,
+        "median": 126.8375
+      },
+      {
+        "count": 2,
+        "difficulty": "normal",
+        "mean": 115.0625,
+        "median": 114.89166666666667
+      },
+      {
+        "count": 2,
+        "difficulty": "hard",
+        "mean": 109.48333333333333,
+        "median": 109.51666666666667
+      },
+      {
+        "count": 4,
+        "difficulty": "easy",
+        "mean": 127.62569444444445,
+        "median": 127.62083333333334
+      },
+      {
+        "count": 4,
+        "difficulty": "normal",
+        "mean": 116.69583333333333,
+        "median": 116.82083333333333
+      },
+      {
+        "count": 4,
+        "difficulty": "hard",
+        "mean": 110.54444444444444,
+        "median": 110.38333333333333
+      },
+      {
+        "count": 10,
+        "difficulty": "easy",
+        "mean": 131.29555555555555,
+        "median": 131.74583333333334
+      },
+      {
+        "count": 10,
+        "difficulty": "normal",
+        "mean": 119.47333333333333,
+        "median": 119.62916666666666
+      },
+      {
+        "count": 10,
+        "difficulty": "hard",
+        "mean": 112.61388888888888,
+        "median": 112.80833333333334
+      }
+    ]
+  }
+}

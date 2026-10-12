@@ -1,0 +1,235 @@
+✖ checkpoint requires forward crossing, not proximity or reverse approach (9.441592ms)
+✖ checkpoints cannot be skipped, crossed airborne, or on another vertical deck (5.685087ms)
+✖ legal landing on the next gate does not grant credit; recrossing it does (5.388388ms)
+✔ respawn preserves validated progress and repeated recovery cannot duplicate a lap (6.309331ms)
+✖ rank stays behind validated progress when a racer skips ahead or starts behind line (3.785552ms)
+✖ collisions respect separate crossover heights (4.402854ms)
+✖ 2 exactly coincident racers separate without nonfinite values (8.252751ms)
+✖ 10 exactly coincident racers separate without nonfinite values (7.163187ms)
+✔ 2 seats complete ordered three-lap progression with unique finish/reset state (4.348693ms)
+✔ 4 seats complete ordered three-lap progression with unique finish/reset state (3.758723ms)
+✔ 10 seats complete ordered three-lap progression with unique finish/reset state (6.049146ms)
+✖ blur clears keys and touch and requires explicit resume (3.129707ms)
+✖ pause/settings clear held input, closing settings stays paused (2.769454ms)
+✔ touch cancellation neutralizes the stick (2.892044ms)
+✖ disconnect neutralizes network packet, smoothed steering and public input state (6.026507ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 5
+ℹ fail 10
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 163.176975
+
+✖ failing tests:
+
+test at games/royal-roller-ruckus/tests/quality.test.mjs:5:1
+✖ checkpoint requires forward crossing, not proximity or reverse approach (9.441592ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  2 !== 1
+
+      at TestContext.<anonymous> (file:///workspace/royal-roller-quality/games/royal-roller-ruckus/tests/quality.test.mjs:6:84)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at games/royal-roller-ruckus/tests/quality.test.mjs:10:1
+✖ checkpoints cannot be skipped, crossed airborne, or on another vertical deck (5.685087ms)
+  AssertionError [ERR_ASSERTION]: pose(r,79);checkpointUpdate(r);pose(r,81);r.falling=true
+
+  2 !== 1
+
+      at TestContext.<anonymous> (file:///workspace/royal-roller-quality/games/royal-roller-ruckus/tests/quality.test.mjs:12:87)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at games/royal-roller-ruckus/tests/quality.test.mjs:15:1
+✖ legal landing on the next gate does not grant credit; recrossing it does (5.388388ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  2 !== 1
+
+      at TestContext.<anonymous> (file:///workspace/royal-roller-quality/games/royal-roller-ruckus/tests/quality.test.mjs:17:48)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at games/royal-roller-ruckus/tests/quality.test.mjs:23:1
+✖ rank stays behind validated progress when a racer skips ahead or starts behind line (3.785552ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  1 !== 0
+
+      at TestContext.<anonymous> (file:///workspace/royal-roller-quality/games/royal-roller-ruckus/tests/quality.test.mjs:24:90)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at games/royal-roller-ruckus/tests/quality.test.mjs:26:1
+✖ collisions respect separate crossover heights (4.402854ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  true !== false
+
+      at TestContext.<anonymous> (file:///workspace/royal-roller-quality/games/royal-roller-ruckus/tests/quality.test.mjs:27:96)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at games/royal-roller-ruckus/tests/quality.test.mjs:29:27
+✖ 2 exactly coincident racers separate without nonfinite values (8.252751ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+    assert.ok(h.run('Math.min(...racers.flatMap((a,i)=>racers.slice(i+1).map(b=>Math.hypot(a.x-b.x,a.z-b.z))))')>1.10)
+
+      at TestContext.<anonymous> (file:///workspace/royal-roller-quality/games/royal-roller-ruckus/tests/quality.test.mjs:32:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at games/royal-roller-ruckus/tests/quality.test.mjs:29:27
+✖ 10 exactly coincident racers separate without nonfinite values (7.163187ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+    assert.ok(h.run('Math.min(...racers.flatMap((a,i)=>racers.slice(i+1).map(b=>Math.hypot(a.x-b.x,a.z-b.z))))')>1.10)
+
+      at TestContext.<anonymous> (file:///workspace/royal-roller-quality/games/royal-roller-ruckus/tests/quality.test.mjs:32:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at games/royal-roller-ruckus/tests/quality.test.mjs:40:1
+✖ blur clears keys and touch and requires explicit resume (3.129707ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + -0.7808688094430303
+  - 0
+
+      at TestContext.<anonymous> (file:///workspace/royal-roller-quality/games/royal-roller-ruckus/tests/quality.test.mjs:42:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: -0.7808688094430303,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at games/royal-roller-ruckus/tests/quality.test.mjs:44:1
+✖ pause/settings clear held input, closing settings stays paused (2.769454ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  -1 !== 0
+
+      at TestContext.<anonymous> (file:///workspace/royal-roller-quality/games/royal-roller-ruckus/tests/quality.test.mjs:45:166)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: -1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at games/royal-roller-ruckus/tests/quality.test.mjs:50:1
+✖ disconnect neutralizes network packet, smoothed steering and public input state (6.026507ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  1 !== 0
+
+      at TestContext.<anonymous> (file:///workspace/royal-roller-quality/games/royal-roller-ruckus/tests/quality.test.mjs:52:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
