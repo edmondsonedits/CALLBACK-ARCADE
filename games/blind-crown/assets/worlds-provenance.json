@@ -1,0 +1,13 @@
+{
+  "author": "Kenney",
+  "license": "CC0-1.0",
+  "licenseFile": "kenney/License.txt",
+  "source": "https://kenney.nl/assets/particle-pack",
+  "archiveUrl": "https://kenney.nl/media/pages/assets/particle-pack/f8fe0f8cb8-1677578741/kenney_particle-pack.zip",
+  "archiveSha256": "b631d4b07f7002549fdcf155f01141ad482f79f3440e4e301eed49ce5f1d8958",
+  "use": "Embedded transparent spark_06.png drawn at actual arrow impacts in overhead/isometric Canvas; original procedural ring remains the fallback. One image, at most ten arrows, bounded 160 particles. No gameplay RNG or network requests.",
+  "files": {
+    "spark_06.png": "fe6d473393d3b9350c7a654b7cb5fbd343766b5b5b11d3e4aba476832d4a6d3f",
+    "License.txt": "f9e70b81d8cc07c4e07c9f2eff1d94fd371a06070b18cb67c651c41158ec2975"
+  }
+}

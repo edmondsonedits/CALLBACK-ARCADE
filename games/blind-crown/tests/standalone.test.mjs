@@ -6,7 +6,7 @@ import vm from 'node:vm';
 
 const html = await readFile(new URL('../source/index.html', import.meta.url));
 const scripts = [...html.toString('utf8').matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)];
-const expected = '9de02410af76047081cdfff3fe19a0e70641c75a31ae9ded5f7eef0831b0f681';
+const expected = '7e76153833db7702620d807a4aca5919e741fd21369540ca79b27a411b704415';
 function engine() {
   const entry = scripts.find(([, , code]) => code.includes('deterministic, authoritative match rules'));
   assert.ok(entry, 'Complete engine must be embedded in standalone');
@@ -23,8 +23,8 @@ function match() {
   return { game, a, b };
 }
 
-test('Nightfall v1.6 tactical HTML matches the verified active-build bytes exactly', () => {
-  assert.equal(html.length, 188322);
+test('Nightfall v1.7 tactical worlds HTML matches the verified active-build bytes exactly', () => {
+  assert.equal(html.length, 268727);
   assert.equal(createHash('sha256').update(html).digest('hex'), expected);
 });
 test('Embedded classic scripts compile without rewriting source', () => {
@@ -66,10 +66,17 @@ test('Default Classic match supports ten contestants including bots', () => {
   assert.equal(game.state().settings.ruleset, 'classic');
 });
 
-test('Original v1.4 remains recoverable and deterministic engine is unchanged', async () => {
+test('Original v1.4 remains recoverable; Classic shot and movement behavior remains compatible', async () => {
   const original = await readFile(new URL('../source/original/blind-crown-v1.4.html', import.meta.url));
   assert.equal(createHash('sha256').update(original).digest('hex'), '496131ad8031a58b8b2ec78cc1aace73f57ab1ca0646271b383bf48bb108c462');
   const originalScripts = [...original.toString('utf8').matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)];
   const select = list => list.find(([, , code]) => code.includes('deterministic, authoritative match rules'))[2];
-  assert.equal(select(scripts), select(originalScripts));
+  const archivedContext=vm.createContext({});vm.runInContext(select(originalScripts),archivedContext);
+  const old=archivedContext.BlindCrown,current=engine(),plain=v=>JSON.parse(JSON.stringify(v));
+  for(const arena of ['citadel','orchard','glacier'])for(const round of [1,4,8,13])for(const [x,y,a]of [[100,320,0],[200,390,0],[800,390,Math.PI],[500,500,-Math.PI/2]]){
+    const position=old.closestPosition(x,y,round,arena);assert.deepEqual(plain(current.closestPosition(x,y,round,arena)),plain(position));
+    assert.deepEqual(plain(current.movePosition(position,80,-45,round,arena)),plain(old.movePosition(position,80,-45,round,arena)));
+    const p={id:1,...position,a},targets=[{id:2,x:600,y:390,alive:true}],before=old.traceShot(p,targets,round,arena),after=current.traceShot(p,targets,round,arena,'classic');
+    for(const key of Object.keys(before))assert.ok(Math.abs(before[key]-after[key])<1e-8||before[key]===after[key],`${arena}/${round}/${key}`);
+  }
 });

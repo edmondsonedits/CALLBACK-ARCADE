@@ -30,7 +30,7 @@ The throw guide and real cargo share one physics integrator, including future gr
 Local Kenney CC0 crystal/planter/impact sprites are used by the renderer; procedural cues survive failed loads. MIT Alea is embedded for deterministic gameplay, separate from demo and cosmetic noise. No CDN/runtime script or network connection is required. Particles cap at 500, visible imported impact overlays at 80, audio voices at 12 and record scopes at 128. Audio starts only after a gesture; demos stay silent after sounded play. Existing CAM controls and `window.SpaceBash` remain; additive `getState()` snapshots expose deck/session/hazard/fighter/cargo/statistics and demo state without a test accessor.
 
 - Source and exact hashes: `integration/provenance.json`
-- Asset licenses/source/archive/per-file hashes: `assets/worlds/provenance.json`
+- Runtime asset licenses/source/archive/per-file hashes: `source/assets/worlds/provenance.json`; exact Alea reference: `assets/worlds/provenance.json`
 - Focused automated evidence and limits: `tests/WORLDS.md`
 - Full handoff: `../../docs/quality/worlds-2026-10-12/task-5-report.md`
 

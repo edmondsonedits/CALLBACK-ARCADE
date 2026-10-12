@@ -15,19 +15,19 @@
     "mobile",
     "canvas"
   ],
-  "description": "Private-plan medieval archery for 2\u201310 contestant slots. Nightfall adds armored knights, three diorama arenas, four cameras, readable volleys and paused tactical round reviews. Classic and Precision rules preserved. One local human plus bots; hosted phone multiplayer is not integrated.",
+  "description": "Private-plan medieval archery for 2\u201310 seats. Four tactical diorama worlds teach corner lanes, arrow-permeable hedges, single-bank ice and announced shutters. Silent live bots, finite four-arena Tour, seeded stage replay and exact completed-round reviews; four Canvas cameras and Classic/Precision privacy retained.",
   "players": {
     "min": 2,
     "max": 10
   },
-  "version": "1.6.0",
+  "version": "1.7.0",
   "source": {
     "status": "imported",
     "paths": [
       "source/index.html",
       "source/original/blind-crown-v1.4.html"
     ],
-    "provenance": "Nightfall v1.6 tactical learning upgrade over exact supplied Refined v1.4, preserved under source/original/. Original Canvas/SVG art and synthesized audio; no added external dependencies/assets. Classic/Precision engine, cameras, art and room client preserved byte-identically. Current standalone SHA-256: 9de02410af76047081cdfff3fe19a0e70641c75a31ae9ded5f7eef0831b0f681. Experimental pinned Three.js remains opt-in/unverified. See tests/sumo-benchmark-verification.json and assets/README.md.",
+    "provenance": "Tactical Worlds v1.7 over archived supplied Refined v1.4. Active engine/perspective/artwork extended for explicit materials and shared segmented shot geometry. Original archive, room client, Three bridge and embedded model preserved. Kenney CC0 particle sprite actually used in Canvas impacts, embedded for offline fallback. Current standalone SHA-256: 7e76153833db7702620d807a4aca5919e741fd21369540ca79b27a411b704415. See tests/worlds-verification.json and assets/worlds-provenance.json. Experimental Three backend remains unverified.",
     "url": null
   },
   "lifecycle": "experimental",

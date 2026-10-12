@@ -15,14 +15,14 @@ for (const marker of ['deterministic, authoritative match rules', 'Blind Crown p
 const E = context.BlindCrown, P = context.CrownPerspective;
 const plain = value => JSON.parse(JSON.stringify(value));
 
-test('approved Nightfall engine, cameras, network, 3D bridge, model and artwork remain byte-identical', () => {
+test('current tactical modules match their recorded hashes; retained network, 3D bridge and model remain byte-identical', () => {
   for (const [marker, hash] of [
-    ['deterministic, authoritative match rules', '4547a3baa09eb31c711eccbd4c9186ab6676c1754b68151c3daa49b1d07d94ed'],
-    ['Blind Crown perspective adapter', '20e027a3a3efd96f0f78c07102ac03c5dd36e765a2bbd1d02bde12f039996ce1'],
+    ['deterministic, authoritative match rules', '631e75a1b1916e0e94d683a107e6b89edeb51b43a3d44575ad01a36b68fb7ebf'],
+    ['Blind Crown perspective adapter', 'f1b781fd30f10804e85b5f5b4a12471205c49b07bd35c174801369e7feedabba'],
     ['Room client, protocol 2', '85f6f3ef9f20b171db26746f0d22372724cd62bb9dc5cb1e1e76a8383fe30302'],
     ['BLIND CROWN Task 1: optional Three.js', 'e9f4f455a5a158c5ec624f8735317fb9169f22675490ca704936bb357e7012cf'],
     ['window.BLIND_CROWN_KNIGHT_GLB=', 'c00281a771e2a4de2f1c8bdce50645d67d13c58e0e3ac5ae0e089c28a2570158'],
-    ['Original Nightfall artwork.', '39cbacd465202af5a0cedbd0a0d952c44d30140c2a4019a4dffaa6e80f130a67'],
+    ['Original Nightfall artwork.', '6d7d5efa08e87ecfc4a53e8bb3c1f66d7ed269c6c52aa49dbe7ed48f256b237c'],
   ]) {
     const script = scripts.find(s => s.includes(marker));
     assert.ok(script, marker);
@@ -30,7 +30,7 @@ test('approved Nightfall engine, cameras, network, 3D bridge, model and artwork 
   }
 });
 function match(settings = {}, count = 2) {
-  const game = new E.Match({ bots: 0, time: 8, ...settings }, { seed: 1729 });
+  const game = new E.Match({ bots: 0, time: 8, materialRule:'classic', ...settings }, { seed: 1729 });
   for (let i = 0; i < count; i++) game.addPlayer(`Seat ${i + 1}`);
   assert.equal(game.begin(), true);
   return game;

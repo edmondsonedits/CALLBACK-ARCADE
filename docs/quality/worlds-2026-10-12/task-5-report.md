@@ -69,3 +69,19 @@ Review `task-5-review.md` identified P1 stale Series history/score capacity afte
 - P2: at short landscape, #msg occupies the left side and #hazardCue the right side, each bounded to 90–200px, with wrapping text and separate horizontal bounds. Both sit below the HUD, outside the central ten-seat deck and above the side controls. No board geometry or control positions changed. The supplied Reactor screenshot was inspected; parent owns Chromium warning/active bounds and pixel recheck.
 
 Covering command: `node --test --test-name-pattern='public setPlayers|Series counts|real Series timeout|editing contestant|match results list|short landscape|portrait and landscape' tests/space-bash-worlds.test.mjs tests/space-bash-sumo-benchmark.test.mjs tests/space-bash-quality.test.mjs` — **8 passed, 0 failed**. `node games/space-bash/tests/source-smoke.mjs` and `git diff --check -- games/space-bash tests/space-bash-worlds.test.mjs` passed. No broad gate repeated; the previous 75 passes remain historical evidence. Final source SHA-256: `bf80245b24c932ae78b233a146ef71657d693f774b0a73e0de5609479667405f`; original remains `e6fc6342764b743bc125c0519b2f61d9384411b69b563799e26a10ac834b46d8`. Source frozen after this correction pending parent verification. Physical device/audio/performance limits remain.
+
+## Publication closure — source review round 2
+
+The Pages builder copies each game's `source/` directory to its published game root. The old `img.src="../assets/worlds/"+file` therefore resolved outside the Space Bash package. The **only runtime code change** is `img.src="./assets/worlds/"+file`. The three PNGs and CC0 license moved (no duplicate copies) from `games/space-bash/assets/worlds/` into `games/space-bash/source/assets/worlds/`, with runtime provenance now shipped there. The single exact Alea reference remains in `assets/worlds/`; its separate reference provenance and integration links were updated. Gameplay, rendering logic, selectors and controls are unchanged.
+
+`node games/space-bash/tests/packaging.mjs` initially failed with missing published `assets/worlds/provenance.json`. After correction it **passed**, using the real Pages builder in a temporary output and checking that all three runtime URLs resolve inside `/games/space-bash/`, match the recorded PNG hashes, and ship the CC0 license/provenance. `node games/space-bash/tests/source-smoke.mjs` and `git diff --check -- games/space-bash` also passed. No full simulation or browser rerun. Parent-added browser/shared files were not staged.
+
+| Closure file | SHA-256 |
+| --- | --- |
+| `source/index.html` | `571fd02f0050c3a4947d53644f769a77f05866d9a864162361a3e0603e64f7d0` |
+| `source/assets/worlds/star_04.png` | `6485ac16c773663bd39346f3bedae04465ac14c661eb47cc5cfa935cdbf6c2ec` |
+| `source/assets/worlds/smoke_04.png` | `2db2f69874cdb1e5203f2f86803d5debde30402590cf50a810afaba882184616` |
+| `source/assets/worlds/spark_01.png` | `5902da3a324cad0a4b5a88ce1e3c9cc18fee50922c358ce93d8c9f1ad7708f0a` |
+| `source/assets/worlds/KENNEY-LICENSE.txt` | `f9e70b81d8cc07c4e07c9f2eff1d94fd371a06070b18cb67c651c41158ec2975` |
+
+Moved asset/license bytes and original upload SHA are unchanged. Source frozen after this publication correction; earlier browser/physics evidence remains scoped to its recorded hashes, with this narrowly verified runtime-path delta.

@@ -7,7 +7,7 @@
   "sourceHashes": [
     {
       "path": "source/index.html",
-      "sha256": "bf80245b24c932ae78b233a146ef71657d693f774b0a73e0de5609479667405f"
+      "sha256": "571fd02f0050c3a4947d53644f769a77f05866d9a864162361a3e0603e64f7d0"
     },
     {
       "path": "source/original/space_bash_orbital_breakout_v1.13.1_standalone.html",
@@ -42,6 +42,12 @@
       "result": "passed: 8/8",
       "command": "node --test --test-name-pattern='public setPlayers|Series counts|real Series timeout|editing contestant|match results list|short landscape|portrait and landscape' tests/space-bash-worlds.test.mjs tests/space-bash-sumo-benchmark.test.mjs tests/space-bash-quality.test.mjs",
       "verifiedSourceSha256": "bf80245b24c932ae78b233a146ef71657d693f774b0a73e0de5609479667405f"
+    },
+    {
+      "name": "Published Pages package resolves all three runtime sprite URLs with exact hashes and ships license/provenance",
+      "result": "passed",
+      "command": "node games/space-bash/tests/packaging.mjs",
+      "verifiedSourceSha256": "571fd02f0050c3a4947d53644f769a77f05866d9a864162361a3e0603e64f7d0"
     }
   ],
   "limitations": [
@@ -49,5 +55,6 @@
     "VM Canvas checks do not prove raster appearance, subjective feel, audio quality or device performance.",
     "Online multiplayer remains not integrated."
   ],
-  "assets": "assets/worlds/provenance.json"
+  "assets": "source/assets/worlds/provenance.json",
+  "codeReference": "assets/worlds/provenance.json"
 }

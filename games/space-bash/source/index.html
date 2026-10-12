@@ -652,7 +652,7 @@ function withDemo(fn){const saved=captureWorld();installWorld(demoState);inDemo=
 function startDemo(){const saved=captureWorld();inDemo=true;paused=false;demoRng=impl("demo:"+preferences.map);playerCount=preferences.players;difficulty=preferences.difficulty;activeMap=MAPS[preferences.map];activeMode="classic";rules={...RULES.standard,hazards:preferences.hazards,cargo:"mixed"};wins=Array(10).fill(0);stats=[];series={stage:0,total:4,scores:[],history:[],complete:false};restartMatch();for(let i=0;i<480;i++)step(FIXED);demoState=captureWorld();inDemo=false;installWorld(saved);demoElapsed=0;clearInput()}
 const worldImages={};
 // Kenney CC0 Particle Pack: meaningful frost/plant panel decals and impact sprites; procedural fallback always remains.
-if(typeof Image!=="undefined")for(const [key,file] of Object.entries({ice:"star_04.png",leaf:"smoke_04.png",impact:"spark_01.png"})){const img=new Image();img.onload=()=>worldImages[key]=img;img.onerror=()=>{};img.src="../assets/worlds/"+file}
+if(typeof Image!=="undefined")for(const [key,file] of Object.entries({ice:"star_04.png",leaf:"smoke_04.png",impact:"spark_01.png"})){const img=new Image();img.onload=()=>worldImages[key]=img;img.onerror=()=>{};img.src="./assets/worlds/"+file}
 function drawWorldCues(){
  const h=hazardState();
  if(activeMap.id==="reactor"&&h.phase!=="safe"){const edges=h.axis==="x"?[[h.lane-.58,-4],[h.lane+.58,-4],[h.lane+.58,4],[h.lane-.58,4]]:[[-4,h.lane-.58],[4,h.lane-.58],[4,h.lane+.58],[-4,h.lane+.58]];ctx.fillStyle=h.phase==="warning"?"#ffd16655":"#ff535377";ctx.strokeStyle=h.phase==="warning"?"#ffd166":"#ff5353";ctx.lineWidth=2;ctx.beginPath();edges.forEach((v,i)=>{const p=worldToScreen(v[0],v[1]);i?ctx.lineTo(...p):ctx.moveTo(...p)});ctx.closePath();ctx.fill();ctx.stroke()}

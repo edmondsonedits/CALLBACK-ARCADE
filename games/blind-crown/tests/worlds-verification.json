@@ -1,0 +1,36 @@
+{
+  "version": "1.7.0",
+  "bytes": 268727,
+  "sha256": "7e76153833db7702620d807a4aca5919e741fd21369540ca79b27a411b704415",
+  "archiveSha256": "496131ad8031a58b8b2ec78cc1aace73f57ab1ca0646271b383bf48bb108c462",
+  "moduleSha256": {
+    "deterministic, authoritative match rules": "631e75a1b1916e0e94d683a107e6b89edeb51b43a3d44575ad01a36b68fb7ebf",
+    "Blind Crown perspective adapter": "f1b781fd30f10804e85b5f5b4a12471205c49b07bd35c174801369e7feedabba",
+    "Room client, protocol 2": "85f6f3ef9f20b171db26746f0d22372724cd62bb9dc5cb1e1e76a8383fe30302",
+    "BLIND CROWN Task 1: optional Three.js": "e9f4f455a5a158c5ec624f8735317fb9169f22675490ca704936bb357e7012cf",
+    "window.BLIND_CROWN_KNIGHT_GLB=": "c00281a771e2a4de2f1c8bdce50645d67d13c58e0e3ac5ae0e089c28a2570158",
+    "Original Nightfall artwork.": "6d7d5efa08e87ecfc4a53e8bb3c1f66d7ed269c6c52aa49dbe7ed48f256b237c",
+    "Nightfall Canvas compositor.": "5a4a58bc903f82f08184f85e87704c88f1b5661fc26ba7561f7a0bb9f8924ce5",
+    "Tactical learning and neutral gamepad": "34e6a82157aaf2d0454ae7ba4d530f8172e966079cd41074a3a051101fd4cfe0",
+    "root.CrownInput =": "21132251dacdb9ae7693f244c7bdb25caa2b49deb7e4bf59161525e670ba062e",
+    "Application coordinator.": "97ac8a46f6b842ae131e8e3069234fe38ad81de58f08f7d43a57368bb2e5763c"
+  },
+  "changedModules": [
+    "engine",
+    "perspective",
+    "artwork",
+    "compositor",
+    "tactics",
+    "input",
+    "coordinator"
+  ],
+  "unchangedModules": [
+    "room client",
+    "Three bridge",
+    "embedded knight GLB"
+  ],
+  "scope": "Focused Node/VM behavior; parent owns current native Chromium evidence. No physical gamepad, Safari, audio by ear or experimental Three certification.",
+  "command": "node --test games/blind-crown/tests/standalone.test.mjs games/blind-crown/tests/quality.test.mjs tests/blind-crown-worlds.test.mjs",
+  "expectedFocusedChecks": 39,
+  "reviewFix": "Tour public records omit seeds; captured Tour seed remains private until whole Tour completion. Captured continuation validation and Tour advancement commit only after a real candidate match starts."
+}

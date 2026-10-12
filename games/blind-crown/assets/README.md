@@ -1,5 +1,11 @@
 # Asset provenance — actual delivered contents
 
+## Tactical Worlds v1.7 reuse
+
+Kenney Particle Pack 1.1 `PNG (Transparent)/spark_06.png` is used as the overhead/isometric arrow-impact decal at actual finish time. The exact original file and pack license are in `kenney/`; source URL, archive SHA-256 and per-file hashes are in `worlds-provenance.json`. The sprite is embedded as a data URL in the standalone, avoiding runtime network/filesystem loading. If Image creation/loading fails, the original procedural impact ring still renders. One cached image, ten possible arrows, maximum 160 particles; cosmetic effects never consume match RNG. Reduced motion suppresses the decal and particles.
+
+The following Nightfall v1.5 sections describe the retained base artwork, model and optional bridge, not a claim that v1.7 adds no reused assets.
+
 ## Nightfall v1.5 artwork and sound
 
 `embedded art.js` contains newly authored Canvas geometry for procedural stone materials, raised arena plinths, cover, towers, flags, torchlight, foliage/ice, medieval insignia, armored knight sprites and crossbows. The matching SVG helmet portraits and masthead crown are original project artwork. `embedded arena-renderer.js` composites this art against existing match snapshots; no proprietary game screenshot or asset was copied. `embedded perspectives.js` uses the same materials in the existing Canvas raycast views.

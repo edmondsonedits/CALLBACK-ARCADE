@@ -34,12 +34,14 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npx playwright install --with-deps chromium
+      - run: npm run pages:build
       - name: Exercise worlds on desktop and emulated touch viewports
         run: node scripts/browser-worlds/run.mjs
         env:
           # Sequential expansion: automatic pixel QA follows the current game.
           # Manual dispatch can select any game or run the complete arcade.
-          BROWSER_GAMES: ${{ inputs.games || 'space-bash' }}
+          BROWSER_GAMES: ${{ inputs.games || 'blind-crown,space-bash' }}
+          BROWSER_BUILT: '1'
           BROWSER_PROFILE: ${{ matrix.profile }}
       - uses: actions/upload-artifact@v4
         if: always()

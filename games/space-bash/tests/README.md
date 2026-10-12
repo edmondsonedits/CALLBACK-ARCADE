@@ -27,3 +27,5 @@ The prior `QUALITY.md` is historical review evidence. Current source-grounded Su
 ## Four-deck evidence (v1.15.0)
 
 Run `node --test tests/space-bash-worlds.test.mjs tests/space-bash-sumo-benchmark.test.mjs tests/space-bash-quality.test.mjs` from the repository root: 75 focused checks. See `WORLDS.md` for scope, exact hash and honest pixel/hardware limits. The harness seeds the real Alea settings boundary and only injects internal helpers in the VM.
+
+Publication packaging: `node games/space-bash/tests/packaging.mjs` verifies published runtime sprite URLs, exact asset hashes and shipped CC0 license/provenance using a temporary Pages build.

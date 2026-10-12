@@ -54,7 +54,7 @@ function appHarness(){
  const doc={hidden:false,body:new Node(),getElementById:id=>nodes.get(id),createElement:tag=>new Node(tag),querySelector:()=>[...nodes.values()].find(n=>n.open)||null,addEventListener:(k,f)=>{(listeners.get(k)||listeners.set(k,[]).get(k)).push(f);}};
  const c=vm.createContext({document:doc,navigator:{getGamepads:()=>[pad]},location:{search:'',protocol:'file:',href:'file:///test'},localStorage:{getItem:()=>null,setItem(){}},performance:{now:()=>now},matchMedia:()=>({matches:false}),URLSearchParams,URL,Event:class{},setTimeout:()=>0,clearTimeout(){},requestAnimationFrame:f=>{frame=f;}});c.window=c;c.addEventListener=()=>{};
  for(const marker of ['deterministic, authoritative match rules','Tactical learning and neutral gamepad','root.CrownInput ='])vm.runInContext(scripts.find(([, ,s])=>s.includes(marker))[2],c);
- c.CrownPerspective={VIEWS:['overhead','isometric','first','third']};c.CrownArt={portraitSvg:()=>'<svg></svg>',environment(){}};c.CrownArena={create:()=>({clear(){},render(){},getStats:()=>({})})};c.CrownRoomClient=class{constructor(){}action(){}disconnect(){}};
+ c.CrownPerspective={VIEWS:['overhead','isometric','first','third']};c.CrownArt={portraitSvg:()=>'<svg></svg>',environment(){},materials(){}};c.CrownArena={create:()=>({clear(){},render(){},getStats:()=>({})})};c.CrownRoomClient=class{constructor(){}action(){}disconnect(){}};
  vm.runInContext(scripts.find(([, ,s])=>s.includes('Application coordinator.'))[2],c);
  return {nodes,c,advance:n=>{for(let i=0;i<n;i++){now+=80;frame(now);}},key:(key)=>{for(const f of listeners.get('keydown')||[])f({key,target:{tagName:'CANVAS'},repeat:false,preventDefault(){}});},setPad:p=>{pad=p;}};
 }

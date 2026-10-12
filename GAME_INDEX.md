@@ -7,11 +7,11 @@ Generated from validated game manifests. Run `npm run catalog:generate` after ed
 - ID: `blind-crown` ([manifest](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/blind-crown/manifest.json), [game guide](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/blind-crown/README.md))
 - Status: imported; multiplayer not-integrated
 - Players: 2–10
-- Version: 1.6.0
+- Version: 1.7.0
 - Source: [source/index.html](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/blind-crown/source/index.html), [source/original/blind-crown-v1.4.html](https://github.com/edmondsonedits/CALLBACK-ARCADE/blob/main/games/blind-crown/source/original/blind-crown-v1.4.html)
 - Play: [launch game](https://edmondsonedits.github.io/CALLBACK-ARCADE/games/blind-crown/)
 
-Private-plan medieval archery for 2–10 contestant slots. Nightfall adds armored knights, three diorama arenas, four cameras, readable volleys and paused tactical round reviews. Classic and Precision rules preserved. One local human plus bots; hosted phone multiplayer is not integrated.
+Private-plan medieval archery for 2–10 seats. Four tactical diorama worlds teach corner lanes, arrow-permeable hedges, single-bank ice and announced shutters. Silent live bots, finite four-arena Tour, seeded stage replay and exact completed-round reviews; four Canvas cameras and Classic/Precision privacy retained.
 
 ## Royal Ballistix — Beach Siege
 

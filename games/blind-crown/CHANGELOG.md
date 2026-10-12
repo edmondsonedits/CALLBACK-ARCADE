@@ -1,3 +1,14 @@
+## 1.7.0 — Tactical Worlds (2026-10-12)
+
+- Independent-review correction: public Tour records omit seeds and captured Tour diagnostics wait until whole-Tour completion. Replay/Next validate captured capacity; Tour advancement commits after successful match start.
+
+- Four tactical arenas: original stone lanes, arrow-permeable movement-blocking hedges, once-reflective ice and announced alternating shutters. Classic absorbing cover is selectable.
+- Shared bounded segmented shots drive guides, all four Canvas cameras, impacts and frozen completed geometry/history; Classic/Precision privacy and simultaneous fire retained.
+- Isolated silent live-bot title, Watch/Start/Return, finite four-stage Tour, captured stage seed/rules replay, honest aggregate standings and map/rules bests.
+- Grouped rules/style/control/access settings, crest styles, coaching and blur-normalized native name/seed editing. Corrupt or denied storage remains playable.
+- Actually used embedded Kenney CC0 impact sprite with license/source/archive/per-file evidence and procedural fallback; eight audio voices and 160 particles maximum.
+- Updated active module attestations; archived original, network client, Three bridge and knight model unchanged. Focused Node/VM checks and parent-owned browser evidence remain distinct.
+
 # Changelog
 
 ## 1.6.0 — Tactical review

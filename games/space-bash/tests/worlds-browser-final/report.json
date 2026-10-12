@@ -1,0 +1,1067 @@
+{
+  "commit": "e3fa30159c7c5f8e7f70dee44b35cf163c76ae68",
+  "date": "2026-10-12T14:03:55.832Z",
+  "browser": "156.0.8078.4",
+  "checks": [
+    {
+      "game": "space-bash",
+      "profile": "desktop",
+      "name": "title has a live all-bot session",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "desktop",
+      "name": "four selectable decks",
+      "passed": true,
+      "detail": [
+        "orbital",
+        "cryo",
+        "reactor",
+        "garden"
+      ]
+    },
+    {
+      "game": "space-bash",
+      "profile": "desktop",
+      "name": "native name accepts empty editing and spaces",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "desktop",
+      "name": "customization has at least twelve functional controls",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "desktop",
+      "name": "settings close target fits",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "desktop",
+      "name": "orbital: real bot demo advances",
+      "passed": true,
+      "detail": {
+        "elapsed": 1.1166666666666651,
+        "hazard": {
+          "phase": "safe",
+          "axis": "x",
+          "lane": -1.5,
+          "event": 0,
+          "gravity": 1,
+          "cue": "Time cargo throws; jump the holes you create."
+        }
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "desktop",
+      "name": "orbital: no horizontal overflow",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "desktop",
+      "name": "orbital: starts chosen ten-seat practice",
+      "passed": true,
+      "detail": {
+        "id": "practice",
+        "name": "Flight school",
+        "winTarget": 1,
+        "time": 90,
+        "desc": "One crown. Safe blue cargo, passive CPU targets, an intact deck.",
+        "hazards": true,
+        "cargo": "mixed"
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "desktop",
+      "name": "orbital: native jump becomes airborne",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "desktop",
+      "name": "orbital: hazard guidance remains readable",
+      "passed": true,
+      "detail": {
+        "overlap": true,
+        "inside": true
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "desktop",
+      "name": "orbital: settings pauses simulation",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "desktop",
+      "name": "orbital: map preference stages until start",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "desktop",
+      "name": "cryo: real bot demo advances",
+      "passed": true,
+      "detail": {
+        "elapsed": 1.1166666666666651,
+        "hazard": {
+          "phase": "safe",
+          "axis": "x",
+          "lane": -1.5,
+          "event": 0,
+          "gravity": 1,
+          "cue": "Countersteer on ice; brake on the bright grip cross."
+        }
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "desktop",
+      "name": "cryo: no horizontal overflow",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "desktop",
+      "name": "cryo: starts chosen ten-seat practice",
+      "passed": true,
+      "detail": {
+        "id": "practice",
+        "name": "Flight school",
+        "winTarget": 1,
+        "time": 90,
+        "desc": "One crown. Safe blue cargo, passive CPU targets, an intact deck.",
+        "hazards": true,
+        "cargo": "mixed"
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "desktop",
+      "name": "cryo: native jump becomes airborne",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "desktop",
+      "name": "cryo: hazard guidance remains readable",
+      "passed": true,
+      "detail": {
+        "overlap": true,
+        "inside": true
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "desktop",
+      "name": "cryo: settings pauses simulation",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "desktop",
+      "name": "cryo: map preference stages until start",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "desktop",
+      "name": "reactor: real bot demo advances",
+      "passed": true,
+      "detail": {
+        "elapsed": 1.1333333333333317,
+        "hazard": {
+          "phase": "safe",
+          "axis": "x",
+          "lane": -1.5,
+          "event": 0,
+          "gravity": 1,
+          "cue": "Reactor cooling \u00b7 lanes safe"
+        }
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "desktop",
+      "name": "reactor: no horizontal overflow",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "desktop",
+      "name": "reactor: starts chosen ten-seat practice",
+      "passed": true,
+      "detail": {
+        "id": "practice",
+        "name": "Flight school",
+        "winTarget": 1,
+        "time": 90,
+        "desc": "One crown. Safe blue cargo, passive CPU targets, an intact deck.",
+        "hazards": true,
+        "cargo": "mixed"
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "desktop",
+      "name": "reactor: native jump becomes airborne",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "desktop",
+      "name": "reactor: hazard guidance remains readable",
+      "passed": true,
+      "detail": {
+        "overlap": true,
+        "inside": true
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "desktop",
+      "name": "reactor: settings pauses simulation",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "desktop",
+      "name": "reactor: map preference stages until start",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "desktop",
+      "name": "garden: real bot demo advances",
+      "passed": true,
+      "detail": {
+        "elapsed": 1.1166666666666651,
+        "hazard": {
+          "phase": "safe",
+          "axis": "x",
+          "lane": -1.5,
+          "event": 0,
+          "gravity": 1,
+          "cue": "Normal gravity \u00b7 control your landing"
+        }
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "desktop",
+      "name": "garden: no horizontal overflow",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "desktop",
+      "name": "garden: starts chosen ten-seat practice",
+      "passed": true,
+      "detail": {
+        "id": "practice",
+        "name": "Flight school",
+        "winTarget": 1,
+        "time": 90,
+        "desc": "One crown. Safe blue cargo, passive CPU targets, an intact deck.",
+        "hazards": true,
+        "cargo": "mixed"
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "desktop",
+      "name": "garden: native jump becomes airborne",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "desktop",
+      "name": "garden: hazard guidance remains readable",
+      "passed": true,
+      "detail": {
+        "overlap": true,
+        "inside": true
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "desktop",
+      "name": "garden: settings pauses simulation",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "desktop",
+      "name": "garden: map preference stages until start",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "desktop",
+      "name": "finite Series stage records a real result",
+      "passed": true,
+      "detail": {
+        "stage": 0,
+        "total": 4,
+        "scores": [
+          10,
+          3,
+          8,
+          9,
+          1,
+          4,
+          5,
+          6,
+          2,
+          7
+        ],
+        "history": [
+          {
+            "map": "orbital",
+            "round": 1,
+            "time": 11.708333333332668,
+            "reason": "elimination: survival order",
+            "standings": [
+              {
+                "id": 0,
+                "name": "Ada Lovelace",
+                "score": 1063.062613879557,
+                "rank": 1,
+                "points": 10
+              },
+              {
+                "id": 3,
+                "name": "PIXEL",
+                "score": 9,
+                "rank": 2,
+                "points": 9
+              },
+              {
+                "id": 2,
+                "name": "BOLT",
+                "score": 8,
+                "rank": 3,
+                "points": 8
+              },
+              {
+                "id": 9,
+                "name": "AXIS",
+                "score": 7,
+                "rank": 4,
+                "points": 7
+              },
+              {
+                "id": 7,
+                "name": "JET",
+                "score": 6,
+                "rank": 5,
+                "points": 6
+              },
+              {
+                "id": 6,
+                "name": "MICA",
+                "score": 5,
+                "rank": 6,
+                "points": 5
+              },
+              {
+                "id": 5,
+                "name": "ROOK",
+                "score": 4,
+                "rank": 7,
+                "points": 4
+              },
+              {
+                "id": 1,
+                "name": "NOVA",
+                "score": 3,
+                "rank": 8,
+                "points": 3
+              },
+              {
+                "id": 8,
+                "name": "LUMA",
+                "score": 2,
+                "rank": 9,
+                "points": 2
+              },
+              {
+                "id": 4,
+                "name": "COMET",
+                "score": 1,
+                "rank": 10,
+                "points": 1
+              }
+            ]
+          }
+        ],
+        "complete": false
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "desktop",
+      "name": "Next advances Series",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "portrait",
+      "name": "title has a live all-bot session",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "portrait",
+      "name": "four selectable decks",
+      "passed": true,
+      "detail": [
+        "orbital",
+        "cryo",
+        "reactor",
+        "garden"
+      ]
+    },
+    {
+      "game": "space-bash",
+      "profile": "portrait",
+      "name": "native name accepts empty editing and spaces",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "portrait",
+      "name": "customization has at least twelve functional controls",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "portrait",
+      "name": "settings close target fits",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "portrait",
+      "name": "orbital: real bot demo advances",
+      "passed": true,
+      "detail": {
+        "elapsed": 1.0999999999999985,
+        "hazard": {
+          "phase": "safe",
+          "axis": "x",
+          "lane": -1.5,
+          "event": 0,
+          "gravity": 1,
+          "cue": "Time cargo throws; jump the holes you create."
+        }
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "portrait",
+      "name": "orbital: no horizontal overflow",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "portrait",
+      "name": "orbital: starts chosen ten-seat practice",
+      "passed": true,
+      "detail": {
+        "id": "practice",
+        "name": "Flight school",
+        "winTarget": 1,
+        "time": 90,
+        "desc": "One crown. Safe blue cargo, passive CPU targets, an intact deck.",
+        "hazards": true,
+        "cargo": "mixed"
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "portrait",
+      "name": "orbital: native jump becomes airborne",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "portrait",
+      "name": "orbital: hazard guidance remains readable",
+      "passed": true,
+      "detail": {
+        "overlap": true,
+        "inside": true
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "portrait",
+      "name": "orbital: settings pauses simulation",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "portrait",
+      "name": "orbital: map preference stages until start",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "portrait",
+      "name": "cryo: real bot demo advances",
+      "passed": true,
+      "detail": {
+        "elapsed": 1.0999999999999985,
+        "hazard": {
+          "phase": "safe",
+          "axis": "x",
+          "lane": -1.5,
+          "event": 0,
+          "gravity": 1,
+          "cue": "Countersteer on ice; brake on the bright grip cross."
+        }
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "portrait",
+      "name": "cryo: no horizontal overflow",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "portrait",
+      "name": "cryo: starts chosen ten-seat practice",
+      "passed": true,
+      "detail": {
+        "id": "practice",
+        "name": "Flight school",
+        "winTarget": 1,
+        "time": 90,
+        "desc": "One crown. Safe blue cargo, passive CPU targets, an intact deck.",
+        "hazards": true,
+        "cargo": "mixed"
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "portrait",
+      "name": "cryo: native jump becomes airborne",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "portrait",
+      "name": "cryo: hazard guidance remains readable",
+      "passed": true,
+      "detail": {
+        "overlap": true,
+        "inside": true
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "portrait",
+      "name": "cryo: settings pauses simulation",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "portrait",
+      "name": "cryo: map preference stages until start",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "portrait",
+      "name": "reactor: real bot demo advances",
+      "passed": true,
+      "detail": {
+        "elapsed": 1.0999999999999985,
+        "hazard": {
+          "phase": "safe",
+          "axis": "x",
+          "lane": -1.5,
+          "event": 0,
+          "gravity": 1,
+          "cue": "Reactor cooling \u00b7 lanes safe"
+        }
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "portrait",
+      "name": "reactor: no horizontal overflow",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "portrait",
+      "name": "reactor: starts chosen ten-seat practice",
+      "passed": true,
+      "detail": {
+        "id": "practice",
+        "name": "Flight school",
+        "winTarget": 1,
+        "time": 90,
+        "desc": "One crown. Safe blue cargo, passive CPU targets, an intact deck.",
+        "hazards": true,
+        "cargo": "mixed"
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "portrait",
+      "name": "reactor: native jump becomes airborne",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "portrait",
+      "name": "reactor: hazard guidance remains readable",
+      "passed": true,
+      "detail": {
+        "overlap": true,
+        "inside": true
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "portrait",
+      "name": "reactor: settings pauses simulation",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "portrait",
+      "name": "reactor: map preference stages until start",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "portrait",
+      "name": "garden: real bot demo advances",
+      "passed": true,
+      "detail": {
+        "elapsed": 1.0999999999999985,
+        "hazard": {
+          "phase": "safe",
+          "axis": "x",
+          "lane": -1.5,
+          "event": 0,
+          "gravity": 1,
+          "cue": "Normal gravity \u00b7 control your landing"
+        }
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "portrait",
+      "name": "garden: no horizontal overflow",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "portrait",
+      "name": "garden: starts chosen ten-seat practice",
+      "passed": true,
+      "detail": {
+        "id": "practice",
+        "name": "Flight school",
+        "winTarget": 1,
+        "time": 90,
+        "desc": "One crown. Safe blue cargo, passive CPU targets, an intact deck.",
+        "hazards": true,
+        "cargo": "mixed"
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "portrait",
+      "name": "garden: native jump becomes airborne",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "portrait",
+      "name": "garden: hazard guidance remains readable",
+      "passed": true,
+      "detail": {
+        "overlap": true,
+        "inside": true
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "portrait",
+      "name": "garden: settings pauses simulation",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "portrait",
+      "name": "garden: map preference stages until start",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "portrait",
+      "name": "Replay resets Series and preserves seed",
+      "passed": true,
+      "detail": {
+        "stage": 0,
+        "total": 4,
+        "scores": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "history": [],
+        "complete": false
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "landscape",
+      "name": "title has a live all-bot session",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "landscape",
+      "name": "four selectable decks",
+      "passed": true,
+      "detail": [
+        "orbital",
+        "cryo",
+        "reactor",
+        "garden"
+      ]
+    },
+    {
+      "game": "space-bash",
+      "profile": "landscape",
+      "name": "native name accepts empty editing and spaces",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "landscape",
+      "name": "customization has at least twelve functional controls",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "landscape",
+      "name": "settings close target fits",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "landscape",
+      "name": "orbital: real bot demo advances",
+      "passed": true,
+      "detail": {
+        "elapsed": 1.1166666666666651,
+        "hazard": {
+          "phase": "safe",
+          "axis": "x",
+          "lane": -1.5,
+          "event": 0,
+          "gravity": 1,
+          "cue": "Time cargo throws; jump the holes you create."
+        }
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "landscape",
+      "name": "orbital: no horizontal overflow",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "landscape",
+      "name": "orbital: starts chosen ten-seat practice",
+      "passed": true,
+      "detail": {
+        "id": "practice",
+        "name": "Flight school",
+        "winTarget": 1,
+        "time": 90,
+        "desc": "One crown. Safe blue cargo, passive CPU targets, an intact deck.",
+        "hazards": true,
+        "cargo": "mixed"
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "landscape",
+      "name": "orbital: native jump becomes airborne",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "landscape",
+      "name": "orbital: hazard guidance remains readable",
+      "passed": true,
+      "detail": {
+        "overlap": false,
+        "inside": true
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "landscape",
+      "name": "orbital: settings pauses simulation",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "landscape",
+      "name": "orbital: map preference stages until start",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "landscape",
+      "name": "cryo: real bot demo advances",
+      "passed": true,
+      "detail": {
+        "elapsed": 1.1166666666666651,
+        "hazard": {
+          "phase": "safe",
+          "axis": "x",
+          "lane": -1.5,
+          "event": 0,
+          "gravity": 1,
+          "cue": "Countersteer on ice; brake on the bright grip cross."
+        }
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "landscape",
+      "name": "cryo: no horizontal overflow",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "landscape",
+      "name": "cryo: starts chosen ten-seat practice",
+      "passed": true,
+      "detail": {
+        "id": "practice",
+        "name": "Flight school",
+        "winTarget": 1,
+        "time": 90,
+        "desc": "One crown. Safe blue cargo, passive CPU targets, an intact deck.",
+        "hazards": true,
+        "cargo": "mixed"
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "landscape",
+      "name": "cryo: native jump becomes airborne",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "landscape",
+      "name": "cryo: hazard guidance remains readable",
+      "passed": true,
+      "detail": {
+        "overlap": false,
+        "inside": true
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "landscape",
+      "name": "cryo: settings pauses simulation",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "landscape",
+      "name": "cryo: map preference stages until start",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "landscape",
+      "name": "reactor: real bot demo advances",
+      "passed": true,
+      "detail": {
+        "elapsed": 1.1166666666666651,
+        "hazard": {
+          "phase": "safe",
+          "axis": "x",
+          "lane": -1.5,
+          "event": 0,
+          "gravity": 1,
+          "cue": "Reactor cooling \u00b7 lanes safe"
+        }
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "landscape",
+      "name": "reactor: no horizontal overflow",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "landscape",
+      "name": "reactor: starts chosen ten-seat practice",
+      "passed": true,
+      "detail": {
+        "id": "practice",
+        "name": "Flight school",
+        "winTarget": 1,
+        "time": 90,
+        "desc": "One crown. Safe blue cargo, passive CPU targets, an intact deck.",
+        "hazards": true,
+        "cargo": "mixed"
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "landscape",
+      "name": "reactor: native jump becomes airborne",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "landscape",
+      "name": "reactor: hazard guidance remains readable",
+      "passed": true,
+      "detail": {
+        "overlap": false,
+        "inside": true
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "landscape",
+      "name": "reactor: settings pauses simulation",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "landscape",
+      "name": "reactor: map preference stages until start",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "landscape",
+      "name": "garden: real bot demo advances",
+      "passed": true,
+      "detail": {
+        "elapsed": 1.1166666666666651,
+        "hazard": {
+          "phase": "safe",
+          "axis": "x",
+          "lane": -1.5,
+          "event": 0,
+          "gravity": 1,
+          "cue": "Normal gravity \u00b7 control your landing"
+        }
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "landscape",
+      "name": "garden: no horizontal overflow",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "landscape",
+      "name": "garden: starts chosen ten-seat practice",
+      "passed": true,
+      "detail": {
+        "id": "practice",
+        "name": "Flight school",
+        "winTarget": 1,
+        "time": 90,
+        "desc": "One crown. Safe blue cargo, passive CPU targets, an intact deck.",
+        "hazards": true,
+        "cargo": "mixed"
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "landscape",
+      "name": "garden: native jump becomes airborne",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "landscape",
+      "name": "garden: hazard guidance remains readable",
+      "passed": true,
+      "detail": {
+        "overlap": false,
+        "inside": true
+      }
+    },
+    {
+      "game": "space-bash",
+      "profile": "landscape",
+      "name": "garden: settings pauses simulation",
+      "passed": true
+    },
+    {
+      "game": "space-bash",
+      "profile": "landscape",
+      "name": "garden: map preference stages until start",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "sources": [
+    {
+      "path": "games/space-bash/source/index.html",
+      "sha256": "bf80245b24c932ae78b233a146ef71657d693f774b0a73e0de5609479667405f"
+    }
+  ],
+  "limits": [
+    "Headless Chromium and emulated touch dimensions; no physical phone, gamepad or audio-by-ear verification."
+  ],
+  "viewportArtifacts": [
+    {
+      "profile": "desktop",
+      "artifact": 11752282268,
+      "zipSha256": "235f00ade047a0ecfe5adba05ec6b1e9582810189f1c5bfe58c01c773d1de1a0"
+    },
+    {
+      "profile": "portrait",
+      "artifact": 11751174454,
+      "zipSha256": "1e4dca281294538bba1774dc3827cdc2154a0516307275deaf29233f594a1a2c"
+    },
+    {
+      "profile": "landscape",
+      "artifact": 11751154411,
+      "zipSha256": "bcd94fac05a972a795db98b47a1a0013650c02cec3a9e49defa850c5a9e2aceb"
+    }
+  ]
+}

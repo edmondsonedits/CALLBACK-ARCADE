@@ -24,6 +24,8 @@ function spaceGame({ wins = [2, 0], health = [100, 90], alive = [true, true] } =
   const results = [];
   const game = {
     Math, paused: false, phase: 'fight', phaseT: 0, timeLeft: .001,
+    inDemo: false, activeMode: 'classic', roundsWithoutCrown: 0, worldTime: 0,
+    surface: () => ({ drag: 1 }), hazardState: () => ({ gravity: 1 }), updateMapHazard: noop,
     spawnT: 100, round: 3, playerCount: 2, wins: [...wins],
     joy: { x: 0, z: 0 }, particles: [], flash: 0,
     TUNE: { move: { max: 4, drag: 1, airDrag: 1 }, gravity: 8 },
