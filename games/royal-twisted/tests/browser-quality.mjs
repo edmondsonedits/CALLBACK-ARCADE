@@ -216,8 +216,17 @@ try {
     await p.locator("#jumpBtn").tap();
     assert.ok((await run(p, "fighters[0].jumpY")) > 0);
     await p.locator("#settingsBtn").click();
-    await p.locator("#closeSettings").click();
     await p.keyboard.press("Escape");
+    assert.equal(await run(p, 'settingsModal.classList.contains("open")'), false);
+    assert.equal(await run(p, "paused"), true);
+    await p.keyboard.press("Escape");
+    assert.equal(await run(p, "paused"), false);
+    await p.keyboard.press("Escape");
+    assert.equal(await run(p, "paused"), true);
+    await p.keyboard.press("Escape");
+    assert.equal(await run(p, "paused"), false);
+    await p.locator("#settingsBtn").click();
+    await p.locator("#closeSettings").click();
     assert.equal(await run(p, "paused"), true);
     await p.locator("#resumeBtn").click();
     assert.equal(await run(p, "paused"), false);

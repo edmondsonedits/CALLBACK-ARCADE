@@ -18,3 +18,7 @@
 - Bundle exact Three.js 0.180.0 module/core from the npm registry with verified SHA-512 integrity, MIT license and per-file SHA-256 provenance; no version upgrade.
 - Replace the external CDN import with a relative module path retained by the existing Pages copy layout; show recovery instructions for missing local files.
 - Remove the browser test certificate bypass and require sandboxed Chromium. Add uninstrumented standalone/Pages probes with external traffic blocked. The current container's sandbox configuration blocks browser acceptance; it is not reported as a pass.
+
+## Escape compatibility correction (unreleased)
+
+- Restore baseline Escape pause/resume toggling outside settings. Escape inside settings closes to pause; closing settings never resumes implicitly. Ignore held-key repeats and retain the Resume button. Behavioral and browser fixtures cover both flows.

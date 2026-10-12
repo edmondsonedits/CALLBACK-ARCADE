@@ -642,7 +642,7 @@ window.addEventListener("keydown",e=>{
   if(e.code!=="Escape"&&(paused||phase!=="fight"))return;
   if(["Space","ArrowUp","KeyW"].includes(e.code)){e.preventDefault();if(!e.repeat)pressJump(e)}
   if(["ShiftLeft","ShiftRight","ArrowDown","KeyS"].includes(e.code)){e.preventDefault();if(!e.repeat){initAudio();setDuck(fighters[0],true,`key:${e.code}`)}}
-  if(e.code==="Escape"&&!e.repeat){if(settingsModal.classList.contains("open"))closeSettingsToPause();else togglePause(true)}
+  if(e.code==="Escape"&&!e.repeat){if(settingsModal.classList.contains("open"))closeSettingsToPause();else togglePause(!paused)}
 },{passive:false});
 window.addEventListener("keyup",e=>{if(["ShiftLeft","ShiftRight","ArrowDown","KeyS"].includes(e.code)){e.preventDefault();setDuck(fighters[0],false,`key:${e.code}`)}},{passive:false});
 window.addEventListener("blur",()=>{clearInputs();togglePause(true)});

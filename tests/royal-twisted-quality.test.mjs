@@ -83,10 +83,33 @@ test("gamepad disconnect releases duck and remote seats are not overwritten", ()
   r.run("pollGamepads()");
   assert.equal(r.run("fighters[1].jumpY"), 0);
 });
-test("settings and Escape never resume simulation; Resume is explicit", () => {
+test("Escape toggles pause and resume; held-key repeats do not toggle", () => {
+  const r = runtime();
+  r.fire("keydown", { code: "Escape" });
+  assert.equal(r.run("paused"), true);
+  r.fire("keydown", { code: "Escape", repeat: true });
+  assert.equal(r.run("paused"), true);
+  r.fire("keyup", { code: "Escape" });
+  r.fire("keydown", { code: "Escape" });
+  assert.equal(r.run("paused"), false);
+  r.fire("keydown", { code: "Escape", repeat: true });
+  assert.equal(r.run("paused"), false);
+});
+test("Escape closes settings to pause; a subsequent Escape explicitly resumes", () => {
   const r = runtime();
   r.click("#settingsBtn");
+  r.fire("keydown", { code: "Escape" });
+  assert.equal(r.run('settingsModal.classList.contains("open")'), false);
+  assert.equal(r.run("paused"), true);
+  r.fire("keydown", { code: "Escape", repeat: true });
+  assert.equal(r.run("paused"), true);
+  r.fire("keyup", { code: "Escape" });
+  r.fire("keydown", { code: "Escape" });
+  assert.equal(r.run("paused"), false);
+  r.click("#settingsBtn");
   r.click("#closeSettings");
+  assert.equal(r.run("paused"), true);
+  r.click("#settingsBtn");
   r.fire("keydown", { code: "Escape" });
   assert.equal(r.run("paused"), true);
   r.click("#resumeBtn");

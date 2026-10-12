@@ -69,7 +69,7 @@ Suspended audio contexts are resumed on subsequent interaction, and the compact 
 | Status | Command / check | Result |
 | --- | --- | --- |
 | Passed | `node games/royal-twisted/tests/source-smoke.mjs` | API markers and immutable upload hashes |
-| Passed | `npm test` | 131 tests including 71 Twisted quality cases |
+| Passed | `npm test` | 132 tests including 72 Twisted quality cases |
 | Passed | `node --test tests/royal-twisted-camera.test.mjs tests/settings-pause-flow.test.mjs tests/standalone-game-lifecycle.test.mjs tests/royal-ballistix-mobile-ui.test.mjs` | 28 shared regressions |
 | Passed | `npm run typecheck`, `npm run catalog:check`, `npm run build`, `PAGES_OUTPUT_DIR=/workspace/royal-twisted-pages-followup npm run pages:build` | Aggregate checks; Worker build is dry-run only |
 | Passed | Node ES-module import and Pages file hashes | Revision 180; exact dependency bytes copied to Pages output |
@@ -98,3 +98,9 @@ Current [repository output](evidence/repository-tests.txt), [shared regressions]
 ## Follow-up independent review
 
 A separate read-only reviewer verified upstream tarball/module/core/license bytes, published integrity, revision 180, relative imports and Pages copies, plus retained browser sandbox/TLS checks. No new code/security/scope blocker was found. Normal browser acceptance remains blocked by the container configuration.
+
+## Escape compatibility follow-up
+
+Independent coordinator review identified that Escape had lost the published baseline pause/resume toggle. Two behavioral fixtures failed before the one-line correction and passed afterward. Escape outside settings now toggles pause; Escape inside settings closes to pause, and a later Escape or Resume explicitly resumes. Held-key repeats are ignored. Opening settings from an already-paused state and button-based Close/Resume are also covered. The browser fixture is updated to the same contract but was not rerun: normal browser validation remains pending on the coordinator's working browser, due to this container's previously recorded sandbox blocker. Existing browser evidence is bound to the earlier source hash, not this follow-up.
+
+Fresh checks: `npm test` 132/132; the four focused camera/settings/lifecycle/mobile test files 28/28; source smoke, browser-script syntax, typecheck, catalog check, Worker dry-run build and Pages build all passed. Pages output for this follow-up is `/workspace/royal-twisted-pages-escape`. No security settings, vendored files or shared files changed.
