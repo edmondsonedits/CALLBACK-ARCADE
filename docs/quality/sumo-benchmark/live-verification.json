@@ -1,0 +1,95 @@
+{
+  "entries": [
+    {
+      "id": "blind-crown",
+      "url": "https://edmondsonedits.github.io/CALLBACK-ARCADE/games/blind-crown/?v=1.6.0",
+      "status": 200,
+      "sha256": "9de02410af76047081cdfff3fe19a0e70641c75a31ae9ded5f7eef0831b0f681",
+      "match": true
+    },
+    {
+      "id": "royal-ballistix",
+      "url": "https://edmondsonedits.github.io/CALLBACK-ARCADE/games/royal-ballistix/?v=0.13.0",
+      "status": 200,
+      "sha256": "3af1cc8ea161a66931c73f28e8a1e6b6550fefc37735cdcd25c3510ca99468b5",
+      "match": true
+    },
+    {
+      "id": "royal-roller-ruckus",
+      "url": "https://edmondsonedits.github.io/CALLBACK-ARCADE/games/royal-roller-ruckus/?v=1.5.0",
+      "status": 200,
+      "sha256": "3195b89abfe8237c2afd224e3d35eb930d7577d32542bebd7b93c754d6f4c303",
+      "match": true
+    },
+    {
+      "id": "royal-scratch-match",
+      "url": "https://edmondsonedits.github.io/CALLBACK-ARCADE/games/royal-scratch-match/?v=0.6.0",
+      "status": 200,
+      "sha256": "580417dc35c6cd5514354e6b90ac00586f4ce6ce6224a3e21f21f7920b55c1db",
+      "match": true
+    },
+    {
+      "id": "royal-sumo",
+      "url": "https://edmondsonedits.github.io/CALLBACK-ARCADE/games/royal-sumo/?v=1.3.0",
+      "status": 200,
+      "sha256": "6b7a638bae0d5468fee3ffb5c9d9c3a86252487379e43621b758488ac9082186",
+      "match": true
+    },
+    {
+      "id": "royal-twisted",
+      "url": "https://edmondsonedits.github.io/CALLBACK-ARCADE/games/royal-twisted/?v=0.6.0",
+      "status": 200,
+      "sha256": "7cfbfd79c6310b397cf0b0aa3783a5625f11fb1fe3f3571b31f1bcc29d46d5f6",
+      "match": true
+    },
+    {
+      "id": "space-bash",
+      "url": "https://edmondsonedits.github.io/CALLBACK-ARCADE/games/space-bash/?v=1.14.0",
+      "status": 200,
+      "sha256": "e7ded7bcc0cd9fb097c1e2a53de168d66760dbaa3273ab426ee4bb3868a038ee",
+      "match": true
+    }
+  ],
+  "catalogMatches": true,
+  "publishedCommit": "feba4619b0b6c172c89e1b37bf00bee805603ac2",
+  "workflows": {
+    "verify": {
+      "id": 38196341984,
+      "conclusion": "success"
+    },
+    "publish-pages": {
+      "id": 38196342040,
+      "conclusion": "success"
+    }
+  },
+  "browser": {
+    "viewport": {
+      "width": 1363,
+      "height": 936
+    },
+    "games": [
+      "royal-ballistix",
+      "royal-scratch-match",
+      "space-bash",
+      "blind-crown"
+    ],
+    "verified": [
+      "setup and primary start actions",
+      "Canvas world and contestant rendering",
+      "pause/resume screens",
+      "Ballistix Defense Drill and native keyboard volume/checkbox settings",
+      "Blind Crown completed-volley review and timeline endpoints",
+      "No game-origin console errors observed",
+      "No document overflow at inspected desktop viewport"
+    ],
+    "limits": [
+      "No physical mobile, audio-by-ear or real gamepad testing",
+      "No WebGL2 renderer verification in available browser",
+      "390x844 and 844x390 layouts not browser-certified"
+    ],
+    "screenshots": [
+      "screenshots/blind-crown-live-review.jpg",
+      "screenshots/space-bash-live.jpg"
+    ]
+  }
+}

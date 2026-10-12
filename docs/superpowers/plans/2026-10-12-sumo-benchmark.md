@@ -28,6 +28,6 @@ All constraints in the spec apply verbatim. Root generated catalogs/STATUS/cross
 - [x] 5. Space Bash: audit Sumo and own code; implement game-specific spec; behavioral tests and report.
 - [x] 6. Blind Crown: audit Sumo and own code; implement game-specific spec; behavioral tests and report.
 - [x] 7. Review per-game diffs and reports, address regressions, update source hashes and generated catalog/STATUS; run full gates.
-- [ ] 8. Publish only verified contents, monitor CI/Pages and compare live source hashes; report concrete remaining playtest limits.
+- [x] 8. Publish only verified contents, monitor CI/Pages and compare live source hashes; report concrete remaining playtest limits.
 
 For each implementation task: identify real gaps in source; record chosen changes; add a failing behavioral regression for risky logic; implement the smallest cohesive solution; run focused tests; report outcomes and limitations. Avoid tests that merely search for new labels.
