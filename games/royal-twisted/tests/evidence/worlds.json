@@ -7,17 +7,10 @@
   "checks": [
     {
       "command": "node --test tests/royal-twisted-worlds.test.mjs tests/royal-twisted-sumo-benchmark.test.mjs tests/royal-twisted-quality.test.mjs tests/royal-twisted-camera.test.mjs",
-      "tests": 123,
-      "passed": 123,
+      "tests": 130,
+      "passed": 130,
       "failed": 0,
       "output": "tests/evidence/worlds-tests.txt"
-    },
-    {
-      "command": "npm test",
-      "tests": 479,
-      "passed": 479,
-      "failed": 0,
-      "output": "tests/evidence/worlds-full-suite.txt"
     },
     {
       "command": "node games/royal-twisted/tests/source-smoke.mjs",
@@ -33,7 +26,7 @@
     }
   ],
   "sourceHashes": {
-    "source/index.html": "ec9125ec7813812c4129202fdb4aaa90ffb65d5ca542670fdb2866a76a72fe75",
+    "source/index.html": "53a29791785efd06899422f8c3b6ecbd09761b6cfc7367d944848c60283a5a81",
     "source/original/royal_twisted_spiral_keep_v0.5_original_camera_knockback.html": "68170440ea2584201fccd8cc8e6c251ae598b223af1cd9ab6aa99cac1d988ae2",
     "source/archive/royal_twisted_spiral_keep_v0.4_ten_players.html": "50d44a32a0be10fade5ddabe00493113ee1194b69f2411b1d7d21222538a4dbe"
   },
@@ -63,5 +56,31 @@
     "No subjective 9/10 certification",
     "No online transport introduced",
     "Hardware sound/gamepad/touch and real GPU performance unverified"
-  ]
+  ],
+  "fixRound1": {
+    "finding": "F1",
+    "change": "Replay captures gameplay rules and seed only, retaining current immediate cosmetics/access settings.",
+    "regression": "Actual UI handlers and rematch click verify current name/plain headwear/Three material color, retained access settings, captured rules and seed.",
+    "red": "worlds-f1-red.txt: Original !== Current",
+    "green": "worlds-f1-green.txt: 1 passed,0 failed",
+    "scope": "F2 intentionally deferred per parent ruling."
+  },
+  "historicalFullSuite": {
+    "sourceHash": "f022aaec0d931e7871bcea9a984601ac6b02d369e4cf4ce756930924d62e51db",
+    "checks": [
+      {
+        "command": "npm test",
+        "tests": 480,
+        "passed": 480,
+        "failed": 0,
+        "output": "tests/evidence/worlds-full-suite.txt"
+      }
+    ],
+    "note": "Fix round 1 evidence; not rerun for fix round 2 per parent scoped-verification instruction."
+  },
+  "fixRound2": {
+    "change": "Cap portrait title at270px; move turrets below and outside player view; give each tower sky, fog, deck and fill palette; instance346 static track meshes in5 draws while preserving matrices.",
+    "verification": "Six additional world tests cover exact transforms, CPU scenery ray clearance across towers/setback/seat counts/viewports, retained palette resources, compact title CSS, animated flag ownership and readonly renderer/player projection.",
+    "limits": "No fresh browser or hardware rendering claim. CI owns rendered title clearance, shader validation, palette and draw-call assessment."
+  }
 }

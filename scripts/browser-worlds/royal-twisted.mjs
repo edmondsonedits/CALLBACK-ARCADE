@@ -13,6 +13,10 @@ export const twisted = {
   check('production renderer creates a live WebGL2 context',render.webgl2&&!render.lost&&render.width>0&&render.height>0,render);
   check('title runs a genuine bot demo',(await session()).demo===true);
   check('original camera default preserved',await page.evaluate(()=>window.CallbackCamera.code())==='CAM-3R-23-U');
+  if(profile.name==='portrait'){
+   const visibility=await page.evaluate(()=>{const p=window.RoyalTwisted.getState().player.screen,r=document.querySelector('#setupModal .modal')?.getBoundingClientRect();return {player:p,panel:r?{top:r.top,bottom:r.bottom}:null};});
+   check('portrait menu leaves demo player visible',!!visibility.player?.head.visible&&(!!visibility.panel&&(visibility.player.head.y<visibility.panel.top||visibility.player.feet.y>visibility.panel.bottom)),visibility);
+  }
   await capture('title-default-balanced');
   await page.locator('#setupSettingsBtn').click();await page.locator('#graphics').selectOption('performance');await page.locator('#closeSettings').click();
   check('sustained flow uses actual Performance preference',await page.locator('#graphics').inputValue()==='performance');
@@ -32,8 +36,8 @@ export const twisted = {
   for(const tower of ['spiral','ember','frost','storm']) {
    await page.locator('#towerSelect').selectOption(tower);await page.locator('#modeSelect').selectOption('practice');
    await page.waitForFunction(id=>window.RoyalTwisted.getSession().tower===id,tower);
-   const before=await state();await page.waitForTimeout(1400);const after=await state();
-   check(`${tower}: title bots advance real simulation`,(await session()).demo&&after.demoElapsed>before.demoElapsed&&after.controllers.every(c=>c==='ai'),{beforeElapsed:before.demoElapsed,afterElapsed:after.demoElapsed,nearest:after.nearest,pattern:after.choreography.pattern});
+   const before=await state(),wallStart=Date.now();await page.waitForTimeout(1400);const after=await state(),wallSeconds=(Date.now()-wallStart)/1000;
+   check(`${tower}: title bots advance real simulation`,(await session()).demo&&after.demoElapsed>before.demoElapsed&&after.controllers.every(c=>c==='ai'),{beforeElapsed:before.demoElapsed,afterElapsed:after.demoElapsed,wallSeconds,softwareFps:after.fps,render:after.render,nearest:after.nearest,pattern:after.choreography.pattern});
    check(`${tower}: no horizontal page overflow`,await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
    await page.locator('#setupSettingsBtn').click();await page.locator('#graphics').selectOption('balanced');await page.locator('#closeSettings').click();await page.waitForLoadState('networkidle');
    await capture(`${tower}-demo-balanced`);
@@ -59,9 +63,15 @@ export const twisted = {
   check('Tour begins with a finite first stage and no inherited score',tour.mode==='tour'&&tour.tower==='spiral'&&tour.tour.index===0&&tour.tour.score===0&&tour.stageDuration>0,tour);
   await capture('tour-start');
   if(profile.name==='desktop'){
-   await page.locator('#resultsModal.open').waitFor({state:'visible',timeout:180000});const ended=await session();
+   await page.locator('#settingsBtn').click();await page.locator('#playerName').fill('Ada Prime');await page.locator('#playerName').press('Tab');await page.locator('#helmetStyle').selectOption('plain');await page.locator('#closeSettings').click();await page.locator('#resumeBtn').click();
+   await page.waitForFunction(()=>window.RoyalTwisted.getState().player.setback>.02,null,{timeout:240000});await capture('tour-setback');
+   await page.locator('#resultsModal.open').waitFor({state:'visible',timeout:360000});const ended=await session();
    check('Tour stage reaches real finite results',ended.phase==='matchover'&&ended.tour.stages.length===1&&!ended.tour.complete,ended.tour);await capture('tour-stage-results');
    await page.locator('#nextTowerBtn').click();const next=await session();check('Next tower advances to Ember with retained stage result',next.tower==='ember'&&next.tour.index===1&&next.tour.stages.length===1,next.tour);await capture('tour-next-tower');
+  }else if(profile.name==='portrait'){
+   await page.locator('#settingsBtn').click();await page.locator('#playerName').fill('Ada Prime');await page.locator('#playerName').press('Tab');await page.locator('#helmetStyle').selectOption('plain');await page.locator('#closeSettings').click();await page.locator('#resumeBtn').click();
+   await page.locator('#resultsModal.open').waitFor({state:'visible',timeout:360000});await capture('tour-stage-results');
+   await page.locator('#rematchBtn').click();const replay=await session();check('native Replay preserves latest player style and captured rules',replay.standings[0].name==='Ada Prime'&&replay.seed===tour.seed&&replay.mode==='tour'&&replay.rules.goal===tour.rules.goal&&replay.tour.index===0&&replay.tour.stages.length===0,replay);await capture('tour-replayed');
   }
  }
 };

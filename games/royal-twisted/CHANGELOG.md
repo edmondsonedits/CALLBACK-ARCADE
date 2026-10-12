@@ -1,12 +1,14 @@
 # Changelog
 
 ## 0.7.0 — Four Towers (2026-10-12)
+- Browser review fix: cap portrait title at270px, move distant turrets out of P1 setback sightlines, brighten distinct tower sky/deck/fill palettes, and instance346 static helix parts into5 draws with original transforms. Add readonly rendered workload and player projection diagnostics.
+- Review fix: replay captures gameplay rules/seed only, so current player name, color, headwear and audio/access choices remain coherently applied.
 - Add a compact live-bot title, Watch/Return/Start, private demo RNG, bounded simulation warmup and fresh-run reset. Demo is silent even after enabled sound.
 - Add Ember vent/heat patterns, Frost grip/braking recovery, and Storm warned gust bracing with conflict deferral; preserve Spiral Keep and conservative rod arrival floors.
 - Add finite 20/35/50-second tower practice and four-stage Tour with explicit Next, actual-clear aggregate scoring, captured-rule seeded replay and map/rule-scoped records. Crown length supports 1/3/5 regulation rounds.
 - Group useful staged rules, immediate name/color/headwear, coaching, contrast, audio/access and graphics. Preserve native editing and neutralize every gamepad seat through transitions.
 - Render three local CC0 castle props, ship external colormap texture, local r180 MIT loader, source/archive/per-file provenance. Cache pending loads and bound/dispose scenery and expired hazards. Performance removes shadows, lowers DPR, hides scenic props and disables backdrop filters; FPS uses wall time.
-- Add 30 executable world/lifecycle checks; retain all 93 focused prior checks. Browser/hardware and subjective acceptance remain separately reported.
+- Add 37 executable world/lifecycle checks; retain all 93 focused prior checks. Browser/hardware and subjective acceptance remain separately reported.
 
 ## 0.6.0 — Sumo benchmark upgrade (2026-10-12)
 - Add setup, contextual help, visible pause, full standings, direct seeded replay and Setup routes. Preserve seven-hit elimination, existing round/overtime rules, selected camera and all physics constants.

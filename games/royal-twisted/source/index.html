@@ -57,6 +57,23 @@ button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid 
 #towerStatus{position:absolute;left:50%;transform:translateX(-50%);top:calc(var(--safeT) + 195px);max-width:90%;background:#09101ce8;padding:6px 10px;border-radius:8px;font-size:11px;text-align:center;pointer-events:none}#app.demo #towerStatus{top:auto;bottom:80px}#app.performance *{backdrop-filter:none!important}#app.performance .grain{display:none}#app.contrast{--muted:#edf4ff;--line:#ffffff88}#app.contrast .reaction-cue{border:2px solid white}
 @media(max-width:560px){#setupModal{align-items:end;padding:12px 12px 76px}#setupModal .modal{width:100%;max-height:55dvh}#setupModal h2{font-size:24px}#setupModal .setting{padding:3px 0}#setupModal .modal p{margin:5px 0 8px}#towerStatus{top:calc(var(--safeT) + 224px)}}
 @media(max-height:500px){#setupModal{padding:60px 12px 64px}#setupModal .modal{width:280px;max-height:calc(100dvh - 124px)}#towerStatus{top:calc(var(--safeT) + 133px);font-size:10px}.reaction-cue{max-width:48%;}.status{width:52%;left:8px;transform:none}.controls{width:42%;left:auto;right:8px;transform:none}.feedback{bottom:105px}}
+
+#app.demo:has(#setupModal.open) #demoBar{display:none}
+@media(max-width:560px) and (min-height:501px){
+ #setupModal{padding:12px;align-items:end}
+ #setupModal .modal{max-height:270px;padding:12px;overflow:auto}
+ #setupModal h2{font-size:22px;line-height:26px;margin:4px 0}
+ #setupModal .session-kicker{font-size:9px;line-height:12px}
+ #setupModal .objective{font-size:11px;line-height:15px;margin:4px 0 6px}
+ #setupModal .title-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+ #setupModal .setting{display:block;border:0;padding:0}
+ #setupModal .setting strong{font-size:10px;margin-bottom:3px}
+ #setupModal .setting select{width:100%;min-width:0;min-height:44px}
+ #setupModal .modal-buttons{grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:8px}
+ #setupModal .modal-buttons button{min-height:44px;font-size:11px;padding:5px}
+ #setupModal #setupRecord,#setupModal #titleHelpBtn{display:none}
+ #app.demo:has(#setupModal.open) #towerStatus{display:none}
+}
 </style>
 </head>
 <body data-pause-flow="manual-resume">
@@ -114,9 +131,9 @@ button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid 
   <div id="pauseOverlay" class="pause-overlay"><div class="pause-card"><h2>PAUSED</h2><p>The Spiral Keep has politely stopped trying to hit everyone.</p><div class="pause-actions"><button id="resumeBtn" type="button" data-resume-game>Resume</button><button id="pauseMenuBtn" class="secondary" type="button">Setup</button></div></div></div>
 
   <div id="setupModal" class="modal-back"><div class="modal session-card" role="dialog" aria-modal="true" aria-labelledby="setupTitle">
-    <div class="session-kicker">FOUR TOWERS · LIVE BOT DEMO</div><h2 id="setupTitle">Read the tower.<br>Keep your crown.</h2><p class="objective" id="towerLesson"></p>
-    <div class="setting"><label for="towerSelect"><strong>Tower</strong></label><select id="towerSelect"><option value="spiral">Spiral Keep</option><option value="ember">Ember Forge</option><option value="frost">Frost Spire</option><option value="storm">Stormwatch</option></select></div>
-    <div class="setting"><label for="modeSelect"><strong>Run</strong></label><select id="modeSelect"><option value="crown">Crown match</option><option value="practice">Skill practice</option><option value="tour">Four-tower Tour</option></select></div>
+    <div class="session-kicker">FOUR TOWERS · LIVE BOT DEMO</div><h2 id="setupTitle">Keep your crown.</h2><p class="objective" id="towerLesson"></p>
+    <div class="title-options"><div class="setting"><label for="towerSelect"><strong>Tower</strong></label><select id="towerSelect"><option value="spiral">Spiral Keep</option><option value="ember">Ember Forge</option><option value="frost">Frost Spire</option><option value="storm">Stormwatch</option></select></div>
+    <div class="setting"><label for="modeSelect"><strong>Run</strong></label><select id="modeSelect"><option value="crown">Crown match</option><option value="practice">Skill practice</option><option value="tour">Four-tower Tour</option></select></div></div>
     <div hidden><select id="setupPlayers"><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select><select id="setupRhythm"><option value="mixed">mixed</option><option value="jumps">jumps</option><option value="ducks">ducks</option></select><select id="setupDifficulty"><option value="easy">easy</option><option value="normal">normal</option><option value="hard">hard</option></select></div>
     <p id="setupRecord" class="session-note"></p><div class="modal-buttons"><button id="setupSettingsBtn" type="button">Customize</button><button id="startBtn" class="primary" type="button">Start run</button><button id="watchBtn" type="button">Watch bots</button><button id="titleHelpBtn" type="button">How to play</button></div>
   </div></div>
@@ -261,10 +278,10 @@ let matchSeed=1,gameplayRng=null,matchRhythm="mixed",padMenuHeld=false,audioUnlo
 const towerFlags=[];
 // Four Towers retain the fixed-step rod collision authority. Scenery never collides.
 const TOWERS=Object.freeze({
- spiral:{name:"Spiral Keep",skill:"Jump cyan. Hold duck under coral. Read the classic cadence.",color:0x8a8170,fog:0x111a2b},
- ember:{name:"Ember Forge",skill:"Duck the vent, then jump two heat bursts. Release between actions.",color:0x73372c,fog:0x29151b},
- frost:{name:"Frost Spire",skill:"Duck to brake and refill grip. Release to recover faster; jump low rods.",color:0x8bd4de,fog:0x173648},
- storm:{name:"Stormwatch",skill:"Brace with grounded duck when gusts warn. Hold double ducks, release to jump.",color:0x686ba6,fog:0x191b3f}
+ spiral:{name:"Spiral Keep",skill:"Jump cyan. Hold duck under coral. Read the classic cadence.",color:0xc6bda6,fog:0x313d50,skyTop:0x294366,skyBottom:0xaa8870,deck:0xe4d7b8,sun:0xffe3bb,ground:0x706a61},
+ ember:{name:"Ember Forge",skill:"Duck the vent, then jump two heat bursts. Release between actions.",color:0xc17b58,fog:0x4b2c29,skyTop:0x35283a,skyBottom:0xbf7143,deck:0xe2b981,sun:0xffd39e,ground:0x82574d},
+ frost:{name:"Frost Spire",skill:"Duck to brake and refill grip. Release to recover faster; jump low rods.",color:0xc6eff5,fog:0x8fbdce,skyTop:0x477faf,skyBottom:0xc4e5ed,deck:0xd4eced,sun:0xe5f6ff,ground:0x819fae},
+ storm:{name:"Stormwatch",skill:"Brace with grounded duck when gusts warn. Hold double ducks, release to jump.",color:0xa4b4d3,fog:0x3d4a67,skyTop:0x1e2d4d,skyBottom:0x7e91ad,deck:0xc0cbdf,sun:0xd7e5ff,ground:0x647089}
 });
 let demo=false,demoPhase="fight",demoElapsed=0,demoRng=90127,matchTower="spiral",matchMode="crown",matchRules=normalizePreferences(),capturedRun=null;
 let tour={index:0,stages:[],score:0,complete:false},gustCycle=-1,towerDecor=null,towerGeneration=0,towerAssetCache=new Map();
@@ -344,10 +361,14 @@ function applyTowerWorld(){
  const generation=++towerGeneration,def=TOWERS[matchTower];
  if(towerDecor){scene.remove(towerDecor);disposeTree(towerDecor)}towerDecor=new THREE.Group();scene.add(towerDecor);const target=towerDecor;
  // Shared classic geometry/layout is unchanged; only the non-collision surround varies.
- towerGroup.traverse(n=>{if(n.material?.map)n.material.color.setHex(def.color)});if(scene.fog)scene.fog.color.setHex(def.fog);
+ towerGroup.traverse(n=>{if(n.material?.map)n.material.color.setHex(def.color)});
+ if(scene.fog){scene.fog.color.setHex(def.fog);scene.fog.density=matchTower==="frost"?.011:.017}
+ if(skyMaterial){skyMaterial.uniforms.top.value.setHex(def.skyTop);skyMaterial.uniforms.bottom.value.setHex(def.skyBottom)}
+ if(environmentLights){environmentLights.hemi.color.setHex(def.sun);environmentLights.hemi.groundColor.setHex(def.ground);environmentLights.sun.color.setHex(def.sun)}
+ if(deckMaterial){deckMaterial.color.setHex(def.deck);deckMaterial.emissive.setHex(def.deck);deckMaterial.emissiveIntensity=.1}
  const mat=new THREE.MeshStandardMaterial({color:def.color,roughness:matchTower==="frost"?.2:.7,metalness:matchTower==="ember"?.5:.1,emissive:matchTower==="ember"?0x441000:0x000000});
  for(let i=0;i<8;i++){
-  const a=i*Math.PI/4,r=11;
+  const a=i*Math.PI/4,r=24;
   const geo=matchTower==="ember"?new THREE.CylinderGeometry(.5,.7,4+i%3,8):matchTower==="frost"?new THREE.ConeGeometry(1,4+i%3,5):matchTower==="storm"?new THREE.TorusGeometry(1,.12,6,16):new THREE.ConeGeometry(.8,2,8);
   const m=new THREE.Mesh(geo,mat);m.position.set(Math.cos(a)*r,matchTower==="storm"?4:-.5,Math.sin(a)*r);target.add(m);
  }
@@ -356,7 +377,7 @@ function applyTowerWorld(){
   if(!model||generation!==towerGeneration)return;
   for(let i=0;i<4;i++){
    const copy=model.clone(true);copy.traverse(n=>{if(n.geometry)n.geometry=n.geometry.clone();if(n.material){n.material=n.material.clone();if(n.material.map)n.material.map=n.material.map.clone()}});
-   const a=i*Math.PI/2+.3;copy.position.set(Math.cos(a)*9,2,Math.sin(a)*9);copy.scale.setScalar(name==="rocks-large"?2:1.8);target.add(copy);
+   const a=i*Math.PI/2+.3;copy.position.set(Math.cos(a)*24,2,Math.sin(a)*24);copy.scale.setScalar(name==="rocks-large"?2:1.8);target.add(copy);
   }
  });
  target.visible=graphicsMode!=="performance";
@@ -407,6 +428,7 @@ const AI={
 };
 
 let scene,camera,renderer,clock,world,trackGroup,towerGroup,hazardGroup,fxGroup;
+let skyMaterial=null,environmentLights=null,deckMaterial=null;
 let fighters=[],hazards=[],particles=[],rings=[];
 let playerCount=Math.max(2,Math.min(10,Math.round(Number(new URLSearchParams(location.search).get("players"))||preferences.players)));preferences.players=playerCount;
 let round=1,roundWins=0,phase="countdown",phaseTimer=3.3,roundTime=0,paused=false,accumulator=0,lastTime=performance.now();
@@ -452,11 +474,35 @@ function canvasStone(){
   const tex=new THREE.CanvasTexture(c);tex.colorSpace=THREE.SRGBColorSpace;tex.wrapS=tex.wrapT=THREE.RepeatWrapping;tex.repeat.set(7,3);tex.anisotropy=8;return tex;
 }
 function createSky(){
-  const geo=new THREE.SphereGeometry(70,32,22);const mat=new THREE.ShaderMaterial({side:THREE.BackSide,uniforms:{top:{value:new THREE.Color(0x14284f)},bottom:{value:new THREE.Color(0xa4664a)},offset:{value:7},exponent:{value:.72}},vertexShader:`varying vec3 vWorldPosition;void main(){vec4 wp=modelMatrix*vec4(position,1.0);vWorldPosition=wp.xyz;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}`,fragmentShader:`uniform vec3 top;uniform vec3 bottom;uniform float offset;uniform float exponent;varying vec3 vWorldPosition;void main(){float h=normalize(vWorldPosition+vec3(0.,offset,0.)).y;float f=pow(max(h,0.0),exponent);gl_FragColor=vec4(mix(bottom,top,f),1.0);}`});scene.add(new THREE.Mesh(geo,mat));
+  const geo=new THREE.SphereGeometry(70,32,22);const mat=new THREE.ShaderMaterial({side:THREE.BackSide,uniforms:{top:{value:new THREE.Color(0x14284f)},bottom:{value:new THREE.Color(0xa4664a)},offset:{value:7},exponent:{value:.72}},vertexShader:`varying vec3 vWorldPosition;void main(){vec4 wp=modelMatrix*vec4(position,1.0);vWorldPosition=wp.xyz;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}`,fragmentShader:`uniform vec3 top;uniform vec3 bottom;uniform float offset;uniform float exponent;varying vec3 vWorldPosition;void main(){float h=normalize(vWorldPosition+vec3(0.,offset,0.)).y;float f=pow(max(h,0.0),exponent);gl_FragColor=vec4(mix(bottom,top,f),1.0);
+#include <tonemapping_fragment>
+#include <colorspace_fragment>
+}`});skyMaterial=mat;scene.add(new THREE.Mesh(geo,mat));
+}
+// Static helix meshes share materials and shape; instance their original local matrices.
+function batchStaticMeshes(group){
+ const batches=new Map();
+ for(const mesh of group.children){
+  if(!mesh.isMesh||mesh.children.length||Array.isArray(mesh.material))continue;
+  const key=[mesh.geometry.type,JSON.stringify(mesh.geometry.parameters),mesh.material.uuid,mesh.castShadow,mesh.receiveShadow].join(":");
+  if(!batches.has(key))batches.set(key,[]);batches.get(key).push(mesh);
+ }
+ for(const meshes of batches.values()){
+  if(meshes.length<2)continue;const first=meshes[0],batch=new THREE.InstancedMesh(first.geometry,first.material,meshes.length);
+  batch.castShadow=first.castShadow;batch.receiveShadow=first.receiveShadow;batch.name="static-helix-"+first.geometry.type;
+  meshes.forEach((mesh,index)=>{mesh.updateMatrix();batch.setMatrixAt(index,mesh.matrix);group.remove(mesh);if(mesh.geometry!==first.geometry)mesh.geometry.dispose()});
+  batch.instanceMatrix.needsUpdate=true;batch.computeBoundingBox();batch.computeBoundingSphere();group.add(batch);
+ }
+}
+function playerScreen(f){
+ if(!renderer||!camera?.isPerspectiveCamera||!f)return null;
+ camera.updateMatrixWorld();
+ const point=y=>{const v=new THREE.Vector3().copy(f.base).add(f.offset);v.y+=f.jumpY+y;v.project(camera);return {x:(v.x+1)*innerWidth/2,y:(1-v.y)*innerHeight/2,visible:v.z>=-1&&v.z<=1&&Math.abs(v.x)<=1&&Math.abs(v.y)<=1}};
+ return {head:point(f.duck?1.05:1.8),feet:point(.03)};
 }
 function createWorld(){
   createSky();world=new THREE.Group();trackGroup=new THREE.Group();towerGroup=new THREE.Group();hazardGroup=new THREE.Group();fxGroup=new THREE.Group();scene.add(world,trackGroup,towerGroup,hazardGroup,fxGroup);
-  const hemi=new THREE.HemisphereLight(0xc7ddff,0x47281e,1.7);scene.add(hemi);const sun=new THREE.DirectionalLight(0xffe3bb,3.1);sun.position.set(-7,14,8);sun.castShadow=true;sun.shadow.mapSize.set(1536,1536);sun.shadow.camera.left=-13;sun.shadow.camera.right=13;sun.shadow.camera.top=13;sun.shadow.camera.bottom=-13;sun.shadow.camera.near=.5;sun.shadow.camera.far=45;sun.shadow.bias=-.0007;scene.add(sun);const rim=new THREE.DirectionalLight(0x6e8ee9,.9);rim.position.set(9,10,-9);scene.add(rim);
+  const hemi=new THREE.HemisphereLight(0xc7ddff,0x706a61,2.0);scene.add(hemi);const sun=new THREE.DirectionalLight(0xffe3bb,3.1);sun.position.set(-7,14,8);sun.castShadow=true;sun.shadow.mapSize.set(1024,1024);sun.shadow.camera.left=-13;sun.shadow.camera.right=13;sun.shadow.camera.top=13;sun.shadow.camera.bottom=-13;sun.shadow.camera.near=.5;sun.shadow.camera.far=45;sun.shadow.bias=-.0007;scene.add(sun);const rim=new THREE.DirectionalLight(0x6e8ee9,.9);rim.position.set(9,10,-9);scene.add(rim);const fill=new THREE.AmbientLight(0xffffff,1.3);scene.add(fill);environmentLights={hemi,sun,rim,fill};
 
   const stone=canvasStone();const wallMat=new THREE.MeshStandardMaterial({map:stone,color:0x8a8170,roughness:.9,metalness:.02});
   const core=new THREE.Mesh(new THREE.CylinderGeometry(2.85,3.65,10.5,26),wallMat);core.position.y=3.15;core.castShadow=true;core.receiveShadow=true;towerGroup.add(core);
@@ -467,6 +513,7 @@ function createWorld(){
   for(let i=0;i<8;i++){const a=i*Math.PI/4;const spike=new THREE.Mesh(new THREE.ConeGeometry(.18,.72,6),crownMat);spike.position.set(Math.cos(a)*1.05,9.05,Math.sin(a)*1.05);spike.rotation.z=Math.cos(a)*.15;spike.rotation.x=Math.sin(a)*.15;towerGroup.add(spike)}
 
   const railMat=new THREE.MeshStandardMaterial({color:0x6d604a,roughness:.7,metalness:.12});const deckMat=new THREE.MeshStandardMaterial({map:stone,color:0xaca087,roughness:.84});const edgeMat=new THREE.MeshStandardMaterial({color:0x9e762e,roughness:.42,metalness:.42});
+  deckMaterial=deckMat;deckMat.emissive.setHex(0xe4d7b8);deckMat.emissiveIntensity=.1;
   const segs=150;
   for(let i=0;i<segs;i++){
     const t=.02+i/(segs-1)*.96,p=helixPoint(t),p2=helixPoint(Math.min(.999,t+.004)),yaw=Math.atan2(p2.x-p.x,p2.z-p.z);
@@ -487,12 +534,14 @@ function createWorld(){
       const badge=new THREE.Mesh(new THREE.TorusGeometry(.11,.028,5,12),crownMat);badge.position.copy(flag.position).addScaledVector(new THREE.Vector3(Math.cos(a),0,Math.sin(a)),.025);badge.rotation.y=flag.rotation.y;towerGroup.add(badge);
     }
   }
+  const flameMat=new THREE.MeshBasicMaterial({color:0xffc267});
   for(const t of [.08,.28,.48,.68,.88])for(const side of [-1,1]){
     const p=helixPoint(t),b=helixBasis(t),pedestal=new THREE.Mesh(new THREE.CylinderGeometry(.11,.18,.68,7),bandMat);pedestal.position.copy(p).addScaledVector(b.right,side*3.43);pedestal.position.y+=.34;trackGroup.add(pedestal);
-    const flame=new THREE.Mesh(new THREE.ConeGeometry(.10,.32,5),new THREE.MeshBasicMaterial({color:0xffc267}));flame.position.copy(pedestal.position);flame.position.y+=.46;trackGroup.add(flame);
+    const flame=new THREE.Mesh(new THREE.ConeGeometry(.10,.32,5),flameMat);flame.position.copy(pedestal.position);flame.position.y+=.46;trackGroup.add(flame);
   }
+  batchStaticMeshes(trackGroup);batchStaticMeshes(towerGroup);
   const base=new THREE.Mesh(new THREE.CylinderGeometry(7.8,9.4,4.2,30),new THREE.MeshStandardMaterial({color:0x353638,roughness:.96}));base.position.y=-2.3;base.receiveShadow=true;world.add(base);
-  for(let i=0;i<8;i++){const a=i*Math.PI/4+.28,r=10.0;const turret=new THREE.Group();const body=new THREE.Mesh(new THREE.CylinderGeometry(.72,.92,5.0,10),wallMat);body.position.y=-.35;turret.add(body);const roof=new THREE.Mesh(new THREE.ConeGeometry(1.05,1.5,10),new THREE.MeshStandardMaterial({color:i%2?0x522c2b:0x3d3557,roughness:.78}));roof.position.y=2.85;turret.add(roof);turret.position.set(Math.cos(a)*r,0,Math.sin(a)*r);world.add(turret)}
+  for(let i=0;i<8;i++){const a=i*Math.PI/4+.28,r=14.0;const turret=new THREE.Group();const body=new THREE.Mesh(new THREE.CylinderGeometry(.72,.92,5.0,10),wallMat);body.position.y=-.35;turret.add(body);const roof=new THREE.Mesh(new THREE.ConeGeometry(1.05,1.5,10),new THREE.MeshStandardMaterial({color:i%2?0x522c2b:0x3d3557,roughness:.78}));roof.position.y=2.85;turret.add(roof);turret.position.set(Math.cos(a)*r,-3.4,Math.sin(a)*r);world.add(turret)}
   const floor=new THREE.Mesh(new THREE.PlaneGeometry(80,80),new THREE.MeshStandardMaterial({color:0x11151d,roughness:1}));floor.rotation.x=-Math.PI/2;floor.position.y=-4.35;floor.receiveShadow=true;world.add(floor);
 
   for(let i=0;i<80;i++){const m=new THREE.Mesh(new THREE.SphereGeometry(.035,5,4),new THREE.MeshBasicMaterial({color:0xffdfa0,transparent:true,opacity:0}));m.visible=false;fxGroup.add(m);particles.push({mesh:m,life:0,max:0,v:new THREE.Vector3()})}
@@ -558,7 +607,10 @@ function restartMatch(){
   const next=normalizePreferences({...preferences,players:playerCountEl.value,rhythm:rhythmEl.value});
   preferences.players=next.players;preferences.rhythm=next.rhythm;matchRhythm=next.rhythm;
   if(next.players!==playerCount){playerCount=next.players;createFighters()}
-  setReplaySeed(seedInput.value);capturedRun={...matchRules,players:next.players,rhythm:next.rhythm,seed:matchSeed};savePreferences();round=1;roundWins=0;globalScore=0;feedbackUntil=0;
+  setReplaySeed(seedInput.value);
+  // Replay captures gameplay only; current cosmetics and access choices stay immediate.
+  const {tower,mode,goal,modifier,difficulty}=matchRules;
+  capturedRun={tower,mode,goal,modifier,difficulty,players:next.players,rhythm:next.rhythm,seed:matchSeed};savePreferences();round=1;roundWins=0;globalScore=0;feedbackUntil=0;
   fighters.forEach(f=>{f.roundWins=0;f.stats=newStats();if(f.id===0){f.controller="local";f.player=true;}else if(f.controller==="ai")f.controller="ai"});applyPlayerStyle();setupModal.classList.remove("open");resultsModal.classList.remove("open");helpModal.classList.remove("open");clearInputs();resetRound();fighters.forEach(f=>{f.gamepadPrevJump=true;f.gamepadPrevDuck=true});
 }
 
@@ -864,7 +916,7 @@ function updateHUD(){
   const life=Math.max(0,p?.lives??0);[...lifePips.children].forEach((el,i)=>{el.classList.toggle("on",i<life);el.classList.toggle("danger",i<life&&life<=2)})
 }
 function updateDebug(){
-  const p=fighters[0];let nearest=null;for(const h of hazards){if(h.t>=p.trackT&&(!nearest||h.t<nearest.t))nearest=h}const pClosing=currentSpeed()+(p.recoverDelay<=0&&p.trackT<PLAYER_T?TUNING.hit.recoverSpeed:0);const state={version:VERSION,phase,round,time:+roundTime.toFixed(2),seed:matchSeed,rhythm:matchRhythm,stats:fighters.map(f=>({...f.stats})),speed:+speedMult().toFixed(2),fps:+fps.toFixed(1),player:p?{lives:p.lives,score:p.score,jump:+p.jumpY.toFixed(2),duck:p.duck,alive:p.alive,trackT:+p.trackT.toFixed(3),setback:+(PLAYER_T-p.trackT).toFixed(3),recoverDelay:+p.recoverDelay.toFixed(2),jumpBuffer:+(p.input?.jumpBuffer||0).toFixed(3),duckHeld:!!p.input?.duckHeld,controller:p.controller}:null,nearest:nearest?{type:nearest.type,eta:+((nearest.t-p.trackT)/pClosing).toFixed(2)}:null,alive:fighters.filter(f=>f.alive).length,players:playerCount,controllers:fighters.map(f=>f.controller),choreography:{pattern:activePattern,queue:patternQueue.map(x=>x.type),spawned:choreographyStats.spawned,clamped:choreographyStats.clamped,minGap:choreographyStats.minGap===99?null:+choreographyStats.minGap.toFixed(2),lastGap:+choreographyStats.lastGap.toFixed(2)}};Object.assign(state,{paused,demo,demoPhase,demoElapsed,tower:matchTower,mode:matchMode,towerCue:towerCue(),fighters:fighters.map(f=>({id:f.id,controller:f.controller,trackT:f.trackT,jump:f.jumpY,duck:f.duck,clears:f.stats.clears,lives:f.lives})),tour:JSON.parse(JSON.stringify(tour))});if(state.player)state.player.frostGrip=p.frostGrip??1;window.__ROYAL_TWISTED_STATE__=state;if(!debugOn)return;debugPanel.textContent=`${VERSION}\n${phase} · round ${round} · FPS ${state.fps}\nspeed ${state.speed}x · alive ${state.alive}\nplayer lives ${state.player?.lives} score ${state.player?.score}\ntrack ${state.player?.trackT} · setback ${state.player?.setback}\njump ${state.player?.jump} duck ${state.player?.duck} · buf ${state.player?.jumpBuffer}\nnext ${state.nearest?state.nearest.type+" in "+state.nearest.eta+"s":"none"}\npattern ${state.choreography.pattern} · gap ${state.choreography.lastGap}s`
+  const p=fighters[0];let nearest=null;for(const h of hazards){if(h.t>=p.trackT&&(!nearest||h.t<nearest.t))nearest=h}const pClosing=currentSpeed()+(p.recoverDelay<=0&&p.trackT<PLAYER_T?TUNING.hit.recoverSpeed:0);const state={version:VERSION,phase,round,time:+roundTime.toFixed(2),seed:matchSeed,rhythm:matchRhythm,stats:fighters.map(f=>({...f.stats})),speed:+speedMult().toFixed(2),fps:+fps.toFixed(1),player:p?{lives:p.lives,score:p.score,jump:+p.jumpY.toFixed(2),duck:p.duck,alive:p.alive,trackT:+p.trackT.toFixed(3),setback:+(PLAYER_T-p.trackT).toFixed(3),recoverDelay:+p.recoverDelay.toFixed(2),jumpBuffer:+(p.input?.jumpBuffer||0).toFixed(3),duckHeld:!!p.input?.duckHeld,controller:p.controller}:null,nearest:nearest?{type:nearest.type,eta:+((nearest.t-p.trackT)/pClosing).toFixed(2)}:null,alive:fighters.filter(f=>f.alive).length,players:playerCount,controllers:fighters.map(f=>f.controller),choreography:{pattern:activePattern,queue:patternQueue.map(x=>x.type),spawned:choreographyStats.spawned,clamped:choreographyStats.clamped,minGap:choreographyStats.minGap===99?null:+choreographyStats.minGap.toFixed(2),lastGap:+choreographyStats.lastGap.toFixed(2)}};Object.assign(state,{render:renderer?.info?{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,dpr:renderer.getPixelRatio()}:null,paused,demo,demoPhase,demoElapsed,tower:matchTower,mode:matchMode,towerCue:towerCue(),fighters:fighters.map(f=>({id:f.id,controller:f.controller,trackT:f.trackT,jump:f.jumpY,duck:f.duck,clears:f.stats.clears,lives:f.lives})),tour:JSON.parse(JSON.stringify(tour))});if(state.player){state.player.frostGrip=p.frostGrip??1;state.player.screen=playerScreen(p)}window.__ROYAL_TWISTED_STATE__=state;if(!debugOn)return;debugPanel.textContent=`${VERSION}\n${phase} · round ${round} · FPS ${state.fps}\nspeed ${state.speed}x · alive ${state.alive}\nplayer lives ${state.player?.lives} score ${state.player?.score}\ntrack ${state.player?.trackT} · setback ${state.player?.setback}\njump ${state.player?.jump} duck ${state.player?.duck} · buf ${state.player?.jumpBuffer}\nnext ${state.nearest?state.nearest.type+" in "+state.nearest.eta+"s":"none"}\npattern ${state.choreography.pattern} · gap ${state.choreography.lastGap}s`
 }
 function resize(){if(!renderer||!camera)return;const w=innerWidth,h=innerHeight;renderer.setSize(w,h,false);camera.aspect=w/h;const portrait=clamp((h/w-1.15)/.75,0,1);const crowd=clamp((playerCount-4)/6,0,1);camera.fov=lerp(TUNING.camera.baseFov,TUNING.camera.portraitFov,portrait)+3.5*crowd;camera.updateProjectionMatrix()}
 function togglePause(force=true){if(phase==="matchover")return;if(phase==="setup"||(force===false&&(settingsModal.classList.contains("open")||helpModal.classList.contains("open"))))return;paused=force!==false;pauseOverlay.classList.toggle("open",paused&&!settingsModal.classList.contains("open"));clearInputs();if(!paused)resumeBotInputs()}

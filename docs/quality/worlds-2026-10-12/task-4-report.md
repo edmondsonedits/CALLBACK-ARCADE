@@ -42,3 +42,35 @@ Selectors: title `#setupModal`, `#towerSelect`, `#modeSelect`, `#watchBtn`, `#st
 Public snapshots: `getState().paused/demo/demoPhase/demoElapsed/tower/mode/towerCue/players/controllers/time/player.jump/player.duck/player.frostGrip/fighters/choreography`; `getSession().demo/demoPhase/demoElapsed/tower/mode/rules/tour/stageDuration/stageRemaining/standings`. Tour stage completion uses actual phase `matchover`, then explicit Next. Demo exposes `phase=setup` plus actual `demoPhase` and elapsed simulation.
 
 Implementation commit: `81b108a` — Expand Royal Twisted with four survival towers and live bot title. This report-only follow-up records that immutable implementation hash.
+
+
+## Fix round 1 — F1 replay cosmetics
+
+F1 confirmed through actual UI handlers: set `Original` through name blur/start; change to `Current`, plain headwear and a new color/access choices; click `#rematchBtn`. The new regression first failed with session name `Original !== Current` (`worlds-f1-red.txt`). It uses actual Three material and scene nodes to inspect the applied color and headwear visibility, without replacing `applyPlayerStyle`.
+
+Changed only replay capture to whitelist gameplay fields (tower, mode, goal, modifier, difficulty, players, rhythm) and seed. Current preferences therefore remain active while `restartMatch` applies player style; replay still restores captured gameplay despite pending rule edits. F2 remains deferred as instructed; this fix does not alter public contestant-count rule normalization.
+
+Final covering commands/output on source SHA-256 `f022aaec0d931e7871bcea9a984601ac6b02d369e4cf4ce756930924d62e51db`:
+
+- `node --test --test-name-pattern='Replay UI keeps' tests/royal-twisted-worlds.test.mjs` —1 passed,0 failed (`worlds-f1-green.txt`). Verifies Current/plain/current color and access effects, plus captured Ember/practice/short/gentle/hard/seed417 after staged Storm/crown/long/standard/easy/seed999 edits.
+- `node --test tests/royal-twisted-worlds.test.mjs tests/royal-twisted-sumo-benchmark.test.mjs tests/royal-twisted-quality.test.mjs tests/royal-twisted-camera.test.mjs` —124 passed,0 failed (31 world+93 prior).
+- `npm test` —480 passed,0 failed.
+- `node games/royal-twisted/tests/source-smoke.mjs`, `node --check /tmp/twisted-f1-module.mjs` (fresh extraction) and scoped `git diff --check` —pass.
+
+Refreshed `worlds.json`, focused/full outputs, test guide and changelog. Original/archive/dependency hashes unchanged. Parent-owned pre-fix browser run is historical for this new source hash; no parent scripts edited or browser pass claimed here.
+
+Fix implementation commit: `a5ea904` — Keep current Twisted player style when replaying captured rules.
+
+
+## Fix round 2 — rendered title, sightlines, palettes and draw cost
+
+Retained the interrupted worker's game/test edits and verified them without broader redesign. Portrait setup is capped at270px with two selects and one44px action row; the duplicate demo bar/status are hidden during setup. Existing turrets move to radius14 and down3.4; additive props move to radius24. Each tower now updates retained sky/fog/deck/light palettes, with brighter fill and frost fog. Sky shader follows Three tone/color output conversion. Shadow map is1024. Static geometry batches preserve original local matrices:346 track meshes become5 instanced draws; tower batching keeps animated flags independent. No camera/physics/helix transform changes. Public copied `render` and `player.screen` fields support parent browser checks.
+
+Fresh commands on source SHA-256 `53a29791785efd06899422f8c3b6ecbd09761b6cfc7367d944848c60283a5a81`:
+
+- `node --test tests/royal-twisted-worlds.test.mjs tests/royal-twisted-sumo-benchmark.test.mjs tests/royal-twisted-quality.test.mjs tests/royal-twisted-camera.test.mjs` —130 passed,0 failed (37 world+93 prior; output `tests/evidence/worlds-tests.txt`). Six added checks cover original deck/post/edge transforms, CPU scenery ray clearance over4 towers/2,4,10 seats/3viewports/full setback range, distinct palettes/resource bounds, compact title CSS, flag ownership/batch idempotence, readonly workload/projection and jump posture.
+- `node games/royal-twisted/tests/source-smoke.mjs` —pass, including original/archive integrity.
+- Fresh module extraction and `node --check /tmp/twisted-fix2-module.mjs` —pass.
+- Scoped `git diff --check` —pass.
+
+Refreshed source-bound evidence/test documentation; prior full-suite result is explicitly historical. No root suite, browser launch, push, parent harness edits or extra agents. CPU rays exclude asynchronously loaded GLBs; renderer shader pixels, native portrait demo clearance, real turret/prop sightlines, palette readability and GPU cost need parent CI inspection. No hardware FPS or draw-call timing claim. Original/archive/dependency bytes remain unchanged. Status: DONE_WITH_CONCERNS pending parent rendered acceptance.

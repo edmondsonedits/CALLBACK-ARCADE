@@ -1,0 +1,30 @@
+✖ Replay UI keeps current applied player style and access settings while restoring captured rules and seed (60.942376ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 272.031655
+
+✖ failing tests:
+
+test at tests/royal-twisted-worlds.test.mjs:28:1
+✖ Replay UI keeps current applied player style and access settings while restoring captured rules and seed (60.942376ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'Original'
+  - 'Current'
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/89700bddec30/arcade-worlds/tests/royal-twisted-worlds.test.mjs:42:9)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Original',
+    expected: 'Current',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

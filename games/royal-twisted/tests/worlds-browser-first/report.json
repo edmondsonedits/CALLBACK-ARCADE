@@ -1,0 +1,4385 @@
+{
+  "commit": "6fa7031ccdf91b6769696897c3f65db0377c61a7",
+  "date": "2026-10-12T11:35:18.744Z",
+  "browser": "156.0.8078.4",
+  "checks": [
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "production renderer creates a live WebGL2 context",
+      "passed": true,
+      "detail": {
+        "width": 1440,
+        "height": 900,
+        "webgl2": true,
+        "lost": false,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      }
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "title runs a genuine bot demo",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "original camera default preserved",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "sustained flow uses actual Performance preference",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "Watch Start and Return fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "returnTitleBtn",
+          "x": 144.546875,
+          "y": 828,
+          "width": 66.515625,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "demoStartBtn",
+          "x": 219.0625,
+          "y": 828,
+          "width": 56.875,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "Watch Start clears demo statistics and input",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "native player name keeps empty editing and spaces",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "at least twelve real preferences exist",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "settings footer actions are reachable and fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "restartBtn",
+          "x": 524,
+          "y": 712.4375,
+          "width": 192,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "closeSettings",
+          "x": 724,
+          "y": 712.4375,
+          "width": 192,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "spiral: title bots advance real simulation",
+      "passed": true,
+      "detail": {
+        "beforeElapsed": 12.149999999999961,
+        "afterElapsed": 12.299999999999963,
+        "nearest": {
+          "type": "high",
+          "eta": 0.92
+        },
+        "pattern": "single"
+      }
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "spiral: no horizontal page overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "spiral: clean selected ten-seat practice",
+      "passed": true,
+      "detail": {
+        "demo": false,
+        "demoPhase": "fight",
+        "demoElapsed": 12.549999999999967,
+        "tower": "spiral",
+        "mode": "practice",
+        "rules": {
+          "tower": "spiral",
+          "mode": "practice",
+          "goal": "short",
+          "modifier": "standard",
+          "name": "Ada Lovelace",
+          "color": "#f0c861",
+          "helmet": "plume",
+          "coaching": "full",
+          "contrast": "normal",
+          "bests": {},
+          "players": 10,
+          "difficulty": "normal",
+          "graphics": "performance",
+          "rhythm": "mixed",
+          "sound": true,
+          "volume": 0.7,
+          "haptics": true,
+          "reducedMotion": false,
+          "bestClears": 0,
+          "bestStreak": 0
+        },
+        "tour": {
+          "index": 0,
+          "stages": [],
+          "score": 0,
+          "complete": false
+        },
+        "stageDuration": 20,
+        "stageRemaining": 20,
+        "seed": 803556751,
+        "rhythm": "mixed",
+        "phase": "countdown",
+        "round": 1,
+        "standings": [
+          {
+            "rank": 1,
+            "id": 0,
+            "name": "Ada Lovelace",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 1,
+            "name": "RUFUS",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 2,
+            "name": "MABEL",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 3,
+            "name": "GREGOR",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 4,
+            "name": "TILLY",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 5,
+            "name": "BRAM",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 6,
+            "name": "NELL",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 7,
+            "name": "OSRIC",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 8,
+            "name": "PIP",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 9,
+            "name": "AGNES",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "spiral: native jump becomes airborne",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "spiral: held native duck reaches grounded posture",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "spiral: both action targets fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "jumpBtn",
+          "x": 360,
+          "y": 746,
+          "width": 355,
+          "height": 146,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "duckBtn",
+          "x": 725,
+          "y": 746,
+          "width": 355,
+          "height": 146,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "spiral: settings freezes gameplay clock",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "spiral: tower change stages during an active run",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "spiral: run length stages until next Start",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "ember: title bots advance real simulation",
+      "passed": true,
+      "detail": {
+        "beforeElapsed": 12.149999999999961,
+        "afterElapsed": 12.299999999999963,
+        "nearest": {
+          "type": "low",
+          "eta": 0.41
+        },
+        "pattern": "vent / heat burst"
+      }
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "ember: no horizontal page overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "ember: clean selected ten-seat practice",
+      "passed": true,
+      "detail": {
+        "demo": false,
+        "demoPhase": "fight",
+        "demoElapsed": 12.549999999999967,
+        "tower": "ember",
+        "mode": "practice",
+        "rules": {
+          "tower": "ember",
+          "mode": "practice",
+          "goal": "short",
+          "modifier": "standard",
+          "name": "Ada Lovelace",
+          "color": "#f0c861",
+          "helmet": "plume",
+          "coaching": "full",
+          "contrast": "normal",
+          "bests": {},
+          "players": 10,
+          "difficulty": "normal",
+          "graphics": "performance",
+          "rhythm": "mixed",
+          "sound": true,
+          "volume": 0.7,
+          "haptics": true,
+          "reducedMotion": false,
+          "bestClears": 0,
+          "bestStreak": 0
+        },
+        "tour": {
+          "index": 0,
+          "stages": [],
+          "score": 0,
+          "complete": false
+        },
+        "stageDuration": 20,
+        "stageRemaining": 20,
+        "seed": 803556751,
+        "rhythm": "mixed",
+        "phase": "countdown",
+        "round": 1,
+        "standings": [
+          {
+            "rank": 1,
+            "id": 0,
+            "name": "Ada Lovelace",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 1,
+            "name": "RUFUS",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 2,
+            "name": "MABEL",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 3,
+            "name": "GREGOR",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 4,
+            "name": "TILLY",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 5,
+            "name": "BRAM",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 6,
+            "name": "NELL",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 7,
+            "name": "OSRIC",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 8,
+            "name": "PIP",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 9,
+            "name": "AGNES",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "ember: native jump becomes airborne",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "ember: held native duck reaches grounded posture",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "ember: both action targets fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "jumpBtn",
+          "x": 360,
+          "y": 746,
+          "width": 355,
+          "height": 146,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "duckBtn",
+          "x": 725,
+          "y": 746,
+          "width": 355,
+          "height": 146,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "ember: settings freezes gameplay clock",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "ember: tower change stages during an active run",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "ember: run length stages until next Start",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "frost: title bots advance real simulation",
+      "passed": true,
+      "detail": {
+        "beforeElapsed": 12.149999999999961,
+        "afterElapsed": 12.299999999999963,
+        "nearest": {
+          "type": "high",
+          "eta": 0.92
+        },
+        "pattern": "single"
+      }
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "frost: no horizontal page overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "frost: clean selected ten-seat practice",
+      "passed": true,
+      "detail": {
+        "demo": false,
+        "demoPhase": "fight",
+        "demoElapsed": 12.549999999999967,
+        "tower": "frost",
+        "mode": "practice",
+        "rules": {
+          "tower": "frost",
+          "mode": "practice",
+          "goal": "short",
+          "modifier": "standard",
+          "name": "Ada Lovelace",
+          "color": "#f0c861",
+          "helmet": "plume",
+          "coaching": "full",
+          "contrast": "normal",
+          "bests": {},
+          "players": 10,
+          "difficulty": "normal",
+          "graphics": "performance",
+          "rhythm": "mixed",
+          "sound": true,
+          "volume": 0.7,
+          "haptics": true,
+          "reducedMotion": false,
+          "bestClears": 0,
+          "bestStreak": 0
+        },
+        "tour": {
+          "index": 0,
+          "stages": [],
+          "score": 0,
+          "complete": false
+        },
+        "stageDuration": 20,
+        "stageRemaining": 20,
+        "seed": 803556751,
+        "rhythm": "mixed",
+        "phase": "countdown",
+        "round": 1,
+        "standings": [
+          {
+            "rank": 1,
+            "id": 0,
+            "name": "Ada Lovelace",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 1,
+            "name": "RUFUS",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 2,
+            "name": "MABEL",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 3,
+            "name": "GREGOR",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 4,
+            "name": "TILLY",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 5,
+            "name": "BRAM",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 6,
+            "name": "NELL",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 7,
+            "name": "OSRIC",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 8,
+            "name": "PIP",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 9,
+            "name": "AGNES",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "frost: native jump becomes airborne",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "frost: held native duck reaches grounded posture",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "frost: both action targets fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "jumpBtn",
+          "x": 360,
+          "y": 746,
+          "width": 355,
+          "height": 146,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "duckBtn",
+          "x": 725,
+          "y": 746,
+          "width": 355,
+          "height": 146,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "frost: settings freezes gameplay clock",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "frost: tower change stages during an active run",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "frost: run length stages until next Start",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "storm: title bots advance real simulation",
+      "passed": true,
+      "detail": {
+        "beforeElapsed": 12.149999999999961,
+        "afterElapsed": 12.299999999999963,
+        "nearest": {
+          "type": "high",
+          "eta": 1.21
+        },
+        "pattern": "gust / double duck"
+      }
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "storm: no horizontal page overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "storm: clean selected ten-seat practice",
+      "passed": true,
+      "detail": {
+        "demo": false,
+        "demoPhase": "fight",
+        "demoElapsed": 12.549999999999967,
+        "tower": "storm",
+        "mode": "practice",
+        "rules": {
+          "tower": "storm",
+          "mode": "practice",
+          "goal": "short",
+          "modifier": "standard",
+          "name": "Ada Lovelace",
+          "color": "#f0c861",
+          "helmet": "plume",
+          "coaching": "full",
+          "contrast": "normal",
+          "bests": {},
+          "players": 10,
+          "difficulty": "normal",
+          "graphics": "performance",
+          "rhythm": "mixed",
+          "sound": true,
+          "volume": 0.7,
+          "haptics": true,
+          "reducedMotion": false,
+          "bestClears": 0,
+          "bestStreak": 0
+        },
+        "tour": {
+          "index": 0,
+          "stages": [],
+          "score": 0,
+          "complete": false
+        },
+        "stageDuration": 20,
+        "stageRemaining": 20,
+        "seed": 803556751,
+        "rhythm": "mixed",
+        "phase": "countdown",
+        "round": 1,
+        "standings": [
+          {
+            "rank": 1,
+            "id": 0,
+            "name": "Ada Lovelace",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 1,
+            "name": "RUFUS",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 2,
+            "name": "MABEL",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 3,
+            "name": "GREGOR",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 4,
+            "name": "TILLY",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 5,
+            "name": "BRAM",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 6,
+            "name": "NELL",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 7,
+            "name": "OSRIC",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 8,
+            "name": "PIP",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 9,
+            "name": "AGNES",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "storm: native jump becomes airborne",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "storm: held native duck reaches grounded posture",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "storm: both action targets fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "jumpBtn",
+          "x": 360,
+          "y": 746,
+          "width": 355,
+          "height": 146,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "duckBtn",
+          "x": 725,
+          "y": 746,
+          "width": 355,
+          "height": 146,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "storm: settings freezes gameplay clock",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "storm: tower change stages during an active run",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "storm: run length stages until next Start",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "name": "Tour begins with a finite first stage and no inherited score",
+      "passed": true,
+      "detail": {
+        "demo": false,
+        "demoPhase": "fight",
+        "demoElapsed": 12.449999999999966,
+        "tower": "spiral",
+        "mode": "tour",
+        "rules": {
+          "tower": "spiral",
+          "mode": "tour",
+          "goal": "short",
+          "modifier": "standard",
+          "name": "Ada Lovelace",
+          "color": "#f0c861",
+          "helmet": "plume",
+          "coaching": "full",
+          "contrast": "normal",
+          "bests": {},
+          "players": 10,
+          "difficulty": "normal",
+          "graphics": "performance",
+          "rhythm": "mixed",
+          "sound": true,
+          "volume": 0.7,
+          "haptics": true,
+          "reducedMotion": false,
+          "bestClears": 0,
+          "bestStreak": 0
+        },
+        "tour": {
+          "index": 0,
+          "stages": [],
+          "score": 0,
+          "complete": false
+        },
+        "stageDuration": 20,
+        "stageRemaining": 20,
+        "seed": 803556751,
+        "rhythm": "mixed",
+        "phase": "countdown",
+        "round": 1,
+        "standings": [
+          {
+            "rank": 1,
+            "id": 0,
+            "name": "Ada Lovelace",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 1,
+            "name": "RUFUS",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 2,
+            "name": "MABEL",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 3,
+            "name": "GREGOR",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 4,
+            "name": "TILLY",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 5,
+            "name": "BRAM",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 6,
+            "name": "NELL",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 7,
+            "name": "OSRIC",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 8,
+            "name": "PIP",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 9,
+            "name": "AGNES",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "production renderer creates a live WebGL2 context",
+      "passed": true,
+      "detail": {
+        "width": 390,
+        "height": 844,
+        "webgl2": true,
+        "lost": false,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      }
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "title runs a genuine bot demo",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "original camera default preserved",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "sustained flow uses actual Performance preference",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "Watch Start and Return fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "returnTitleBtn",
+          "x": 144.546875,
+          "y": 772,
+          "width": 66.515625,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "demoStartBtn",
+          "x": 219.0625,
+          "y": 772,
+          "width": 56.875,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "Watch Start clears demo statistics and input",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "native player name keeps empty editing and spaces",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "at least twelve real preferences exist",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "settings footer actions are reachable and fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "restartBtn",
+          "x": 31,
+          "y": 739.640625,
+          "width": 160,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "closeSettings",
+          "x": 199,
+          "y": 739.640625,
+          "width": 160,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "spiral: title bots advance real simulation",
+      "passed": true,
+      "detail": {
+        "beforeElapsed": 12.149999999999961,
+        "afterElapsed": 12.599999999999968,
+        "nearest": {
+          "type": "high",
+          "eta": 0.62
+        },
+        "pattern": "single"
+      }
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "spiral: no horizontal page overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "spiral: clean selected ten-seat practice",
+      "passed": true,
+      "detail": {
+        "demo": false,
+        "demoPhase": "fight",
+        "demoElapsed": 12.549999999999967,
+        "tower": "spiral",
+        "mode": "practice",
+        "rules": {
+          "tower": "spiral",
+          "mode": "practice",
+          "goal": "short",
+          "modifier": "standard",
+          "name": "Ada Lovelace",
+          "color": "#f0c861",
+          "helmet": "plume",
+          "coaching": "full",
+          "contrast": "normal",
+          "bests": {},
+          "players": 10,
+          "difficulty": "normal",
+          "graphics": "performance",
+          "rhythm": "mixed",
+          "sound": true,
+          "volume": 0.7,
+          "haptics": true,
+          "reducedMotion": false,
+          "bestClears": 0,
+          "bestStreak": 0
+        },
+        "tour": {
+          "index": 0,
+          "stages": [],
+          "score": 0,
+          "complete": false
+        },
+        "stageDuration": 20,
+        "stageRemaining": 20,
+        "seed": 804350644,
+        "rhythm": "mixed",
+        "phase": "countdown",
+        "round": 1,
+        "standings": [
+          {
+            "rank": 1,
+            "id": 0,
+            "name": "Ada Lovelace",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 1,
+            "name": "RUFUS",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 2,
+            "name": "MABEL",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 3,
+            "name": "GREGOR",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 4,
+            "name": "TILLY",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 5,
+            "name": "BRAM",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 6,
+            "name": "NELL",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 7,
+            "name": "OSRIC",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 8,
+            "name": "PIP",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 9,
+            "name": "AGNES",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "spiral: native jump becomes airborne",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "spiral: held native duck reaches grounded posture",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "spiral: both action targets fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "jumpBtn",
+          "x": 9,
+          "y": 696,
+          "width": 181,
+          "height": 140,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "duckBtn",
+          "x": 200,
+          "y": 696,
+          "width": 181,
+          "height": 140,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "spiral: settings freezes gameplay clock",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "spiral: tower change stages during an active run",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "spiral: run length stages until next Start",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "ember: title bots advance real simulation",
+      "passed": true,
+      "detail": {
+        "beforeElapsed": 12.149999999999961,
+        "afterElapsed": 12.549999999999967,
+        "nearest": {
+          "type": "low",
+          "eta": 0.15
+        },
+        "pattern": "vent / heat burst"
+      }
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "ember: no horizontal page overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "ember: clean selected ten-seat practice",
+      "passed": true,
+      "detail": {
+        "demo": false,
+        "demoPhase": "fight",
+        "demoElapsed": 12.549999999999967,
+        "tower": "ember",
+        "mode": "practice",
+        "rules": {
+          "tower": "ember",
+          "mode": "practice",
+          "goal": "short",
+          "modifier": "standard",
+          "name": "Ada Lovelace",
+          "color": "#f0c861",
+          "helmet": "plume",
+          "coaching": "full",
+          "contrast": "normal",
+          "bests": {},
+          "players": 10,
+          "difficulty": "normal",
+          "graphics": "performance",
+          "rhythm": "mixed",
+          "sound": true,
+          "volume": 0.7,
+          "haptics": true,
+          "reducedMotion": false,
+          "bestClears": 0,
+          "bestStreak": 0
+        },
+        "tour": {
+          "index": 0,
+          "stages": [],
+          "score": 0,
+          "complete": false
+        },
+        "stageDuration": 20,
+        "stageRemaining": 20,
+        "seed": 804350644,
+        "rhythm": "mixed",
+        "phase": "countdown",
+        "round": 1,
+        "standings": [
+          {
+            "rank": 1,
+            "id": 0,
+            "name": "Ada Lovelace",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 1,
+            "name": "RUFUS",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 2,
+            "name": "MABEL",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 3,
+            "name": "GREGOR",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 4,
+            "name": "TILLY",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 5,
+            "name": "BRAM",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 6,
+            "name": "NELL",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 7,
+            "name": "OSRIC",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 8,
+            "name": "PIP",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 9,
+            "name": "AGNES",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "ember: native jump becomes airborne",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "ember: held native duck reaches grounded posture",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "ember: both action targets fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "jumpBtn",
+          "x": 9,
+          "y": 696,
+          "width": 181,
+          "height": 140,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "duckBtn",
+          "x": 200,
+          "y": 696,
+          "width": 181,
+          "height": 140,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "ember: settings freezes gameplay clock",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "ember: tower change stages during an active run",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "ember: run length stages until next Start",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "frost: title bots advance real simulation",
+      "passed": true,
+      "detail": {
+        "beforeElapsed": 12.149999999999961,
+        "afterElapsed": 12.549999999999967,
+        "nearest": {
+          "type": "high",
+          "eta": 0.67
+        },
+        "pattern": "single"
+      }
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "frost: no horizontal page overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "frost: clean selected ten-seat practice",
+      "passed": true,
+      "detail": {
+        "demo": false,
+        "demoPhase": "fight",
+        "demoElapsed": 12.549999999999967,
+        "tower": "frost",
+        "mode": "practice",
+        "rules": {
+          "tower": "frost",
+          "mode": "practice",
+          "goal": "short",
+          "modifier": "standard",
+          "name": "Ada Lovelace",
+          "color": "#f0c861",
+          "helmet": "plume",
+          "coaching": "full",
+          "contrast": "normal",
+          "bests": {},
+          "players": 10,
+          "difficulty": "normal",
+          "graphics": "performance",
+          "rhythm": "mixed",
+          "sound": true,
+          "volume": 0.7,
+          "haptics": true,
+          "reducedMotion": false,
+          "bestClears": 0,
+          "bestStreak": 0
+        },
+        "tour": {
+          "index": 0,
+          "stages": [],
+          "score": 0,
+          "complete": false
+        },
+        "stageDuration": 20,
+        "stageRemaining": 20,
+        "seed": 804350644,
+        "rhythm": "mixed",
+        "phase": "countdown",
+        "round": 1,
+        "standings": [
+          {
+            "rank": 1,
+            "id": 0,
+            "name": "Ada Lovelace",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 1,
+            "name": "RUFUS",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 2,
+            "name": "MABEL",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 3,
+            "name": "GREGOR",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 4,
+            "name": "TILLY",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 5,
+            "name": "BRAM",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 6,
+            "name": "NELL",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 7,
+            "name": "OSRIC",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 8,
+            "name": "PIP",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 9,
+            "name": "AGNES",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "frost: native jump becomes airborne",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "frost: held native duck reaches grounded posture",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "frost: both action targets fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "jumpBtn",
+          "x": 9,
+          "y": 696,
+          "width": 181,
+          "height": 140,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "duckBtn",
+          "x": 200,
+          "y": 696,
+          "width": 181,
+          "height": 140,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "frost: settings freezes gameplay clock",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "frost: tower change stages during an active run",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "frost: run length stages until next Start",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "storm: title bots advance real simulation",
+      "passed": true,
+      "detail": {
+        "beforeElapsed": 12.149999999999961,
+        "afterElapsed": 12.549999999999967,
+        "nearest": {
+          "type": "high",
+          "eta": 0.96
+        },
+        "pattern": "gust / double duck"
+      }
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "storm: no horizontal page overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "storm: clean selected ten-seat practice",
+      "passed": true,
+      "detail": {
+        "demo": false,
+        "demoPhase": "fight",
+        "demoElapsed": 12.549999999999967,
+        "tower": "storm",
+        "mode": "practice",
+        "rules": {
+          "tower": "storm",
+          "mode": "practice",
+          "goal": "short",
+          "modifier": "standard",
+          "name": "Ada Lovelace",
+          "color": "#f0c861",
+          "helmet": "plume",
+          "coaching": "full",
+          "contrast": "normal",
+          "bests": {},
+          "players": 10,
+          "difficulty": "normal",
+          "graphics": "performance",
+          "rhythm": "mixed",
+          "sound": true,
+          "volume": 0.7,
+          "haptics": true,
+          "reducedMotion": false,
+          "bestClears": 0,
+          "bestStreak": 0
+        },
+        "tour": {
+          "index": 0,
+          "stages": [],
+          "score": 0,
+          "complete": false
+        },
+        "stageDuration": 20,
+        "stageRemaining": 20,
+        "seed": 804350644,
+        "rhythm": "mixed",
+        "phase": "countdown",
+        "round": 1,
+        "standings": [
+          {
+            "rank": 1,
+            "id": 0,
+            "name": "Ada Lovelace",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 1,
+            "name": "RUFUS",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 2,
+            "name": "MABEL",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 3,
+            "name": "GREGOR",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 4,
+            "name": "TILLY",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 5,
+            "name": "BRAM",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 6,
+            "name": "NELL",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 7,
+            "name": "OSRIC",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 8,
+            "name": "PIP",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 9,
+            "name": "AGNES",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "storm: native jump becomes airborne",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "storm: held native duck reaches grounded posture",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "storm: both action targets fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "jumpBtn",
+          "x": 9,
+          "y": 696,
+          "width": 181,
+          "height": 140,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "duckBtn",
+          "x": 200,
+          "y": 696,
+          "width": 181,
+          "height": 140,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "storm: settings freezes gameplay clock",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "storm: tower change stages during an active run",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "storm: run length stages until next Start",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "portrait",
+      "name": "Tour begins with a finite first stage and no inherited score",
+      "passed": true,
+      "detail": {
+        "demo": false,
+        "demoPhase": "fight",
+        "demoElapsed": 12.449999999999966,
+        "tower": "spiral",
+        "mode": "tour",
+        "rules": {
+          "tower": "spiral",
+          "mode": "tour",
+          "goal": "short",
+          "modifier": "standard",
+          "name": "Ada Lovelace",
+          "color": "#f0c861",
+          "helmet": "plume",
+          "coaching": "full",
+          "contrast": "normal",
+          "bests": {},
+          "players": 10,
+          "difficulty": "normal",
+          "graphics": "performance",
+          "rhythm": "mixed",
+          "sound": true,
+          "volume": 0.7,
+          "haptics": true,
+          "reducedMotion": false,
+          "bestClears": 0,
+          "bestStreak": 0
+        },
+        "tour": {
+          "index": 0,
+          "stages": [],
+          "score": 0,
+          "complete": false
+        },
+        "stageDuration": 20,
+        "stageRemaining": 20,
+        "seed": 804350644,
+        "rhythm": "mixed",
+        "phase": "countdown",
+        "round": 1,
+        "standings": [
+          {
+            "rank": 1,
+            "id": 0,
+            "name": "Ada Lovelace",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 1,
+            "name": "RUFUS",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 2,
+            "name": "MABEL",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 3,
+            "name": "GREGOR",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 4,
+            "name": "TILLY",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 5,
+            "name": "BRAM",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 6,
+            "name": "NELL",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 7,
+            "name": "OSRIC",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 8,
+            "name": "PIP",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 9,
+            "name": "AGNES",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "production renderer creates a live WebGL2 context",
+      "passed": true,
+      "detail": {
+        "width": 844,
+        "height": 390,
+        "webgl2": true,
+        "lost": false,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      }
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "title runs a genuine bot demo",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "original camera default preserved",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "sustained flow uses actual Performance preference",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "Watch Start and Return fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "returnTitleBtn",
+          "x": 144.546875,
+          "y": 318,
+          "width": 66.515625,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "demoStartBtn",
+          "x": 219.0625,
+          "y": 318,
+          "width": 56.875,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "Watch Start clears demo statistics and input",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "native player name keeps empty editing and spaces",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "at least twelve real preferences exist",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "settings footer actions are reachable and fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "restartBtn",
+          "x": 226,
+          "y": 316.140625,
+          "width": 192,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "closeSettings",
+          "x": 426,
+          "y": 316.140625,
+          "width": 192,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "spiral: title bots advance real simulation",
+      "passed": true,
+      "detail": {
+        "beforeElapsed": 12.149999999999961,
+        "afterElapsed": 12.599999999999968,
+        "nearest": {
+          "type": "high",
+          "eta": 0.62
+        },
+        "pattern": "single"
+      }
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "spiral: no horizontal page overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "spiral: clean selected ten-seat practice",
+      "passed": true,
+      "detail": {
+        "demo": false,
+        "demoPhase": "fight",
+        "demoElapsed": 12.549999999999967,
+        "tower": "spiral",
+        "mode": "practice",
+        "rules": {
+          "tower": "spiral",
+          "mode": "practice",
+          "goal": "short",
+          "modifier": "standard",
+          "name": "Ada Lovelace",
+          "color": "#f0c861",
+          "helmet": "plume",
+          "coaching": "full",
+          "contrast": "normal",
+          "bests": {},
+          "players": 10,
+          "difficulty": "normal",
+          "graphics": "performance",
+          "rhythm": "mixed",
+          "sound": true,
+          "volume": 0.7,
+          "haptics": true,
+          "reducedMotion": false,
+          "bestClears": 0,
+          "bestStreak": 0
+        },
+        "tour": {
+          "index": 0,
+          "stages": [],
+          "score": 0,
+          "complete": false
+        },
+        "stageDuration": 20,
+        "stageRemaining": 20,
+        "seed": 804579376,
+        "rhythm": "mixed",
+        "phase": "countdown",
+        "round": 1,
+        "standings": [
+          {
+            "rank": 1,
+            "id": 0,
+            "name": "Ada Lovelace",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 1,
+            "name": "RUFUS",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 2,
+            "name": "MABEL",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 3,
+            "name": "GREGOR",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 4,
+            "name": "TILLY",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 5,
+            "name": "BRAM",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 6,
+            "name": "NELL",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 7,
+            "name": "OSRIC",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 8,
+            "name": "PIP",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 9,
+            "name": "AGNES",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "spiral: native jump becomes airborne",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "spiral: held native duck reaches grounded posture",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "spiral: both action targets fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "jumpBtn",
+          "x": 481.53125,
+          "y": 304,
+          "width": 172.234375,
+          "height": 78,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "duckBtn",
+          "x": 663.765625,
+          "y": 304,
+          "width": 172.234375,
+          "height": 78,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "spiral: settings freezes gameplay clock",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "spiral: tower change stages during an active run",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "spiral: run length stages until next Start",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "ember: title bots advance real simulation",
+      "passed": true,
+      "detail": {
+        "beforeElapsed": 12.149999999999961,
+        "afterElapsed": 12.599999999999968,
+        "nearest": {
+          "type": "low",
+          "eta": 0.1
+        },
+        "pattern": "vent / heat burst"
+      }
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "ember: no horizontal page overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "ember: clean selected ten-seat practice",
+      "passed": true,
+      "detail": {
+        "demo": false,
+        "demoPhase": "fight",
+        "demoElapsed": 12.549999999999967,
+        "tower": "ember",
+        "mode": "practice",
+        "rules": {
+          "tower": "ember",
+          "mode": "practice",
+          "goal": "short",
+          "modifier": "standard",
+          "name": "Ada Lovelace",
+          "color": "#f0c861",
+          "helmet": "plume",
+          "coaching": "full",
+          "contrast": "normal",
+          "bests": {},
+          "players": 10,
+          "difficulty": "normal",
+          "graphics": "performance",
+          "rhythm": "mixed",
+          "sound": true,
+          "volume": 0.7,
+          "haptics": true,
+          "reducedMotion": false,
+          "bestClears": 0,
+          "bestStreak": 0
+        },
+        "tour": {
+          "index": 0,
+          "stages": [],
+          "score": 0,
+          "complete": false
+        },
+        "stageDuration": 20,
+        "stageRemaining": 20,
+        "seed": 804579376,
+        "rhythm": "mixed",
+        "phase": "countdown",
+        "round": 1,
+        "standings": [
+          {
+            "rank": 1,
+            "id": 0,
+            "name": "Ada Lovelace",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 1,
+            "name": "RUFUS",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 2,
+            "name": "MABEL",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 3,
+            "name": "GREGOR",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 4,
+            "name": "TILLY",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 5,
+            "name": "BRAM",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 6,
+            "name": "NELL",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 7,
+            "name": "OSRIC",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 8,
+            "name": "PIP",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 9,
+            "name": "AGNES",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "ember: native jump becomes airborne",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "ember: held native duck reaches grounded posture",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "ember: both action targets fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "jumpBtn",
+          "x": 481.53125,
+          "y": 304,
+          "width": 172.234375,
+          "height": 78,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "duckBtn",
+          "x": 663.765625,
+          "y": 304,
+          "width": 172.234375,
+          "height": 78,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "ember: settings freezes gameplay clock",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "ember: tower change stages during an active run",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "ember: run length stages until next Start",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "frost: title bots advance real simulation",
+      "passed": true,
+      "detail": {
+        "beforeElapsed": 12.149999999999961,
+        "afterElapsed": 12.599999999999968,
+        "nearest": {
+          "type": "high",
+          "eta": 0.62
+        },
+        "pattern": "single"
+      }
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "frost: no horizontal page overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "frost: clean selected ten-seat practice",
+      "passed": true,
+      "detail": {
+        "demo": false,
+        "demoPhase": "fight",
+        "demoElapsed": 12.549999999999967,
+        "tower": "frost",
+        "mode": "practice",
+        "rules": {
+          "tower": "frost",
+          "mode": "practice",
+          "goal": "short",
+          "modifier": "standard",
+          "name": "Ada Lovelace",
+          "color": "#f0c861",
+          "helmet": "plume",
+          "coaching": "full",
+          "contrast": "normal",
+          "bests": {},
+          "players": 10,
+          "difficulty": "normal",
+          "graphics": "performance",
+          "rhythm": "mixed",
+          "sound": true,
+          "volume": 0.7,
+          "haptics": true,
+          "reducedMotion": false,
+          "bestClears": 0,
+          "bestStreak": 0
+        },
+        "tour": {
+          "index": 0,
+          "stages": [],
+          "score": 0,
+          "complete": false
+        },
+        "stageDuration": 20,
+        "stageRemaining": 20,
+        "seed": 804579376,
+        "rhythm": "mixed",
+        "phase": "countdown",
+        "round": 1,
+        "standings": [
+          {
+            "rank": 1,
+            "id": 0,
+            "name": "Ada Lovelace",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 1,
+            "name": "RUFUS",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 2,
+            "name": "MABEL",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 3,
+            "name": "GREGOR",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 4,
+            "name": "TILLY",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 5,
+            "name": "BRAM",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 6,
+            "name": "NELL",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 7,
+            "name": "OSRIC",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 8,
+            "name": "PIP",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 9,
+            "name": "AGNES",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "frost: native jump becomes airborne",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "frost: held native duck reaches grounded posture",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "frost: both action targets fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "jumpBtn",
+          "x": 481.53125,
+          "y": 304,
+          "width": 172.234375,
+          "height": 78,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "duckBtn",
+          "x": 663.765625,
+          "y": 304,
+          "width": 172.234375,
+          "height": 78,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "frost: settings freezes gameplay clock",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "frost: tower change stages during an active run",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "frost: run length stages until next Start",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "storm: title bots advance real simulation",
+      "passed": true,
+      "detail": {
+        "beforeElapsed": 12.149999999999961,
+        "afterElapsed": 12.599999999999968,
+        "nearest": {
+          "type": "high",
+          "eta": 0.91
+        },
+        "pattern": "gust / double duck"
+      }
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "storm: no horizontal page overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "storm: clean selected ten-seat practice",
+      "passed": true,
+      "detail": {
+        "demo": false,
+        "demoPhase": "fight",
+        "demoElapsed": 12.549999999999967,
+        "tower": "storm",
+        "mode": "practice",
+        "rules": {
+          "tower": "storm",
+          "mode": "practice",
+          "goal": "short",
+          "modifier": "standard",
+          "name": "Ada Lovelace",
+          "color": "#f0c861",
+          "helmet": "plume",
+          "coaching": "full",
+          "contrast": "normal",
+          "bests": {},
+          "players": 10,
+          "difficulty": "normal",
+          "graphics": "performance",
+          "rhythm": "mixed",
+          "sound": true,
+          "volume": 0.7,
+          "haptics": true,
+          "reducedMotion": false,
+          "bestClears": 0,
+          "bestStreak": 0
+        },
+        "tour": {
+          "index": 0,
+          "stages": [],
+          "score": 0,
+          "complete": false
+        },
+        "stageDuration": 20,
+        "stageRemaining": 20,
+        "seed": 804579376,
+        "rhythm": "mixed",
+        "phase": "countdown",
+        "round": 1,
+        "standings": [
+          {
+            "rank": 1,
+            "id": 0,
+            "name": "Ada Lovelace",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 1,
+            "name": "RUFUS",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 2,
+            "name": "MABEL",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 3,
+            "name": "GREGOR",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 4,
+            "name": "TILLY",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 5,
+            "name": "BRAM",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 6,
+            "name": "NELL",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 7,
+            "name": "OSRIC",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 8,
+            "name": "PIP",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 9,
+            "name": "AGNES",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "storm: native jump becomes airborne",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "storm: held native duck reaches grounded posture",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "storm: both action targets fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "jumpBtn",
+          "x": 481.53125,
+          "y": 304,
+          "width": 172.234375,
+          "height": 78,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "duckBtn",
+          "x": 663.765625,
+          "y": 304,
+          "width": 172.234375,
+          "height": 78,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "storm: settings freezes gameplay clock",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "storm: tower change stages during an active run",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "storm: run length stages until next Start",
+      "passed": true
+    },
+    {
+      "game": "royal-twisted",
+      "profile": "landscape",
+      "name": "Tour begins with a finite first stage and no inherited score",
+      "passed": true,
+      "detail": {
+        "demo": false,
+        "demoPhase": "fight",
+        "demoElapsed": 12.449999999999966,
+        "tower": "spiral",
+        "mode": "tour",
+        "rules": {
+          "tower": "spiral",
+          "mode": "tour",
+          "goal": "short",
+          "modifier": "standard",
+          "name": "Ada Lovelace",
+          "color": "#f0c861",
+          "helmet": "plume",
+          "coaching": "full",
+          "contrast": "normal",
+          "bests": {},
+          "players": 10,
+          "difficulty": "normal",
+          "graphics": "performance",
+          "rhythm": "mixed",
+          "sound": true,
+          "volume": 0.7,
+          "haptics": true,
+          "reducedMotion": false,
+          "bestClears": 0,
+          "bestStreak": 0
+        },
+        "tour": {
+          "index": 0,
+          "stages": [],
+          "score": 0,
+          "complete": false
+        },
+        "stageDuration": 20,
+        "stageRemaining": 20,
+        "seed": 804579376,
+        "rhythm": "mixed",
+        "phase": "countdown",
+        "round": 1,
+        "standings": [
+          {
+            "rank": 1,
+            "id": 0,
+            "name": "Ada Lovelace",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 1,
+            "name": "RUFUS",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 2,
+            "name": "MABEL",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 3,
+            "name": "GREGOR",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 4,
+            "name": "TILLY",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 5,
+            "name": "BRAM",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 6,
+            "name": "NELL",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 7,
+            "name": "OSRIC",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 8,
+            "name": "PIP",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          },
+          {
+            "rank": 1,
+            "id": 9,
+            "name": "AGNES",
+            "crowns": 0,
+            "stats": {
+              "clears": 0,
+              "hitsLow": 0,
+              "hitsHigh": 0,
+              "streak": 0,
+              "bestStreak": 0,
+              "survival": 0,
+              "recovery": 0,
+              "braces": 0
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "game": "royal-twisted",
+      "profile": "desktop",
+      "error": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.\nCall log:\n  - waiting for locator('#resultsModal.open') to be visible\n"
+    }
+  ],
+  "sources": [
+    {
+      "path": "games/royal-twisted/source/index.html",
+      "sha256": "ec9125ec7813812c4129202fdb4aaa90ffb65d5ca542670fdb2866a76a72fe75"
+    }
+  ],
+  "limits": [
+    "Headless Chromium and emulated touch dimensions; no physical phone, gamepad or audio-by-ear verification."
+  ]
+}

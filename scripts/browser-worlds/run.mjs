@@ -30,7 +30,8 @@ const allGames = [ballistix,scratchMatch,rollerRuckus,twisted];
 const requested = process.env.BROWSER_GAMES?.split(',').map(s=>s.trim()).filter(Boolean);
 const games = requested && !requested.includes('all') ? allGames.filter(g=>requested.includes(g.id)) : allGames;
 if (!games.length || requested?.some(id=>id!=='all'&&!allGames.some(g=>g.id===id))) throw new Error('Unknown BROWSER_GAMES selection');
-const profiles = [{name:'desktop',width:1440,height:900,touch:false},{name:'portrait',width:390,height:844,touch:true},{name:'landscape',width:844,height:390,touch:true}];
+const profiles = [{name:'desktop',width:1440,height:900,touch:false},{name:'portrait',width:390,height:844,touch:true},{name:'landscape',width:844,height:390,touch:true}].filter(p=>!process.env.BROWSER_PROFILE||p.name===process.env.BROWSER_PROFILE);
+if(!profiles.length){await new Promise(r=>server.close(r));throw new Error('Unknown BROWSER_PROFILE');}
 const report = {commit:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),date:new Date().toISOString(),browser:null,checks:[],errors:[],sources:[],limits:['Headless Chromium and emulated touch dimensions; no physical phone, gamepad or audio-by-ear verification.']};
 let browser;
 try {

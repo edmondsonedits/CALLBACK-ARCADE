@@ -24,3 +24,56 @@ test('readonly session rule snapshots cannot mutate runtime nested bests',()=>{c
 test('native empty name remains empty until blur and denied saves remain playable',()=>{const r=runtime();r.el('#playerName').value='';r.fire('keydown',{code:'Space',target:{tagName:'INPUT'}});assert.equal(r.el('#playerName').value,'');r.run(`localStorage.setItem=()=>{throw Error('denied')}`);r.el('#playerName').listeners.blur[0]();assert.equal(r.el('#playerName').value,'YOU');r.run('restartMatch()');assert.equal(r.run('phase'),'countdown')});
 test('pending tower assets are cached once and stale generations cannot attach',async()=>{const THREE=await import('../games/royal-twisted/source/vendor/three/three.module.js');const r=runtime();r.game.THREE=THREE;r.run(`scene=new THREE.Scene();towerGroup=new THREE.Group();var resolves=[];loadTowerAsset=()=>new Promise(resolve=>resolves.push(resolve));matchTower='frost';applyTowerWorld();var stale=towerDecor;matchTower='storm';applyTowerWorld();resolves[0](new THREE.Group())`);await Promise.resolve();assert.equal(r.run('scene.children.includes(stale)'),false);assert.equal(r.run('stale.children.length'),8);r.run(`resolves[1](new THREE.Group())`);await Promise.resolve();assert.equal(r.run('towerDecor.children.length'),12);for(let i=0;i<20;i++)r.run(`applyTowerWorld()`);assert.equal(r.run('scene.children.length'),1)});
 test('all seats require release of pad actions carried through restart',()=>{const r=runtime(10);r.pads[8]={buttons:[{pressed:true},{pressed:true}]};r.run('restartMatch();updatePhase(4);pollGamepads()');assert.equal(r.run('fighters[8].jumpY'),0);assert.equal(r.run('fighters[8].duck'),false);r.pads[8].buttons.forEach(b=>b.pressed=false);r.run('pollGamepads()');r.pads[8].buttons[0].pressed=true;r.run('pollGamepads()');assert.ok(r.run('fighters[8].jumpY')>0)});
+
+test('Replay UI keeps current applied player style and access settings while restoring captured rules and seed',async()=>{
+ const THREE=await import('../games/royal-twisted/source/vendor/three/three.module.js');
+ const r=runtime();
+ const edit=(id,event,value)=>{r.el(id).value=value;for(const handler of r.el(id).listeners[event]||[])handler()};
+ edit('#settingsTower','change','ember');edit('#settingsMode','change','practice');edit('#goalSelect','change','short');edit('#hazardModifier','change','gentle');edit('#difficulty','change','hard');
+ edit('#playerName','blur','Original');r.el('#seedInput').value='417';r.click('#restartBtn');
+ // Actual Three material/scene nodes verify applyPlayerStyle's rendered state,
+ // rather than only inspecting the preference object or mocking its implementation.
+ r.game.styleMaterial=new THREE.MeshStandardMaterial();r.game.styleHeadwear=new THREE.Group();r.game.styleCrown=new THREE.Group();
+ r.run('fighters[0].visual.mat=styleMaterial;fighters[0].visual.headwear=styleHeadwear;fighters[0].visual.crown=styleCrown');
+ edit('#playerName','blur','Current');edit('#playerColor','input','#3399cc');edit('#helmetStyle','change','plain');
+ edit('#volume','change','0.35');edit('#motion','change','reduced');edit('#contrast','change','high');edit('#coaching','change','minimal');
+ edit('#settingsTower','change','storm');edit('#settingsMode','change','crown');edit('#goalSelect','change','long');edit('#hazardModifier','change','standard');edit('#difficulty','change','easy');r.el('#seedInput').value='999';
+ r.click('#rematchBtn');
+ assert.equal(r.game.RoyalTwisted.getSession().standings[0].name,'Current');
+ assert.equal(r.run('preferences.name'),'Current');assert.equal(r.el('#playerName').value,'Current');
+ assert.equal(r.run('preferences.helmet'),'plain');assert.equal(r.el('#helmetStyle').value,'plain');assert.equal(r.game.styleHeadwear.visible,false);assert.equal(r.game.styleCrown.visible,false);
+ assert.equal(r.run('preferences.color'),'#3399cc');assert.equal(r.game.styleMaterial.color.getHexString(),'3399cc');
+ assert.equal(r.run('preferences.volume'),.35);assert.equal(r.run('effectsReduced()'),true);assert.equal(r.el('#app').classList.contains('contrast'),true);assert.equal(r.el('#nextRod').style.display,'none');
+ const session=r.game.RoyalTwisted.getSession();assert.equal(session.seed,417);assert.equal(session.tower,'ember');assert.equal(session.mode,'practice');assert.equal(session.rules.goal,'short');assert.equal(session.rules.modifier,'gentle');assert.equal(session.rules.difficulty,'hard');assert.equal(session.rhythm,'mixed');
+ assert.equal(r.run('preferences.tower'),'storm');assert.equal(r.run('preferences.goal'),'long');
+ r.game.styleMaterial.dispose();
+});
+
+async function cpuTowerWorld(count=4){
+ const THREE=await import('../games/royal-twisted/source/vendor/three/three.module.js');const r=runtime(count);r.game.THREE=THREE;
+ const original=r.game.document.createElement;r.game.document.createElement=tag=>tag==='canvas'?{width:0,height:0,getContext:()=>new Proxy({},{get:()=>()=>{},set:()=>true})}:original(tag);
+ r.run('scene=new THREE.Scene();camera=new THREE.PerspectiveCamera(46,innerWidth/innerHeight,.1,140);particles=[];rings=[];loadTowerAsset=()=>Promise.resolve(null);fighters.forEach(f=>f.base=new THREE.Vector3().copy(f.base));createWorld()');return r;
+}
+test('static helix uses five instanced draws preserving every original deck/post/edge transform',async()=>{
+ const r=await cpuTowerWorld();assert.equal(r.run('trackGroup.children.length'),5);assert.equal(r.run('trackGroup.children.every(x=>x.isInstancedMesh)'),true);
+ assert.equal(r.run(`(()=>{const matrix=new THREE.Matrix4(),dummy=new THREE.Object3D();for(const mesh of trackGroup.children){const p=mesh.geometry.parameters;if(mesh.geometry.type!=='BoxGeometry')continue;let index=0;for(let i=0;i<150;i++){const t=.02+i/149*.96,pt=helixPoint(t),p2=helixPoint(Math.min(.999,t+.004)),yaw=Math.atan2(p2.x-pt.x,p2.z-pt.z),basis=helixBasis(t);if(p.width===6.8){dummy.position.copy(pt);dummy.rotation.set(0,yaw,0);dummy.updateMatrix();mesh.getMatrixAt(index++,matrix);if(!matrix.elements.every((v,j)=>Math.abs(v-dummy.matrix.elements[j])<.00001))return false}else if(p.height===.48&&i%4===0){for(const side of [-1,1]){dummy.position.copy(pt).addScaledVector(basis.right,side*3.34);dummy.position.y+=.25;dummy.rotation.set(0,0,0);dummy.updateMatrix();mesh.getMatrixAt(index++,matrix);if(!matrix.elements.every((v,j)=>Math.abs(v-dummy.matrix.elements[j])<.00001))return false}}else if(p.height===.12&&i%3===0){for(const side of [-1,1]){dummy.position.copy(pt).addScaledVector(basis.right,side*3.29);dummy.position.y+=.08;dummy.rotation.set(0,yaw,0);dummy.updateMatrix();mesh.getMatrixAt(index++,matrix);if(!matrix.elements.every((v,j)=>Math.abs(v-dummy.matrix.elements[j])<.00001))return false}}}if(index!==mesh.count)return false}return true})()`),true);
+ assert.equal(r.run(`trackGroup.children.reduce((sum,m)=>sum+m.count,0)`),346);
+});
+test('default camera has no scenery intersections through P1 or imminent rods across towers setback and seat counts',async()=>{
+ const r=await cpuTowerWorld();const result=r.run(`(()=>{const ray=new THREE.Raycaster(),target=new THREE.Vector3(),blocked=[];scene.updateMatrixWorld(true);const turrets=world.children.filter(x=>x.isGroup);for(const map of Object.keys(TOWERS)){matchTower=map;applyTowerWorld();scene.updateMatrixWorld(true);const scenery=[...turrets,...towerDecor.children];for(const count of [2,4,10])for(const dimensions of [[1440,900],[390,844],[844,390]])for(let step=0;step<=12;step++){playerCount=count;innerWidth=dimensions[0];innerHeight=dimensions[1];camera.aspect=innerWidth/innerHeight;const t=TUNING.hit.minTrackT+(PLAYER_T-TUNING.hit.minTrackT)*step/12;fighters[0].trackT=t;const b=helixBasis(t),p=helixPoint(t),lane=makeLaneOffsets(count)[0];fighters[0].base.copy(p).addScaledVector(b.right,lane);updateCamera(10,0);camera.updateMatrixWorld(true);const targets=[.2,.8,1.5].map(y=>fighters[0].base.clone().add(new THREE.Vector3(0,y,0)));const rt=t+.014+currentSpeed()*.3,rp=helixPoint(rt),rb=helixBasis(rt);for(const x of [-3.3,0,3.3])targets.push(rp.clone().addScaledVector(rb.right,x).add(new THREE.Vector3(0,.56,0)));for(const pt of targets){const direction=pt.clone().sub(camera.position);ray.set(camera.position,direction.clone().normalize());ray.far=direction.length()-.1;if(ray.intersectObjects(scenery,true).length)blocked.push({map,count,t,dimensions,camera:camera.position.toArray()})}}}return blocked})()`);assert.equal(result.length,0,JSON.stringify(result.slice(0,3)));
+});
+test('tower selection updates retained sky and fill lighting without growing scene resources',async()=>{
+ const r=await cpuTowerWorld();r.run(`matchTower='frost';applyTowerWorld()`);const frost=r.run('skyMaterial.uniforms.bottom.value.getHexString()');r.run(`matchTower='storm';applyTowerWorld()`);const storm=r.run('skyMaterial.uniforms.bottom.value.getHexString()');assert.notEqual(frost,storm);assert.notEqual(frost,'a4664a');assert.equal(r.run('scene.children.filter(x=>x.isAmbientLight).length'),1);assert.ok(r.run('scene.children.find(x=>x.isAmbientLight).intensity')>=.8);const count=r.run('scene.children.length');for(let i=0;i<10;i++)r.run(`matchTower=['spiral','ember','frost','storm'][${i}%4];applyTowerWorld()`);assert.equal(r.run('scene.children.length'),count);assert.equal(r.run('trackGroup.children.find(m=>m.geometry.parameters.width===6.8).material.emissiveIntensity>0'),true);
+});
+test('portrait title is capped at270px with one compact action row and no duplicate demo bar',()=>{
+ assert.match(source,/#setupModal \.modal\{[^}]*max-height:270px/);assert.match(source,/#setupModal \.modal-buttons\{[^}]*grid-template-columns:1fr 1fr 1fr/);assert.match(source,/#app\.demo:has\(#setupModal\.open\) #demoBar\{display:none\}/);
+});
+test('scenic tower batching preserves separate animated flags and is resource-idempotent',async()=>{
+ const r=await cpuTowerWorld();assert.equal(r.run('towerFlags.every(f=>towerGroup.children.includes(f.mesh))'),true);assert.ok(r.run('towerGroup.children.length')<20);const count=r.run('towerGroup.children.length');r.run('batchStaticMeshes(towerGroup)');assert.equal(r.run('towerGroup.children.length'),count);
+});
+test('renderer diagnostics and real camera player projection are readonly and reflect pose',async()=>{
+ const r=await cpuTowerWorld();assert.equal(r.game.RoyalTwisted.getState().render,null);assert.equal(r.game.RoyalTwisted.getState().player.screen,null);
+ r.run(`renderer={info:{render:{calls:42,triangles:1234},memory:{geometries:19,textures:4}},getPixelRatio:()=>1.35};innerWidth=390;innerHeight=844;camera.aspect=390/844;updateCamera(10,0);`);
+ const before=r.game.RoyalTwisted.getState();assert.equal(before.render.calls,42);assert.equal(before.render.dpr,1.35);assert.ok(before.player.screen.head.visible);assert.ok(before.player.screen.head.y<before.player.screen.feet.y);
+ r.run('fighters[0].jumpY=.8');const after=r.game.RoyalTwisted.getState();assert.ok(after.player.screen.head.y<before.player.screen.head.y);after.render.calls=0;after.player.screen.head.x=0;assert.equal(r.game.RoyalTwisted.getState().render.calls,42);assert.notEqual(r.game.RoyalTwisted.getState().player.screen.head.x,0);
+});
