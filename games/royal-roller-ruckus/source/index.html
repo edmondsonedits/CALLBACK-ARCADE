@@ -34,7 +34,7 @@ button,select{font:inherit;color:inherit}button{cursor:pointer}
 .info-panel{pointer-events:auto;padding:12px;display:flex;flex-direction:column;justify-content:center;gap:9px}.info-title{font-size:11px;font-weight:1000;letter-spacing:.08em}.info-copy{font-size:9px;color:#b0b9c9;line-height:1.38}.momentum{height:8px;border-radius:999px;border:1px solid rgba(255,255,255,.09);background:rgba(0,0,0,.34);overflow:hidden}.momentum span{display:block;height:100%;width:0;background:linear-gradient(90deg,#54b9c9,#f0c861,#e26f69);transition:width .08s linear}.keys{display:flex;gap:5px;flex-wrap:wrap}.key{min-width:24px;padding:4px 6px;text-align:center;border-radius:7px;border:1px solid rgba(255,255,255,.12);background:#121a2a;font-size:8px;font-weight:900}.respawn-btn{display:none;min-height:36px;border-radius:10px;border:1px solid rgba(240,200,97,.25);background:#493716;font-weight:900;font-size:9px}.respawn-btn.show{display:block}
 .modal-back{position:absolute;inset:0;background:rgba(2,4,8,.66);backdrop-filter:blur(12px);display:none;place-items:center;padding:20px;pointer-events:auto}.modal-back.open{display:grid}.modal{width:min(100%,430px);max-height:min(82dvh,650px);overflow:auto;border:1px solid rgba(255,255,255,.14);border-radius:24px;background:linear-gradient(180deg,#171e30,#0e1422);box-shadow:0 35px 90px rgba(0,0,0,.5);padding:18px}.modal h2{margin:0;font-size:18px}.modal p{margin:5px 0 16px;color:var(--muted);font-size:11px;line-height:1.4}.setting{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:11px 0;border-top:1px solid rgba(255,255,255,.08)}.setting label strong{display:block;font-size:12px}.setting label small{display:block;margin-top:3px;color:var(--muted);font-size:9px}.setting select{min-width:126px;min-height:38px;border-radius:10px;border:1px solid rgba(255,255,255,.11);background:#111827;color:white;padding:0 8px;font-weight:800;font-size:11px}.toggle{width:48px;height:28px;border-radius:999px;border:1px solid rgba(255,255,255,.13);background:#111827;padding:3px}.toggle span{display:block;width:20px;height:20px;border-radius:50%;background:#7e8799;transition:transform .18s ease,background .18s ease}.toggle.on span{transform:translateX(19px);background:var(--gold)}.modal-buttons{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}.modal-buttons button{min-height:44px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:#1b2437;color:white;font-weight:900}.modal-buttons .primary{background:linear-gradient(180deg,#6f541f,#3c2c12);border-color:rgba(240,200,97,.35)}
 .pause-overlay,.finish-overlay{position:absolute;inset:0;display:none;place-items:center;background:rgba(3,5,9,.58);backdrop-filter:blur(8px);pointer-events:auto}.pause-overlay.open,.finish-overlay.open{display:grid}.card{text-align:center;border:1px solid rgba(255,255,255,.14);border-radius:22px;padding:22px 26px;background:rgba(14,19,31,.92);box-shadow:0 25px 70px rgba(0,0,0,.45);width:min(88%,390px)}.card h2{margin:0 0 6px;font-size:24px}.card p{margin:0 0 16px;color:var(--muted);font-size:11px;line-height:1.45}.card button{min-height:44px;padding:0 20px;border-radius:12px;border:1px solid rgba(240,200,97,.35);background:#513b17;color:white;font-weight:900}.finish-place{font-size:54px;font-weight:1000;color:var(--gold);line-height:1;margin:8px 0}.debug{position:absolute;right:var(--safeR);top:calc(var(--safeT) + 129px);display:none;padding:7px 8px;border-radius:9px;background:rgba(0,0,0,.58);font:9px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre;color:#d9e1f2;pointer-events:none}.debug.show{display:block}.loading{position:absolute;inset:0;display:grid;place-items:center;background:#090d16;z-index:20}.loading-card{text-align:center}.loader-crest{font-size:48px;filter:drop-shadow(0 8px 20px rgba(240,200,97,.28));animation:pulse 1.2s ease-in-out infinite}.loading h1{margin:10px 0 5px;font-size:18px;letter-spacing:.12em}.loading p{margin:0;color:var(--muted);font-size:10px}@keyframes pulse{50%{transform:translateY(-3px) scale(1.04);opacity:.78}}
-.standings.many{width:140px;padding:5px}.standings.many .standing{padding:2px 3px;font-size:7px}.standings.many .slap{font-size:6px}
+.standings.many{width:140px;padding:5px}.standings.many .standing{padding:3px;font-size:9px}.standings.many .slap{font-size:8px}
 @media(max-height:700px){.controls{height:158px}.joy-base{width:min(34vw,132px)}.brand-mode{display:none}.host{top:calc(var(--safeT) + 91px)}.standings{top:calc(var(--safeT) + 123px)}}
 @media(max-width:620px){.standings{width:112px}.standing{font-size:7px}.info-copy{font-size:8px}.keys{display:none}}
 @media(min-width:760px){.controls{left:50%;right:auto;transform:translateX(-50%);width:min(720px,calc(100% - 28px))}}
@@ -54,7 +54,7 @@ button,select{font:inherit;color:inherit}button{cursor:pointer}
   <div id="countdown" class="countdown">3</div><div id="raceBanner" class="race-banner">FINAL LAP</div>
   <div class="controls">
     <div id="joyWrap" class="joy-wrap control-glass"><div id="joyBase" class="joy-base"><div id="joyKnob" class="joy-knob"></div></div><div class="joy-label">ROLL · STEER · BASH</div></div>
-    <div class="info-panel control-glass"><div class="info-title">MOMENTUM</div><div class="momentum"><span id="momentumFill"></span></div><div class="info-copy">Steer the cage directly. Speed carries through turns. Hit rivals with your momentum and stay on the narrow track.</div><div class="keys"><span class="key">WASD</span><span class="key">ARROWS</span><span class="key">P PAUSE</span></div><button id="respawnBtn" class="respawn-btn" type="button">RESPAWN AT CHECKPOINT</button></div>
+    <div class="info-panel control-glass"><div class="info-title">MOMENTUM</div><div class="momentum"><span id="momentumFill"></span></div><div class="info-copy">Roll with the stick or keys. Opposite input brakes before reversing. Hit rivals with your momentum and stay on the narrow track.</div><div class="keys"><span class="key">WASD</span><span class="key">ARROWS</span><span class="key">P PAUSE</span></div><button id="respawnBtn" class="respawn-btn" type="button">RESPAWN AT CHECKPOINT</button></div>
   </div>
   <div id="debugPanel" class="debug"></div>
   <div id="settingsModal" class="modal-back"><div class="modal"><h2>Ruckus Settings</h2><p>Roller-cage racing tuned around momentum, collisions, narrow corners and recovery after falls.</p>
@@ -71,7 +71,15 @@ button,select{font:inherit;color:inherit}button{cursor:pointer}
   <div id="loading" class="loading"><div class="loading-card"><div class="loader-crest">◉</div><h1>ROYAL ROLLER RUCKUS</h1><p>Forging the Crownway Circuit…</p></div></div>
 </div>
 <script type="module">
-import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.180.0/+esm";
+let THREE;
+try { THREE=await import("https://cdn.jsdelivr.net/npm/three@0.180.0/+esm"); }
+catch(error){
+  const card=document.querySelector("#loading .loading-card");
+  card.innerHTML='<h1>Unable to load the race</h1><p>The Three.js graphics dependency could not be downloaded. Check your connection and reload.</p><button type="button" id="retryLoad">Retry</button>';
+  document.querySelector("#retryLoad").addEventListener("click",()=>location.reload());
+  console.error("Royal Roller Ruckus: graphics dependency failed",error);
+  throw error;
+}
 
 const $=s=>document.querySelector(s);
 const viewport=$("#viewport"),loading=$("#loading"),flash=$("#flash"),speedLines=$("#speedLines"),messageEl=$("#message"),countdownEl=$("#countdown"),raceBanner=$("#raceBanner"),lapLabel=$("#lapLabel"),lapSub=$("#lapSub"),placeText=$("#placeText"),timerEl=$("#timer"),speedText=$("#speedText"),momentumFill=$("#momentumFill"),standingsEl=$("#standings"),respawnBtn=$("#respawnBtn"),soundBtn=$("#soundBtn"),settingsBtn=$("#settingsBtn"),settingsModal=$("#settingsModal"),closeSettings=$("#closeSettings"),restartBtn=$("#restartBtn"),difficultyEl=$("#difficulty"),racerCountEl=$("#racerCount"),lapSetting=$("#lapSetting"),graphicsEl=$("#graphics"),hapticsToggle=$("#hapticsToggle"),debugToggle=$("#debugToggle"),debugPanel=$("#debugPanel"),pauseOverlay=$("#pauseOverlay"),resumeBtn=$("#resumeBtn"),finishOverlay=$("#finishOverlay"),finishPlace=$("#finishPlace"),finishCopy=$("#finishCopy"),raceAgainBtn=$("#raceAgainBtn"),joyWrap=$("#joyWrap"),joyBase=$("#joyBase"),joyKnob=$("#joyKnob");
@@ -176,9 +184,9 @@ const VERSION="1.4.0-vertical-crownway";
 const MAX_PLAYERS=10,DEFAULT_RACERS=4;
 const FIXED_DT=1/120,MAX_SUBSTEPS=7,TRACK_SAMPLES=640,TRACK_WIDTH=4.6,TRACK_THICKNESS=.58,CAGE_R=.56,GRAVITY=11.5;
 const TUNING={
-  movement:{maxSpeed:7.7,driveAccel:11.8,reverseBrake:15.5,lowSpeedGrip:8.8,highSpeedGrip:3.15,inputResponse:11.5,steerAssist:2.2,coastDrag:.34,edgeDrag:.78,minInput:.055},
+  movement:{maxSpeed:7.7,driveAccel:11.8,reverseBrake:22,lowSpeedGrip:8.8,highSpeedGrip:3.15,inputResponse:11.5,steerAssist:2.2,coastDrag:.34,edgeDrag:.78,minInput:.055},
   collision:{restitution:.78,packMinContacts:2,packLowSpeed:2.35,packReleaseAccel:4.4,packReleaseMax:.82,packSideBias:.34,packCooldown:.22},
-  camera:{yawFollow:4.6,positionFollow:7.4,baseFov:49,speedFov:7.2,lookAheadMin:12,lookAheadMax:38,lookAheadWorld:3.5,rivalRadius:3.4,rivalWeight:.10,edgeLift:.72,edgePull:.32,fallDistance:6.2,fallHeight:4.25,fallLookDrop:.25,fovFollow:6.2},
+  camera:{yawFollow:4.6,positionFollow:7.4,baseFov:49,speedFov:7.2,lookAheadMin:12,lookAheadMax:38,lookAheadWorld:2.0,rivalRadius:3.4,rivalWeight:.10,edgeLift:.72,edgePull:.32,fallDistance:6.2,fallHeight:4.25,fallLookDrop:.25,fovFollow:6.2},
   animation:{leanForward:.34,leanSide:.42,leanResponse:7.5,impactKick:.62,impactDecay:6.5,fallFlail:2.8,speedFlail:.48,bodyBob:.045,bodyTwist:.18},
   feedback:{mediumImpact:.62,heavyImpact:1.02,criticalImpact:1.34,shakeLight:.12,shakeMedium:.25,shakeHeavy:.42,flashMedium:.12,flashHeavy:.22,edgeWarnStart:.72,edgeWarnFull:.96,edgePulseHz:4.8,hitCooldown:.075},
   audio:{master:.72,rollMinHz:48,rollMaxHz:118,rollGain:.035,rattleGain:.018,windGain:.024,crowdGain:.012,finalLapCrowd:1.65,battleCrowd:1.32,roughRattle:1.8,rushPitch:1.18,smoothing:7.5},
@@ -192,6 +200,9 @@ const COLORS=[0xf0c861,0xe26f69,0x54b9c9,0x8d72da,0x64c987,0xf08b45,0xe66fa8,0x4
 const NAMES=["YOU","RUFUS","MABEL","GREGOR","TILLY","BAXTER","BEA","OSWALD","NELL","PERCY"];
 const AI_LEVELS={easy:{speed:.91,accel:.92,look:.92,lane:.72,error:.16,aggression:.34},normal:{speed:.985,accel:1,look:1,lane:.9,error:.09,aggression:.56},hard:{speed:1.035,accel:1.035,look:1.08,lane:1,error:.045,aggression:.72}};
 const CHECKPOINT_COUNT=8;
+// The start/end spline cusp doubles back at sample 0. The existing finish stripe
+// is on the forward-facing deck at sample 5; use that same gate for lap credit.
+function checkpointIndex(checkpoint){return checkpoint===0?5:checkpoint*TRACK_SAMPLES/CHECKPOINT_COUNT;}
 const keys={};const joystick={x:0,z:0,active:false,pointerId:null};
 const inputSlots=Array.from({length:MAX_PLAYERS},(_,playerId)=>({playerId,moveX:0,moveY:0,primaryAction:false,secondaryAction:false,sequence:0,timestamp:0,source:playerId===0?"local":"ai"}));
 const networkInputs=Array.from({length:MAX_PLAYERS},()=>({moveX:0,moveY:0,primaryAction:false,secondaryAction:false,sequence:-1,timestamp:-Infinity,connected:false,name:""}));
@@ -200,9 +211,11 @@ const humanControl=Array.from({length:MAX_PLAYERS},(_,i)=>i===0),lastHumanPacket
 const INPUT_FWD=new THREE.Vector3(),INPUT_RIGHT=new THREE.Vector3();
 let scene,camera,renderer,arenaGroup,environmentGroup,curve,trackSamples=[],trackTangents=[],trackNormals=[],trackLengths=[],trackLength=1,trackSampleSpacing=.25,rushZones=[],roughZones=[];
 let racers=[],fxPool=[],sparkPool=[],phase="countdown",phaseTimer=3.35,raceTime=0,targetLaps=3,activeRacerCount=DEFAULT_RACERS,paused=false,finished=false,finishOrder=[];
+let cameraNeedsReset=true,checkpointNotice=0,hudRefresh=0;
+const checkpointMarkers=[];
 let finalLapAnnounced=false,finishRevealTimer=0,bannerTimer=0,playerFinishTime=0,playerFinishGap=999;
 let lastTime=performance.now(),accumulator=0,lastImpactSfx=0,fps=60,fpsAccum=0,fpsFrames=0,graphicsMode="balanced",hapticsOn=true,debugOn=false,soundOn=true,audioCtx=null,noiseBuffer=null,audioMaster=null,rollOsc=null,rollGainNode=null,rattleSource=null,rattleFilter=null,rattleGainNode=null,windSource=null,windFilter=null,windGainNode=null,crowdSource=null,crowdFilter=null,crowdGainNode=null,cameraYaw=0,cameraShake=0,cameraEdgeDanger=0,cameraRivalBlend=0,cameraLookIdx=0;
-const CAM_DESIRED=new THREE.Vector3(),CAM_LOOK=new THREE.Vector3(),CAM_RIVAL=new THREE.Vector3();
+const CAM_DESIRED=new THREE.Vector3(),CAM_LOOK=new THREE.Vector3(),CAM_RIVAL=new THREE.Vector3(),CAM_TARGET=new THREE.Vector3();
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));const lerp=(a,b,t)=>a+(b-a)*t;const damp=(a,b,l,dt)=>lerp(a,b,1-Math.exp(-l*dt));const rand=(a,b)=>a+Math.random()*(b-a);const len2=(x,z)=>Math.hypot(x,z);const ordinal=n=>{const s=["th","st","nd","rd"],v=n%100;return n+(s[(v-20)%10]||s[v]||s[0]);};
 function norm2(x,z){const d=Math.hypot(x,z)||1;return[x/d,z/d]}function fmtTime(s){const m=Math.floor(s/60),sec=s-m*60;return `${m}:${sec.toFixed(1).padStart(4,"0")}`;}function say(t){messageEl.textContent="🐦 Pigeon: "+t;}
 function showRaceBanner(text,duration=TUNING.rounds.finalLapBanner){raceBanner.textContent=text;raceBanner.classList.add("show");bannerTimer=duration;}
@@ -285,6 +298,12 @@ function createTrack(){
   const mat=new THREE.MeshStandardMaterial({map:stoneTexture(),color:0xb2aa98,roughness:.82,metalness:.04,side:THREE.DoubleSide});
   const mesh=new THREE.Mesh(geo,mat);mesh.receiveShadow=true;mesh.castShadow=true;arenaGroup.add(mesh);
 
+  const edgePoints=[];
+  for(let i=0;i<TRACK_SAMPLES;i++)for(const side of [-1,1]){
+    for(const j of [i,(i+1)%TRACK_SAMPLES]){const p=trackSamples[j],n=trackNormals[j];edgePoints.push(p.x+n.x*side*(half-.06),p.y+.045,p.z+n.z*side*(half-.06));}
+  }
+  const edgeGeo=new THREE.BufferGeometry();edgeGeo.setAttribute("position",new THREE.Float32BufferAttribute(edgePoints,3));
+  arenaGroup.add(new THREE.LineSegments(edgeGeo,new THREE.LineBasicMaterial({color:0xd7bd7a})));
   const railMat=new THREE.MeshStandardMaterial({color:0x5f4728,roughness:.55,metalness:.52});
   const dark=new THREE.MeshStandardMaterial({color:0x27272a,roughness:.84,metalness:.2});
   for(let i=0;i<TRACK_SAMPLES;i+=10){
@@ -316,10 +335,12 @@ function createTrack(){
   for(const z of roughZones)addCourseStrip(z,TUNING.course.roughLength,TUNING.course.roughWidth*2,roughMat,.036);
 
   for(let c=0;c<CHECKPOINT_COUNT;c++){
-    const idx=Math.floor((c/CHECKPOINT_COUNT)*TRACK_SAMPLES),p=trackSamples[idx],tan=trackTangents[idx],group=new THREE.Group();
+    const idx=checkpointIndex(c),p=trackSamples[idx],tan=trackTangents[idx],group=new THREE.Group();
     const postMat=new THREE.MeshStandardMaterial({color:c===0?0xd4a93c:0x34435d,roughness:.48,metalness:.52});
     for(const side of [-1,1]){const post=new THREE.Mesh(new THREE.BoxGeometry(.15,2.15,.15),postMat);post.position.set(side*(TRACK_WIDTH*.55),1.04,0);group.add(post);}
     const beam=new THREE.Mesh(new THREE.BoxGeometry(TRACK_WIDTH*1.18,.14,.14),postMat);beam.position.y=2.08;group.add(beam);
+    const label=textSprite(c===0?"FINISH":`CP ${c}`,"#ffe5a3");label.position.y=2.55;group.add(label);
+    checkpointMarkers.push({material:postMat,label});
     group.position.copy(p);group.rotation.y=Math.atan2(tan.x,tan.z);environmentGroup.add(group);
   }
 }
@@ -360,7 +381,7 @@ function findTrackLanding(x,z,prevBottom,newBottom){
   return best;
 }
 function lanePosition(idx,lane=0){const p=trackSamples[idx],n=trackNormals[idx];return new THREE.Vector3(p.x+n.x*lane,p.y+CAGE_R,p.z+n.z*lane);}
-function makeRacer(id,idx,lane,player=false){const visual=buildCage(id,player),pos=lanePosition(idx,lane);visual.group.position.copy(pos);const t=trackTangents[idx];return{id,player,name:(networkInputs[id]?.name||NAMES[id]),visual,x:pos.x,y:pos.y,z:pos.z,vx:t.x*.01,vy:0,vz:t.z*.01,r:CAGE_R,mass:1,trackIdx:idx,lastTrackIdx:idx,offDist:0,lane,lap:0,nextCheckpoint:1,lastCheckpointIdx:idx,falling:false,fallTime:0,finished:false,finishRank:0,aiLane:lane,aiLaneTimer:rand(1.5,3.5),rollQuat:new THREE.Quaternion(),rollAxis:new THREE.Vector3(),speed:0,impact:0,stuck:0,inputX:0,inputZ:0,slip:0,aiState:"RACE",aiDecision:rand(.2,.8),aiReaction:0,aiTargetLane:lane,aiPersonality:{aggression:rand(.82,1.18),risk:rand(.86,1.14),mistake:rand(.82,1.18)},animLeanX:0,animLeanZ:0,animKick:0,prevVx:0,prevVz:0,rushCooldown:0,onRush:false,onRough:false,contactCount:0,contactX:0,contactZ:0,packReleaseCooldown:0,grounded:true,lastSurfaceY:pos.y-CAGE_R,landingCount:0};}
+function makeRacer(id,idx,lane,player=false){const visual=buildCage(id,player),pos=lanePosition(idx,lane);visual.group.position.copy(pos);const t=trackTangents[idx];return{id,player,name:(networkInputs[id]?.name||NAMES[id]),visual,x:pos.x,y:pos.y,z:pos.z,vx:t.x*.01,vy:0,vz:t.z*.01,r:CAGE_R,mass:1,trackIdx:idx,lastTrackIdx:idx,gateX:pos.x,gateY:pos.y,gateZ:pos.z,gateIdx:idx,offDist:0,lane,lap:0,nextCheckpoint:1,lastCheckpointIdx:idx,falling:false,fallTime:0,finished:false,finishRank:0,aiLane:lane,aiLaneTimer:rand(1.5,3.5),rollQuat:new THREE.Quaternion(),rollAxis:new THREE.Vector3(),speed:0,impact:0,stuck:0,inputX:0,inputZ:0,slip:0,aiState:"RACE",aiDecision:rand(.2,.8),aiReaction:0,aiTargetLane:lane,aiPersonality:{aggression:rand(.82,1.18),risk:rand(.86,1.14),mistake:rand(.82,1.18)},animLeanX:0,animLeanZ:0,animKick:0,prevVx:0,prevVz:0,rushCooldown:0,onRush:false,onRough:false,contactCount:0,contactX:0,contactZ:0,packReleaseCooldown:0,grounded:true,lastSurfaceY:pos.y-CAGE_R,landingCount:0};}
 function clearRacers(){for(const r of racers)scene.remove(r.visual.group);racers.length=0;}
 function connectedSeatCount(){
   let highest=1;
@@ -383,7 +404,7 @@ function resetRace(){
   activeRacerCount=clamp(Math.max(requested,connectedSeatCount()),2,MAX_PLAYERS);
   if(racerCountEl)racerCountEl.value=String(activeRacerCount);
   for(let i=1;i<MAX_PLAYERS;i++)humanControl[i]=i<activeRacerCount&&networkInputs[i].connected;
-  targetLaps=Number(lapSetting.value)||3;finishOrder=[];finished=false;raceTime=0;phase="countdown";phaseTimer=3.35;paused=false;finalLapAnnounced=false;finishRevealTimer=0;bannerTimer=0;playerFinishTime=0;playerFinishGap=999;raceBanner.classList.remove("show");createRacers();countdownEl.classList.remove("hidden");countdownEl.textContent="3";finishOverlay.classList.remove("open");pauseOverlay.classList.remove("open");resetJoy();say(`${activeRacerCount} racers · ${targetLaps} laps. The Vertical Crownway is wider, hillier, and has a raised crossover — falling racers can sometimes land back on the course.`);updateHUD();
+  targetLaps=Number(lapSetting.value)||3;finishOrder=[];finished=false;raceTime=0;phase="countdown";phaseTimer=3.35;paused=false;finalLapAnnounced=false;finishRevealTimer=0;bannerTimer=0;playerFinishTime=0;playerFinishGap=999;raceBanner.classList.remove("show");createRacers();countdownEl.classList.remove("hidden");countdownEl.textContent="3";finishOverlay.classList.remove("open");pauseOverlay.classList.remove("open");neutralizeInput();cameraNeedsReset=true;checkpointNotice=0;accumulator=0;say(`${activeRacerCount} racers · ${targetLaps} laps. The Vertical Crownway is wider, hillier, and has a raised crossover — falling racers can sometimes land back on the course.`);updateHUD();
 }
 
 function initAudio(){
@@ -447,18 +468,27 @@ function haptic(ms=24){if(hapticsOn&&navigator.vibrate)navigator.vibrate(ms)}
 function impactTier(p){const F=TUNING.feedback;return p>=F.criticalImpact?3:p>=F.heavyImpact?2:p>=F.mediumImpact?1:0;}
 function sfxHit(p=1,tier=impactTier(p)){const now=performance.now()/1000;if(now-lastImpactSfx<TUNING.feedback.hitCooldown&&tier<2)return;lastImpactSfx=now;const f=[118,142,174,210][tier],vol=[.014,.022,.032,.042][tier],dur=[.045,.065,.09,.12][tier];tone(f,dur,tier>=2?"sawtooth":"square",vol,.58);noise(dur*1.25,vol*.9,650+tier*520);if(tier>=2)setTimeout(()=>tone(f*.55,.055,"triangle",vol*.55,.72),18);}
 function sfxFall(){tone(130,.24,"sawtooth",.03,.42);noise(.12,.02,500)}function sfxLap(){tone(392,.1,"triangle",.03,1.26);setTimeout(()=>tone(523,.12,"triangle",.03,1.2),75)}function sfxFinish(){tone(392,.12,"triangle",.035,1.22);setTimeout(()=>tone(523,.12,"triangle",.035,1.18),90);setTimeout(()=>tone(659,.18,"triangle",.035,1.1),180)}
-function impactFeedback(a,b,p,x,y,z){const tier=impactTier(p),F=TUNING.feedback;const colors=[0xffdf99,0xffd36a,0xff9a52,0xffffff];const counts=[4,8,14,22];const powers=[.55,.9,1.25,1.65];spark(x,y,z,colors[tier],counts[tier],powers[tier]);if(tier>=1)ringFX(x,Math.max(.15,y-.45),z,colors[tier]);cameraShake=Math.max(cameraShake,[F.shakeLight,F.shakeMedium,F.shakeHeavy,.58][tier]*p);a.animKick=Math.max(a.animKick,p*(1+tier*.12));b.animKick=Math.max(b.animKick,p*(1+tier*.12));if(a.player||b.player){if(tier>=1)hitFlash(tier===1?F.flashMedium:F.flashHeavy);haptic(tier===0?14:tier===1?28:tier===2?48:[65,25,45]);}sfxHit(p,tier);}
+function impactFeedback(a,b,p,x,y,z){const tier=impactTier(p),F=TUNING.feedback;const colors=[0xffdf99,0xffd36a,0xff9a52,0xffffff];const counts=[4,8,14,22];const powers=[.55,.9,1.25,1.65];spark(x,y,z,colors[tier],counts[tier],powers[tier]);if(tier>=1)ringFX(x,Math.max(.15,y-.45),z,colors[tier]);if(a.player||b.player)cameraShake=Math.max(cameraShake,Math.min(.38,[F.shakeLight,F.shakeMedium,F.shakeHeavy,.58][tier]*p));a.animKick=Math.max(a.animKick,p*(1+tier*.12));b.animKick=Math.max(b.animKick,p*(1+tier*.12));if(a.player||b.player){if(tier>=1)hitFlash(tier===1?F.flashMedium:F.flashHeavy);haptic(tier===0?14:tier===1?28:tier===2?48:[65,25,45]);}sfxHit(p,tier);}
 function spark(x,y,z,color=0xffe4a0,count=10,power=1){let made=0;for(const fx of sparkPool){if(fx.life>0)continue;fx.life=fx.max=rand(.18,.36);fx.mesh.visible=true;fx.mesh.material.color.setHex(color);fx.mesh.material.opacity=.85;fx.mesh.position.set(x+rand(-.08,.08),y+rand(-.05,.12),z+rand(-.08,.08));fx.v.set(rand(-1.6,1.6)*power,rand(.4,1.9)*power,rand(-1.6,1.6)*power);if(++made>=count)break;}}
 function ringFX(x,y,z,color=0xffe4a0){const fx=fxPool.find(f=>f.life<=0);if(!fx)return;fx.life=fx.max=.26;fx.mesh.visible=true;fx.mesh.position.set(x,y,z);fx.mesh.scale.setScalar(.45);fx.mesh.material.color.setHex(color);fx.mesh.material.opacity=.7;}
 function hitFlash(p=.5){flash.style.opacity=String(clamp(.08+p*.18,0,.28));setTimeout(()=>flash.style.opacity="0",55)}
 
 function updateJoy(x,y){const r=joyBase.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2,dx=x-cx,dy=y-cy,max=r.width*.32,d=Math.hypot(dx,dy),k=d>max?max/d:1,px=dx*k,py=dy*k;joystick.x=px/max;joystick.z=py/max;joyKnob.style.transform=`translate(calc(-50% + ${px}px),calc(-50% + ${py}px))`;}
+function neutralizeSeat(id){
+  const n=networkInputs[id],slot=inputSlots[id],r=racers[id];
+  n.moveX=n.moveY=0;n.primaryAction=n.secondaryAction=false;
+  slot.moveX=slot.moveY=0;slot.primaryAction=slot.secondaryAction=false;
+  if(r)r.inputX=r.inputZ=0;
+}
+function neutralizeInput(){for(const k of Object.keys(keys))delete keys[k];resetJoy();for(let i=0;i<MAX_PLAYERS;i++)neutralizeSeat(i);}
 function resetJoy(){joystick.x=joystick.z=0;joystick.active=false;joystick.pointerId=null;joyKnob.style.transform="translate(-50%,-50%)";}
-joyWrap.addEventListener("pointerdown",e=>{e.preventDefault();e.stopPropagation();initAudio();joystick.active=true;joystick.pointerId=e.pointerId;try{joyWrap.setPointerCapture(e.pointerId)}catch{}updateJoy(e.clientX,e.clientY)},{passive:false});joyWrap.addEventListener("pointermove",e=>{if(!joystick.active||e.pointerId!==joystick.pointerId)return;e.preventDefault();updateJoy(e.clientX,e.clientY)},{passive:false});function joyEnd(e){if(joystick.pointerId!==null&&e.pointerId!==joystick.pointerId)return;e.preventDefault();try{joyWrap.releasePointerCapture(e.pointerId)}catch{}resetJoy()}joyWrap.addEventListener("pointerup",joyEnd,{passive:false});joyWrap.addEventListener("pointercancel",joyEnd,{passive:false});document.addEventListener("touchmove",e=>{if(joystick.active)e.preventDefault()},{passive:false});
-addEventListener("keydown",e=>{initAudio();keys[e.code]=true;if(["ArrowUp","ArrowDown","ArrowLeft","ArrowRight","Space"].includes(e.code))e.preventDefault();if(e.code==="KeyP")togglePause();},{passive:false});addEventListener("keyup",e=>{keys[e.code]=false});
+joyWrap.addEventListener("pointerdown",e=>{e.preventDefault();e.stopPropagation();if(paused)return;initAudio();joystick.active=true;joystick.pointerId=e.pointerId;try{joyWrap.setPointerCapture(e.pointerId)}catch{}updateJoy(e.clientX,e.clientY)},{passive:false});joyWrap.addEventListener("pointermove",e=>{if(!joystick.active||e.pointerId!==joystick.pointerId)return;e.preventDefault();updateJoy(e.clientX,e.clientY)},{passive:false});function joyEnd(e){if(joystick.pointerId!==null&&e.pointerId!==joystick.pointerId)return;e.preventDefault();try{joyWrap.releasePointerCapture(e.pointerId)}catch{}resetJoy()}joyWrap.addEventListener("pointerup",joyEnd,{passive:false});joyWrap.addEventListener("pointercancel",joyEnd,{passive:false});document.addEventListener("touchmove",e=>{if(joystick.active)e.preventDefault()},{passive:false});
+addEventListener("keydown",e=>{initAudio();if(!paused)keys[e.code]=true;if(["ArrowUp","ArrowDown","ArrowLeft","ArrowRight","Space"].includes(e.code))e.preventDefault();if(e.code==="KeyP"&&!e.repeat&&!settingsModal.classList.contains("open"))togglePause();},{passive:false});addEventListener("keyup",e=>{keys[e.code]=false});
 addEventListener("gamepadconnected",e=>{gamepadIndex=e.gamepad.index;activeInputSource="gamepad";say("Controller connected — roll with the left stick.");});
 addEventListener("gamepaddisconnected",e=>{if(gamepadIndex===e.gamepad.index)gamepadIndex=-1;});
 
+addEventListener("blur",()=>{neutralizeInput();togglePause(true);});
+document.addEventListener("visibilitychange",()=>{if(document.hidden){neutralizeInput();togglePause(true);}});
 function radialDeadzone(x,y,dz=TUNING.input.deadzone){
   const m=Math.hypot(x,y);if(m<=dz)return{x:0,y:0,mag:0};
   const scaled=clamp((m-dz)/(1-dz),0,1),k=scaled/(m||1);
@@ -501,11 +531,11 @@ window.CallbackInput={
   version:2,
   maxPlayers:MAX_PLAYERS,
   push(playerId,packet={}){
-    if(playerId<0||playerId>=MAX_PLAYERS)return false;
+    if(!Number.isInteger(playerId)||playerId<0||playerId>=MAX_PLAYERS)return false;
     const n=networkInputs[playerId],seq=Number.isFinite(packet.sequence)?packet.sequence:n.sequence+1;
     if(seq<=n.sequence&&n.sequence-seq<TUNING.input.sequenceWindow)return false;
-    n.moveX=clamp(Number(packet.moveX)||0,-1,1);n.moveY=clamp(Number(packet.moveY)||0,-1,1);
-    n.primaryAction=!!packet.primaryAction;n.secondaryAction=!!packet.secondaryAction;
+    n.moveX=paused?0:clamp(Number(packet.moveX)||0,-1,1);n.moveY=paused?0:clamp(Number(packet.moveY)||0,-1,1);
+    n.primaryAction=!paused&&!!packet.primaryAction;n.secondaryAction=!paused&&!!packet.secondaryAction;
     if(typeof packet.name==="string"&&packet.name.trim())n.name=packet.name.trim().slice(0,14);
     n.sequence=seq;n.timestamp=performance.now()/1000;n.connected=true;humanControl[playerId]=true;lastHumanPacket[playerId]=n.timestamp;
     if(playerId>=activeRacerCount&&phase==="countdown"){
@@ -519,8 +549,8 @@ window.CallbackInput={
     return true;
   },
   disconnect(playerId){
-    if(playerId<0||playerId>=MAX_PLAYERS)return;
-    networkInputs[playerId].connected=false;
+    if(!Number.isInteger(playerId)||playerId<0||playerId>=MAX_PLAYERS)return;
+    networkInputs[playerId].connected=false;neutralizeSeat(playerId);
     if(playerId>0)humanControl[playerId]=false;
   },
   setPlayerCount(count){
@@ -567,7 +597,7 @@ function updateAI(r,dt){
   const D=AI_LEVELS[difficultyEl.value],A=TUNING.ai,sp=len2(r.vx,r.vz);
   r.aiDecision-=dt;r.aiReaction=Math.max(0,r.aiReaction-dt);
   let nearestAhead=null,aheadDist=999,nearestSide=null,sideDist=999;
-  for(const o of racers){if(o===r||o.falling||o.finished)continue;const pd=progressDelta(r,o);const world=Math.hypot(o.x-r.x,o.z-r.z);if(pd>0&&pd<36&&world<aheadDist){nearestAhead=o;aheadDist=world;}if(world<sideDist){nearestSide=o;sideDist=world;}}
+  for(const o of racers){if(o===r||o.falling||o.finished||Math.abs(o.y-r.y)>CAGE_R*2)continue;const pd=progressDelta(r,o);const world=Math.hypot(o.x-r.x,o.z-r.z);if(pd>0&&pd<36&&world<aheadDist){nearestAhead=o;aheadDist=world;}if(world<sideDist){nearestSide=o;sideDist=world;}}
   if(r.aiDecision<=0){
     r.aiDecision=rand(A.decisionMin,A.decisionMax)+(difficultyEl.value==='easy'?.12:0);
     const n=trackNormals[r.trackIdx],p=trackSamples[r.trackIdx];
@@ -578,7 +608,7 @@ function updateAI(r,dt){
       const olat=(nearestAhead.x-op.x)*on.x+(nearestAhead.z-op.z)*on.z;
       const side=olat>=0?-1:1;desired=side*A.passLane*D.lane;state='PASS';
     }else{
-      const behind=racers.find(o=>o!==r&&!o.falling&&!o.finished&&progressDelta(r,o)<0&&progressDelta(r,o)>-28&&Math.hypot(o.x-r.x,o.z-r.z)<3.2);
+      const behind=racers.find(o=>o!==r&&!o.falling&&!o.finished&&Math.abs(o.y-r.y)<=CAGE_R*2&&progressDelta(r,o)<0&&progressDelta(r,o)>-28&&Math.hypot(o.x-r.x,o.z-r.z)<3.2);
       if(behind&&r.aiPersonality.aggression*D.aggression>.52){desired=clamp(desired*.35+Math.sign(((behind.x-r.x)*n.x+(behind.z-r.z)*n.z)||1)*A.defendLane,-.7,.7);state='DEFEND';}
       else desired=rand(-.22,.22)*D.lane;
     }
@@ -587,34 +617,40 @@ function updateAI(r,dt){
     r.aiReaction=difficultyEl.value==='easy'?A.reactionEasy:difficultyEl.value==='hard'?A.reactionHard:A.reactionNormal;
   }
   r.aiLane=damp(r.aiLane,r.aiTargetLane,2.4,dt);
-  const look=Math.floor((11+sp*2.25)*D.look),idx=(r.trackIdx+look)%TRACK_SAMPLES,p=trackSamples[idx],n=trackNormals[idx];
+  let worst=0;for(let k=6;k<=A.cornerScan;k+=6)worst=Math.max(worst,trackCurvature((r.trackIdx+k)%TRACK_SAMPLES,7));
+  const cornerFactor=clamp(worst/.72,0,1),edgeFactor=clamp((r.offDist-TRACK_WIDTH*.28)/(TRACK_WIDTH*.28),0,1);
+  // Aim through the next gate before looking beyond it; no progress is awarded here.
+  const gateAhead=(checkpointIndex(r.nextCheckpoint)-r.trackIdx+TRACK_SAMPLES)%TRACK_SAMPLES;
+  const look=Math.min(Math.floor((11+sp*2.25)*D.look*(1-cornerFactor*.8)),gateAhead<40?Math.max(2,gateAhead+1):40),idx=(r.trackIdx+look)%TRACK_SAMPLES,p=trackSamples[idx],n=trackNormals[idx];
   let tx=p.x+n.x*r.aiLane,tz=p.z+n.z*r.aiLane,dx=tx-r.x,dz=tz-r.z;let [nx,nz]=norm2(dx,dz);
   // Physical local avoidance: bias away from overlapping trajectories, never teleport or frame-perfect dodge.
   if(nearestSide&&sideDist<A.avoidRadius&&sideDist>.05){const awayX=(r.x-nearestSide.x)/sideDist,awayZ=(r.z-nearestSide.z)/sideDist,w=(A.avoidRadius-sideDist)/A.avoidRadius;nx+=awayX*w*.58;nz+=awayZ*w*.58;[nx,nz]=norm2(nx,nz);}
-  let worst=0;for(let k=6;k<=A.cornerScan;k+=6)worst=Math.max(worst,trackCurvature((r.trackIdx+k)%TRACK_SAMPLES,7));
-  const cornerFactor=clamp(worst/.72,0,1),edgeFactor=clamp((r.offDist-TRACK_WIDTH*.28)/(TRACK_WIDTH*.28),0,1);
-  const targetSpeed=(TUNING.movement.maxSpeed*(.97-cornerFactor*.31-edgeFactor*.18))*D.speed;
+  const targetSpeed=(TUNING.movement.maxSpeed*(.97-cornerFactor*.5-edgeFactor*.18))*D.speed;
   if(r.aiReaction<=0){
     const accel=sp<targetSpeed?A.steerAccel*D.accel:-A.brakeStrength;
     r.vx+=nx*accel*dt;r.vz+=nz*accel*dt;
     // Grip toward intended travel direction, using the same momentum rules as the human rather than rail-following.
-    if(sp>.25){const blend=(2.4+cornerFactor*2.2)*dt;r.vx=damp(r.vx,nx*sp,blend,dt);r.vz=damp(r.vz,nz*sp,blend,dt);}
+    if(sp>.25){const blend=(2.4+cornerFactor*2.2);r.vx=damp(r.vx,nx*sp,blend,dt);r.vz=damp(r.vz,nz*sp,blend,dt);}
   }
 }
-function collide(a,b){
+function collide(a,b,feedback=true){
   if(a.falling||b.falling||a.finished||b.finished)return false;
-  let dx=b.x-a.x,dz=b.z-a.z,d=Math.hypot(dx,dz)||.001,min=a.r+b.r;
+  const dy=b.y-a.y,radius=a.r+b.r;
+  if(Math.abs(dy)>=radius)return false;
+  let dx=b.x-a.x,dz=b.z-a.z,d=Math.hypot(dx,dz),min=Math.sqrt(radius*radius-dy*dy);
   if(d>=min)return false;
-  const nx=dx/d,nz=dz/d,over=min-d;
-  a.contactCount++;b.contactCount++;
-  a.contactX-=nx;a.contactZ-=nz;b.contactX+=nx;b.contactZ+=nz;
+  // A deterministic normal also separates cages whose centers exactly coincide.
+  const angle=(a.id*7+b.id*13)*2.399963229728653;
+  const nx=d>1e-6?dx/d:Math.cos(angle),nz=d>1e-6?dz/d:Math.sin(angle),over=min-d;
+  if(feedback){a.contactCount++;b.contactCount++;
+  a.contactX-=nx;a.contactZ-=nz;b.contactX+=nx;b.contactZ+=nz;}
   a.x-=nx*over*.5;a.z-=nz*over*.5;b.x+=nx*over*.5;b.z+=nz*over*.5;
   const rel=(b.vx-a.vx)*nx+(b.vz-a.vz)*nz;
   if(rel<0){
     const restitution=TUNING.collision.restitution,imp=-(1+restitution)*rel/(1/a.mass+1/b.mass);
     a.vx-=nx*imp/a.mass;a.vz-=nz*imp/a.mass;b.vx+=nx*imp/b.mass;b.vz+=nz*imp/b.mass;
     const p=clamp(Math.abs(rel)/6,.25,1.55),cx=(a.x+b.x)/2,cy=(a.y+b.y)/2,cz=(a.z+b.z)/2;
-    impactFeedback(a,b,p,cx,cy,cz);
+    if(feedback)impactFeedback(a,b,p,cx,cy,cz);
   }
   return true;
 }
@@ -646,6 +682,7 @@ function landOnTrack(r,hit){
   r.falling=false;r.grounded=true;r.fallTime=0;r.trackIdx=hit.idx;r.lastTrackIdx=hit.idx;r.offDist=Math.abs(hit.lateral);
   r.y=hit.surfaceY+CAGE_R;r.vy=Math.max(0,impact*TUNING.track.landingBounce);
   r.vx*=TUNING.track.landingSpeedKeep;r.vz*=TUNING.track.landingSpeedKeep;r.landingCount++;
+  seedCheckpointSweep(r);
   r.visual.ring.visible=true;r.visual.label.visible=true;
   if(r.player){
     cameraShake=Math.max(cameraShake,clamp(impact*.045,.12,.38));
@@ -659,8 +696,9 @@ function respawn(r){
   const lane=r.player?-.45:r.aiLane*.65,pos=lanePosition(idx,lane),tan=trackTangents[idx],h=Math.hypot(tan.x,tan.z)||1;
   r.x=pos.x;r.y=pos.y;r.z=pos.z;r.vx=tan.x/h*1.7;r.vy=0;r.vz=tan.z/h*1.7;r.trackIdx=idx;r.lastTrackIdx=idx;
   r.falling=false;r.grounded=true;r.fallTime=0;r.lastSurfaceY=trackSamples[idx].y;r.rushCooldown=.35;r.onRush=false;r.onRough=false;
+  r.offDist=Math.abs(lane);r.speed=1.7;r.inputX=r.inputZ=0;r.contactCount=0;r.packReleaseCooldown=0;seedCheckpointSweep(r);
   r.visual.group.visible=true;r.visual.ring.visible=true;r.visual.label.visible=true;
-  if(r.player){say("Back at the last checkpoint — the track only respawns you after a real fall.");haptic(22);}
+  if(r.player){cameraNeedsReset=true;say("Back at the last checkpoint — the track only respawns you after a real fall.");haptic(22);}
 }
 function updateAirborne(r,dt){
   const T=TUNING.track,prevY=r.y,prevBottom=prevY-CAGE_R;
@@ -677,7 +715,28 @@ function updateAirborne(r,dt){
   if(hit&&r.vy<=0){landOnTrack(r,hit);return;}
   if(r.fallTime>T.respawnDelay||r.y<T.respawnY)respawn(r);
 }
-function checkpointUpdate(r){if(r.falling||r.finished)return;const nextIdx=Math.floor((r.nextCheckpoint/CHECKPOINT_COUNT)*TRACK_SAMPLES)%TRACK_SAMPLES;let delta=Math.abs(r.trackIdx-nextIdx);delta=Math.min(delta,TRACK_SAMPLES-delta);if(delta<8){r.lastCheckpointIdx=nextIdx;r.nextCheckpoint++;if(r.nextCheckpoint>=CHECKPOINT_COUNT){r.nextCheckpoint=0;}if(r.nextCheckpoint===1){r.lap++;if(r.lap>0){sfxLap();if(r.player&&r.lap<targetLaps){if(r.lap===targetLaps-1&&!finalLapAnnounced){finalLapAnnounced=true;showRaceBanner("⚜ FINAL LAP ⚜",1.55);say("FINAL LAP! Crownlines are stronger — every corner matters.");tone(610,.09,"square",.03,1.25);haptic([28,25,38]);cameraShake=Math.max(cameraShake,.24);}else say(`Lap ${r.lap+1}. ${targetLaps-r.lap} to go.`);}}if(r.lap>=targetLaps)finishRacer(r);}}}
+function seedCheckpointSweep(r){r.gateX=r.x;r.gateY=r.y;r.gateZ=r.z;r.gateIdx=r.trackIdx;}
+function checkpointUpdate(r){
+  const idx=checkpointIndex(r.nextCheckpoint),p=trackSamples[idx],t=trackTangents[idx],n=trackNormals[idx];
+  const before=(r.gateX-p.x)*t.x+(r.gateZ-p.z)*t.z,after=(r.x-p.x)*t.x+(r.z-p.z)*t.z;
+  const near=i=>Math.abs(((i-idx+TRACK_SAMPLES*1.5)%TRACK_SAMPLES)-TRACK_SAMPLES*.5)<8;
+  const onDeck=y=>Math.abs(y-CAGE_R-p.y)<.55;
+  const lateral=Math.abs((r.x-p.x)*n.x+(r.z-p.z)*n.z);
+  const crossed=!r.falling&&!r.finished&&r.grounded&&near(r.gateIdx)&&near(r.trackIdx)&&onDeck(r.gateY)&&onDeck(r.y)
+    &&lateral<=TRACK_WIDTH*.5+TUNING.track.supportMargin&&before<0&&after>=0
+    &&Math.hypot(r.x-r.gateX,r.z-r.gateZ)<=trackSampleSpacing*4;
+  seedCheckpointSweep(r);
+  if(!crossed)return;
+  r.lastCheckpointIdx=idx;r.nextCheckpoint=(r.nextCheckpoint+1)%CHECKPOINT_COUNT;
+  if(r.player){checkpointNotice=1.1;}
+  if(r.nextCheckpoint!==1)return;
+  r.lap++;sfxLap();
+  if(r.lap>=targetLaps){finishRacer(r);return;}
+  if(r.player){
+    if(r.lap===targetLaps-1&&!finalLapAnnounced){finalLapAnnounced=true;showRaceBanner("⚜ FINAL LAP ⚜",1.55);say("FINAL LAP! Crownlines are stronger — every corner matters.");tone(610,.09,"square",.03,1.25);haptic([28,25,38]);}
+    else say(`Lap ${r.lap+1}. ${targetLaps-r.lap} to go.`);
+  }
+}
 function participatingHumans(){
   return racers.filter(r=>r.id===0||networkInputs[r.id]?.connected);
 }
@@ -741,12 +800,20 @@ for(const r of racers){
   const net=networkInputs[r.id];
   if(r.id>0&&humanControl[r.id]&&(!net.connected||now-lastHumanPacket[r.id]>TUNING.input.handoffGrace))humanControl[r.id]=false;
   if(r.id===0||humanControl[r.id])updatePlayer(r,dt);else updateAI(r,dt);
-}for(const r of racers){if(r.finished){r.vx*=Math.exp(-2.4*dt);r.vz*=Math.exp(-2.4*dt);}if(r.falling){updateAirborne(r,dt);continue;}const sp=len2(r.vx,r.vz),max=TUNING.movement.maxSpeed*(r.rushCooldown>.42?TUNING.course.rushMaxBonus:1);if(sp>max){r.vx=r.vx/sp*max;r.vz=r.vz/sp*max;}r.x+=r.vx*dt;r.z+=r.vz*dt;const drag=r.offDist>TRACK_WIDTH*.5?TUNING.movement.edgeDrag:TUNING.movement.coastDrag;r.vx*=Math.exp(-drag*dt);r.vz*=Math.exp(-drag*dt);r.speed=len2(r.vx,r.vz);updateTrackState(r,dt);updateCourseInteraction(r,dt);checkpointUpdate(r);}for(let i=0;i<racers.length;i++)for(let j=i+1;j<racers.length;j++)collide(racers[i],racers[j]);for(const r of racers)releasePackedRacer(r,dt);updateHUD();}
+}for(const r of racers){if(r.finished){r.vx*=Math.exp(-2.4*dt);r.vz*=Math.exp(-2.4*dt);}if(r.falling){updateAirborne(r,dt);continue;}const sp=len2(r.vx,r.vz),max=TUNING.movement.maxSpeed*(r.rushCooldown>.42?TUNING.course.rushMaxBonus:1);if(sp>max){r.vx=r.vx/sp*max;r.vz=r.vz/sp*max;}r.x+=r.vx*dt;r.z+=r.vz*dt;const drag=r.offDist>TRACK_WIDTH*.5?TUNING.movement.edgeDrag:TUNING.movement.coastDrag;r.vx*=Math.exp(-drag*dt);r.vz*=Math.exp(-drag*dt);r.speed=len2(r.vx,r.vz);updateTrackState(r,dt);updateCourseInteraction(r,dt);checkpointUpdate(r);}for(let pass=0;pass<3;pass++)for(let i=0;i<racers.length;i++)for(let j=i+1;j<racers.length;j++)collide(racers[i],racers[j],pass===0);for(const r of racers)releasePackedRacer(r,dt);}
 function updatePhase(dt){if(paused)return;updateRaceBanner(dt);if(phase==="countdown"){phaseTimer-=dt;const pulse=1+Math.sin(Math.max(0,phaseTimer)*Math.PI*2)*TUNING.rounds.countdownPulse;countdownEl.style.transform=`scale(${pulse})`;if(phaseTimer>2.25)countdownEl.textContent="3";else if(phaseTimer>1.25)countdownEl.textContent="2";else if(phaseTimer>.25)countdownEl.textContent="1";else countdownEl.textContent="GO!";if(phaseTimer<=0){phase="race";countdownEl.classList.add("hidden");countdownEl.style.transform="";showRaceBanner("ROLL!",.55);say("ROLL! Carry momentum through the bends and bump clean.");tone(330,.08,"square",.025,1.4);haptic(20);}}else if(phase==="finish"){finishRevealTimer-=dt;if(finishRevealTimer<=0){phase="finished";revealFinish();}}}
-function raceProgress(r){if(r.finished)return targetLaps+1+(racers.length-r.finishRank)*.001;return r.lap+r.trackIdx/TRACK_SAMPLES;}
+function raceProgress(r){
+  if(r.finished)return targetLaps+1+(racers.length-r.finishRank)*.001;
+  const passed=(r.nextCheckpoint+CHECKPOINT_COUNT-1)%CHECKPOINT_COUNT,span=TRACK_SAMPLES/CHECKPOINT_COUNT;
+  const delta=((r.trackIdx-passed*span+TRACK_SAMPLES*1.5)%TRACK_SAMPLES)-TRACK_SAMPLES*.5;
+  return r.lap+(passed+clamp(delta/span,0,.999))/CHECKPOINT_COUNT;
+}
 function standings(){return racers.slice().sort((a,b)=>raceProgress(b)-raceProgress(a));}
 function updateEdgeWarning(p){if(!p||p.falling||phase!=="race")return;const F=TUNING.feedback,start=TRACK_WIDTH*.5*F.edgeWarnStart,full=TRACK_WIDTH*.5*F.edgeWarnFull,d=clamp((p.offDist-start)/Math.max(.01,full-start),0,1);if(d<=0)return;const pulse=.55+.45*Math.sin(performance.now()*.001*Math.PI*2*F.edgePulseHz);flash.style.opacity=String(Math.max(Number(flash.style.opacity)||0,d*pulse*.075));}
-function updateHUD(){const p=racers[0];if(!p)return;standingsEl.classList.toggle("many",racers.length>6);const place=standings().findIndex(r=>r.id===0)+1;placeText.textContent=ordinal(place);lapLabel.textContent=`${Math.min(targetLaps,p.lap+1)} / ${targetLaps}`;lapSub.textContent=p.onRush?"⚡ CROWNLINE BOOST":p.onRough?"ROUGH STONE — DRAG":`CHECKPOINT ${p.nextCheckpoint+1} / ${CHECKPOINT_COUNT}`;timerEl.textContent=fmtTime(raceTime);speedText.textContent=Math.round(p.speed*18);momentumFill.style.width=(clamp(p.speed/TUNING.movement.maxSpeed,0,1)*100)+"%";speedLines.style.opacity=String(clamp((p.speed-4.5)/4,.0,.32));respawnBtn.classList.toggle("show",p.falling);updateEdgeWarning(p);standingsEl.innerHTML=standings().map((r,i)=>`<div class="standing ${r.player?"you":""}"><span class="rank">${i+1}</span><span class="dot" style="color:#${new THREE.Color(COLORS[r.id]).getHexString()};background:currentColor"></span><span>${r.name}</span><span class="slap">${r.finished?"FIN":`L${Math.min(targetLaps,r.lap+1)}`}</span></div>`).join("");}
+function escapeName(name){return String(name).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function updateHUD(){const p=racers[0];if(!p)return;standingsEl.classList.toggle("many",racers.length>6);const place=standings().findIndex(r=>r.id===0)+1;placeText.textContent=ordinal(place);lapLabel.textContent=`${Math.min(targetLaps,p.lap+1)} / ${targetLaps}`;lapSub.textContent=p.finished?"FINISHED":`${checkpointNotice>0?"✓ ":""}NEXT: ${p.nextCheckpoint===0?"FINISH":`CP ${p.nextCheckpoint} / 7`}${p.onRush?" · BOOST":p.onRough?" · ROUGH":""}`;
+  for(let i=0;i<checkpointMarkers.length;i++){const m=checkpointMarkers[i],active=i===p.nextCheckpoint&&!p.finished;m.material.color.setHex(active?0xf0c861:0x34435d);m.material.emissive.setHex(active?0x493716:0x000000);m.label.visible=active||i===0;}
+  timerEl.textContent=fmtTime(raceTime);speedText.textContent=Math.round(p.speed*18);momentumFill.style.width=(clamp(p.speed/TUNING.movement.maxSpeed,0,1)*100)+"%";speedLines.style.opacity=String(clamp((p.speed-4.5)/4,.0,.32));respawnBtn.classList.toggle("show",p.falling);updateEdgeWarning(p);standingsEl.innerHTML=standings().map((r,i)=>`<div class="standing ${r.player?"you":""}"><span class="rank">${i+1}</span><span class="dot" style="color:#${new THREE.Color(COLORS[r.id]).getHexString()};background:currentColor"></span><span>${escapeName(r.name)}</span><span class="slap">${r.finished?"FIN":`L${Math.min(targetLaps,r.lap+1)}`}</span></div>`).join("");}
 function updateVisuals(dt,time){
   const A=TUNING.animation;
   for(const r of racers){
@@ -785,7 +852,8 @@ function updateCamera(dt){
   if(len2(dirX,dirZ)<.35){dirX=futureTan.x;dirZ=futureTan.z;}
   [dirX,dirZ]=norm2(dirX,dirZ);
   if(p.speed>.9&&!p.falling){const [vx,vz]=norm2(p.vx,p.vz);dirX=lerp(dirX,vx,.16);dirZ=lerp(dirZ,vz,.16);[dirX,dirZ]=norm2(dirX,dirZ);}
-  const targetYaw=Math.atan2(dirX,dirZ);
+  const targetYaw=Math.atan2(dirX,dirZ),reset=cameraNeedsReset;
+  if(reset){cameraYaw=targetYaw;cameraShake=0;cameraEdgeDanger=0;cameraRivalBlend=0;cameraNeedsReset=false;}
   let yawDelta=((targetYaw-cameraYaw+Math.PI)%(Math.PI*2))-Math.PI;if(yawDelta<-Math.PI)yawDelta+=Math.PI*2;
   cameraYaw+=yawDelta*(1-Math.exp(-C.yawFollow*dt));
 
@@ -794,7 +862,7 @@ function updateCamera(dt){
   cameraEdgeDanger=damp(cameraEdgeDanger,edgeTarget,7,dt);
 
   let rival=null,rivalDist=C.rivalRadius;
-  for(const r of racers){if(r===p||r.falling||r.finished)continue;const d=Math.hypot(r.x-p.x,r.z-p.z);if(d<rivalDist){rival=r;rivalDist=d;}}
+  for(const r of racers){if(r===p||r.falling||r.finished||Math.abs(r.y-p.y)>CAGE_R*2)continue;const d=Math.hypot(r.x-p.x,r.z-p.z);if(d<rivalDist){rival=r;rivalDist=d;}}
   cameraRivalBlend=damp(cameraRivalBlend,rival?clamp(1-rivalDist/C.rivalRadius,0,1):0,5,dt);
   CAM_RIVAL.set(rival?rival.x:p.x,rival?rival.y:p.y,rival?rival.z:p.z);
 
@@ -805,24 +873,26 @@ function updateCamera(dt){
     const moveSp=Math.hypot(p.vx,p.vz),fx=moveSp>.2?p.vx/moveSp:Math.sin(cameraYaw),fz=moveSp>.2?p.vz/moveSp:Math.cos(cameraYaw);
     CAM_DESIRED.set(p.x-fx*C.fallDistance+shakeX,p.y+C.fallHeight,p.z-fz*C.fallDistance+shakeZ);
     CAM_LOOK.set(p.x,p.y+C.fallLookDrop,p.z);
-    callbackCameraAdjustDesired(CAM_DESIRED,CAM_LOOK);
-    camera.position.lerp(CAM_DESIRED,1-Math.exp(-C.positionFollow*dt));
-    camera.lookAt(CAM_LOOK);
+    if(reset)CAM_TARGET.copy(CAM_LOOK);else CAM_TARGET.lerp(CAM_LOOK,1-Math.exp(-8*dt));
+    callbackCameraAdjustDesired(CAM_DESIRED,CAM_TARGET);
+    if(reset)camera.position.copy(CAM_DESIRED);else camera.position.lerp(CAM_DESIRED,1-Math.exp(-C.positionFollow*dt));
+    camera.lookAt(CAM_TARGET);
     camera.fov=damp(camera.fov,C.baseFov+4,C.fovFollow,dt);camera.updateProjectionMatrix();return;
   }
 
-  const backDist=lerp(5.7,6.7,speed01),backX=Math.sin(cameraYaw)*-backDist,backZ=Math.cos(cameraYaw)*-backDist;
+  const backDist=lerp(6.2,7.3,speed01),backX=Math.sin(cameraYaw)*-backDist,backZ=Math.cos(cameraYaw)*-backDist;
   const edgeSide=-Math.sign(lateral)*cameraEdgeDanger*C.edgePull;
-  CAM_DESIRED.set(p.x+backX+normal.x*edgeSide+shakeX,p.y+4.35+speed01*.42+cameraEdgeDanger*C.edgeLift,p.z+backZ+normal.z*edgeSide+shakeZ);
+  CAM_DESIRED.set(p.x+backX+normal.x*edgeSide+shakeX,p.y+4.8+speed01*.42+cameraEdgeDanger*C.edgeLift,p.z+backZ+normal.z*edgeSide+shakeZ);
 
-  const lookAhead=lerp(1.7,C.lookAheadWorld,speed01),hillLook=(future.y-trackNow.y)*.38;
-  CAM_LOOK.set(p.x+Math.sin(cameraYaw)*lookAhead,p.y+.30+hillLook,p.z+Math.cos(cameraYaw)*lookAhead);
+  const lookAhead=lerp(1.1,C.lookAheadWorld,speed01),hillLook=(future.y-trackNow.y)*.38;
+  CAM_LOOK.set(p.x+Math.sin(cameraYaw)*lookAhead,p.y+.15+hillLook,p.z+Math.cos(cameraYaw)*lookAhead);
   if(rival&&cameraRivalBlend>.01){
     const w=cameraRivalBlend*C.rivalWeight;CAM_LOOK.x=lerp(CAM_LOOK.x,CAM_RIVAL.x,w);CAM_LOOK.y=lerp(CAM_LOOK.y,CAM_RIVAL.y+.2,w*.45);CAM_LOOK.z=lerp(CAM_LOOK.z,CAM_RIVAL.z,w);
   }
-  callbackCameraAdjustDesired(CAM_DESIRED,CAM_LOOK);
-  camera.position.lerp(CAM_DESIRED,1-Math.exp(-C.positionFollow*dt));
-  camera.lookAt(CAM_LOOK);
+  if(reset)CAM_TARGET.copy(CAM_LOOK);else CAM_TARGET.lerp(CAM_LOOK,1-Math.exp(-8*dt));
+  callbackCameraAdjustDesired(CAM_DESIRED,CAM_TARGET);
+  if(reset)camera.position.copy(CAM_DESIRED);else camera.position.lerp(CAM_DESIRED,1-Math.exp(-C.positionFollow*dt));
+  camera.lookAt(CAM_TARGET);
   const targetFov=C.baseFov+speed01*C.speedFov+cameraRivalBlend*.8+cameraEdgeDanger*1.1;
   camera.fov=damp(camera.fov,targetFov,C.fovFollow,dt);camera.updateProjectionMatrix();
 }
@@ -830,14 +900,14 @@ function updateDebug(){if(!debugOn)return;const p=racers[0];debugPanel.textConte
 players ${racers.length}/${MAX_PLAYERS} pack ${p.contactCount} cd ${p.packReleaseCooldown.toFixed(2)}\ncontrol ${racers.map(r=>"P"+(r.id+1)+":"+(humanControl[r.id]?"H":"A")).join(" ")}
 ai ${racers.slice(1).map(r=>r.name+":"+r.aiState).join(" ")}`;}
 function resize(){if(!renderer||!camera)return;renderer.setSize(innerWidth,innerHeight,false);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();}addEventListener("resize",resize);
-function togglePause(force){if(finished)return;paused=force!==undefined?force:!paused;pauseOverlay.classList.toggle("open",paused);if(paused)resetJoy();}
-function openSettingsPaused(){paused=true;pauseOverlay.classList.remove("open");settingsModal.classList.add("open");resetJoy()}
-function closeSettingsToPause(){settingsModal.classList.remove("open");paused=true;pauseOverlay.classList.add("open");resetJoy()}
+function togglePause(force){if(finished)return;paused=force!==undefined?force:!paused;pauseOverlay.classList.toggle("open",paused);if(paused)neutralizeInput();}
+function openSettingsPaused(){paused=true;pauseOverlay.classList.remove("open");settingsModal.classList.add("open");neutralizeInput()}
+function closeSettingsToPause(){settingsModal.classList.remove("open");paused=true;pauseOverlay.classList.add("open");neutralizeInput()}
 settingsBtn.addEventListener("click",openSettingsPaused);closeSettings.addEventListener("click",closeSettingsToPause);restartBtn.addEventListener("click",()=>{resetRace();closeSettingsToPause();});raceAgainBtn.addEventListener("click",resetRace);resumeBtn.addEventListener("click",()=>togglePause(false));soundBtn.addEventListener("click",()=>{soundOn=!soundOn;soundBtn.textContent=soundOn?"🔊":"🔇";initAudio();if(audioMaster&&audioCtx)audioMaster.gain.setTargetAtTime(soundOn?TUNING.audio.master:0,audioCtx.currentTime,.04);});graphicsEl.addEventListener("change",applyGraphicsMode);hapticsToggle.addEventListener("click",()=>{hapticsOn=!hapticsOn;hapticsToggle.classList.toggle("on",hapticsOn)});debugToggle.addEventListener("click",()=>{debugOn=!debugOn;debugToggle.classList.toggle("on",debugOn);debugPanel.classList.toggle("show",debugOn)});racerCountEl.addEventListener("change",()=>{activeRacerCount=clamp(Number(racerCountEl.value)||DEFAULT_RACERS,2,MAX_PLAYERS);if(phase==="countdown"){createRacers();updateHUD();}});lapSetting.addEventListener("change",()=>{targetLaps=Number(lapSetting.value)||3;updateHUD()});respawnBtn.addEventListener("click",()=>{const p=racers[0];if(p?.falling)respawn(p)});
 
-function animate(now){requestAnimationFrame(animate);const realDt=Math.min(.05,(now-lastTime)/1000);lastTime=now;fpsAccum+=realDt;fpsFrames++;if(fpsAccum>.45){fps=fpsFrames/fpsAccum;fpsAccum=0;fpsFrames=0;}if(!paused){updatePhase(realDt);accumulator=Math.min(accumulator+realDt,.12);let steps=0;while(accumulator>=FIXED_DT&&steps++<MAX_SUBSTEPS){fixedUpdate(FIXED_DT);accumulator-=FIXED_DT;}}updateVisuals(realDt,now/1000);updateCamera(realDt);updateDynamicAudio(realDt);updateHUD();updateDebug();renderer.render(scene,camera);}
+function animate(now){requestAnimationFrame(animate);const realDt=Math.min(.05,(now-lastTime)/1000);lastTime=now;fpsAccum+=realDt;fpsFrames++;if(fpsAccum>.45){fps=fpsFrames/fpsAccum;fpsAccum=0;fpsFrames=0;}if(!paused){updatePhase(realDt);accumulator=Math.min(accumulator+realDt,.12);let steps=0;while(accumulator>=FIXED_DT&&steps++<MAX_SUBSTEPS){fixedUpdate(FIXED_DT);accumulator-=FIXED_DT;}}updateVisuals(realDt,now/1000);updateCamera(realDt);updateDynamicAudio(realDt);checkpointNotice=Math.max(0,checkpointNotice-realDt);hudRefresh-=realDt;if(hudRefresh<=0){updateHUD();hudRefresh=.1;}updateDebug();renderer.render(scene,camera);}
 
-initRenderer();createTrack();createEnvironment();activeRacerCount=clamp(Number(racerCountEl?.value)||DEFAULT_RACERS,2,MAX_PLAYERS);createRacers();updateHUD();setTimeout(()=>loading.style.display="none",260);requestAnimationFrame(t=>{lastTime=t;animate(t)});
+initRenderer();createTrack();createEnvironment();activeRacerCount=clamp(Number(racerCountEl?.value)||DEFAULT_RACERS,2,MAX_PLAYERS);createRacers();updateCamera(0);updateHUD();setTimeout(()=>loading.style.display="none",260);requestAnimationFrame(t=>{lastTime=t;animate(t)});
 </script>
 </body>
 </html>

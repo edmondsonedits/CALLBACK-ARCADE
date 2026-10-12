@@ -1,0 +1,7 @@
+{
+  "baseCommit": "785a15000abe11970c7b92c5f3cab197061fcedf",
+  "branch": "quality/royal-roller-ruckus",
+  "sourceSha256": "b65c05f3429e487caf6e388eb995a3f42655ce1c3aa2a88735380098542b02ee",
+  "archiveSha256": "643eea4257d0ab94ba9aee6ca2706b83b43ae10e1d9a05de7d2fd83289c2b515",
+  "scope": "local automated quality checks and inspected rendering; not multiplayer verification"
+}
