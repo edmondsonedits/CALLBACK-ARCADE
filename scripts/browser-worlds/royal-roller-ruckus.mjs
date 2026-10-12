@@ -16,6 +16,7 @@ export const rollerRuckus = {
   });
   check('production Three renderer creates a live WebGL2 context',render.webgl2&&!render.lost&&render.width>0&&render.height>0,render);
   check('title is a real all-bot demo',(await state()).isDemo&&(await state()).demo.allBots);
+  check('responsive title preserves word spacing',/ROYAL\s+ROLLER RUCKUS/.test(await page.locator('.setup-card h1').innerText()));
   await capture('title-default-balanced');
   await page.locator('#setupOptionsBtn').click();await page.locator('#graphics').selectOption('performance');await page.locator('#closeSettings').click();
   check('sustained flow QA uses the real Performance preference',await page.locator('#graphics').inputValue()==='performance');
@@ -53,7 +54,19 @@ export const rollerRuckus = {
    }else{await page.keyboard.down('w');await page.waitForTimeout(700);await page.keyboard.up('w');}
    const racing=await state();check(`${course}: simulation advances after native input`,racing.raceTime>0&&racing.racers.every(r=>r.position.every(Number.isFinite)));
    await capture(`${course}-race`);
-   const controls=await bounds('#joyWrap,#respawnBtn');check(`${course}: steering and recovery fit`,controls.length===2&&controls.every(x=>x.inside),controls);
+   const controls=await bounds('#joyWrap,#respawnBtn');check(`${course}: steering and any visible recovery action fit`,controls.some(x=>x.id==='joyWrap')&&controls.every(x=>x.inside),controls);
+   const cue=await page.evaluate(()=>{const a=document.querySelector('.guidance').getBoundingClientRect(),b=document.querySelector('.speed-pill').getBoundingClientRect();return {cue:{top:a.top,bottom:a.bottom,left:a.left,right:a.right},speed:{top:b.top,bottom:b.bottom,left:b.left,right:b.right},clear:a.top>=b.bottom||a.bottom<=b.top||a.left>=b.right||a.right<=b.left};});
+   check(`${course}: coaching clears the speed display`,cue.clear,cue);
+   if(course==='crownway') {
+    const recoveries=(await state()).racers[0].recoveries;
+    await page.keyboard.down('a');
+    try {await page.locator('#respawnBtn.show').waitFor({state:'visible',timeout:60000});} finally {await page.keyboard.up('a');}
+    const recovery=await bounds('#respawnBtn');check('visible recovery button fits after a real fall',recovery.length===1&&recovery.every(x=>x.inside),recovery);
+    if(profile.touch)await page.locator('#respawnBtn').tap();else await page.locator('#respawnBtn').click();
+    await page.waitForFunction(n=>window.CallbackRace.getState().racers[0].recoveries>n,recoveries);
+    check('native recovery action returns a fallen racer',(await state()).racers[0].recoveries>recoveries);
+    await capture('recovered');
+   }
    await page.locator('#settingsBtn').click();const paused=await state();await page.waitForTimeout(200);check(`${course}: settings freezes race clock`,paused.paused&&(await state()).raceTime===paused.raceTime);
    await page.locator('#courseSetting').selectOption(course==='crownway'?'foundry':'crownway');check(`${course}: map edit stages until next Start`,(await state()).activeCourse===course);
    await page.locator('#closeSettings').click();await page.locator('#pauseOverlay.open').waitFor();await page.locator('#pauseMenuBtn').click();

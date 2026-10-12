@@ -29,6 +29,9 @@
             0.5
           ]
         }
+      ],
+      "externalResources": [
+        "Textures/colormap.png"
       ]
     }
   },
@@ -62,6 +65,9 @@
             0.3149999976158142
           ]
         }
+      ],
+      "externalResources": [
+        "Textures/colormap.png"
       ]
     }
   },
@@ -95,7 +101,8 @@
             0.515141547
           ]
         }
-      ]
+      ],
+      "externalResources": []
     }
   },
   {
@@ -128,7 +135,8 @@
             0.369824
           ]
         }
-      ]
+      ],
+      "externalResources": []
     }
   },
   {
@@ -142,5 +150,23 @@
     "archiveSha256": "b631d4b07f7002549fdcf155f01141ad482f79f3440e4e301eed49ce5f1d8958",
     "license": "CC0-1.0",
     "changes": "Byte-identical; normalized scale/pivot at runtime; glacier material tint on owned clones."
+  },
+  {
+    "pack": "castle-kit",
+    "source": "https://kenney.nl/assets/castle-kit",
+    "archiveUrl": "https://kenney.nl/media/pages/assets/castle-kit/a395102d20-1711543616/kenney_castle-kit.zip",
+    "archiveSha256": "921f3f73927bb23106cae34bc21d5ab4b033a9fc120475e96f714a406e3169df",
+    "license": "CC0-1.0",
+    "file": "Textures/colormap.png",
+    "upstreamFile": "Models/GLB format/Textures/colormap.png",
+    "bytes": 7529,
+    "sha256": "66fd49be148f32e88f6c8cace67120250d1943a7856601158ad0ff24651db0b0",
+    "changes": "Byte-identical required external image referenced by castle-tower.glb and court-banner.glb.",
+    "image": {
+      "width": 512,
+      "height": 512,
+      "format": "PNG"
+    },
+    "licenseFile": "LICENSE-castle-kit.txt"
   }
 ]

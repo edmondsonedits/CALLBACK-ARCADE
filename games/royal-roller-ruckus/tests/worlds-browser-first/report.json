@@ -1,0 +1,4358 @@
+{
+  "commit": "3f87373fbd64c6422db4e1d6b5f2b93556ddc2c7",
+  "date": "2026-10-12T10:47:31.075Z",
+  "browser": "156.0.8078.4",
+  "checks": [
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "title runs a real demo",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "no horizontal document overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "Watch keeps the live demo running",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "native name field accepts ordinary multiword typing",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "beach: demo advances simulation",
+      "passed": true,
+      "detail": {
+        "before": 0.03,
+        "after": 2.24
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "beach: demo does not award wins",
+      "passed": true,
+      "detail": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "beach: full roster and name survive Start",
+      "passed": true,
+      "detail": {
+        "count": 10,
+        "name": "Ada Lovelace"
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "beach: starts the selected real court",
+      "passed": true,
+      "detail": {
+        "arena": "beach",
+        "demo": false
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "beach: hazard cue fits without covering standings",
+      "passed": true,
+      "detail": {
+        "overlap": false,
+        "clipped": false,
+        "inside": true,
+        "top": 117,
+        "rosterBottom": 107,
+        "height": 27.5
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "beach: active controls fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "track",
+          "x": 517.671875,
+          "y": 720,
+          "w": 112,
+          "h": 112,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "magnet",
+          "x": 782,
+          "y": 733,
+          "w": 112,
+          "h": 112,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "pulse",
+          "x": 903,
+          "y": 748,
+          "w": 82,
+          "h": 82,
+          "visible": true,
+          "inside": true
+        }
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "beach: explicit pause stops play",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "beach: settings returns to pause",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "beach: menu restores demo",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "gale: demo advances simulation",
+      "passed": true,
+      "detail": {
+        "before": 0.11,
+        "after": 2.32
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "gale: demo does not award wins",
+      "passed": true,
+      "detail": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "gale: full roster and name survive Start",
+      "passed": true,
+      "detail": {
+        "count": 10,
+        "name": "Ada Lovelace"
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "gale: starts the selected real court",
+      "passed": true,
+      "detail": {
+        "arena": "gale",
+        "demo": false
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "gale: hazard cue fits without covering standings",
+      "passed": true,
+      "detail": {
+        "overlap": false,
+        "clipped": false,
+        "inside": true,
+        "top": 117,
+        "rosterBottom": 107,
+        "height": 27.5
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "gale: active controls fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "track",
+          "x": 517.671875,
+          "y": 720,
+          "w": 112,
+          "h": 112,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "magnet",
+          "x": 782,
+          "y": 733,
+          "w": 112,
+          "h": 112,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "pulse",
+          "x": 903,
+          "y": 748,
+          "w": 82,
+          "h": 82,
+          "visible": true,
+          "inside": true
+        }
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "gale: explicit pause stops play",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "gale: settings returns to pause",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "gale: menu restores demo",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "moon: demo advances simulation",
+      "passed": true,
+      "detail": {
+        "before": 0.12,
+        "after": 2.34
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "moon: demo does not award wins",
+      "passed": true,
+      "detail": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "moon: full roster and name survive Start",
+      "passed": true,
+      "detail": {
+        "count": 10,
+        "name": "Ada Lovelace"
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "moon: starts the selected real court",
+      "passed": true,
+      "detail": {
+        "arena": "moon",
+        "demo": false
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "moon: hazard cue fits without covering standings",
+      "passed": true,
+      "detail": {
+        "overlap": false,
+        "clipped": false,
+        "inside": true,
+        "top": 117,
+        "rosterBottom": 107,
+        "height": 27.5
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "moon: active controls fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "track",
+          "x": 517.671875,
+          "y": 720,
+          "w": 112,
+          "h": 112,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "magnet",
+          "x": 782,
+          "y": 733,
+          "w": 112,
+          "h": 112,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "pulse",
+          "x": 903,
+          "y": 748,
+          "w": 82,
+          "h": 82,
+          "visible": true,
+          "inside": true
+        }
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "moon: explicit pause stops play",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "moon: settings returns to pause",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "moon: menu restores demo",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "clockwork: demo advances simulation",
+      "passed": true,
+      "detail": {
+        "before": 0.07,
+        "after": 2.29
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "clockwork: demo does not award wins",
+      "passed": true,
+      "detail": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "clockwork: full roster and name survive Start",
+      "passed": true,
+      "detail": {
+        "count": 10,
+        "name": "Ada Lovelace"
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "clockwork: starts the selected real court",
+      "passed": true,
+      "detail": {
+        "arena": "clockwork",
+        "demo": false
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "clockwork: hazard cue fits without covering standings",
+      "passed": true,
+      "detail": {
+        "overlap": false,
+        "clipped": false,
+        "inside": true,
+        "top": 117,
+        "rosterBottom": 107,
+        "height": 27.5
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "clockwork: active controls fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "track",
+          "x": 517.671875,
+          "y": 720,
+          "w": 112,
+          "h": 112,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "magnet",
+          "x": 782,
+          "y": 733,
+          "w": 112,
+          "h": 112,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "pulse",
+          "x": 903,
+          "y": 748,
+          "w": 82,
+          "h": 82,
+          "visible": true,
+          "inside": true
+        }
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "clockwork: explicit pause stops play",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "clockwork: settings returns to pause",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "clockwork: menu restores demo",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "Tour starts a fresh four-court session",
+      "passed": true,
+      "detail": {
+        "index": 0,
+        "maps": [
+          "clockwork",
+          "beach",
+          "gale",
+          "moon"
+        ],
+        "points": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "completed": 0
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "Tour cue fits without covering standings",
+      "passed": true,
+      "detail": {
+        "overlap": false,
+        "clipped": false,
+        "inside": true,
+        "top": 117,
+        "rosterBottom": 107,
+        "height": 41
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "desktop",
+      "name": "native settings controls available",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "title runs a real demo",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "no horizontal document overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "Watch keeps the live demo running",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "native name field accepts ordinary multiword typing",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "beach: demo advances simulation",
+      "passed": true,
+      "detail": {
+        "before": 0.01,
+        "after": 2.22
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "beach: demo does not award wins",
+      "passed": true,
+      "detail": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "beach: full roster and name survive Start",
+      "passed": true,
+      "detail": {
+        "count": 10,
+        "name": "Ada Lovelace"
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "beach: starts the selected real court",
+      "passed": true,
+      "detail": {
+        "arena": "beach",
+        "demo": false
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "beach: hazard cue fits without covering standings",
+      "passed": true,
+      "detail": {
+        "overlap": false,
+        "clipped": false,
+        "inside": true,
+        "top": 561.859375,
+        "rosterBottom": 153,
+        "height": 26.140625
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "beach: active controls fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "track",
+          "x": 25.578125,
+          "y": 690.40625,
+          "w": 132.59375,
+          "h": 132.59375,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "magnet",
+          "x": 164.5,
+          "y": 699.5,
+          "w": 136.5,
+          "h": 136.5,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "pulse",
+          "x": 310,
+          "y": 732.75,
+          "w": 70,
+          "h": 70,
+          "visible": true,
+          "inside": true
+        }
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "beach: explicit pause stops play",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "beach: settings returns to pause",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "beach: menu restores demo",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "gale: demo advances simulation",
+      "passed": true,
+      "detail": {
+        "before": 0.01,
+        "after": 2.22
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "gale: demo does not award wins",
+      "passed": true,
+      "detail": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "gale: full roster and name survive Start",
+      "passed": true,
+      "detail": {
+        "count": 10,
+        "name": "Ada Lovelace"
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "gale: starts the selected real court",
+      "passed": true,
+      "detail": {
+        "arena": "gale",
+        "demo": false
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "gale: hazard cue fits without covering standings",
+      "passed": true,
+      "detail": {
+        "overlap": false,
+        "clipped": false,
+        "inside": true,
+        "top": 561.859375,
+        "rosterBottom": 153,
+        "height": 26.140625
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "gale: active controls fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "track",
+          "x": 25.578125,
+          "y": 690.40625,
+          "w": 132.59375,
+          "h": 132.59375,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "magnet",
+          "x": 164.5,
+          "y": 699.5,
+          "w": 136.5,
+          "h": 136.5,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "pulse",
+          "x": 310,
+          "y": 732.75,
+          "w": 70,
+          "h": 70,
+          "visible": true,
+          "inside": true
+        }
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "gale: explicit pause stops play",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "gale: settings returns to pause",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "gale: menu restores demo",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "moon: demo advances simulation",
+      "passed": true,
+      "detail": {
+        "before": 0.01,
+        "after": 2.22
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "moon: demo does not award wins",
+      "passed": true,
+      "detail": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "moon: full roster and name survive Start",
+      "passed": true,
+      "detail": {
+        "count": 10,
+        "name": "Ada Lovelace"
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "moon: starts the selected real court",
+      "passed": true,
+      "detail": {
+        "arena": "moon",
+        "demo": false
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "moon: hazard cue fits without covering standings",
+      "passed": true,
+      "detail": {
+        "overlap": false,
+        "clipped": false,
+        "inside": true,
+        "top": 561.859375,
+        "rosterBottom": 153,
+        "height": 26.140625
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "moon: active controls fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "track",
+          "x": 25.578125,
+          "y": 690.40625,
+          "w": 132.59375,
+          "h": 132.59375,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "magnet",
+          "x": 164.5,
+          "y": 699.5,
+          "w": 136.5,
+          "h": 136.5,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "pulse",
+          "x": 310,
+          "y": 732.75,
+          "w": 70,
+          "h": 70,
+          "visible": true,
+          "inside": true
+        }
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "moon: explicit pause stops play",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "moon: settings returns to pause",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "moon: menu restores demo",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "clockwork: demo advances simulation",
+      "passed": true,
+      "detail": {
+        "before": 0.01,
+        "after": 2.22
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "clockwork: demo does not award wins",
+      "passed": true,
+      "detail": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "clockwork: full roster and name survive Start",
+      "passed": true,
+      "detail": {
+        "count": 10,
+        "name": "Ada Lovelace"
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "clockwork: starts the selected real court",
+      "passed": true,
+      "detail": {
+        "arena": "clockwork",
+        "demo": false
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "clockwork: hazard cue fits without covering standings",
+      "passed": true,
+      "detail": {
+        "overlap": false,
+        "clipped": false,
+        "inside": true,
+        "top": 561.859375,
+        "rosterBottom": 153,
+        "height": 26.140625
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "clockwork: active controls fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "track",
+          "x": 25.578125,
+          "y": 690.40625,
+          "w": 132.59375,
+          "h": 132.59375,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "magnet",
+          "x": 164.5,
+          "y": 699.5,
+          "w": 136.5,
+          "h": 136.5,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "pulse",
+          "x": 310,
+          "y": 732.75,
+          "w": 70,
+          "h": 70,
+          "visible": true,
+          "inside": true
+        }
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "clockwork: explicit pause stops play",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "clockwork: settings returns to pause",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "clockwork: menu restores demo",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "Tour starts a fresh four-court session",
+      "passed": true,
+      "detail": {
+        "index": 0,
+        "maps": [
+          "clockwork",
+          "beach",
+          "gale",
+          "moon"
+        ],
+        "points": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "completed": 0
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "Tour cue fits without covering standings",
+      "passed": true,
+      "detail": {
+        "overlap": false,
+        "clipped": false,
+        "inside": true,
+        "top": 561.859375,
+        "rosterBottom": 153,
+        "height": 26.140625
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "portrait",
+      "name": "native settings controls available",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "title runs a real demo",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "no horizontal document overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "Watch keeps the live demo running",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "native name field accepts ordinary multiword typing",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "beach: demo advances simulation",
+      "passed": true,
+      "detail": {
+        "before": 0.02,
+        "after": 2.21
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "beach: demo does not award wins",
+      "passed": true,
+      "detail": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "beach: full roster and name survive Start",
+      "passed": true,
+      "detail": {
+        "count": 10,
+        "name": "Ada Lovelace"
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "beach: starts the selected real court",
+      "passed": true,
+      "detail": {
+        "arena": "beach",
+        "demo": false
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "beach: hazard cue fits without covering standings",
+      "passed": true,
+      "detail": {
+        "overlap": false,
+        "clipped": false,
+        "inside": true,
+        "top": 84,
+        "rosterBottom": 74,
+        "height": 27.5
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "beach: active controls fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "track",
+          "x": 10,
+          "y": 245,
+          "w": 124,
+          "h": 124,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "magnet",
+          "x": 624,
+          "y": 258,
+          "w": 124,
+          "h": 124,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "pulse",
+          "x": 758,
+          "y": 282,
+          "w": 76,
+          "h": 76,
+          "visible": true,
+          "inside": true
+        }
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "beach: explicit pause stops play",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "beach: settings returns to pause",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "beach: menu restores demo",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "gale: demo advances simulation",
+      "passed": true,
+      "detail": {
+        "before": 0.01,
+        "after": 2.22
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "gale: demo does not award wins",
+      "passed": true,
+      "detail": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "gale: full roster and name survive Start",
+      "passed": true,
+      "detail": {
+        "count": 10,
+        "name": "Ada Lovelace"
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "gale: starts the selected real court",
+      "passed": true,
+      "detail": {
+        "arena": "gale",
+        "demo": false
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "gale: hazard cue fits without covering standings",
+      "passed": true,
+      "detail": {
+        "overlap": false,
+        "clipped": false,
+        "inside": true,
+        "top": 84,
+        "rosterBottom": 74,
+        "height": 27.5
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "gale: active controls fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "track",
+          "x": 10,
+          "y": 245,
+          "w": 124,
+          "h": 124,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "magnet",
+          "x": 624,
+          "y": 258,
+          "w": 124,
+          "h": 124,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "pulse",
+          "x": 758,
+          "y": 282,
+          "w": 76,
+          "h": 76,
+          "visible": true,
+          "inside": true
+        }
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "gale: explicit pause stops play",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "gale: settings returns to pause",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "gale: menu restores demo",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "moon: demo advances simulation",
+      "passed": true,
+      "detail": {
+        "before": 0.01,
+        "after": 2.22
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "moon: demo does not award wins",
+      "passed": true,
+      "detail": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "moon: full roster and name survive Start",
+      "passed": true,
+      "detail": {
+        "count": 10,
+        "name": "Ada Lovelace"
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "moon: starts the selected real court",
+      "passed": true,
+      "detail": {
+        "arena": "moon",
+        "demo": false
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "moon: hazard cue fits without covering standings",
+      "passed": true,
+      "detail": {
+        "overlap": false,
+        "clipped": false,
+        "inside": true,
+        "top": 84,
+        "rosterBottom": 74,
+        "height": 27.5
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "moon: active controls fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "track",
+          "x": 10,
+          "y": 245,
+          "w": 124,
+          "h": 124,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "magnet",
+          "x": 624,
+          "y": 258,
+          "w": 124,
+          "h": 124,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "pulse",
+          "x": 758,
+          "y": 282,
+          "w": 76,
+          "h": 76,
+          "visible": true,
+          "inside": true
+        }
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "moon: explicit pause stops play",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "moon: settings returns to pause",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "moon: menu restores demo",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "clockwork: demo advances simulation",
+      "passed": true,
+      "detail": {
+        "before": 0.01,
+        "after": 2.22
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "clockwork: demo does not award wins",
+      "passed": true,
+      "detail": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "clockwork: full roster and name survive Start",
+      "passed": true,
+      "detail": {
+        "count": 10,
+        "name": "Ada Lovelace"
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "clockwork: starts the selected real court",
+      "passed": true,
+      "detail": {
+        "arena": "clockwork",
+        "demo": false
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "clockwork: hazard cue fits without covering standings",
+      "passed": true,
+      "detail": {
+        "overlap": false,
+        "clipped": false,
+        "inside": true,
+        "top": 84,
+        "rosterBottom": 74,
+        "height": 27.5
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "clockwork: active controls fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "track",
+          "x": 10,
+          "y": 245,
+          "w": 124,
+          "h": 124,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "magnet",
+          "x": 624,
+          "y": 258,
+          "w": 124,
+          "h": 124,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "id": "pulse",
+          "x": 758,
+          "y": 282,
+          "w": 76,
+          "h": 76,
+          "visible": true,
+          "inside": true
+        }
+      ]
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "clockwork: explicit pause stops play",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "clockwork: settings returns to pause",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "clockwork: menu restores demo",
+      "passed": true
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "Tour starts a fresh four-court session",
+      "passed": true,
+      "detail": {
+        "index": 0,
+        "maps": [
+          "clockwork",
+          "beach",
+          "gale",
+          "moon"
+        ],
+        "points": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "completed": 0
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "Tour cue fits without covering standings",
+      "passed": true,
+      "detail": {
+        "overlap": false,
+        "clipped": false,
+        "inside": true,
+        "top": 84,
+        "rosterBottom": 74,
+        "height": 41
+      }
+    },
+    {
+      "game": "royal-ballistix",
+      "profile": "landscape",
+      "name": "native settings controls available",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "title opens in demo mode",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "Watch keeps demo active",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "Watch keeps Start and Return visible inside viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "returnWatchBtn",
+          "x": 1107.09375,
+          "y": 830,
+          "width": 150.453125,
+          "height": 48,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "watchStartBtn",
+          "x": 1265.546875,
+          "y": 830,
+          "width": 152.453125,
+          "height": 48,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "Watch Start creates a clean real performance",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "Watch actions hide after Start",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "native field retains multiword name",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "settings footer stays inside viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "resumeBtn",
+          "x": 405,
+          "y": 800,
+          "width": 314,
+          "height": 48,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "pauseMenuBtn",
+          "x": 727,
+          "y": 800,
+          "width": 308,
+          "height": 48,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "royal: demo advances",
+      "passed": true,
+      "detail": {
+        "before": {
+          "active": true,
+          "phase": "call",
+          "phaseTime": 0,
+          "phrase": 1,
+          "stage": "royal",
+          "resolved": 0
+        },
+        "after": {
+          "active": true,
+          "phase": "call",
+          "phaseTime": 1.8089999999999997,
+          "phrase": 1,
+          "stage": "royal",
+          "resolved": 0
+        }
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "royal: demo leaves the real session untouched",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "royal: page has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "royal: demo status remains readable",
+      "passed": true,
+      "detail": [
+        {
+          "id": "statusPill",
+          "x": 12,
+          "y": 97.5,
+          "width": 878,
+          "height": 36,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "royal: clean ten-seat rehearsal start",
+      "passed": true,
+      "detail": {
+        "stage": "royal",
+        "seats": 10,
+        "name": "Ada Lovelace",
+        "phase": "countdown"
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "royal: all four touch controls fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "0",
+          "x": 391.5975036621094,
+          "y": 791.9000244140625,
+          "width": 156.55496215820312,
+          "height": 88.199951171875,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "1",
+          "x": 558.3475341796875,
+          "y": 791.9000244140625,
+          "width": 156.55499267578125,
+          "height": 88.199951171875,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "2",
+          "x": 725.0975341796875,
+          "y": 791.9000244140625,
+          "width": 156.55499267578125,
+          "height": 88.199951171875,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "3",
+          "x": 891.8475341796875,
+          "y": 791.9000244140625,
+          "width": 156.5550537109375,
+          "height": 88.199951171875,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "royal: real keyboard input reaches the game",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "royal: settings pauses the musical clock",
+      "passed": true,
+      "detail": {
+        "before": 2.017,
+        "after": 2.017
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "royal: returning to title resumes a demo",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "tide: demo advances",
+      "passed": true,
+      "detail": {
+        "before": {
+          "active": true,
+          "phase": "call",
+          "phaseTime": 0,
+          "phrase": 1,
+          "stage": "tide",
+          "resolved": 0
+        },
+        "after": {
+          "active": true,
+          "phase": "call",
+          "phaseTime": 1.8077999999999879,
+          "phrase": 1,
+          "stage": "tide",
+          "resolved": 0
+        }
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "tide: demo leaves the real session untouched",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "tide: page has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "tide: demo status remains readable",
+      "passed": true,
+      "detail": [
+        {
+          "id": "statusPill",
+          "x": 12,
+          "y": 97.5,
+          "width": 878,
+          "height": 36,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "tide: clean ten-seat rehearsal start",
+      "passed": true,
+      "detail": {
+        "stage": "tide",
+        "seats": 10,
+        "name": "Ada Lovelace",
+        "phase": "countdown"
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "tide: all four touch controls fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "0",
+          "x": 391.5975036621094,
+          "y": 791.9000244140625,
+          "width": 156.55496215820312,
+          "height": 88.199951171875,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "1",
+          "x": 558.3475341796875,
+          "y": 791.9000244140625,
+          "width": 156.55499267578125,
+          "height": 88.199951171875,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "2",
+          "x": 725.0975341796875,
+          "y": 791.9000244140625,
+          "width": 156.55499267578125,
+          "height": 88.199951171875,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "3",
+          "x": 891.8475341796875,
+          "y": 791.9000244140625,
+          "width": 156.5550537109375,
+          "height": 88.199951171875,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "tide: real keyboard input reaches the game",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "tide: settings pauses the musical clock",
+      "passed": true,
+      "detail": {
+        "before": 1.915,
+        "after": 1.915
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "tide: returning to title resumes a demo",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "foundry: demo advances",
+      "passed": true,
+      "detail": {
+        "before": {
+          "active": true,
+          "phase": "call",
+          "phaseTime": 0,
+          "phrase": 1,
+          "stage": "foundry",
+          "resolved": 0
+        },
+        "after": {
+          "active": true,
+          "phase": "call",
+          "phaseTime": 1.796000000000003,
+          "phrase": 1,
+          "stage": "foundry",
+          "resolved": 0
+        }
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "foundry: demo leaves the real session untouched",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "foundry: page has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "foundry: demo status remains readable",
+      "passed": true,
+      "detail": [
+        {
+          "id": "statusPill",
+          "x": 12,
+          "y": 97.5,
+          "width": 878,
+          "height": 36,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "foundry: clean ten-seat rehearsal start",
+      "passed": true,
+      "detail": {
+        "stage": "foundry",
+        "seats": 10,
+        "name": "Ada Lovelace",
+        "phase": "countdown"
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "foundry: all four touch controls fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "0",
+          "x": 391.5975036621094,
+          "y": 791.9000244140625,
+          "width": 156.55496215820312,
+          "height": 88.199951171875,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "1",
+          "x": 558.3475341796875,
+          "y": 791.9000244140625,
+          "width": 156.55499267578125,
+          "height": 88.199951171875,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "2",
+          "x": 725.0975341796875,
+          "y": 791.9000244140625,
+          "width": 156.55499267578125,
+          "height": 88.199951171875,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "3",
+          "x": 891.8475341796875,
+          "y": 791.9000244140625,
+          "width": 156.5550537109375,
+          "height": 88.199951171875,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "foundry: real keyboard input reaches the game",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "rehearsal actions fit the viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "repeatPhraseBtn",
+          "x": 420,
+          "y": 711,
+          "width": 194.65625,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "nextPhraseBtn",
+          "x": 622.65625,
+          "y": 711,
+          "width": 194.671875,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "finishPracticeBtn",
+          "x": 825.328125,
+          "y": 711,
+          "width": 194.671875,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "rehearsal message clears HUD and actions",
+      "passed": true,
+      "detail": {
+        "top": 386.90625,
+        "bottom": 465.09375,
+        "hudBottom": 141,
+        "actionsTop": 711,
+        "left": 420,
+        "right": 1020,
+        "width": 1440
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "Repeat phrase returns to the same chord pattern",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "foundry: settings pauses the musical clock",
+      "passed": true,
+      "detail": {
+        "before": 0.069,
+        "after": 0.069
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "foundry: returning to title resumes a demo",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "mirror: demo advances",
+      "passed": true,
+      "detail": {
+        "before": {
+          "active": true,
+          "phase": "call",
+          "phaseTime": 0,
+          "phrase": 1,
+          "stage": "mirror",
+          "resolved": 0
+        },
+        "after": {
+          "active": true,
+          "phase": "call",
+          "phaseTime": 1.795400000000022,
+          "phrase": 1,
+          "stage": "mirror",
+          "resolved": 0
+        }
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "mirror: demo leaves the real session untouched",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "mirror: page has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "mirror: demo status remains readable",
+      "passed": true,
+      "detail": [
+        {
+          "id": "statusPill",
+          "x": 12,
+          "y": 97.5,
+          "width": 878,
+          "height": 36,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "mirror: clean ten-seat rehearsal start",
+      "passed": true,
+      "detail": {
+        "stage": "mirror",
+        "seats": 10,
+        "name": "Ada Lovelace",
+        "phase": "countdown"
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "mirror: all four touch controls fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "0",
+          "x": 391.5975036621094,
+          "y": 791.9000244140625,
+          "width": 156.55496215820312,
+          "height": 88.199951171875,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "1",
+          "x": 558.3475341796875,
+          "y": 791.9000244140625,
+          "width": 156.55499267578125,
+          "height": 88.199951171875,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "2",
+          "x": 725.0975341796875,
+          "y": 791.9000244140625,
+          "width": 156.55499267578125,
+          "height": 88.199951171875,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "3",
+          "x": 891.8475341796875,
+          "y": 791.9000244140625,
+          "width": 156.5550537109375,
+          "height": 88.199951171875,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "Mirror exposes the advertised legal echo lanes",
+      "passed": true,
+      "detail": {
+        "time": 1.535,
+        "lanes": [
+          1
+        ],
+        "responseLanes": [
+          2
+        ],
+        "responses": [
+          {
+            "resolved": false,
+            "hits": []
+          },
+          {
+            "resolved": false,
+            "hits": []
+          },
+          {
+            "resolved": false,
+            "hits": []
+          },
+          {
+            "resolved": false,
+            "hits": []
+          },
+          {
+            "resolved": false,
+            "hits": []
+          },
+          {
+            "resolved": false,
+            "hits": []
+          },
+          {
+            "resolved": false,
+            "hits": []
+          },
+          {
+            "resolved": false,
+            "hits": []
+          },
+          {
+            "resolved": false,
+            "hits": []
+          },
+          {
+            "resolved": false,
+            "hits": []
+          }
+        ]
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "mirror: real keyboard input reaches the game",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "mirror: settings pauses the musical clock",
+      "passed": true,
+      "detail": {
+        "before": 1.995,
+        "after": 1.995
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "mirror: returning to title resumes a demo",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "Tour starts at Royal Hall with clean standings",
+      "passed": true,
+      "detail": {
+        "index": 0,
+        "records": [],
+        "totalScore": 0
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "desktop",
+      "name": "customization offers at least twelve real native settings",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "title opens in demo mode",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "Watch keeps demo active",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "Watch keeps Start and Return visible inside viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "returnWatchBtn",
+          "x": 57.09375,
+          "y": 774,
+          "width": 150.453125,
+          "height": 48,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "watchStartBtn",
+          "x": 215.546875,
+          "y": 774,
+          "width": 152.453125,
+          "height": 48,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "Watch Start creates a clean real performance",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "Watch actions hide after Start",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "native field retains multiword name",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "settings footer stays inside viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "resumeBtn",
+          "x": 36,
+          "y": 750.671875,
+          "width": 158,
+          "height": 48,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "pauseMenuBtn",
+          "x": 202,
+          "y": 750.671875,
+          "width": 152,
+          "height": 48,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "royal: demo advances",
+      "passed": true,
+      "detail": {
+        "before": {
+          "active": true,
+          "phase": "call",
+          "phaseTime": 0,
+          "phrase": 1,
+          "stage": "royal",
+          "resolved": 0
+        },
+        "after": {
+          "active": true,
+          "phase": "call",
+          "phaseTime": 1.8063000000000173,
+          "phrase": 1,
+          "stage": "royal",
+          "resolved": 0
+        }
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "royal: demo leaves the real session untouched",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "royal: page has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "royal: demo status remains readable",
+      "passed": true,
+      "detail": [
+        {
+          "id": "statusPill",
+          "x": 12,
+          "y": 94.5,
+          "width": 170,
+          "height": 34,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "royal: clean ten-seat rehearsal start",
+      "passed": true,
+      "detail": {
+        "stage": "royal",
+        "seats": 10,
+        "name": "Ada Lovelace",
+        "phase": "countdown"
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "royal: all four touch controls fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "0",
+          "x": 15.854999542236328,
+          "y": 746.6298217773438,
+          "width": 83.79000854492188,
+          "height": 78.5684814453125,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "1",
+          "x": 107.35499572753906,
+          "y": 746.6298217773438,
+          "width": 83.78999328613281,
+          "height": 78.5684814453125,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "2",
+          "x": 198.85499572753906,
+          "y": 746.6298217773438,
+          "width": 83.78999328613281,
+          "height": 78.5684814453125,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "3",
+          "x": 290.3550109863281,
+          "y": 746.6298217773438,
+          "width": 83.79000854492188,
+          "height": 78.5684814453125,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "royal: real touch input reaches the game",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "royal: settings pauses the musical clock",
+      "passed": true,
+      "detail": {
+        "before": 1.783,
+        "after": 1.783
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "royal: returning to title resumes a demo",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "tide: demo advances",
+      "passed": true,
+      "detail": {
+        "before": {
+          "active": true,
+          "phase": "call",
+          "phaseTime": 0,
+          "phrase": 1,
+          "stage": "tide",
+          "resolved": 0
+        },
+        "after": {
+          "active": true,
+          "phase": "call",
+          "phaseTime": 1.805599999999977,
+          "phrase": 1,
+          "stage": "tide",
+          "resolved": 0
+        }
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "tide: demo leaves the real session untouched",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "tide: page has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "tide: demo status remains readable",
+      "passed": true,
+      "detail": [
+        {
+          "id": "statusPill",
+          "x": 12,
+          "y": 94.5,
+          "width": 170,
+          "height": 34,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "tide: clean ten-seat rehearsal start",
+      "passed": true,
+      "detail": {
+        "stage": "tide",
+        "seats": 10,
+        "name": "Ada Lovelace",
+        "phase": "countdown"
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "tide: all four touch controls fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "0",
+          "x": 15.854999542236328,
+          "y": 746.6298217773438,
+          "width": 83.79000854492188,
+          "height": 78.5684814453125,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "1",
+          "x": 107.35499572753906,
+          "y": 746.6298217773438,
+          "width": 83.78999328613281,
+          "height": 78.5684814453125,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "2",
+          "x": 198.85499572753906,
+          "y": 746.6298217773438,
+          "width": 83.78999328613281,
+          "height": 78.5684814453125,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "3",
+          "x": 290.3550109863281,
+          "y": 746.6298217773438,
+          "width": 83.79000854492188,
+          "height": 78.5684814453125,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "tide: real touch input reaches the game",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "tide: settings pauses the musical clock",
+      "passed": true,
+      "detail": {
+        "before": 1.75,
+        "after": 1.75
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "tide: returning to title resumes a demo",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "foundry: demo advances",
+      "passed": true,
+      "detail": {
+        "before": {
+          "active": true,
+          "phase": "call",
+          "phaseTime": 0,
+          "phrase": 1,
+          "stage": "foundry",
+          "resolved": 0
+        },
+        "after": {
+          "active": true,
+          "phase": "call",
+          "phaseTime": 1.8125,
+          "phrase": 1,
+          "stage": "foundry",
+          "resolved": 0
+        }
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "foundry: demo leaves the real session untouched",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "foundry: page has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "foundry: demo status remains readable",
+      "passed": true,
+      "detail": [
+        {
+          "id": "statusPill",
+          "x": 12,
+          "y": 94.5,
+          "width": 170,
+          "height": 34,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "foundry: clean ten-seat rehearsal start",
+      "passed": true,
+      "detail": {
+        "stage": "foundry",
+        "seats": 10,
+        "name": "Ada Lovelace",
+        "phase": "countdown"
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "foundry: all four touch controls fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "0",
+          "x": 15.854999542236328,
+          "y": 746.6298217773438,
+          "width": 83.79000854492188,
+          "height": 78.5684814453125,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "1",
+          "x": 107.35499572753906,
+          "y": 746.6298217773438,
+          "width": 83.78999328613281,
+          "height": 78.5684814453125,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "2",
+          "x": 198.85499572753906,
+          "y": 746.6298217773438,
+          "width": 83.78999328613281,
+          "height": 78.5684814453125,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "3",
+          "x": 290.3550109863281,
+          "y": 746.6298217773438,
+          "width": 83.79000854492188,
+          "height": 78.5684814453125,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "foundry: real touch input reaches the game",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "rehearsal actions fit the viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "repeatPhraseBtn",
+          "x": 11.703125,
+          "y": 649,
+          "width": 116.859375,
+          "height": 50,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "nextPhraseBtn",
+          "x": 136.5625,
+          "y": 649,
+          "width": 116.875,
+          "height": 50,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "finishPracticeBtn",
+          "x": 261.4375,
+          "y": 649,
+          "width": 116.859375,
+          "height": 50,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "rehearsal message clears HUD and actions",
+      "passed": true,
+      "detail": {
+        "top": 353.90625,
+        "bottom": 432.09375,
+        "hudBottom": 137,
+        "actionsTop": 649,
+        "left": 14,
+        "right": 376,
+        "width": 390
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "Repeat phrase returns to the same chord pattern",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "foundry: settings pauses the musical clock",
+      "passed": true,
+      "detail": {
+        "before": 0.041,
+        "after": 0.041
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "foundry: returning to title resumes a demo",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "mirror: demo advances",
+      "passed": true,
+      "detail": {
+        "before": {
+          "active": true,
+          "phase": "call",
+          "phaseTime": 0.006899999999994577,
+          "phrase": 1,
+          "stage": "mirror",
+          "resolved": 0
+        },
+        "after": {
+          "active": true,
+          "phase": "call",
+          "phaseTime": 1.8034999999999997,
+          "phrase": 1,
+          "stage": "mirror",
+          "resolved": 0
+        }
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "mirror: demo leaves the real session untouched",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "mirror: page has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "mirror: demo status remains readable",
+      "passed": true,
+      "detail": [
+        {
+          "id": "statusPill",
+          "x": 12,
+          "y": 94.5,
+          "width": 170,
+          "height": 34,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "mirror: clean ten-seat rehearsal start",
+      "passed": true,
+      "detail": {
+        "stage": "mirror",
+        "seats": 10,
+        "name": "Ada Lovelace",
+        "phase": "countdown"
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "mirror: all four touch controls fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "0",
+          "x": 15.854999542236328,
+          "y": 746.6298217773438,
+          "width": 83.79000854492188,
+          "height": 78.5684814453125,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "1",
+          "x": 107.35499572753906,
+          "y": 746.6298217773438,
+          "width": 83.78999328613281,
+          "height": 78.5684814453125,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "2",
+          "x": 198.85499572753906,
+          "y": 746.6298217773438,
+          "width": 83.78999328613281,
+          "height": 78.5684814453125,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "3",
+          "x": 290.3550109863281,
+          "y": 746.6298217773438,
+          "width": 83.79000854492188,
+          "height": 78.5684814453125,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "Mirror exposes the advertised legal echo lanes",
+      "passed": true,
+      "detail": {
+        "time": 1.535,
+        "lanes": [
+          0
+        ],
+        "responseLanes": [
+          3
+        ],
+        "responses": [
+          {
+            "resolved": false,
+            "hits": []
+          },
+          {
+            "resolved": false,
+            "hits": []
+          },
+          {
+            "resolved": false,
+            "hits": []
+          },
+          {
+            "resolved": false,
+            "hits": []
+          },
+          {
+            "resolved": false,
+            "hits": []
+          },
+          {
+            "resolved": false,
+            "hits": []
+          },
+          {
+            "resolved": false,
+            "hits": []
+          },
+          {
+            "resolved": false,
+            "hits": []
+          },
+          {
+            "resolved": false,
+            "hits": []
+          },
+          {
+            "resolved": false,
+            "hits": []
+          }
+        ]
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "mirror: real touch input reaches the game",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "mirror: settings pauses the musical clock",
+      "passed": true,
+      "detail": {
+        "before": 1.733,
+        "after": 1.733
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "mirror: returning to title resumes a demo",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "Tour starts at Royal Hall with clean standings",
+      "passed": true,
+      "detail": {
+        "index": 0,
+        "records": [],
+        "totalScore": 0
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "portrait",
+      "name": "customization offers at least twelve real native settings",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "title opens in demo mode",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "Watch keeps demo active",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "Watch keeps Start and Return visible inside viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "returnWatchBtn",
+          "x": 511.09375,
+          "y": 320,
+          "width": 150.453125,
+          "height": 48,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "watchStartBtn",
+          "x": 669.546875,
+          "y": 320,
+          "width": 152.453125,
+          "height": 48,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "Watch Start creates a clean real performance",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "Watch actions hide after Start",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "native field retains multiword name",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "settings footer stays inside viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "resumeBtn",
+          "x": 99,
+          "y": 313.296875,
+          "width": 322,
+          "height": 48,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "pauseMenuBtn",
+          "x": 429,
+          "y": 313.296875,
+          "width": 316,
+          "height": 48,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "royal: demo advances",
+      "passed": true,
+      "detail": {
+        "before": {
+          "active": true,
+          "phase": "call",
+          "phaseTime": 0.006199999999953576,
+          "phrase": 1,
+          "stage": "royal",
+          "resolved": 0
+        },
+        "after": {
+          "active": true,
+          "phase": "call",
+          "phaseTime": 1.8150999999999768,
+          "phrase": 1,
+          "stage": "royal",
+          "resolved": 0
+        }
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "royal: demo leaves the real session untouched",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "royal: page has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "royal: demo status remains readable",
+      "passed": true,
+      "detail": [
+        {
+          "id": "statusPill",
+          "x": 12,
+          "y": 100.5,
+          "width": 328,
+          "height": 30,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "royal: clean ten-seat rehearsal start",
+      "passed": true,
+      "detail": {
+        "stage": "royal",
+        "seats": 10,
+        "name": "Ada Lovelace",
+        "phase": "countdown"
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "royal: all four touch controls fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "0",
+          "x": 143.39405822753906,
+          "y": 327.5199890136719,
+          "width": 132.02439880371094,
+          "height": 50.96002197265625,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "1",
+          "x": 285.11297607421875,
+          "y": 327.5199890136719,
+          "width": 132.0396728515625,
+          "height": 50.96002197265625,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "2",
+          "x": 426.84716796875,
+          "y": 327.5199890136719,
+          "width": 132.0244140625,
+          "height": 50.96002197265625,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "3",
+          "x": 568.5661010742188,
+          "y": 327.5199890136719,
+          "width": 132.0396728515625,
+          "height": 50.96002197265625,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "royal: real touch input reaches the game",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "royal: settings pauses the musical clock",
+      "passed": true,
+      "detail": {
+        "before": 1.783,
+        "after": 1.783
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "royal: returning to title resumes a demo",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "tide: demo advances",
+      "passed": true,
+      "detail": {
+        "before": {
+          "active": true,
+          "phase": "call",
+          "phaseTime": 0,
+          "phrase": 1,
+          "stage": "tide",
+          "resolved": 0
+        },
+        "after": {
+          "active": true,
+          "phase": "call",
+          "phaseTime": 1.801700000000011,
+          "phrase": 1,
+          "stage": "tide",
+          "resolved": 0
+        }
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "tide: demo leaves the real session untouched",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "tide: page has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "tide: demo status remains readable",
+      "passed": true,
+      "detail": [
+        {
+          "id": "statusPill",
+          "x": 12,
+          "y": 100.5,
+          "width": 328,
+          "height": 30,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "tide: clean ten-seat rehearsal start",
+      "passed": true,
+      "detail": {
+        "stage": "tide",
+        "seats": 10,
+        "name": "Ada Lovelace",
+        "phase": "countdown"
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "tide: all four touch controls fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "0",
+          "x": 143.39405822753906,
+          "y": 327.5199890136719,
+          "width": 132.02439880371094,
+          "height": 50.96002197265625,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "1",
+          "x": 285.11297607421875,
+          "y": 327.5199890136719,
+          "width": 132.0396728515625,
+          "height": 50.96002197265625,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "2",
+          "x": 426.84716796875,
+          "y": 327.5199890136719,
+          "width": 132.0244140625,
+          "height": 50.96002197265625,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "3",
+          "x": 568.5661010742188,
+          "y": 327.5199890136719,
+          "width": 132.0396728515625,
+          "height": 50.96002197265625,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "tide: real touch input reaches the game",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "tide: settings pauses the musical clock",
+      "passed": true,
+      "detail": {
+        "before": 1.75,
+        "after": 1.75
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "tide: returning to title resumes a demo",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "foundry: demo advances",
+      "passed": true,
+      "detail": {
+        "before": {
+          "active": true,
+          "phase": "call",
+          "phaseTime": 0,
+          "phrase": 1,
+          "stage": "foundry",
+          "resolved": 0
+        },
+        "after": {
+          "active": true,
+          "phase": "call",
+          "phaseTime": 1.7983999999999654,
+          "phrase": 1,
+          "stage": "foundry",
+          "resolved": 0
+        }
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "foundry: demo leaves the real session untouched",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "foundry: page has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "foundry: demo status remains readable",
+      "passed": true,
+      "detail": [
+        {
+          "id": "statusPill",
+          "x": 12,
+          "y": 100.5,
+          "width": 328,
+          "height": 30,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "foundry: clean ten-seat rehearsal start",
+      "passed": true,
+      "detail": {
+        "stage": "foundry",
+        "seats": 10,
+        "name": "Ada Lovelace",
+        "phase": "countdown"
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "foundry: all four touch controls fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "0",
+          "x": 143.39405822753906,
+          "y": 327.5199890136719,
+          "width": 132.02439880371094,
+          "height": 50.96002197265625,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "1",
+          "x": 285.11297607421875,
+          "y": 327.5199890136719,
+          "width": 132.0396728515625,
+          "height": 50.96002197265625,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "2",
+          "x": 426.84716796875,
+          "y": 327.5199890136719,
+          "width": 132.0244140625,
+          "height": 50.96002197265625,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "3",
+          "x": 568.5661010742188,
+          "y": 327.5199890136719,
+          "width": 132.0396728515625,
+          "height": 50.96002197265625,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "foundry: real touch input reaches the game",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "rehearsal actions fit the viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "repeatPhraseBtn",
+          "x": 122,
+          "y": 264,
+          "width": 194.65625,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "nextPhraseBtn",
+          "x": 324.65625,
+          "y": 264,
+          "width": 194.671875,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "finishPracticeBtn",
+          "x": 527.328125,
+          "y": 264,
+          "width": 194.671875,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "rehearsal message clears HUD and actions",
+      "passed": true,
+      "detail": {
+        "top": 165.6328125,
+        "bottom": 239.3671875,
+        "hudBottom": 141,
+        "actionsTop": 264,
+        "left": 122,
+        "right": 722,
+        "width": 844
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "Repeat phrase returns to the same chord pattern",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "foundry: settings pauses the musical clock",
+      "passed": true,
+      "detail": {
+        "before": 0.04,
+        "after": 0.04
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "foundry: returning to title resumes a demo",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "mirror: demo advances",
+      "passed": true,
+      "detail": {
+        "before": {
+          "active": true,
+          "phase": "call",
+          "phaseTime": 0,
+          "phrase": 1,
+          "stage": "mirror",
+          "resolved": 0
+        },
+        "after": {
+          "active": true,
+          "phase": "call",
+          "phaseTime": 1.8100000000000023,
+          "phrase": 1,
+          "stage": "mirror",
+          "resolved": 0
+        }
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "mirror: demo leaves the real session untouched",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "mirror: page has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "mirror: demo status remains readable",
+      "passed": true,
+      "detail": [
+        {
+          "id": "statusPill",
+          "x": 12,
+          "y": 100.5,
+          "width": 328,
+          "height": 30,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "mirror: clean ten-seat rehearsal start",
+      "passed": true,
+      "detail": {
+        "stage": "mirror",
+        "seats": 10,
+        "name": "Ada Lovelace",
+        "phase": "countdown"
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "mirror: all four touch controls fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "0",
+          "x": 143.39405822753906,
+          "y": 327.5199890136719,
+          "width": 132.02439880371094,
+          "height": 50.96002197265625,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "1",
+          "x": 285.11297607421875,
+          "y": 327.5199890136719,
+          "width": 132.0396728515625,
+          "height": 50.96002197265625,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "2",
+          "x": 426.84716796875,
+          "y": 327.5199890136719,
+          "width": 132.0244140625,
+          "height": 50.96002197265625,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "3",
+          "x": 568.5661010742188,
+          "y": 327.5199890136719,
+          "width": 132.0396728515625,
+          "height": 50.96002197265625,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "Mirror exposes the advertised legal echo lanes",
+      "passed": true,
+      "detail": {
+        "time": 1.535,
+        "lanes": [
+          2
+        ],
+        "responseLanes": [
+          1
+        ],
+        "responses": [
+          {
+            "resolved": false,
+            "hits": []
+          },
+          {
+            "resolved": false,
+            "hits": []
+          },
+          {
+            "resolved": false,
+            "hits": []
+          },
+          {
+            "resolved": false,
+            "hits": []
+          },
+          {
+            "resolved": false,
+            "hits": []
+          },
+          {
+            "resolved": false,
+            "hits": []
+          },
+          {
+            "resolved": false,
+            "hits": []
+          },
+          {
+            "resolved": false,
+            "hits": []
+          },
+          {
+            "resolved": false,
+            "hits": []
+          },
+          {
+            "resolved": false,
+            "hits": []
+          }
+        ]
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "mirror: real touch input reaches the game",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "mirror: settings pauses the musical clock",
+      "passed": true,
+      "detail": {
+        "before": 1.717,
+        "after": 1.717
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "mirror: returning to title resumes a demo",
+      "passed": true
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "Tour starts at Royal Hall with clean standings",
+      "passed": true,
+      "detail": {
+        "index": 0,
+        "records": [],
+        "totalScore": 0
+      }
+    },
+    {
+      "game": "royal-scratch-match",
+      "profile": "landscape",
+      "name": "customization offers at least twelve real native settings",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "production Three renderer creates a live WebGL2 context",
+      "passed": true,
+      "detail": {
+        "width": 1440,
+        "height": 900,
+        "webgl2": true,
+        "lost": false,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "title is a real all-bot demo",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "sustained flow QA uses the real Performance preference",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "Watch Start and Return fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "watchStartBtn",
+          "x": 663.8515625,
+          "y": 825,
+          "width": 113.390625,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "watchReturnBtn",
+          "x": 785.2421875,
+          "y": 825,
+          "width": 83.09375,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "Watch Start creates clean real race",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "native name supports spaces and empty editing",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "settings actions fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "restartBtn",
+          "x": 524,
+          "y": 718,
+          "width": 192,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "closeSettings",
+          "x": 724,
+          "y": 718,
+          "width": 192,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "at least twelve meaningful native preferences exist",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "crownway: live demo advances real racers",
+      "passed": true,
+      "detail": {
+        "wallSeconds": 1.663,
+        "simulationSeconds": 0.3500000000000003,
+        "graphics": "performance"
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "crownway: demo leaves real race clock untouched",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "crownway: scene remains finite",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "crownway: no horizontal page overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "crownway: selected ten-seat practice starts cleanly",
+      "passed": true,
+      "detail": {
+        "laps": 1,
+        "seats": 10,
+        "difficulty": "normal",
+        "hazards": 1
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "crownway: simulation advances after native input",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "name": "crownway: steering and recovery fit",
+      "passed": false,
+      "detail": [
+        {
+          "id": "joyWrap",
+          "x": 8,
+          "y": 752,
+          "width": 150,
+          "height": 140,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "production Three renderer creates a live WebGL2 context",
+      "passed": true,
+      "detail": {
+        "width": 390,
+        "height": 844,
+        "webgl2": true,
+        "lost": false,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "title is a real all-bot demo",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "sustained flow QA uses the real Performance preference",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "Watch Start and Return fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "watchStartBtn",
+          "x": 138.8515625,
+          "y": 765,
+          "width": 113.390625,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "watchReturnBtn",
+          "x": 260.2421875,
+          "y": 765,
+          "width": 83.09375,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "Watch Start creates clean real race",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "native name supports spaces and empty editing",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "settings actions fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "restartBtn",
+          "x": 31,
+          "y": 761.671875,
+          "width": 160,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "closeSettings",
+          "x": 199,
+          "y": 761.671875,
+          "width": 160,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "at least twelve meaningful native preferences exist",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "crownway: live demo advances real racers",
+      "passed": true,
+      "detail": {
+        "wallSeconds": 1.674,
+        "simulationSeconds": 0.8999999999999984,
+        "graphics": "performance"
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "crownway: demo leaves real race clock untouched",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "crownway: scene remains finite",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "crownway: no horizontal page overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "crownway: selected ten-seat practice starts cleanly",
+      "passed": true,
+      "detail": {
+        "laps": 1,
+        "seats": 10,
+        "difficulty": "normal",
+        "hazards": 1
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "crownway: simulation advances after native input",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "name": "crownway: steering and recovery fit",
+      "passed": false,
+      "detail": [
+        {
+          "id": "joyWrap",
+          "x": 8,
+          "y": 660,
+          "width": 182,
+          "height": 176,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "production Three renderer creates a live WebGL2 context",
+      "passed": true,
+      "detail": {
+        "width": 844,
+        "height": 390,
+        "webgl2": true,
+        "lost": false,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "title is a real all-bot demo",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "sustained flow QA uses the real Performance preference",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "Watch Start and Return fit",
+      "passed": true,
+      "detail": [
+        {
+          "id": "watchStartBtn",
+          "x": 365.8515625,
+          "y": 315,
+          "width": 113.390625,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "watchReturnBtn",
+          "x": 487.2421875,
+          "y": 315,
+          "width": 83.09375,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "Watch Start creates clean real race",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "native name supports spaces and empty editing",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "settings actions fit viewport",
+      "passed": true,
+      "detail": [
+        {
+          "id": "restartBtn",
+          "x": 226,
+          "y": 321.296875,
+          "width": 192,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        },
+        {
+          "id": "closeSettings",
+          "x": 426,
+          "y": 321.296875,
+          "width": 192,
+          "height": 44,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "at least twelve meaningful native preferences exist",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "crownway: live demo advances real racers",
+      "passed": true,
+      "detail": {
+        "wallSeconds": 1.62,
+        "simulationSeconds": 0.9499999999999982,
+        "graphics": "performance"
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "crownway: demo leaves real race clock untouched",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "crownway: scene remains finite",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "crownway: no horizontal page overflow",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "crownway: selected ten-seat practice starts cleanly",
+      "passed": true,
+      "detail": {
+        "laps": 1,
+        "seats": 10,
+        "difficulty": "normal",
+        "hazards": 1
+      }
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "crownway: simulation advances after native input",
+      "passed": true
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "name": "crownway: steering and recovery fit",
+      "passed": false,
+      "detail": [
+        {
+          "id": "joyWrap",
+          "x": 8,
+          "y": 282,
+          "width": 105,
+          "height": 100,
+          "inside": true,
+          "clipped": false
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "error": "Error: crownway: steering and recovery fit: [{\"id\":\"joyWrap\",\"x\":8,\"y\":752,\"width\":150,\"height\":140,\"inside\":true,\"clipped\":false}]"
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "desktop",
+      "runtime": [
+        "HTTP 404: http://127.0.0.1:33723/games/royal-roller-ruckus/source/assets/Textures/colormap.png",
+        "Console error at http://127.0.0.1:33723/games/royal-roller-ruckus/source/assets/Textures/colormap.png: Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Console error at http://127.0.0.1:33723/games/royal-roller-ruckus/source/vendor/GLTFLoader.js: THREE.GLTFLoader: Couldn't load texture Textures/colormap.png",
+        "HTTP 404: http://127.0.0.1:33723/games/royal-roller-ruckus/source/assets/Textures/colormap.png",
+        "Console error at http://127.0.0.1:33723/games/royal-roller-ruckus/source/assets/Textures/colormap.png: Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Console error at http://127.0.0.1:33723/games/royal-roller-ruckus/source/vendor/GLTFLoader.js: THREE.GLTFLoader: Couldn't load texture Textures/colormap.png"
+      ]
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "error": "Error: crownway: steering and recovery fit: [{\"id\":\"joyWrap\",\"x\":8,\"y\":660,\"width\":182,\"height\":176,\"inside\":true,\"clipped\":false}]"
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "portrait",
+      "runtime": [
+        "HTTP 404: http://127.0.0.1:33723/games/royal-roller-ruckus/source/assets/Textures/colormap.png",
+        "Console error at http://127.0.0.1:33723/games/royal-roller-ruckus/source/assets/Textures/colormap.png: Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Console error at http://127.0.0.1:33723/games/royal-roller-ruckus/source/vendor/GLTFLoader.js: THREE.GLTFLoader: Couldn't load texture Textures/colormap.png",
+        "HTTP 404: http://127.0.0.1:33723/games/royal-roller-ruckus/source/assets/Textures/colormap.png",
+        "Console error at http://127.0.0.1:33723/games/royal-roller-ruckus/source/assets/Textures/colormap.png: Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Console error at http://127.0.0.1:33723/games/royal-roller-ruckus/source/vendor/GLTFLoader.js: THREE.GLTFLoader: Couldn't load texture Textures/colormap.png"
+      ]
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "error": "Error: crownway: steering and recovery fit: [{\"id\":\"joyWrap\",\"x\":8,\"y\":282,\"width\":105,\"height\":100,\"inside\":true,\"clipped\":false}]"
+    },
+    {
+      "game": "royal-roller-ruckus",
+      "profile": "landscape",
+      "runtime": [
+        "HTTP 404: http://127.0.0.1:33723/games/royal-roller-ruckus/source/assets/Textures/colormap.png",
+        "Console error at http://127.0.0.1:33723/games/royal-roller-ruckus/source/assets/Textures/colormap.png: Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Console error at http://127.0.0.1:33723/games/royal-roller-ruckus/source/vendor/GLTFLoader.js: THREE.GLTFLoader: Couldn't load texture Textures/colormap.png",
+        "HTTP 404: http://127.0.0.1:33723/games/royal-roller-ruckus/source/assets/Textures/colormap.png",
+        "Console error at http://127.0.0.1:33723/games/royal-roller-ruckus/source/assets/Textures/colormap.png: Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Console error at http://127.0.0.1:33723/games/royal-roller-ruckus/source/vendor/GLTFLoader.js: THREE.GLTFLoader: Couldn't load texture Textures/colormap.png"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "path": "games/royal-ballistix/source/index.html",
+      "sha256": "bfb1502a133a0200adc2c4df9478c5dcdca1592d2f72ca3664aca663a6b2161d"
+    },
+    {
+      "path": "games/royal-scratch-match/source/index.html",
+      "sha256": "4866174e89a07e444091ab2a550b74cc25f6ef211277aea44f45ad5fe5cb7d18"
+    },
+    {
+      "path": "games/royal-roller-ruckus/source/index.html",
+      "sha256": "abfcf0096fa695af021259430a384f5526974f25b120fb7c152b804dd52b393d"
+    }
+  ],
+  "limits": [
+    "Headless Chromium and emulated touch dimensions; no physical phone, gamepad or audio-by-ear verification."
+  ]
+}

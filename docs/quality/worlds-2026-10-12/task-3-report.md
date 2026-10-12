@@ -41,7 +41,7 @@ Full navigation and camera JSON, focused stdout and file hashes are in `games/ro
 
 ## Hashes and reuse
 
-- Current `source/index.html`: `abfcf0096fa695af021259430a384f5526974f25b120fb7c152b804dd52b393d`.
+- Current `source/index.html` after browser fix round2: `2b6b59de0bcadbfcb0907d2eeb60a4389178e3fec5c0ce91c907d2e91d1f9217`.
 - Original archive: `643eea4257d0ab94ba9aee6ca2706b83b43ae10e1d9a05de7d2fd83289c2b515` (unchanged).
 - Every source/vendor/asset file hash: `integration/worlds/verification.json`.
 - Kenney source and archive URL/hash, per-file hash, triangle/material/bounds inspection: `source/assets/provenance.json`; complete upstream CC0 notices alongside assets.
@@ -56,3 +56,18 @@ Existing Start/settings/pause selectors remain. New selectors: `#watchBtn`, `#wa
 ## Acceptance and limits
 
 Detailed ten-dimension pass/unverified rubric is in `integration/worlds/README.md`. Behavioral core fairness, physical course rules, demo isolation, preference validation, replay/results and provenance pass CPU checks. World/FX visual coherence, audible mix, responsive rendered UI and GPU/device performance remain unverified pending parent review; no subjective9/10 is asserted. Existing browser environment is software-rendered and may be slow: ordinary Chromium UI waits should track actual phase, not pretend a fixed wall delay equals simulation time. The parent owns exact-source screenshots and independent review, and will send concrete fixes if needed. Authenticated multiplayer transport remains in progress.
+
+## Fix round 1 — independent review P2s
+
+Reviewed the complete `task-3-review.md`. Both findings reproduced before changes: the new world-arrow test failed its initial local-direction assertion; the concurrent Foundry test observed two texture requests instead of one.
+
+1. **Skygarden direction: addressed.** Each world arrow retains its track index and sets its cone-tip quaternion from local up to the corresponding track normal multiplied by the announced wind side. Creation and subsequent warning/active updates share the same helper. Real Three tests check all six curved segments on both alternating cycles, and compare cone tips with the velocity change from the actual shipping course-force function. Every dot product exceeds0.999. The HUD and gust force remain unchanged.
+2. **Steam ownership race: addressed.** The loader now publishes one cached pending promise before awaiting it; all generations receive the same authoritative texture. Generation checks still precede sprite attachment. A rejected texture request stays cached as unavailable until reload, preventing retry storms while preserving procedural plumes/racing. Deferred-loader tests issue overlapping first Foundry visits, resolve pending work newest-first, check stale-group invalidation, then repeat course disposal/re-entry and assert the active map/cache identity and a single request. A failure test verifies one failure count/no repeated request and continuing simulation.
+
+Validation: `node --test tests/royal-roller-ruckus-worlds.test.mjs tests/royal-roller-ruckus-quality.test.mjs tests/royal-roller-ruckus-sumo-benchmark.test.mjs` → **60 passed,0 failed** (19 worlds +41 preserved). The two primary regressions first ran **0 passed,2 failed**, then **2 passed,0 failed** after the fix. Inline syntax, source-smoke/archive and scoped diff checks also pass. Full navigation/camera evidence remains valid for unchanged physics/routes; it was not unnecessarily repeated for these rendering/resource changes. Source/provenance hashes were refreshed in `integration/worlds/verification.json`. The fix commit is supplied in the handoff; parent browser/re-review gates remain pending.
+
+## Browser fix round 2 — missing Castle Kit texture
+
+Real Chromium run38238458261 exposed two404s per profile from the Castle Kit GLBs' external `Textures/colormap.png` URI. The texture had been omitted from the otherwise local model intake. Added the byte-identical source PNG at the exact required relative path (512×512,7,529bytes, SHA-256`66fd49be148f32e88f6c8cace67120250d1943a7856601158ad0ff24651db0b0`). Its provenance inherits the recorded official Castle Kit archive/source URL/hash and complete CC0 license, and manifest paths now include the dependency. Corrected the asset README's erroneous statement that the models had no external URI.
+
+Added a recursive shipped-model resource closure test over every GLB/glTF image and buffer URI. It first failed specifically on the missing PNG, then passed after the repair; it also checks local containment, per-file provenance/hash and manifest registration for all reached resources. Full focused command now reports**61 passed,0 failed** (20 worlds+41 prior). After the coordinator inspected9 PNGs, also corrected the compact title's lost word space (`ROYAL ROLLER RUCKUS`), moved the short-landscape coach below the speed HUD, and explicitly restored pointer input on the visible recovery button. In recovery state the secondary title/meter hide so the44px button fits within the100px control panel; redundant short-landscape background branding also hides during title/demo. I inspected the supplied landscape race screenshot and confirmed the cue/speed overlap before the scoped CSS fix. No race physics changed. Inline syntax, source-smoke/archive and scoped diff checks pass. Latest source SHA is`2b6b59de0bcadbfcb0907d2eeb60a4389178e3fec5c0ce91c907d2e91d1f9217`; the full source-tree hash manifest is updated. Parent fresh-browser bounds and real-fall/tap-recovery checks remain pending.

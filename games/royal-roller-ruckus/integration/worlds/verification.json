@@ -1,19 +1,20 @@
 {
   "version": "1.6.0-worlds",
-  "sourceSha256": "abfcf0096fa695af021259430a384f5526974f25b120fb7c152b804dd52b393d",
+  "sourceSha256": "2b6b59de0bcadbfcb0907d2eeb60a4389178e3fec5c0ce91c907d2e91d1f9217",
   "originalSha256": "643eea4257d0ab94ba9aee6ca2706b83b43ae10e1d9a05de7d2fd83289c2b515",
   "files": {
     "source/assets/LICENSE-castle-kit.txt": "aac944f18106b3a3e29c6fdeec02523d4cab4c735abc01f5a8fa88a79ae173ef",
     "source/assets/LICENSE-nature-kit.txt": "cb96b75e3560ac78d7a53ce6f083f4cdb5c53faea6141b62d63458dcfe1e4b9d",
     "source/assets/LICENSE-particles.txt": "f9e70b81d8cc07c4e07c9f2eff1d94fd371a06070b18cb67c651c41158ec2975",
-    "source/assets/README.md": "e3cdb82a909959a8a433a1c7e9c225486cc34a767642d3bfeabfa030fa54d954",
+    "source/assets/README.md": "57725ea1a1e1ab8c72abf99334258cc2ab2186ae419efe730eb47e656f53af44",
+    "source/assets/Textures/colormap.png": "66fd49be148f32e88f6c8cace67120250d1943a7856601158ad0ff24651db0b0",
     "source/assets/castle-tower.glb": "5e98cdf2bf4d885edc3fa514719f80d63872e11c54ee629c11859223dad8489c",
     "source/assets/court-banner.glb": "e6a4433f5770b9fc31bf67d72424a877d5c010486d5b7373ce7af900566827e4",
     "source/assets/garden-oak.glb": "d7fd8773674928c50c11b66d12c636d49bdcc15a8b1c7fbb98e6f63a3439a3f3",
     "source/assets/glacier-rock.glb": "e4fefd8d8d7deab42be61bd222bcd088330012f0025789146b81f25a46095ffd",
-    "source/assets/provenance.json": "34e11b644d90dfa32ac8c268f1bd2ecefdc011dff90e3fee31c8bcf1a1db98f8",
+    "source/assets/provenance.json": "06c1cbbb525c83bbf0d91dd4d55e543084f7909a8a38b466b69bdb561b629141",
     "source/assets/steam.png": "e8724c219e8d35859167fc0a7e207e13c72ccf0c29704909b9bb3d3dc71c6cf7",
-    "source/index.html": "abfcf0096fa695af021259430a384f5526974f25b120fb7c152b804dd52b393d",
+    "source/index.html": "2b6b59de0bcadbfcb0907d2eeb60a4389178e3fec5c0ce91c907d2e91d1f9217",
     "source/original/royal_roller_ruckus_v1.4_vertical_crownway.html": "643eea4257d0ab94ba9aee6ca2706b83b43ae10e1d9a05de7d2fd83289c2b515",
     "source/vendor/BufferGeometryUtils.js": "248b3e8420bd3de805ca01845c1b0cc62aa2766f3c56bdcead265e306f8e715c",
     "source/vendor/GLTFLoader.js": "2904f2823e23d5bc1d64512bf4c0d777ac44d728d47c34a9e3d48ce8ef6b761d",
@@ -24,7 +25,7 @@
   },
   "tests": {
     "focused": {
-      "passed": 57,
+      "passed": 61,
       "failed": 0
     },
     "classicNavigation": {
@@ -61,6 +62,25 @@
       "maps": 4,
       "playerBottomLimitPx": 532,
       "turnLimitRadians": 0.1
+    },
+    "reviewFixRound1": {
+      "passed": 3,
+      "failed": 0,
+      "covers": [
+        "World-arrow direction versus local gust on six curved segments, initial state, both warnings and both active cycles",
+        "Concurrent first texture loads, newest-first resolution, generation invalidation and repeat-transition identity/disposal",
+        "Cached failure without retry storm; actual race simulation remains available"
+      ]
+    },
+    "modelResourceClosure": {
+      "passed": 1,
+      "models": 4,
+      "externalTextures": 1,
+      "checks": [
+        "Recursive GLB/glTF image/buffer URI traversal",
+        "All resources local and within shipped assets",
+        "Exact per-file hashes and manifest entries"
+      ]
     }
   },
   "limits": [

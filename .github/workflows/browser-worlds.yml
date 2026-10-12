@@ -33,7 +33,9 @@ jobs:
       - name: Exercise worlds on desktop and emulated touch viewports
         run: node scripts/browser-worlds/run.mjs
         env:
-          BROWSER_GAMES: ${{ inputs.games || 'all' }}
+          # Sequential expansion: automatic pixel QA follows the current game.
+          # Manual dispatch can select any game or run the complete arcade.
+          BROWSER_GAMES: ${{ inputs.games || 'royal-roller-ruckus' }}
       - uses: actions/upload-artifact@v4
         if: always()
         with:

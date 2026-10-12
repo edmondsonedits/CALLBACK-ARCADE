@@ -4,7 +4,7 @@ Implementation source commit: `50f6661`, followed by the results-classification/
 
 ## Behavioral and real-Three checks
 
-- `focused-tests.txt`: 57/57 focused tests (41 preserved + 16 worlds). The four initial worlds tests failed before implementation because course/rules/demo/Series contracts did not yet exist.
+- `focused-tests.txt`: 61/61 focused tests (41 preserved + 20 worlds). The four initial worlds tests failed before implementation because course/rules/demo/Series contracts did not yet exist.
 - `navigation.json`: 24 actual-simulation, three-lap races at maximum hazard intensity across every course, 2/10 seats and seeds 123/456/789. Every racer finished with finite state, unique places, and no non-forward gate credit. Crownway 115.24–123.58s; Frostglass 86.39–88.87s; Foundry 115.91–123.18s; Skygarden 80.74–82.66s (simulated time). Foundry's ten-seat seed456 had six real falls and physical recoveries; all finished legally. No hidden progress, teleport-to-finish or fabricated timestamp was used.
 - `camera.json`: all-course, full-spline 7.7-unit/s camera sweeps. Worst projected player bottom: Crownway/Foundry 527.72px, Frostglass 492.13px, Skygarden 508.23px, all below 532px at 1280×720. Worst frame turn 0.04825rad, below 0.1.
 - Existing real-course check: 2/4/10 seats finish three laps; coincident-pack physical release and crossover landing without credit pass.
@@ -31,3 +31,11 @@ Real Three CPU scene tests prove finite rider poses, rematch disposal, a bounded
 | Source/license/regression | pass | Local source/archive hashes, full notices, loader import-only modifications and unchanged original/renderer. |
 
 The coordinator owns independent review and exact-source Chromium/WebGL screenshots. No subjective 9/10, hardware touch/gamepad/audio or measured-device FPS certification is claimed. Authenticated online transport remains unintegrated.
+
+## Independent review fix round 1
+
+Both P2 findings were reproduced with failing shipping-source tests before correction. Skygarden cone tips now use the corresponding track normal multiplied by the announced gust side at creation and update; actual-force alignment exceeds0.999 at all six arrow positions in both cycles. Steam loading now publishes one shared pending promise before awaiting it; stale generations cannot attach sprites or change resource ownership. Newest-first completion, repeated transitions, cached failure, resource identity and disposal checks pass. A failed request stays unavailable until reload with the procedural fallback active. The combined focused suite is now60/60. No simulation force, checkpoint, route or camera behavior changed, so full navigation sweeps were not rerun for these rendering/resource fixes.
+
+## Browser fix round 2 — model resource closure
+
+The first ordinary Chromium run exposed a missing Castle Kit dependency: both castle GLBs reference `Textures/colormap.png`. The exact licensed upstream512×512 PNG (7,529bytes) is now shipped at that relative path, with manifest, source/archive/per-file hashes and the existing complete Castle Kit CC0 notice. Its SHA-256 is `66fd49be148f32e88f6c8cace67120250d1943a7856601158ad0ff24651db0b0`. The prior no-external-resource documentation was corrected. A new recursive GLB/glTF closure test first failed on the missing path and now follows every image/buffer URI, rejects remote/out-of-root references and verifies every reached file's hash and manifest entry. The full focused suite is61/61. The same browser round corrects compact-title word spacing, places the short-landscape coach below the speed HUD, restores pointer input on the visible recovery button and hides redundant title branding in short landscape. Recovery hides the secondary title/meter so its44px action fits the100px control panel. These scoped layout fixes change no physics. The complete source/file hash manifest is refreshed; the parent will verify fresh rendered bounds and a real fall/tap-recovery flow.

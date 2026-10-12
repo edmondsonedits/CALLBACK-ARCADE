@@ -123,7 +123,8 @@
           "source/assets/garden-oak.glb",
           "source/assets/glacier-rock.glb",
           "source/assets/provenance.json",
-          "source/assets/steam.png"
+          "source/assets/steam.png",
+          "source/assets/Textures/colormap.png"
         ],
         "provenance": "Imported user-supplied original preserved unchanged. Active v1.6.0 adds four courses, isolated live bot title, practice/Series, seeded replay, customization and licensed local Kenney scenery. Existing Three r180 engine and classic physics retained. Official matching MIT GLTFLoader/utilities use local import paths only; no runtime CDN.",
         "url": null
@@ -312,5 +313,5 @@
       }
     }
   ],
-  "revision": "29f0d6d91fb57105e9d0b7ab934518f2637e30e3424dd4a4a25d00900f0e8ca7"
+  "revision": "ad6b85087a6b6ba5cbfef69a07b85eb14c543750f6c5e0de508dc768ba7aa7dc"
 }

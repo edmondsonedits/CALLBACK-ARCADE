@@ -41,7 +41,7 @@ The Sumo benchmark suite also verifies settings validation/storage failure, setu
 
 ## Worlds v1.6.0
 
-- `node --test tests/royal-roller-ruckus-worlds.test.mjs tests/royal-roller-ruckus-quality.test.mjs tests/royal-roller-ruckus-sumo-benchmark.test.mjs`: 57 behavioral tests, including 16 worlds checks. The first four worlds tests were run red before implementation.
+- `node --test tests/royal-roller-ruckus-worlds.test.mjs tests/royal-roller-ruckus-quality.test.mjs tests/royal-roller-ruckus-sumo-benchmark.test.mjs`: 61 behavioral tests, including 20 worlds checks. The first four worlds tests were run red before implementation.
 - `node games/royal-roller-ruckus/tests/worlds-navigation.mjs`: real Three, 24 complete three-lap races (four maps × 2/10 seats × three seeds), maximum hazard intensity, no injected progress. Writes `integration/worlds/navigation.json`.
 - `node games/royal-roller-ruckus/tests/worlds-camera.mjs`: real Three full-route constant-speed framing sweeps for all four courses; writes `integration/worlds/camera.json`.
 - Existing `real-course.mjs`, `camera.mjs` and `navigation.test.mjs` remain valid with `THREE_MODULE=$PWD/games/royal-roller-ruckus/source/vendor/three.module.js`. Seeded bot simulation now sets the game's own seed field, without overriding its production RNG.
