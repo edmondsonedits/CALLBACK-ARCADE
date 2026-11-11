@@ -1,0 +1,48 @@
+{
+  "origin": "Existing King Prompter local simulation and project-owned upgrade code",
+  "baseCommit": "c6f1d3c2cf01a71a6ebeef165712b685e1e5fb2d",
+  "version": "2.0.0-sites",
+  "source": "lib/arcade/upgrades/snow-bash.ts",
+  "license": "Project-owned source; Three.js dependency is MIT",
+  "dependencies": [
+    {
+      "path": "../shared/arena-runtime.js",
+      "purpose": "Local Three.js presentation and match lifecycle"
+    },
+    {
+      "path": "../royal-twisted/vendor/three/three.module.js",
+      "license": "MIT",
+      "version": "0.180.0"
+    }
+  ],
+  "files": [
+    {
+      "path": "index.html",
+      "sha256": "69208a38ae31db78d43dfbd9530858e454e3ad0b84d24fc278cc3af62d97c7c9"
+    },
+    {
+      "path": "original/destructible-floor.ts",
+      "sha256": "4809ce67c984f673b1c96f049812c2cf8dfd85960cbe58effa29f53dda793ef1"
+    },
+    {
+      "path": "original/jungle-bash-config.ts",
+      "sha256": "86a7362dfce0c1f2ec469e493e4575a6e964ddec98349ea735cbe0d3cb295f68"
+    },
+    {
+      "path": "original/jungle-bash-simulation.ts",
+      "sha256": "c90f4fba1927847c1c2a123dd06627eb84dca0505f639622ceb476330ec91fd8"
+    },
+    {
+      "path": "original/snow-bash-config.ts",
+      "sha256": "ce630343a7e16a4fc9e4b4a0c237c62148ce393a1a54fba9b085f909b5885e1a"
+    },
+    {
+      "path": "original/space-bash-config.ts",
+      "sha256": "00acadb4c80fd93b368b788b9a9077555d5a9368b8a3b1b1181add2456972d41"
+    },
+    {
+      "path": "simulation.js",
+      "sha256": "278317bfdc4759a1760e9e4098e8c890d5a6d2cd27fd897781e08f668efd9583"
+    }
+  ]
+}

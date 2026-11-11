@@ -1,0 +1,8 @@
+export const PLAYER_CREATIONS_DDL = [
+  `CREATE TABLE IF NOT EXISTS player_creations (creation_id TEXT PRIMARY KEY, profile_hash TEXT NOT NULL, kind TEXT NOT NULL CHECK(kind IN ('scenery','fish')), title TEXT NOT NULL DEFAULT '', created_at INTEGER NOT NULL, updated_at INTEGER NOT NULL, deleted_at INTEGER, share_in_rooms INTEGER NOT NULL DEFAULT 0 CHECK(share_in_rooms IN (0,1)), revision INTEGER NOT NULL DEFAULT 0, state TEXT NOT NULL DEFAULT 'draft' CHECK(state IN ('draft','ready')), draft_json TEXT NOT NULL, placement_json TEXT NOT NULL, current_object_key TEXT, current_sha256 TEXT, current_byte_size INTEGER)`,
+  `CREATE INDEX IF NOT EXISTS idx_player_creations_owner ON player_creations(profile_hash, deleted_at, created_at DESC)`,
+  `CREATE INDEX IF NOT EXISTS idx_player_creations_room_share ON player_creations(profile_hash, share_in_rooms, deleted_at, state)`,
+  `CREATE TABLE IF NOT EXISTS player_creation_revisions (creation_id TEXT NOT NULL, revision INTEGER NOT NULL, idempotency_key TEXT NOT NULL, source_json TEXT NOT NULL, placement_json TEXT NOT NULL, object_key TEXT NOT NULL UNIQUE, sha256 TEXT NOT NULL, byte_size INTEGER NOT NULL, created_at INTEGER NOT NULL, PRIMARY KEY(creation_id, revision), UNIQUE(creation_id, idempotency_key))`,
+  `CREATE INDEX IF NOT EXISTS idx_player_creation_revisions_created ON player_creation_revisions(creation_id, created_at DESC)`,
+  `CREATE TRIGGER IF NOT EXISTS trg_player_creations_scenery_limit BEFORE INSERT ON player_creations WHEN NEW.kind = 'scenery' AND (SELECT COUNT(*) FROM player_creations WHERE profile_hash = NEW.profile_hash AND kind = 'scenery' AND deleted_at IS NULL) >= 20 BEGIN SELECT RAISE(ABORT, 'SCENERY_LIBRARY_FULL'); END`,
+] as const;

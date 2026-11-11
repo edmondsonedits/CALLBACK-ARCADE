@@ -1,0 +1,19 @@
+import vm from 'node:vm';
+import {readFileSync} from 'node:fs';
+const html=readFileSync(new URL('../../public/arcade-games/blind-crown/index.html',import.meta.url),'utf8');
+const scripts=[...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)];
+export function appHarness({corrupt=false,denied=false}={}){
+ const nodes=new Map(),listeners=new Map();let frame,now=0,pad=null,audioGraphs=0;
+ const ctx=new Proxy({measureText:()=>({width:40}),createLinearGradient:()=>({addColorStop(){}})}, {get:(o,k)=>o[k]||(()=>{})});
+ class Node{constructor(tag='DIV'){this.tagName=tag.toUpperCase();this.value='';this.children=[];this.options=[];this.dataset={};this.style={};this.listeners={};this.classList={toggle(){},add(){},remove(){}};this.width=1000;this.height=640;this.open=false;this.hidden=false;this.textContent='';this.checked=false;}
+ addEventListener(k,f){(this.listeners[k]??=[]).push(f);}emit(k,e={}){for(const f of this.listeners[k]||[])f(e);}setAttribute(){}append(...n){this.children.push(...n);}getContext(){return ctx;}getBoundingClientRect(){return {left:0,top:0,width:1000,height:640};}focus(){}showModal(){this.open=true;}close(){if(this.open){this.open=false;this.emit('close');}}setPointerCapture(){}hasPointerCapture(){return false;}releasePointerCapture(){}
+ set innerHTML(v){this._html=v;if(this.tagName==='SELECT'){this.options=[...v.matchAll(/value="([^"]+)"/g)].map(m=>({value:m[1]}));this.value=this.options[0]?.value||'';}}get innerHTML(){return this._html||'';}}
+ for(const m of html.matchAll(/<(\w+)\b[^>]*\bid="([^"]+)"[^>]*>/g)){const n=new Node(m[1]);n.value=m[0].match(/\bvalue="([^"]*)"/)?.[1]||'';nodes.set(m[2],n);}
+ for(const m of html.matchAll(/<select\b[^>]*id="([^"]+)"[^>]*>([\s\S]*?)<\/select>/g)){const n=nodes.get(m[1]);n.options=[...m[2].matchAll(/<option value="([^"]+)"([^>]*)>/g)].map(q=>({value:q[1],selected:q[2].includes('selected')}));n.value=(n.options.find(q=>q.selected)||n.options[0])?.value||'';}
+ const doc={hidden:false,body:new Node(),getElementById:id=>nodes.get(id),createElement:tag=>new Node(tag),querySelector:()=>[...nodes.values()].find(n=>n.open)||null,addEventListener:(k,f)=>{(listeners.get(k)||listeners.set(k,[]).get(k)).push(f);}};
+ const c=vm.createContext({document:doc,navigator:{getGamepads:()=>[pad]},location:{search:'',protocol:'file:',href:'file:///test'},localStorage:{getItem:()=>{if(denied)throw Error('denied');return corrupt?'{bad':null;},setItem(){if(denied)throw Error('denied');}},performance:{now:()=>now},matchMedia:()=>({matches:false}),URLSearchParams,URL,Event:class{},setTimeout:()=>0,clearTimeout(){},requestAnimationFrame:f=>{frame=f;}});c.window=c;c.addEventListener=()=>{};c.AudioContext=class{constructor(){audioGraphs++;this.currentTime=0;this.destination={};}resume(){}createOscillator(){return {frequency:{setValueAtTime(){},exponentialRampToValueAtTime(){}},connect(){},disconnect(){},start(){},stop(){}};}createGain(){return {gain:{setValueAtTime(){},exponentialRampToValueAtTime(){}},connect(){},disconnect(){}};}};
+ for(const marker of ['deterministic, authoritative match rules','Tactical learning and neutral gamepad','root.CrownInput ='])vm.runInContext(scripts.find(([, ,s])=>s.includes(marker))[2],c);
+ c.CrownPerspective={VIEWS:['overhead','isometric','first','third']};c.CrownArt={portraitSvg:()=>'<svg></svg>',environment(){},materials(){}};c.CrownArena={create:()=>({clear(){},render(){},getStats:()=>({})})};c.CrownRoomClient=class{constructor(){}action(){}disconnect(){}};
+ vm.runInContext(scripts.find(([, ,s])=>s.includes('Application coordinator.'))[2],c);
+ return {nodes,c,audioGraphs:()=>audioGraphs,advance:n=>{for(let i=0;i<n;i++){now+=80;frame(now);}},key:(key)=>{for(const f of listeners.get('keydown')||[])f({key,target:{tagName:'CANVAS'},repeat:false,preventDefault(){}});},setPad:p=>{pad=p;}};
+}

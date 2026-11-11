@@ -1,0 +1,42 @@
+name = "callback-party-sumo-pilot"
+main = "src/index.ts"
+compatibility_date = "2026-10-01"
+account_id = "909828ae2478bebf2a9ea46ad5930500"
+
+[vars]
+SITE_ORIGIN = "https://callback-party-game.dans-host.chatgpt.site"
+
+[[durable_objects.bindings]]
+name = "PARTY_ROOM"
+class_name = "PartyRoom"
+
+[[durable_objects.bindings]]
+name = "PARTY_ADMISSION"
+class_name = "PartyAdmission"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["PartyRoom", "PartyAdmission"]
+
+[dev]
+local_protocol = "http"
+
+[[durable_objects.bindings]]
+name = "NATIVE_ARCADE_ROOM"
+class_name = "NativeArcadeRoom"
+
+[[durable_objects.bindings]]
+name = "ONLINE_ARCADE_ROOM"
+class_name = "OnlineArcadeRoom"
+
+[[durable_objects.bindings]]
+name = "SESSION_ROOM"
+class_name = "SessionRoom"
+
+[[migrations]]
+tag = "v2-arcade-websockets"
+new_sqlite_classes = ["NativeArcadeRoom", "OnlineArcadeRoom"]
+
+[[migrations]]
+tag = "v3-session-lobby-sockets"
+new_sqlite_classes = ["SessionRoom"]

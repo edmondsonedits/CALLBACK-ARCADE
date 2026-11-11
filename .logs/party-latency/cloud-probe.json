@@ -1,0 +1,26 @@
+{
+  "checkedAt": "2026-10-13T22:47:25.138Z",
+  "worker": "https://callback-party-sumo-pilot.edmondsonedits.workers.dev",
+  "controllers": 10,
+  "acceptedInputs": [
+    1,
+    101,
+    101,
+    101,
+    101,
+    101,
+    101,
+    101,
+    101,
+    101
+  ],
+  "snapshots": 222,
+  "maxSnapshotBytes": 6284,
+  "pingSamples": 219,
+  "rttP50": 42,
+  "rttP95": 56,
+  "pauseResume": true,
+  "reconnect": true,
+  "errors": [],
+  "kind": "Node sockets from this PC to the live cloud Worker; not physical phone latency"
+}

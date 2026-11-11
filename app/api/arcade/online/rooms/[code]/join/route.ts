@@ -1,0 +1,2 @@
+import {onlineService} from '../../../../../../../server/arcade/online/runtime';import {requireSameOrigin} from '../../../../../../../server/http';import {enforceRateLimit} from '../../../../../../../server/security';
+export async function POST(request:Request,context:{params:Promise<{code:string}>}){const origin=requireSameOrigin(request);if(origin)return origin;const code=(await context.params).code.toUpperCase(),limit=await enforceRateLimit(request,`join-online-arcade:${code}`,75);if(limit)return limit;return (await onlineService()).join(request,code)}

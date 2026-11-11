@@ -1,0 +1,44 @@
+{
+  "origin": "Existing King Prompter local simulation and project-owned upgrade code",
+  "baseCommit": "c6f1d3c2cf01a71a6ebeef165712b685e1e5fb2d",
+  "version": "2.0.0-sites",
+  "source": "lib/arcade/upgrades/dragon-drop.ts",
+  "license": "Project-owned source; Three.js dependency is MIT",
+  "dependencies": [
+    {
+      "path": "../shared/arena-runtime.js",
+      "purpose": "Local Three.js presentation and match lifecycle"
+    },
+    {
+      "path": "../royal-twisted/vendor/three/three.module.js",
+      "license": "MIT",
+      "version": "0.180.0"
+    }
+  ],
+  "files": [
+    {
+      "path": "index.html",
+      "sha256": "f58af1fabc0a692b5aa058c1ec4a25650f03189ea77c396c3cd993d336d5a5a8"
+    },
+    {
+      "path": "original/dragon-drop-config.ts.txt",
+      "sha256": "754e7488975353fa8ee3356dc16226f4a02598bb2db230ce393aca06371f7fa5"
+    },
+    {
+      "path": "original/dragon-drop.ts.txt",
+      "sha256": "07d300f4d14b3d9d5a8859b0133a8b44e00e1bc44f0767101ac65ced04e9e34e"
+    },
+    {
+      "path": "original/practice-adapter.ts.txt",
+      "sha256": "ca6f8a7de8e423b5d1e2377897fe67a491faf2c1b7fc01d46e6e7c2dad5d4b45"
+    },
+    {
+      "path": "original/types.ts.txt",
+      "sha256": "6cc484204d82a940cf983bf0d3c51cc0e8e12bf6c112abbb434cecd7f61a354a"
+    },
+    {
+      "path": "simulation.js",
+      "sha256": "cbfe7424af42d42420c8ee7d6fd1ebcc04d1219b1b1030cb21cb053dbd8f510c"
+    }
+  ]
+}

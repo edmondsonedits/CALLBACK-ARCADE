@@ -1,9 +1,87 @@
-# Ignore local dependencies, Wrangler state, runtime logs, and credentials.
-node_modules/
-.wrangler/
-.local/
-.env
-.env.*
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+/.logs/playwright-artifacts/
+/.logs/qa-*/
+/.logs/qa-*.log
+/.logs/fullscreen/
+/.logs/fullscreen-*/
+/.logs/fullscreen-*.log
+/.logs/callback-lobby/*
+!/.logs/callback-lobby/release-receipt.md
+!/.logs/callback-lobby/execution-ledger.md
+/.logs/host-king-mystery-results-1366.png
+/.logs/grand-hall-loop-*.png
+
+# next.js
+/.next/
+/.vinext/
+/out/
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+/debug.log
+/tsconfig.tsbuildinfo
+
+# env files (can opt-in for committing if needed)
+.env*
 !.env.example
-*.tmp-*
-.browser-worlds/
+
+# vercel
+.vercel
+
+/dist/
+/.wrangler/
+/outputs/
+/work/
+/.tools/
+/.tmp/
+
+**/.dev.vars
+/party-worker/.wrangler/
+/.logs/party-latency/*.log
+/.logs/party-latency/*.png
+/.logs/party-latency/*-artifacts/
+/.logs/party-latency/browser-catalog.txt
+
+/.logs/party-latency/merge-recovery*/
+
+# Local fish acceptance browser cache and evidence
+/.cache/
+/.logs/fish-acceptance/
+/.logs/showcase-browser/
+/.logs/showcase-dialog-red/
+/.logs/fish-final-*.log
+
+/.logs/fish-upgrade-*.log
+/.logs/fish-perf-*
+/.logs/fish-perf.mts
+/party-worker/.wrangler-qa/
+/.logs/sorcery-journey/
+/.logs/qa-sorcery-journey/
+/.logs/interface-reconstruction/
+/.logs/fish-editor-layout/
+/.logs/phone-simplification/
+
+# Disposable Sorcery workshop QA evidence (milestone Markdown remains tracked)
+/.logs/workshop-*.log
+/.logs/workshop-*.png
+/.logs/workshop-*/

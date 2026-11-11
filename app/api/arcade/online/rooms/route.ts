@@ -1,0 +1,2 @@
+import {onlineService} from '../../../../../server/arcade/online/runtime';import {requireSameOrigin} from '../../../../../server/http';import {enforceRateLimit} from '../../../../../server/security';
+export async function POST(request:Request){const origin=requireSameOrigin(request);if(origin)return origin;const limit=await enforceRateLimit(request,'create-online-arcade',10);if(limit)return limit;return (await onlineService()).create(request)}

@@ -1,0 +1,37 @@
+{
+  "origin": "edmondsonedits/CALLBACK-ARCADE",
+  "sourceCommit": "017bc84a0ff9a23633d2cdd2ed22ac9b53d93146",
+  "version": "1.7.0",
+  "modifications": "Sites phone-room adapter and shared touch UI; unmodified imported entry archived in original/callback-worlds-2026-10-12.html",
+  "licensing": "Original project code with third-party asset and vendor licenses retained beside their files.",
+  "files": [
+    {
+      "path": "assets/README.md",
+      "sha256": "44259fadb034c1cb6c6239b2886cedb7eb7ed54b1556835946dee034476694db"
+    },
+    {
+      "path": "assets/kenney/License.txt",
+      "sha256": "f9e70b81d8cc07c4e07c9f2eff1d94fd371a06070b18cb67c651c41158ec2975"
+    },
+    {
+      "path": "assets/kenney/spark_06.png",
+      "sha256": "fe6d473393d3b9350c7a654b7cb5fbd343766b5b5b11d3e4aba476832d4a6d3f"
+    },
+    {
+      "path": "assets/worlds-provenance.json",
+      "sha256": "9bc34b9c2e2525170af627b144192157087e07310a699f90881dacba9f0edc79"
+    },
+    {
+      "path": "index.html",
+      "sha256": "96a1893930fcb480ce264d300cc7b48d2f1b44c44233f8e9628602b012c6a6dc"
+    },
+    {
+      "path": "original/blind-crown-v1.4.html",
+      "sha256": "496131ad8031a58b8b2ec78cc1aace73f57ab1ca0646271b383bf48bb108c462"
+    },
+    {
+      "path": "original/callback-worlds-2026-10-12.html",
+      "sha256": "546839ce6ffcab10f041fa1ba4ff45b6f05bbc76f1ce3f49793e97f0cf1e042b"
+    }
+  ]
+}

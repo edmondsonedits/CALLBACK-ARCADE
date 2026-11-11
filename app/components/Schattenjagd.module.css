@@ -1,0 +1,26 @@
+.stage,.phone{display:grid;min-height:min(78vh,760px);place-items:center;padding:clamp(1rem,3vw,2.5rem);color:#f5f0df;background:radial-gradient(ellipse at 50% 0%,#384964 0,#192534 52%,#10151c 100%)}
+.phone{min-height:auto;padding:.75rem 0;background:transparent}
+.panel{width:min(100%,70rem);padding:clamp(1.1rem,3vw,2.25rem);border:1px solid #c8a66e66;border-radius:1.25rem;background:#111a25ed;box-shadow:0 1.5rem 4rem #0006}
+.phone .panel{width:100%;padding:1.15rem}
+.eyebrow{margin:0 0 .5rem;color:#edc781;font-size:.76rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase}
+.panel h1{margin:.25rem 0 .7rem;font-size:clamp(1.55rem,4vw,3rem);line-height:1.05}
+.phone .panel h1{font-size:1.55rem}
+.panel p{line-height:1.5}
+.suspects,.scores,.votes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr));gap:.65rem;margin:1rem 0}
+.suspect,.score,.vote{padding:.85rem;border:1px solid #ffffff19;border-radius:.75rem;background:#ffffff0a}
+.suspect h2{margin:0 0 .45rem;color:#efcf95;font-size:1.1rem}
+.suspect p,.score p,.vote p{margin:.25rem 0;color:#d2d9e0;font-size:.92rem}
+.clue{margin:.85rem 0;padding:.85rem;border-left:3px solid #e6bc76;border-radius:.45rem;background:#dcae4b12}
+.choices{display:grid;gap:.65rem;margin:1rem 0}
+.choice,.primary,.secondary{min-height:3rem;padding:.75rem 1rem;border:1px solid #dbb976;border-radius:.65rem;color:#211a10;background:linear-gradient(145deg,#f4d99b,#d6ad64);font:inherit;font-weight:800;cursor:pointer;text-align:left}
+.choice span{display:block;margin-top:.3rem;color:#45391f;font-size:.82rem;font-weight:500}
+.primary,.secondary{min-height:2.8rem;text-align:center}
+.secondary{border-color:#718392;color:#f6f0e1;background:transparent}
+.choice:disabled,.primary:disabled,.secondary:disabled{cursor:not-allowed;opacity:.55}
+.status,.clock{color:#cbd4de;font-size:.92rem}
+.locked{display:inline-block;padding:.6rem .8rem;border-radius:.5rem;color:#f0d18f;background:#ffffff0c}
+.score{display:flex;justify-content:space-between;align-items:center}
+.score strong,.correct{color:#f0d18f}
+.error{color:#ffb6a6}
+.choice:focus-visible,.primary:focus-visible,.secondary:focus-visible{outline:3px solid #8de5ee;outline-offset:3px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}

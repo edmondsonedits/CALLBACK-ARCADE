@@ -1,0 +1,2 @@
+import assert from 'node:assert/strict';import test from 'node:test';import {sorceryReveal} from '../lib/sorcery-reveal';
+test('original fades to half, holds, reaches full and then splits',()=>{assert.equal(sorceryReveal(0).opacity,0);assert.equal(sorceryReveal(1800).opacity,.5);assert.equal(sorceryReveal(2400).opacity,.5);assert.deepEqual(sorceryReveal(3500),{opacity:1,split:0});assert.deepEqual(sorceryReveal(4700),{opacity:1,split:1});assert.deepEqual(sorceryReveal(0,true),{opacity:1,split:1});});

@@ -1,0 +1,69 @@
+{
+  "origin": "edmondsonedits/CALLBACK-ARCADE",
+  "sourceCommit": "017bc84a0ff9a23633d2cdd2ed22ac9b53d93146",
+  "version": "0.14.0",
+  "modifications": "Sites phone-room adapter and shared touch UI; unmodified imported entry archived in original/callback-worlds-2026-10-12.html",
+  "licensing": "Original project code with third-party asset and vendor licenses retained beside their files.",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "66d793f978ddd1ad8a50b745a8b5aa5456a2cf44f5739bf91e19766e982c921a"
+    },
+    {
+      "path": "UPSTREAM-LICENSE.txt",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "path": "assets/forceField_000.ogg",
+      "sha256": "c2916f2a062c8ddd1aca2826d134fe90847037db31342726ffb0f9097afe339c"
+    },
+    {
+      "path": "assets/impactBell_heavy_000.ogg",
+      "sha256": "94b8bb5f2d43ab65e4bcc32b28562416e9bc2c51d9fd4be1e333660ee52f977f"
+    },
+    {
+      "path": "assets/impactMetal_light_000.ogg",
+      "sha256": "33b5e6e37c6e9d54e07bf5a89b12c76e879f40c1ea83cdd82714df1d6f9fec6d"
+    },
+    {
+      "path": "assets/impacts-LICENSE.txt",
+      "sha256": "b49aa9c56b04528b95913de13e506a0f7c5e807b9925db9bfef86af1f91120db"
+    },
+    {
+      "path": "assets/particles-LICENSE.txt",
+      "sha256": "f9e70b81d8cc07c4e07c9f2eff1d94fd371a06070b18cb67c651c41158ec2975"
+    },
+    {
+      "path": "assets/scifi-LICENSE.txt",
+      "sha256": "a9767b25c3533f69d03af136480efad08efba19a9f0d89616992b34c79fd6186"
+    },
+    {
+      "path": "assets/spark_01.png",
+      "sha256": "5902da3a324cad0a4b5a88ce1e3c9cc18fee50922c358ce93d8c9f1ad7708f0a"
+    },
+    {
+      "path": "assets/star_01.png",
+      "sha256": "3ba3999c944a0767677449412d306c1f230daa1743b31f929533cf77a22ecf5d"
+    },
+    {
+      "path": "assets/twirl_01.png",
+      "sha256": "ba3f4996a5a91ea3cba6817a9b4770a385a82ef0b9350cbda5c0f140d182af7e"
+    },
+    {
+      "path": "index.html",
+      "sha256": "041a5270c42131b5eee27b3e6aa999282726b954e020cf9dafe436130077d579"
+    },
+    {
+      "path": "online-v65.html",
+      "sha256": "da1c3327a34ca3869bf7e793fcbc9cd86d1bcbec59d36fe0bf791eb889d54ca3"
+    },
+    {
+      "path": "original.html",
+      "sha256": "47b128059172554af2aee0a51b7ad6b55982087bf5597d9a1f9076501cdfe80b"
+    },
+    {
+      "path": "original/callback-worlds-2026-10-12.html",
+      "sha256": "bfb1502a133a0200adc2c4df9478c5dcdca1592d2f72ca3664aca663a6b2161d"
+    }
+  ]
+}

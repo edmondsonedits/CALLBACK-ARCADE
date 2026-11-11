@@ -1,0 +1,88 @@
+{
+  "projectId": "appgprj_6a84e36be0d48191896a3e5b980d4416",
+  "siteUrl": "https://callback-party-game.dans-host.chatgpt.site",
+  "version": 82,
+  "versionId": "appgprj_6a84e36be0d48191896a3e5b980d4416~appgver_4f51f9f8ef908191a00c4d2d661323f4",
+  "deploymentId": "appgdep_6acec293e26c819185c0745d630687d7",
+  "deploymentStatus": "succeeded",
+  "deployedAt": "2026-10-13T23:45:34.816254+00:00",
+  "deployedSourceCommit": "cdc4d73d642d75300517167ee4577dde2312c7b6",
+  "localArchiveSha256": "46ab07a56b59a1009c09878b780f4321968597172c5b6bc16b8832c12b2a770d",
+  "sitesArchiveContentHash": "sha256:bf30b91c4d4216259acdc7819fffe661818a30cdf5a87ebcf0f61a59f25638d9",
+  "environmentRevision": 3,
+  "worker": {
+    "url": "https://callback-party-sumo-pilot.edmondsonedits.workers.dev",
+    "version": "08c2ecd2-ed61-412e-8eeb-9a28429e4a06",
+    "plan": "Workers Free",
+    "limits": {
+      "activeParties": 1,
+      "seats": 10,
+      "lifetimeMinutes": 20
+    },
+    "paidUpgrade": false
+  },
+  "rollback": {
+    "version": 81,
+    "versionId": "appgprj_6a84e36be0d48191896a3e5b980d4416~appgver_508c579da7fc8191944a8c301ee97137",
+    "sourceCommit": "e091a39bb259094b9e98d2ebb4c044d9ae21faed"
+  },
+  "verification": {
+    "unit": {
+      "discovered": 921,
+      "passed": 913,
+      "existingSkipped": 8,
+      "failed": 0
+    },
+    "productionRenderPassed": 9,
+    "typecheck": true,
+    "lint": true,
+    "build": true,
+    "diffCheck": true,
+    "browserCatalogCases": 99,
+    "browserQualification": "Coverage across broad runs and focused repairs; not one uninterrupted full passing run.",
+    "finalBuiltBrowserPassed": 2,
+    "liveBrowser": {
+      "passed": 1,
+      "durationSeconds": 43.1,
+      "log": ".logs/party-latency/live-acceptance.log",
+      "coverage": [
+        "two isolated phone browsers",
+        "two-contact touch press and release",
+        "accepted authenticated input",
+        "host pause and resume",
+        "reload while paused",
+        "authoritative alive/dead control state after reconnect",
+        "portrait and landscape",
+        "New Game to Air Hockey with unchanged player identities and party code"
+      ],
+      "testPartySumoRetired": true
+    },
+    "cloudProbe": {
+      "controllers": 10,
+      "pingSamples": 219,
+      "rttMedianMs": 42,
+      "rttP95Ms": 56,
+      "maxSnapshotBytes": 6284,
+      "scope": "Node clients on one PC to live Worker; not physical phone input latency"
+    },
+    "notes": [
+      "Initial live reconnect assertions failed because bots eliminated idle test seats. Diagnostics confirmed connected sockets and correct eliminated UI. Final test freezes navigation with host pause and verifies authoritative alive/dead controls plus fresh accepted messages after resume.",
+      "Host screenshot in the concurrent three-browser run observed an RTT p95 of 298ms; phone screenshots observed approximately 45-55ms. Physical host and phone measurements remain necessary.",
+      "Bowl-only overflow:clip prevents focus-induced TV scene scrolling and passes exact guess/resize test.",
+      "Post-release changes are qualification tests and release notes only; deployed application build is from the recorded source commit."
+    ]
+  },
+  "scope": {
+    "migratedGame": "Royal Sumo opt-in realtime pilot",
+    "samePartyAcrossGameSwitches": true,
+    "otherEnginesAwaitPhysicalAcceptance": true,
+    "allGamesPersistentSocketMigration": false
+  },
+  "physicalAcceptance": {
+    "status": "ready for user testing",
+    "androidIos": false,
+    "sameWifi": false,
+    "cellularRemote": false,
+    "matchCompletionAndResultsOnPhysicalDevices": false
+  }
+}

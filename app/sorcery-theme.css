@@ -1,0 +1,62 @@
+@font-face {
+  font-family: "Cinzel";
+  src: url("/fonts/cinzel/Cinzel-Variable.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+}
+:root { --font-medieval: "Cinzel", Georgia, serif; }
+.fullscreen-dialog-content { flex:1; min-height:0; overflow:hidden; padding:10px 0; }
+
+[data-testid="drawing-studio"][data-theme="sorcery"] dialog h2 { font-family:var(--font-medieval); font-weight:600; font-size:clamp(1.2rem,4vw,1.9rem); }
+[data-testid="drawing-studio"][data-theme="sorcery"] [class*="emptyHint"] { color:#66542f; width:min(80%,210px); white-space:normal; }
+[data-testid="drawing-studio"][data-theme="sorcery"] [class*="emptyHint"] span { max-width:210px; font-family:var(--font-medieval); font-size:1rem; line-height:1.4; text-align:center; }
+
+/* Heraldry for the shared entry. Body copy and the CALLBACK wordmark keep their familiar faces. */
+.callback-role-choice h1, .session-picker h1, .home-submenu>header h1 {
+  font-family: var(--font-medieval);
+  font-weight: 600;
+  letter-spacing: -.025em;
+  text-wrap: balance;
+}
+.callback-role-choice h1 { font-size: clamp(1.7rem, 4.2vw, 3.6rem); }
+.session-picker h1 { font-size: clamp(1.6rem, 3vw, 2.7rem); }
+.callback-role-cards>button, .callback-role-cards>a {
+  position: relative;
+  background: linear-gradient(135deg, #27375a, #121c3a 70%);
+  border-color: #c9aa50;
+  box-shadow: inset 0 0 0 5px #101a3b, inset 0 0 0 6px #b0934233, 0 12px 24px #0003;
+}
+.callback-role-cards>button:hover, .callback-role-cards>a:hover { border-color: #ffe5a0; background: linear-gradient(135deg, #38476a, #172451); }
+.session-games-grid button { background-image: linear-gradient(115deg,#fff4d609,transparent 60%); }
+.session-games-grid button strong { font-family: var(--font-medieval); font-size: clamp(1rem,1.5vw,1.3rem); }
+.session-games-grid button:hover { border-color: #ffd84b; }
+.session-category-grid strong { font-family: var(--font-medieval); }
+.session-choice-back, .home-more-button { min-height: 44px; }
+@media (prefers-reduced-motion: no-preference) {
+  .callback-role-choice h1 { animation: royal-heading .6s ease-out both; }
+  .callback-role-cards>button, .callback-role-cards>a { transition: border-color .2s, box-shadow .2s; }
+}
+@keyframes royal-heading { from { opacity: .2; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+.sorcery-lobby .lobby-invite h1 { font-family:var(--font-medieval); font-size:clamp(1.7rem,3vw,3.2rem); }
+.sorcery-lobby .lobby-invite h1 span { font-family:"Space Grotesk Variable",sans-serif; font-weight:700; }
+.sorcery-practice-link { display:block; margin:10px auto 0; padding:8px 14px; min-height:40px; border:1px solid #c4aa6a; border-radius:9px; background:#172451; color:#fff4d6; font:600 .88rem "Space Grotesk Variable",sans-serif; }
+.sorcery-practice-link:focus-visible { outline:3px solid #46dbdc; outline-offset:3px; }
+.sorcery-practice-screen { max-width:680px; margin:auto; padding:24px; background:#fff4d6; color:#17213b; border-radius:12px; }
+.sorcery-practice-screen h3 { font:600 1.8rem/1.2 var(--font-medieval); }
+.sorcery-practice-screen p { font-size:1.1rem; line-height:1.6; }
+.sorcery-practice-screen label { display:grid; gap:10px; margin:22px 0; }
+.sorcery-practice-screen select { padding:12px; min-height:48px; font:inherit; color:#17213b; background:#fffaf0; border:1px solid #7b6a4f; }
+.sorcery-practice-screen small { display:block; margin-top:20px; line-height:1.5; }
+@media (min-width:900px) {
+  .sorcery-lobby { min-height:0; padding-block:10px; }
+  .sorcery-lobby .lobby-roster { min-height:0; }
+  .sorcery-lobby .lobby-heading { margin-bottom:8px; }
+  .sorcery-lobby .roster-grid { min-height:0; gap:8px; }
+  .sorcery-lobby .roster-grid .roster-player { min-height:0; }
+  .sorcery-lobby .lobby-settings { padding:8px; margin-top:8px; }
+  .sorcery-lobby .qr-frame { width:clamp(150px,28vh,245px); }
+  .sorcery-lobby .start-button { min-height:48px; margin-top:8px; padding:10px 16px; }
+  .sorcery-lobby .start-hint { margin:8px 0 0; font-size:.8rem; }
+}

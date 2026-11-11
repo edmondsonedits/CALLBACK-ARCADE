@@ -1,0 +1,52 @@
+/* The photo chooser is an action screen; reserve the full-height workspace for crop and preview work. */
+.photo-face-editor:has(.photo-face-workspace) {
+  grid-template-rows: auto auto auto minmax(0,1fr) auto auto !important;
+}
+.photo-face-editor > :is(.photo-face-chooser,.photo-face-source-actions) { grid-column:1/-1; }
+.photo-face-chooser-actions .button-secondary,
+.photo-face-source-actions .button-secondary { border:2px solid #252034; background:#fff9e9; color:#252034; box-shadow:none; }
+.photo-face-editor > .photo-face-actions { align-self:start; align-items:start; }
+.photo-face-editor > .photo-face-actions .button { min-height:44px!important; }
+.photo-face-editor .photo-face-disclosure summary { min-height:44px; }
+.photo-face-editor:has(.photo-face-chooser) {
+  align-content: start !important;
+  grid-template-rows: auto auto auto auto auto !important;
+}
+.photo-face-chooser {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+  padding: 4px 0;
+}
+.photo-face-chooser > p {
+  margin: 0;
+  max-width: 48ch;
+  color: #39334a;
+  font-size: .9rem;
+  line-height: 1.35;
+}
+.photo-face-chooser-actions,
+.photo-face-source-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.photo-face-chooser-actions .button,
+.photo-face-source-actions .button {
+  min-width: 0;
+  min-height: 44px;
+  padding: 7px 10px;
+  font-size: .85rem;
+  line-height: 1.15;
+}
+.photo-face-source-actions { gap: 6px; }
+.photo-face-source-actions .button { min-height: 44px; padding: 7px; font-size: .85rem; }
+.photo-face-workspace:empty { display: none; }
+.photo-face-chooser :focus-visible,
+.photo-face-source-actions :focus-visible { outline: 3px solid #225c91; outline-offset: 2px; }
+@media (max-width: 360px) {
+  .photo-face-chooser-actions,
+  .photo-face-source-actions { gap: 5px; }
+  .photo-face-chooser-actions .button { padding-inline: 6px; font-size: .78rem; }
+  .photo-face-source-actions .button { font-size: .8rem; }
+}

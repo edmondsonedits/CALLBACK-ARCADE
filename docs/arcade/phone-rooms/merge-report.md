@@ -1,0 +1,10 @@
+# Concurrent Site v65 reconciliation
+During release, Site advanced from v64/base272adcd to v65/9a18b641611f7bc32cbce3cab9fc014b87e4b7f6. Source helper fetched and rejected divergent history without overwriting. Parent merged remote asad94a88, preserving all149remote changedpaths/online service and othergamechanges.
+
+Ruling: keep both independently built runtime contracts — imported latest sevenworlds usefeaturedTV/phoneflow; v65authoritative online simulations keep their exact corresponding browserviews and oldmapcatalog — costis twojoinflows, clearlylabelled andlinked, insteadofattemptinguntestedport ofallnewworldphysics intov65server.
+
+Six remote gameentryfiles are preserved as sibling online-v65.html (relativeassetsstillresolve). Current index.html retains latestGitHubworld+approvedphoneadapter. Remote OnlineGameView/OnlineSetup/onlinecatalog use lib/arcade/online/full-games.ts snapshotofv65metadata with adjustedviewhrefs. build-imported-online reads/writesarchivedonline-v65.html, so server extraction cannot overwriteorparsethenewerfeaturedworld. Sumo serverbuild alreadyreadsitsoriginal1.3.0archive, unchanged. Other8bundledgameentries andonlinebridge remainasv65. Existingpractice/online routespreserved; mainfeaturedphonejoin andotherArcadejoinarebothlinked.
+
+Ruling: appliedremote0006_chubby_menace.sql anditsmetadataareimmutable — unpublishedphoneDDL becomesgenerated0007_arcade_phone.sql withnew0007snapshot+journalentry — costisnoneforcurrentusers; preservesbothschemafamilies. db:generate producedonlythreephonetables/checks/indexes/FKs, nootherDDL.
+
+Mergedrelease firstpass: lintpass;763tests pass,7skipped,5failures alltracedtolegacytestsreadingmovedviews/removedoldharness andassuming0006last. Typechecksame5missingharnesses. Restoredv65oldharnessesbesideseparatenewworldharnesses, pointedthem/onlineSumotestsatmatchingonline-v65views; onlineintegrationusestheonlinecatalog andtests0006appliedhistory specifically, whilephonebackendtestcoversentire0000..0007chain. Addedcatalogregressionprovingbothviews/mappingsandserver-extractioninputremainseparate. Noassertionsweakened.

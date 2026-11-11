@@ -1,0 +1,17 @@
+{
+  "video": "C:\\Users\\Danny's Ultimate PC\\Documents\\ChatGPT\\Jackbox Game Creation\\public\\media\\grand-hall\\grand-hall-menu-loop.mp4",
+  "planned_duration": 16.04,
+  "media_facts": {
+    "path": "C:\\Users\\Danny's Ultimate PC\\Documents\\ChatGPT\\Jackbox Game Creation\\public\\media\\grand-hall\\grand-hall-menu-loop.mp4",
+    "type": "video",
+    "duration": 16.0,
+    "width": 1920,
+    "height": 1080,
+    "has_video": true,
+    "has_audio": true,
+    "bytes": 1530983
+  },
+  "contact_sheet": "C:\\Users\\Danny's Ultimate PC\\Documents\\ChatGPT\\Jackbox Game Creation\\assets\\source\\grand-hall-loop\\ai-video-studio\\qa\\contact-sheet.jpg",
+  "transition_sheet": null,
+  "transition_count": 0
+}

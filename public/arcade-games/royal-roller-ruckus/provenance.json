@@ -1,0 +1,105 @@
+{
+  "origin": "edmondsonedits/CALLBACK-ARCADE",
+  "sourceCommit": "017bc84a0ff9a23633d2cdd2ed22ac9b53d93146",
+  "version": "1.6.0",
+  "modifications": "Sites phone-room adapter and shared touch UI; unmodified imported entry archived in original/callback-worlds-2026-10-12.html",
+  "licensing": "Original project code with third-party asset and vendor licenses retained beside their files.",
+  "files": [
+    {
+      "path": "assets/LICENSE-castle-kit.txt",
+      "sha256": "aac944f18106b3a3e29c6fdeec02523d4cab4c735abc01f5a8fa88a79ae173ef"
+    },
+    {
+      "path": "assets/LICENSE-nature-kit.txt",
+      "sha256": "cb96b75e3560ac78d7a53ce6f083f4cdb5c53faea6141b62d63458dcfe1e4b9d"
+    },
+    {
+      "path": "assets/LICENSE-particles.txt",
+      "sha256": "f9e70b81d8cc07c4e07c9f2eff1d94fd371a06070b18cb67c651c41158ec2975"
+    },
+    {
+      "path": "assets/README.md",
+      "sha256": "57725ea1a1e1ab8c72abf99334258cc2ab2186ae419efe730eb47e656f53af44"
+    },
+    {
+      "path": "assets/Textures/colormap.png",
+      "sha256": "66fd49be148f32e88f6c8cace67120250d1943a7856601158ad0ff24651db0b0"
+    },
+    {
+      "path": "assets/castle-tower.glb",
+      "sha256": "5e98cdf2bf4d885edc3fa514719f80d63872e11c54ee629c11859223dad8489c"
+    },
+    {
+      "path": "assets/court-banner.glb",
+      "sha256": "e6a4433f5770b9fc31bf67d72424a877d5c010486d5b7373ce7af900566827e4"
+    },
+    {
+      "path": "assets/garden-oak.glb",
+      "sha256": "d7fd8773674928c50c11b66d12c636d49bdcc15a8b1c7fbb98e6f63a3439a3f3"
+    },
+    {
+      "path": "assets/glacier-rock.glb",
+      "sha256": "e4fefd8d8d7deab42be61bd222bcd088330012f0025789146b81f25a46095ffd"
+    },
+    {
+      "path": "assets/steam.png",
+      "sha256": "e8724c219e8d35859167fc0a7e207e13c72ccf0c29704909b9bb3d3dc71c6cf7"
+    },
+    {
+      "path": "index.html",
+      "sha256": "06506f8d3c5f2432d11f48f7a59f2048d4b857fc0ed885dba7a03b7d198aef75"
+    },
+    {
+      "path": "online-v65.html",
+      "sha256": "eef52c27f99b818ff678c4daf055d6d1a9076143bcd0b1b0456d273f9a8f6b9b"
+    },
+    {
+      "path": "original.html",
+      "sha256": "7bd88e9bc5508b965ed9185615de7b15ad874dd7ec28f436fbc5ab27629c0b4b"
+    },
+    {
+      "path": "original/callback-worlds-2026-10-12.html",
+      "sha256": "2b6b59de0bcadbfcb0907d2eeb60a4389178e3fec5c0ce91c907d2e91d1f9217"
+    },
+    {
+      "path": "original/royal_roller_ruckus_v1.4_vertical_crownway.html",
+      "sha256": "643eea4257d0ab94ba9aee6ca2706b83b43ae10e1d9a05de7d2fd83289c2b515"
+    },
+    {
+      "path": "vendor/BufferGeometryUtils.js",
+      "sha256": "248b3e8420bd3de805ca01845c1b0cc62aa2766f3c56bdcead265e306f8e715c"
+    },
+    {
+      "path": "vendor/GLTFLoader.js",
+      "sha256": "2904f2823e23d5bc1d64512bf4c0d777ac44d728d47c34a9e3d48ce8ef6b761d"
+    },
+    {
+      "path": "vendor/LICENSE-three.txt",
+      "sha256": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601"
+    },
+    {
+      "path": "vendor/loader-provenance.json",
+      "sha256": "0981f6209236edb4e5a049ddbd50a74da2eab0ecb30c11872bf3209f50bdedb5"
+    },
+    {
+      "path": "vendor/three.core.js",
+      "sha256": "eb077d2417f61d3e6d9264c317cabc4ea35769ed6b0ab533067292a550784c20"
+    },
+    {
+      "path": "vendor/three.module.js",
+      "sha256": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a"
+    },
+    {
+      "path": "vendor/three/LICENSE",
+      "sha256": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601"
+    },
+    {
+      "path": "vendor/three/three.core.js",
+      "sha256": "eb077d2417f61d3e6d9264c317cabc4ea35769ed6b0ab533067292a550784c20"
+    },
+    {
+      "path": "vendor/three/three.module.js",
+      "sha256": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a"
+    }
+  ]
+}

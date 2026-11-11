@@ -1,0 +1,70 @@
+{
+  "origin": "King Prompter Sites integration code",
+  "license": "Project-owned source",
+  "files": [
+    {
+      "path": "arcade-menu.css",
+      "sha256": "a81caf42941a1a7e8e4336c0bbc20e2691016868a8d80dbb7700a83c9151e1c5"
+    },
+    {
+      "path": "arcade-menu.js",
+      "sha256": "162667983292bd7e07e0752a22f2cadd3a41630d3bb19a5e2d6e30ffcbcc2b2a"
+    },
+    {
+      "path": "arcade-touch.css",
+      "sha256": "559bd06224a73f1c02e8b0e04db418358332f8f5ec36b20fe32716c275f83dbc"
+    },
+    {
+      "path": "arena-runtime.css",
+      "sha256": "a16c68c0c286f17c17374838e4ac6d9bd8c518f1940f3f813812dc0d4211569f"
+    },
+    {
+      "path": "arena-runtime.js",
+      "sha256": "e03933ad66ad292591d6e5d81ffc59eac0b5306f686eb08bbd9de5eb10c1a642"
+    },
+    {
+      "path": "assets/ATTRIBUTION.json",
+      "sha256": "c717a9dbf5db3361089207d32126c916f64b31e23e5b5fb0d85c4ec97cd692fe"
+    },
+    {
+      "path": "assets/LICENSE-Fredoka.txt",
+      "sha256": "9bbd4f5f107895d5a213579b73821fadd05105241cf4360e86050199fcfd6034"
+    },
+    {
+      "path": "assets/LICENSE-game-icons.txt",
+      "sha256": "fac95252798668fab5ea2cb08338f2ebc6bf894a72b19a15af1ca62f0a6d2e79"
+    },
+    {
+      "path": "assets/big-wave.svg",
+      "sha256": "057e4a61208d62defeed10a27a3c4d01f56e7a98a0c2b0ea0bfab68a30cc197e"
+    },
+    {
+      "path": "assets/crown.svg",
+      "sha256": "2cc6c5699d80caab294edeacc318b662bffd0c3a672fe34062d5ef0c37a35fb7"
+    },
+    {
+      "path": "assets/fredoka-latin-wght-normal.woff2",
+      "sha256": "99d6c78e043710d4f83ed90716779798b7b04eb690f73e0ad0e8f32d1f0e98c2"
+    },
+    {
+      "path": "assets/grenade.svg",
+      "sha256": "3cc29f62931a57ab796c240f08dc02b80af31f66ba4121a98cb212d3cd5302a5"
+    },
+    {
+      "path": "assets/snowflake-1.svg",
+      "sha256": "e2f79295d5a0dcf128ebe8b1d2c0bb556013229ae39ba5f8db45b74595ebd762"
+    },
+    {
+      "path": "credits.html",
+      "sha256": "b4e2d4093bc90d52fc9dc90983fb656f389847f0361137a7d8ed0fdac7aeffd2"
+    },
+    {
+      "path": "online-view.js",
+      "sha256": "75993cd4132913bc7caa4cfe3202d24924780949d70b2b113fb41dec537ea55a"
+    },
+    {
+      "path": "touch-ui.js",
+      "sha256": "35ef6a62e6328e309aadb1af850ff7c6ab92ccc4e22b045c77938bef65262ce4"
+    }
+  ]
+}

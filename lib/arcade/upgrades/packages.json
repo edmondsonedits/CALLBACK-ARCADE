@@ -1,0 +1,58 @@
+[
+  {
+    "id": "snow-bash",
+    "entry": "lib/arcade/upgrades/snow-bash.ts",
+    "exportName": "SNOW_GAME",
+    "title": "Snow Bash \u00b7 Polar Panic",
+    "version": "2.0.0-sites"
+  },
+  {
+    "id": "drain-bash",
+    "entry": "lib/arcade/upgrades/drain-bash.ts",
+    "exportName": "DRAIN_GAME",
+    "title": "Drain Bash \u00b7 Sump Siege",
+    "version": "2.0.0-sites",
+    "originals": [
+      "drain-bash.ts",
+      "drain-bash-config.ts",
+      "jungle-bash-simulation.ts",
+      "jungle-bash-config.ts",
+      "space-bash-config.ts",
+      "snow-bash-config.ts",
+      "destructible-floor.ts"
+    ]
+  },
+  {
+    "id": "jungle-bash",
+    "entry": "lib/arcade/upgrades/jungle-bash.ts",
+    "exportName": "JUNGLE_GAME",
+    "title": "Jungle Bash \u00b7 Verdant Clash",
+    "version": "2.0.0-sites",
+    "originals": [
+      "jungle-bash-simulation.ts",
+      "jungle-bash-config.ts",
+      "space-bash-config.ts",
+      "snow-bash-config.ts",
+      "destructible-floor.ts"
+    ]
+  },
+  {
+    "id": "tie-breaker",
+    "entry": "lib/arcade/upgrades/tie-breaker.ts",
+    "exportName": "TIE_GAME",
+    "title": "Tie-Breaker \u00b7 Crown Gauntlet",
+    "version": "2.0.0-sites",
+    "originals": [
+      "tie-breaker-engine.ts",
+      "jungle-bash-simulation.ts",
+      "jungle-bash-config.ts",
+      "space-bash-config.ts",
+      "snow-bash-config.ts",
+      "destructible-floor.ts"
+    ]
+  },
+  {"id":"manic-panic","entry":"lib/arcade/upgrades/manic-panic.ts","exportName":"MANIC_GAME","title":"Manic Panic · Bomb Joust","version":"2.0.0-sites","originals":["manic-panic.ts","manic-panic-config.ts"]},
+  {"id":"rubble-alliance","entry":"lib/arcade/upgrades/rubble-alliance.ts","exportName":"RUBBLE_GAME","title":"Rubble Alliance · Faultline Run","version":"2.0.0-sites","originals":["rubble-alliance.ts","rubble-alliance-config.ts","destructible-floor.ts"]},
+  {"id":"dragon-drop","entry":"lib/arcade/upgrades/dragon-drop.ts","exportName":"DRAGON_GAME","title":"Dragon Drop · Jewel Joust","version":"2.0.0-sites","originals":["dragon-drop.ts","dragon-drop-config.ts","practice-adapter.ts","types.ts"]},
+  {"id":"volt-vault","entry":"lib/arcade/upgrades/volt-vault.ts","exportName":"VOLT_GAME","title":"Volt Vault · Polarity Palace","version":"2.0.0-sites","originals":["volt-vault.ts","volt-vault-config.ts","types.ts"]}
+]

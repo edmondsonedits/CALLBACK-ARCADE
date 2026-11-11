@@ -1,0 +1,18 @@
+name = "king-prompter-arcade"
+main = "src/index.ts"
+compatibility_date = "2026-08-22"
+compatibility_flags = ["nodejs_compat"]
+workers_dev = true
+
+# Required Worker secrets: ARCADE_TICKET_SECRET, ARCADE_CONTROL_SECRET, and
+# ARCADE_CALLBACK_SECRET. Configure with `wrangler secret put`; never put real
+# values here. ARCADE_WORKER_URL and callback secrets also belong in Site bindings.
+[vars]
+SITE_CALLBACK_URL = "http://127.0.0.1:8788/api/arcade/events"
+
+[durable_objects]
+bindings = [{ name = "ARCADE_ROOM", class_name = "ArcadeRoom" }]
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["ArcadeRoom"]

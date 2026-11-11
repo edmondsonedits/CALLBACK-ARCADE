@@ -1,0 +1,160 @@
+/* Character tools are full-screen workspaces. Every section has its own controls
+   and fits in the viewport; option lists stay available through the native menus. */
+.avatar-editor-backdrop {
+  position: fixed !important; inset: 0 !important; z-index: 1300 !important;
+  display: grid !important; place-items: stretch !important; padding: 0 !important;
+  background: #070d25 !important; overscroll-behavior: none;
+}
+.avatar-editor-modal {
+  width: 100% !important; height: var(--callback-viewport-height,100dvh) !important; max-height: var(--callback-viewport-height,100dvh) !important; min-height: 0 !important;
+  grid-template-rows: auto minmax(0,1fr) auto !important; overflow: hidden !important;
+  border: 0 !important; border-radius: 0 !important; box-shadow: none !important;
+  padding-top: env(safe-area-inset-top); padding-bottom: env(safe-area-inset-bottom);
+}
+.avatar-editor-header { min-height: 62px !important; padding: 8px 18px !important; }
+.avatar-editor-layout { min-height: 0 !important; grid-template-columns: minmax(220px,.72fr) minmax(0,1.28fr) !important; overflow: hidden !important; }
+.avatar-editor-controls { min-height: 0 !important; overflow: hidden !important; }
+.avatar-piece-canvas-mobile { display: none; }
+.avatar-piece-canvas-desktop { display: block; position: relative; z-index: 1; }
+.avatar-piece-canvas-desktop .avatar-live-stage { width: min(100%,310px); height: min(40vh,350px); }
+.avatar-piece-canvas-desktop .avatar-live-stage .callback-avatar { width: auto !important; height: min(36vh,230px) !important; aspect-ratio: 240/390; }
+.avatar-mobile-controls { display: grid !important; align-content: start; gap: 12px; padding: 14px; overflow: visible !important; }
+.avatar-desktop-controls { display: none !important; }
+.avatar-mobile-modes { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 6px; }
+.avatar-mobile-modes button { min-height: 44px; border: 1px solid rgba(255,255,255,.18); border-radius: 12px; background: rgba(255,255,255,.04); color: var(--cream); font-weight: 850; }
+.avatar-mobile-modes button[aria-pressed="true"] { background: var(--yellow); color: var(--ink); }
+.avatar-mobile-controls > label { display: grid; gap: 6px; color: rgba(255,244,214,.85); font-weight: 800; }
+.avatar-mobile-controls select { width: 100%; min-width: 0; min-height: 46px; padding: 8px 10px; border: 1px solid rgba(255,255,255,.2); border-radius: 11px; background: #172451; color: var(--cream); }
+.avatar-mobile-controls input[type="range"] { width: 100%; min-height: 42px; accent-color: var(--cyan); }
+.avatar-mobile-controls button { min-height: 44px; border-radius: 11px; }
+.avatar-preset-panel, .avatar-custom-panel, .avatar-feature-workspace, .avatar-piece-panel {
+  min-height: 0 !important; overflow: hidden !important; overscroll-behavior: none !important;
+}
+.avatar-preset-panel { display: grid; grid-template-rows: auto minmax(0,1fr); }
+.avatar-preset-grid { min-height: 0; grid-template-columns: repeat(4,minmax(0,1fr)) !important; grid-auto-rows: minmax(0,1fr); }
+.avatar-preset { min-height: 0; display: grid; grid-template-rows: minmax(0,1fr) auto auto; }
+.avatar-preset > span { min-height: 0; height: auto !important; }
+.avatar-preset .callback-avatar { height: 100%; max-height: 100px; }
+.avatar-feature-workspace { padding: 12px !important; }
+.avatar-editor-section-heading { position: static !important; margin: 0 0 8px !important; padding: 0 !important; background: none !important; }
+.avatar-piece-panel { padding: 10px !important; }
+.avatar-piece-heading { margin-bottom: 6px !important; }
+.avatar-piece-select { margin: 6px 0 !important; }
+.avatar-piece-nudge { margin: 6px 0 !important; }
+.avatar-transform-range { min-height: 38px !important; }
+.avatar-piece-stretch { margin: 4px 0 !important; }
+.avatar-piece-actions { margin: 5px 0 !important; }
+.avatar-piece-note { margin: 3px 0 !important; }
+.avatar-editor-footer { min-height: 58px !important; padding: 6px 14px !important; gap: 10px !important; }
+.avatar-editor-footer .button { min-height: 44px !important; }
+.photo-face-editor {
+  position: fixed !important; inset: 0 !important; z-index: 1400 !important;
+  width: 100vw !important; height: var(--callback-viewport-height,100dvh) !important; max-height: var(--callback-viewport-height,100dvh) !important;
+  display: grid !important; grid-template-rows: auto auto auto auto minmax(0,1fr) auto auto !important;
+  align-content: stretch !important; gap: clamp(3px,1vh,9px) !important;
+  overflow: hidden !important; overflow-y: hidden !important;
+  padding: max(6px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) max(6px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left)) !important;
+  border: 0 !important; border-radius: 0 !important; background: #fff4d6 !important;
+}
+.photo-face-editor h3 { font-size: clamp(1.1rem,4vw,1.45rem); line-height: 1.1; }
+.photo-face-disclosure { font-size: .73rem; line-height: 1.25; }
+.photo-face-disclosure summary { min-height: 28px; display: flex; align-items: center; font-weight: 800; cursor: pointer; }
+.photo-face-disclosure p { max-width: 70ch; font-size: .76rem; line-height: 1.25; }
+.photo-face-workspace { min-height: 0; display: grid; grid-template-rows: auto minmax(0,1fr) auto; align-content: center; gap: 4px; overflow: hidden; }
+.photo-face-workspace:has(.photo-face-result) { grid-template-rows: minmax(0,1fr) auto auto auto; }
+.photo-face-workspace > p { margin: 0; font-size: .74rem; }
+.photo-face-steps { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 6px; }
+.photo-face-steps button { min-height: 38px; padding: 4px 7px; border: 1px solid #252034; border-radius: 10px; background: #fff9e9; color: #252034; font-size: .75rem; font-weight: 800; }
+.photo-face-steps button[aria-pressed="true"] { background: #252034; color: #fff9e9; }
+.photo-face-editor > label[for] { font-size: .82rem; }
+.photo-face-editor input[type=file] { min-height: 42px !important; padding: 1px; font-size: .72rem; }
+.photo-face-editor input::file-selector-button { min-height: 36px !important; }
+.photo-face-crop-controls { min-height: 0; display: grid; grid-template-columns: minmax(100px, min(31vh,210px)) minmax(0,1fr); grid-template-rows: auto minmax(0,1fr); align-content: center; align-items: center; justify-items: stretch; gap: 3px 10px; }
+.photo-face-crop-controls > p { grid-column: 1/-1; max-width: none; font-size: .73rem !important; line-height: 1.2; }
+.photo-face-crop-frame { grid-column: 1; grid-row: 2; width: min(100%, min(31vh,210px)) !important; max-height: min(31vh,210px); justify-self: center; }
+.photo-face-adjustments { grid-column: 2; grid-row: 2; display: grid; align-content: center; gap: 4px; }
+.photo-face-adjustments label { display: grid; grid-template-columns: minmax(0,1fr); gap: 0; width: 100%; font-size: .72rem; font-weight: 800; }
+.photo-face-adjustments input[type=range] { min-height: 32px; width: 100%; accent-color: #6250c5; }
+.photo-face-crop-controls input[type=range], .photo-face-reference-controls input[type=range] { min-height: 32px !important; }
+.photo-face-reference-controls { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 6px 12px !important; }
+.photo-face-reference-controls label { gap: 0 !important; font-size: .72rem; }
+.photo-face-result { min-height: 0; overflow: hidden; align-content: center; }
+.photo-face-result .avatar { width: min(22vw,110px); height: min(32vh,155px); }
+.photo-face-cutout { width: min(22vw,110px); height: min(32vh,155px); }
+.photo-face-trim-controls { min-height: 0; grid-template-rows: auto auto minmax(0,1fr) auto auto; gap: 4px !important; }
+.photo-face-trim-controls > p { font-size: .73rem !important; }
+.photo-face-trim-source, .photo-face-trim-result { width: min(27vw, min(28vh,190px)) !important; aspect-ratio: 1; }
+.photo-face-trim-source img, .photo-face-trim-result img { object-fit: contain; }
+.photo-face-trim-controls:has(.photo-face-trim-source) { grid-template-columns: repeat(2,minmax(0,1fr)); align-items: center; }
+.photo-face-trim-controls:has(.photo-face-trim-source) > p { grid-column: 1/-1; }
+.photo-face-trim-controls:has(.photo-face-trim-source) > label { grid-column: 1/-1; }
+.photo-face-trim-controls:has(.photo-face-trim-source) .photo-face-actions { grid-column: 1/-1; }
+.photo-face-actions { min-height: 44px; gap: 6px !important; }
+.photo-face-actions .button { min-height: 42px !important; padding: 5px 8px; font-size: .8rem; }
+.photo-face-editor > small { font-size: .66rem; line-height: 1.15; }
+.photo-face-editor > :focus-visible { outline: 3px solid #225c91; outline-offset: 2px; }
+@media (max-width: 820px) {
+  .avatar-editor-header { min-height: 52px !important; padding: 4px 10px !important; }
+  .avatar-editor-header h1 { font-size: 1.3rem !important; }
+  .avatar-editor-kicker { display: none; }
+  .avatar-editor-layout { grid-template-columns: minmax(0,1fr) !important; grid-template-rows: 100px minmax(0,1fr) !important; gap: 5px !important; padding: 5px !important; }
+  .avatar-live-panel { display: grid !important; grid-template-columns: 78px minmax(0,1fr) auto !important; grid-template-rows: auto auto !important; justify-items: start !important; align-content: center !important; column-gap: 8px !important; padding: 4px 7px !important; }
+  .avatar-live-panel::before { width: 92px !important; }
+  .avatar-live-stage, .avatar-canvas-shell { grid-row: 1/3 !important; grid-column: 1 !important; width: 74px !important; height: 88px !important; }
+  .avatar-piece-canvas-mobile { display: block; grid-row: 1/3 !important; grid-column: 1 !important; width: 74px; height: 88px; }
+  .avatar-piece-canvas-mobile .avatar-canvas-shell { width: 74px !important; height: 88px !important; }
+  .avatar-piece-canvas-desktop { display: none !important; }
+  .avatar-live-panel > strong { font-size: .95rem !important; }
+  .avatar-live-panel > span { font-size: .65rem !important; }
+  .avatar-surprise-button { grid-column: 3 !important; grid-row: 1/3 !important; max-width: 100px; min-height: 36px !important; margin: 0 !important; padding: 4px 7px !important; font-size: .65rem !important; }
+  .avatar-editor-controls { border-radius: 12px !important; }
+  .avatar-mobile-controls { display: grid !important; gap: 5px !important; padding: 5px !important; overflow: visible !important; }
+  .avatar-mobile-controls label { gap: 2px !important; font-size: .69rem !important; }
+  .avatar-mobile-controls select, .avatar-mobile-history { min-height: 38px !important; }
+  .avatar-mobile-controls input[type=range] { min-height: 30px !important; }
+  .avatar-mobile-controls button { min-height: 38px !important; }
+  .avatar-desktop-controls { display: none !important; }
+  .avatar-mobile-extras { max-height: 100%; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 3px !important; }
+  .avatar-mobile-extras label { min-height: 30px !important; font-size: .64rem !important; }
+  .avatar-mobile-extras input { width: 18px !important; height: 18px !important; }
+  .avatar-editor-footer { min-height: 52px !important; padding: 4px max(6px,env(safe-area-inset-right)) 4px max(6px,env(safe-area-inset-left)) !important; }
+  .avatar-mobile-history { display: block !important; flex: 1; width: 0; font-size: .65rem; }
+  .avatar-editor-footer .avatar-history-controls { display: none !important; }
+  .avatar-editor-footer > .button { min-height: 40px !important; padding: 5px !important; font-size: .75rem; }
+  .photo-face-editor { grid-template-rows: auto auto auto auto minmax(0,1fr) auto auto !important; }
+  .photo-face-workspace { grid-template-rows: auto minmax(0,1fr) auto; }
+  .photo-face-steps button { min-height: 34px; font-size: .7rem; }
+  .photo-face-disclosure { font-size: .68rem; }
+  .photo-face-crop-controls { grid-template-columns: min(40vw,min(32vh,240px)) minmax(0,1fr); }
+  .photo-face-crop-frame { width: min(40vw,min(32vh,240px)) !important; max-height: min(40vw,min(32vh,240px)); }
+  .photo-face-result .avatar, .photo-face-cutout { width: min(22vw,94px); height: min(27vh,125px); }
+}
+@media (max-height: 430px) and (max-width: 950px) {
+  .avatar-editor-header { min-height: 42px !important; }
+  .avatar-editor-layout { grid-template-columns: 118px minmax(0,1fr) !important; grid-template-rows: minmax(0,1fr) !important; }
+  .avatar-live-panel { display: flex !important; padding: 4px !important; }
+  .avatar-live-stage, .avatar-canvas-shell { width: 82px !important; height: 105px !important; }
+  .avatar-piece-canvas-mobile { display: none !important; }
+  .avatar-piece-canvas-desktop { display: block !important; }
+  .avatar-piece-canvas-desktop .avatar-live-stage { width: 82px !important; height: 105px !important; }
+  .avatar-live-panel > strong { font-size: .8rem !important; }
+  .avatar-live-panel > span { display: none; }
+  .avatar-surprise-button { max-width: 100%; }
+  .avatar-mobile-controls { gap: 3px !important; padding: 3px !important; }
+  .avatar-mobile-modes { gap: 3px; }
+  .avatar-mobile-modes button, .avatar-mobile-controls button { min-height: 32px !important; font-size: .66rem !important; }
+  .avatar-mobile-controls > label { gap: 1px !important; font-size: .63rem !important; }
+  .avatar-mobile-controls select { min-height: 32px !important; padding: 3px 7px !important; font-size: .67rem; }
+  .avatar-mobile-controls input[type="range"] { min-height: 27px !important; }
+  .avatar-editor-footer { min-height: 46px !important; }
+  .photo-face-editor { grid-template-columns: minmax(120px,30vw) minmax(0,1fr); grid-template-rows: auto auto auto minmax(0,1fr) auto !important; }
+  .photo-face-editor h3, .photo-face-disclosure, .photo-face-editor > label[for], .photo-face-editor > input[type=file], .photo-face-workspace, .photo-face-editor > .photo-face-actions, .photo-face-editor > small { grid-column: 1/-1; }
+  .photo-face-workspace { grid-row: 4; grid-column: 1/-1; grid-template-columns: 1fr; grid-template-rows: auto minmax(0,1fr) auto; }
+  .photo-face-steps { grid-column: 1; }
+  .photo-face-crop-controls { grid-column: 1; grid-row: 2; display: grid; grid-template-columns: minmax(100px,30vw) minmax(0,1fr); grid-template-rows: minmax(0,1fr); }
+  .photo-face-crop-controls > p { display: none; }
+  .photo-face-crop-frame { grid-column: 1; grid-row: 1; width: min(28vh,165px) !important; max-height: min(28vh,165px); }
+  .photo-face-adjustments { grid-column: 2; grid-row: 1; }
+  .photo-face-reference-controls { grid-column: 2; grid-row: 1; display: flex; flex-direction: column; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) { .avatar-live-burst { animation: none !important; } }

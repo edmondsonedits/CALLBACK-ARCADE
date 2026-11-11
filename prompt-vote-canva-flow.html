@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Prompt &amp; Circumstance — Community Pick Flow</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 7680px; min-height: 4380px; overflow: visible; }
+    body {
+      color: #242220;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #fbfaf5;
+      background-image: radial-gradient(#d8d2c7 2.2px, transparent 2.2px);
+      background-size: 34px 34px;
+    }
+    .page { width: 7680px; height: 2160px; padding: 72px 100px 70px; overflow: hidden; position: relative; }
+    .page + .page { border-top: 20px solid #393532; }
+    .eyebrow { color: #a34f43; font-size: 25px; font-weight: 800; letter-spacing: 3px; margin-bottom: 14px; }
+    h1 { margin: 0; font-size: 72px; line-height: 1; letter-spacing: 1px; }
+    .subtitle { margin-top: 16px; color: #625c55; font-size: 30px; line-height: 1.3; }
+    .topbar { height: 245px; display: flex; justify-content: space-between; align-items: flex-start; }
+    .change-card { width: 2800px; padding: 25px 30px; background: #f5da78; border-left: 9px solid #d1ab32; font-size: 27px; line-height: 1.3; }
+    .change-card strong { display: block; margin-bottom: 7px; font-size: 22px; letter-spacing: 2px; text-transform: uppercase; }
+    .experience { display: grid; grid-template-columns: repeat(6, 1fr); gap: 38px; margin-top: 30px; }
+    .stage { min-height: 1090px; background: rgba(255,253,247,0.96); border: 3px solid #8c857d; position: relative; padding: 0 32px 34px; }
+    .stage::after { content: "→"; position: absolute; right: -38px; top: 500px; font-size: 54px; font-weight: 800; color: #625c55; z-index: 2; }
+    .stage:last-child::after { content: ""; }
+    .stage h2 { min-height: 150px; margin: 0 -32px 32px; padding: 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: #dc8f80; border-bottom: 5px solid #9f4f43; font-size: 37px; line-height: 1.05; }
+    .stage.vote h2 { background: #78c9c5; border-color: #367f7b; }
+    .stage.generate h2 { background: #f3c85f; border-color: #b98b20; }
+    .stage-number { font-size: 21px; letter-spacing: 2.4px; margin-bottom: 7px; }
+    .stage-block { margin-bottom: 28px; padding-bottom: 27px; border-bottom: 2px solid #d5cfc6; }
+    .stage-label { color: #766f67; font-size: 21px; font-weight: 800; letter-spacing: 1.7px; text-transform: uppercase; margin-bottom: 9px; }
+    .stage-copy { font-size: 29px; line-height: 1.26; font-weight: 650; }
+    .stage-output { margin-top: 18px; padding: 18px; background: #f3c85f; border: 3px solid #b98b20; text-align: center; font-size: 27px; font-weight: 800; }
+    .stage-note { margin-top: 19px; padding: 18px; background: #f5da78; border-left: 7px solid #d1ab32; font-size: 24px; line-height: 1.27; }
+    .principles { margin-top: 55px; padding-top: 34px; border-top: 4px solid #504b46; display: grid; grid-template-columns: 380px repeat(4, 1fr); gap: 30px; align-items: stretch; }
+    .principles-title { font-size: 28px; font-weight: 800; letter-spacing: 1px; display: flex; align-items: center; }
+    .principle { padding: 22px 24px; background: rgba(255,253,247,0.97); border: 3px solid #8a837b; font-size: 25px; line-height: 1.25; }
+    .principle strong { color: #a34f43; display: block; margin-bottom: 8px; font-size: 23px; text-transform: uppercase; letter-spacing: 1px; }
+    .page-tag { position: absolute; right: 100px; bottom: 30px; font-size: 22px; color: #6d665f; letter-spacing: 1px; }
+
+    .legend { display: flex; gap: 30px; align-items: center; flex-wrap: wrap; justify-content: flex-end; width: 3400px; }
+    .legend-item { display: flex; gap: 12px; align-items: center; font-size: 23px; white-space: nowrap; }
+    .swatch { width: 44px; height: 30px; border: 3px solid #6c655e; }
+    .swatch.process { background: #dc8f80; border-color: #9f4f43; }
+    .swatch.decision { background: #78c9c5; border-color: #367f7b; transform: rotate(45deg); width: 30px; height: 30px; margin: 0 8px; }
+    .swatch.output { background: #f3c85f; border-color: #b98b20; }
+    .swatch.note { background: #f5da78; border-color: #d1ab32; }
+    .swatch.terminal { background: #fffdf7; border-color: #656565; border-radius: 18px; }
+    .detail-topbar { height: 175px; display: flex; justify-content: space-between; align-items: flex-start; }
+    .detail-title { font-size: 58px; }
+    .flow-board { display: grid; grid-template-columns: repeat(8, 860px); gap: 45px; align-items: start; }
+    .column { min-height: 1810px; padding: 0 24px 28px; border-left: 3px solid rgba(86,80,74,0.24); position: relative; }
+    .column:last-child { border-right: 3px solid rgba(86,80,74,0.24); }
+    .column::after { content: "→"; position: absolute; right: -43px; top: 84px; font-size: 52px; color: #6b655f; font-weight: 700; }
+    .column:last-child::after { content: ""; }
+    .column-title { height: 105px; display: flex; align-items: center; justify-content: center; text-align: center; border-top: 5px solid #4a4743; border-bottom: 2px solid #a9a29a; font-size: 31px; letter-spacing: 1.5px; font-weight: 800; }
+    .stack { display: flex; flex-direction: column; align-items: center; padding-top: 24px; }
+    .node { width: 700px; min-height: 78px; padding: 16px 24px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 27px; line-height: 1.18; border: 3px solid #9f4f43; font-weight: 650; background: #dc8f80; border-radius: 12px; }
+    .node.small { width: 620px; min-height: 66px; font-size: 25px; }
+    .terminal { background: #fffdf7; border-color: #656565; border-radius: 42px; }
+    .output { background: #f3c85f; border-color: #b98b20; }
+    .decision { width: 240px; min-height: 178px; padding: 38px 28px; background: #78c9c5; border-color: #367f7b; clip-path: polygon(50% 0,100% 50%,50% 100%,0 50%); border-radius: 0; font-size: 24px; }
+    .arrow { height: 36px; font-size: 36px; line-height: 36px; color: #625d57; font-weight: 800; }
+    .branch-row { width: 720px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .branch { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .branch-label { font-size: 24px; font-weight: 800; }
+    .yes { color: #348a63; }
+    .no { color: #b04d3f; }
+    .branch .node { width: 340px; min-height: 88px; font-size: 23px; padding: 14px 16px; }
+    .loop { font-size: 22px; font-weight: 800; color: #b04d3f; }
+    .note { width: 700px; margin-top: 22px; padding: 20px 24px; background: #f5da78; border: 3px solid #d1ab32; box-shadow: 9px 9px 0 rgba(122,102,37,0.12); font-size: 24px; line-height: 1.22; }
+    .note strong { display: block; margin-bottom: 7px; font-size: 22px; letter-spacing: 1px; text-transform: uppercase; }
+    .footer { position: absolute; left: 100px; right: 100px; bottom: 62px; padding-top: 24px; border-top: 3px solid #908a82; display: flex; justify-content: space-between; font-size: 23px; color: #5b5650; }
+  </style>
+</head>
+<body>
+  <main class="page" data-document-role="page" data-label="Prompt &amp; Circumstance — Experience Overview">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">PROPOSED REVISION · 3 ROUNDS · ALL PLAYERS CREATE</div>
+        <h1>PROMPT &amp; CIRCUMSTANCE</h1>
+        <div class="subtitle">Write the scene. Win the room. Watch it become an image.</div>
+      </div>
+      <div class="change-card"><strong>Core mechanic</strong>Every player submits one short visual prompt. The prompts are shown anonymously, the room votes for the best one, and the winning prompt is locked before image generation begins.</div>
+    </header>
+
+    <section class="experience">
+      <article class="stage">
+        <h2><span class="stage-number">STEP 1</span>SUBMIT</h2>
+        <div class="stage-block"><div class="stage-label">Every player</div><div class="stage-copy">Writes one visually clear scene in 12 words or fewer.</div></div>
+        <div class="stage-block"><div class="stage-label">Simple recipe</div><div class="stage-copy">Someone → Action → Place. No image-generation jargon required.</div></div>
+        <div class="stage-note">Prompts stay private until the answer lock.</div>
+      </article>
+
+      <article class="stage">
+        <h2><span class="stage-number">STEP 2</span>VALIDATE</h2>
+        <div class="stage-block"><div class="stage-label">Server checks</div><div class="stage-copy">Room, role, phase, ownership, length, safety, and duplicate actions.</div></div>
+        <div class="stage-block"><div class="stage-label">Eligible set</div><div class="stage-copy">Only safe, valid prompts can appear on the voting screen.</div></div>
+        <div class="stage-note">The client never decides which prompts qualify.</div>
+      </article>
+
+      <article class="stage vote">
+        <h2><span class="stage-number">STEP 3</span>VOTE</h2>
+        <div class="stage-block"><div class="stage-label">The room sees</div><div class="stage-copy">Every eligible prompt in a shuffled, anonymous order.</div></div>
+        <div class="stage-block"><div class="stage-label">Each player</div><div class="stage-copy">Votes for the one scene they most want to see generated.</div></div>
+        <div class="stage-output">No self-voting</div>
+      </article>
+
+      <article class="stage vote">
+        <h2><span class="stage-number">STEP 4</span>LOCK WINNER</h2>
+        <div class="stage-block"><div class="stage-label">Server tallies</div><div class="stage-copy">Official votes determine the top prompt before generation starts.</div></div>
+        <div class="stage-block"><div class="stage-label">If tied</div><div class="stage-copy">One quick runoff among tied leaders; a remaining tie uses a stable server tiebreak.</div></div>
+        <div class="stage-output">Winning prompt is final</div>
+      </article>
+
+      <article class="stage generate">
+        <h2><span class="stage-number">STEP 5</span>GENERATE</h2>
+        <div class="stage-block"><div class="stage-label">Backstage job</div><div class="stage-copy">Only the winning prompt is sent to the image provider and stored through the authenticated media path.</div></div>
+        <div class="stage-block"><div class="stage-label">Failure path</div><div class="stage-copy">Timeout, provider failure, or storage failure becomes a deterministic concept card.</div></div>
+        <div class="stage-note">Generation can never change the winner or award points.</div>
+      </article>
+
+      <article class="stage generate">
+        <h2><span class="stage-number">STEP 6</span>REVEAL</h2>
+        <div class="stage-block"><div class="stage-label">Big-screen moment</div><div class="stage-copy">Reveal the image, the winning prompt, its author, and the final vote count.</div></div>
+        <div class="stage-block"><div class="stage-label">Round result</div><div class="stage-copy">Award vote-based prompt points through uniquely keyed score events.</div></div>
+        <div class="stage-output">Next round or final gallery</div>
+      </article>
+    </section>
+
+    <section class="principles">
+      <div class="principles-title">DESIGN PRINCIPLES</div>
+      <div class="principle"><strong>Direct choice</strong>The room chooses what gets generated; there is no hidden featured prompt.</div>
+      <div class="principle"><strong>Anonymous first</strong>Authorship stays hidden through voting and is revealed only after the winner locks.</div>
+      <div class="principle"><strong>Always playable</strong>A concept card keeps the reveal and scoring intact when image services fail.</div>
+      <div class="principle"><strong>Clean revision</strong>This replaces the current decoy-and-guessing loop with submit → vote → generate.</div>
+    </section>
+    <div class="page-tag">PAGE 1 OF 2 · PLAYER EXPERIENCE</div>
+  </main>
+
+  <main class="page" data-document-role="page" data-label="Prompt &amp; Circumstance — Authoritative Flow">
+    <header class="detail-topbar">
+      <div>
+        <div class="eyebrow">SERVER-AUTHORITATIVE ROUND MAP</div>
+        <h1 class="detail-title">PROMPT &amp; CIRCUMSTANCE — COMMUNITY PICK</h1>
+      </div>
+      <div class="legend">
+        <div class="legend-item"><span class="swatch process"></span>Process</div>
+        <div class="legend-item"><span class="swatch decision"></span>Decision</div>
+        <div class="legend-item"><span class="swatch output"></span>Locked output</div>
+        <div class="legend-item"><span class="swatch note"></span>Rule / fallback</div>
+        <div class="legend-item"><span class="swatch terminal"></span>Start / result</div>
+      </div>
+    </header>
+
+    <section class="flow-board">
+      <section class="column"><div class="column-title">ROOM SETUP</div><div class="stack">
+        <div class="node terminal">Create or select<br/>Prompt &amp; Circumstance</div><div class="arrow">↓</div>
+        <div class="node">Players join on phones</div><div class="arrow">↓</div>
+        <div class="node decision">Ready?</div><div class="arrow">↓</div>
+        <div class="branch-row"><div class="branch"><div class="branch-label no">NO</div><div class="node">Stay in lobby</div></div><div class="branch"><div class="branch-label yes">YES</div><div class="node">Host starts game</div></div></div>
+        <div class="note"><strong>Pack shape</strong>Three rounds: Picture This → Plot Twist → Final Frame.</div>
+      </div></section>
+
+      <section class="column"><div class="column-title">ROUND INTRO</div><div class="stack">
+        <div class="node terminal small">Show round title</div><div class="arrow">↓</div>
+        <div class="node">Display the visual brief</div><div class="arrow">↓</div>
+        <div class="node output">Someone → Action → Place</div><div class="arrow">↓</div>
+        <div class="node">Explain: 12 words or fewer</div><div class="arrow">↓</div>
+        <div class="node">Start answer timer</div>
+        <div class="note"><strong>Phone-first</strong>One textarea, live word count, one clear submit action.</div>
+      </div></section>
+
+      <section class="column"><div class="column-title">PROMPT SUBMISSION</div><div class="stack">
+        <div class="node">Every player writes one prompt</div><div class="arrow">↓</div>
+        <div class="node">Server validates identity, phase, ownership, length, and safety</div><div class="arrow">↓</div>
+        <div class="node decision">Valid?</div><div class="arrow">↓</div>
+        <div class="branch-row"><div class="branch"><div class="branch-label no">NO</div><div class="node">Return a useful error</div><div class="loop">↶ revise before deadline</div></div><div class="branch"><div class="branch-label yes">YES</div><div class="node">Store private submission</div></div></div>
+        <div class="note"><strong>Hidden information</strong>No prompt text or authorship crosses the player snapshot before answer lock.</div>
+      </div></section>
+
+      <section class="column"><div class="column-title">ELIGIBILITY GATE</div><div class="stack">
+        <div class="node terminal small">Answer lock</div><div class="arrow">↓</div>
+        <div class="node">Shuffle eligible prompts per room</div><div class="arrow">↓</div>
+        <div class="node decision">Eligible prompt count?</div><div class="arrow">↓</div>
+        <div class="branch-row"><div class="branch"><div class="branch-label no">0</div><div class="node">Use safe house prompt</div></div><div class="branch"><div class="branch-label yes">1</div><div class="node">Sole prompt wins</div></div></div><div class="arrow">↓</div>
+        <div class="node output">2+ prompts → anonymous vote</div>
+        <div class="note"><strong>Self-vote rule</strong>Each player's own prompt is visible but disabled on that phone.</div>
+      </div></section>
+
+      <section class="column"><div class="column-title">COMMUNITY VOTE</div><div class="stack">
+        <div class="node">Show all eligible prompts anonymously</div><div class="arrow">↓</div>
+        <div class="node">Each player selects one prompt</div><div class="arrow">↓</div>
+        <div class="node">Server validates voter, choice, phase, and no self-vote</div><div class="arrow">↓</div>
+        <div class="node terminal small">Vote lock</div><div class="arrow">↓</div>
+        <div class="node">Tally official votes</div>
+        <div class="note"><strong>Audience</strong>Audience hearts may be displayed separately but never change the official winner.</div>
+      </div></section>
+
+      <section class="column"><div class="column-title">WINNER + TIES</div><div class="stack">
+        <div class="node decision">Top-vote tie?</div><div class="arrow">↓</div>
+        <div class="branch-row"><div class="branch"><div class="branch-label no">NO</div><div class="node">Lock top prompt</div></div><div class="branch"><div class="branch-label yes">YES</div><div class="node">Quick runoff among tied leaders</div></div></div><div class="arrow">↓</div>
+        <div class="node decision">Still tied?</div><div class="arrow">↓</div>
+        <div class="branch-row"><div class="branch"><div class="branch-label no">NO</div><div class="node">Lock runoff winner</div></div><div class="branch"><div class="branch-label yes">YES</div><div class="node">Stable server tiebreak</div></div></div><div class="arrow">↓</div>
+        <div class="node output">Persist winning prompt ID</div>
+        <div class="note"><strong>Critical boundary</strong>The winner is final before any image provider is called.</div>
+      </div></section>
+
+      <section class="column"><div class="column-title">GENERATE + REVEAL</div><div class="stack">
+        <div class="node">Queue one idempotent image job for the winner</div><div class="arrow">↓</div>
+        <div class="node">Show art-department interlude</div><div class="arrow">↓</div>
+        <div class="node decision">Image ready?</div><div class="arrow">↓</div>
+        <div class="branch-row"><div class="branch"><div class="branch-label no">FAIL / TIMEOUT</div><div class="node">Use deterministic concept card</div></div><div class="branch"><div class="branch-label yes">YES</div><div class="node">Serve authenticated image</div></div></div><div class="arrow">↓</div>
+        <div class="node output">Reveal image + prompt + author + votes</div>
+        <div class="note"><strong>Solo</strong>Solo bots use the same prompt/vote structures and always resolve to the free concept-card path.</div>
+      </div></section>
+
+      <section class="column"><div class="column-title">RESULTS + LOOP</div><div class="stack">
+        <div class="node">Award vote-based prompt points with unique score keys</div><div class="arrow">↓</div>
+        <div class="node terminal">Round results</div><div class="arrow">↓</div>
+        <div class="node decision">More rounds?</div><div class="arrow">↓</div>
+        <div class="branch-row"><div class="branch"><div class="branch-label yes">YES</div><div class="node">Next visual brief</div><div class="loop">↶ back to round intro</div></div><div class="branch"><div class="branch-label no">NO</div><div class="node">Final standings + image gallery</div></div></div><div class="arrow">↓</div>
+        <div class="node terminal">Post-game</div>
+        <div class="note"><strong>Scope</strong>Winning prompts enter the match gallery, not active Room Lore, unless that product decision changes later.</div>
+      </div></section>
+    </section>
+
+    <footer class="footer"><span>Proposed replacement flow: submit → validate → anonymous vote → lock winner → generate → reveal</span><span>Authority stays in server/engine.ts and D1 · image failure never blocks completion</span></footer>
+    <div class="page-tag">PAGE 2 OF 2 · AUTHORITATIVE DETAIL</div>
+  </main>
+</body>
+</html>

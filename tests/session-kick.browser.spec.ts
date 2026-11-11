@@ -1,0 +1,57 @@
+import {test,expect} from '@playwright/test';
+
+test('session host can remove a phone from both lobby rosters and reset everyone',async({page,browser})=>{
+  test.setTimeout(90000);
+  await page.goto('/',{waitUntil:'domcontentloaded'});
+  await page.getByRole('button',{name:'Start Callback'}).click();
+  await expect(page.getByRole('heading',{name:'Get everyone together.',exact:true})).toBeVisible();
+  await page.getByRole('button',{name:'Host a game',exact:true}).click();
+  await expect(page).toHaveURL(/\/session\/[A-Z2-9]{4}\/host$/);
+  const code=new URL(page.url()).pathname.split('/')[2]!;
+  const phoneContext=await browser.newContext({baseURL:new URL(page.url()).origin,viewport:{width:390,height:844}}),phone=await phoneContext.newPage();
+  try{
+    await phone.goto(`/session/${code}/play`);
+    await phone.getByLabel('Your name',{exact:true}).fill('Kick Me');
+    await phone.getByRole('button',{name:'Join lobby',exact:true}).click();
+    await expect(phone.getByRole('heading',{name:'Welcome, Kick Me'})).toBeVisible();
+    const joinedView=await(await page.request.get(`/api/sessions/${code}`)).json() as {players:Array<{nickname:string}>};
+    console.log('host roster after phone join',joinedView.players.map(player=>player.nickname));
+    expect(joinedView.players.map(player=>player.nickname)).toContain('Kick Me');
+    await page.locator('.session-category-tabs').getByRole('button',{name:'Arcade',exact:true}).click();
+    await expect(page.locator('.session-category-tabs').getByRole('button',{name:'Arcade',exact:true})).toHaveAttribute('aria-pressed','true');
+    await page.locator('.session-join-panel .session-roster-menu').click();
+    const sidebarKick=page.getByRole('button',{name:'Remove Kick Me',exact:true});
+    await expect(sidebarKick).toBeVisible({timeout:20000});
+    expect(await sidebarKick.evaluate(button=>{const r=button.getBoundingClientRect();return Math.min(r.width,r.height);})).toBeGreaterThanOrEqual(44);
+    await page.screenshot({path:'.logs/player-kick-sidebar.png'});
+    await sidebarKick.click();
+    await expect.poll(async()=>(await phone.request.get(`/api/sessions/${code}?role=player`)).status()).toBe(401);
+    await expect(phone.getByRole('button',{name:'Join lobby',exact:true})).toBeVisible();
+    await phone.getByLabel('Your name',{exact:true}).fill('Kick Me');
+    await phone.getByRole('button',{name:'Join lobby',exact:true}).click();
+    await expect(page.getByRole('button',{name:'Remove Kick Me',exact:true})).toBeVisible();
+    await page.locator('.session-roster-screen').getByRole('button',{name:'Back',exact:true}).click();
+    await expect(page.locator('.session-category-tabs').getByRole('button',{name:'Arcade',exact:true})).toHaveAttribute('aria-pressed','true');
+    await page.locator('.session-category-tabs').getByRole('button',{name:'Party Games',exact:true}).click();
+    await expect(page.locator('.session-category-tabs').getByRole('button',{name:'Party Games',exact:true})).toHaveAttribute('aria-pressed','true');
+    await page.locator('.game-menu-grid').getByRole('button',{name:/King Prompter/}).click();
+    const game=page.frameLocator('iframe.session-game-frame');
+    const gameKick=game.getByRole('button',{name:'Remove Kick Me',exact:true});
+    await expect(gameKick).toBeVisible();
+    expect(await gameKick.evaluate(button=>{const r=button.getBoundingClientRect();return Math.min(r.width,r.height);})).toBeGreaterThanOrEqual(44);
+    await page.screenshot({path:'.logs/player-kick-child.png'});
+    await gameKick.click();
+    await expect.poll(async()=>(await phone.request.get(`/api/sessions/${code}?role=player`)).status(),{timeout:20000}).toBe(401);
+    await expect(game.getByText('Kick Me',{exact:true})).toHaveCount(0,{timeout:20000});
+    await expect(phone.getByRole('button',{name:'Join lobby',exact:true})).toBeVisible();
+    await phone.getByLabel('Your name',{exact:true}).fill('Deliberate rejoin');
+    await phone.getByRole('button',{name:'Join lobby',exact:true}).click();
+    await expect(game.getByRole('button',{name:'Remove Deliberate rejoin',exact:true})).toBeVisible();
+    await page.getByRole('button',{name:'Reset lobby',exact:true}).click();
+    await page.getByRole('heading',{name:'Reset this lobby?'}).waitFor();
+    await page.getByRole('button',{name:'Reset lobby',exact:true}).last().click();
+    await expect(page.getByRole('heading',{name:'What are we playing?'})).toBeVisible();
+    const host=await(await page.request.get(`/api/sessions/${code}`)).json() as {code:string;stage:string;players:unknown[];activeGame:unknown};
+    expect(host).toMatchObject({code,stage:'SELECTING',players:[],activeGame:null});
+  }finally{await phoneContext.close();}
+});

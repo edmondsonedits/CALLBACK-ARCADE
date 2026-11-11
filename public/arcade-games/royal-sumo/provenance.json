@@ -1,0 +1,85 @@
+{
+  "origin": "edmondsonedits/CALLBACK-ARCADE",
+  "sourceCommit": "017bc84a0ff9a23633d2cdd2ed22ac9b53d93146",
+  "version": "1.3.0",
+  "modifications": "Sites phone-room adapter and shared touch UI; unmodified imported entry archived in original/callback-worlds-2026-10-12.html",
+  "licensing": "Original project code with third-party asset and vendor licenses retained beside their files.",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "9af0ebed9f2ac18c6e6cfed72c9581616eea975ae99bf7d3618a7184a9775a03"
+    },
+    {
+      "path": "archive/README.md",
+      "sha256": "6f25580e0236eab30256de1642a3dbc4a01739892bf77d8a141902a758a2f7d6"
+    },
+    {
+      "path": "archive/royal_sumo_crownfall_v0.19_10players.html",
+      "sha256": "e83f00994d41119d42ee4e2d52ca3ff8541e11f662cf14deada999f6c82fa8c3"
+    },
+    {
+      "path": "archive/royal_sumo_crownfall_v0.21_callback.html",
+      "sha256": "3f46863804f603d611157d1a7488d90ca57a5797d26c93e7ca7801bc6bb2b856"
+    },
+    {
+      "path": "archive/vendor/LICENSE-three.txt",
+      "sha256": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601"
+    },
+    {
+      "path": "archive/vendor/three.core.js",
+      "sha256": "eb077d2417f61d3e6d9264c317cabc4ea35769ed6b0ab533067292a550784c20"
+    },
+    {
+      "path": "archive/vendor/three.module.js",
+      "sha256": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a"
+    },
+    {
+      "path": "callback-camera.js",
+      "sha256": "ddd33c8d41a3b06e8c7684819e71bd3089edee3b9dcc4d1ae6a25cd040c2d93f"
+    },
+    {
+      "path": "index.html",
+      "sha256": "eb8566192142a3430fcced6d5d79eeedfc928ede05d36b00b01f1b65b5b22bee"
+    },
+    {
+      "path": "online-v65.html",
+      "sha256": "6e0a811e7f45750ee543d85879bee348716e18a18172e37a7b440f55b0d488f5"
+    },
+    {
+      "path": "online/config.json",
+      "sha256": "87e76e293d7bb1ab532d41704b56b55944eeb55d61fcc05c974d2d501c8c0bed"
+    },
+    {
+      "path": "online/controller.html",
+      "sha256": "9e8dacc435fdb8279d759b8e65897779dc93249861c45ba44bf0c183cb01f35c"
+    },
+    {
+      "path": "online/controller.js",
+      "sha256": "5e2c7fdbeb449ebea1d47a47a26305d56e98df85b57bbb763d8d31bc48cea49a"
+    },
+    {
+      "path": "online/host.js",
+      "sha256": "6c141525f96e4d5235f97e1a49c61ae8dfe840940ffa6c6562656a33c13cfd3f"
+    },
+    {
+      "path": "original/README-v1.3.0.txt",
+      "sha256": "467d95c451da59ff5cbdbbb3246c99897c48611a30143ce381249812e1940d16"
+    },
+    {
+      "path": "original/callback-worlds-2026-10-12.html",
+      "sha256": "6b7a638bae0d5468fee3ffb5c9d9c3a86252487379e43621b758488ac9082186"
+    },
+    {
+      "path": "original/royal_sumo_crownfall_v0.21_player_scaled_arena.html",
+      "sha256": "f82ec3706aaed0b709aaf5f626447267eecf4cb065adb8cd216b14ee60d726f2"
+    },
+    {
+      "path": "original/royal_sumo_crownfall_v1.3.0.html",
+      "sha256": "86bcf200c457a9b3da5cb222bcd5e22a46cc95d229b98edf53354eb503589c7e"
+    },
+    {
+      "path": "realtime-pilot.html",
+      "sha256": "03a32a5617d7b6676e78f1163d5b6ff0d27e030aeec3539f8d10fd43441abab6"
+    }
+  ]
+}

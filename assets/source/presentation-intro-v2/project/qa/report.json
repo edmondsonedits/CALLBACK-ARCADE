@@ -1,0 +1,17 @@
+{
+  "video": "C:\\Users\\Danny's Ultimate PC\\Documents\\ChatGPT\\Jackbox Game Creation\\assets\\source\\presentation-intro-v2\\project\\output\\king-prompter-intro-1920x1080.mp4",
+  "planned_duration": 11.37,
+  "media_facts": {
+    "path": "C:\\Users\\Danny's Ultimate PC\\Documents\\ChatGPT\\Jackbox Game Creation\\assets\\source\\presentation-intro-v2\\project\\output\\king-prompter-intro-1920x1080.mp4",
+    "type": "video",
+    "duration": 11.37,
+    "width": 1920,
+    "height": 1080,
+    "has_video": true,
+    "has_audio": true,
+    "bytes": 8639310
+  },
+  "contact_sheet": "C:\\Users\\Danny's Ultimate PC\\Documents\\ChatGPT\\Jackbox Game Creation\\assets\\source\\presentation-intro-v2\\project\\qa\\contact-sheet.jpg",
+  "transition_sheet": "C:\\Users\\Danny's Ultimate PC\\Documents\\ChatGPT\\Jackbox Game Creation\\assets\\source\\presentation-intro-v2\\project\\qa\\transition-sheet.jpg",
+  "transition_count": 5
+}

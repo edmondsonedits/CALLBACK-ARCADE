@@ -1,29 +1,54 @@
-# CALLBACK Arcade
+# King Prompter
 
-A searchable catalog and intake repository for standalone arcade games for CALLBACK. The repository manifests are canonical. The generated index and D1 contain descriptive metadata only; they do not host games or provide multiplayer.
+King Prompter is an account-free party game for one shared host screen and 2–10 active seats. It also has a one-phone solo playtest mode with one human and two to five free built-in bot opponents. King Prompter is the public umbrella identity; `CALLBACK` remains an internal architecture term and the name of a Legacy Standard mechanic. The Legacy Standard pack turns winning answers into a connected Anchor → Voice → World → Consequence story, then brings that shared universe back in personalized prompts and generated artwork.
 
-## Find a game
+## Project Bible
 
-Once deployed, open the catalog site or read [GAME_INDEX.md](GAME_INDEX.md). Search by game title, stable ID, alias, tag, or status. Each entry links to its game guide, manifest, and known source reference. An `awaiting-import` entry is metadata only and has no playable source bundled here.
+Start with **[The King Prompter Bible](./KING_PROMPTER_BIBLE.md)** for the readable product, game, visual, accessibility, castle-room, media, and production reference. Specialist implementation documents are linked from the Bible.
 
-## Import and edit
+## Run locally
 
-1. Run `npm run intake -- my-game --title "My Game"` for a safe starter folder.
-2. Put the supplied complete HTML file in `games/my-game/source/`; retain its inline scripts, styles, simulation rules, and controls. Add the real relative path to `manifest.json` and describe provenance and rights.
-3. Edit source or tuning values in that game's folder, then update `CHANGELOG.md`. Extraction is optional.
-4. Add real source and multiplayer integration evidence files before changing readiness fields.
-5. Run `npm run catalog:generate` and `npm test`, `npm run typecheck`, and `npm run catalog:check`.
+Requires Node.js 22.13 or newer.
 
-See [GAME_SDK.md](docs/GAME_SDK.md), [editing guide](docs/EDITING.md), [ChatGPT prompt](docs/CHATGPT_EDITING_PROMPT.md), and each game's own guide. ChatGPT needs this repository connected or the source uploaded into that chat. It cannot read another chat's attachment or commit changes solely because a catalog entry exists.
+```bash
+npm install
+npm run dev
+```
 
-## Local catalog and database
+Open `http://localhost:3000`, then choose either a multiplayer room or **Play solo with local bots** in room settings. Solo mode puts the host controls and human seat on the same phone and never queues paid AI work by default. Without configured text, image, moderation, or storage providers, deterministic lore and concept-card fallbacks keep every match playable.
 
-Use Node.js 22.13 or newer and npm. Run `npm ci`, then `npm run db:migrate`, `npm run catalog:generate`, `npm run db:seed`, and `npm run dev`. Wrangler keeps the local D1 database and logs under ignored local tooling directories. `/api/games`, `/api/games/<id>`, and `/api/health` are read-only. The Worker serves its bundled checked-in catalog when D1 is missing, unavailable, or stale and reports database/catalog synchronization honestly.
+## Quality commands
 
-## Production hosting
+```bash
+npm run lint
+npm run typecheck
+npm test
+npm run test:browser
+npm run build
+```
 
-GitHub is the source of truth; a Cloudflare Worker serves the catalog and static page. D1 mirrors metadata. No production database has been provisioned in this foundation. To host it, create a production D1 database and configure its actual ID in `wrangler.jsonc`; then run `npm run deploy:production`, which checks that ID before Wrangler deploys. That explicit command is the only production deploy path. Store credentials in Cloudflare or ignored local secrets, never in Git. See [deployment guide](docs/DEPLOYMENT.md).
+Set `CALLBACK_TEST_BASE_URL` to run the API and Playwright suites against another deployment. Browser fixtures send a development-only acceleration header; production builds explicitly ignore it.
 
-## Status
+## Runtime
 
-See [STATUS.md](STATUS.md) for what is implemented and what remains pending.
+- Vinext/React with a Cloudflare Worker-compatible Sites output.
+- D1 binding `DB` is the authoritative room, session, round, action, job, and score-ledger store.
+- R2 binding `MEDIA` stores generated image bytes. `ASSETS` remains reserved for the Worker static-asset fetcher.
+- Cloudflare text/image providers are supported for the active hosted paths; optional OpenAI defaults are `gpt-5.6-terra`, `gpt-image-2`, and `omni-moderation-latest`. Every provider result is untrusted and every unavailable path has a deterministic fallback.
+- Anonymous sessions use room-scoped secure cookies; only SHA-256 token hashes are stored.
+- Audience mode and mid-game joining are intentionally deferred beyond v1; refresh/reconnect restores an existing seat.
+
+## Routes
+
+- `/` — branded start/join landing page.
+- `/host/{code}` — landscape shared display and host-control drawer.
+- `/play/{code}` — portrait phone controller and QR destination.
+- `/host/new` — customizable multiplayer/solo setup.
+- `/birthday/new` — customizable 30th-birthday multiplayer/solo setup.
+- `/display` and `/display/{code}` — read-only secondary host-display entry and mirror.
+- `/avatar-studio` — device-local avatar creation.
+- `/how-to-play` — current pack and controller instructions.
+- `/developer` — isolated solo developer playtest setup.
+- `/api/health` — non-sensitive runtime readiness.
+
+See [PLAN.md](./PLAN.md), [STATUS.md](./STATUS.md), and [TESTING.md](./TESTING.md) for the implementation contract, current release state, and verification record.

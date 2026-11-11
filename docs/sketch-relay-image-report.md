@@ -1,0 +1,11 @@
+# Sketch & Sorcery image pipeline
+
+Implemented the native room upload endpoint and connected its jobs to the existing Cloudflare Workers AI adapter. Each accepted drawing sends its actual PNG bytes as `input_image_0` to FLUX.2 Klein 4B (`flux-2-fast`). The fixed medieval fantasy 3D prompt receives no original prompt, caption, or hidden game text. There is one provider attempt and no Schnell, alternate-model, OpenAI, or text-only fallback.
+
+Uploads use the authenticated player cookie, same-origin checks, rate limits, match/round/chain/leg assignment checks, pause checks, a 450,000-byte streamed limit, a 10-second read deadline, and square PNG dimensions at most 512 pixels. Sources are immutable R2 objects keyed by action and content hashes. A room CAS atomically records a READY `SKETCH_UPLOAD` receipt, the submission, and its transform job in the existing jobs table. Exact retries return the committed receipt; changed bytes under the same action ID are rejected.
+
+Transform workers verify the same-room READY source receipt and content hash, current match assignment, round, phase, job ID, and lease before and after generation. Completion updates the room and job together under room-version and current-lease guards. A delayed or replaced worker cannot publish an old image. Provider failure displays the real source sketch with FALLBACK status. Unavailable upload storage returns a retryable 503 while the phone retains its drawing. Bots do not enqueue paid image jobs.
+
+Authenticated media applies the relay visibility helper: private sources stay private until the corresponding permitted assignment or reveal. Sketch assets use `no-store, private` caching.
+
+Verification: `node --import tsx --test tests/sketch-relay-images.test.ts` — 9 passed. Coverage includes actual indexed multipart reference bytes and Fast model routing, stream byte/time limits, PNG bounds, cookie/origin/assignment/pause checks, immutable retries using the controller's hash-shaped action ID, provider failure, successful R2 receipts, stale rounds, replaced leases, atomic commit rejection, and no second generation after an expired attempt. Whole-project typecheck and targeted ESLint pass. Provider HTTP and D1/R2 are substituted in these tests; a hosted real-image acceptance check remains separate.

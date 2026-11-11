@@ -1,0 +1,59 @@
+{
+  "generated": "2026-08-28T03:07:42.860Z",
+  "source": "Candidate A / poster-master-review-2560x1440.png",
+  "selectedTreatment": "Stage Breath",
+  "delivery": {
+    "path": "public/media/grand-hall/grand-hall-menu-loop.mp4",
+    "bytes": 1530983,
+    "megabytes": 1.531,
+    "sha256": "45136a85fd34d8ef936ad130fdbbb36a615dd7fc0b457c91781dee99a02c89af",
+    "completeDecode": true,
+    "fastStart": true,
+    "h264": true,
+    "aac": true,
+    "yuv420p": true,
+    "resolution1920x1080": true,
+    "fps24": true,
+    "decodedFrames": 383,
+    "decodedDuration": "00:00:15.958333"
+  },
+  "visualSeam": {
+    "firstVsLastFullFrame": {
+      "meanAbsoluteError": 1.3132,
+      "psnrDb": 42.112,
+      "exact": false
+    },
+    "firstVsLastCentralQuietArea": {
+      "meanAbsoluteError": 1.0834,
+      "psnrDb": 43.724,
+      "exact": false
+    }
+  },
+  "posterMatch": {
+    "firstFrameVsApprovedPosterFullFrame": {
+      "meanAbsoluteError": 2.5775,
+      "psnrDb": 34.65,
+      "exact": false
+    },
+    "firstFrameVsApprovedPosterCentralQuietArea": {
+      "meanAbsoluteError": 1.8424,
+      "psnrDb": 38.204,
+      "exact": false
+    }
+  },
+  "audioSeam": {
+    "decodedSamplesPerChannel": 768000,
+    "boundaryPeakJump": 7.4e-7,
+    "first20msRms": 0.00002852,
+    "last20msRms": 0.00004208,
+    "typicalAdjacentSampleDeltaRms": 0.00000242,
+    "boundaryJumpToTypicalDeltaRatio": 0.3066
+  },
+  "responsiveCoverEvidence": [
+    ".logs/grand-hall-loop/final-cover-1366x768.png",
+    ".logs/grand-hall-loop/final-cover-1920x1080.png",
+    ".logs/grand-hall-loop/final-cover-2560x1440.png",
+    ".logs/grand-hall-loop/final-cover-390x844.png",
+    ".logs/grand-hall-loop/final-cover-375x450.png"
+  ]
+}

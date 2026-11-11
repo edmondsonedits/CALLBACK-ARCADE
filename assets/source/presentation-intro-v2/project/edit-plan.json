@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "project": {
+    "title": "King Prompter Royal Broadcast Intro",
+    "artist": ""
+  },
+  "canvas": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "background": "#101A3B"
+  },
+  "style": {
+    "preset": "cinematic",
+    "fit": "cover",
+    "transition": "dissolve",
+    "transition_duration": 0.45,
+    "color": "none",
+    "vignette": 0.05,
+    "grain": 0.0
+  },
+  "audio": {
+    "music": "../media/music.mp3",
+    "volume": 0.22,
+    "clip_audio": "mute",
+    "clip_volume": 0.0,
+    "ducking": false,
+    "fade_in": 0.6,
+    "fade_out": 1.4
+  },
+  "scenes": [
+    {
+      "type": "image",
+      "source": "..\\media\\01-grand-hall.png",
+      "duration": 2.8,
+      "motion": "zoom-in",
+      "transition": "dissolve",
+      "transition_duration": 0.55
+    },
+    {
+      "type": "image",
+      "source": "..\\media\\02-prompt-foundry.webp",
+      "duration": 2.15,
+      "motion": "zoom-out",
+      "transition": "smoothleft",
+      "transition_duration": 0.42
+    },
+    {
+      "type": "image",
+      "source": "..\\media\\03-rumour-press.webp",
+      "duration": 1.85,
+      "motion": "pan-right",
+      "transition": "dissolve",
+      "transition_duration": 0.38
+    },
+    {
+      "type": "image",
+      "source": "..\\media\\04-war-room.webp",
+      "duration": 1.85,
+      "motion": "pan-left",
+      "transition": "smoothright",
+      "transition_duration": 0.38
+    },
+    {
+      "type": "image",
+      "source": "..\\media\\05-fools-court.webp",
+      "duration": 1.95,
+      "motion": "zoom-in",
+      "transition": "dissolve",
+      "transition_duration": 0.5
+    },
+    {
+      "type": "image",
+      "source": "..\\media\\01-grand-hall.png",
+      "duration": 3.0,
+      "motion": "zoom-out",
+      "transition": "fade",
+      "transition_duration": 0.55
+    }
+  ],
+  "output": {
+    "path": "output/king-prompter-intro-1920x1080.mp4",
+    "codec": "libx264",
+    "crf": 24,
+    "preset": "medium"
+  }
+}

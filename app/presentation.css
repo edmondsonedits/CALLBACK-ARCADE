@@ -1,0 +1,316 @@
+:root {
+  --kp-motion-instant: 80ms;
+  --kp-motion-micro: 160ms;
+  --kp-motion-standard: 240ms;
+  --kp-motion-stage: 420ms;
+  --kp-motion-reveal: 700ms;
+  --kp-motion-ceremonial: 1200ms;
+  --kp-ease-standard: cubic-bezier(.2, .8, .2, 1);
+  --kp-ease-exit: cubic-bezier(.4, 0, 1, 1);
+}
+
+.host-shell:has(.castle-room) {
+  background: var(--kp-night-deep, #070d25);
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.castle-room {
+  --room-accent: var(--kp-cyan, #46dbdc);
+  --room-accent-2: var(--kp-gold, #ffd84b);
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: #070d25;
+}
+
+.castle-room-backdrop,
+.castle-room-ambient,
+.castle-room-props,
+.castle-room-scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.castle-room-backdrop {
+  background:
+    radial-gradient(circle at 50% 22%, color-mix(in srgb, var(--room-accent) 18%, transparent), transparent 28%),
+    linear-gradient(112deg, #070d25 0 13%, #172451 32%, #101a3b 68%, #070d25 87%);
+  background-size: cover;
+  background-position: 50% 45%;
+  transform: scale(1.015);
+}
+
+.castle-room-grand-hall .castle-room-backdrop {
+  background-image: image-set(url("/media/grand-hall/poster-1920x1080.avif") type("image/avif"), url("/media/grand-hall/poster-1920x1080.webp") type("image/webp"));
+}
+
+.castle-room-prompt-foundry { --room-accent: #46dbdc; --room-accent-2: #ff6f61; }
+.castle-room-scriptorium { --room-accent: #9c7cff; --room-accent-2: #fff4d6; }
+.castle-room-hall-of-echoes { --room-accent: #9c7cff; --room-accent-2: #46dbdc; }
+.castle-room-banquet-hall { --room-accent: #ff6f61; --room-accent-2: #ffd84b; }
+.castle-room-evidence-vault { --room-accent: #ffd84b; --room-accent-2: #9c7cff; }
+.castle-room-rumour-press { --room-accent: #9c7cff; --room-accent-2: #ff6f61; }
+.castle-room-war-room { --room-accent: #ff6f61; --room-accent-2: #46dbdc; }
+.castle-room-fools-court { --room-accent: #ffd84b; --room-accent-2: #ff6f61; }
+
+.castle-room-prompt-foundry .castle-room-backdrop {
+  background:
+    linear-gradient(90deg, rgba(7,13,37,.97) 0 12%, transparent 24% 76%, rgba(7,13,37,.97) 88%),
+    radial-gradient(ellipse at 50% 64%, rgba(70,219,220,.22), transparent 33%),
+    repeating-linear-gradient(90deg, transparent 0 9%, rgba(255,111,97,.07) 9.2% 9.6%, transparent 9.8% 18%),
+    linear-gradient(#13254a, #0a1230 62%, #241b37);
+}
+
+.castle-room-scriptorium .castle-room-backdrop {
+  background: radial-gradient(ellipse at 50% 55%, rgba(255,244,214,.18), transparent 38%), linear-gradient(90deg, #090e28 0 16%, #332a56 36%, #1d244c 64%, #090e28 84%);
+}
+
+.castle-room-hall-of-echoes .castle-room-backdrop {
+  background: repeating-linear-gradient(115deg, transparent 0 13%, rgba(156,124,255,.07) 13.2% 13.8%, transparent 14% 25%), radial-gradient(circle at 50% 38%, rgba(156,124,255,.23), transparent 35%), linear-gradient(#0c1538, #070d25);
+}
+
+.castle-room-banquet-hall .castle-room-backdrop {
+  background: radial-gradient(ellipse at 50% 22%, rgba(255,216,75,.3), transparent 30%), linear-gradient(100deg, #350f28, #722d3d 30%, #172451 50%, #722d3d 70%, #350f28);
+}
+
+.castle-room-evidence-vault .castle-room-backdrop {
+  background: repeating-linear-gradient(90deg, rgba(10,16,43,.8) 0 9%, rgba(255,216,75,.08) 9% 10%, rgba(10,16,43,.8) 10% 20%), radial-gradient(ellipse at 50% 50%, rgba(255,244,214,.2), transparent 36%), #090f28;
+}
+
+.castle-room-rumour-press .castle-room-backdrop {
+  background: repeating-linear-gradient(0deg, transparent 0 12%, rgba(255,244,214,.06) 12.2% 13%, transparent 13.2% 24%), radial-gradient(circle at 50% 50%, rgba(156,124,255,.24), transparent 32%), linear-gradient(90deg, #0a102b, #38274f 50%, #0a102b);
+}
+
+.castle-room-war-room .castle-room-backdrop {
+  background: radial-gradient(ellipse at 50% 72%, rgba(255,111,97,.18), transparent 34%), linear-gradient(120deg, #080d24, #252f49 35%, #452439 50%, #252f49 65%, #080d24);
+}
+
+.castle-room-fools-court .castle-room-backdrop {
+  background: radial-gradient(ellipse at 50% 70%, rgba(255,216,75,.2), transparent 27%), repeating-linear-gradient(115deg, rgba(255,111,97,.05) 0 8%, rgba(156,124,255,.05) 8% 16%), linear-gradient(#151e44, #080d24);
+}
+
+.castle-room-prompt-foundry .castle-room-backdrop { background-image: image-set(url("/media/rooms/prompt-foundry/prompt-foundry-1920x1080.avif") type("image/avif"), url("/media/rooms/prompt-foundry/prompt-foundry-1920x1080.webp") type("image/webp")); }
+.castle-room-scriptorium .castle-room-backdrop { background-image: image-set(url("/media/rooms/scriptorium/scriptorium-1920x1080.avif") type("image/avif"), url("/media/rooms/scriptorium/scriptorium-1920x1080.webp") type("image/webp")); }
+.castle-room-hall-of-echoes .castle-room-backdrop { background-image: image-set(url("/media/rooms/hall-of-echoes/hall-of-echoes-1920x1080.avif") type("image/avif"), url("/media/rooms/hall-of-echoes/hall-of-echoes-1920x1080.webp") type("image/webp")); }
+.castle-room-banquet-hall .castle-room-backdrop { background-image: image-set(url("/media/rooms/banquet-hall/banquet-hall-1920x1080.avif") type("image/avif"), url("/media/rooms/banquet-hall/banquet-hall-1920x1080.webp") type("image/webp")); }
+.castle-room-evidence-vault .castle-room-backdrop { background-image: image-set(url("/media/rooms/evidence-vault/evidence-vault-1920x1080.avif") type("image/avif"), url("/media/rooms/evidence-vault/evidence-vault-1920x1080.webp") type("image/webp")); }
+.castle-room-rumour-press .castle-room-backdrop { background-image: image-set(url("/media/rooms/rumour-press/rumour-press-1920x1080.avif") type("image/avif"), url("/media/rooms/rumour-press/rumour-press-1920x1080.webp") type("image/webp")); }
+.castle-room-war-room .castle-room-backdrop { background-image: image-set(url("/media/rooms/war-room/war-room-1920x1080.avif") type("image/avif"), url("/media/rooms/war-room/war-room-1920x1080.webp") type("image/webp")); }
+.castle-room-fools-court .castle-room-backdrop { background-image: image-set(url("/media/rooms/fools-court/fools-court-1920x1080.avif") type("image/avif"), url("/media/rooms/fools-court/fools-court-1920x1080.webp") type("image/webp")); }
+
+.castle-room-scrim {
+  background: radial-gradient(ellipse at 50% 48%, rgba(7,13,37,.1) 0 22%, rgba(7,13,37,.48) 77%, rgba(7,13,37,.82));
+}
+
+.castle-room-quiet .castle-room-backdrop { filter: brightness(.72) saturate(.76); }
+.castle-room-quiet .castle-room-ambient { animation-play-state: paused; opacity: .24; }
+
+.castle-room-ambient i {
+  position: absolute;
+  width: min(22vw, 28rem);
+  height: min(22vw, 28rem);
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--room-accent) 16%, transparent), transparent 70%);
+  animation: castleAmbient 16s ease-in-out infinite alternate;
+}
+.castle-room-ambient i:nth-child(1) { left: 3%; top: 18%; }
+.castle-room-ambient i:nth-child(2) { right: 2%; top: 28%; animation-delay: -6s; }
+.castle-room-ambient i:nth-child(3) { left: 40%; bottom: -16%; animation-delay: -10s; }
+
+.castle-room-props::before,
+.castle-room-props::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 8vw;
+  min-width: 64px;
+  background: linear-gradient(90deg, rgba(7,13,37,.88), transparent);
+}
+.castle-room-props::after { right: 0; transform: scaleX(-1); }
+
+.castle-room-live { position: relative; z-index: 3; width: 100%; height: 100%; padding-top: clamp(4.25rem, 8vh, 6.75rem); }
+.stage-transition { min-height: 100%; }
+
+.host-header { position: relative; z-index: 20; background: linear-gradient(180deg, rgba(7,13,37,.92), rgba(7,13,37,.52) 72%, transparent); border-bottom: 0; }
+.connection-banner, .toast-error, .narrator-caption, .image-generation-notice, .drawer-backdrop { z-index: 40; }
+
+.pigeon-host {
+  position: absolute;
+  z-index: 5;
+  bottom: 4.5%;
+  width: clamp(78px, 10vw, 176px);
+  aspect-ratio: 1;
+  pointer-events: none;
+  transform-origin: 50% 100%;
+}
+.pigeon-left { left: 2.5%; }
+.pigeon-right { right: 2.5%; }
+.pigeon-host picture { position: absolute; inset: 0; display: block; }
+.pigeon-host picture img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(7px 9px 0 rgb(7 13 37 / 62%)); }
+.pigeon-host:has(picture img) .pigeon-coded-fallback { display: none; }
+.pigeon-coded-fallback { position: absolute; inset: 8%; filter: drop-shadow(7px 9px 0 rgba(7,13,37,.72)); }
+.pigeon-body { position: absolute; inset: 17% 13% 8%; border: 4px solid #101a3b; border-radius: 52% 52% 44% 44%; background: linear-gradient(150deg, #b6bdca 0 50%, #fff4d6 51%); }
+.pigeon-body::before, .pigeon-body::after { content: ""; position: absolute; width: 11%; aspect-ratio: 1; border-radius: 50%; top: 24%; background: #101a3b; }
+.pigeon-body::before { left: 29%; }.pigeon-body::after { right: 29%; }
+.pigeon-body i { position: absolute; left: 43%; top: 36%; width: 16%; height: 9%; border: 3px solid #101a3b; border-top: 0; border-radius: 0 0 999px 999px; }
+.pigeon-body b { position: absolute; inset: 54% 16% 8%; border-radius: 40% 40% 24% 24%; background: #302b61; border: 3px solid #101a3b; }
+.pigeon-wing { position: absolute; z-index: 2; width: 47%; height: 26%; right: -1%; top: 45%; border: 4px solid #101a3b; border-radius: 60% 12% 60% 20%; background: #172451; transform: rotate(-22deg); }
+.pigeon-beak { position: absolute; z-index: 3; top: 41%; left: 42%; width: 18%; height: 12%; background: #ff6f61; border: 3px solid #101a3b; clip-path: polygon(0 50%, 100% 0, 100% 100%); }
+.pigeon-crown { position: absolute; z-index: 8; top: -16%; left: 30%; width: 42%; height: auto; filter: drop-shadow(4px 5px 0 rgb(7 13 37 / 76%)); }
+.pigeon-state-panic { animation: pigeonRecoil var(--kp-motion-reveal) var(--kp-ease-standard) both; }
+.pigeon-state-celebrate, .pigeon-state-hold-crown { animation: pigeonCelebrate var(--kp-motion-ceremonial) var(--kp-ease-standard) both; }
+.castle-room-quiet .pigeon-host { animation: none; transform: scale(.92); opacity: .66; }
+.host-shell.phase-lobby .pigeon-host { left: 1%; right: auto; width: clamp(64px, 7vw, 96px); }
+
+.kp-crown { width: 1em; height: 1em; overflow: visible; vertical-align: -.13em; }
+.kp-crown-body, .kp-crown-rim { fill: #ffd84b; stroke: #101a3b; stroke-width: 24; stroke-linejoin: round; }
+.kp-crown-rim { fill: #e6aa20; }
+.kp-crown-centre { fill: #9c7cff; stroke: #101a3b; stroke-width: 15; }
+.kp-crown-jewel { stroke: #101a3b; stroke-width: 11; }.kp-crown-jewel-coral { fill: #ff6f61; }.kp-crown-jewel-cyan { fill: #46dbdc; }
+.kp-crown-disabled { filter: grayscale(1); opacity: .5; }
+.kp-crown-tie .kp-crown-body { fill: #fff4d6; }
+.game-brand { font-weight: 700; }
+.game-brand > .kp-crown { width: 2.15rem; height: 2.15rem; padding: .28rem; border-radius: .65rem; background: var(--kp-gold, #ffd84b); transform: rotate(-7deg); }
+#grand-hall-title > .kp-crown { width: .95em; height: .95em; margin-right: .12em; }
+.crown-of-fools > .kp-crown { width: 1em; height: 1em; }
+.bowl-winners > div > .kp-crown { position: absolute; top: -1.5rem; width: 3rem; height: 3rem; }
+.pigeon-presenter { padding: .45rem .75rem; border: 3px solid var(--kp-gold, #ffd84b); border-radius: .75rem; color: var(--kp-parchment, #fff4d6); background: rgb(7 13 37 / 86%); font: 700 clamp(.85rem, 1.3vw, 1.2rem)/1 "Space Grotesk", sans-serif; letter-spacing: .12em; transform: rotate(-2deg); }
+
+.presentation-event-status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.particle-layer { position: absolute; z-index: 8; inset: 9% 8% 12%; overflow: hidden; pointer-events: none; }
+.particle-layer i { --particle-x: 0%; position: absolute; left: 50%; bottom: 12%; width: clamp(8px, .8vw, 14px); aspect-ratio: 1; border: 2px solid #101a3b; background: var(--kp-gold, #ffd84b); transform: translate3d(var(--particle-x), 0, 0) rotate(0); animation: particleBurst var(--kp-motion-ceremonial) var(--kp-ease-standard) both; }
+.particle-layer i:nth-child(3n + 1) { border-radius: 50%; background: var(--kp-cyan, #46dbdc); }
+.particle-layer i:nth-child(3n + 2) { background: var(--kp-coral, #ff6f61); }
+.particle-layer i:nth-child(1) { --particle-x: -38vw; animation-delay: 20ms; }.particle-layer i:nth-child(2) { --particle-x: -31vw; animation-delay: 90ms; }.particle-layer i:nth-child(3) { --particle-x: -24vw; animation-delay: 40ms; }.particle-layer i:nth-child(4) { --particle-x: -17vw; animation-delay: 130ms; }.particle-layer i:nth-child(5) { --particle-x: -10vw; animation-delay: 60ms; }.particle-layer i:nth-child(6) { --particle-x: -4vw; animation-delay: 160ms; }.particle-layer i:nth-child(7) { --particle-x: 5vw; animation-delay: 30ms; }.particle-layer i:nth-child(8) { --particle-x: 12vw; animation-delay: 110ms; }.particle-layer i:nth-child(9) { --particle-x: 19vw; animation-delay: 70ms; }.particle-layer i:nth-child(10) { --particle-x: 26vw; animation-delay: 150ms; }.particle-layer i:nth-child(11) { --particle-x: 33vw; animation-delay: 50ms; }.particle-layer i:nth-child(12) { --particle-x: 39vw; animation-delay: 120ms; }
+.score-reveal { display: inline-grid; justify-items: center; }.score-reveal b { font-family: Fredoka, sans-serif; font-size: 2em; }.score-reveal small { text-transform: uppercase; letter-spacing: .08em; }
+
+.broadcast-header {
+  position: relative;
+  z-index: 40;
+  margin: 0 auto;
+  width: min(100%, 120rem);
+  background: linear-gradient(180deg, rgb(10 18 46 / 94%), rgb(10 18 46 / 72%));
+  border-bottom: 2px solid rgb(255 214 89 / 56%);
+  box-shadow: 0 9px 0 rgb(6 11 29 / 34%);
+  backdrop-filter: none;
+}
+.broadcast-room-code { transform: translateY(.24rem) rotate(-.7deg); border-color: var(--kp-gold, #ffd659); box-shadow: 4px 5px 0 #07102b; }
+.broadcast-controls { align-items: center; }
+
+.player-rail {
+  position: absolute;
+  z-index: 24;
+  right: clamp(7rem, 11vw, 13rem);
+  bottom: max(.65rem, env(safe-area-inset-bottom));
+  left: clamp(7rem, 11vw, 13rem);
+  display: flex;
+  justify-content: center;
+  gap: clamp(.32rem, .7vw, .8rem);
+  pointer-events: none;
+}
+.player-rail-seat {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, auto) 1rem;
+  align-items: center;
+  gap: .32rem;
+  min-width: 0;
+  max-width: 10.5rem;
+  padding: .25rem .45rem;
+  color: var(--kp-parchment, #fff4d6);
+  background: rgb(11 20 54 / 89%);
+  border: 2px solid rgb(255 244 214 / 34%);
+  border-radius: .7rem;
+  box-shadow: 3px 4px 0 rgb(4 8 22 / 56%);
+}
+.player-rail-seat > span { overflow: hidden; font: 650 clamp(.66rem, .82vw, .9rem)/1 "Space Grotesk", sans-serif; text-overflow: ellipsis; white-space: nowrap; }
+.player-rail-seat > b { color: var(--kp-cyan, #65ddec); text-align: center; }
+.player-rail-seat.is-locked { border-color: var(--kp-cyan, #65ddec); transform: translateY(-.18rem); }
+.player-rail-seat.is-disconnected { opacity: .48; filter: grayscale(.7); }
+.stage-instrument-timer { display: grid; place-items: center; }
+.stage-instrument-timer > small { margin-top: -.5rem; color: var(--kp-parchment, #fff4d6); font: 650 .65rem/1 "Space Grotesk", sans-serif; letter-spacing: .13em; text-transform: uppercase; }
+.stage-response-meter { border-color: color-mix(in srgb, var(--room-accent) 62%, var(--kp-navy, #101a3b)); box-shadow: 5px 6px 0 rgb(4 8 22 / 42%); }
+.stage-response-meter.is-complete { border-color: var(--kp-cyan, #65ddec); }
+.stage-response-meter.is-complete .response-copy strong { color: var(--kp-cyan, #65ddec); }
+.concept-doodle .kp-crown { margin-inline: .12em; font-size: .9em; }
+.score-strip .score-reveal { margin-left: auto; }
+.score-strip .score-reveal small { display: none; }
+
+.phone-shell.controller {
+  --controller-accent: var(--kp-cyan, #65ddec);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--controller-accent) 10%, transparent), transparent 12rem),
+    var(--kp-navy, #101a3b);
+}
+.controller.pack-comic { --controller-accent: var(--kp-purple, #9c7cff); }
+.controller.pack-birthday { --controller-accent: var(--kp-coral, #ff6f61); }
+.controller.pack-king-mystery { --controller-accent: var(--kp-gold, #ffd84b); }
+.controller.pack-royal-rumours { --controller-accent: var(--kp-purple, #9c7cff); }
+.controller.pack-royal-war-room { --controller-accent: var(--kp-coral, #ff6f61); }
+.controller.pack-bowl { --controller-accent: var(--kp-gold, #ffd84b); }
+.controller .phone-header { border-bottom-color: var(--controller-accent); box-shadow: 0 5px 0 rgb(5 10 28 / 42%); }
+.controller .phone-content { border-top: 4px solid var(--controller-accent); }
+.controller .phone-content > p:not(.round-label):not(.eyebrow),
+.controller .lobby-phone > small,
+.controller .final-phone > small { color: var(--kp-parchment, #fff4d6); }
+.controller .lobby-phone h1 { color: var(--kp-parchment, #fff4d6); }
+.controller .phone-content > .round-label { color: var(--controller-accent); }
+.controller button,
+.controller [role="button"] { touch-action: manipulation; }
+.controller button:active:not(:disabled),
+.controller [role="button"]:active { transform: translateY(2px); box-shadow: 1px 2px 0 var(--kp-navy, #101a3b); }
+.controller .locked-task .lock-mark,
+.controller .final-phone .lock-mark { color: var(--controller-accent); }
+.controller .lock-mark .kp-crown,
+.bowl-phone-emblem .kp-crown { width: 1em; height: 1em; font-size: inherit; }
+.controller.phase-answering .phone-content,
+.controller.phase-final-answering .phone-content,
+.controller.phase-voting .phone-content,
+.controller.phase-final-voting .phone-content,
+.controller.phase-war-ranking .phone-content,
+.controller.phase-rumour-voting .phone-content {
+  animation: none !important;
+}
+
+@keyframes castleAmbient { from { transform: translate3d(-1.5%, -1%, 0) scale(.96); opacity: .42; } to { transform: translate3d(2%, 1.5%, 0) scale(1.04); opacity: .72; } }
+@keyframes pigeonRecoil { 0% { transform: translateY(0) rotate(0); } 35% { transform: translateY(5%) rotate(-7deg); } 65% { transform: translateY(-3%) rotate(4deg); } 100% { transform: translateY(0) rotate(0); } }
+@keyframes pigeonCelebrate { 0%, 100% { transform: translateY(0) rotate(0); } 38% { transform: translateY(-12%) rotate(-4deg); } 68% { transform: translateY(-4%) rotate(4deg); } }
+@keyframes particleBurst { 0% { opacity: 0; transform: translate3d(0, 4vh, 0) rotate(0); } 25% { opacity: 1; } 100% { opacity: 0; transform: translate3d(var(--particle-x), -52vh, 0) rotate(320deg); } }
+
+@media (max-width: 900px) {
+  .pigeon-host { display: none; }
+  .castle-room-live { padding-top: 4rem; }
+  .player-rail { right: 5.5rem; left: 5.5rem; }
+  .player-rail-seat { grid-template-columns: 1.65rem minmax(0, auto) .8rem; padding: .18rem .32rem; }
+}
+
+@media (max-width: 1400px) {
+  .castle-room-prompt-foundry .castle-room-backdrop { background-image: image-set(url("/media/rooms/prompt-foundry/prompt-foundry-1280x720.avif") type("image/avif"), url("/media/rooms/prompt-foundry/prompt-foundry-1280x720.webp") type("image/webp")); }
+  .castle-room-scriptorium .castle-room-backdrop { background-image: image-set(url("/media/rooms/scriptorium/scriptorium-1280x720.avif") type("image/avif"), url("/media/rooms/scriptorium/scriptorium-1280x720.webp") type("image/webp")); }
+  .castle-room-hall-of-echoes .castle-room-backdrop { background-image: image-set(url("/media/rooms/hall-of-echoes/hall-of-echoes-1280x720.avif") type("image/avif"), url("/media/rooms/hall-of-echoes/hall-of-echoes-1280x720.webp") type("image/webp")); }
+  .castle-room-banquet-hall .castle-room-backdrop { background-image: image-set(url("/media/rooms/banquet-hall/banquet-hall-1280x720.avif") type("image/avif"), url("/media/rooms/banquet-hall/banquet-hall-1280x720.webp") type("image/webp")); }
+  .castle-room-evidence-vault .castle-room-backdrop { background-image: image-set(url("/media/rooms/evidence-vault/evidence-vault-1280x720.avif") type("image/avif"), url("/media/rooms/evidence-vault/evidence-vault-1280x720.webp") type("image/webp")); }
+  .castle-room-rumour-press .castle-room-backdrop { background-image: image-set(url("/media/rooms/rumour-press/rumour-press-1280x720.avif") type("image/avif"), url("/media/rooms/rumour-press/rumour-press-1280x720.webp") type("image/webp")); }
+  .castle-room-war-room .castle-room-backdrop { background-image: image-set(url("/media/rooms/war-room/war-room-1280x720.avif") type("image/avif"), url("/media/rooms/war-room/war-room-1280x720.webp") type("image/webp")); }
+  .castle-room-fools-court .castle-room-backdrop { background-image: image-set(url("/media/rooms/fools-court/fools-court-1280x720.avif") type("image/avif"), url("/media/rooms/fools-court/fools-court-1280x720.webp") type("image/webp")); }
+}
+
+@media (min-width: 2200px) {
+  .castle-room-prompt-foundry .castle-room-backdrop { background-image: image-set(url("/media/rooms/prompt-foundry/prompt-foundry-2560x1440.avif") type("image/avif"), url("/media/rooms/prompt-foundry/prompt-foundry-2560x1440.webp") type("image/webp")); }
+  .castle-room-scriptorium .castle-room-backdrop { background-image: image-set(url("/media/rooms/scriptorium/scriptorium-2560x1440.avif") type("image/avif"), url("/media/rooms/scriptorium/scriptorium-2560x1440.webp") type("image/webp")); }
+  .castle-room-hall-of-echoes .castle-room-backdrop { background-image: image-set(url("/media/rooms/hall-of-echoes/hall-of-echoes-2560x1440.avif") type("image/avif"), url("/media/rooms/hall-of-echoes/hall-of-echoes-2560x1440.webp") type("image/webp")); }
+  .castle-room-banquet-hall .castle-room-backdrop { background-image: image-set(url("/media/rooms/banquet-hall/banquet-hall-2560x1440.avif") type("image/avif"), url("/media/rooms/banquet-hall/banquet-hall-2560x1440.webp") type("image/webp")); }
+  .castle-room-evidence-vault .castle-room-backdrop { background-image: image-set(url("/media/rooms/evidence-vault/evidence-vault-2560x1440.avif") type("image/avif"), url("/media/rooms/evidence-vault/evidence-vault-2560x1440.webp") type("image/webp")); }
+  .castle-room-rumour-press .castle-room-backdrop { background-image: image-set(url("/media/rooms/rumour-press/rumour-press-2560x1440.avif") type("image/avif"), url("/media/rooms/rumour-press/rumour-press-2560x1440.webp") type("image/webp")); }
+  .castle-room-war-room .castle-room-backdrop { background-image: image-set(url("/media/rooms/war-room/war-room-2560x1440.avif") type("image/avif"), url("/media/rooms/war-room/war-room-2560x1440.webp") type("image/webp")); }
+  .castle-room-fools-court .castle-room-backdrop { background-image: image-set(url("/media/rooms/fools-court/fools-court-2560x1440.avif") type("image/avif"), url("/media/rooms/fools-court/fools-court-2560x1440.webp") type("image/webp")); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .castle-room-ambient i, .pigeon-host, .particle-layer i { animation: none !important; }
+  .particle-layer { display: none; }
+  .castle-room-backdrop { transform: none; }
+}

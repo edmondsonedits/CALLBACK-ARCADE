@@ -1,0 +1,21 @@
+/** Starting values are estimates for tuning; the reviewed source material gives no measured physics. */
+export const SUMO_CONFIG = {
+  fixedStepSeconds: 1 / 30,
+  roundDurationSeconds: 60,
+  initialArenaRadius: 10.2,
+  minimumArenaRadius: 0.7,
+  playerRadius: 0.62,
+  playerMass: 2.2,
+  acceleration: 4.6,
+  maxSpeed: 6.5,
+  maxImpactSpeed: 9,
+  rollDamping: 0.994,
+  collisionRestitution: 0.58,
+  firstCollapseTick: 9 * 30,
+  collapseWarningTicks: 45,
+  collapseIntervalTicks: 150,
+  fastCollapseIntervalTicks: 90,
+  collapseAmount: 0.9,
+  fastCollapseRadius: 5.8,
+  suddenDeathCollapseTicks: 18,
+} as const;

@@ -1,0 +1,23 @@
+# Royal Sumo pilot execution
+
+Scope: implement plan tasks 1–5 for Sumo only; other games wait for physical phone acceptance. Free tier only. Source v75 aaef9e575a5f7015e328aca7c275316e7be1d6b2, isolated branch codex/sumo-realtime-pilot. Concurrent v77 music/mirror, v79 bots/curation and v81 phone polish/archive gates reconciled; rollback v81 e091a39bb259094b9e98d2ebb4c044d9ae21faed.
+
+Baseline: npm ci succeeded; npm test discovered 828 checks, 820 passed, eight existing skips, zero failures.
+
+Ownership: one focused Luna worker owns lib/party, party-worker and backend tests. Parent owns broker, session integration, frontend, deployment and verification. Repository instructions authorize this bounded worker despite the inline execution skill's default. No other active implementers in this checkout.
+
+Pilot ruling: keep the existing persistent D1 session code and membership. Sumo opens a dedicated socket while its child is active. Returning to the shared selector retains every phone. The later migration will keep the socket across every game; migrating other engines now would violate the user's Sumo-first testing gate.
+
+Budget: SQLite Durable Objects only, Workers Free, one active party, maximum 20-minute pilot. No upgrade or paid overage enrollment. Measure actual account usage before extending limits. No assertion of zero latency or real-device performance before phone tests.
+
+Implementation and release checks are recorded in .logs/party-latency and STATUS.md. Software release remains gated on fresh hosted smoke; physical testing is the user's acceptance gate before the catalog migration.
+
+Payload ruling: compact snapshots may use 8 KiB rather than the proposed 4 KiB. The six-map, ten-fighter CPU/wire probe reached 7768 bytes; preserving mutable hazard/fighter fields takes priority over a smaller lossy projection. Bootstrap crosses round/map/results boundaries; compact updates are 20 Hz, phone status 10 Hz, authoritative simulation 120 Hz. Host rendering interpolates a 33 ms buffer and caps extrapolation at 33 ms.
+
+Cloud gate: deployed SQLite DO Worker on the verified Workers Free plan. Ten authenticated Node controllers passed accepted inputs, pause/resume and reconnect; 219 ping samples had 42 ms median / 56 ms p95 from this PC. This is cloud transport evidence, not physical input-to-display latency. Temporary probe party retired HTTP200 and admission released. Local PC clock is 82 seconds behind Cloudflare; synthetic tickets use the cloud Date header. Production tickets are issued on the Site server clock.
+
+Review fixes: canonical result event keys, single-timestamp atomic result writes, retryable retirement, durable alarm-backed result delivery, pre-upgrade ticket validation, preauth socket cap/timeout, recovered checkpoint fail-closed behavior and timer restart, ready-before-input and independent phone hold sources are covered by focused regressions. Local Worker retirement sometimes exceeds the 10-second broker timeout; idempotent retry restores the previous binding and completes cleanup. Fresh production transition smoke remains a release gate.
+
+Final local gate: 913 unit checks passed, eight existing skips; nine production render checks, lint, TypeScript and exact-source build passed. The 99-case browser catalog was covered across broad and focused runs. Final focused tests passed on the built Worker (2/2): Sumo two-phone touch, input, pause/resume, reload, responsive layout and same-party Air Hockey switch; Bowl wrong/correct guesses and TV resizing. The TV regression was focus scrolling an overflow:hidden scene; a Bowl-only overflow:clip rule passes the exact interaction at 720p, 768p and 1080p. Full logs distinguish broad failures from focused repairs; no single uninterrupted 99-pass run is claimed.
+
+Published Site v82 from cdc4d73d642d75300517167ee4577dde2312c7b6, deployment appgdep_6acec293e26c819185c0745d630687d7, environment revision 3. Fresh hosted acceptance passed in 43.1 seconds: two phone contexts, multi-touch, authenticated accepted input, paused reload/resume, authoritative eliminated controls, responsive layouts and same-party Air Hockey switch. First live runs exposed a test assumption about surviving idle bot attacks; the corrected test retains server-authoritative life-state assertions and fresh input acknowledgement checks. Sumo was retired through New Game and the test party closed. Local preview, Worker and tail sessions stopped. Physical testing is now ready; other engines remain behind the user's acceptance gate. See .logs/party-latency/release-receipt.json for provenance and limitations.

@@ -1,0 +1,48 @@
+.stage,.phone{display:grid;min-height:min(78vh,780px);place-items:center;padding:clamp(1rem,3vw,2.5rem);color:#f5efff;background:radial-gradient(ellipse at 50% 0%,#532d78 0,#211c39 53%,#111523 100%)}
+.phone{min-height:auto;padding:.75rem 0;background:transparent}
+.panel{width:min(100%,72rem);padding:clamp(1rem,3vw,2.25rem);border:1px solid #b38ceb66;border-radius:1.35rem;background:#13172aec;box-shadow:0 1.5rem 4rem #0007}
+.phone .panel{width:100%;padding:1rem}
+.eyebrow{margin:0 0 .5rem;color:#d5b7ff;font-size:.75rem;font-weight:850;letter-spacing:.15em;text-transform:uppercase}
+.panel h1{margin:.25rem 0 .7rem;font-size:clamp(1.6rem,4vw,3rem);line-height:1.05}
+.phone .panel h1{font-size:1.55rem}
+.panel p{line-height:1.5}
+.arena{display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(.5rem,2vw,1.4rem);align-items:center;margin:1.2rem 0}
+.duelist{padding:clamp(.7rem,2vw,1.2rem);border:1px solid #b38ceb55;border-radius:1rem;background:linear-gradient(145deg,#ffffff0d,#ffffff04);text-align:center}
+.duelist h2{margin:.2rem 0 .65rem;font-size:clamp(1rem,2.4vw,1.5rem)}
+.duelist strong{display:block;color:#ffd294;font-size:clamp(1.6rem,4vw,2.8rem)}
+.resource{display:flex;justify-content:center;gap:.4rem;margin-top:.6rem;color:#c8b4e6;font-size:.85rem}
+.versus{color:#e0c4ff;font-size:.72rem;font-weight:900;letter-spacing:.14em}
+.spells{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,13rem),1fr));gap:.65rem;margin:1rem 0}
+.spell{padding:.8rem;border:1px solid #bc9bea66;border-radius:.8rem;background:#ffffff09}
+.spell h3{margin:0 0 .3rem;color:#f2dcff;font-size:1rem}
+.spell p{margin:.25rem 0;color:#cdd0df;font-size:.88rem}
+.spell strong{color:#ffd294;font-size:.8rem}
+.select,.primary,.secondary,.pattern{min-height:2.8rem;padding:.7rem .85rem;border:1px solid #c8a4f2;border-radius:.65rem;color:#261a35;background:linear-gradient(145deg,#e2c8ff,#b78be8);font:inherit;font-weight:800;cursor:pointer}
+.select{width:100%;margin-top:.55rem}
+.selected{border-color:#f7d696;background:#ffffff14}
+.primary,.secondary{min-height:3rem;text-align:center}
+.secondary,.pattern{border-color:#786897;color:#f5efff;background:transparent}
+.pattern{min-height:2.5rem;font-size:.9rem}
+.select:disabled,.primary:disabled,.secondary:disabled,.pattern:disabled{cursor:not-allowed;opacity:.55}
+.locked,.clock,.status{color:#d0c7df;font-size:.9rem}
+.strokePad{display:block;width:100%;height:clamp(9rem,32vw,15rem);margin:.7rem 0;border:1px dashed #d4b5f6;border-radius:.8rem;background:radial-gradient(ellipse at center,#60418455,#171626);touch-action:none;cursor:crosshair}
+.stroke{fill:none;stroke:#f5d99d;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.drawTools{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.detected{margin:.55rem 0;color:#efcf95;font-weight:700}
+.error{color:#ffb4bf}
+.results{display:grid;grid-template-columns:1fr 1fr;gap:.55rem;margin:.85rem 0}
+.resultRow{padding:.75rem;border-radius:.7rem;background:#ffffff0b}
+.resultRow strong{color:#ffd294}
+.primary:focus-visible,.secondary:focus-visible,.pattern:focus-visible,.select:focus-visible,.strokePad:focus-visible{outline:3px solid #8de5ee;outline-offset:3px}
+@media(max-width:520px){.arena{gap:.35rem}.duelist{padding:.55rem}.duelist h2{font-size:.92rem}.resource{font-size:.74rem}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+.roster .arena { grid-template-columns:repeat(5,minmax(0,1fr)); gap:.5rem; margin:.6rem 0; }
+.roster .duelist { padding:.45rem; min-width:0; }
+.roster .duelist h2 { font-size:.9rem; margin:.1rem 0; overflow-wrap:anywhere; }
+.roster .duelist strong { font-size:1.5rem; }
+.roster .duelist span { font-size:.72rem; }
+.roster .results { grid-template-columns:repeat(5,minmax(0,1fr)); }
+.roster .resultRow { padding:.4rem; font-size:.72rem; }
+.roster .resultRow p { margin:.1rem 0; }
+.phone.roster .arena,.phone.roster .results { grid-template-columns:repeat(2,minmax(0,1fr)); }

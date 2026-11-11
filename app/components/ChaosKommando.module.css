@@ -1,0 +1,24 @@
+.stage { display:grid; gap:1rem; width:min(100%,1100px); margin:auto; padding:clamp(1rem,3vw,2rem); color:#fff9e9; }
+.panel { border:1px solid #ffffff35; border-radius:1.25rem; background:linear-gradient(145deg,#182e43,#101d2b); padding:clamp(1rem,3vw,2rem); box-shadow:0 1rem 3rem #0005; }
+.eyebrow { color:#80e2d4; font-size:.76rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase; }
+.stage h1,.phone h1 { margin:.35rem 0 .5rem; font-size:clamp(1.8rem,4vw,3.2rem); line-height:1.05; }
+.briefing { max-width:60ch; color:#e0e7eb; font-size:1.15rem; }
+.missions { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:.5rem; margin:1rem 0; }
+.missionPip { border:1px solid #ffffff35; border-radius:.75rem; padding:.6rem; color:#d5dce1; text-align:center; }
+.missionPipActive { border-color:#7de1ce; color:#fff; background:#1c625e; }
+.status { display:flex; flex-wrap:wrap; gap:.55rem; }
+.status span { border:1px solid #ffffff35; border-radius:999px; padding:.4rem .7rem; }
+.tools { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.65rem; margin:1rem 0; }
+.tool { display:flex; align-items:center; gap:.7rem; min-height:4.1rem; padding:.8rem; border:1px solid #ffffff45; border-radius:.85rem; background:#0a1c29; color:#fff; }
+.tool input { accent-color:#67dfc8; width:1.2rem; height:1.2rem; }
+.button { border:0; border-radius:.8rem; padding:.9rem 1.2rem; background:#71e0c9; color:#09231f; font:inherit; font-weight:800; cursor:pointer; }
+.button:disabled { opacity:.5; cursor:not-allowed; }
+.results { display:grid; gap:.65rem; margin-top:1rem; }
+.resultRow { display:grid; grid-template-columns:1fr auto; gap:.5rem; padding:.7rem; background:#091a27; border-radius:.65rem; }
+.ok { color:#83e8b2; }
+.bad { color:#ffc287; }
+.phone { display:grid; gap:.85rem; width:min(100%,560px); margin:1rem auto; padding:1rem; color:#fff9e9; }
+.phone .panel { padding:1.2rem; }
+.clock { color:#cbd7dd; text-align:center; font-variant-numeric:tabular-nums; }
+.locked { border:1px solid #64ddc6; border-radius:.8rem; padding:1rem; background:#123a39; }
+@media(max-width:600px){.tools{grid-template-columns:1fr}.missions{grid-template-columns:repeat(2,minmax(0,1fr))}}

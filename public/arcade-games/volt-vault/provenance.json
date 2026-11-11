@@ -1,0 +1,40 @@
+{
+  "origin": "Existing King Prompter local simulation and project-owned upgrade code",
+  "baseCommit": "c6f1d3c2cf01a71a6ebeef165712b685e1e5fb2d",
+  "version": "2.0.0-sites",
+  "source": "lib/arcade/upgrades/volt-vault.ts",
+  "license": "Project-owned source; Three.js dependency is MIT",
+  "dependencies": [
+    {
+      "path": "../shared/arena-runtime.js",
+      "purpose": "Local Three.js presentation and match lifecycle"
+    },
+    {
+      "path": "../royal-twisted/vendor/three/three.module.js",
+      "license": "MIT",
+      "version": "0.180.0"
+    }
+  ],
+  "files": [
+    {
+      "path": "index.html",
+      "sha256": "bc7dc2d6263e539c39a32d7526b7ed4eb6f0bf455ce244a40825274146202034"
+    },
+    {
+      "path": "original/types.ts.txt",
+      "sha256": "6cc484204d82a940cf983bf0d3c51cc0e8e12bf6c112abbb434cecd7f61a354a"
+    },
+    {
+      "path": "original/volt-vault-config.ts.txt",
+      "sha256": "f904dee2c750980da3f77a6e703648f73246feb9702838fcbe7d4588efb4850e"
+    },
+    {
+      "path": "original/volt-vault.ts.txt",
+      "sha256": "fcc0fe8a3663af91793a67d37c9f374349f1a276ce3b9ed89580a74d3e389535"
+    },
+    {
+      "path": "simulation.js",
+      "sha256": "c7810c0ee8c6220529207d705857022ba1eb3fc5e7bf38e35956d4b7d6815eca"
+    }
+  ]
+}

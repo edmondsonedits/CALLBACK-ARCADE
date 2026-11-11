@@ -1,0 +1,36 @@
+{
+  "origin": "Existing King Prompter local simulation and project-owned upgrade code",
+  "baseCommit": "c6f1d3c2cf01a71a6ebeef165712b685e1e5fb2d",
+  "version": "2.0.0-sites",
+  "source": "lib/arcade/upgrades/manic-panic.ts",
+  "license": "Project-owned source; Three.js dependency is MIT",
+  "dependencies": [
+    {
+      "path": "../shared/arena-runtime.js",
+      "purpose": "Local Three.js presentation and match lifecycle"
+    },
+    {
+      "path": "../royal-twisted/vendor/three/three.module.js",
+      "license": "MIT",
+      "version": "0.180.0"
+    }
+  ],
+  "files": [
+    {
+      "path": "index.html",
+      "sha256": "c09050cb292215524502b7310538150c326739dc6f44dfd7d5d9fccdb8fc5bf8"
+    },
+    {
+      "path": "original/manic-panic-config.ts.txt",
+      "sha256": "5ef618b1ef75fb5562f6c64e9deabffd529915e75d952e07ae0e2f8d1337d667"
+    },
+    {
+      "path": "original/manic-panic.ts.txt",
+      "sha256": "cf21ad6d3e4859ca71bfd6bf8ceeb48e6a465a617457a94593a1b79dd20a41c8"
+    },
+    {
+      "path": "simulation.js",
+      "sha256": "8ce5436e9b69794aa7170afc92a28434a9e4d0bb72aebdd8281b6a7c3844f23e"
+    }
+  ]
+}

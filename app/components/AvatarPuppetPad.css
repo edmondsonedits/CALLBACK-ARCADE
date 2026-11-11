@@ -1,0 +1,50 @@
+.callback-avatar.live-pose .puppet { animation: none !important; }
+.phone-section-screen .avatar-puppet-pad{flex:1;min-height:0;display:flex;flex-direction:column;padding:10px;background:#fff4d6}
+.phone-section-screen .avatar-puppet-panel{flex:1;min-height:0;grid-template-rows:auto auto minmax(70px,1fr) auto;margin:0;border:0;padding:0;gap:8px;overflow:hidden;background:transparent}
+.avatar-puppet-screen-heading{display:flex;align-items:center;gap:8px;font-size:.95rem}
+.avatar-puppet-screen-heading strong{flex:1}
+.avatar-puppet-screen-heading button,.avatar-puppet-menu button{min-height:48px;padding:8px 12px;border:1px solid #c8bea5;border-radius:12px;background:#fff9e8;color:#172451;font:700 .8rem "Space Grotesk Variable",sans-serif;cursor:pointer;touch-action:manipulation}
+.phone-section-screen .avatar-puppet-preview{position:relative;height:auto;min-height:0}
+.phone-section-screen .avatar-puppet-preview .callback-avatar{position:absolute;inset:12px;height:calc(100% - 24px);width:calc(100% - 24px);aspect-ratio:auto;max-width:none}
+.avatar-puppet-menu{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.avatar-puppet-menu button{text-align:left}.avatar-puppet-menu span{display:block;font-size:.65rem;font-weight:500;margin-top:4px}
+.phone-section-screen .avatar-puppet-sliders{max-height:none;overflow:hidden;gap:0;padding:0}
+.phone-section-screen .avatar-puppet-sliders label{min-height:36px;font-size:.72rem}
+.phone-section-screen .avatar-puppet-keyboard{padding:0;border:0}
+.avatar-puppet-keyboard .phone-page-buttons{padding:4px 0 0}
+.avatar-puppet-reactions{min-height:0}
+@media(max-height:520px){.avatar-puppet-reactions{grid-column:2;grid-row:3;align-self:center}}
+@media(max-height:440px){.phone-section-screen .avatar-puppet-panel{grid-template-rows:auto minmax(0,1fr)}.avatar-puppet-panel .avatar-puppet-hint{display:none}.phone-section-screen .avatar-puppet-preview{grid-row:2}.avatar-puppet-menu,.avatar-puppet-reactions,.avatar-puppet-keyboard{grid-row:2}.avatar-puppet-reactions .avatar-puppet-presets button{min-height:48px}.avatar-puppet-reactions .phone-page-buttons{padding:4px 0 0}.avatar-puppet-keyboard .phone-page-buttons button{min-height:48px}}
+@media(max-height:520px){.phone-section-screen .avatar-puppet-panel{grid-template-columns:minmax(110px,.7fr) 1fr;grid-template-rows:auto auto 1fr;gap:6px 12px}.avatar-puppet-screen-heading{grid-column:1/-1}.avatar-puppet-hint{grid-column:2;grid-row:2}.phone-section-screen .avatar-puppet-preview{grid-column:1;grid-row:2/4}.avatar-puppet-menu,.avatar-puppet-presets,.avatar-puppet-keyboard{grid-column:2;grid-row:3;align-content:center}.avatar-puppet-presets{gap:4px}.avatar-puppet-presets button{min-height:44px}.phone-section-screen .avatar-puppet-sliders label{min-height:26px}.avatar-puppet-keyboard .phone-page-buttons button{min-height:36px}}
+.callback-avatar .puppet-fastener { fill: #f1d38b; stroke: #26314b; stroke-width: 1.4; }
+.avatar-puppet-pad { color: var(--kp-ink, #111a39); font-family: "Space Grotesk", sans-serif; }
+
+
+.avatar-puppet-pad { flex: none; }
+.avatar-puppet-toggle { display: flex; align-items: center; justify-content: space-between; gap: .6rem; width: 100%; min-height: 48px; padding: .68rem .9rem; border: 1px solid #d8ceB6; border-radius: 14px; background: #fff4d6; color: #111a39; text-align: left; font: 700 .95rem/1.2 "Fredoka", sans-serif; cursor: pointer; touch-action: manipulation; }
+.avatar-puppet-toggle > span { color: #99731d; }
+.avatar-puppet-toggle > b { margin-left: auto; font-size: 1.25rem; }
+.avatar-puppet-toggle:focus-visible, .avatar-puppet-pad button:focus-visible, .avatar-puppet-pad summary:focus-visible, .avatar-puppet-pad input:focus-visible { outline: 3px solid #176c82; outline-offset: 3px; }
+.avatar-puppet-panel { display: grid; gap: .55rem; margin-top: .5rem; padding: .65rem; border: 1px solid #d8ceb6; border-radius: 16px; background: #fff9e8; }
+.avatar-puppet-hint { margin: 0; color: #4b5060; font-size: .72rem; line-height: 1.35; }
+.avatar-puppet-preview { display: grid; place-items: center; height: 210px; overflow: hidden; border: 1px solid #dfd3b5; border-radius: 13px; background: radial-gradient(ellipse at 50% 35%, #fffdf2 0 35%, #f3dfac 36% 100%); touch-action: none; user-select: none; }
+.avatar-puppet-preview .callback-avatar { width: 120px; height: 195px; }
+.avatar-puppet-preview [data-puppet-handle] { cursor: grab; pointer-events: all; }
+.avatar-puppet-preview [data-puppet-handle]:active { cursor: grabbing; }
+.avatar-puppet-presets { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .35rem; }
+.avatar-puppet-presets button { min-width: 0; min-height: 48px; padding: .35rem .25rem; border: 1px solid #d7c89f; border-radius: 10px; background: #fff4d6; color: #111a39; font: 700 .7rem/1.1 "Space Grotesk", sans-serif; text-transform: capitalize; cursor: pointer; touch-action: manipulation; }
+.avatar-puppet-presets button:hover { background: #ffe8a4; }
+.avatar-puppet-keyboard { border-top: 1px solid #e1d8c4; padding-top: .5rem; }
+.avatar-puppet-keyboard summary { min-height: 44px; display: flex; align-items: center; color: #3b4561; font-size: .78rem; font-weight: 700; cursor: pointer; }
+.avatar-puppet-sliders { display: grid; gap: .35rem; max-height: 260px; overflow: auto; padding: .2rem .15rem .3rem; }
+.avatar-puppet-sliders label { display: grid; grid-template-columns: minmax(0, 1fr) minmax(80px, 1fr); align-items: center; gap: .5rem; min-height: 34px; color: #34394a; font-size: .68rem; }
+.avatar-puppet-sliders input { width: 100%; min-height: 30px; accent-color: #7860c9; }
+@media (max-width: 380px) {
+  .avatar-puppet-preview { height: 184px; }
+  .avatar-puppet-preview .callback-avatar { width: 110px; height: 179px; }
+  .avatar-puppet-presets { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .avatar-puppet-presets button { font-size: .65rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .callback-avatar.live-pose .puppet { animation: none !important; }
+}

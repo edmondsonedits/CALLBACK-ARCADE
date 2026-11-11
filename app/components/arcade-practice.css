@@ -1,0 +1,45 @@
+.arcade-practice-page,.arcade-practice-catalog{box-sizing:border-box;min-height:100dvh;padding:clamp(14px,2.5vw,32px);background:radial-gradient(ellipse at 50% 10%,#28396e,#0d1731 68%);color:#fff8df;font-family:"Space Grotesk Variable",Arial,sans-serif}
+.full-arcade-game{position:fixed;inset:0;overflow:hidden;background:#130b24;display:grid;grid-template-rows:calc(44px + env(safe-area-inset-top)) minmax(0,1fr)}
+.full-arcade-frame{display:block;width:100%;height:100%;border:0}
+.full-arcade-nav{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:env(safe-area-inset-top) calc(14px + env(safe-area-inset-right)) 0 calc(14px + env(safe-area-inset-left));color:#fff4d6;font:700 12px "Space Grotesk Variable",sans-serif;border-bottom:1px solid #ffffff20}.full-arcade-nav span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.full-arcade-exit{display:inline-flex;align-items:center;min-height:44px;color:#fff4d6;font:800 13px "Space Grotesk Variable",sans-serif;text-decoration:none;flex-shrink:0}
+.full-arcade-exit:focus-visible{outline:3px solid #7fe8e6;outline-offset:4px}
+.arcade-practice-page *,.arcade-practice-catalog *{box-sizing:border-box}
+.arcade-practice-page{height:100dvh;overflow:hidden;display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:clamp(10px,1.6vh,20px);padding-top:calc(14px + env(safe-area-inset-top));padding-bottom:calc(12px + env(safe-area-inset-bottom))}
+.arcade-practice-header{display:flex;align-items:center;justify-content:space-between;gap:1rem;max-width:1400px;width:100%;margin-inline:auto}
+.arcade-practice-header h1,.arcade-practice-catalog h1{margin:.08em 0;font:700 clamp(1.8rem,4vw,3.4rem)/1.02 "Fredoka Variable",sans-serif}
+.arcade-practice-header p{margin:.35rem 0;color:#d9e2ff}
+.arcade-practice-kicker{color:#ffdb69!important;font-size:.72rem;font-weight:900;letter-spacing:.16em}
+.arcade-practice-actions{display:flex;gap:.7rem;flex:0 0 auto}
+.arcade-practice-actions button,.arcade-practice-actions a,.arcade-practice-grid a{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:.65rem 1.15rem;border:2px solid #ffe27a;border-radius:999px;background:#ffe27a;color:#171d3a;font-weight:900;text-decoration:none;cursor:pointer}
+.arcade-practice-actions button:disabled{opacity:.55;cursor:wait}
+.arcade-practice-actions a{background:transparent;color:#fff8df}
+.arcade-practice-stage{display:grid;grid-template-columns:minmax(0,1fr) minmax(110px,17vw);gap:clamp(10px,2vw,24px);width:min(1400px,100%);height:100%;min-height:0;margin:auto;align-items:center}
+.arcade-practice-arena{position:relative;display:grid;place-items:center;overflow:hidden;width:100%;height:100%;min-height:0;max-height:100%;aspect-ratio:16/10;border:2px solid #f8e9b5;border-radius:clamp(12px,2vw,26px);background:#09131f;box-shadow:0 22px 65px #02071399}
+.arcade-practice-canvas{display:block;width:100%;height:100%;touch-action:none}
+.arcade-practice-message{padding:2rem;text-align:center;color:#e3e8f7}
+.arcade-practice-reset{position:absolute;inset:auto 0 9%;width:max-content;margin:auto;padding:.55rem 1rem;border:1px solid #fff4c5;border-radius:999px;background:#0d1731e8;color:#fff4c5;font-weight:900}
+.arcade-practice-error{position:absolute;inset:auto 1rem 1rem;margin:0;color:#ffb5aa}
+.arcade-practice-controls{display:grid;align-content:center;justify-items:center;gap:1rem;min-width:0;touch-action:none;user-select:none}
+.arcade-practice-joystick{position:relative;width:min(18vw,190px);min-width:112px;aspect-ratio:1;border:3px solid #7fe8e6;border-radius:50%;background:radial-gradient(circle,#376a7c,#152846 70%);box-shadow:inset 0 0 20px #03091888;touch-action:none;cursor:pointer}
+.arcade-practice-joystick span{position:absolute;left:50%;top:50%;width:38%;height:38%;transform:translate(-50%,-50%);border:2px solid #fff4c5;border-radius:50%;background:#ffe27a;pointer-events:none}
+.arcade-practice-button-grid{display:grid;grid-template-columns:repeat(2,minmax(72px,1fr));gap:.65rem;width:100%}
+.arcade-practice-button{min-height:clamp(58px,10vh,106px);border:2px solid #7fe8e6;border-radius:20px;background:#173252;color:#fff8df;font:900 clamp(.85rem,1.4vw,1.3rem) "Space Grotesk Variable",sans-serif;touch-action:none;user-select:none;cursor:pointer}
+.arcade-practice-button:active{transform:scale(.96);background:#28547a}
+.arcade-practice-button:disabled,.arcade-practice-joystick:disabled{opacity:.55;cursor:wait}
+.arcade-practice-button-lane-1{background:#743e58}.arcade-practice-button-lane-2{background:#245c74}.arcade-practice-button-lane-3{background:#80652e}.arcade-practice-button-lane-4{background:#594578}
+.arcade-practice-button:focus-visible,.arcade-practice-joystick:focus-visible,.arcade-practice-actions :focus-visible,.arcade-practice-grid a:focus-visible{outline:3px solid #fff;outline-offset:4px}
+.arcade-practice-footer{display:flex;justify-content:space-between;gap:1rem;width:min(1400px,100%);margin:auto;color:#c3d1f0;font-size:.77rem}
+.arcade-practice-footer details{display:flex;gap:.4rem}.arcade-practice-footer summary{cursor:pointer;color:#ffdf7a;font-weight:800}.arcade-practice-footer details[open]{display:grid;gap:.2rem;text-align:right}
+.arcade-practice-catalog{height:auto;min-height:100dvh;padding:clamp(20px,4vw,56px)}
+.arcade-practice-catalog .arcade-practice-header{align-items:flex-start;margin-bottom:2rem}
+.arcade-practice-catalog .arcade-back-link{display:inline-block;margin-bottom:.7rem;color:#fff8df}
+.arcade-practice-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,245px),1fr));gap:1rem;max-width:1400px;margin:0 auto;padding:0;list-style:none}
+.arcade-practice-grid li{display:flex;flex-direction:column;gap:.5rem;padding:1rem;border:1px solid #a3b5e44a;border-radius:20px;background:#101d3ade;box-shadow:0 12px 26px #02071344}
+.arcade-practice-grid h2{margin:0;color:#ffdf7a;font:700 1.35rem "Fredoka Variable",sans-serif}
+.arcade-practice-grid p{flex:1;margin:0 0 .8rem;color:#d7e0fa;line-height:1.45}
+.arcade-practice-grid a{min-height:44px;width:100%;font-size:.9rem}
+@media(max-width:720px){.arcade-practice-page{grid-template-rows:auto minmax(0,1fr) auto;gap:8px;padding-inline:12px}.arcade-practice-header{align-items:flex-start}.arcade-practice-header h1{font-size:1.75rem}.arcade-practice-header>div>p:last-child{font-size:.76rem}.arcade-practice-actions{gap:.4rem}.arcade-practice-actions button,.arcade-practice-actions a{min-height:44px;padding:.5rem .75rem}.arcade-practice-stage{grid-template-columns:minmax(0,1fr) 94px;gap:8px}.arcade-practice-arena{aspect-ratio:4/3;border-radius:12px}.arcade-practice-joystick{min-width:84px;width:22vw}.arcade-practice-button-grid{grid-template-columns:repeat(2,minmax(38px,1fr));gap:.4rem}.arcade-practice-button{min-height:64px;border-radius:14px;font-size:.75rem}.arcade-practice-footer{font-size:.67rem}.arcade-practice-footer>span{max-width:50%}}
+@media(max-width:440px){.arcade-practice-header{flex-wrap:wrap}.arcade-practice-header>div{max-width:calc(100% - 140px)}.arcade-practice-header>div>p:last-child{display:none}.arcade-practice-stage{grid-template-columns:minmax(0,1fr) 80px}.arcade-practice-joystick{min-width:72px}.arcade-practice-button{min-height:54px;padding:4px;font-size:.65rem}.arcade-practice-footer{align-items:flex-start}.arcade-practice-footer details[open]{max-width:55%}}
+@media(prefers-reduced-motion:reduce){.arcade-practice-page *,.arcade-practice-catalog *{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important}}
+.arcade-practice-grid li.arcade-upgraded-card{border-color:#ffe27a99;background:linear-gradient(145deg,#20334f,#101d3a)}.arcade-practice-grid .arcade-practice-kicker{flex:0;color:#a5c6ee;font-size:.68rem;margin:0}.arcade-practice-grid .arcade-card-features{flex:0;font-size:.85rem;color:#ffdf7a}
+/* Full games supply their own controls inside an isolated same-origin frame. */

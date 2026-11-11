@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sharp Turn</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="gameTitle">SHARP TURN</div>
+    
+    <div id="selectionScreen">
+        <h2>Game Setup</h2>
+        
+        <div class="player-setup">
+            <h3>Players</h3>
+            
+            <div class="player-row">
+                <div class="player-name">Player 1</div>
+                <div class="player-color" style="background-color: #4CAF50;"></div>
+                <select id="player1Type" class="player-type-select">
+                    <option value="human">Human</option>
+                    <option value="ai">AI</option>
+                </select>
+                <div class="player-controls">← → arrows</div>
+                <label class="player-toggle">
+                    <input id="player1Enabled" type="checkbox" checked>
+                    <span class="player-slider"></span>
+                </label>
+            </div>
+            
+            <div class="player-row">
+                <div class="player-name">Player 2</div>
+                <div class="player-color" style="background-color: #F44336;"></div>
+                <select id="player2Type" class="player-type-select">
+                    <option value="human">Human</option>
+                    <option value="ai" selected>AI</option>
+                </select>
+                <div class="player-controls">A D keys</div>
+                <label class="player-toggle">
+                    <input id="player2Enabled" type="checkbox" checked>
+                    <span class="player-slider"></span>
+                </label>
+            </div>
+            
+            <div class="player-row">
+                <div class="player-name">Player 3</div>
+                <div class="player-color" style="background-color: #2196F3;"></div>
+                <select id="player3Type" class="player-type-select">
+                    <option value="human">Human</option>
+                    <option value="ai" selected>AI</option>
+                </select>
+                <div class="player-controls">J L keys</div>
+                <label class="player-toggle">
+                    <input id="player3Enabled" type="checkbox">
+                    <span class="player-slider"></span>
+                </label>
+            </div>
+            
+            <div class="player-row">
+                <div class="player-name">Player 4</div>
+                <div class="player-color" style="background-color: #FFEB3B;"></div>
+                <select id="player4Type" class="player-type-select">
+                    <option value="human">Human</option>
+                    <option value="ai" selected>AI</option>
+                </select>
+                <div class="player-controls">Numpad 4 6</div>
+                <label class="player-toggle">
+                    <input id="player4Enabled" type="checkbox">
+                    <span class="player-slider"></span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="player-setup">
+            <h3>Difficulty</h3>
+            <button id="easyBtn" class="difficulty-btn">Easy</button>
+            <button id="mediumBtn" class="difficulty-btn">Medium</button>
+            <button id="hardBtn" class="difficulty-btn">Hard</button>
+            
+            <button id="startGameBtn" class="start-game-btn">Start Game</button>
+        </div>
+        
+        <div id="performance-options">
+            <h3>Performance Options</h3>
+            <label>
+                <input type="checkbox" id="useMultithreading" checked>
+                Use Multithreading
+            </label>
+            <label>
+                <input type="checkbox" id="useOptimizedRendering" checked>
+                Optimized Rendering
+            </label>
+            <label>
+                <input type="checkbox" id="showFPS" checked>
+                Show FPS
+            </label>
+        </div>
+        
+        <div class="game-features">
+            <h3>Game Features</h3>
+            <ul>
+                <li><strong>Random Gaps:</strong> Players leave random gaps in their trails</li>
+                <li><strong>Dynamic AI:</strong> AI difficulty adjusts based on player count</li>
+                <li><strong>Multiple Rounds:</strong> Play multiple rounds to determine the overall winner</li>
+                <li><strong>Powerups:</strong> Collect powerups for special abilities:
+                    <ul>
+                        <li><span style="color:#FF5722">✖ Eraser</span> - Removes all trails</li>
+                        <li><span style="color:#2196F3">★ Wings</span> - Temporary invulnerability</li>
+                        <li><span style="color:#9C27B0">↓ Shrink</span> - Makes your trail thinner</li>
+                        <li><span style="color:#4CAF50">↑ Grow</span> - Makes your trail thicker</li>
+                    </ul>
+                </li>
+                <li><strong>Press F:</strong> Toggle FPS display during gameplay</li>
+            </ul>
+        </div>
+    </div>
+    
+    <canvas id="gameCanvas" width="1000" height="600"></canvas>
+    <div id="fpsDisplay">FPS: 0</div>
+    
+    <div id="gameOver">
+        <div id="gameOverText">Round Over!</div>
+        
+        <table class="score-table">
+            <thead>
+                <tr>
+                    <th>Player</th>
+                    <th>Round</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody id="scoreTableBody">
+                <!-- Scores will be inserted here -->
+            </tbody>
+        </table>
+        
+        <button id="nextRoundBtn">Next Round</button>
+        <button id="resetGameBtn">New Game</button>
+    </div>
+
+    <!-- Core Game Scripts - Changed order to ensure dependency loading -->
+    <script src="SpatialGrid.js"></script>
+    <script src="Renderer.js"></script>
+    <script src="PowerupManager.js"></script>
+    <script src="Player.js"></script>
+    <script src="GameSettings.js"></script>
+    <script src="GameEngine.js"></script>
+    <script src="Main.js"></script>
+</body>
+</html>

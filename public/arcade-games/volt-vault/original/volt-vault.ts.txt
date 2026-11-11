@@ -1,0 +1,195 @@
+import { VOLT_VAULT_CONFIG as C } from "./volt-vault-config";
+import type { ArcadeInput } from "./types";
+
+export interface VoltVaultCell { x: number; y: number }
+export interface VoltVaultPlayer {
+  x: number; y: number; vx: number; vy: number; alive: boolean; lives: number;
+  lastInputSequence: number; invulnerableTicks: number; survivalTicks: number; eliminatedAtTick: number | null;
+}
+export interface VoltVaultHazard {
+  tier: number; phase: "warning" | "danger" | "intermission"; patternIndex: number; cycleIndex: number;
+  warningTicksRemaining: number; dangerTicksRemaining: number; intermissionTicksRemaining: number;
+  warningCells: VoltVaultCell[]; activeCells: VoltVaultCell[]; reverseControls: boolean;
+}
+export interface VoltVaultState {
+  seed: number; tick: number; players: Record<string, VoltVaultPlayer>; hazard: VoltVaultHazard;
+  eliminationOrder: string[]; finished: boolean; winnerId: string | null; winners: string[];
+}
+
+const clamp = (n: number, min: number, max: number): number => Math.max(min, Math.min(max, Number.isFinite(n) ? n : 0));
+const distanceSq = (a: VoltVaultCell, b: VoltVaultCell): number => (a.x - b.x) ** 2 + (a.y - b.y) ** 2;
+
+function hashSeed(seed: number): number {
+  let x = seed | 0;
+  x ^= x >>> 16; x = Math.imul(x, 0x7feb352d); x ^= x >>> 15;
+  return x >>> 0;
+}
+
+function hazardCells(patternIndex: number, seed: number): VoltVaultCell[] {
+  // Each pattern leaves broad routes to safety. The seed changes only the
+  // ordering/offset, never the shared arena seen by the room.
+  const variant = hashSeed(seed) % 2;
+  switch ((patternIndex + variant) % 6) {
+    case 0: return [-3, -1, 1, 3].map((y) => ({ x: 0, y }));
+    case 1: return [-3, -1, 1, 3].map((x) => ({ x, y: 0 }));
+    case 2: return [-2, 0, 2].flatMap((x) => [-2, 2].map((y) => ({ x, y })));
+    case 3: return [-3, -1, 1, 3].map((v) => ({ x: v, y: v }));
+    case 4: return [-3, -1, 1, 3].map((v) => ({ x: v, y: -v }));
+    default: return [-2, 0, 2].flatMap((y) => [-3, 3].map((x) => ({ x, y })));
+  }
+}
+
+function tierAt(tick: number): number {
+  return tick >= C.tierThreeAtTick ? 2 : tick >= C.tierTwoAtTick ? 1 : 0;
+}
+
+function createHazard(seed: number): VoltVaultHazard {
+  return {
+    tier: 0, phase: "warning", patternIndex: 0, cycleIndex: 0,
+    warningTicksRemaining: C.warningTicks, dangerTicksRemaining: 0, intermissionTicksRemaining: 0,
+    warningCells: hazardCells(0, seed), activeCells: [], reverseControls: false,
+  };
+}
+
+export function createVoltVaultState(playerIds: readonly string[], seed: number): VoltVaultState {
+  const ids = [...new Set(playerIds)].sort().slice(0, C.maxPlayers);
+  const rotation = (hashSeed(seed) / 0x1_0000_0000) * Math.PI * 2;
+  const players: Record<string, VoltVaultPlayer> = {};
+  ids.forEach((id, index) => {
+    const angle = rotation + index / Math.max(ids.length, 1) * Math.PI * 2;
+    const radius = ids.length > 1 ? 2.55 : 0;
+    players[id] = {
+      x: Math.cos(angle) * radius, y: Math.sin(angle) * radius, vx: 0, vy: 0,
+      alive: true, lives: C.lives, lastInputSequence: -1, invulnerableTicks: 0,
+      survivalTicks: 0, eliminatedAtTick: null,
+    };
+  });
+  return {
+    seed: seed | 0, tick: 0, players, hazard: createHazard(seed), eliminationOrder: [],
+    finished: false, winnerId: null, winners: [],
+  };
+}
+
+function advanceHazard(state: VoltVaultState): void {
+  const h = state.hazard;
+  h.tier = tierAt(state.tick);
+  if (h.phase === "warning") {
+    h.warningTicksRemaining--;
+    if (h.warningTicksRemaining <= 0) {
+      h.phase = "danger";
+      h.warningTicksRemaining = 0;
+      h.dangerTicksRemaining = Math.max(18, Math.round(C.dangerTicks / (1 + h.tier * 0.18)));
+      h.activeCells = h.warningCells.map((cell) => ({ ...cell }));
+    }
+  } else if (h.phase === "danger") {
+    h.dangerTicksRemaining--;
+    if (h.dangerTicksRemaining <= 0) {
+      h.phase = "intermission";
+      h.dangerTicksRemaining = 0;
+      h.activeCells = [];
+      h.intermissionTicksRemaining = Math.max(5, Math.round(C.interPatternTicks / (1 + h.tier * 0.25)));
+    }
+  } else {
+    h.intermissionTicksRemaining--;
+    if (h.intermissionTicksRemaining <= 0) {
+      h.cycleIndex++;
+      h.patternIndex = (h.patternIndex + 1) % 6;
+      h.warningCells = hazardCells(h.patternIndex, state.seed ^ (h.cycleIndex * 0x45d9f3b));
+      h.phase = "warning";
+      h.intermissionTicksRemaining = 0;
+      h.warningTicksRemaining = Math.max(15, Math.round(C.warningTicks / (1 + h.tier * 0.14)));
+      // Some electrical cycles reverse both axes; the indicator is public for
+      // the entire telegraph so the modifier never arrives as a surprise.
+      h.reverseControls = h.cycleIndex % 4 === 2;
+    }
+  }
+}
+
+function damagePlayers(state: VoltVaultState): void {
+  const h = state.hazard;
+  if (h.phase !== "danger") return;
+  const hitRadius = C.tileHalfSize + C.playerRadius;
+  for (const [id, player] of Object.entries(state.players)) {
+    if (!player.alive || player.invulnerableTicks > 0) continue;
+    const hit = h.activeCells.some((cell) => distanceSq(player, cell) <= hitRadius * hitRadius);
+    if (!hit) continue;
+    player.lives = Math.max(0, player.lives - 1);
+    player.invulnerableTicks = C.hitInvulnerabilityTicks;
+    if (player.lives === 0) {
+      player.alive = false;
+      player.eliminatedAtTick = state.tick;
+      state.eliminationOrder.push(id);
+    }
+  }
+}
+
+function movePlayers(state: VoltVaultState, inputs: Readonly<Record<string, ArcadeInput>>): void {
+  const dt = C.fixedStepSeconds;
+  for (const [id, player] of Object.entries(state.players)) {
+    if (!player.alive) continue;
+    if (player.invulnerableTicks > 0) player.invulnerableTicks--;
+    const input = inputs[id];
+    if (input && Number.isSafeInteger(input.sequence) && input.sequence > player.lastInputSequence) {
+      player.lastInputSequence = input.sequence;
+      let x = clamp(input.x, -1, 1), y = clamp(input.y, -1, 1);
+      if (state.hazard.reverseControls) { x = -x; y = -y; }
+      const magnitude = Math.hypot(x, y);
+      if (magnitude > 1) { x /= magnitude; y /= magnitude; }
+      player.vx += x * C.acceleration * dt;
+      player.vy += y * C.acceleration * dt;
+    }
+    const speed = Math.hypot(player.vx, player.vy);
+    const fastZone = Math.abs(player.x) >= C.fastZoneX || Math.abs(player.y) >= C.fastZoneX ? C.fastZoneMultiplier : 1;
+    const maxSpeed = C.maxSpeed * C.tierSpeedMultipliers[state.hazard.tier]! * fastZone;
+    if (speed > maxSpeed) { player.vx *= maxSpeed / speed; player.vy *= maxSpeed / speed; }
+    player.vx *= C.drag;
+    player.vy *= C.drag;
+    player.x = clamp(player.x + player.vx * dt, -C.arenaHalfSize + C.playerRadius, C.arenaHalfSize - C.playerRadius);
+    player.y = clamp(player.y + player.vy * dt, -C.arenaHalfSize + C.playerRadius, C.arenaHalfSize - C.playerRadius);
+    player.survivalTicks++;
+  }
+  const alive = Object.entries(state.players).filter(([, player]) => player.alive);
+  for (let i = 0; i < alive.length; i++) for (let j = i + 1; j < alive.length; j++) {
+    const a = alive[i]![1], b = alive[j]![1];
+    const dx = b.x - a.x, dy = b.y - a.y, distance = Math.hypot(dx, dy);
+    if (distance < 1e-6 || distance >= C.playerRadius * 2) continue;
+    const nx = dx / distance, ny = dy / distance;
+    const push = (C.playerRadius * 2 - distance) * 0.5;
+    a.x -= nx * push; a.y -= ny * push; b.x += nx * push; b.y += ny * push;
+    a.vx -= nx * C.collisionImpulse; a.vy -= ny * C.collisionImpulse;
+    b.vx += nx * C.collisionImpulse; b.vy += ny * C.collisionImpulse;
+  }
+}
+
+function resolveResult(state: VoltVaultState): void {
+  const alive = Object.entries(state.players).filter(([, player]) => player.alive);
+  const solo = Object.keys(state.players).length === 1;
+  if ((alive.length > 1 || (solo && alive.length === 1)) && state.tick < C.roundDurationTicks) return;
+  if (solo && alive.length === 0) { state.finished = true; state.winners = []; state.winnerId = null; return; }
+  state.finished = true;
+  const ranked = alive.length > 0 ? alive : Object.entries(state.players);
+  const mostLives = Math.max(-1, ...ranked.map(([, player]) => player.lives));
+  const finalists = ranked.filter(([, player]) => player.lives === mostLives);
+  const best = Math.max(-1, ...finalists.map(([, player]) => player.survivalTicks));
+  state.winners = finalists.filter(([, player]) => player.survivalTicks === best).map(([id]) => id).sort();
+  state.winnerId = state.winners.length === 1 ? state.winners[0]! : null;
+}
+
+export function stepVoltVault(state: VoltVaultState, inputs: Readonly<Record<string, ArcadeInput>>): VoltVaultState {
+  if (state.finished) return structuredClone(state);
+  const next = structuredClone(state);
+  next.tick++;
+  advanceHazard(next);
+  movePlayers(next, inputs);
+  damagePlayers(next);
+  resolveResult(next);
+  return next;
+}
+
+import { practiceModule } from "./types";
+import type { PracticeInput } from "../types";
+export const practiceVoltVaultModule = practiceModule("volt-vault", (id: string, seed: number) => createVoltVaultState([id], seed),
+  (state, input: PracticeInput) => { const id = Object.keys(state.players)[0]!; return stepVoltVault(state, { [id]: { sequence: input.sequence, x: input.x, y: input.y } }); },
+  (state) => ({ tick: state.tick, players: Object.fromEntries(Object.entries(state.players).map(([id, p]) => [id, { x: p.x, y: p.y, vx: p.vx, vy: p.vy, alive: p.alive, lives: p.lives, invulnerableTicks: p.invulnerableTicks, survivalTicks: p.survivalTicks }])), hazard: { ...state.hazard, warningCells: state.hazard.warningCells.map((c) => [c.x, c.y]), activeCells: state.hazard.activeCells.map((c) => [c.x, c.y]) }, arenaHalfSize: C.arenaHalfSize, fastZoneX: C.fastZoneX, finished: state.finished }),
+  (state) => state.finished || Object.values(state.players).every((p) => !p.alive));
+export default practiceVoltVaultModule;

@@ -1,0 +1,23 @@
+/** Estimates for the requested four-side browser adaptation; source rules use 20 points and no round clock. */
+export const SKY_BALLS_CONFIG = {
+  fixedStepSeconds: 1 / 30,
+  halfSize: 10,
+  ballRadius: 0.28,
+  maxBalls: 5,
+  firstBallTick: 45,
+  ballSpawnIntervalTicks: 105,
+  ballSpeed: 5.6,
+  ballSpeedCap: 11,
+  paddleHalfLength: 1.5,
+  paddleLimit: 8.15,
+  paddleSpeed: 8.2,
+  paddleBounceInfluence: 0.48,
+  startingHealth: 20,
+  firstTiltTick: 9 * 30,
+  tiltWarningTicks: 60,
+  tiltDurationTicks: 150,
+  minTiltIntervalTicks: 9 * 30,
+  maxTiltIntervalTicks: 17 * 30,
+  tiltAcceleration: 2.1,
+  maxTiltSpeed: 12,
+} as const;

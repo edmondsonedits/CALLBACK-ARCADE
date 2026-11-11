@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>CALLBACK — Standard Game Flow</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 7680px; min-height: 4440px; overflow: visible; }
+    body {
+      color: #252321;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #fbfaf5;
+      background-image: radial-gradient(#d7d1c5 2.2px, transparent 2.2px);
+      background-size: 34px 34px;
+    }
+    .board { width: 7680px; height: 2160px; padding: 70px 100px 80px; overflow: hidden; }
+    .topbar { height: 170px; display: flex; align-items: flex-start; justify-content: space-between; }
+    h1 { margin: 0; font-size: 66px; letter-spacing: 3px; font-weight: 800; }
+    .subtitle { margin-top: 14px; font-size: 28px; color: #6c675f; }
+    .legend { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; max-width: 3600px; justify-content: flex-end; }
+    .legend-item { display: flex; gap: 12px; align-items: center; font-size: 24px; white-space: nowrap; }
+    .swatch { width: 44px; height: 30px; border: 3px solid #6c655e; }
+    .swatch.process { background: #dc8f80; border-color: #9f4f43; }
+    .swatch.decision { background: #78c9c5; border-color: #367f7b; transform: rotate(45deg); width: 30px; height: 30px; margin: 0 8px; }
+    .swatch.memory { background: #f3c85f; border-color: #b98b20; }
+    .swatch.note { background: #f5da78; border-color: #d1ab32; }
+    .swatch.terminal { background: #fffdf7; border-color: #656565; border-radius: 20px; }
+    .flow-board { display: grid; grid-template-columns: repeat(8, 860px); column-gap: 45px; align-items: start; position: relative; }
+    .column { min-height: 1810px; padding: 0 24px 28px; border-left: 3px solid rgba(86, 80, 74, 0.24); position: relative; }
+    .column:last-child { border-right: 3px solid rgba(86, 80, 74, 0.24); }
+    .column::after { content: "→"; position: absolute; right: -43px; top: 84px; font-size: 52px; color: #6b655f; font-weight: 700; }
+    .column:last-child::after { content: ""; }
+    .column-title { height: 105px; display: flex; align-items: center; justify-content: center; text-align: center; border-top: 5px solid #4a4743; border-bottom: 2px solid #a9a29a; font-size: 32px; letter-spacing: 1.6px; font-weight: 800; }
+    .stack { display: flex; flex-direction: column; align-items: center; padding-top: 24px; }
+    .node { width: 700px; min-height: 78px; padding: 16px 24px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 27px; line-height: 1.18; border: 3px solid; font-weight: 650; background: #dc8f80; border-color: #9f4f43; border-radius: 12px; }
+    .node.small { width: 620px; min-height: 66px; font-size: 25px; }
+    .terminal { background: #fffdf7; border-color: #656565; border-radius: 42px; }
+    .memory { background: #f3c85f; border-color: #b98b20; }
+    .decision { width: 235px; min-height: 170px; padding: 36px 28px; background: #78c9c5; border-color: #367f7b; clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); border-radius: 0; font-size: 24px; }
+    .arrow { height: 36px; font-size: 36px; line-height: 36px; font-weight: 800; color: #625d57; }
+    .branch-row { width: 720px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+    .branch { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .branch-label { font-size: 24px; font-weight: 800; }
+    .branch-label.yes { color: #348a63; }
+    .branch-label.no { color: #b04d3f; }
+    .branch .node { width: 340px; min-height: 86px; font-size: 23px; padding: 14px 16px; }
+    .loop { margin-top: 4px; font-size: 22px; font-weight: 800; color: #b04d3f; }
+    .note { width: 700px; margin-top: 22px; padding: 20px 24px; background: #f5da78; border: 3px solid #d1ab32; box-shadow: 9px 9px 0 rgba(122, 102, 37, 0.12); font-size: 24px; line-height: 1.22; }
+    .note strong { display: block; margin-bottom: 7px; font-size: 22px; letter-spacing: 1px; text-transform: uppercase; }
+    .micro { font-size: 21px; font-weight: 600; color: #5f5953; }
+    .footer { margin-top: 34px; padding-top: 28px; border-top: 3px solid #908a82; display: flex; justify-content: space-between; font-size: 24px; color: #5b5650; }
+    .overview-board { border-bottom: 20px solid #393532; }
+    .overview-topbar { height: 260px; display: flex; justify-content: space-between; align-items: flex-start; }
+    .overview-kicker { color: #a34f43; font-size: 26px; font-weight: 800; letter-spacing: 3px; margin-bottom: 14px; }
+    .overview-title { font-size: 78px; line-height: 1; margin: 0; }
+    .overview-summary { width: 2600px; font-size: 30px; line-height: 1.35; color: #5b5650; text-align: right; }
+    .overview-flow { display: grid; grid-template-columns: repeat(8, 1fr); gap: 34px; position: relative; }
+    .overview-round { min-height: 980px; border: 3px solid #8b847c; background: rgba(255,253,247,0.94); padding: 0 28px 32px; position: relative; }
+    .overview-round::after { content: "→"; position: absolute; right: -34px; top: 455px; font-size: 46px; font-weight: 800; color: #5f5953; z-index: 2; }
+    .overview-round:last-child::after { content: ""; }
+    .overview-round h2 { margin: 0 -28px 30px; min-height: 128px; padding: 22px 24px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: #dc8f80; border-bottom: 4px solid #9f4f43; font-size: 34px; line-height: 1.08; }
+    .overview-round.social h2 { background: #78c9c5; border-color: #367f7b; }
+    .overview-round.final h2 { background: #f3c85f; border-color: #b98b20; }
+    .round-number { font-size: 22px; letter-spacing: 2px; margin-bottom: 7px; }
+    .overview-block { margin-bottom: 24px; padding-bottom: 24px; border-bottom: 2px solid #d3cdc4; }
+    .overview-block:last-child { border-bottom: 0; }
+    .overview-label { color: #7d756c; font-size: 21px; font-weight: 800; letter-spacing: 1.4px; text-transform: uppercase; margin-bottom: 8px; }
+    .overview-copy { font-size: 27px; line-height: 1.26; font-weight: 650; }
+    .output-chip { margin-top: 12px; padding: 14px 16px; background: #f3c85f; border: 3px solid #b98b20; font-size: 24px; font-weight: 800; text-align: center; }
+    .overview-note { margin-top: 16px; padding: 16px; background: #f5da78; border-left: 7px solid #d1ab32; font-size: 23px; line-height: 1.25; }
+    .memory-chain { margin-top: 55px; padding: 28px 36px; background: rgba(255,253,247,0.96); border-top: 4px solid #514c47; display: grid; grid-template-columns: 310px repeat(7, 1fr); gap: 20px; align-items: center; }
+    .memory-chain-title { font-size: 26px; font-weight: 800; letter-spacing: 1px; }
+    .memory-step { padding: 20px 18px; background: #f3c85f; border: 3px solid #b98b20; text-align: center; font-size: 24px; font-weight: 800; position: relative; }
+    .memory-step::after { content: "→"; position: absolute; right: -27px; top: 13px; font-size: 32px; color: #5f5953; }
+    .memory-step:last-child::after { content: ""; }
+    .memory-relation { padding: 14px; text-align: center; font-size: 21px; color: #6c655e; font-weight: 750; }
+    .page-tag { position: absolute; right: 100px; bottom: 35px; font-size: 22px; color: #6f6962; letter-spacing: 1px; }
+  </style>
+</head>
+<body>
+  <main class="board overview-board" data-document-role="page" data-label="CALLBACK Standard Flow — Overview" style="position: relative;">
+    <header class="overview-topbar">
+      <div>
+        <div class="overview-kicker">PLAYER-VISIBLE ARC · STANDARD · 7 ROUNDS</div>
+        <h1 class="overview-title">↶ CALLBACK</h1>
+        <div class="subtitle">The party game that remembers everything.</div>
+      </div>
+      <div class="overview-summary">The room invents an Anchor, gives it a Voice, builds an independent World, and then watches those winning ideas collide. Social prediction rounds hide backstage latency without ever making AI authoritative.</div>
+    </header>
+
+    <section class="overview-flow">
+      <article class="overview-round">
+        <h2><span class="round-number">ROUND 1</span>THE SEED</h2>
+        <div class="overview-block"><div class="overview-label">Players do</div><div class="overview-copy">Invent one reusable character, product, object, place, business, vehicle, or mascot.</div></div>
+        <div class="overview-block"><div class="overview-label">Room decides</div><div class="overview-copy">Anonymous applause picks the winner or tied winners.</div></div>
+        <div class="output-chip">Creates ANCHOR memory</div>
+        <div class="overview-note">Winning Anchor image starts backstage. A concept card is always available.</div>
+      </article>
+
+      <article class="overview-round social">
+        <h2><span class="round-number">ROUND 2</span>READ THE ROOM</h2>
+        <div class="overview-block"><div class="overview-label">Players do</div><div class="overview-copy">Make a private choice, then predict the entire room's distribution.</div></div>
+        <div class="overview-block"><div class="overview-label">Server scores</div><div class="overview-copy">Accuracy against the room's real choices.</div></div>
+        <div class="overview-note">A fast social beat that hides Anchor-image latency.</div>
+      </article>
+
+      <article class="overview-round">
+        <h2><span class="round-number">ROUND 3</span>MAKE IT REAL</h2>
+        <div class="overview-block"><div class="overview-label">Players see</div><div class="overview-copy">The winning Anchor image or deterministic concept-card fallback.</div></div>
+        <div class="overview-block"><div class="overview-label">Players do</div><div class="overview-copy">Write what the established Anchor says.</div></div>
+        <div class="output-chip">Creates VOICE memory</div>
+        <div class="overview-note">Graph edge: ANCHOR — SAYS → VOICE.</div>
+      </article>
+
+      <article class="overview-round">
+        <h2><span class="round-number">ROUND 4</span>THE CATCH</h2>
+        <div class="overview-block"><div class="overview-label">Players do</div><div class="overview-copy">Build an independent World under one mechanically checked comedy constraint.</div></div>
+        <div class="overview-block"><div class="overview-label">Quality gate</div><div class="overview-copy">Invalid answers can be revised before the deadline.</div></div>
+        <div class="output-chip">Creates WORLD memory</div>
+        <div class="overview-note">Graph edge: WORLD — COLLIDES WITH → ANCHOR.</div>
+      </article>
+
+      <article class="overview-round social">
+        <h2><span class="round-number">ROUND 5</span>CROWD CONTROL</h2>
+        <div class="overview-block"><div class="overview-label">Players do</div><div class="overview-copy">Point at one player, then predict the group's full distribution.</div></div>
+        <div class="overview-block"><div class="overview-label">Server scores</div><div class="overview-copy">Prediction accuracy—never AI judgment.</div></div>
+        <div class="overview-note">A second social beat that gives callback preparation time to finish.</div>
+      </article>
+
+      <article class="overview-round">
+        <h2><span class="round-number">ROUND 6</span>CALLBACK</h2>
+        <div class="overview-block"><div class="overview-label">Prompt uses</div><div class="overview-copy">The room's ANCHOR + VOICE + WORLD in one causal setup.</div></div>
+        <div class="overview-block"><div class="overview-label">Players do</div><div class="overview-copy">Answer the open consequence question; source authors can earn royalties.</div></div>
+        <div class="output-chip">Creates CONSEQUENCE memory</div>
+        <div class="overview-note">Safe candidate or deterministic fallback. AI never scores.</div>
+      </article>
+
+      <article class="overview-round final">
+        <h2><span class="round-number">ROUND 7 · FINAL</span>THE REMIX</h2>
+        <div class="overview-block"><div class="overview-label">Prompt uses</div><div class="overview-copy">Three or four compatible established memories from tonight.</div></div>
+        <div class="overview-block"><div class="overview-label">Players do</div><div class="overview-copy">Write and vote on the final answer while the masterpiece resolves.</div></div>
+        <div class="output-chip">Final scores + winners</div>
+      </article>
+
+      <article class="overview-round final">
+        <h2><span class="round-number">POST-GAME</span>TONIGHT'S LORE</h2>
+        <div class="overview-block"><div class="overview-label">Room sees</div><div class="overview-copy">Standings, awards, the connected memory graph, and Tonight's Masterpiece.</div></div>
+        <div class="overview-block"><div class="overview-label">Next</div><div class="overview-copy">Play again, finish, or enter the optional Monster Factory encore.</div></div>
+        <div class="overview-note">Every match remains finishable when AI, image generation, storage, or a client connection fails.</div>
+      </article>
+    </section>
+
+    <section class="memory-chain" aria-label="Room Lore memory chain">
+      <div class="memory-chain-title">WINNER-ONLY ROOM LORE</div>
+      <div class="memory-step">ANCHOR</div>
+      <div class="memory-relation">SAYS</div>
+      <div class="memory-step">VOICE</div>
+      <div class="memory-relation">COLLIDES WITH WORLD</div>
+      <div class="memory-step">CONSEQUENCE</div>
+      <div class="memory-relation">REMIXES INTO</div>
+      <div class="memory-step">TONIGHT'S LORE</div>
+    </section>
+    <div class="page-tag">PAGE 1 OF 2 · EXPERIENCE OVERVIEW</div>
+  </main>
+
+  <main class="board" data-document-role="page" data-label="CALLBACK Standard Flow — Authoritative Detail" style="position: relative;">
+    <header class="topbar">
+      <div>
+        <h1>↶ CALLBACK — STANDARD GAME FLOW</h1>
+        <div class="subtitle">The room invents memories. Only winners become lore. The finale brings everything back.</div>
+      </div>
+      <div class="legend" aria-label="Diagram legend">
+        <div class="legend-item"><span class="swatch process"></span>Process</div>
+        <div class="legend-item"><span class="swatch decision"></span>Decision</div>
+        <div class="legend-item"><span class="swatch memory"></span>Room Lore</div>
+        <div class="legend-item"><span class="swatch note"></span>Backstage rule</div>
+        <div class="legend-item"><span class="swatch terminal"></span>Start / result</div>
+      </div>
+    </header>
+
+    <section class="flow-board">
+      <section class="column">
+        <div class="column-title">ROOM SETUP</div>
+        <div class="stack">
+          <div class="node terminal">Create room</div><div class="arrow">↓</div>
+          <div class="node">Players join on phones</div><div class="arrow">↓</div>
+          <div class="node decision">Ready to start?</div><div class="arrow">↓</div>
+          <div class="branch-row">
+            <div class="branch"><div class="branch-label no">NO</div><div class="node">Keep lobby open</div><div class="loop">↶ wait for players</div></div>
+            <div class="branch"><div class="branch-label yes">YES</div><div class="node">3–10 players<br/>or solo + bots</div></div>
+          </div><div class="arrow">↓</div>
+          <div class="node">Host starts game</div><div class="arrow">↓</div>
+          <div class="node terminal">Game intro</div>
+          <div class="note"><strong>Authority</strong>The server and D1 own phase, deadline, eligibility, scores, authorship, and winners.</div>
+        </div>
+      </section>
+
+      <section class="column">
+        <div class="column-title">1 · THE SEED</div>
+        <div class="stack">
+          <div class="node terminal small">Round intro</div><div class="arrow">↓</div>
+          <div class="node">Invent a reusable Anchor<br/><span class="micro">character · product · object · place · business · vehicle · mascot</span></div><div class="arrow">↓</div>
+          <div class="node small">Answer lock</div><div class="arrow">↓</div>
+          <div class="node decision">2+ visible answers?</div><div class="arrow">↓</div>
+          <div class="branch-row">
+            <div class="branch"><div class="branch-label no">NO</div><div class="node">Skip vote</div></div>
+            <div class="branch"><div class="branch-label yes">YES</div><div class="node">Anonymous applause vote → vote lock</div></div>
+          </div><div class="arrow">↓</div>
+          <div class="node">Score and reveal authors</div><div class="arrow">↓</div>
+          <div class="node memory">Only winners become<br/>ANCHOR memories</div><div class="arrow">↓</div>
+          <div class="node terminal small">Round results</div>
+          <div class="note"><strong>Backstage image</strong>Queue the winning Anchor image. Solo and failures use a deterministic concept card; play never waits on AI.</div>
+        </div>
+      </section>
+
+      <section class="column">
+        <div class="column-title">2 · READ THE ROOM</div>
+        <div class="stack">
+          <div class="node terminal small">Round intro</div><div class="arrow">↓</div>
+          <div class="node">Each player makes a private personal choice</div><div class="arrow">↓</div>
+          <div class="node">Everyone predicts the room-wide distribution</div><div class="arrow">↓</div>
+          <div class="node">Server scores prediction accuracy</div><div class="arrow">↓</div>
+          <div class="node">Reveal the real distribution</div><div class="arrow">↓</div>
+          <div class="node terminal small">Round results</div>
+          <div class="note"><strong>Pacing purpose</strong>This social round hides Anchor-image processing latency.</div>
+        </div>
+      </section>
+
+      <section class="column">
+        <div class="column-title">3 · MAKE IT REAL</div>
+        <div class="stack">
+          <div class="node terminal small">Round intro</div><div class="arrow">↓</div>
+          <div class="node">Reveal the winning Anchor image or concept-card fallback</div><div class="arrow">↓</div>
+          <div class="node">Players write what the established Anchor says</div><div class="arrow">↓</div>
+          <div class="node">Answer lock → anonymous vote → vote lock</div><div class="arrow">↓</div>
+          <div class="node">Server scores and reveals</div><div class="arrow">↓</div>
+          <div class="node memory">Only winners become<br/>VOICE memories</div><div class="arrow">↓</div>
+          <div class="node memory">ANCHOR — SAYS → VOICE</div><div class="arrow">↓</div>
+          <div class="node terminal small">Round results</div>
+        </div>
+      </section>
+
+      <section class="column">
+        <div class="column-title">4 · THE CATCH</div>
+        <div class="stack">
+          <div class="node terminal small">Round intro</div><div class="arrow">↓</div>
+          <div class="node">Independent World prompt + mechanical comedy constraint</div><div class="arrow">↓</div>
+          <div class="node">Players write a World memory</div><div class="arrow">↓</div>
+          <div class="node decision">Passes Catch validator?</div><div class="arrow">↓</div>
+          <div class="branch-row">
+            <div class="branch"><div class="branch-label no">NO</div><div class="node">Revise before deadline</div><div class="loop">↶ try again</div></div>
+            <div class="branch"><div class="branch-label yes">YES</div><div class="node">Lock → vote → vote lock</div></div>
+          </div><div class="arrow">↓</div>
+          <div class="node">Score and reveal</div><div class="arrow">↓</div>
+          <div class="node memory">Only winners become<br/>WORLD memories</div><div class="arrow">↓</div>
+          <div class="node memory">WORLD — COLLIDES WITH → ANCHOR</div>
+          <div class="arrow">↓</div>
+          <div class="node terminal small">Round results</div>
+          <div class="note"><strong>Invariant</strong>Displayed wording may change. The mechanical validator must not loosen.</div>
+        </div>
+      </section>
+
+      <section class="column">
+        <div class="column-title">5 · CROWD CONTROL</div>
+        <div class="stack">
+          <div class="node terminal small">Round intro</div><div class="arrow">↓</div>
+          <div class="node">Each player privately points at one player</div><div class="arrow">↓</div>
+          <div class="node">Everyone predicts the full group distribution</div><div class="arrow">↓</div>
+          <div class="node">Server scores prediction accuracy</div><div class="arrow">↓</div>
+          <div class="node">Reveal the room's choices</div><div class="arrow">↓</div>
+          <div class="node terminal small">Round results</div>
+          <div class="note"><strong>Pacing purpose</strong>This social round gives backstage work time to prepare a safe callback candidate.</div>
+        </div>
+      </section>
+
+      <section class="column">
+        <div class="column-title">6 · CALLBACK</div>
+        <div class="stack">
+          <div class="node">Round intro rewinds<br/>ANCHOR + VOICE + WORLD</div><div class="arrow">↓</div>
+          <div class="node decision">Usable connected callback?</div><div class="arrow">↓</div>
+          <div class="branch-row">
+            <div class="branch"><div class="branch-label no">NO</div><div class="node">Deterministic causal fallback</div></div>
+            <div class="branch"><div class="branch-label yes">YES</div><div class="node">Highest-quality safe candidate</div></div>
+          </div><div class="arrow">↓</div>
+          <div class="node">Players answer the open consequence question</div><div class="arrow">↓</div>
+          <div class="node">Lock → vote → score + callback royalties</div><div class="arrow">↓</div>
+          <div class="node">Reveal winners</div><div class="arrow">↓</div>
+          <div class="node memory">Only winners become<br/>CONSEQUENCE memories</div><div class="arrow">↓</div>
+          <div class="node memory">Persist CAUSES + ESCALATES TO edges</div>
+          <div class="arrow">↓</div>
+          <div class="node terminal small">Round results</div>
+          <div class="note"><strong>AI boundary</strong>AI may connect established memories. It cannot choose winners, scores, timing, authorship, identities, or eligibility.</div>
+        </div>
+      </section>
+
+      <section class="column">
+        <div class="column-title">7 · THE REMIX</div>
+        <div class="stack">
+          <div class="node">Final intro rewinds the connected memory trail</div><div class="arrow">↓</div>
+          <div class="node decision">Usable Remix candidate?</div><div class="arrow">↓</div>
+          <div class="branch-row">
+            <div class="branch"><div class="branch-label no">NO</div><div class="node">Fixed deterministic fallback</div></div>
+            <div class="branch"><div class="branch-label yes">YES</div><div class="node">Use 3–4 compatible memories</div></div>
+          </div><div class="arrow">↓</div>
+          <div class="node">Queue Tonight's Masterpiece or concept card</div><div class="arrow">↓</div>
+          <div class="node">Final answers → anonymous vote → score + reveal</div><div class="arrow">↓</div>
+          <div class="node terminal">Final results</div><div class="arrow">↓</div>
+          <div class="node memory">Tonight's Lore<br/><span class="micro">standings + memory graph + artwork</span></div><div class="arrow">↓</div>
+          <div class="node decision">What next?</div>
+          <div class="branch-row" style="margin-top: 14px;">
+            <div class="branch"><div class="branch-label yes">PLAY AGAIN</div><div class="node">Return to lobby</div></div>
+            <div class="branch"><div class="branch-label">ENCORE / FINISH</div><div class="node">Monster Factory or post-game</div></div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <footer class="footer">
+      <span>Solid arrows = authoritative match sequence · Side notes = asynchronous or explanatory only</span>
+      <span>Source: server/engine.ts · lib/game/config.ts · GAME_DESIGN.md · ROUND_SYSTEM.md</span>
+    </footer>
+    <div class="page-tag">PAGE 2 OF 2 · AUTHORITATIVE PHASE DETAIL</div>
+  </main>
+</body>
+</html>

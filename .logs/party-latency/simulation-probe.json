@@ -1,0 +1,53 @@
+{
+  "evidence": "Local synthetic simulation CPU and wire size; no network or device latency",
+  "summaries": [
+    {
+      "map": "keep",
+      "steps": 600,
+      "meanMs": 0.048783833333333415,
+      "p95Ms": 0.10990000000001032,
+      "maxMs": 3.903099999999995,
+      "maxSnapshotBytes": 7768
+    },
+    {
+      "map": "floe",
+      "steps": 600,
+      "meanMs": 0.021758499999999924,
+      "p95Ms": 0.08750000000000568,
+      "maxMs": 1.0660000000000025,
+      "maxSnapshotBytes": 6554
+    },
+    {
+      "map": "plaza",
+      "steps": 600,
+      "meanMs": 0.02475233333333345,
+      "p95Ms": 0.055799999999976535,
+      "maxMs": 1.6474000000000046,
+      "maxSnapshotBytes": 5430
+    },
+    {
+      "map": "wharf",
+      "steps": 600,
+      "meanMs": 0.015648166666667105,
+      "p95Ms": 0.043400000000019645,
+      "maxMs": 0.6438999999999737,
+      "maxSnapshotBytes": 5340
+    },
+    {
+      "map": "teeter",
+      "steps": 600,
+      "meanMs": 0.022314666666667145,
+      "p95Ms": 0.07780000000002474,
+      "maxMs": 0.7304000000000315,
+      "maxSnapshotBytes": 5263
+    },
+    {
+      "map": "mesa",
+      "steps": 600,
+      "meanMs": 0.014898999999998637,
+      "p95Ms": 0.03570000000001983,
+      "maxMs": 0.6634999999999991,
+      "maxSnapshotBytes": 5636
+    }
+  ]
+}

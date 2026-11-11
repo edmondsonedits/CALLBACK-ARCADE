@@ -1,0 +1,1 @@
+export declare function runtime(ids:string[],seed:number,options:Record<string,unknown>,botIds:string[],state?:unknown,inputs?:Record<string,unknown>): {save():unknown;tick():void;result():{view:unknown;finished:boolean;winnerSlots:number[];slotScores:number[]}};

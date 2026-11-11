@@ -1,0 +1,21 @@
+# Full-screen navigation — 2026-11-02
+
+Source starts at published Site v120 / 21620b94a9b35385ff530b0caaaa7c7e49ed6ce5 in H:\ChatGPT\CALLBACK-face-photo-2026-11-01. Preserve the original older C: checkout and all earlier review fixes. User explicitly authorized implementation and publication.
+
+Implemented separate menu/profile/QR/roster destinations; responsive paged game cards; mounted task pagination; focus and keyboard viewport recovery; global dropdown character controls; photo crop/chin steps; full-screen drawing and fish tools/results. Corrected grid capacity mismatching CSS columns and captions auto-placing in the rank column. Independent code review found no further confirmed UI blocker after the grid fix.
+
+## Evidence
+
+- Full unit suite: 1,236 tests, 1,225 passed, 11 skipped, zero failures. Two affected test harnesses were updated for the actual new component dependency/style loading and rechecked (13/13).
+- Typecheck and production build pass. Ten production-render checks passed on the first build; final build/render gate recorded in local logs. ESLint: zero errors, eight existing image-element warnings.
+- All eight normal full-match cases pass: Standard with 3/6/10 players and Pictures, Frame-Up, Comic, Rumours, Bowl of Fools, including configured replay/encore checks.
+- Detailed compact-phone phase probes passed for Standard (14 phases), Pictures (10), Rumours (11), with pager/control/draft assertions. Bowl reached seven phase/task checks and a preserved draft; an artifact-directory collision invalidated that run's final result. Frame-Up's extra timing-sensitive phase probe stalled and is not counted as passing. Normal full matches for both pass. Do not equate the incomplete extra probes with full coverage.
+- Character/photo focused checks pass across 320x568, 390x568, 844x390, 1366x568, 1366x768 and 683x384. The photo suite uses owned synthetic/mocked faces, with no paid generation.
+- Main-menu and game-card checks pass at compact phones, 600x800 and 1200x500; all seven game cards must fit on a reachable page. Drawing tool dialogs pass at 320x568, 667x375 and 1366x768. Gallery attribution, pause and reduced-motion side-by-side rendering pass.
+- Configured API slice: five checks pass. Earlier two review-regression API checks remain separately covered by the previous review run; do not count them twice.
+- Broad 161-test browser attempt: 15 passed, five failed, 141 not run at the stop threshold. One failure was obsolete QR text and the archive/paged-menu checks were corrected. Other failures concern separate Arcade bot/controller scenarios; the disposable party harness deliberately has no legacy Arcade Worker credentials. This is not an all-browser-suite pass.
+- Final affected UI suite: 25/25 pass, covering menus, all seven game cards, compact phone sections/drafts, character/photo workflows, guest/archive selection, gallery attribution/pause/reduced motion, and full-screen drawing dialogs. Sketch & Sorcery: 5/5 pass, including a complete three-round four-phone match, ten-player gallery, all 100 ideas, PNG-encoding recovery, and short-screen toolbar geometry.
+- Focused fish editor: 3/3 pass across compact/landscape sizes, retained blank artwork, free spray, undo/redo and exported transparent PNG alpha. The separate multi-phone aquarium runtime check timed out on a local sync request; a subsequent long natural fish scenario was interrupted. These are not reported as passing. Some test-only End Game cleanup attempts returned 409/500 for Sketch/fish contracts; the disposable harness was torn down after each run, rather than treating these attempts as successful room cleanup.
+- Final focused browser evidence comprises 41 unique passing cases across the eight normal matches, five Sketch cases, 25 UI cases and three fish-editor cases. This does not replace the incomplete broader browser run. Publication receipt is recorded in ignored `.logs/fullscreen/` after the exact source commit is sealed, preventing credentials and bulky traces from entering source control.
+
+No production rooms or paid providers are used for QA. Browser/loopback evidence does not establish physical-device or poor-Wi-Fi quality. Retain v120 as the rollback version; publish only the helper's exact pushed commit/archive and keep current public audience.

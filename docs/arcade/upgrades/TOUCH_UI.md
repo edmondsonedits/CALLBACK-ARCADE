@@ -1,0 +1,14 @@
+# Arcade touch UI standards
+
+The twenty physical practice titles, nineteen native room titles and newly imported Blind Crown share the same touch standards. Online games use the shared phone UI; native games inherit it through their room controller shell. Local full games load the shared browser policy/styles, and the six remaining local prototypes use the same controls policy and toolbar.
+
+- Long-press copy/select/image-drag UI is suppressed on game surfaces. Name/answer text inputs, textareas, selectors and editable text retain normal typing and paste. Settings can still scroll.
+- Movement has one owning finger. Other fingers can press actions concurrently. Releasing a stick does not cancel a held action or discard a queued tap; two fingers on one held action remain active until both release. Keyboard and pointer hold sources stay independent.
+- Cancelled/lost pointers, backgrounding, resizing and new matches release stale controls. Drawing/aiming pads retain their own finger owner. Import-specific controls preserve their native rules and physics.
+- Touch targets are at least 48px; button feedback, keyboard focus, safe areas and reduced motion are shared. A larger-controls toggle persists across game pages where storage is available. Small portrait layouts and short landscape timing-game layouts have scoped adjustments. Existing authenticated roles and scoring stay unchanged; standalone phone worlds retain their TV-owned simulation.
+
+Implementation: lib/arcade/touch-ui.ts and pointer-controls.ts; shared arcade-touch.css; React tool/policy components; generated touch-ui.js for all fifteen standalone games and the shared native phone page. Regular prebuild regenerates browser assets and provenance while retaining original game archives.
+
+Verification: the full release suite passed 794 checks with seven existing skips and no failures (801 total); typecheck, lint, production build and eight Worker-render checks passed. tests/arcade-touch-ui.test.ts executes shipping TSX callbacks with controlled DOM/hook events, rather than copying their logic. Cases cover simultaneous thumbs, shared holds, focus-change release, stale match drags, native aiming/drawing, all game paths and preference restore. The mounted native phone regression verifies focus-change releases and independent thumb resets. An arena lifecycle regression executes the shipping runtime and verifies a stick release preserves the other thumb's queued action. Existing unit/integration, typecheck, lint, build and Worker render gates run before publication.
+
+Limits: managed Sites has no required control-browser skill and explicitly disallows alternate browser automation. Physical Android/iOS long-press behavior, device multitouch, rendered layouts and network performance have not been observed. These automated checks establish the covered input contracts and deployment, not physical-device or 9/10 certification.

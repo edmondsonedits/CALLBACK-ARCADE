@@ -1,0 +1,26 @@
+{
+  "purpose": "Original concept art for visual and motion demonstration; not player submissions or historical winners",
+  "created": "2026-10-31",
+  "method": "Built-in image generation with transparent background",
+  "names": [
+    "Sunburst",
+    "Moonfin",
+    "Mosskip"
+  ],
+  "files": [
+    {
+      "file": "moonfin.png",
+      "sha256": "01b8b09d760490ae3e327a6be782938a82b01797ca329e0e31f7f299a8af11dd"
+    },
+    {
+      "file": "mosskip.png",
+      "sha256": "944642f67bf89b24f81cbfb1a072237bc94559073d29f49ece4dd3776ab95131"
+    },
+    {
+      "file": "sunburst.png",
+      "sha256": "4e919d4500dd3020cebfdd9f34e9c918d4bb46fcf4f1455c2685e04ed9fdb150"
+    }
+  ],
+  "preview": ".logs/fish-acceptance/art-showcase-v1/fish-swimming.webm",
+  "renderer": "Existing FishTank WebGL runtime; no gameplay or scoring changes"
+}

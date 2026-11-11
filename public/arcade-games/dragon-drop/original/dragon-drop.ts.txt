@@ -1,0 +1,288 @@
+import { DRAGON_DROP_CONFIG as C } from "./dragon-drop-config";
+import type { ArcadeGameModule, ArcadeInput } from "./types";
+
+export interface DragonDropPlayer {
+  x: number; y: number; vx: number; vy: number; aimX: number; aimY: number;
+  carriedJewelId: number | null; score: number; lastInputSequence: number;
+  attackCooldownTicks: number; shotCooldownTicks: number; pickupRecoveryTicks: number; hits: number; shots: number;
+}
+export interface DragonDropJewel { id: number; x: number; y: number; vx: number; vy: number }
+export interface DragonDropShot {
+  id: number; x: number; y: number; vx: number; vy: number; ownerId: string; points: number; ticksRemaining: number;
+}
+export interface DragonDropTarget { x: number; y: number; vx: number; direction: 1 | -1 }
+export interface DragonDropState {
+  seed: number; tick: number; round: number; roundTick: number; phase: "active" | "intermission" | "finished";
+  intermissionTicks: number; nextJewelId: number; nextShotId: number; spawnCountdown: number;
+  players: Record<string, DragonDropPlayer>; jewels: DragonDropJewel[]; shots: DragonDropShot[];
+  target: DragonDropTarget; finished: boolean; winnerId: string | null; winners: string[];
+}
+
+const clamp = (n: number, lo: number, hi: number): number => Math.max(lo, Math.min(hi, Number.isFinite(n) ? n : 0));
+const distance = (ax: number, ay: number, bx: number, by: number): number => Math.hypot(ax - bx, ay - by);
+
+function hash(seed: number, index: number): number {
+  let x = (seed ^ Math.imul(index + 1, 0x9e3779b9)) | 0;
+  x ^= x >>> 16; x = Math.imul(x, 0x7feb352d); x ^= x >>> 15; x = Math.imul(x, 0x846ca68b); x ^= x >>> 16;
+  return x >>> 0;
+}
+
+function seededJewel(state: DragonDropState): DragonDropJewel {
+  const id = state.nextJewelId++;
+  const lane = hash(state.seed, id * 2) % 4;
+  const x = [-3.2, -1.1, 1.1, 3.2][lane]!;
+  const y = -0.15 + (hash(state.seed, id * 2 + 1) / 0x1_0000_0000 - 0.5) * 1.25;
+  return { id, x, y, vx: 0, vy: 0 };
+}
+
+function initialPosition(index: number, count: number, seed: number): [number, number] {
+  const rotation = ((seed >>> 0) % 4096) / 4096 * Math.PI * 2;
+  const angle = -Math.PI / 2 + rotation + index * Math.PI * 2 / Math.max(count, 1);
+  const r = count > 1 ? 3 : 0;
+  return [Math.cos(angle) * r, Math.sin(angle) * r];
+}
+
+export function createDragonDropState(playerIds: readonly string[], seed: number): DragonDropState {
+  const ids = [...new Set(playerIds)].sort().slice(0, C.maxPlayers);
+  const players: Record<string, DragonDropPlayer> = {};
+  ids.forEach((id, index) => {
+    const [x, y] = initialPosition(index, ids.length, seed);
+    const angle = Math.atan2(C.targetY - y, -x);
+    players[id] = { x, y, vx: 0, vy: 0, aimX: Math.cos(angle), aimY: Math.sin(angle), carriedJewelId: null,
+      score: 0, lastInputSequence: -1, attackCooldownTicks: 0, shotCooldownTicks: 0, pickupRecoveryTicks: 0, hits: 0, shots: 0 };
+  });
+  const state: DragonDropState = {
+    seed: seed | 0, tick: 0, round: 1, roundTick: 0, phase: "active", intermissionTicks: 0,
+    nextJewelId: 1, nextShotId: 1, spawnCountdown: C.jewelSpawnTicks, players, jewels: [], shots: [],
+    target: { x: 0, y: C.targetY, vx: C.targetSpeed, direction: 1 },
+    finished: false, winnerId: null, winners: [],
+  };
+  for (let i = 0; i < C.seedJewels; i++) state.jewels.push(seededJewel(state));
+  return state;
+}
+
+function scoreZone(player: DragonDropPlayer, target: DragonDropTarget): number {
+  const shotDistance = player.y - target.y;
+  if (shotDistance < C.minScoreDistance || shotDistance > C.maxScoreDistance) return 0;
+  const band = (shotDistance - C.minScoreDistance) / (C.maxScoreDistance - C.minScoreDistance);
+  return clamp(Math.floor(band * C.scoringZones) + 1, 1, C.scoringZones);
+}
+
+function predictedTargetX(state: DragonDropState, flightSeconds: number): number {
+  const edge = C.targetHalfTravel;
+  let x = state.target.x + state.target.vx * flightSeconds;
+  // Reflect the prediction once or twice; flight times stay short in this arena.
+  for (let i = 0; i < 3 && (x > edge || x < -edge); i++) {
+    if (x > edge) x = edge - (x - edge);
+    else x = -edge + (-edge - x);
+  }
+  return clamp(x, -edge, edge);
+}
+
+function shoot(state: DragonDropState, playerId: string, player: DragonDropPlayer, points: number): void {
+  const distY = C.targetY - player.y;
+  const flightSeconds = Math.max(0, -distY) / C.projectileSpeed;
+  const targetX = predictedTargetX(state, flightSeconds);
+  const aimAngle = Math.atan2(player.aimY, player.aimX);
+  const desiredAngle = Math.atan2(C.targetY - player.y, targetX - player.x);
+  const delta = Math.atan2(Math.sin(desiredAngle - aimAngle), Math.cos(desiredAngle - aimAngle));
+  if (Math.abs(delta) > C.aimToleranceRadians) return;
+  const jewelIndex = state.jewels.findIndex((j) => j.id === player.carriedJewelId);
+  if (jewelIndex < 0) { player.carriedJewelId = null; return; }
+  state.jewels.splice(jewelIndex, 1);
+  state.shots.push({ id: state.nextShotId++, x: player.x + player.aimX * (C.playerRadius + 0.12),
+    y: player.y + player.aimY * (C.playerRadius + 0.12), vx: player.aimX * C.projectileSpeed,
+    vy: player.aimY * C.projectileSpeed, ownerId: playerId, points, ticksRemaining: C.projectileLifetimeTicks });
+  player.carriedJewelId = null;
+  player.shotCooldownTicks = C.shotCooldownTicks;
+  player.shots++;
+}
+
+function melee(state: DragonDropState, attackerId: string, attacker: DragonDropPlayer): void {
+  for (const [targetId, target] of Object.entries(state.players)) {
+    if (targetId === attackerId || target.carriedJewelId === null) continue;
+    const dx = target.x - attacker.x, dy = target.y - attacker.y;
+    const d = Math.hypot(dx, dy);
+    if (d < 1e-6 || d > C.attackRange) continue;
+    if ((dx * attacker.aimX + dy * attacker.aimY) / d < Math.cos(C.attackHalfAngleRadians)) continue;
+    const jewelId = target.carriedJewelId;
+    target.carriedJewelId = null;
+    const jewel = state.jewels.find((item) => item.id === jewelId);
+    if (jewel) {
+      const nx = dx / d, ny = dy / d;
+      jewel.x = clamp(target.x + nx * C.playerRadius * 1.7, -C.arenaHalfWidth, C.arenaHalfWidth);
+      jewel.y = clamp(target.y + ny * C.playerRadius * 1.7, -C.arenaHalfHeight, C.arenaHalfHeight);
+      jewel.vx = nx * C.attackImpulse; jewel.vy = ny * C.attackImpulse;
+      target.vx += nx * C.attackImpulse * 0.45; target.vy += ny * C.attackImpulse * 0.45;
+    }
+    target.hits++;
+    target.pickupRecoveryTicks = C.pickupRecoveryTicks;
+    attacker.attackCooldownTicks = C.attackCooldownTicks;
+    return;
+  }
+}
+
+function handleAction(state: DragonDropState, id: string, player: DragonDropPlayer): void {
+  if (player.shotCooldownTicks > 0 || player.attackCooldownTicks > 0) return;
+  if (player.carriedJewelId !== null) {
+    const points = scoreZone(player, state.target);
+    if (points > 0) shoot(state, id, player, points);
+    if (player.carriedJewelId !== null) melee(state, id, player);
+  } else {
+    melee(state, id, player);
+  }
+}
+
+function updateMovement(state: DragonDropState, inputs: Readonly<Record<string, ArcadeInput>>): void {
+  const dt = C.fixedStepSeconds;
+  for (const [id, player] of Object.entries(state.players)) {
+    player.attackCooldownTicks = Math.max(0, player.attackCooldownTicks - 1);
+    player.shotCooldownTicks = Math.max(0, player.shotCooldownTicks - 1);
+    player.pickupRecoveryTicks = Math.max(0, player.pickupRecoveryTicks - 1);
+    const input = inputs[id];
+    if (input && Number.isSafeInteger(input.sequence) && input.sequence > player.lastInputSequence) {
+      player.lastInputSequence = input.sequence;
+      let x = clamp(input.x, -1, 1), y = clamp(input.y, -1, 1);
+      const magnitude = Math.hypot(x, y);
+      if (magnitude > 1) { x /= magnitude; y /= magnitude; }
+      if (magnitude > 0.12) { player.aimX = x / Math.hypot(x, y); player.aimY = y / Math.hypot(x, y); }
+      player.vx += x * C.acceleration * dt;
+      player.vy += y * C.acceleration * dt;
+      if (input.action === "attack") handleAction(state, id, player);
+    }
+    const speed = Math.hypot(player.vx, player.vy);
+    if (speed > C.maxSpeed) { player.vx *= C.maxSpeed / speed; player.vy *= C.maxSpeed / speed; }
+    player.x = clamp(player.x + player.vx * dt, -C.arenaHalfWidth + C.playerRadius, C.arenaHalfWidth - C.playerRadius);
+    player.y = clamp(player.y + player.vy * dt, -C.arenaHalfHeight + C.playerRadius, C.arenaHalfHeight - C.playerRadius);
+    player.vx *= C.drag; player.vy *= C.drag;
+  }
+}
+
+function resolvePlayerBumps(state: DragonDropState): void {
+  const players = Object.values(state.players);
+  for (let i = 0; i < players.length; i++) for (let j = i + 1; j < players.length; j++) {
+    const a = players[i]!, b = players[j]!;
+    const dx = b.x - a.x, dy = b.y - a.y, d = Math.hypot(dx, dy), diameter = C.playerRadius * 2;
+    if (d < 1e-6 || d >= diameter) continue;
+    const nx = dx / d, ny = dy / d, overlap = diameter - d;
+    a.x -= nx * overlap / 2; a.y -= ny * overlap / 2; b.x += nx * overlap / 2; b.y += ny * overlap / 2;
+    a.vx -= nx * C.playerBumpImpulse * 0.5; a.vy -= ny * C.playerBumpImpulse * 0.5;
+    b.vx += nx * C.playerBumpImpulse * 0.5; b.vy += ny * C.playerBumpImpulse * 0.5;
+  }
+}
+
+function updateTarget(state: DragonDropState): void {
+  const speedMultiplier = 1 + (state.round - 1) * 0.12;
+  state.target.x += state.target.vx * C.fixedStepSeconds * speedMultiplier;
+  if (state.target.x >= C.targetHalfTravel) { state.target.x = C.targetHalfTravel; state.target.direction = -1; }
+  else if (state.target.x <= -C.targetHalfTravel) { state.target.x = -C.targetHalfTravel; state.target.direction = 1; }
+  state.target.vx = state.target.direction * C.targetSpeed * speedMultiplier;
+}
+
+function updateJewels(state: DragonDropState): void {
+  const dt = C.fixedStepSeconds;
+  for (const jewel of state.jewels) {
+    const carrier = Object.values(state.players).find((p) => p.carriedJewelId === jewel.id);
+    if (carrier) { jewel.x = carrier.x - carrier.aimX * 0.38; jewel.y = carrier.y - carrier.aimY * 0.38; continue; }
+    jewel.x = clamp(jewel.x + jewel.vx * dt, -C.arenaHalfWidth, C.arenaHalfWidth);
+    jewel.y = clamp(jewel.y + jewel.vy * dt, -C.arenaHalfHeight, C.arenaHalfHeight);
+    jewel.vx *= 0.9; jewel.vy *= 0.9;
+  }
+  for (const player of Object.values(state.players)) {
+    if (player.carriedJewelId !== null || player.pickupRecoveryTicks > 0) continue;
+    const index = state.jewels.findIndex((jewel) =>
+      !Object.values(state.players).some((holder) => holder.carriedJewelId === jewel.id) &&
+      jewel.vx * jewel.vx + jewel.vy * jewel.vy < 30 && distance(player.x, player.y, jewel.x, jewel.y) <= C.jewelPickupRange);
+    if (index < 0) continue;
+    player.carriedJewelId = state.jewels[index]!.id;
+  }
+}
+
+function updateShots(state: DragonDropState): void {
+  const dt = C.fixedStepSeconds;
+  for (let i = state.shots.length - 1; i >= 0; i--) {
+    const shot = state.shots[i]!;
+    shot.x += shot.vx * dt; shot.y += shot.vy * dt; shot.ticksRemaining--;
+    if (distance(shot.x, shot.y, state.target.x, state.target.y) <= C.targetHitRadius + C.projectileRadius) {
+      const owner = state.players[shot.ownerId];
+      if (owner) owner.score += shot.points;
+      state.shots.splice(i, 1);
+    } else if (shot.ticksRemaining <= 0 || Math.abs(shot.x) > C.arenaHalfWidth || Math.abs(shot.y) > C.arenaHalfHeight) {
+      state.shots.splice(i, 1);
+    }
+  }
+}
+
+function resetRound(state: DragonDropState): void {
+  state.jewels = [];
+  state.shots = [];
+  for (const [index, player] of Object.values(state.players).entries()) {
+    player.carriedJewelId = null;
+    const [x, y] = initialPosition(index, Object.keys(state.players).length, state.seed);
+    player.x = x; player.y = y; player.vx = 0; player.vy = 0;
+  }
+  for (let i = 0; i < C.seedJewels; i++) state.jewels.push(seededJewel(state));
+  state.target.x = 0;
+  state.target.direction = (state.round % 2 ? 1 : -1);
+  state.target.vx = state.target.direction * C.targetSpeed * (1 + (state.round - 1) * 0.12);
+  state.spawnCountdown = C.jewelSpawnTicks;
+  state.roundTick = 0;
+  state.phase = "active";
+}
+
+function finish(state: DragonDropState): void {
+  state.finished = true; state.phase = "finished";
+  const high = Math.max(0, ...Object.values(state.players).map((p) => p.score));
+  state.winners = Object.entries(state.players).filter(([, p]) => p.score === high).map(([id]) => id).sort();
+  state.winnerId = state.winners.length === 1 ? state.winners[0]! : null;
+}
+
+export function stepDragonDrop(current: DragonDropState, inputs: Readonly<Record<string, ArcadeInput>>): DragonDropState {
+  if (current.finished) return structuredClone(current);
+  const state = structuredClone(current);
+  state.tick++;
+  if (state.phase === "intermission") {
+    state.intermissionTicks--;
+    if (state.intermissionTicks <= 0) resetRound(state);
+    return state;
+  }
+  state.roundTick++;
+  updateTarget(state);
+  updateMovement(state, inputs);
+  resolvePlayerBumps(state);
+  updateJewels(state);
+  updateShots(state);
+  state.spawnCountdown--;
+  if (state.spawnCountdown <= 0) {
+    if (state.jewels.length < C.maxLooseJewels) state.jewels.push(seededJewel(state));
+    state.spawnCountdown = Math.max(30, C.jewelSpawnTicks - (state.round - 1) * 8);
+  }
+  if (state.roundTick >= C.roundDurationTicks) {
+    if (state.round >= C.roundCount) finish(state);
+    else { state.round++; state.phase = "intermission"; state.intermissionTicks = C.intermissionTicks; }
+  }
+  return state;
+}
+
+export const dragonDropModule: ArcadeGameModule<DragonDropState> = {
+  id: "dragon-drop",
+  minPlayers: 2,
+  createState: createDragonDropState,
+  step: stepDragonDrop,
+  snapshot: (state) => ({
+    tick: state.tick, round: state.round, roundTick: state.roundTick, phase: state.phase,
+    intermissionTicks: state.intermissionTicks,
+    players: Object.fromEntries(Object.entries(state.players).map(([id, p]) => [id, {
+      x: p.x, y: p.y, aimX: p.aimX, aimY: p.aimY, score: p.score, carryingJewel: p.carriedJewelId !== null, hits: p.hits,
+    }])),
+    jewels: state.jewels.map(({ id, x, y, vx, vy }) => ({ id, x, y, vx, vy })),
+    shots: state.shots.map(({ id, x, y, ownerId, points }) => ({ id, x, y, ownerId, points })),
+    target: { x: state.target.x, y: state.target.y }, finished: state.finished, winnerId: state.winnerId, winners: [...state.winners],
+  }),
+  result: (state) => state.finished ? { winnerId: state.winnerId, winners: [...state.winners], scores: Object.fromEntries(Object.entries(state.players).map(([id, p]) => [id, p.score])) } : null,
+};
+import { createPracticeAdapter, movementActionInput } from "./practice-adapter";
+
+const practiceDragonDropModule = createPracticeAdapter(dragonDropModule, { mapInput: (input) => movementActionInput(input, "action"),
+  terminal: (state: DragonDropState) => state.finished });
+export default practiceDragonDropModule;

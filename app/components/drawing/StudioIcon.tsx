@@ -1,0 +1,30 @@
+export function StudioIcon({ name }: { name: string }) {
+  const paths: Record<string, React.ReactNode> = {
+    select: <rect x="4" y="4" width="16" height="16" strokeDasharray="3 3" />,
+    pen: <><path d="m15 4 5 5M4 20l5-1L20 8a2 2 0 0 0-5-5L4 14z" /><path d="m4 14 5 5" /></>,
+    spray: <><path d="M4 9h12l2 3v8H4zM7 6h6M10 3h9v3h-6" /><path d="M18 12h3m-3 3h4M7 13v4" /></>,
+    eraser: <><path d="m14 4 6 6a2 2 0 0 1 0 3l-7 7H7l-5-5a2 2 0 0 1 0-3l9-9a2 2 0 0 1 3 1Z" /><path d="m6 8 9 9M13 20h8" /></>,
+    fill: <><path d="m5 10 7-7 9 9-9 9-9-9 2-2ZM3 12h18M8 2l4 4" /><path d="M3 18s-2 2-2 3a2 2 0 0 0 4 0c0-1-2-3-2-3Z" /></>,
+    undo: <><path d="m8 4-5 5 5 5" /><path d="M3 9h10a7 7 0 0 1 0 14" transform="translate(0 -3)" /></>,
+    redo: <><path d="m16 4 5 5-5 5" /><path d="M21 9H11a7 7 0 0 0 0 14" transform="translate(0 -3)" /></>,
+    more: <><circle cx="5" cy="12" r="1" /><circle cx="12" cy="12" r="1" /><circle cx="19" cy="12" r="1" /></>,
+    chevron: <path d="m7 10 5 5 5-5" />,
+    expand: <path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5" />,
+    refresh: <><path d="M20 7v5h-5M4 17v-5h5" /><path d="M6 7a7 7 0 0 1 12-1l2 3M4 15l2 3a7 7 0 0 0 12-1" /></>,
+    eye: <><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z" /><circle cx="12" cy="12" r="3" /></>,
+    pan: <><path d="M8 13V6a2 2 0 0 1 4 0v6-9a2 2 0 0 1 4 0v9-6a2 2 0 0 1 4 0v8c0 6-3 8-7 8-3 0-5-2-7-5l-3-4a2 2 0 0 1 3-2l2 2Z" /></>,
+    line: <><path d="m4 20 16-16" /><circle cx="4" cy="20" r="1" /><circle cx="20" cy="4" r="1" /></>,
+    rectangle: <rect x="4" y="5" width="16" height="14" rx="2" />,
+    page: <><path d="M14 2H5v20h14V7l-5-5Z" /><path d="M14 2v5h5M8 14h8m-4-4v8" /></>,
+    ellipse: <ellipse cx="12" cy="12" rx="9" ry="7" />,
+    check: <path d="m5 12 4 4L20 5" />,
+    arrow: <><path d="M4 12h16m-6-6 6 6-6 6" /></>,
+    back: <path d="m14 5-7 7 7 7" />,
+    trash: <><path d="M3 6h18M9 6V3h6v3M5 6l1 15h12l1-15M10 10v7m4-7v7" /></>,
+    download: <><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5" /></>,
+    spark: <><path d="m12 2 3 7 7 3-7 3-3 7-3-7-7-3 7-3Z" /><path d="m20 1 1 3 3 1-3 1-1 3-1-3-3-1 3-1Z" /></>,
+    close: <path d="m6 6 12 12M6 18 18 6" />,
+    help: <><circle cx="12" cy="12" r="9" /><path d="M9 9a3 3 0 0 1 6 0c0 2-3 2-3 4m0 3h.01" /></>,
+  };
+  return <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[name] ?? paths.pen}</svg>;
+}

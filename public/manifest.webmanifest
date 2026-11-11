@@ -1,0 +1,15 @@
+{
+  "id": "/",
+  "name": "CALLBACK — One lobby. Every game.",
+  "short_name": "CALLBACK",
+  "description": "A live royal variety show where every player writes the chaos and the room crowns a winner.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#101a3b",
+  "theme_color": "#101a3b",
+  "icons": [
+    { "src": "/icons/callback-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icons/callback-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "project": {"title": "King Prompter Seamless Menu Loop", "artist": ""},
+  "canvas": {"width": 1280, "height": 720, "fps": 24, "background": "#070d25"},
+  "style": {"preset": "minimal", "fit": "cover", "transition": "dissolve", "transition_duration": 1.25, "color": "none", "vignette": 0.0, "grain": 0.0},
+  "audio": {"music": "", "volume": 0.0, "clip_audio": "mix", "clip_volume": 1.0, "ducking": false, "fade_in": 0.0, "fade_out": 0.0},
+  "scenes": [
+    {"type": "video", "source": "source\\original-title-loop.mp4", "trim_start": 1.25, "duration": 13.85, "speed": 1.0, "fit": "cover", "audio": "keep", "volume": 1.0, "transition": "dissolve", "transition_duration": 1.25},
+    {"type": "video", "source": "source\\original-title-loop.mp4", "trim_start": 0.0, "duration": 1.291667, "speed": 1.0, "fit": "cover", "audio": "keep", "volume": 1.0}
+  ],
+  "output": {"path": "output/seamless-title-loop.mp4", "codec": "libx264", "crf": 18, "preset": "medium"}
+}

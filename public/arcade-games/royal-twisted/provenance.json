@@ -1,0 +1,81 @@
+{
+  "origin": "edmondsonedits/CALLBACK-ARCADE",
+  "sourceCommit": "017bc84a0ff9a23633d2cdd2ed22ac9b53d93146",
+  "version": "0.7.0",
+  "modifications": "Sites phone-room adapter and shared touch UI; unmodified imported entry archived in original/callback-worlds-2026-10-12.html",
+  "licensing": "Original project code with third-party asset and vendor licenses retained beside their files.",
+  "files": [
+    {
+      "path": "archive/royal_twisted_spiral_keep_v0.4_ten_players.html",
+      "sha256": "50d44a32a0be10fade5ddabe00493113ee1194b69f2411b1d7d21222538a4dbe"
+    },
+    {
+      "path": "assets/KENNEY-LICENSE.txt",
+      "sha256": "aac944f18106b3a3e29c6fdeec02523d4cab4c735abc01f5a8fa88a79ae173ef"
+    },
+    {
+      "path": "assets/Textures/colormap.png",
+      "sha256": "66fd49be148f32e88f6c8cace67120250d1943a7856601158ad0ff24651db0b0"
+    },
+    {
+      "path": "assets/flag-wide.glb",
+      "sha256": "74e94f48dffb40aca288676191265523c3e752aef40b868bfa3a51394083519b"
+    },
+    {
+      "path": "assets/rocks-large.glb",
+      "sha256": "7ea1ee769eb063b192c3c3744cd32a11616320f7ca491fbe23289552f6655595"
+    },
+    {
+      "path": "assets/tower-top.glb",
+      "sha256": "222537f0daa9167788a468b4ee71918d1066b7c142e7e251c449c50be3438068"
+    },
+    {
+      "path": "index.html",
+      "sha256": "8e970557c5b8b14efa2b78c866270fab7c7834676441bc48826c0cc74e0c4b85"
+    },
+    {
+      "path": "online-v65.html",
+      "sha256": "ebbcd72f681eab9cafb62e97a0377a4ca65313f9aa11b208b2059f766d78135a"
+    },
+    {
+      "path": "original.html",
+      "sha256": "2861c2a46f099386f4abdfd32a9e3b72377495e68fa9ce3a479aeaacde9a0d85"
+    },
+    {
+      "path": "original/callback-worlds-2026-10-12.html",
+      "sha256": "53a29791785efd06899422f8c3b6ecbd09761b6cfc7367d944848c60283a5a81"
+    },
+    {
+      "path": "original/royal_twisted_spiral_keep_v0.5_original_camera_knockback.html",
+      "sha256": "68170440ea2584201fccd8cc8e6c251ae598b223af1cd9ab6aa99cac1d988ae2"
+    },
+    {
+      "path": "vendor/three/BufferGeometryUtils.js",
+      "sha256": "248b3e8420bd3de805ca01845c1b0cc62aa2766f3c56bdcead265e306f8e715c"
+    },
+    {
+      "path": "vendor/three/GLTFLoader.js",
+      "sha256": "2904f2823e23d5bc1d64512bf4c0d777ac44d728d47c34a9e3d48ce8ef6b761d"
+    },
+    {
+      "path": "vendor/three/LICENSE",
+      "sha256": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601"
+    },
+    {
+      "path": "vendor/three/LICENSE-addons.txt",
+      "sha256": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601"
+    },
+    {
+      "path": "vendor/three/addons-provenance.json",
+      "sha256": "5da15137cbc319bdff9e9a4096ae51389b3b05491a3114e839636d9beafb164b"
+    },
+    {
+      "path": "vendor/three/three.core.js",
+      "sha256": "eb077d2417f61d3e6d9264c317cabc4ea35769ed6b0ab533067292a550784c20"
+    },
+    {
+      "path": "vendor/three/three.module.js",
+      "sha256": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a"
+    }
+  ]
+}

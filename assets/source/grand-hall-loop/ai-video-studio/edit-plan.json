@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "project": {
+    "title": "King Prompter — Grand Hall Menu Loop",
+    "artist": ""
+  },
+  "canvas": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 24,
+    "background": "#070D25"
+  },
+  "style": {
+    "preset": "minimal",
+    "fit": "cover",
+    "transition": "none",
+    "transition_duration": 0,
+    "color": "none",
+    "vignette": 0,
+    "grain": 0
+  },
+  "audio": {
+    "clip_audio": "mix",
+    "clip_volume": 1,
+    "ducking": false,
+    "fade_in": 0,
+    "fade_out": 0
+  },
+  "scenes": [
+    {
+      "type": "video",
+      "source": "../candidates/candidate-1-stage-breath.mp4",
+      "trim_start": 0,
+      "duration": 16.04,
+      "speed": 1,
+      "fit": "cover",
+      "focus_x": 0.5,
+      "focus_y": 0.42,
+      "audio": "keep",
+      "volume": 1,
+      "transition": "none",
+      "transition_duration": 0,
+      "color": "none",
+      "vignette": 0,
+      "grain": 0
+    }
+  ],
+  "output": {
+    "path": "../../../../public/media/grand-hall/grand-hall-menu-loop.mp4",
+    "codec": "libx264",
+    "crf": 20,
+    "preset": "slow"
+  }
+}

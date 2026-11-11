@@ -1,0 +1,40 @@
+{
+  "origin": "Existing King Prompter local simulation and project-owned upgrade code",
+  "baseCommit": "c6f1d3c2cf01a71a6ebeef165712b685e1e5fb2d",
+  "version": "2.0.0-sites",
+  "source": "lib/arcade/upgrades/rubble-alliance.ts",
+  "license": "Project-owned source; Three.js dependency is MIT",
+  "dependencies": [
+    {
+      "path": "../shared/arena-runtime.js",
+      "purpose": "Local Three.js presentation and match lifecycle"
+    },
+    {
+      "path": "../royal-twisted/vendor/three/three.module.js",
+      "license": "MIT",
+      "version": "0.180.0"
+    }
+  ],
+  "files": [
+    {
+      "path": "index.html",
+      "sha256": "f48b78e928eeb0ab56761a831485b2b9ad11267ad748c51566943a33b5e4db1c"
+    },
+    {
+      "path": "original/destructible-floor.ts.txt",
+      "sha256": "4809ce67c984f673b1c96f049812c2cf8dfd85960cbe58effa29f53dda793ef1"
+    },
+    {
+      "path": "original/rubble-alliance-config.ts.txt",
+      "sha256": "4f633b501ce462e4be5e3b70cdc4a37b45167ccc80b7d7c9b8e8e7d0eb01bbc4"
+    },
+    {
+      "path": "original/rubble-alliance.ts.txt",
+      "sha256": "3364e57790294b033ceb84e806ba8de7cc21916a8d85c31dd5af4c2b754414aa"
+    },
+    {
+      "path": "simulation.js",
+      "sha256": "2461c0c61e5d9dedae87d227a1cbb6eccbcb9085a2b1088e8896b8299b83f5be"
+    }
+  ]
+}

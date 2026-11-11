@@ -1,0 +1,40 @@
+{
+  "origin": "Callback Sites phone-room integration",
+  "version": "1.0.0",
+  "dependencies": [
+    {
+      "name": "qrcode",
+      "version": "1.5.4",
+      "license": "MIT",
+      "path": "vendor/qrcode.js",
+      "licensePath": "vendor/LICENSE-qrcode.txt",
+      "build": "esbuild node_modules/qrcode/lib/browser.js --bundle --format=iife --global-name=CallbackPhoneQR --platform=browser --minify"
+    }
+  ],
+  "files": [
+    {
+      "path": "controller.html",
+      "sha256": "474df7dc31e7be3f2e5ce39bc24e3d5dfbc05105d15d35623b5aa65f7098791a"
+    },
+    {
+      "path": "controller.js",
+      "sha256": "498d64cb6cebb4b5686c03bc95a25e118bf4c89a6637ade21b4c3aac1ba09e66"
+    },
+    {
+      "path": "host.js",
+      "sha256": "f6d65a23bda75d2304d4dfbc1aba82f48e96a06cc8e6737b972232f49cebfe3c"
+    },
+    {
+      "path": "phone.css",
+      "sha256": "226d1c5d61dda745aba85e16b338965851e5f20ae912c1516e9ccc278b5f627e"
+    },
+    {
+      "path": "vendor/LICENSE-qrcode.txt",
+      "sha256": "8df47c6ad9ac2c41eb9b2a72def9908959da0ede8dadd56c7b249c1bdb0c5ce6"
+    },
+    {
+      "path": "vendor/qrcode.js",
+      "sha256": "1a80d9c942152e9a48fcdd002e1046e3a7f4bc438ec08c65b34602a3de0bba89"
+    }
+  ]
+}

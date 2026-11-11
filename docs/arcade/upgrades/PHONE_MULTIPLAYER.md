@@ -1,0 +1,15 @@
+# Arcade phone multiplayer
+
+Open `/arcade`, select a game and choose its online host launch. Twenty physical titles are also listed at `/arcade/practice`; each has an online launch. Native room games use their existing host flow except Air Hockey, Light Trails and Tap Race, which now use the same-origin hosted game service.
+
+For the twenty physical games and three realtime games: create a room, share its QR code or link, and keep the host screen open. Players join from `/arcade/online/join` with their room code. Up to ten phones can join. Vacant seats use ordinary native bots; no paid bot service is involved. Refreshing a phone restores its seat. Join or remove players in the lobby or between rounds. One joined phone can start with nine bots. Ten phones replace all bot seats. Brief disconnects release stale input; longer disconnects use a bot until the phone reconnects. Host pause/resume discards old controls and queued actions. Phone preview is optional except timing games.
+
+The other sixteen room games use their established minimum-player rules and support ten controllers. Magic Arena, Magic Duell and Minions TD target the next living rival in a roster ring. Air Hockey has two teams of up to five paddles. Tie-Breaker remains a ten-entrant elimination bracket, with two active duelists and waiting entrants.
+
+The server accepts bounded controller commands, owns the simulation clock and persists room changes with compare-and-swap. Every completed hosted match has one unique result record. Phone input cannot submit scores, winners, arbitrary seat IDs or Sumo charge power. Controller and host sessions use separate HttpOnly cookies; hashes stay server-side. Browser game frames only render authenticated snapshots passed by their same-origin parent. Existing local games, original source/licensing, King Prompter rooms and Party Games are retained.
+
+The appended migration creates only three online transport tables and their indices; it does not recreate earlier tables. Generated simulation modules are refreshed by the regular prebuild from the pinned active game code. Original archived source remains unchanged.
+
+Verification: the release unit/integration run passed 571 checks with seven existing skips and no failures (578 total). Typecheck, lint, production build and Worker route checks are publication gates. Focused tests use actual simulations, real SQLite-backed D1 statements and shipping renderer/menu functions. Native deployment metadata records the published version and commit.
+
+Limits: no supported control-browser skill is available in managed Sites, so browser automation and physical phone sessions were not run. Real network latency, iOS/Android behavior, rendered layout and performance with ten devices remain unverified. The host must remain open to advance the match. The fourteen full packages are the current quality checkpoint; six physical prototypes and nineteen native room titles still require the broader menu/map/quality upgrade work. No 9/10 or AAA certification is claimed.
